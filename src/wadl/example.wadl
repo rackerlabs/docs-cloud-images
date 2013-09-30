@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- (C) 2012-2013 OpenStack Foundation, All Rights Reserved -->
 
-<!-- (C) 2012 OpenStack LLC., All Rights Reserved -->
+<!--*******************************************************-->
+<!--         Import Common XML Entities                    -->
+<!--                                                       -->
+<!--     You can resolve the entites with xmllint          -->
+<!--                                                       -->
+<!--        xmllint -noent os-image-2.0.wadl               -->
+<!--*******************************************************-->
+<!DOCTYPE application [<!ENTITY % common  SYSTEM "../common/common.ent">
+<!-- Useful for describing APIs -->
+        <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+        <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+        <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+        <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+%common;
+]>
+
 
 <application xmlns="http://wadl.dev.java.net/2009/02"
              xmlns:wadl="http://wadl.dev.java.net/2009/02"
@@ -11,65 +27,61 @@
   <resources base="https://volume.example.com/">
     <resource id="version" path="v1">
       <resource id="tenant_id" path="{tenant_id}">
-	<param name="tenant_id" style="template">
-	  <wadl:doc  xmlns="http://docbook.org/ns/docbook">
-	    <para>
-	      The unique identifier of the tenant or account.
-	    </para>
-	  </wadl:doc>
-	</param>
+	       <param name="tenant_id" style="template">
+  	       <wadl:doc  xmlns="http://docbook.org/ns/docbook">
+        	    <para>
+        	      The unique identifier of the tenant or account.
+        	    </para>
+  	       </wadl:doc>
+	       </param>
 	<?rax start-sections?>
-	<resource id="volumes" path="volumes">
-	  <wadl:doc title="Volumes"/>   
-	  <method href="#createVolume" />
-	  <method href="#getVolumesSimple" />
-
-	  <resource path="{volume_id}" id="volume_id">
-	    <param name="volume_id" style="template" required="true">
-	      <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>
-		The unique identifier of an existing Volume.
-	      </para></wadl:doc>
-	    </param>
-	    
-	    <method href="#getVolume" />
-	    <method href="#deleteVolume" />
-	    
-	  </resource>
-	</resource>
-	
-	<resource id="volume_types" path="/types">
-	  <wadl:doc title="Volume types"/>
-	  <method href="#getVolumeTypes" />
-
-	  <resource path="{volume_type_id}" id="volume_type_id">
-	    <param name="volume_type_id" style="template" required="true">
-	      <wadl:doc xmlns="http://docbook.org/ns/docbook"><para>
-		The unique identifier of an existing Volume Type.
-	      </para></wadl:doc>
-	    </param>
-
-	    <method href="#getVolumeType" />
-	  </resource>
-	</resource>
-
-	<resource id="snapshots" path="snapshots">
-	  <wadl:doc title="Snapshots"/>
-	  <method href="#createSnapshot" />
-	  <method href="#getSnapshotsSimple" />
-
-	  <resource path="{snapshot_id}" id="snapshot_id">
-	    <param name="snapshot_id" style="template" required="true">
-	      <wadl:doc  xmlns="http://docbook.org/ns/docbook"><para>
-		The unique identifier of an existing Snapshot.
-	      </para></wadl:doc>
-	    </param>
-
-	    <method href="#getSnapshot" />
-	    <method href="#deleteSnapshot" />
-
-	  </resource>
-	</resource>
-
+        
+         	<resource id="volumes" path="volumes">
+         	  <wadl:doc title="Volumes"/>   
+         	  <method href="#createVolume" />
+         	  <method href="#getVolumesSimple" />
+         
+         	  <resource path="{volume_id}" id="volume_id">
+         	    <param name="volume_id" style="template" required="true">
+         	      <wadl:doc xmlns="http://docbook.org/ns/docbook">
+         	        <para>The unique identifier of an existing Volume.</para>
+         	      </wadl:doc>
+         	    </param>
+         	    <method href="#getVolume" />
+         	    <method href="#deleteVolume" />
+         	  </resource>
+         	</resource>
+         	
+         	<resource id="volume_types" path="/types">
+         	  <wadl:doc title="Volume types"/>
+         	  <method href="#getVolumeTypes" />
+         	  
+         	  <resource path="{volume_type_id}" id="volume_type_id">
+         	    <param name="volume_type_id" style="template" required="true">
+         	      <wadl:doc xmlns="http://docbook.org/ns/docbook">
+         	        <para>The unique identifier of an existing Volume Type.</para>
+         	      </wadl:doc>
+         	    </param>
+         	    <method href="#getVolumeType" />
+         	  </resource>
+         	</resource>
+         
+         	<resource id="snapshots" path="snapshots">
+         	  <wadl:doc title="Snapshots"/>
+         	  <method href="#createSnapshot" />
+         	  <method href="#getSnapshotsSimple" />
+         	  
+         	  <resource path="{snapshot_id}" id="snapshot_id">
+         	    <param name="snapshot_id" style="template" required="true">
+         	      <wadl:doc  xmlns="http://docbook.org/ns/docbook">
+         	        <para>The unique identifier of an existing Snapshot.</para>
+         	      </wadl:doc>
+         	    </param>
+         	    <method href="#getSnapshot" />
+         	    <method href="#deleteSnapshot" />
+         	  </resource>
+         	</resource>
+        
       </resource>
     </resource>
   </resources>
@@ -77,80 +89,74 @@
   <method name="POST" id="createVolume">
     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="en" title="Create Volume">
       <para role="shortdesc">Creates the volume.</para>
-		<para>
-	The below example creates a SATA volume called "vol-001" that has a size of 100 GB.
-      </para>
+		  <para>The below example creates a SATA volume called "vol-001" that has a size of 100 GB.</para>
     </wadl:doc>
     <request>
       <param name="volume" style="query" type="string" required="true">
-	<wadl:doc xmlns="http://docbook.org/ns/docbook">
-	  <para>A partial representation of a volume used in the creation process.</para>
-	</wadl:doc>
+        	<wadl:doc xmlns="http://docbook.org/ns/docbook">
+        	  <para>A partial representation of a volume used in the creation process.</para>
+        	</wadl:doc>
       </param>
       <param name="size" style="query" type="string" required="true">
-	<wadl:doc xmlns="http://docbook.org/ns/docbook">
-	  <para>The size (in GB) of the volume.</para>
-	</wadl:doc>
+        	<wadl:doc xmlns="http://docbook.org/ns/docbook">
+        	  <para>The size (in GB) of the volume.</para>
+        	</wadl:doc>
       </param>
       <param name="display_description" style="query" type="string" required="false">
-	<wadl:doc xmlns="http://docbook.org/ns/docbook">
-	  <para>A description of the volume.</para>
-	</wadl:doc>
+        	<wadl:doc xmlns="http://docbook.org/ns/docbook">
+        	  <para>A description of the volume.</para>
+        	</wadl:doc>
       </param>
       <param name="display_name" style="query" type="string" required="false">
-	<wadl:doc xmlns="http://docbook.org/ns/docbook">
-	  <para>The name of the volume.</para>
-	</wadl:doc>
+        	<wadl:doc xmlns="http://docbook.org/ns/docbook">
+        	  <para>The name of the volume.</para>
+        	</wadl:doc>
       </param>
       <param name="snapshot_id" style="query" type="string" required="false">
-	<wadl:doc xmlns="http://docbook.org/ns/docbook">
-	  <para>The optional snapshot from which to create a volume.</para>
-	</wadl:doc>
+        	<wadl:doc xmlns="http://docbook.org/ns/docbook">
+        	  <para>The optional snapshot from which to create a volume.</para>
+        	</wadl:doc>
       </param>
       <param name="volume_type" style="query" type="string" required="false">
-	<wadl:doc xmlns="http://docbook.org/ns/docbook">
-	  <para>The type of volume to create, either SATA or SSD. If not defined,
-	  then the default, SATA, is used.</para>
-	</wadl:doc>
+        	<wadl:doc xmlns="http://docbook.org/ns/docbook">
+        	  <para>The type of volume to create, either SATA or SSD. If not defined,
+        	  then the default, SATA, is used.</para>
+        	</wadl:doc>
       </param>
       
       <representation mediaType="application/xml" element="raxapi:volume">
-	
-	<wadl:doc xml:lang="en">
-	  <xsdxt:code href="samples/volume_create.xml" />
-	</wadl:doc>                            
+        	<wadl:doc xml:lang="en">
+        	  <xsdxt:code href="samples/volume_create.xml" />
+        	</wadl:doc>                            
       </representation>
       <representation mediaType="application/json">
-	<wadl:doc xml:lang="en">
-	  <xsdxt:code href="samples/volume_create.json" />
-	</wadl:doc>
+        	<wadl:doc xml:lang="en">
+        	  <xsdxt:code href="samples/volume_create.json" />
+        	</wadl:doc>
       </representation>
     </request>
 
     <response status="200">
       <representation mediaType="application/xml" element="raxapi:volume">
-	<wadl:doc xml:lang="en">
-	  <xsdxt:code href="samples/volume_show.xml" />
-	</wadl:doc>
-      </representation>
-      <representation mediaType="application/json">
-	<wadl:doc xml:lang="en">
-	  <xsdxt:code href="samples/volume_show.json" />
-	</wadl:doc>
-	<wadl:doc xmlns="http://docbook.org/ns/docbook">
-	  <para>Note that you use the <code>os-volume_attachments</code> API call 
-	  (<code>/servers/{server_id}/os-volume_attachments</code>) to attach 
-	  the new volume to your Next Generation Cloud Server (with 
-	  the specified {server_id}). 
-	  Refer to the <citetitle>Next Generation Cloud Servers Developer Guide</citetitle> 
-	  at <link xlink:href="http://docs.rackspace.com/api">docs.rackspace.com</link> for details 
-	  of the call. Once the volume is attached, the new volume will appear 
-	  as another device on the Next Generation Cloud Server. It can 
-	  then be partitioned, formatted, and mounted for use on the system. </para>
-	</wadl:doc>
-	
-
-	
+      	<wadl:doc xml:lang="en">
+      	  <xsdxt:code href="samples/volume_show.xml" />
+      	</wadl:doc>
+            </representation>
+            <representation mediaType="application/json">
+      	<wadl:doc xml:lang="en">
+      	  <xsdxt:code href="samples/volume_show.json" />
+      	</wadl:doc>
+      	<wadl:doc xmlns="http://docbook.org/ns/docbook">
+      	  <para>Note that you use the <code>os-volume_attachments</code> API call 
+      	  (<code>/servers/{server_id}/os-volume_attachments</code>) to attach 
+      	  the new volume to your Next Generation Cloud Server (with 
+      	  the specified {server_id}). 
+      	  Refer to the <citetitle>Next Generation Cloud Servers Developer Guide</citetitle> 
+      	  at <link xlink:href="http://docs.rackspace.com/api">docs.rackspace.com</link> for details 
+      	  of the call. Once the volume is attached, the new volume will appear 
+      	  as another device on the Next Generation Cloud Server. It can 
+      	  then be partitioned, formatted, and mounted for use on the system. </para>
+      	</wadl:doc>
       </representation>
     </response>
   </method>
@@ -161,14 +167,14 @@
     </wadl:doc>
     <response status="200">
       <representation mediaType="application/xml" element="raxapi:volumes">
-	<wadl:doc xml:lang="en">
-	  <xsdxt:code href="samples/volume_list_simple.xml" />
-	</wadl:doc>
+  	     <wadl:doc xml:lang="en">
+  	       <xsdxt:code href="samples/volume_list_simple.xml" />
+  	     </wadl:doc>
       </representation>
       <representation mediaType="application/json">
-	<wadl:doc xml:lang="en">
-	  <xsdxt:code href="samples/volume_list_simple.json" />
-	</wadl:doc>
+         	<wadl:doc xml:lang="en">
+         	  <xsdxt:code href="samples/volume_list_simple.json" />
+         	</wadl:doc>
       </representation>
     </response>
   </method>

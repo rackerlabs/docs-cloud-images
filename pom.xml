@@ -34,10 +34,10 @@
 	    </goals>
 	    <phase>generate-sources</phase>
 	    <configuration>
-	      <includes>
-		ci-devguide.xml,
-		ci-gettingstarted.xml,
-		ci-releasenotes.xml
+	      <includes>	
+<!--		ci-gettingstarted.xml,
+		ci-releasenotes.xml,-->
+	      	ci-devguide.xml
 	      </includes>
 	    </configuration>
 	  </execution>

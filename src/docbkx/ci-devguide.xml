@@ -69,7 +69,7 @@
     -->
       <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
         <raxm:displayname>API Developer Guide</raxm:displayname>
-        <raxm:product version="v1.0">images</raxm:product>
+        <!--<raxm:product version="v1.0">images</raxm:product>-->
         <raxm:priority>20</raxm:priority>
       </raxm:metadata>
   </info>
@@ -450,13 +450,16 @@ contains foo-feature in your pom.xml file.&lt;/para></programlisting>In
         </listitem>
       </itemizedlist></para>
   </chapter>
-    <chapter xml:id="somesection" role="api-reference">
+<!--    <chapter xml:id="somesection" role="api-reference">
       <title>API Reference</title>
       <para>For more information on how this section works, see <link
         xlink:href="http://docs-internal.rackspace.com/writers-guide/content/ch_wadl.html"
         >Generating an API reference from a WADL file</link>. </para>
 
       <resources xmlns="http://wadl.dev.java.net/2009/02" href="../wadl/example.wadl"/>
-      
-    </chapter>
+      <resources xmlns="http://wadl.dev.java.net/2009/02" href="../wadl/image-schemas-2.0.wadl"/>
+    </chapter>-->
+    
+    <!-- this chapter is generated from the WADLs -->
+    <xi:include href="chapters/api-operations-admin.xml"/>  
 </book>
