@@ -44,12 +44,13 @@
         <resource id="info" path="v2">
             <resource id="Images" path="images">
                 <method href="#createImage"/>
-                <!--<resource id="ImageID" path="{image_id}">
+                <resource id="ImageID" path="{image_id}">
                     <param name="image_id" style="template" type="csapi:uuid">
                         <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image ID">
                             <p>Image ID stored through the image API. Typically a UUID.</p>
                         </wadl:doc>
                     </param>
+                    <method href="#listImages"/>
                     <method href="#getImage"/>
                     <method href="#updateImage"/>
                     <method href="#deleteImage"/>
@@ -58,7 +59,7 @@
                         <method href="#getImageFile"/>
                     </resource>
                     <resource id="Tags" path="tags">
-                        <resource path="{tag}">
+                        <resource id="Tagstag" path="{tag}">
                             <param name="tag" style="template" type="xsd:string">
                                 <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Tag">
                                     <p>Image tag.</p>
@@ -68,7 +69,7 @@
                             <method href="#deleteImageTag"/>
                         </resource>
                     </resource>
-                </resource>-->
+                </resource>
             </resource>
         </resource>
     </resources>
@@ -86,7 +87,9 @@
         <request>
             <representation mediaType="application/json" element="image">
                 <doc  xml:lang="EN">
-                    <xsdxt:code href="../common/samples/image-create-req.json"/>
+                    <xsdxt:sample>
+                        <xsdxt:code href="../common/samples/image-create-req.json"/>
+                    </xsdxt:sample>
                 </doc>
                 <param name="name" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Images name">
@@ -131,7 +134,7 @@
         </response> &commonFaults; &postPutFaults;
     </method>
     
-<!--    <!-\- Update Image -\->
+    <!-- Update Image -->
     <method name="PATCH" id="updateImage">
         <wadl:doc xml:lang="EN" title="Update Image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Updates a specified image. </para>
@@ -143,7 +146,9 @@
         <request>
             <representation mediaType="application/json" element="image">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/image-update-req.json"/>
+                    <xsdxt:sample>
+                        <xsdxt:code href="../common/samples/image-update-req.json"/>
+                    </xsdxt:sample>
                 </doc>
                 <param name="name" style="plain" type="xsd:string" required="true">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Images name">
@@ -171,13 +176,15 @@
         <response status="200">
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/image-details-response.json"/>
+                    <xsdxt:sample>
+                        <xsdxt:code href="../common/samples/image-details-response.json"/>
+                    </xsdxt:sample>
                 </doc>
             </representation>
         </response> &commonFaults; &postPutFaults;
     </method>
     
-    <!-\- Get Image -\->
+    <!-- Get Image -->
     <method name="GET" id="getImage">
         <wadl:doc xml:lang="EN" title="Get Image Details" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Gets details for a specified image. </para>
@@ -186,13 +193,15 @@
         <response status="200">
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/image-details-response.json"/>
+                    <xsdxt:sample>
+                        <xsdxt:code href="../common/samples/image-details-response.json"/>
+                    </xsdxt:sample>
                 </doc>
             </representation>
         </response> &commonFaults; &getFaults; 
     </method>
     
-    <!-\- List Images -\->
+    <!-- List Images -->
     <method name="GET" id="listImages">
         <wadl:doc xml:lang="EN" title="List Images" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Lists public virtual machine (VM) images.</para>
@@ -277,13 +286,15 @@
         <response status="200">
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/image-list-response.json"/>
+                    <xsdxt:sample>
+                        <xsdxt:code href="../common/samples/image-list-response.json"/>
+                    </xsdxt:sample>
                 </doc>
             </representation>
         </response> &commonFaults; &getFaults; 
     </method>
     
-    <!-\- Delete Image -\->
+    <!-- Delete Image -->
     <method name="DELETE" id="deleteImage">
         <wadl:doc xml:lang="EN" title="Delete Image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Deletes a specified image. </para>
@@ -299,7 +310,7 @@
         </response> &commonFaults;
     </method>
     
-    <!-\- Upload Image -\->
+    <!-- Upload Image -->
     <method name="PUT" id="storeImageFile">
         <wadl:doc xml:lang="EN" title="Upload Binary Image Data" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Uploads binary image data. </para>
@@ -311,7 +322,7 @@
         <response status="204"/> &commonFaults; &postPutFaults;
     </method>
     
-    <!-\- Download Image -\->
+    <!-- Download Image -->
     <method name="GET" id="getImageFile">
         <wadl:doc xml:lang="EN" title="Download Binary Image Data" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Downloads binary image data.</para>
@@ -323,7 +334,7 @@
         <response status="200"/>&commonFaults; &getFaults; 
     </method>
     
-    <!-\- Add Image Tag -\->
+    <!-- Add Image Tag -->
     <method name="PUT" id="addImageTag">
         <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Add Image Tag">
             <p xmlns="http://www.w3.org/1999/xhtml">Adds a specified tag to a specified image. </p>
@@ -331,11 +342,11 @@
         <response status="200"/> &commonFaults; &postPutFaults;
     </method>
     
-    <!-\- Delete Image Tag -\->
+    <!-- Delete Image Tag -->
     <method name="DELETE" id="deleteImageTag">
         <wadl:doc xml:lang="EN" title="Delete Image Tag" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Deletes a specified tag from a specified image. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults;
-    </method>-->
+    </method>
 </application>

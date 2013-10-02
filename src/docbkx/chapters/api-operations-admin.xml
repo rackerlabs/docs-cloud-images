@@ -34,22 +34,22 @@
 			<wadl:resource href="../../wadl/image-2.0.wadl#Images">
 				<wadl:method href="createImage"/>
 			</wadl:resource>
-<!--			<wadl:resource href="../../wadl/image-2.0.wadl#ImageID">
+			<wadl:resource href="../../wadl/image-2.0.wadl#ImageID">
+				<wadl:method href="listImages"/>
 				<wadl:method href="getImage"/>
 				<wadl:method href="updateImage"/>
 				<wadl:method href="deleteImage"/>
-			</wadl:resource>-->
+			</wadl:resource>
 			<!-- upload image file, download image file -->
-			<!--<wadl:resource href="../../wadl/image-2.0.wadl#file">-->
-<!--			<wadl:resource href="../../wadl/image-2.0.wadl">
+			<wadl:resource href="../../wadl/image-2.0.wadl#file">
 				<wadl:method href="storeImageFile"/>
 				<wadl:method href="getImageFile"/>
 			</wadl:resource>
-			<!-\- add image tag, delete image tag -\->
-			<wadl:resource href="../../wadl/image-2.0.wadl#Tags">
+			<!-- add image tag, delete image tag -->
+			<wadl:resource href="../../wadl/image-2.0.wadl#Tagstag">
 				<wadl:method href="addImageTag"/>
 				<wadl:method href="deleteImageTag"/>
-			</wadl:resource>-->
+			</wadl:resource>
 		</wadl:resources>
 	</section>
 	
