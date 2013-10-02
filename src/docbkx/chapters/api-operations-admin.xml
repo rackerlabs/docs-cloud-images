@@ -63,9 +63,10 @@
 				<wadl:method href="getImagesSchema"/>
 			</wadl:resource>
 			<!-- list image schema details -->
- 
+			<wadl:resource href="../../wadl/image-schemas-2.0.wadl#Image-schema">
+				<wadl:method href="getImageSchema"/>
+			</wadl:resource>
 		</wadl:resources>
 	</section>
-
 	
 </chapter>

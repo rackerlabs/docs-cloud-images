@@ -25,7 +25,7 @@
     xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xmlns:imageapi="http://docs.openstack.org/image/api/v2.0" 
     xmlns:common="http://docs.openstack.org/common/api/v1.0"
-    xmlns:atom="http://www.w3.org/2005/Atom" 
+    xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:capi="http://docs.openstack.org/common/api/v1.0"
     xmlns:csapi="http://docs.openstack.org/image/api/v2.0"
     xsi:schemaLocation="http://docs.openstack.org/image/api/v2.0 ../common/xsd/api.xsd
@@ -34,8 +34,8 @@
                        ">
 
     <grammars>
-        <include href="xsd/api.xsd"/>
-        <include href="xsd/api-common.xsd"/>
+        <include href="../common/xsd/api.xsd"/>
+        <include href="../common/xsd/api-common.xsd"/>
     </grammars>
 
     <!--*******************************************************-->
@@ -126,8 +126,6 @@
                     newly-created URI for the image. Response body represents the created image entity. <xsdxt:code
                         href="../common/samples/image-create-response.json"/>
                 </doc>
-<!--                <param name="location" style="plain" type="xsd:anyURI" required="true"
-                    path="/common:version/atom:link[@rel='self']/@href">-->
                 <param name="location" style="plain" type="xsd:anyURI" required="true">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image Location">
                         <p>The location for the image identified by a URI. </p>
@@ -161,7 +159,6 @@
                 <param name="id" style="plain" type="csapi:uuid" required="false">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image ID">
                         <p>The image ID.</p>
-
                     </wadl:doc>
                 </param>
                 <param name="visibility" style="plain" type="xsd:string" required="false">
@@ -179,7 +176,7 @@
         <response status="200">
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="samples/image-details-response.json"/>
+                    <xsdxt:code href="../common/samples/image-details-response.json"/>
                 </doc>
             </representation>
         </response> &commonFaults; &postPutFaults;
@@ -194,7 +191,7 @@
         <response status="200">
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="samples/image-details-response.json"/>
+                    <xsdxt:code href="../common/samples/image-details-response.json"/>
                 </doc>
             </representation>
         </response> &commonFaults; &getFaults; 
@@ -285,7 +282,7 @@
         <response status="200">
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
-                    <xsdxt:code href="samples/image-list-response.json"/>
+                    <xsdxt:code href="../common/samples/image-list-response.json"/>
                 </doc>
             </representation>
         </response> &commonFaults; &getFaults; 
