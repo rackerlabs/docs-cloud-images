@@ -69,7 +69,7 @@
     -->
       <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
         <raxm:displayname>API Developer Guide</raxm:displayname>
-        <!--<raxm:product version="v1.0">images</raxm:product>-->
+        <raxm:product version="v1.0">images</raxm:product>
         <raxm:priority>20</raxm:priority>
       </raxm:metadata>
   </info>
