@@ -17,25 +17,24 @@
 %common;
 ]>
 
-<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+<application 
+    xmlns="http://wadl.dev.java.net/2009/02"
+    xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xmlns:xlink="http://www.w3.org/1999/xlink" 
     xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
-    xmlns="http://wadl.dev.java.net/2009/02" 
-    xmlns:wadl="http://wadl.dev.java.net/2009/02"
-    xmlns:imageapi="http://docs.openstack.org/image/api/v2.0" 
-    xmlns:common="http://docs.openstack.org/common/api/v1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:imageapi="http://docs.openstack.org/image/api/v2.0"
     xmlns:atom="http://www.w3.org/2005/Atom"
-    xmlns:capi="http://docs.openstack.org/common/api/v1.0"
-    xmlns:csapi="http://docs.openstack.org/image/api/v2.0"
-    xsi:schemaLocation="http://docs.openstack.org/image/api/v2.0 ../common/xsd/api.xsd
-                        http://docs.openstack.org/common/api/v1.0 ../common/xsd/api-common.xsd
-                        http://wadl.dev.java.net/2009/02 http://www.w3.org/Submission/wadl/wadl.xsd
-                       ">
+    xmlns:csapi="http://docs.openstack.org/compute/api/v2"
+    xmlns:common="http://docs.openstack.org/common/api/v1.0"
+    >
 
     <grammars>
-        <include href="../common/xsd/api.xsd"/>
-        <include href="../common/xsd/api-common.xsd"/>
+        <include href="../../src/common/xsd/api.xsd"/>
+        <include href="../../src/common/xsd/api-common.xsd"/>
+        <include href="../../src/common/xsd/fault.xsd"/>
     </grammars>
 
     <!--*******************************************************-->
@@ -43,9 +42,9 @@
     <!--*******************************************************-->
     <resources base="https://glance.example.com/">
         <resource id="info" path="v2">
-            <resource id="Images" type="#ImageList" path="images">
+            <resource id="Images" path="images">
                 <method href="#createImage"/>
-                <resource path="{image_id}">
+                <!--<resource id="ImageID" path="{image_id}">
                     <param name="image_id" style="template" type="csapi:uuid">
                         <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image ID">
                             <p>Image ID stored through the image API. Typically a UUID.</p>
@@ -69,19 +68,11 @@
                             <method href="#deleteImageTag"/>
                         </resource>
                     </resource>
-                </resource>
+                </resource>-->
             </resource>
         </resource>
     </resources>
 
-
-    <!--*******************************************************-->
-    <!--               Resource Types                          -->
-    <!--*******************************************************-->
-
-    <resource_type id="ImageList">
-        <method href="#listImages"/>
-    </resource_type>
 
     <!--*******************************************************-->
     <!--               All Methods                             -->
@@ -89,8 +80,8 @@
 
     <!--Create Image -->
     <method name="POST" id="createImage">
-        <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Create Image">
-            <p>Creates a virtual machine (VM) image. </p>
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Create Image">
+            <para>Creates a virtual machine (VM) image. </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/json" element="image">
@@ -122,21 +113,25 @@
         </request>
         <response status="201">
             <representation mediaType="application/json">
-                <doc xml:lang="EN">Successful HTTP response is 201. Created with a Location header that contains the
-                    newly-created URI for the image. Response body represents the created image entity. <xsdxt:code
-                        href="../common/samples/image-create-response.json"/>
-                </doc>
+                <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                    <para>
+                        Successful HTTP response is 201. Created with a Location header that contains the
+                        newly-created URI for the image. Response body represents the created image entity.
+                    </para>
+                    <xsdxt:sample>
+                        <xsdxt:code href="../common/samples/image-create-response.json"/>
+                    </xsdxt:sample>
+                </wadl:doc>
                 <param name="location" style="plain" type="xsd:anyURI" required="true">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image Location">
                         <p>The location for the image identified by a URI. </p>
                     </wadl:doc>
-                    <link resource_type="#createImage" rel="self"/>
                 </param>
             </representation>
         </response> &commonFaults; &postPutFaults;
     </method>
     
-    <!-- Update Image -->
+<!--    <!-\- Update Image -\->
     <method name="PATCH" id="updateImage">
         <wadl:doc xml:lang="EN" title="Update Image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Updates a specified image. </para>
@@ -182,7 +177,7 @@
         </response> &commonFaults; &postPutFaults;
     </method>
     
-    <!-- Get Image -->
+    <!-\- Get Image -\->
     <method name="GET" id="getImage">
         <wadl:doc xml:lang="EN" title="Get Image Details" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Gets details for a specified image. </para>
@@ -197,7 +192,7 @@
         </response> &commonFaults; &getFaults; 
     </method>
     
-    <!-- List Images -->
+    <!-\- List Images -\->
     <method name="GET" id="listImages">
         <wadl:doc xml:lang="EN" title="List Images" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Lists public virtual machine (VM) images.</para>
@@ -288,7 +283,7 @@
         </response> &commonFaults; &getFaults; 
     </method>
     
-    <!-- Delete Image -->
+    <!-\- Delete Image -\->
     <method name="DELETE" id="deleteImage">
         <wadl:doc xml:lang="EN" title="Delete Image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Deletes a specified image. </para>
@@ -304,7 +299,7 @@
         </response> &commonFaults;
     </method>
     
-    <!-- Upload Image -->
+    <!-\- Upload Image -\->
     <method name="PUT" id="storeImageFile">
         <wadl:doc xml:lang="EN" title="Upload Binary Image Data" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Uploads binary image data. </para>
@@ -316,7 +311,7 @@
         <response status="204"/> &commonFaults; &postPutFaults;
     </method>
     
-    <!-- Download Image -->
+    <!-\- Download Image -\->
     <method name="GET" id="getImageFile">
         <wadl:doc xml:lang="EN" title="Download Binary Image Data" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Downloads binary image data.</para>
@@ -328,7 +323,7 @@
         <response status="200"/>&commonFaults; &getFaults; 
     </method>
     
-    <!-- Add Image Tag -->
+    <!-\- Add Image Tag -\->
     <method name="PUT" id="addImageTag">
         <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Add Image Tag">
             <p xmlns="http://www.w3.org/1999/xhtml">Adds a specified tag to a specified image. </p>
@@ -336,11 +331,11 @@
         <response status="200"/> &commonFaults; &postPutFaults;
     </method>
     
-    <!-- Delete Image Tag -->
+    <!-\- Delete Image Tag -\->
     <method name="DELETE" id="deleteImageTag">
         <wadl:doc xml:lang="EN" title="Delete Image Tag" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Deletes a specified tag from a specified image. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults;
-    </method>
+    </method>-->
 </application>

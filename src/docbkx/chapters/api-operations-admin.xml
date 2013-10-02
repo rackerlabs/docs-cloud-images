@@ -24,23 +24,24 @@
 	</para>
 
 	
-<!--	<!-\- Images -\->
+	<!-- Images -->
 	<section xml:id="Image_Calls">
 		<title>Image Operations</title>
 		<para> Service developers use the operations described in this section to manage images. </para>
-		<!-\-\- this section comes from 1 WADL: image-2.0 -\->
+		<!--- this section comes from 1 WADL: image-2.0 -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<!-\- create image, list images, update image, delete image -\->
-			<!-\-<wadl:resource href="../../wadl/image-2.0.wadl#Images">-\->
-			<wadl:resource href="~/Documents/GithubDocs/cloud-images/src/wadl/image-2.0.wadl">
+			<!-- create image, list images, update image, delete image -->
+			<wadl:resource href="../../wadl/image-2.0.wadl#Images">
 				<wadl:method href="createImage"/>
+			</wadl:resource>
+<!--			<wadl:resource href="../../wadl/image-2.0.wadl#ImageID">
 				<wadl:method href="getImage"/>
 				<wadl:method href="updateImage"/>
 				<wadl:method href="deleteImage"/>
-			</wadl:resource>
-			<!-\- upload image file, download image file -\->
-			<!-\-<wadl:resource href="../../wadl/image-2.0.wadl#file">-\->
-			<wadl:resource href="~/Documents/GithubDocs/cloud-images/src/wadl/image-schema-2.0.wadl">
+			</wadl:resource>-->
+			<!-- upload image file, download image file -->
+			<!--<wadl:resource href="../../wadl/image-2.0.wadl#file">-->
+<!--			<wadl:resource href="../../wadl/image-2.0.wadl">
 				<wadl:method href="storeImageFile"/>
 				<wadl:method href="getImageFile"/>
 			</wadl:resource>
@@ -48,9 +49,9 @@
 			<wadl:resource href="../../wadl/image-2.0.wadl#Tags">
 				<wadl:method href="addImageTag"/>
 				<wadl:method href="deleteImageTag"/>
-			</wadl:resource>
+			</wadl:resource>-->
 		</wadl:resources>
-	</section>-->
+	</section>
 	
 	<!-- Image Schemas -->
 	<section xml:id="Image_Schema_Calls">
