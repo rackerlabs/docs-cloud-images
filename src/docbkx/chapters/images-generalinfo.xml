@@ -1,0 +1,24 @@
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="general-api-information">
+    <title>General API Information</title>
+    <?dbhtml stop-chunking?>
+    <section xml:id="authentication">
+        <title>Authentication</title>
+        <para>To authenticate access to Rackspace Cloud services, issue an authentication request to a Rackspace Cloud
+            Identity Service endpoint. The Rackspace Cloud Identity Service is an implementation of the OpenStack Keystone
+            Identity Service v2.0. </para>
+        <para>In response to valid credentials, an authentication request to the Rackspace Cloud Identity Service returns an
+            authentication token and a service catalog that contains a list of all services and endpoints available for this
+            token. Because the authentication token expires after 24 hours, you must generate a token once a day. </para>
+        <para>The following sections list the Rackspace Cloud Identity Service endpoints, show you how make an authentication
+            request, and describe the authentication response. </para>
+    </section>
+    <section xml:id="geographic-endpoints">
+        <title>Geographic Endpoints</title>
+        <para>The Rackspace Cloud Authentication Service serves as the entry point to all Rackspace Cloud APIs and is itself
+            a RESTful web service.</para>
+    </section>
+    
+    <xi:include href="section_auth.xml"/>
+    <xi:include href="section_identity_3roles.xml"/>
+</chapter>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section [
+<!-- Some useful entities borrowed from HTML -->
+<!ENTITY ndash  "&#x2013;">
+<!ENTITY mdash  "&#x2014;">
+<!ENTITY hellip "&#x2026;">
+<!ENTITY plusmn "&#xB1;">
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+
+<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="figures/Check_mark_23x20_02.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+
+<!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
+<imageobject>
+<imagedata fileref="figures/Arrow_east.svg"
+format="SVG" scale="60"/>
+</imageobject>
+</inlinemediaobject>'>
+<!ENTITY CIS 'Rackspace Cloud Identity Service'>
+<!ENTITY CAS 'Rackspace Cloud Authentication Service'>
+<!ENTITY fgCS 'first generation Cloud Servers'>
+<!ENTITY ngCS 'next generation Cloud Servers'>
+]>
+<section xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="auth-response-description">
+    <title>Authentication Response</title>
+    <para>In response to valid credentials, your request returns
+        an authentication token and a service catalog with the
+        endpoints to request services. </para>
+    <para>Do not include explicit API endpoints in your scripts
+        and applications. Instead, find the endpoint for your
+        service and region. </para>
+    <para>The following output shows a partial authentication
+        response in JSON format: <example>
+            <title>Authenticate: JSON Response</title>
+            <programlistingco>
+                <areaspec>
+                    <area xml:id="credentials.xml.endpoints"
+                        units="linecolumn" coords="37 32"/>
+                    <area xml:id="credentials.xml.tenant"
+                        units="linecolumn" coords="41 47"/>
+                    <area xml:id="credentials.xml.name"
+                        units="linecolumn" coords="55 50"/>
+                    <area xml:id="credentials.xml.expires"
+                        units="linecolumn" coords="61 57"/>
+                    <area xml:id="credentials.xml.token"
+                        units="linecolumn" coords="62 59"/>
+                    
+                </areaspec>
+                <programlisting language="json"><?db-font-size 55%?><xi:include href="../../common/samples/authv2.json" parse="text"/></programlisting>
+            </programlistingco>
+        </example>
+    </para>
+    <para>Successful authentication returns the following
+        information: <calloutlist>
+            <callout arearefs="credentials.xml.endpoints">
+                <para><emphasis role="bold">Endpoints to
+                    request Rackspace Cloud
+                    services</emphasis>. Appears in the
+                    <code>endpoints</code> element in
+                    the <code>serviceCatalog</code>
+                    element. </para>
+                <para>Endpoints information includes the
+                    public URL, which is the endpoint that
+                    you use to access the service, region,
+                    tenant ID, and version information. </para>
+                <para condition="cn">To access the Cloud
+                    Networks or next generation Cloud
+                    Servers service, use the endpoint for
+                    the
+                    <literal>cloudServersOpenStack</literal>
+                    service.</para>
+            </callout>
+            <callout arearefs="credentials.xml.tenant">
+                <para><emphasis role="bold">Tenant
+                    ID</emphasis>. Appears in the
+                    <literal>tenantId</literal> field
+                    in the <literal>endpoints</literal>
+                    element. Also known as the account
+                    number. </para>
+                <para>You include the tenant ID in the
+                    endpoint URL when you call a Cloud
+                    service. </para>
+                <para>In the following example, you export
+                    the tenant ID,
+                    <literal>010101</literal>, to the
+                    <literal>account</literal>
+                    environment variable and the
+                    authentication token to the
+                    <literal>token</literal>
+                    environment variable. Then, you issue
+                    a cURL command, as follows:</para>
+                <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> export account="010101"
+<prompt>$</prompt> export token="00000000-0000-0000-000000000000"
+<prompt>$</prompt> curl -s https://dfw.servers.api.rackspacecloud.com/v2/$account/images/detail \
+     -H "X-Auth-Token: $token" | python -m json.tool</programlisting>
+            </callout>
+            <callout arearefs="credentials.xml.name">
+                <para><emphasis role="bold">The name of
+                    the service</emphasis>. Appears in
+                    the <code>name</code> field. </para>
+                <para>Locate the correct service name in
+                    the service catalog, as follows: </para>
+                <itemizedlist>
+                    <listitem>
+                        <para><emphasis role="bold">First
+                            generation Cloud
+                            Servers</emphasis>. Named
+                            <literal>cloudServers</literal> in
+                            the catalog.</para>
+                        <para>If you use the authentication
+                            token to access this service, you
+                            can view and perform &fgCS; API
+                            operations against your &fgCS;.
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para><emphasis role="bold">Cloud
+                            Networks or next generation Cloud
+                            Servers</emphasis>. Named
+                            <literal>cloudServersOpenStack</literal>
+                            in the catalog.</para>
+                        <para>To access the Cloud Networks
+                            or next generation Cloud Servers
+                            service, use the
+                            <code>publicURL</code> value for
+                            the
+                            <literal>cloudServersOpenStack</literal>
+                            service.</para>
+                        <para>Might show multiple endpoints
+                            to enable regional choice. Select
+                            the appropriate endpoint for the
+                            region that you want to interact
+                            with by examining the
+                            <literal>region</literal>
+                            field.</para>
+                        <para>If you use the authentication token to
+                            access this service, you can view and
+                            perform Cloud Networks or &ngCS; API
+                            operations against your &ngCS;.  </para>
+                    </listitem>
+                </itemizedlist>
+            </callout>
+            <callout arearefs="credentials.xml.expires">
+                <para><emphasis role="bold">Expiration
+                    date and time for authentication
+                    token</emphasis>. Appears in the
+                    <code>expires</code> field in the
+                    <code>token</code> element.</para>
+                <para>After this date and time, the token
+                    is no longer valid. </para>
+                <para>This field predicts the maximum
+                    lifespan for a token, but does not
+                    guarantee that the token reaches that
+                    lifespan. </para>
+                <para>Clients are encouraged to cache a
+                    token until it expires. </para>
+                <para>Because the authentication token
+                    expires after 24 hours, you must
+                    generate a token once a day. </para>
+            </callout>
+            <callout arearefs="credentials.xml.token">
+                <para><emphasis role="bold">Authentication
+                    token</emphasis>. Appears in the
+                    <code>id</code> field in the
+                    <code>token</code> element. </para>
+                <para>You pass the authentication token in
+                    the <code>X-Auth-Token</code> header
+                    each time that you send a request to a
+                    service. </para>
+                <para>In the following example, you export
+                    the tenant ID,
+                    <literal>010101</literal>, to the
+                    <literal>account</literal>
+                    environment variable. You also export
+                    the authentication token,
+                    <literal>00000000-0000-0000-000000000000</literal>,
+                    to the <literal>token</literal>
+                    environment variable. Then, you issue
+                    a cURL command, as
+                    follows:<programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> export account="010101"
+<prompt>$</prompt> export token="00000000-0000-0000-000000000000"
+<prompt>$</prompt> curl -s https://dfw.servers.api.rackspacecloud.com/v2/$account/images/detail \
+     -H "X-Auth-Token: $token" | python -m json.tool</programlisting></para>
+            </callout>
+        </calloutlist></para>
+    <?hard-pagebreak?>
+</section>
