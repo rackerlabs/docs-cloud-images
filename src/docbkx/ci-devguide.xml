@@ -131,15 +131,7 @@
       and API, but in this example document we'll look at some
       commonly used constructs. The following an image with a title
       using the <tag>figure</tag> element. The oXygen editor provides
-      a convenient way to insert figures with the necessary markup. <figure>
-        <title>An example of an .svg figure with a title</title>
-        <mediaobject>
-          <imageobject>
-            <imagedata fileref="figures/example.png"
-              contentwidth="6in"/>
-          </imageobject>
-        </mediaobject>
-      </figure>
+      a convenient way to insert figures with the necessary markup. 
     </para>
     <para>When creating an image or diagram, use the correct
       application and format for the situation. For images with lines
@@ -451,16 +443,7 @@ contains foo-feature in your pom.xml file.&lt;/para></programlisting>In
         </listitem>
       </itemizedlist></para>
   </chapter>
-<!--    <chapter xml:id="somesection" role="api-reference">
-      <title>API Reference</title>
-      <para>For more information on how this section works, see <link
-        xlink:href="http://docs-internal.rackspace.com/writers-guide/content/ch_wadl.html"
-        >Generating an API reference from a WADL file</link>. </para>
-
-      <resources xmlns="http://wadl.dev.java.net/2009/02" href="../wadl/example.wadl"/>
-      <resources xmlns="http://wadl.dev.java.net/2009/02" href="../wadl/image-schemas-2.0.wadl"/>
-    </chapter>-->
     
     <!-- this chapter is generated from the WADLs -->
-    <xi:include href="chapters/api-operations-admin.xml"/>  
+    <xi:include href="chapters/images-api-operations.xml"/>  
 </book>
