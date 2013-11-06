@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter xmlns="http://docbook.org/ns/docbook"
-    xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
-    xml:id="ch_image-service-dev-overview.html">
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_image-service-dev-overview.html">
     <title>Overview</title>
-<?dbhtml stop-chunking?>
-    <para>Rackspace Cloud Images service offers retrieval, storage, and metadata assignment for images using simple REST
-        (Representational State Transfer) web service interface.</para>
+    <?dbhtml stop-chunking?>
+    <para>The Rackspace Cloud Images service offers retrieval, storage, and metadata assignment for images through a simple
+        Representational State Transfer (REST) web service interface.</para>
 
-<!--    <para>For more details on the OpenStack Image service,
+    <!--    <para>For more details on the OpenStack Image service,
         please refer to <link xlink:href="http://docs.openstack.org/developer/glance/"
             >docs.openstack.org/developer/glance/</link>
     </para>-->
-    <section xml:id="glance-api-intended-audience">
+    <section xml:id="intended-audience">
         <title>Intended Audience</title>
-        <para>This guide is intended to assist software developers who want to develop applications using the Rackspace Cloud
-            Images service API. It fully documents the REST application programming interface (API) that allows developers to
-            interact with the storage components of the Cloud Images system. To use the information provided here, you
-            should first have a general understanding of the Rackspace Cloud Images service and have access to an
-            installation of the Cloud Images service. You should also be familiar with: </para>
+        <para>This guide is intended to assist software developers who want to develop applications by using the Rackspace
+            Cloud Images service API. It fully documents the REST application programming interface (API), which enables
+            developers to interact with the storage components of the Cloud Images system. To use the information provided
+            here, you should have a general understanding of the Cloud Images service and have access to an installation of
+            the Cloud Images service. You should also be familiar with the following technologies: </para>
         <itemizedlist spacing="compact">
             <listitem>
                 <para>RESTful web services</para>
@@ -30,9 +28,8 @@
     </section>
     <section xml:id="doc-change-history">
         <title>Document Change History</title>
-        <para>This version of the reference replaces and
-            obsoletes all previous versions. The most recent
-            changes are described in the table below:</para>
+        <para>This version of the reference guide replaces all earlier versions. The most recent changes are described in the
+            following table:</para>
         <?rax revhistory?>
         <!-- Table generated in output from revision element in the book element -->
     </section>

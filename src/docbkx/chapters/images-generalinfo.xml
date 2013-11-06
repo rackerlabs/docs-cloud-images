@@ -2,23 +2,53 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="general-api-information">
     <title>General API Information</title>
     <?dbhtml stop-chunking?>
-    <section xml:id="authentication">
-        <title>Authentication</title>
-        <para>To authenticate access to Rackspace Cloud services, issue an authentication request to a Rackspace Cloud
-            Identity Service endpoint. The Rackspace Cloud Identity Service is an implementation of the OpenStack Keystone
-            Identity Service v2.0. </para>
-        <para>In response to valid credentials, an authentication request to the Rackspace Cloud Identity Service returns an
-            authentication token and a service catalog that contains a list of all services and endpoints available for this
-            token. Because the authentication token expires after 24 hours, you must generate a token once a day. </para>
-        <para>The following sections list the Rackspace Cloud Identity Service endpoints, show you how make an authentication
-            request, and describe the authentication response. </para>
-    </section>
-    <section xml:id="geographic-endpoints">
-        <title>Geographic Endpoints</title>
-        <para>The Rackspace Cloud Authentication Service serves as the entry point to all Rackspace Cloud APIs and is itself
-            a RESTful web service.</para>
-    </section>
-    
+
+    <para> Cloud Images brings access to the OpenStack Image Registry and Delivery Service directly to Rackspace open cloud
+        customers, thereby providing services for discovering, registering, and retrieving virtual machine images and their
+        metadata by using a RESTful API. </para>
+    <para>Image <emphasis role="italics">sharing</emphasis> provides a mechanism for customers to give access to images in
+        their account to other customers. Customer A initiates sharing with Customer B, and Customer B accepts the offer. The
+        image is not copied into Customer B's repository, but Customer B has access to the image in Customer A's
+        repository.</para>
+    <para>Image <emphasis role="italics">import/export</emphasis> enables customers to import images into the Rackspace
+        cloud. Customers upload the image to Cloud Files, and then they use the <emphasis role="italics">import</emphasis>
+        feature to make it into a cloud image. They can store the cloud image in any Cloud Files location for future
+        downloading.</para>
+    <para>Cloud Images has the following expected benefits: <itemizedlist>
+            <listitem>
+                <para>The open cloud becomes even more open.</para>
+            </listitem>
+            <listitem>
+                <para>Images are imported and exported among public cloud, private cloud and sources outside of
+                    Rackspace.</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Images are portable, taking full advantage of the open cloud.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Images are imported from a private cloud into the public cloud for cloud-bursting.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Images created in the public cloud are imported to a private cloud, or to another
+                            provider's cloud, for redundancy and high availability.</para>
+                    </listitem>
+                </itemizedlist>
+            </listitem>
+            <listitem>
+                <para>Customers share images.</para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Users with multiple accounts share images among the accounts.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Images are shared as an informal "image marketplace".</para>
+                    </listitem>
+                </itemizedlist>
+            </listitem>
+        </itemizedlist>
+    </para>
+
+    <!--Authentication-->
     <xi:include href="section_auth.xml"/>
     <xi:include href="section_identity_3roles.xml"/>
 </chapter>

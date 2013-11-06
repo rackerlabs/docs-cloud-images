@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
-  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" version="5.0" xml:id="ci-devguide"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" version="5.0" xml:id="ci-devguide-client"
   status="DRAFT">
   <title>Rackspace Cloud Images Developer Guide</title>
-  <?rax canonical.url.base="http://docs.rackspace.com/images/api/v1.0/ci-devguide/content"?>
+  <?rax canonical.url.base="http://docs.rackspace.com/images/api/v1.0/ci-devguide-client/content"?>
   <info>
     <copyright>
       <year>2013</year>
@@ -37,7 +37,7 @@
        values without first consulting with the CDT team.
     -->
     <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
-      <raxm:displayname>Developer Guide</raxm:displayname>
+      <raxm:displayname>Client Developer Guide</raxm:displayname>
       <!--validation error on raxm:product can be ignored-->
       <raxm:product version="v1.0">images</raxm:product>
       <raxm:priority>20</raxm:priority>
@@ -48,5 +48,5 @@
   <xi:include href="chapters/images-concepts.xml"/>
   <xi:include href="chapters/images-generalinfo.xml"/>
   <!-- this chapter is generated from the WADLs -->
-  <xi:include href="chapters/images-operations.xml"/>
+  <xi:include href="chapters/images-operations-client.xml"/>
 </book>

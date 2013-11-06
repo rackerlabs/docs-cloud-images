@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_image-concepts.html">
+    <title>Concepts</title>
+    <?dbhtml stop-chunking?>
+    <para>To take advantage of the Cloud Images service, it is helpful to be familiar with the concepts outlined in this
+        section.</para>
+    <section xml:id="image-identifiers">
+        <title>Image Identifiers</title>
+        <para>Images are uniquely identified by a URI that matches the following signature:</para>
+        <para><code>&lt;image server location>/v1/images/&lt;image ID></code></para>
+        <para>where</para>
+        <para>
+            <variablelist>
+                <varlistentry>
+                    <term><code>&lt;image server location></code></term>
+                    <listitem>
+                        <para>The resource location of the Cloud Images service that knows about an image</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><code>&lt;image ID></code></term>
+                    <listitem>
+                        <para>The image identifier, which is a <emphasis role="italic">uuid</emphasis>, making it globally
+                            unique</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </para>
+    </section>
+    <section xml:id="image-statuses">
+        <title>Image Statuses</title>
+        <para>Images in the Cloud Images service can be in one of the following statuses:</para>
+        <variablelist>
+            <varlistentry>
+                <term><emphasis role="bold">queued</emphasis></term>
+                <listitem>
+                    <para> The image identifier has been reserved for an image in the Cloud Images registry. No image data
+                        has been uploaded to the Cloud Images service, and the image size was not explicitly set to zero on
+                        creation. </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">saving</emphasis></term>
+                <listitem>
+                    <para> An image's raw data is being uploaded to the Cloud Images service.</para>
+                    <note>
+                        <para>An image registered using the <code>POST /images</code> operation and with the
+                                <parameter>x-image-meta-location</parameter> header present cannot be in <emphasis
+                                role="bold">saving</emphasis> status because this means that the image data is already
+                            available in another location. </para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">active</emphasis></term>
+                <listitem>
+                    <para>The image is fully available in the Cloud Images service. This occurs either after the image is
+                        uploaded or if the image size is explicitly set to zero on creation. </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">killed</emphasis></term>
+                <listitem>
+                    <para>An error occurred during the image upload process, and the image data is unreadable.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">deleted</emphasis></term>
+                <listitem>
+                    <para>The Cloud Images service has retained the information about the image, but it is no longer
+                        available to use. An image in this state will be removed automatically at a later date.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">pending_delete</emphasis></term>
+                <listitem>
+                    <para>This is similar to deleted, however, the Cloud Images service has not yet removed the image data.
+                        An image in this state is recoverable.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </section>
+    <section xml:id="disk-container-formats">
+        <title>Disk and Container Formats</title>
+        <para>When adding an image to Cloud Images, you may specify the image's <emphasis role="italic">disk
+                format</emphasis> and the <emphasis role="italic">container format</emphasis>. These formats are configurable
+            on a per-deployment basis and are defined in the following sections.</para>
+        <section xml:id="disk-format">
+            <title>Disk Format</title>
+            <para>The disk format of a virtual machine image is the format of the underlying disk image. Virtual appliance
+                vendors have different formats for laying out the information contained in a virtual machine disk
+                image.</para>
+            <para>You may set your image's disk format to one of the following types:</para>
+            <variablelist>
+                <varlistentry>
+                    <term><emphasis role="bold">raw</emphasis></term>
+                    <listitem>
+                        <para>An unstructured disk format, natively supported by both KVM and Xen hypervisors</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">vhd</emphasis></term>
+                    <listitem>
+                        <para>A common disk format used by virtual machine monitors from VMWare, Xen, Microsoft, VirtualBox,
+                            and others</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">vmdk</emphasis></term>
+                    <listitem>
+                        <para>Another common disk format supported by many common virtual machine monitors</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">vdi</emphasis></term>
+                    <listitem>
+                        <para>A disk format supported by VirtualBox virtual machine monitor and the QEMU emulator</para>
+                        <note>
+                            <para>None of the Rackspace Cloud Server hypervisors support VDI directly, so the images should
+                                be converted to a different format for use with Cloud Images.</para>
+                        </note>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">iso</emphasis></term>
+                    <listitem>
+                        <para>An archive format for the data contents of an optical disc like a CD or DVD</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">qcow2</emphasis></term>
+                    <listitem>
+                        <para>A disk format, supported by the QEMU emulator, that can expand dynamically, supports "Copy on
+                            Write", supports snapshots, and is commonly used with the KVM hypervisor</para>
+                        <note>
+                            <para>Because <emphasis role="bold">qcow2</emphasis> uses sparse representation (resulting in a
+                                smaller image), it is often faster to convert a raw image to qcow2 and upload it than to
+                                upload the raw file.</para>
+                        </note>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">aki</emphasis></term>
+                    <listitem>
+                        <para>An Amazon kernel image that the hypervisor initially loads to boot the image</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">ari</emphasis></term>
+                    <listitem>
+                        <para>An Amazon ramdisk image mounted at boot time</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">ami</emphasis></term>
+                    <listitem>
+                        <para>An Amazon machine image in raw format</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+        <section xml:id="container-format">
+            <title>Container Format</title>
+            <para>The container format refers to whether the virtual machine image is in a file format that also contains
+                metadata about the actual virtual machine.</para>
+            <note>
+                <para>the container format string is not currently used by Cloud Images or other components based on
+                    OpenStack, so it is safe to simply specify <emphasis role="bold">bare</emphasis> as the container format
+                    if you are unsure.</para>
+            </note>
+            <para>You can set your image's container format to one of the following types:</para>
+            <variablelist>
+                <varlistentry>
+                    <term><emphasis role="bold">bare</emphasis></term>
+                    <listitem>
+                        <para>No container or metadata envelope for the image</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">ovf</emphasis></term>
+                    <listitem>
+                        <para>Open Virtualization Format container format, an open-source standard for packaging and
+                            distributing software and applications for virtual machines</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">aki</emphasis></term>
+                    <listitem>
+                        <para>An Amazon kernel image</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">ari</emphasis></term>
+                    <listitem>
+                        <para>An Amazon ramdisk image</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">ami</emphasis></term>
+                    <listitem>
+                        <para>An Amazon machine image</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+    </section>
+    <section xml:id="common-image-properties">
+        <title>Common Image Properties</title>
+        <para> In order to assist end-users in utilizing your images, you may wish to put additional common properties, or
+            metadata, on your images. </para>
+        <para>The available properties and their expected values include the following options:</para>
+        <glosslist>
+            <glossentry>
+                <glossterm><emphasis role="bold">architecture</emphasis></glossterm>
+                <glossdef>
+                    <para>The CPU architecture that must be supported by the hypervisor. Run <code>uname -m</code> to get the
+                        architecture of your machine. Allowed values are:</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><emphasis role="bold">alpha</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/DEC_Alpha">DEC 64-bit RISC</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">armv71</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/ARM_architecture">ARM Cortex-A7 MPCore</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">cris</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/ETRAX_CRIS">Ethernet, Token Ring, AXis - Code Reduced Instruction Set</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">i686</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/X86">Intel sixth-generation x86</link>(P6
+                                    microarchitecture)</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">ia64</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/Itanium">Itanium</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">lm32</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/Milkymist">Lattice Micro32</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">m68k</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/Motorola_68000_family">Motorola 68000</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">microblaze</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/MicroBlaze">Xilinx 32-bit FPGA (Big Endian)</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">microblazeel</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/MicroBlaze">Xilinx 32-bit FPGA (Little Endian)</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">mips</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/MIPS_architecture">MIPS 32-bit RISC (Big Endian)</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">mipsel</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/MIPS_architecture">MIPS 32-bit RISC (Little Endian)</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">mips64</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/MIPS_architecture">MIPS 64-bit RISC (Big Endian)</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">mips64el</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/MIPS_architecture">MIPS 64-bit RISC (Little Endian)</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">openrisc</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/OpenRISC#QEMU_support">OpenCores RISC</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">parisc</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/PA-RISC">HP Precision Architecture RISC</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">parisc64</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/PA-RISC">HP Precision Architecture 64-bit RISC</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">ppc</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/PowerPC">PowerPC 32-bit</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">ppc64</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/PowerPC">PowerPC 64-bit</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">ppcemb</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/PowerPC">PowerPC (Embedded 32-bit)</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">s390</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/S390">IBM Systems Enterprise Architecture/390</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">s390x</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/S390x">S/390 64-bit</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">sh4</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/SuperH">Super SH-4 (Little Endian)</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">sh4eb</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/SuperH">Super SH-4 (Big Endian)</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">sparc</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/Sparc">Scalable Process Architecture, 32-bit</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">sparc64</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/Sparc">Scalable Process Architecture, 64-bit</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">unicore32</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/Unicore">Microprocessor Research and Development Center RISC Unicore32</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">x86_64</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/X86">64-bit extension of IA-32</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">xtensa</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/Xtensa#Processor_Cores">Tensilica Xtensa configurable microprocessor core</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">xtensaeb</emphasis></term>
+                            <listitem>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/Xtensa#Processor_Cores">Tensilica Xtensa configurable microprocessor core (Big Endian)</link></para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </glossdef>
+            </glossentry>
+            <glossentry>
+                <glossterm><emphasis role="bold">instance_uuid</emphasis></glossterm>
+                <glossdef>
+                    <para>The ID of the instance used to create this image</para>
+                </glossdef>
+            </glossentry>
+            <glossentry>
+                <glossterm><emphasis role="bold">kernel_id</emphasis></glossterm>
+                <glossdef>
+                    <para>The ID of image stored in Cloud Images that should be used as the kernel when booting an AMI-style
+                        image</para>
+                </glossdef>
+            </glossentry>
+            <glossentry>
+                <glossterm><emphasis role="bold">ramdisk_id</emphasis></glossterm>
+                <glossdef>
+                    <para>The ID of image stored in Cloud Images that should be used as the ramdisk when booting an AMI-style
+                        image</para>
+                </glossdef>
+            </glossentry>
+            <glossentry>
+                <glossterm><emphasis role="bold">os_distro</emphasis></glossterm>
+                <glossdef>
+                    <para>The common name of the operating system distribution.</para>
+                    <note>
+                        <para>The common name must be all lower-case and entered exactly as shown here.</para>
+                    </note>
+                    <para>The allowed values are:</para>
+                    <variablelist>
+                        <varlistentry>
+                            <term><emphasis role="bold">arch</emphasis></term>
+                            <listitem>
+                                <para>Arch Linux</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">centos</emphasis></term>
+                            <listitem>
+                                <para>Community Enterprise Operating System</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">debian</emphasis></term>
+                            <listitem>
+                                <para>Debian</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">fedora</emphasis></term>
+                            <listitem>
+                                <para>Fedora</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">freebsd</emphasis></term>
+                            <listitem>
+                                <para>FreeBSD</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">gentoo</emphasis></term>
+                            <listitem>
+                                <para>Gentoo Linux</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">mandrake</emphasis></term>
+                            <listitem>
+                                <para>Mandrakelinux (MandrakeSoft)</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">mandriva</emphasis></term>
+                            <listitem>
+                                <para>Mandriva Linux</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">mes</emphasis></term>
+                            <listitem>
+                                <para>Mandriva Enterprise Server</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">msdos</emphasis></term>
+                            <listitem>
+                                <para>Microsoft Disk Operating System</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">netbsd</emphasis></term>
+                            <listitem>
+                                <para>NetBSD</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">netware</emphasis></term>
+                            <listitem>
+                                <para>Novell NetWare</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">openbsd</emphasis></term>
+                            <listitem>
+                                <para>OpenBSD</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">opensolaris</emphasis></term>
+                            <listitem>
+                                <para>OpenSolaris</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">opensuse</emphasis></term>
+                            <listitem>
+                                <para>openSUSE</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">rhel</emphasis></term>
+                            <listitem>
+                                <para>Red Hat Enterprise Linux</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">sled</emphasis></term>
+                            <listitem>
+                                <para>SUSE Linux Enterprise Desktop</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">ubuntu</emphasis></term>
+                            <listitem>
+                                <para>Ubuntu</para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term><emphasis role="bold">windows</emphasis></term>
+                            <listitem>
+                                <para>Microsoft Windows</para>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </glossdef>
+            </glossentry>
+            <glossentry>
+                <glossterm><emphasis role="bold">os_version</emphasis></glossterm>
+                <glossdef>
+                    <para>The operating system version as specified by the distributor</para>
+                </glossdef>
+            </glossentry>
+        </glosslist>
+    </section>
+</chapter>

@@ -67,7 +67,6 @@
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Images Schema">
             <para role="shortdesc">Gets a json-schema document that represents an images entity, which is a container of image 
                 entities.</para>
-
         </wadl:doc>
         <response status="200">
             <representation mediaType="application/json">
