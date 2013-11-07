@@ -18,17 +18,30 @@
 ]>
 
 <application 
-    xmlns="http://wadl.dev.java.net/2009/02" xmlns:wadl="http://wadl.dev.java.net/2009/02"
-    xmlns:xlink="http://www.w3.org/1999/xlink"  xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:imageapi="http://docs.openstack.org/image/api/v2.0" xmlns:atom="http://www.w3.org/2005/Atom"
-    xmlns:csapi="http://docs.openstack.org/compute/api/v2" xmlns:common="http://docs.openstack.org/common/api/v1.0">
+    xmlns="http://wadl.dev.java.net/2009/02"
+    xmlns:wadl="http://wadl.dev.java.net/2009/02"
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:imageapi="http://docs.openstack.org/image/api/v2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:csapi="http://docs.openstack.org/compute/api/v2"
+    xmlns:common="http://docs.openstack.org/common/api/v1.0"
+    >
+    
+<!--    These cause error in application element:
+    targetNamespace="http://docs.openstack.org/compute/api/v2"
+    xsi:schemaLocation="http://docs.openstack.org/compute/api/v2 xsd/api.xsd
+    http://docs.openstack.org/common/api/v1.0 xsd/api-common.xsd"-->
+
     <grammars>
         <include href="../../src/common/xsd/api.xsd"/>
         <include href="../../src/common/xsd/api-common.xsd"/>
         <include href="../../src/common/xsd/fault.xsd"/>
     </grammars>
  
+
     <!--*******************************************************-->
     <!--             All Resources                             -->
     <!--*******************************************************-->
@@ -36,17 +49,11 @@
     <resources base="https://glance.example.com/">
         <resource id="info" path="v2">
             <resource id="schemas" path="schemas">
-                <resource id="Image-schemas" type="#SchemasList" path="images">
+                <resource id="Image-schemas" path="images">
                     <method href="#getImagesSchema"/>
                 </resource>
-                <resource id="Image-schema" type="#SchemaList" path="image">
+                <resource id="Image-schema" path="image">
                     <method href="#getImageSchema"/>
-                </resource>
-                <resource id="Image-members-schema" type="#SchemasList" path="members">
-                    <method href="#getImageMembersSchema"/>
-                </resource>
-                <resource id="Image-member-schema" type="#SchemaList" path="member">
-                    <method href="#getImageMemberSchema"/>
                 </resource>
             </resource>
         </resource>
@@ -56,7 +63,6 @@
     <!--               All Methods                             -->
     <!--*******************************************************-->
 
-    <!-- Get Images Schema -->
     <method name="GET" id="getImagesSchema">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Images Schema">
             <para role="shortdesc">Gets a json-schema document that represents an images entity, which is a container of image 
@@ -70,8 +76,7 @@
             </representation>
         </response> &commonFaults; &getFaults;
     </method>
-   
-    <!-- Get Image Schema -->
+    
     <method name="GET" id="getImageSchema">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Schema">
             <para role="shortdesc">Gets a json-schema document that represents a single image entity. </para>
@@ -83,36 +88,5 @@
                 </doc>
             </representation>
         </response> &commonFaults; &getFaults; 
-    </method>
-    
-    <!-- Get Images Member Schema -->
-    <method name="GET" id="getImageMembersSchema">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Members Schema">
-            <para role="shortdesc">Gets a json-schema document that represents an image members entity.</para>
-            <para>An image members entity is a container of image member entities.</para>
-            <para>The following schema is just an example. Consider only the response to the API call as authoritative.</para>
-        </wadl:doc>
-        <response status="200">
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/schemas-image-members-get-response.json"/>
-                </doc>
-            </representation>
-        </response>
-    </method>
-    
-    <!-- Get Image Member Schema -->
-    <method name="GET" id="getImageMemberSchema-v2">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Member Schema">
-            <para role="shortdesc">Gets a json-schema document that represents an image member entity.</para>
-            <para>The following schema is just an example. Consider only the response to the API call as authoritative.</para>
-        </wadl:doc>
-        <response status="200">
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:code href="../common/samples/schemas-image-member-get-response.json"/>
-                </doc>
-            </representation>
-        </response>
     </method>
 </application>

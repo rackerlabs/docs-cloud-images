@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_image-concepts.html">
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_image-concepts">
     <title>Concepts</title>
     <?dbhtml stop-chunking?>
     <para>To take advantage of the Cloud Images service, it is helpful to be familiar with the concepts outlined in this
         section.</para>
+
+    <!--Image Entities-->
+    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="image-entities">
+        <title>Image Entities</title>
+        <para>An image entity is represented by a JSON-encoded data structure and its raw binary data. </para>
+        <para>An image entity has an identifier (ID) that is guaranteed to be unique within its endpoint. The ID is used as a
+            token in request URIs to interact with that specific image. </para>
+        <para>An image is always guaranteed to have the following attributes: id, status, visibility, protected, tags,
+            created_at, file and self. The other attributes defined in the image schema below are guaranteed to be defined,
+            but will only be returned with an image entity if they have been explicitly set. </para>
+        <para>A client may set arbitrarily-named attributes on their images if the image json-schema allows it. These 
+            user-defined attributes will appear like any other image attributes.</para>
+    </section>
+
+    <!--Image Identifiers-->
     <section xml:id="image-identifiers">
         <title>Image Identifiers</title>
         <para>Images are uniquely identified by a URI that matches the following signature:</para>
@@ -28,6 +44,8 @@
             </variablelist>
         </para>
     </section>
+
+    <!--Image Statuses-->
     <section xml:id="image-statuses">
         <title>Image Statuses</title>
         <para>Images in the Cloud Images service can be in one of the following statuses:</para>
@@ -81,11 +99,15 @@
             </varlistentry>
         </variablelist>
     </section>
+
+    <!--Disk and Container Formats-->
     <section xml:id="disk-container-formats">
         <title>Disk and Container Formats</title>
         <para>When adding an image to Cloud Images, you may specify the image's <emphasis role="italic">disk
                 format</emphasis> and the <emphasis role="italic">container format</emphasis>. These formats are configurable
             on a per-deployment basis and are defined in the following sections.</para>
+
+        <!--Disk Format-->
         <section xml:id="disk-format">
             <title>Disk Format</title>
             <para>The disk format of a virtual machine image is the format of the underlying disk image. Virtual appliance
@@ -160,6 +182,8 @@
                 </varlistentry>
             </variablelist>
         </section>
+
+        <!--Container Format-->
         <section xml:id="container-format">
             <title>Container Format</title>
             <para>The container format refers to whether the virtual machine image is in a file format that also contains
@@ -205,6 +229,8 @@
             </variablelist>
         </section>
     </section>
+
+    <!--Common Image Properties-->
     <section xml:id="common-image-properties">
         <title>Common Image Properties</title>
         <para> In order to assist end-users in utilizing your images, you may wish to put additional common properties, or

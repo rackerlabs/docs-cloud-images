@@ -9,7 +9,13 @@
 <!--        xmllint -noent os-image-2.0.wadl               -->
 <!--*******************************************************-->
 <!DOCTYPE application [<!ENTITY % common  SYSTEM "../common/common.ent">
-%common;]>
+<!-- Useful for describing APIs -->
+        <!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+        <!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+        <!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+        <!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+%common;
+]>
 
 
 <application xmlns="http://wadl.dev.java.net/2009/02" xmlns:wadl="http://wadl.dev.java.net/2009/02"
@@ -17,6 +23,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:imageapi="http://docs.openstack.org/image/api/v2.0" xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:csapi="http://docs.openstack.org/compute/api/v2" xmlns:common="http://docs.openstack.org/common/api/v1.0">
+
     <grammars>
         <include href="../../src/common/xsd/api.xsd"/>
         <include href="../../src/common/xsd/api-common.xsd"/>
@@ -36,10 +43,10 @@
                             <p>Image ID stored through the image API, typically a UUID.</p>
                         </wadl:doc>
                     </param>
-                    <method href="#listImages"/>
                     <method href="#getImage"/>
                     <method href="#updateImage"/>
                     <method href="#deleteImage"/>
+                    <method href="#listImages"/>
                     <resource id="file" path="file">
                         <method href="#storeImageFile"/>
                         <method href="#getImageFile"/>
@@ -55,23 +62,11 @@
                             <method href="#deleteImageTag"/>
                         </resource>
                     </resource>
-                    <resource id="Members" path="members">
-                        <method href="#createImageMember"/>
-                        <resource id="MemberID" path="{member_id}">
-                            <param name="member_id" style="template" type="xsd:string">
-                                <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Members">
-                                    <p>Image member ID. For example, the tenant ID of the user with whom the image is being shared.</p>
-                                </wadl:doc>
-                            </param>
-                            <method href="#listImageMembers"/>
-                            <method href="#deleteImageMember"/>
-                            <method href="#updateImageMember"/>
-                        </resource>
-                    </resource>
                 </resource>
             </resource>
         </resource>
     </resources>
+
 
     <!--*******************************************************-->
     <!--               All Methods                             -->
@@ -81,8 +76,7 @@
     <method name="POST" id="createImage">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Create Image">
             <para role="shortdesc">Creates a virtual machine (VM) image. </para>
-            <para>The image is created with a Location header that contains the newly-created URI for the image. The response 
-                body represents the created image entity.</para>
+            <para>Need to add more a of a description?</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/json" element="image">
@@ -105,7 +99,7 @@
                 <param name="visibility" style="plain" type="xsd:string" required="false">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Visibility">
                         <p>Image visibility. Valid values are <code>public</code> or <code>private</code>. The default is
-                            <code>public</code>.</p>
+                                <code>public</code>.</p>
                     </wadl:doc>
                 </param>
                 <param name="tags" style="plain" type="xsd:dict" required="false">
@@ -124,6 +118,11 @@
                         <xsdxt:code href="../common/samples/image-create-response.json"/>
                     </xsdxt:sample>
                 </wadl:doc>
+                <param name="location" style="plain" type="xsd:anyURI" required="true">
+                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image Location">
+                        <p>The location for the image identified by a URI. </p>
+                    </wadl:doc>
+                </param>
             </representation>
         </response> &commonFaults; &postPutFaults; </method>
 
@@ -131,15 +130,8 @@
     <method name="PATCH" id="updateImage">
         <wadl:doc xml:lang="EN" title="Update Image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Updates the specified image. </para>
-            <para>The request body must conform to one of the following media types:</para>
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para><code>application/openstack-images-v2.0-json-patch</code></para>
-                </listitem>
-                <listitem>
-                    <para><code>application/openstack-images-v2.1-json-patch</code></para>
-                </listitem>
-            </itemizedlist>
+            <para>The request body must conform to the <code>application/openstack-images-v2.0-json-patch</code> media
+                type.</para>
             <para>You can also use the <code>PATCH</code> method to add or remove image properties. </para>
         </wadl:doc>
         <request>
@@ -205,7 +197,7 @@
             <para role="shortdesc">Lists public virtual machine (VM) images.</para>
             <para>This operation returns a subset of the larger collection of images and a link that you can use to get the
                 next set of images. You should always check for the presence of a <parameter>next</parameter> link and use it
-                as the URI in a subsequent &GET; request. Follow this pattern until a <parameter>next</parameter> link is
+                as the URI in a subsequent <code>HTTP GET</code> request. Follow this pattern until a <parameter>next</parameter> link is
                 no longer provided. The next link preserves any query parameters that you send in your initial request. You
                 can use the <parameter>first</parameter> link to jump back to the first page of the collection. If you prefer
                 to paginate through images manually, use the <parameter>limit</parameter> and <parameter>marker</parameter>
@@ -252,19 +244,6 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <para>Filter parameter that specifies image visibility as either <code>public</code> or
                             <code>private</code>.</para>
-                </wadl:doc>
-            </param>
-            <param name="member_status" style="query" required="false" type="imageapi:string">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that shows images with the specified member status. Valid values are
-                        <code>accepted</code>, <code>pending</code>, <code>rejected</code>, and <code>all</code>. The default is
-                        <code>accepted</code>.</para>
-                </wadl:doc>
-            </param>
-            <param name="owner" style="query" required="false" type="imageapi:string">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that shows images shared with me by the specified owner, where the owner is 
-                        indicated by tenant ID.</para>
                 </wadl:doc>
             </param>
             <param name="status" style="query" required="false" type="xsd:int">
@@ -325,7 +304,7 @@
             <para role="shortdesc">Uploads binary image data. </para>
             <para>An image record must exist before a client can store binary image data with it. </para>
             <para>Content-Type must be <code>application/octet-stream</code>. The complete request body is stored and is
-                accessible in its entirety by issuing a &GET; request to the same URI. </para>
+                accessible in its entirety by issuing a GET request to the same URI. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; &postPutFaults; </method>
 
@@ -357,94 +336,4 @@
             <para role="shortdesc">Deletes the specified tag from the specified image. </para>
         </wadl:doc>
         <response status="204"/> &commonFaults; </method>
-    
-    <!-- List Image Members -->
-    <method name="GET" id="listImageMembers">
-        <wadl:doc xml:lang="EN" title="List Image Members" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">This operation returns collection of members (users) with whom the image has been shared. If a user with whom this 
-                image is shared makes this call, the member list contains only information for that user. If a user with whom this image has not been 
-                shared makes this call, the call returns the <errorcode>HTTP 404</errorcode> status code. </para>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-member-update-request.json"/>
-                </wadl:doc>
-                <param name="status" style="plain" type="xsd:string" required="true">
-                    <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Image member status">
-                        <para>The status to which this image member should be set. Valid values are <code>pending</code>,
-                            <code>accepted</code>, and <code>rejected</code>.</para>
-                    </wadl:doc>
-                </param>
-            </representation>
-        </request>
-        <response status="200">
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-members-list-response.json"/>
-                </wadl:doc>
-            </representation>
-        </response>
-    </method>
-    
-    <!-- Create Image Member -->
-    <method name="POST" id="createImageMember">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Create Image Member">
-            <para role="shortdesc">Adds the specified tenant ID as an image member.</para>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-member-create-request.json"/>
-                </wadl:doc>
-                <param name="member" style="plain" type="xsd:string" required="true">
-                    <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Image member status">
-                        <para>The member ID. For example, the tenant ID of a user with whom the image is to be shared.</para>
-                    </wadl:doc>
-                </param>
-            </representation>
-        </request>
-        <response status="200">
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-member-create-response.json"/>
-                </wadl:doc>
-            </representation>
-        </response> &commonFaults;
-    </method>
-    
-    <!-- Update Image Member -->
-    <method name="PUT" id="updateImageMember">
-        <wadl:doc xml:lang="EN" title="Update Image Member" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Sets the specified status for the specified member of the specified image.</para>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-member-update-request.json"/>
-                </wadl:doc>
-                <param name="status" style="plain" type="xsd:string" required="true">
-                    <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Image member status">
-                        <para>The status to which this image member should be set. Valid values are <code>pending</code>,
-                            <code>accepted</code>, and <code>rejected</code>.</para>
-                    </wadl:doc>
-                </param>
-            </representation>
-        </request>
-        <response status="200">
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-member-update-response.json"/>
-                </wadl:doc>
-            </representation>
-        </response> &commonFaults;
-    </method>
-    
-    <!-- Delete Image Member -->
-    <method name="DELETE" id="deleteImageMember">
-        <wadl:doc xml:lang="EN" title="Delete Image Member" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Deletes the specified tenant ID from the member list of the specified image.</para>
-        </wadl:doc>
-        <response status="204"/> &commonFaults;
-    </method>
 </application>

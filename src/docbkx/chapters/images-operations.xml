@@ -7,6 +7,7 @@
 		<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
 		<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
 		<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+		<!ENTITY PATCH  '<command xmlns="http://docbook.org/ns/docbook">PATCH</command>'>
 		<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
 ]>
 	
@@ -21,6 +22,9 @@
 			</listitem>
 			<listitem>
 				<para>Upload and delete images</para>
+			</listitem>
+			<listitem>
+				<para>Create and manage image members</para>
 			</listitem>
 			<listitem>
 				<para>Get information about image schemas</para>
@@ -45,12 +49,46 @@
 				<wadl:method href="updateImage"/>
 				<wadl:method href="deleteImage"/>
 			</wadl:resource>
+		</wadl:resources>
+	</section>
+	
+	<!-- Image Files -->
+	<section xml:id="Image_File_Calls">
+		<title>Image File Operations</title>
+		<para> Service developers use the operations described in this section to manage image files. </para>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- upload image file, download image file -->
 			<wadl:resource href="../../wadl/image-2.0.wadl#file">
 				<wadl:method href="storeImageFile"/>
 				<wadl:method href="getImageFile"/>
 			</wadl:resource>
-			<!-- add image tag, delete image tag -->
+		</wadl:resources>
+	</section>
+	
+	<!-- Image Members -->
+	<section xml:id="Image_Member_Calls">
+		<title>Image Member Operations</title>
+		<para> Service developers use the operations described in this section to manage image members. </para>
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- create image member -->
+			<wadl:resource href="../../wadl/image-2.0.wadl#Members">
+				<wadl:method href="createImageMember"/>
+			</wadl:resource>
+			<!-- list image members, update image members, delete image members -->
+			<wadl:resource href="../../wadl/image-2.0.wadl#MemberID">
+				<wadl:method href="listImageMembers"/>
+				<wadl:method href="updateImageMember"/>
+				<wadl:method href="deleteImageMember"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
+	
+	<!-- Image Tags -->
+	<section xml:id="Image_Tag_Calls">
+		<title>Image Tag Operations</title>
+		<para> Service developers use the operations described in this section to manage image tags. </para>
+		<!-- add image tag, delete image tag -->
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/image-2.0.wadl#Tagstag">
 				<wadl:method href="addImageTag"/>
 				<wadl:method href="deleteImageTag"/>

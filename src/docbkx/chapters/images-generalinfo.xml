@@ -1,3 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application [
+        <!-- changing authentication endpoints; define entities for US and UK rather than maintaining in text -->
+		<!ENTITY ENDPOINT-US "https://identity.api.rackspacecloud.com/v3.0/">
+		<!ENTITY ENDPOINT-UK "https://lon.identity.api.rackspacecloud.com/v3.0/">
+		<!-- Useful for describing APIs -->
+		<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+		<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+		<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+		<!ENTITY PATCH  '<command xmlns="http://docbook.org/ns/docbook">PATCH</command>'>
+		<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
+]>
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="general-api-information">
     <title>General API Information</title>
@@ -29,8 +41,8 @@
                         <para>Images are imported from a private cloud into the public cloud for cloud-bursting.</para>
                     </listitem>
                     <listitem>
-                        <para>Images created in the public cloud are imported to a private cloud, or to another
-                            provider's cloud, for redundancy and high availability.</para>
+                        <para>Images created in the public cloud are imported to a private cloud, or to another provider's
+                            cloud, for redundancy and high availability.</para>
                     </listitem>
                 </itemizedlist>
             </listitem>
@@ -48,6 +60,20 @@
         </itemizedlist>
     </para>
 
+    <!--API Request and Response Information-->
+    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Reqresponse">
+        <title>API Request and Response Information</title>
+        <para>The Cloud Images API primarily accepts and serves JSON-encoded data. For uploading and downloading image files,
+            the API also accepts and serves binary image data. Most requests that send JSON-encoded data must have the proper
+            media type in their Content-Type header: <code>'application/json'</code>. HTTP &PATCH; requests must use the
+            patch media type defined for the entity they intend to modify. Requests that upload image data should use the
+            media type <code>'application/octet-stream'</code>.</para>
+        <para>The necessary json-schema documents are provided at predictable URIs. A consumer validates server responses and
+            client requests based on the published schemas. The schemas contained in this document are only examples and
+            should not be used to validate your requests. A client should always fetch schemas from the server.</para>
+    </section>
+    
     <!--Authentication-->
     <xi:include href="section_auth.xml"/>
     <xi:include href="section_identity_3roles.xml"/>

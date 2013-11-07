@@ -6,18 +6,19 @@
 <!ENTITY hellip "&#x2026;">
 <!ENTITY plusmn "&#xB1;">
 
-<!-- Useful for describing APIs -->
-<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
-<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
-<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
-<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
-
 <!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
 <imageobject>
 <imagedata fileref="figures/Check_mark_23x20_02.svg"
 format="SVG" scale="60"/>
 </imageobject>
 </inlinemediaobject>'>
+
+<!-- Useful for describing APIs -->
+<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
+<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
+<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
+<!ENTITY PATCH  '<command xmlns="http://docbook.org/ns/docbook">PATCH</command>'>
+<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
 
 <!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
 <imageobject>
@@ -33,7 +34,7 @@ format="SVG" scale="60"/>
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="auth">
-    <title>Authenticate<phrase os="rack"> through the Rackspace Cloud Identity Service</phrase></title>
+    <title>Authenticate through the Rackspace Cloud Identity Service</title>
     <para> To authenticate your access to Rackspace Cloud services, you issue an authentication request to a &CIS; endpoint.
         The &CIS; is an implementation of the OpenStack Keystone Identity Service v2.0. </para>
     <para> In response to valid credentials, an authentication request to the &CIS; returns an authentication token and a

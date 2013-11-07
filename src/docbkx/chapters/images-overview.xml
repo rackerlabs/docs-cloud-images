@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_image-service-dev-overview.html">
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_image-service-dev-overview">
     <title>Overview</title>
     <?dbhtml stop-chunking?>
     <para>The Rackspace Cloud Images service offers retrieval, storage, and metadata assignment for images through a simple
