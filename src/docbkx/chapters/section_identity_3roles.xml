@@ -1,31 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE section [
-<!-- Some useful entities borrowed from HTML -->
-<!ENTITY ndash  "&#x2013;">
-<!ENTITY mdash  "&#x2014;">
-<!ENTITY hellip "&#x2026;">
-<!ENTITY plusmn "&#xB1;">
-
-<!-- Useful for describing APIs -->
-<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
-<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
-<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
-<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
-
-<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-<imageobject>
-<imagedata fileref="figures/Check_mark_23x20_02.svg"
-format="SVG" scale="60"/>
-</imageobject>
-</inlinemediaobject>'>
-
-<!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-<imageobject>
-<imagedata fileref="figures/Arrow_east.svg"
-format="SVG" scale="60"/>
-</imageobject>
-</inlinemediaobject>'>
-]>
+<!DOCTYPE section [<!ENTITY % common  SYSTEM "../../common/common.ent">
+%common;]>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="section_rbac_3">
     <title>Role Based Access Control</title>
@@ -170,7 +145,7 @@ format="SVG" scale="60"/>
         <title>RBAC Permissions Cross-Reference to Cloud Images API Operations</title>
         <para> API operations for Cloud Images may or may not be available to all roles. To learn which operations are
             permitted to invoke which calls, see
-            <link xlink:href="http://www.rackspace.com/knowledge_center/article/permissions-matrix-for-role-based-access-control-rbac">
+            <link xlink:href="http://www.rackspace.com/knowledge_center/article/detailed-permissions-matrix-for-cloud-images">
                         Permissions Matrix for Role-Based Access Control (RBAC)</link> in the Rackspace Knowledge Center.
         </para>
     </section>

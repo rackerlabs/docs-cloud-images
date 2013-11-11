@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application [<!ENTITY % common  SYSTEM "../../common/common.ent">
+%common;]>
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_image-concepts">
     <title>Concepts</title>
     <?dbhtml stop-chunking?>
-    <para>To take advantage of the Cloud Images service, it is helpful to be familiar with the concepts outlined in this
-        section.</para>
+    <para>To take advantage of the &CImS;, it is helpful to be familiar with the concepts outlined in this section.</para>
 
     <!--Image Entities-->
     <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="image-entities">
         <title>Image Entities</title>
-        <para>An image entity is represented by a JSON-encoded data structure and its raw binary data. </para>
+        <para>An image entity is represented by a <glossterm linkend="gl-json">JSON</glossterm> data structure and its raw
+            binary data. </para>
         <para>An image entity has an identifier (ID) that is guaranteed to be unique within its endpoint. The ID is used as a
-            token in request URIs to interact with that specific image. </para>
+            token in request <glossterm linkend="gl-uri">URIs</glossterm> to interact with that specific image. </para>
         <para>An image is always guaranteed to have the following attributes: id, status, visibility, protected, tags,
             created_at, file and self. The other attributes defined in the image schema below are guaranteed to be defined,
             but will only be returned with an image entity if they have been explicitly set. </para>
-        <para>A client may set arbitrarily-named attributes on their images if the image json-schema allows it. These 
+        <para>A client may set arbitrarily-named attributes on their images if the image json-schema allows it. These
             user-defined attributes will appear like any other image attributes.</para>
     </section>
 
     <!--Image Identifiers-->
     <section xml:id="image-identifiers">
         <title>Image Identifiers</title>
-        <para>Images are uniquely identified by a URI that matches the following signature:</para>
+        <para>Images are uniquely identified by a <glossterm linkend="gl-uri">URI</glossterm> that matches the following
+            signature:</para>
         <para><code>&lt;image server location>/v1/images/&lt;image ID></code></para>
-        <para>where</para>
         <para>
             <variablelist>
                 <varlistentry>
                     <term><code>&lt;image server location></code></term>
                     <listitem>
-                        <para>The resource location of the Cloud Images service that knows about an image</para>
+                        <para>The resource location of the &CImS; that knows about an image</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><code>&lt;image ID></code></term>
                     <listitem>
-                        <para>The image identifier, which is a <emphasis role="italic">uuid</emphasis>, making it globally
-                            unique</para>
+                        <para>The image identifier, which is a <glossterm linkend="gl-uuid">UUID</glossterm>, making it
+                            globally unique</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
@@ -48,33 +50,33 @@
     <!--Image Statuses-->
     <section xml:id="image-statuses">
         <title>Image Statuses</title>
-        <para>Images in the Cloud Images service can be in one of the following statuses:</para>
+        <para>Images in the &CImS; can have one of the following statuses:</para>
         <variablelist>
             <varlistentry>
                 <term><emphasis role="bold">queued</emphasis></term>
                 <listitem>
                     <para> The image identifier has been reserved for an image in the Cloud Images registry. No image data
-                        has been uploaded to the Cloud Images service, and the image size was not explicitly set to zero on
-                        creation. </para>
+                        has been uploaded to the &CImS;, and the image size was not explicitly set to zero on creation.
+                    </para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term><emphasis role="bold">saving</emphasis></term>
                 <listitem>
-                    <para> An image's raw data is being uploaded to the Cloud Images service.</para>
+                    <para> An image's raw data is being uploaded to the &CImS;.</para>
                     <note>
-                        <para>An image registered using the <code>POST /images</code> operation and with the
-                                <parameter>x-image-meta-location</parameter> header present cannot be in <emphasis
-                                role="bold">saving</emphasis> status because this means that the image data is already
-                            available in another location. </para>
+                        <para>An image that is registered using the <code>POST /images</code> operation and has the
+                                <code>x-image-meta-location</code> header present cannot have status of <emphasis role="bold"
+                                >saving</emphasis> status because the image data is already available in another location.
+                        </para>
                     </note>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term><emphasis role="bold">active</emphasis></term>
                 <listitem>
-                    <para>The image is fully available in the Cloud Images service. This occurs either after the image is
-                        uploaded or if the image size is explicitly set to zero on creation. </para>
+                    <para>The image is fully available in the &CImS;. This status applies either after the image is uploaded
+                        or if the image size is explicitly set to zero on creation. </para>
                 </listitem>
             </varlistentry>
             <varlistentry>
@@ -86,15 +88,15 @@
             <varlistentry>
                 <term><emphasis role="bold">deleted</emphasis></term>
                 <listitem>
-                    <para>The Cloud Images service has retained the information about the image, but it is no longer
-                        available to use. An image in this state will be removed automatically at a later date.</para>
+                    <para>The &CImS; has retained the information about the image, but the image is no longer available to
+                        use. An image with this status will be removed automatically at a later date.</para>
                 </listitem>
             </varlistentry>
             <varlistentry>
                 <term><emphasis role="bold">pending_delete</emphasis></term>
                 <listitem>
-                    <para>This is similar to deleted, however, the Cloud Images service has not yet removed the image data.
-                        An image in this state is recoverable.</para>
+                    <para>This status is similar to deleted, however, the &CImS; has not yet removed the image data. An image
+                        with this status is recoverable.</para>
                 </listitem>
             </varlistentry>
         </variablelist>
@@ -103,44 +105,49 @@
     <!--Disk and Container Formats-->
     <section xml:id="disk-container-formats">
         <title>Disk and Container Formats</title>
-        <para>When adding an image to Cloud Images, you may specify the image's <emphasis role="italic">disk
+        <para>When adding an image to Cloud Images, you can specify the image's <emphasis role="italic">disk
                 format</emphasis> and the <emphasis role="italic">container format</emphasis>. These formats are configurable
-            on a per-deployment basis and are defined in the following sections.</para>
+            for each image and are defined in the following sections.</para>
 
         <!--Disk Format-->
         <section xml:id="disk-format">
-            <title>Disk Format</title>
+            <title>Disk Formats</title>
             <para>The disk format of a virtual machine image is the format of the underlying disk image. Virtual appliance
                 vendors have different formats for laying out the information contained in a virtual machine disk
                 image.</para>
-            <para>You may set your image's disk format to one of the following types:</para>
+            <para>You can set your image's disk format to one of the following types:</para>
             <variablelist>
                 <varlistentry>
                     <term><emphasis role="bold">raw</emphasis></term>
                     <listitem>
-                        <para>An unstructured disk format, natively supported by both KVM and Xen hypervisors</para>
+                        <para>An unstructured disk format, natively supported by both <glossterm linkend="gl-kvm"
+                                >KVM</glossterm> and <glossterm linkend="gl-xen">Xen</glossterm>
+                            <glossterm linkend="gl-hypervisor">hypervisors</glossterm></para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">vhd</emphasis></term>
                     <listitem>
-                        <para>A common disk format used by virtual machine monitors from VMWare, Xen, Microsoft, VirtualBox,
-                            and others</para>
+                        <para>A common disk format used by <glossterm linkend="gl-vmm">virtual machine monitors</glossterm>
+                            from VMware, Xen, Microsoft, VirtualBox, and others</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">vmdk</emphasis></term>
                     <listitem>
-                        <para>Another common disk format supported by many common virtual machine monitors</para>
+                        <para>A common disk format supported by many common <glossterm linkend="gl-vmm">virtual machine
+                                monitors</glossterm></para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">vdi</emphasis></term>
                     <listitem>
-                        <para>A disk format supported by VirtualBox virtual machine monitor and the QEMU emulator</para>
+                        <para>A disk format supported by VirtualBox <glossterm linkend="gl-vmm">virtual machine
+                                monitor</glossterm> and the <glossterm linkend="gl-qemu">QEMU</glossterm> emulator</para>
                         <note>
-                            <para>None of the Rackspace Cloud Server hypervisors support VDI directly, so the images should
-                                be converted to a different format for use with Cloud Images.</para>
+                            <para>None of the Rackspace Cloud Server <glossterm linkend="gl-hypervisor"
+                                    >hypervisors</glossterm> support VDI directly, so you should convert the images to a
+                                different format for use with Cloud Images.</para>
                         </note>
                     </listitem>
                 </varlistentry>
@@ -153,8 +160,10 @@
                 <varlistentry>
                     <term><emphasis role="bold">qcow2</emphasis></term>
                     <listitem>
-                        <para>A disk format, supported by the QEMU emulator, that can expand dynamically, supports "Copy on
-                            Write", supports snapshots, and is commonly used with the KVM hypervisor</para>
+                        <para>A disk format, supported by the <glossterm linkend="gl-qemu">QEMU</glossterm> emulator, that
+                            can expand dynamically, supports copy-on-write, supports snapshots, and is commonly used with the
+                                <glossterm linkend="gl-kvm">KVM</glossterm>
+                            <glossterm linkend="gl-hypervisor">hypervisor</glossterm></para>
                         <note>
                             <para>Because <emphasis role="bold">qcow2</emphasis> uses sparse representation (resulting in a
                                 smaller image), it is often faster to convert a raw image to qcow2 and upload it than to
@@ -165,19 +174,20 @@
                 <varlistentry>
                     <term><emphasis role="bold">aki</emphasis></term>
                     <listitem>
-                        <para>An Amazon kernel image that the hypervisor initially loads to boot the image</para>
+                        <para>An Amazon kernel image (AKI) that the <glossterm linkend="gl-hypervisor">hypervisor</glossterm>
+                            initially loads to boot (start up) the image</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">ari</emphasis></term>
                     <listitem>
-                        <para>An Amazon ramdisk image mounted at boot time</para>
+                        <para>An Amazon ramdisk image (ARI) mounted at boot (startup) time</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">ami</emphasis></term>
                     <listitem>
-                        <para>An Amazon machine image in raw format</para>
+                        <para>An Amazon machine image (AMI) in raw format</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
@@ -185,13 +195,13 @@
 
         <!--Container Format-->
         <section xml:id="container-format">
-            <title>Container Format</title>
+            <title>Container Formats</title>
             <para>The container format refers to whether the virtual machine image is in a file format that also contains
                 metadata about the actual virtual machine.</para>
             <note>
-                <para>the container format string is not currently used by Cloud Images or other components based on
-                    OpenStack, so it is safe to simply specify <emphasis role="bold">bare</emphasis> as the container format
-                    if you are unsure.</para>
+                <para>The container format string is not currently used by Cloud Images or other components based on
+                    OpenStack, so it is safe to specify <emphasis role="bold">bare</emphasis> as the container format, if you
+                    are unsure.</para>
             </note>
             <para>You can set your image's container format to one of the following types:</para>
             <variablelist>
@@ -204,26 +214,26 @@
                 <varlistentry>
                     <term><emphasis role="bold">ovf</emphasis></term>
                     <listitem>
-                        <para>Open Virtualization Format container format, an open-source standard for packaging and
+                        <para>Open Virtualization Format (OVF) container format, an open-source standard for packaging and
                             distributing software and applications for virtual machines</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">aki</emphasis></term>
                     <listitem>
-                        <para>An Amazon kernel image</para>
+                        <para>An Amazon kernel image (AKI)</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">ari</emphasis></term>
                     <listitem>
-                        <para>An Amazon ramdisk image</para>
+                        <para>An Amazon ramdisk image (ARI)</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">ami</emphasis></term>
                     <listitem>
-                        <para>An Amazon machine image</para>
+                        <para>An Amazon machine image (AMI)</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
@@ -233,15 +243,15 @@
     <!--Common Image Properties-->
     <section xml:id="common-image-properties">
         <title>Common Image Properties</title>
-        <para> In order to assist end-users in utilizing your images, you may wish to put additional common properties, or
-            metadata, on your images. </para>
+        <para> To help end users use your images, you can put additional common properties, or metadata, on your images. </para>
         <para>The available properties and their expected values include the following options:</para>
         <glosslist>
             <glossentry>
                 <glossterm><emphasis role="bold">architecture</emphasis></glossterm>
                 <glossdef>
-                    <para>The CPU architecture that must be supported by the hypervisor. Run <code>uname -m</code> to get the
-                        architecture of your machine. Allowed values are:</para>
+                    <para>The CPU architecture that must be supported by the <glossterm linkend="gl-hypervisor"
+                            >hypervisor</glossterm>. Run <code>uname -m</code> to get the architecture of your machine.
+                        Allowed values are as follows:</para>
                     <variablelist>
                         <varlistentry>
                             <term><emphasis role="bold">alpha</emphasis></term>
@@ -373,13 +383,13 @@
                         <varlistentry>
                             <term><emphasis role="bold">sh4</emphasis></term>
                             <listitem>
-                                <para><link xlink:href="http://en.wikipedia.org/wiki/SuperH">Super SH-4 (Little Endian)</link></para>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/SuperH">SuperH SH-4 (Little Endian)</link></para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
                             <term><emphasis role="bold">sh4eb</emphasis></term>
                             <listitem>
-                                <para><link xlink:href="http://en.wikipedia.org/wiki/SuperH">Super SH-4 (Big Endian)</link></para>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/SuperH">SuperH SH-4 (Big Endian)</link></para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -397,7 +407,7 @@
                         <varlistentry>
                             <term><emphasis role="bold">unicore32</emphasis></term>
                             <listitem>
-                                <para><link xlink:href="http://en.wikipedia.org/wiki/Unicore">Microprocessor Research and Development Center RISC Unicore32</link></para>
+                                <para><link xlink:href="http://en.wikipedia.org/wiki/Unicore">Microprocessor Research and Development Center Unicore 32-bit RISC</link></para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -424,31 +434,31 @@
             <glossentry>
                 <glossterm><emphasis role="bold">instance_uuid</emphasis></glossterm>
                 <glossdef>
-                    <para>The ID of the instance used to create this image</para>
+                    <para>The ID of an instance used to create an image</para>
                 </glossdef>
             </glossentry>
             <glossentry>
                 <glossterm><emphasis role="bold">kernel_id</emphasis></glossterm>
                 <glossdef>
-                    <para>The ID of image stored in Cloud Images that should be used as the kernel when booting an AMI-style
-                        image</para>
+                    <para>The ID of an image stored in Cloud Images that should be used as the kernel when booting (starting
+                        up) an AMI-style image</para>
                 </glossdef>
             </glossentry>
             <glossentry>
                 <glossterm><emphasis role="bold">ramdisk_id</emphasis></glossterm>
                 <glossdef>
-                    <para>The ID of image stored in Cloud Images that should be used as the ramdisk when booting an AMI-style
-                        image</para>
+                    <para>The ID of image stored in Cloud Images that should be used as the ramdisk when booting (starting
+                        up) an AMI-style image</para>
                 </glossdef>
             </glossentry>
             <glossentry>
                 <glossterm><emphasis role="bold">os_distro</emphasis></glossterm>
                 <glossdef>
-                    <para>The common name of the operating system distribution.</para>
-                    <note>
-                        <para>The common name must be all lower-case and entered exactly as shown here.</para>
-                    </note>
-                    <para>The allowed values are:</para>
+                    <para>The common name of the operating system distribution</para>
+                    <important>
+                        <para>The common name must be all lowercase and entered exactly as shown here.</para>
+                    </important>
+                    <para>The allowed values are as follows:</para>
                     <variablelist>
                         <varlistentry>
                             <term><emphasis role="bold">arch</emphasis></term>
@@ -575,4 +585,5 @@
             </glossentry>
         </glosslist>
     </section>
+    <xi:include href="images-glossary.xml"/>
 </chapter>

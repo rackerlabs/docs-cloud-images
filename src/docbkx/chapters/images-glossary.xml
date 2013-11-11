@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossary [<!ENTITY % common  SYSTEM "../../common/common.ent">
+%common;]>
+<glossary xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Glossary-000">
+    <title>Glossary</title>
+    <glossentry xml:id="gl-curl">
+        <glossterm><emphasis role="bold">cURL</emphasis></glossterm>
+        <glossdef>
+            <para>Client for URLs (cURL) is a command line tool for getting and sending files using URL syntax, useful for
+                executing API operations. For example, to delete an image you might use:
+                <programlisting>curl -i -X DELETE -H "X-Auth-Token: $OS_AUTH_TOKEN" \
+                $OS_IMAGE_URL/v2/images/7b97f37c-899d-44e8-aaa0-543edbc4eaad</programlisting></para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-hypervisor">
+        <glossterm><emphasis role="bold">Hypervisor</emphasis></glossterm>
+        <glossdef>
+            <para>A hypervisor is a program that manages several operating systems (also known as guest machines or virtual
+                machines) to share a single hardware host. The hypervisor manages and allocates resources to the
+                guests.</para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-image">
+        <glossterm><emphasis role="bold">Image</emphasis></glossterm>
+        <glossdef>
+            <para>An image is represented by a JSON-encoded data structure (the <glossterm linkend="gl-schema">image
+                    schema</glossterm>) and its raw binary data (the <glossterm linkend="gl-file">image file</glossterm>).
+            </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-file">
+        <glossterm><emphasis role="bold">Image File</emphasis></glossterm>
+        <glossdef>
+            <para>An image file is the actual image in binary data.</para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-member">
+        <glossterm><emphasis role="bold">Image Member</emphasis></glossterm>
+        <glossdef>
+            <para>An image member is a user who has been granted access to an image.</para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-schema">
+        <glossterm><emphasis role="bold">Image Schema</emphasis></glossterm>
+        <glossdef>
+            <para>An image schema is a <glossterm linkend="gl-json">json</glossterm> document representing metadata about an
+                image.</para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-tag">
+        <glossterm><emphasis role="bold">Image Tag</emphasis></glossterm>
+        <glossdef>
+            <para>An image tag is a string of characters used to identify a specific image.</para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-json">
+        <glossterm><emphasis role="bold">JSON</emphasis></glossterm>
+        <glossdef>
+            <para>Javascript Object Notation, json, is an open standard format that uses human-readable text to transmit data
+                objects consisting of key:value pairs. The following json example might be used to represent an object that
+                describes a person: <code> { "firstname": "John", "lastname": "Smith", "age": 25 } </code></para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-kvm">
+        <glossterm><emphasis role="bold">KVM</emphasis></glossterm>
+        <glossdef>
+            <para>The Kernel Virtual Machine (KVM) is a Linux kernel module that allows a user space program to use the
+                hardware virtualization features of various processors. </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-mediatype">
+        <glossterm><emphasis role="bold">Media type</emphasis></glossterm>
+        <glossdef>
+            <para>An Internet media type is a standard identifier used on the Internet to indicate the type of data contained
+                in a file. A media type is composed of a type, a subtype, and zero or more optional parameters. For example,
+                an HTML file might be designated <emphasis role="italic">text/html; charset=UTF-8</emphasis></para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-qemu">
+        <glossterm><emphasis role="bold">QEMU</emphasis></glossterm>
+        <glossdef>
+            <para>QEMU is a generic and open source machine emulator and virtualizer. QEMU supports virtualization when
+                executing under the Xen hypervisor or when using the KVM kernel module in Linux.</para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-uri">
+        <glossterm><emphasis role="bold">URI</emphasis></glossterm>
+        <glossdef>
+            <para>A uniform resource identifier (URI) is a string of characters used to identify the name of a web resource.
+                The URI syntax consists of a URI scheme name (such as "http", "ftp", or "file") followed by a colon
+                character, and then by a scheme-specific part (which varies depending on the context).</para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-uuid">
+        <glossterm><emphasis role="bold">UUID</emphasis></glossterm>
+        <glossdef>
+            <para>A universal unique identifier (uuid) is a 128-bit that is used to uniquely identify an object on the
+                internet. </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-vmm">
+        <glossterm><emphasis role="bold">Virtual Machine Monitor</emphasis></glossterm>
+        <glossdef>
+            <para>A virtual machine monitor (VMM) is the piece of software responsible for monitoring and enforcing policy on
+                the virtual machines for which it is responsible. If a VMM runs in place of (instead of on top of) an
+                operating system it is also known as a hypervisor. </para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-xen">
+        <glossterm><emphasis role="bold">Xen</emphasis></glossterm>
+        <glossdef>
+            <para>Xen is a native (bare-metal) hypervisor providing services that allow multiple computer operating systems
+                to execute on the same computer hardware concurrently. It was originally developed by University or Cambridge
+                Computer Laboratory and is a free and open-source software project maintained by the Xen community.</para>
+        </glossdef>
+    </glossentry>
+</glossary>

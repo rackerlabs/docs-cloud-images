@@ -1,35 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE section [
-<!-- Some useful entities borrowed from HTML -->
-<!ENTITY ndash  "&#x2013;">
-<!ENTITY mdash  "&#x2014;">
-<!ENTITY hellip "&#x2026;">
-<!ENTITY plusmn "&#xB1;">
-
-<!-- Useful for describing APIs -->
-<!ENTITY GET    '<command xmlns="http://docbook.org/ns/docbook">GET</command>'>
-<!ENTITY PUT    '<command xmlns="http://docbook.org/ns/docbook">PUT</command>'>
-<!ENTITY POST   '<command xmlns="http://docbook.org/ns/docbook">POST</command>'>
-<!ENTITY DELETE '<command xmlns="http://docbook.org/ns/docbook">DELETE</command>'>
-
-<!ENTITY CHECK  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-<imageobject>
-<imagedata fileref="figures/Check_mark_23x20_02.svg"
-format="SVG" scale="60"/>
-</imageobject>
-</inlinemediaobject>'>
-
-<!ENTITY ARROW  '<inlinemediaobject xmlns="http://docbook.org/ns/docbook">
-<imageobject>
-<imagedata fileref="figures/Arrow_east.svg"
-format="SVG" scale="60"/>
-</imageobject>
-</inlinemediaobject>'>
-<!ENTITY CIS 'Rackspace Cloud Identity Service'>
-<!ENTITY CAS 'Rackspace Cloud Authentication Service'>
-<!ENTITY fgCS 'first generation Cloud Servers'>
-<!ENTITY ngCS 'next generation Cloud Servers'>
-]>
+<!DOCTYPE section [<!ENTITY % common  SYSTEM "../../common/common.ent">
+%common;]>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="auth-response-description">
     <title>Authentication Response</title>
@@ -75,8 +46,8 @@ format="SVG" scale="60"/>
                 <para><emphasis role="bold">The name of the service</emphasis> appears in the <code>name</code> field. </para>
                 <para>Locate the correct service name in the service catalog. For example, the service name for Cloud Images
                     is <literal>cloudImages</literal>. </para>
-                <para>To access the Cloud Images service, use the <code>publicURL</code> value for the
-                        <literal>cloudImages</literal> service.</para>
+                <para>To access the &CImS;, use the <code>publicURL</code> value for the <literal>cloudImages</literal>
+                    service.</para>
                 <para>Multiple endpoints might be shown to enable regional choice. Select the appropriate endpoint for the
                     region that you want to interact with by examining the <code>region</code> field.</para>
             </callout>
