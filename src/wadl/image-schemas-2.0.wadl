@@ -42,11 +42,11 @@
                 <resource id="Image-schema" type="#SchemaList" path="image">
                     <method href="#getImageSchema"/>
                 </resource>
-                <resource id="Image-members-schema" type="#SchemasList" path="members">
-                    <method href="#getImageMembersSchema"/>
+                <resource id="Schemas-Image-members" type="#SchemasList" path="members">
+                    <method href="#getSchemasImageMembers"/>
                 </resource>
-                <resource id="Image-member-schema" type="#SchemaList" path="member">
-                    <method href="#getImageMemberSchema"/>
+                <resource id="Schemas-Image-member" type="#SchemaList" path="member">
+                    <method href="#getSchemasImageMember"/>
                 </resource>
             </resource>
         </resource>
@@ -86,8 +86,8 @@
     </method>
     
     <!-- Get Images Member Schema -->
-    <method name="GET" id="getImageMembersSchema">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Members Schema">
+    <method name="GET" id="getSchemasImageMembers">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Schemas Image Members">
             <para role="shortdesc">Gets a json-schema document that represents an image members entity.</para>
             <para>An image members entity is a container of image member entities.</para>
             <para>The following schema is just an example. Consider only the response to the API call as authoritative.</para>
@@ -102,8 +102,8 @@
     </method>
     
     <!-- Get Image Member Schema -->
-    <method name="GET" id="getImageMemberSchema-v2">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Member Schema">
+    <method name="GET" id="getSchemasImageMember">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Schemas Image Member">
             <para role="shortdesc">Gets a json-schema document that represents an image member entity.</para>
             <para>The following schema is just an example. Consider only the response to the API call as authoritative.</para>
         </wadl:doc>

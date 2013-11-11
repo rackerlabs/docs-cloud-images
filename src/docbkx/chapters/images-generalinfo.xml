@@ -61,10 +61,9 @@
                 <code>'application/json'</code>. HTTP &PATCH; requests must use the patch <glossterm linkend="gl-mediatype"
                 >media type</glossterm> defined for the entity they intend to modify. Requests that upload image data should
             use the media type <code>'application/octet-stream'</code>.</para>
-        <para>The necessary json-schema documents are provided at predictable <glossterm linkend="gl-uri">URIs</glossterm>. A
-            consumer validates server responses and client requests based on the published schemas. The schemas contained in
-            this document are only examples and should not be used to validate your requests. A client should always fetch
-            schemas from the server.</para>
+        <para>The necessary json-schema documents are provided at predictable <glossterm linkend="gl-uri">URIs</glossterm>. A consumer validates server responses and
+            client requests based on the published schemas. The schemas contained in this document are only examples and
+            should not be used to validate your requests. A client should always fetch schemas from the server.</para>
     </section>
 
     <!--Authentication-->

@@ -111,6 +111,14 @@
 			<wadl:resource href="../../wadl/image-schemas-2.0.wadl#Image-schema">
 				<wadl:method href="getImageSchema"/>
 			</wadl:resource>
+			<!-- list images member schema -->
+			<wadl:resource href="../../wadl/image-schemas-2.0.wadl#Schemas-Image-members">
+				<wadl:method href="getSchemasImageMembers"/>
+			</wadl:resource>
+			<!-- list image member schema -->
+			<wadl:resource href="../../wadl/image-schemas-2.0.wadl#Schemas-Image-member">
+				<wadl:method href="getSchemasImageMember"/>
+			</wadl:resource>
 		</wadl:resources>
 	</section>
 
