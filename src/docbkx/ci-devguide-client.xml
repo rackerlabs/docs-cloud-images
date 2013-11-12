@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
-  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" version="5.0" xml:id="ci-devguide-client"
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" version="5.0" xml:id="ci-devguide"
   status="DRAFT">
   <title>Rackspace Cloud Images Developer Guide</title>
   <?rax title.font.size="32px" 
-      pdf.url="../../ci-devguide-client-latest.pdf" 
-     status.bar.text.font.size="40px"
-     status.bar.text="PREVIEW CLIENT" 
-     canonical.url.base="http://docs.rackspace.com/images/api/v1.0/ci-devguide-client/content"?>
+     status.bar.text.font.size="40px"?>
   <info>
     <copyright>
       <year>2013</year>
