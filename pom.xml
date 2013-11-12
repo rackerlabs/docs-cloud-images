@@ -45,7 +45,6 @@
 							<security>internal</security>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
 							<feedbackEmail>cat.lookabaugh@rackspace.com</feedbackEmail>
-							<glossaryCollection>${project.build.directory}/src/docbkx/chapters/images-glossary.xml</glossaryCollection>
 						</configuration>
 					</execution>
 					<!-- HTML for images-devguide -->
@@ -66,7 +65,6 @@
 							<enableDisqus>intranet</enableDisqus>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
 							<feedbackEmail>cat.lookabaugh@rackspace.com</feedbackEmail>
-							<glossaryCollection>${project.build.directory}/src/docbkx/chapters/images-glossary.xml</glossaryCollection>
 						</configuration>
 					</execution>
 				</executions>
@@ -79,6 +77,7 @@
 					<showXslMessages>true</showXslMessages>
 					<branding>rackspace</branding>
 					<security>external</security>
+					<glossaryCollection>file:///${project.basedir}/src/docbkx/chapters/images-glossary.xml</glossaryCollection>
 				</configuration>
 			</plugin>
 			<plugin>
