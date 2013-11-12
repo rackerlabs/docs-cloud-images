@@ -11,10 +11,10 @@
     <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="image-entities">
         <title>Image Entities</title>
-        <para>An image entity is represented by a <glossterm linkend="gl-json">JSON</glossterm> data structure and its raw
-            binary data. </para>
+        <para>An image entity is represented by a <glossterm baseform="JSON">JSON-encoded</glossterm> data structure and its
+            raw binary data. </para>
         <para>An image entity has an identifier (ID) that is guaranteed to be unique within its endpoint. The ID is used as a
-            token in request <glossterm linkend="gl-uri">URIs</glossterm> to interact with that specific image. </para>
+            token in request <glossterm baseform="URI">URIs</glossterm> to interact with that specific image. </para>
         <para>An image is always guaranteed to have the following attributes: id, status, visibility, protected, tags,
             created_at, file and self. The other attributes defined in the image schema below are guaranteed to be defined,
             but will only be returned with an image entity if they have been explicitly set. </para>
@@ -25,8 +25,7 @@
     <!--Image Identifiers-->
     <section xml:id="image-identifiers">
         <title>Image Identifiers</title>
-        <para>Images are uniquely identified by a <glossterm linkend="gl-uri">URI</glossterm> that matches the following
-            signature:</para>
+        <para>Images are uniquely identified by a <glossterm>URI</glossterm> that matches the following signature:</para>
         <para><code>&lt;image server location>/v1/images/&lt;image ID></code></para>
         <para>
             <variablelist>
@@ -39,8 +38,7 @@
                 <varlistentry>
                     <term><code>&lt;image ID></code></term>
                     <listitem>
-                        <para>The image identifier, which is a <glossterm linkend="gl-uuid">UUID</glossterm>, making it
-                            globally unique</para>
+                        <para>The image identifier, which is a <glossterm>UUID</glossterm>, making it globally unique</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
@@ -65,8 +63,8 @@
                 <listitem>
                     <para> An image's raw data is being uploaded to the &CImS;.</para>
                     <note>
-                        <para>An image that is registered using the <code>POST /images</code> operation and has the
-                                <code>x-image-meta-location</code> header present cannot have status of <emphasis role="bold"
+                        <para>An image that is registered using the &POST; /images operation and has the
+                            x-image-meta-location header present cannot have status of <emphasis role="bold"
                                 >saving</emphasis> status because the image data is already available in another location.
                         </para>
                     </note>
@@ -113,41 +111,40 @@
         <section xml:id="disk-format">
             <title>Disk Formats</title>
             <para>The disk format of a virtual machine image is the format of the underlying disk image. Virtual appliance
-                vendors have different formats for laying out the information contained in a virtual machine disk
-                image.</para>
+                vendors have different formats for laying out the information contained in a virtual machine image.</para>
             <para>You can set your image's disk format to one of the following types:</para>
             <variablelist>
                 <varlistentry>
                     <term><emphasis role="bold">raw</emphasis></term>
                     <listitem>
-                        <para>An unstructured disk format, natively supported by both <glossterm linkend="gl-kvm"
-                                >KVM</glossterm> and <glossterm linkend="gl-xen">Xen</glossterm>
-                            <glossterm linkend="gl-hypervisor">hypervisors</glossterm></para>
+                        <para>An unstructured disk format, natively supported by both <glossterm>KVM</glossterm> and
+                                <glossterm>Xen</glossterm>
+                            <glossterm baseform="Hypervisor">hypervisors</glossterm></para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">vhd</emphasis></term>
                     <listitem>
-                        <para>A common disk format used by <glossterm linkend="gl-vmm">virtual machine monitors</glossterm>
-                            from VMware, Xen, Microsoft, VirtualBox, and others</para>
+                        <para>A common disk format used by <glossterm baseform="Virtual Machine Monitor">virtual machine
+                                monitors</glossterm> from VMware, Xen, Microsoft, VirtualBox, and others</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">vmdk</emphasis></term>
                     <listitem>
-                        <para>A common disk format supported by many common <glossterm linkend="gl-vmm">virtual machine
-                                monitors</glossterm></para>
+                        <para>A common disk format supported by many common <glossterm baseform="Virtual Machine Monitor"
+                                >virtual machine monitors</glossterm></para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">vdi</emphasis></term>
                     <listitem>
-                        <para>A disk format supported by VirtualBox <glossterm linkend="gl-vmm">virtual machine
-                                monitor</glossterm> and the <glossterm linkend="gl-qemu">QEMU</glossterm> emulator</para>
+                        <para>A disk format supported by VirtualBox <glossterm baseform="Virtual Machine Monitor">virtual
+                                machine monitor</glossterm> and the <glossterm>QEMU</glossterm> emulator</para>
                         <note>
-                            <para>None of the Rackspace Cloud Server <glossterm linkend="gl-hypervisor"
-                                    >hypervisors</glossterm> support VDI directly, so you should convert the images to a
-                                different format for use with Cloud Images.</para>
+                            <para>None of the Rackspace Cloud Server <glossterm baseform="Hypervisor">hypervisors</glossterm>
+                                support VDI directly, so you should convert the images to a different format for use with
+                                Cloud Images.</para>
                         </note>
                     </listitem>
                 </varlistentry>
@@ -160,10 +157,10 @@
                 <varlistentry>
                     <term><emphasis role="bold">qcow2</emphasis></term>
                     <listitem>
-                        <para>A disk format, supported by the <glossterm linkend="gl-qemu">QEMU</glossterm> emulator, that
+                        <para>A disk format, supported by the <glossterm>QEMU</glossterm> emulator, that
                             can expand dynamically, supports copy-on-write, supports snapshots, and is commonly used with the
-                                <glossterm linkend="gl-kvm">KVM</glossterm>
-                            <glossterm linkend="gl-hypervisor">hypervisor</glossterm></para>
+                                <glossterm>KVM</glossterm>
+                            <glossterm baseform="Hypervisor">hypervisor</glossterm></para>
                         <note>
                             <para>Because <emphasis role="bold">qcow2</emphasis> uses sparse representation (resulting in a
                                 smaller image), it is often faster to convert a raw image to qcow2 and upload it than to
@@ -174,7 +171,7 @@
                 <varlistentry>
                     <term><emphasis role="bold">aki</emphasis></term>
                     <listitem>
-                        <para>An Amazon kernel image (AKI) that the <glossterm linkend="gl-hypervisor">hypervisor</glossterm>
+                        <para>An Amazon kernel image (AKI) that the <glossterm baseform="Hypervisor">hypervisor</glossterm>
                             initially loads to boot (start up) the image</para>
                     </listitem>
                 </varlistentry>
@@ -249,7 +246,7 @@
             <glossentry>
                 <glossterm><emphasis role="bold">architecture</emphasis></glossterm>
                 <glossdef>
-                    <para>The CPU architecture that must be supported by the <glossterm linkend="gl-hypervisor"
+                    <para>The CPU architecture that must be supported by the <glossterm baseform="Hypervisor"
                             >hypervisor</glossterm>. Run <code>uname -m</code> to get the architecture of your machine.
                         Allowed values are as follows:</para>
                     <variablelist>

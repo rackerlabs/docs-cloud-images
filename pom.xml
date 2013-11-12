@@ -45,7 +45,7 @@
 							<security>internal</security>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
 							<feedbackEmail>cat.lookabaugh@rackspace.com</feedbackEmail>
-							<glossaryCollection>${project.build.directory}/../src/docbkx/chapters/images-glossary.xml</glossaryCollection>
+							<glossaryCollection>${project.build.directory}/src/docbkx/chapters/images-glossary.xml</glossaryCollection>
 						</configuration>
 					</execution>
 					<!-- HTML for images-devguide -->

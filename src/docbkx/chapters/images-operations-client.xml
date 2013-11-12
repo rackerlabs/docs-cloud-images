@@ -6,28 +6,28 @@
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="API_Operations" version="5.0" role="api-reference">
 	<title>API Operations for Service Developers</title>
-	<para> Service developers use the operations descried in this chapter to perform the following tasks: 
-		<itemizedlist>
+	<para> Service developers use the operations descried in this chapter to perform the following tasks: <itemizedlist>
 			<listitem>
-				<para>Create and manage <glossterm linkend="gl-image">images</glossterm></para>
+				<para>Create and manage <glossterm baseform="Image">images</glossterm></para>
 			</listitem>
 			<listitem>
-				<para>Create and manage <glossterm linkend="gl-member">image members</glossterm></para>
+				<para>Create and manage <glossterm baseform="Image Member">image members</glossterm></para>
 			</listitem>
 			<listitem>
-				<para>Create and manage <glossterm linkend="gl-tag">image tags</glossterm></para>
+				<para>Create and manage <glossterm baseform="Image Tag">image tags</glossterm></para>
 			</listitem>
 			<listitem>
-				<para>Get information about <glossterm linkend="gl-schema">image schemas</glossterm></para>
+				<para>Get information about image <glossterm baseform="Schema">schemas</glossterm></para>
 			</listitem>
 		</itemizedlist>
 	</para>
 
-	
+
 	<!-- Images -->
 	<section xml:id="Image_Calls">
 		<title>Image Operations</title>
-		<para> Service developers use the operations described in this section to manage <glossterm linkend="gl-image">images</glossterm>. </para>
+		<para> Service developers use the operations described in this section to manage <glossterm baseform="Image"
+				>images</glossterm>. </para>
 		<!--- this section comes from 1 WADL: image-2.0 -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list images, get image, delete image -->
@@ -38,11 +38,12 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-	
+
 	<!-- Image Members -->
 	<section xml:id="Image_Member_Calls">
 		<title>Image Member Operations</title>
-		<para> Service developers use the operations described in this section to manage <glossterm linkend="gl-member">image members</glossterm>. </para>
+		<para> Service developers use the operations described in this section to manage <glossterm baseform="Image Member"
+				>image members</glossterm>. </para>
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- create image member -->
 			<wadl:resource href="../../wadl/image-2.0.wadl#Members">
@@ -56,11 +57,12 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-	
+
 	<!-- Image Tags -->
 	<section xml:id="Image_Tag_Calls">
 		<title>Image Tag Operations</title>
-		<para> Service developers use the operations described in this section to manage <glossterm linkend="gl-tag">image tags</glossterm>. </para>
+		<para> Service developers use the operations described in this section to manage <glossterm baseform="Image Tag">image
+				tags</glossterm>. </para>
 		<!-- add image tag, delete image tag -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/image-2.0.wadl#Tagstag">
@@ -69,11 +71,12 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-	
+
 	<!-- Image Schemas -->
 	<section xml:id="Image_Schema_Calls">
 		<title>Image Schema Operations</title>
-		<para>Service developers use the operations described in this section to get details about the <glossterm linkend="gl-schema">image schemas</glossterm>.</para>
+		<para>Service developers use the operations described in this section to get details about the image<glossterm
+				baseform="Schema">schemas</glossterm>.</para>
 		<!--- this section comes from 1 WADL: image-schemas-2.0 -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list image schemas -->
@@ -86,5 +89,5 @@
 			</wadl:resource>
 		</wadl:resources>
 	</section>
-	
+
 </chapter>

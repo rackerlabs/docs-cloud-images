@@ -7,8 +7,8 @@
     <?dbhtml stop-chunking?>
 
     <para> Cloud Images brings access to the OpenStack Image Registry and Delivery Service directly to Rackspace open cloud
-        customers, thereby providing services for discovering, registering, and retrieving virtual machine images and their
-        metadata by using a RESTful API. </para>
+        customers, thereby providing services for discovering, registering, and retrieving virtual machine <glossterm
+            baseform="Image">images</glossterm> and their metadata by using a RESTful API. </para>
     <para>Image <emphasis role="italics">sharing</emphasis> provides a mechanism for customers to give access to images in
         their account to other customers. Customer A initiates sharing with Customer B, and Customer B accepts the offer. The
         image is not copied into Customer B's repository, but Customer B has access to the image in Customer A's
@@ -55,15 +55,16 @@
     <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Reqresponse">
         <title>API Request and Response Information</title>
-        <para>The Cloud Images API primarily accepts and serves <glossterm linkend="gl-json">JSON-encoded</glossterm> data.
-            For uploading and downloading image files, the API also accepts and serves binary image data. Most requests that
-            send JSON-encoded data must have the proper media type in their Content-Type header:
-                <code>'application/json'</code>. HTTP &PATCH; requests must use the patch <glossterm linkend="gl-mediatype"
-                >media type</glossterm> defined for the entity they intend to modify. Requests that upload image data should
-            use the media type <code>'application/octet-stream'</code>.</para>
-        <para>The necessary json-schema documents are provided at predictable <glossterm linkend="gl-uri">URIs</glossterm>. A consumer validates server responses and
-            client requests based on the published schemas. The schemas contained in this document are only examples and
-            should not be used to validate your requests. A client should always fetch schemas from the server.</para>
+        <para>The Cloud Images API primarily accepts and serves <glossterm baseform="JSON">JSON-encoded</glossterm> data. For
+            uploading and downloading image files, the API also accepts and serves binary image data. Most requests that send
+            JSON-encoded data must have the proper media type in their Content-Type header: <code>'application/json'</code>.
+            HTTP &PATCH; requests must use the patch <glossterm baseform="Media type">media type</glossterm> defined for the
+            entity they intend to modify. Requests that upload image data should use the media type
+                <code>'application/octet-stream'</code>.</para>
+        <para>The necessary json-schema documents are provided at predictable <glossterm baseform="URI">URIs</glossterm>. A
+            consumer validates server responses and client requests based on the published schemas. The schemas contained in
+            this document are only examples and should not be used to validate your requests. A client should always fetch
+            schemas from the server.</para>
     </section>
 
     <!--Authentication-->

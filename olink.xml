@@ -1,3 +1,4 @@
 <books xmlns="http://docs.rackspace.com/olink">
-  <book path="src/docbkx/example.xml"/>
+  <book path="src/docbkx/ci-devguide.xml"/>
+  <book path="src/docbkx/ci-devguide-client.xml"/>
 </books>

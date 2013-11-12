@@ -24,9 +24,10 @@
     <glossentry xml:id="gl-image">
         <glossterm><emphasis role="bold">Image</emphasis></glossterm>
         <glossdef>
-            <para>An image is represented by a JSON-encoded data structure (the <glossterm linkend="gl-schema">image
-                    schema</glossterm>) and its raw binary data (the <glossterm linkend="gl-file">image file</glossterm>).
-            </para>
+            <para>A virtual machine image is a single file which contains a virtual disk that has an installed bootable
+                operating system. In the Images API, an image is represented by a JSON-encoded data structure (the image <glossterm
+                    baseform="Schema">schema</glossterm>) and its raw binary data (the <glossterm baseform="Image File"
+                    >image file</glossterm>). </para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-file">
@@ -38,20 +39,21 @@
     <glossentry xml:id="gl-member">
         <glossterm><emphasis role="bold">Image Member</emphasis></glossterm>
         <glossdef>
-            <para>An image member is a user who has been granted access to an image.</para>
+            <para>An image member is a user who has been granted access to an image. Normally, if an image is not public,
+                only the owner can boot from the image.</para>
         </glossdef>
     </glossentry>
-    <glossentry xml:id="gl-schema">
-        <glossterm><emphasis role="bold">Image Schema</emphasis></glossterm>
+    <glossentry xml:id="gl-record">
+        <glossterm><emphasis role="bold">Image Record</emphasis></glossterm>
         <glossdef>
-            <para>An image schema is a <glossterm linkend="gl-json">json</glossterm> document representing metadata about an
-                image.</para>
+            <para>An image record provides information about the bootable binary data, including format, size in bytes,
+                checksum, operating system, etc.</para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-tag">
         <glossterm><emphasis role="bold">Image Tag</emphasis></glossterm>
         <glossdef>
-            <para>An image tag is a string of characters used to identify a specific image.</para>
+            <para>An image tag is a string of characters used to identify a specific image or images.</para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-json">
@@ -82,6 +84,14 @@
         <glossdef>
             <para>QEMU is a generic and open source machine emulator and virtualizer. QEMU supports virtualization when
                 executing under the Xen hypervisor or when using the KVM kernel module in Linux.</para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-schema">
+        <glossterm><emphasis role="bold">Schema</emphasis></glossterm>
+        <glossdef>
+            <para>The Images API supplies <glossterm baseform="JSON">json</glossterm> documents describing the JSON-encoded
+                data structures that represent domain objects, so that a client knows exactly what to expect in an API
+                response.</para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-uri">
