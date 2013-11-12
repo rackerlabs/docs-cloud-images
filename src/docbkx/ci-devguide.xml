@@ -4,10 +4,7 @@
   status="DRAFT">
   <title>Rackspace Cloud Images Developer Guide</title>
   <?rax title.font.size="32px" 
-      pdf.url="../../ci-devguide-latest.pdf" 
-     status.bar.text.font.size="40px"
-     status.bar.text="PREVIEW RACKER" 
-     canonical.url.base="http://docs.rackspace.com/images/api/v1.0/ci-devguide/content"?>
+     status.bar.text.font.size="40px"?>
   <info>
     <copyright>
       <year>2013</year>

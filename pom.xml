@@ -43,8 +43,9 @@
 							<!-- These parameters only apply to webhelp -->
 							<enableDisqus>intranet</enableDisqus>
 							<security>internal</security>
+							<statusBarText>PREVIEW CLIENT</statusBarText>
+							<canonicalUrlBase>http://docs.rackspace.com/images/api/v1.0/ci-devguide/content</canonicalUrlBase>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
-							<feedbackEmail>cat.lookabaugh@rackspace.com</feedbackEmail>
 						</configuration>
 					</execution>
 					<!-- HTML for images-devguide -->
@@ -61,10 +62,11 @@
 		                         or the element is stripped -->
 							<profileCondition>admin</profileCondition>
 							<security>internal</security>
+							<statusBarText>PREVIEW RACKER</statusBarText>
+							<canonicalUrlBase>http://docs-internal.rackspace.com/images/api/v1.0/ci-devguide/content</canonicalUrlBase>
 							<!-- These parameters only apply to webhelp -->
 							<enableDisqus>intranet</enableDisqus>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
-							<feedbackEmail>cat.lookabaugh@rackspace.com</feedbackEmail>
 						</configuration>
 					</execution>
 				</executions>
