@@ -30,39 +30,147 @@
 				>images</glossterm>. </para>
 		<!--- this section comes from 1 WADL: image-2.0 -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<wadl:resource href="../../wadl/image-2.0.wadl#Images">
+				<wadl:method href="listImages"/>
+			</wadl:resource>
 			<!-- list images, get image, delete image -->
 			<wadl:resource href="../../wadl/image-2.0.wadl#ImageID">
-				<wadl:method href="listImages"/>
 				<wadl:method href="getImage"/>
 				<wadl:method href="deleteImage"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
 
-	<!-- Image Members -->
+	<!-- Image Members/Sharing -->
 	<section xml:id="Image_Member_Calls">
-		<title>Image Member Operations</title>
-		<para> Service developers use the operations described in this section to manage <glossterm baseform="Image Member"
-				>image members</glossterm>. </para>
-		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
-			<!-- create image member -->
-			<wadl:resource href="../../wadl/image-2.0.wadl#Members">
-				<wadl:method href="createImageMember"/>
-			</wadl:resource>
-			<!-- list image members, update image members, delete image members -->
-			<wadl:resource href="../../wadl/image-2.0.wadl#MemberID">
-				<wadl:method href="listImageMembers"/>
-				<wadl:method href="updateImageMember"/>
-				<wadl:method href="deleteImageMember"/>
-			</wadl:resource>
-		</wadl:resources>
+		<title>Image Sharing Operations</title>
+		<para>Service developers use the operations described in the following sections to manage <glossterm
+				baseform="Image Member">image members</glossterm>. </para>
+		<section xml:id="Image_Sharing">
+			<title>Image Sharing between Image Producers and Image Consumers</title>
+			<para>Images can be created and deleted by image producers, updated by image consumers, and listed by both image
+				producers and image consumers.</para>
+			<para>The producer shares an image with the consumer by making the consumer a <glossterm baseform="Member"
+					>member</glossterm> of that image. The consumer then accepts or rejects the image by changing the member
+				status. Once accepted, the image appears in the consumer's image list.</para>
+			<note>
+				<para>
+					<itemizedlist>
+						<listitem>
+							<para>Image producers add or remove image members, but may not modify the member status of an
+								image member. </para>
+						</listitem>
+						<listitem>
+							<para>Image consumers change their own member status, but may not add or remove themselves as an
+								image member. </para>
+						</listitem>
+						<listitem>
+							<para>Image consumers can boot from any image shared by the image producer, regardless of the
+								member status, as long as the image consumer knows the image ID.</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</note>
+			<para/>
+			<para>Here is a typical workflow for image sharing, after image creation:</para>
+			<orderedlist>
+				<listitem>
+					<para>The producer posts the availability of specific images on a public website.</para>
+				</listitem>
+				<listitem>
+					<para>A potential consumer provides the producer with his/her tenant ID and email address.</para>
+				</listitem>
+				<listitem>
+					<para>The producer uses the &CImA; to share the image with the consumer.</para>
+					<para>The API method (including request body details) is: <olink targetdoc="ci-devguide"
+							targetptr="POST_createImageMember_v2_images__image_id__members_Image_Producer_Calls"
+							>"POST_createImageMember_v2_images__image_id__members_Image_Producer_Calls"</olink></para>
+				</listitem>
+				<listitem>
+					<para>The producer notifies the consumer via email that the image has been shared and provides the
+						image's ID (<glossterm>UUID</glossterm>).</para>
+				</listitem>
+				<listitem>
+					<para>If the consumer wishes the image to appear in his/her image list, the consumer uses the &CImA; to
+						change the image status to <literal>accepted</literal>. </para>
+					<para>The API method (including request body details) is: <olink targetdoc="ci-devguide"
+							targetptr="PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"
+							>"PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"</olink></para>
+				</listitem>
+				<listitem>
+					<para>If the consumer subsequently wishes to hide the image, the consumer uses the &CImA; to change the
+						member status to <literal>rejected</literal>. If the consumer wishes to hide the image, but is open
+						to the possibility of being reminded by the producer that the image is available, the consumer uses
+						the &CImA; to change the member status to <literal>pending</literal>. </para>
+					<para>The API method (including request body details) is: <olink targetdoc="ci-devguide"
+							targetptr="PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"
+							>"PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"</olink></para>
+				</listitem>
+			</orderedlist>
+			<note>
+				<para>In the &CImA;, the member status has two possible effects: <itemizedlist>
+						<listitem>
+							<para>If the member status is not <literal>accepted</literal>, the image will not appear in the
+								consumer's default image list. </para>
+						</listitem>
+						<listitem>
+							<para>The consumer's image list may be filtered by status to see shared images in the various
+								member statuses. For example, the consumer can discover images that have been shared with him
+								or her by filtering on <code>visibility=shared&amp;member_status=pending</code>.</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</note>
+		</section>
+
+		<section xml:id="Image_Both_Calls">
+			<title>Image Operations for Both Producers and Consumers</title>
+			<para> Service developers use the operations described in this section to list shared <glossterm
+					baseform="Image Member">image members</glossterm>, regardless of whether the service developers are
+				producers or consumers of the image members. </para>
+			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+				<!-- list image members -->
+				<wadl:resource href="../../wadl/image-2.0.wadl#Members">
+					<wadl:method href="listImageMembers"/>
+				</wadl:resource>
+			</wadl:resources>
+		</section>
+
+		<section xml:id="Image_Producer_Calls">
+			<title>Image Operations for Producers</title>
+			<para> Service developers use the operations described in this section to share image with users, or remove
+				images from users, by creating or deleting <glossterm baseform="Image Member">image
+				members</glossterm>.</para>
+			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+				<!-- create image member -->
+				<wadl:resource href="../../wadl/image-2.0.wadl#Members">
+					<wadl:method href="createImageMember"/>
+				</wadl:resource>
+				<!-- delete image members -->
+				<wadl:resource href="../../wadl/image-2.0.wadl#MemberID">
+					<wadl:method href="deleteImageMember"/>
+				</wadl:resource>
+			</wadl:resources>
+		</section>
+
+		<section xml:id="Image_Consumer_Calls">
+			<title>Image Operations for Consumers</title>
+			<para> Service developers use the operations described in this section to update the status of a specified shared
+				image for the <glossterm baseform="Image Member">image member</glossterm>. </para>
+			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+				<!-- update image members -->
+				<wadl:resource href="../../wadl/image-2.0.wadl#MemberID">
+					<wadl:method href="updateImageMember"/>
+				</wadl:resource>
+			</wadl:resources>
+		</section>
 	</section>
 
 	<!-- Image Tags -->
 	<section xml:id="Image_Tag_Calls">
 		<title>Image Tag Operations</title>
-		<para> Service developers use the operations described in this section to manage <glossterm baseform="Image Tag">image
-				tags</glossterm>. </para>
+		<para> Service developers use the operations described in this section to manage <glossterm baseform="Image Tag"
+				>image tags</glossterm>. </para>
 		<!-- add image tag, delete image tag -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<wadl:resource href="../../wadl/image-2.0.wadl#Tagstag">
@@ -73,10 +181,14 @@
 	</section>
 
 	<!-- Image Schemas -->
-	<section xml:id="Image_Schema_Calls">
-		<title>Image Schema Operations</title>
-		<para>Service developers use the operations described in this section to get details about the image<glossterm
-				baseform="Schema">schemas</glossterm>.</para>
+	<section xml:id="Schema_Calls">
+		<title>JSON Schema Operations</title>
+		<para>Service developers use the operations described in this section to get details about the images and members
+				<glossterm baseform="Schema">schemas</glossterm>.</para>
+		<warning>
+			<para> The following schema operation responses are just an examples. Consider the response to your actual API
+				call as authoritative. </para>
+		</warning>
 		<!--- this section comes from 1 WADL: image-schemas-2.0 -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list image schemas -->
@@ -86,6 +198,14 @@
 			<!-- list image schema details -->
 			<wadl:resource href="../../wadl/image-schemas-2.0.wadl#Image-schema">
 				<wadl:method href="getImageSchema"/>
+			</wadl:resource>
+			<!-- list images member schema -->
+			<wadl:resource href="../../wadl/image-schemas-2.0.wadl#Image-members-schemas">
+				<wadl:method href="getImageMembersSchemas"/>
+			</wadl:resource>
+			<!-- list image member schema -->
+			<wadl:resource href="../../wadl/image-schemas-2.0.wadl#Image-member-schema">
+				<wadl:method href="getImageMemberSchema"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>

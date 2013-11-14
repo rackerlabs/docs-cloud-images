@@ -17,9 +17,8 @@
 %common;
 ]>
 
-<application 
-    xmlns="http://wadl.dev.java.net/2009/02" xmlns:wadl="http://wadl.dev.java.net/2009/02"
-    xmlns:xlink="http://www.w3.org/1999/xlink"  xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:wadl="http://wadl.dev.java.net/2009/02"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsdxt="http://docs.rackspacecloud.com/xsd-ext/v1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:imageapi="http://docs.openstack.org/image/api/v2.0" xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:csapi="http://docs.openstack.org/compute/api/v2" xmlns:common="http://docs.openstack.org/common/api/v1.0">
@@ -28,7 +27,7 @@
         <include href="../../src/common/xsd/api-common.xsd"/>
         <include href="../../src/common/xsd/fault.xsd"/>
     </grammars>
- 
+
     <!--*******************************************************-->
     <!--             All Resources                             -->
     <!--*******************************************************-->
@@ -42,11 +41,11 @@
                 <resource id="Image-schema" type="#SchemaList" path="image">
                     <method href="#getImageSchema"/>
                 </resource>
-                <resource id="Schemas-Image-members" type="#SchemasList" path="members">
-                    <method href="#getSchemasImageMembers"/>
+                <resource id="Image-members-schemas" type="#SchemasList" path="members">
+                    <method href="#getImageMembersSchemas"/>
                 </resource>
-                <resource id="Schemas-Image-member" type="#SchemaList" path="member">
-                    <method href="#getSchemasImageMember"/>
+                <resource id="Image-member-schema" type="#SchemaList" path="member">
+                    <method href="#getImageMemberSchema"/>
                 </resource>
             </resource>
         </resource>
@@ -56,11 +55,14 @@
     <!--               All Methods                             -->
     <!--*******************************************************-->
 
-    <!-- Get Images Schema -->
+    <!-- Image Schema Operations -->
+    <!-- List Images Schema -->
     <method name="GET" id="getImagesSchema">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Images Schema">
-            <para role="shortdesc">Gets a json-schema document that represents an images entity, which is a container of image 
-                entities.</para>
+            <para role="shortdesc">Gets a json-schema document that represents an images entity, which is a container of
+                image entities.</para>
+            <para>The following schema is just an example. Consider only the response to the API call as
+                authoritative.</para>
         </wadl:doc>
         <response status="200">
             <representation mediaType="application/json">
@@ -68,13 +70,14 @@
                     <xsdxt:code href="../common/samples/schemas-images-get-response.json"/>
                 </wadl:doc>
             </representation>
-        </response> &commonFaults; &getFaults;
-    </method>
-   
+        </response> &commonFaults; &getFaults; </method>
+
     <!-- Get Image Schema -->
     <method name="GET" id="getImageSchema">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Schema">
             <para role="shortdesc">Gets a json-schema document that represents a single image entity. </para>
+            <para>The following schema is just an example. Consider only the response to the API call as
+                authoritative.</para>
         </wadl:doc>
         <response status="200">
             <representation mediaType="application/json">
@@ -82,15 +85,16 @@
                     <xsdxt:code href="../common/samples/schemas-image-get-response.json"/>
                 </doc>
             </representation>
-        </response> &commonFaults; &getFaults; 
-    </method>
-    
-    <!-- Get Images Member Schema -->
-    <method name="GET" id="getSchemasImageMembers">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Schemas Image Members">
-            <para role="shortdesc">Gets a json-schema document that represents an image members entity.</para>
-            <para>An image members entity is a container of image member entities.</para>
-            <para>The following schema is just an example. Consider only the response to the API call as authoritative.</para>
+        </response> &commonFaults; &getFaults; </method>
+
+    <!-- Image Member Schema Operations -->
+    <!-- List Image Members Schema -->
+    <method name="GET" id="getImageMembersSchema">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Members Schema">
+            <para role="shortdesc">Gets a json-schema document that represents an image members entity (a container of member
+                entities).</para>
+            <para>The following schema is just an example. Consider only the response to the API call as
+                authoritative.</para>
         </wadl:doc>
         <response status="200">
             <representation mediaType="application/json">
@@ -100,12 +104,13 @@
             </representation>
         </response>
     </method>
-    
+
     <!-- Get Image Member Schema -->
-    <method name="GET" id="getSchemasImageMember">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Schemas Image Member">
+    <method name="GET" id="getImageMemberSchema">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Member Schema">
             <para role="shortdesc">Gets a json-schema document that represents an image member entity.</para>
-            <para>The following schema is just an example. Consider only the response to the API call as authoritative.</para>
+            <para>The following schema is just an example. Consider only the response to the API call as
+                authoritative.</para>
         </wadl:doc>
         <response status="200">
             <representation mediaType="application/json">
@@ -115,4 +120,39 @@
             </representation>
         </response>
     </method>
+
+    <!-- Task Schema Operations (need correct text and examples)-->
+    <!-- List Tasks Schemas -->
+    <!--    <method name="GET" id="getTasksSchema">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Tasks Schema">
+            <para role="shortdesc">Gets a json-schema document that represents an tasks entity (a container of task
+                entities).</para>
+            <para>The following schema is just an example. Consider only the response to the API call as
+                authoritative.</para>
+        </wadl:doc>
+        <response status="200">
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/schemas-image-members-get-response.json"/>
+                </doc>
+            </representation>
+        </response>
+    </method>-->
+
+    <!-- Get Task Schema -->
+    <!--    <method name="GET" id="getTaskSchema">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Task Schema">
+            <para role="shortdesc">Gets a json-schema document that represents an task entity.</para>
+            <para>The following schema is just an example. Consider only the response to the API call as
+                authoritative.</para>
+        </wadl:doc>
+        <response status="200">
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:code href="../common/samples/schemas-image-member-get-response.json"/>
+                </doc>
+            </representation>
+        </response>
+    </method>-->
+
 </application>

@@ -26,17 +26,17 @@
     <section xml:id="image-identifiers">
         <title>Image Identifiers</title>
         <para>Images are uniquely identified by a <glossterm>URI</glossterm> that matches the following signature:</para>
-        <para><code>&lt;image server location>/v1/images/&lt;image ID></code></para>
+        <para><code>{image server location}/v2/images/{image_ID}</code></para>
         <para>
             <variablelist>
                 <varlistentry>
-                    <term><code>&lt;image server location></code></term>
+                    <term><code>{image server location}</code></term>
                     <listitem>
                         <para>The resource location of the &CImS; that knows about an image</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term><code>&lt;image ID></code></term>
+                    <term><code>{image_ID}</code></term>
                     <listitem>
                         <para>The image identifier, which is a <glossterm>UUID</glossterm>, making it globally unique</para>
                     </listitem>
@@ -46,7 +46,7 @@
     </section>
 
     <!--Image Statuses-->
-    <section xml:id="image-statuses">
+<!--    <section xml:id="image-statuses" security="internal">
         <title>Image Statuses</title>
         <para>Images in the &CImS; can have one of the following statuses:</para>
         <variablelist>
@@ -98,7 +98,7 @@
                 </listitem>
             </varlistentry>
         </variablelist>
-    </section>
+    </section>-->
 
     <!--Disk and Container Formats-->
     <section xml:id="disk-container-formats">
@@ -112,16 +112,17 @@
             <title>Disk Formats</title>
             <para>The disk format of a virtual machine image is the format of the underlying disk image. Virtual appliance
                 vendors have different formats for laying out the information contained in a virtual machine image.</para>
-            <para>You can set your image's disk format to one of the following types:</para>
+            <para>You can set your image's disk format to <!--one of--> the following type<!--s-->:</para>
             <variablelist>
-                <varlistentry>
+                <!-- Per Brian, only supported type at launch is vhd -->
+<!--                <varlistentry>
                     <term><emphasis role="bold">raw</emphasis></term>
                     <listitem>
                         <para>An unstructured disk format, natively supported by both <glossterm>KVM</glossterm> and
                                 <glossterm>Xen</glossterm>
                             <glossterm baseform="Hypervisor">hypervisors</glossterm></para>
                     </listitem>
-                </varlistentry>
+                </varlistentry>-->
                 <varlistentry>
                     <term><emphasis role="bold">vhd</emphasis></term>
                     <listitem>
@@ -129,7 +130,7 @@
                                 monitors</glossterm> from VMware, Xen, Microsoft, VirtualBox, and others</para>
                     </listitem>
                 </varlistentry>
-                <varlistentry>
+                <!--<varlistentry>
                     <term><emphasis role="bold">vmdk</emphasis></term>
                     <listitem>
                         <para>A common disk format supported by many common <glossterm baseform="Virtual Machine Monitor"
@@ -186,8 +187,9 @@
                     <listitem>
                         <para>An Amazon machine image (AMI) in raw format</para>
                     </listitem>
-                </varlistentry>
+                </varlistentry>-->
             </variablelist>
+            <note><para>There are other formats, but vhd is currently the only supported format in &CImS;.</para></note>
         </section>
 
         <!--Container Format-->
@@ -200,14 +202,15 @@
                     OpenStack, so it is safe to specify <emphasis role="bold">bare</emphasis> as the container format, if you
                     are unsure.</para>
             </note>
-            <para>You can set your image's container format to one of the following types:</para>
+            <para>You can set your image's container format to <!--one of--> the following type<!--s-->:</para>
             <variablelist>
-                <varlistentry>
+                <!-- Only supported format is ovf at launch, per Brian-->
+<!--                <varlistentry>
                     <term><emphasis role="bold">bare</emphasis></term>
                     <listitem>
                         <para>No container or metadata envelope for the image</para>
                     </listitem>
-                </varlistentry>
+                </varlistentry>-->
                 <varlistentry>
                     <term><emphasis role="bold">ovf</emphasis></term>
                     <listitem>
@@ -215,7 +218,7 @@
                             distributing software and applications for virtual machines</para>
                     </listitem>
                 </varlistentry>
-                <varlistentry>
+<!--                <varlistentry>
                     <term><emphasis role="bold">aki</emphasis></term>
                     <listitem>
                         <para>An Amazon kernel image (AKI)</para>
@@ -232,8 +235,9 @@
                     <listitem>
                         <para>An Amazon machine image (AMI)</para>
                     </listitem>
-                </varlistentry>
+                </varlistentry>-->
             </variablelist>
+            <note><para>There are other formats, but ovf is currently the only supported format in &CImS;.</para></note>
         </section>
     </section>
 
@@ -243,7 +247,9 @@
         <para> To help end users use your images, you can put additional common properties, or metadata, on your images. </para>
         <para>The available properties and their expected values include the following options:</para>
         <glosslist>
-            <glossentry>
+            <!-- Per Brian, at launch only valid properties are os-distro and os-version -->
+<!--            <glossentry>
+                
                 <glossterm><emphasis role="bold">architecture</emphasis></glossterm>
                 <glossdef>
                     <para>The CPU architecture that must be supported by the <glossterm baseform="Hypervisor"
@@ -429,7 +435,7 @@
                 </glossdef>
             </glossentry>
             <glossentry>
-                <glossterm><emphasis role="bold">instance_uuid</emphasis></glossterm>
+                <glossterm baseform="UUID"><emphasis role="bold">instance_uuid</emphasis></glossterm>
                 <glossdef>
                     <para>The ID of an instance used to create an image</para>
                 </glossdef>
@@ -447,7 +453,7 @@
                     <para>The ID of image stored in Cloud Images that should be used as the ramdisk when booting (starting
                         up) an AMI-style image</para>
                 </glossdef>
-            </glossentry>
+            </glossentry>-->
             <glossentry>
                 <glossterm><emphasis role="bold">os_distro</emphasis></glossterm>
                 <glossdef>
@@ -582,5 +588,4 @@
             </glossentry>
         </glosslist>
     </section>
-    <xi:include href="images-glossary.xml"/>
 </chapter>

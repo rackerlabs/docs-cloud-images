@@ -9,8 +9,8 @@
         <glossdef>
             <para>Client for URLs (cURL) is a command line tool for getting and sending files using URL syntax, useful for
                 executing API operations. For example, to delete an image you might use:
-                <programlisting>curl -i -X DELETE -H "X-Auth-Token: $OS_AUTH_TOKEN" \
-                $OS_IMAGE_URL/v2/images/7b97f37c-899d-44e8-aaa0-543edbc4eaad</programlisting></para>
+                <programlisting>
+                    curl -i -X DELETE -H "X-Auth-Token: $OS_AUTH_TOKEN" \$OS_IMAGE_URL/v2/images/7b97f37c-899d-44e8-aaa0-543edbc4eaad</programlisting></para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-hypervisor">
@@ -25,9 +25,8 @@
         <glossterm><emphasis role="bold">Image</emphasis></glossterm>
         <glossdef>
             <para>A virtual machine image is a single file which contains a virtual disk that has an installed bootable
-                operating system. In the Images API, an image is represented by a JSON-encoded data structure (the image <glossterm
-                    baseform="Schema">schema</glossterm>) and its raw binary data (the <glossterm baseform="Image File"
-                    >image file</glossterm>). </para>
+                operating system. In the &CImA;, an image is represented by a JSON-encoded data structure (the image
+                schema) and its raw binary data (the image file).</para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-file">
@@ -76,7 +75,7 @@
         <glossdef>
             <para>An Internet media type is a standard identifier used on the Internet to indicate the type of data contained
                 in a file. A media type is composed of a type, a subtype, and zero or more optional parameters. For example,
-                an HTML file might be designated <emphasis role="italic">text/html; charset=UTF-8</emphasis></para>
+                an HTML file might be designated <literal>text/html; charset=UTF-8</literal></para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-qemu">
@@ -89,9 +88,8 @@
     <glossentry xml:id="gl-schema">
         <glossterm><emphasis role="bold">Schema</emphasis></glossterm>
         <glossdef>
-            <para>The Images API supplies <glossterm baseform="JSON">json</glossterm> documents describing the JSON-encoded
-                data structures that represent domain objects, so that a client knows exactly what to expect in an API
-                response.</para>
+            <para>The &CImA; supplies json documents describing the JSON-encoded data structures that represent domain
+                objects, so that a client knows exactly what to expect in an API response.</para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-uri">
@@ -105,7 +103,7 @@
     <glossentry xml:id="gl-uuid">
         <glossterm><emphasis role="bold">UUID</emphasis></glossterm>
         <glossdef>
-            <para>A universal unique identifier (uuid) is a 128-bit that is used to uniquely identify an object on the
+            <para>A universal unique identifier (UUID) is a 128-bit that is used to uniquely identify an object on the
                 internet. </para>
         </glossdef>
     </glossentry>

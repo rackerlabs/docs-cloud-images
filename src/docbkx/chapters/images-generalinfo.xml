@@ -5,7 +5,6 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="general-api-information">
     <title>General API Information</title>
     <?dbhtml stop-chunking?>
-
     <para> Cloud Images brings access to the OpenStack Image Registry and Delivery Service directly to Rackspace open cloud
         customers, thereby providing services for discovering, registering, and retrieving virtual machine <glossterm
             baseform="Image">images</glossterm> and their metadata by using a RESTful API. </para>
@@ -15,14 +14,11 @@
         repository.</para>
     <para>Image <emphasis role="italics">import/export</emphasis> enables customers to import images into the Rackspace
         cloud. Customers upload the image to Cloud Files, and then they use the <emphasis role="italics">import</emphasis>
-        feature to make it into a cloud image. They can store the cloud image in any Cloud Files location for future
-        downloading.</para>
+        feature to make it into a cloud image. The export feature allows customers to copy images from Cloud Images into
+        Cloud Files for future downloading.</para>
     <para>Cloud Images has the following expected benefits: <itemizedlist>
             <listitem>
-                <para>The open cloud becomes even more open.</para>
-            </listitem>
-            <listitem>
-                <para>Images are imported and exported among public cloud, private cloud and sources outside of
+                <para>Images can be imported and exported among public cloud, private cloud and sources outside of
                     Rackspace.</para>
                 <itemizedlist>
                     <listitem>
@@ -32,7 +28,7 @@
                         <para>Images are imported from a private cloud into the public cloud for cloud-bursting.</para>
                     </listitem>
                     <listitem>
-                        <para>Images created in the public cloud are imported to a private cloud, or to another provider's
+                        <para>Images created in the public cloud can be imported to a private cloud, or to another provider's
                             cloud, for redundancy and high availability.</para>
                     </listitem>
                 </itemizedlist>
@@ -55,16 +51,29 @@
     <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Reqresponse">
         <title>API Request and Response Information</title>
-        <para>The Cloud Images API primarily accepts and serves <glossterm baseform="JSON">JSON-encoded</glossterm> data. For
-            uploading and downloading image files, the API also accepts and serves binary image data. Most requests that send
-            JSON-encoded data must have the proper media type in their Content-Type header: <code>'application/json'</code>.
-            HTTP &PATCH; requests must use the patch <glossterm baseform="Media type">media type</glossterm> defined for the
-            entity they intend to modify. Requests that upload image data should use the media type
-                <code>'application/octet-stream'</code>.</para>
+        <para>The &CImA; primarily accepts and serves <glossterm baseform="JSON">JSON-encoded</glossterm> data. The
+                <glossterm baseform="Media type">media type</glossterm> required in the request varies by the following
+            request types: <itemizedlist>
+                <listitem>
+                    <para>Requests that send JSON-encoded data use this <glossterm baseform="Media type">media
+                            type</glossterm> in their Content-Type header: <literal>'application/json'</literal>.</para>
+                </listitem>
+                <listitem>
+                    <para>Requests that use HTTP &PATCH; syntax use the media type defined for the entity they intend to
+                        modify.</para>
+                </listitem>
+                <listitem>
+                    <para>Requests that upload image data should use this media type
+                            <literal>'application/octet-stream'</literal>.</para>
+                </listitem>
+            </itemizedlist>
+        </para>
         <para>The necessary json-schema documents are provided at predictable <glossterm baseform="URI">URIs</glossterm>. A
             consumer validates server responses and client requests based on the published schemas. The schemas contained in
             this document are only examples and should not be used to validate your requests. A client should always fetch
             schemas from the server.</para>
+        <!--        <para security="internal">For uploading and downloading image files, the API also accepts and serves binary image
+            data.</para>-->
     </section>
 
     <!--Authentication-->

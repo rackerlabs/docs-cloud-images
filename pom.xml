@@ -48,27 +48,6 @@
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
 						</configuration>
 					</execution>
-					<!-- HTML for images-devguide -->
-					<execution>
-						<id>g2-admin</id>
-						<goals>
-							<goal>generate-webhelp</goal>
-						</goals>
-						<phase>generate-sources</phase>
-						<configuration>
-							<includes>ci-devguide.xml</includes>
-							<!-- if the condition attribute is present in the source, it must have admin in it
-		                         (<para condition="admin">something only for the Admin book</para>)
-		                         or the element is stripped -->
-							<profileCondition>admin</profileCondition>
-							<security>internal</security>
-							<statusBarText>PREVIEW RACKER</statusBarText>
-							<canonicalUrlBase>http://docs-internal.rackspace.com/images/api/v1.0/ci-devguide/content</canonicalUrlBase>
-							<!-- These parameters only apply to webhelp -->
-							<enableDisqus>intranet</enableDisqus>
-							<enableGoogleAnalytics>0</enableGoogleAnalytics>
-						</configuration>
-					</execution>
 				</executions>
 				<configuration>
 					<!-- Set to Internet or intranet to turn on comments -->
