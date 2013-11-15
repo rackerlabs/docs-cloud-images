@@ -59,8 +59,8 @@
     <!-- List Images Schema -->
     <method name="GET" id="getImagesSchema">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Images Schema">
-            <para role="shortdesc">Gets a json-schema document that represents an images entity, which is a container of
-                image entities.</para>
+            <para role="shortdesc">Gets a json-schema document that represents an image members entity, which is a container of
+                image member entities.</para>
             <para>The following schema is just an example. Consider only the response to the API call as
                 authoritative.</para>
         </wadl:doc>
@@ -89,7 +89,7 @@
 
     <!-- Image Member Schema Operations -->
     <!-- List Image Members Schema -->
-    <method name="GET" id="getImageMembersSchema">
+    <method name="GET" id="getImageMembersSchemas">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Members Schema">
             <para role="shortdesc">Gets a json-schema document that represents an image members entity (a container of member
                 entities).</para>

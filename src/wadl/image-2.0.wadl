@@ -227,7 +227,6 @@
                 is provided as the <parameter>sort_key</parameter>. </para>
         </wadl:doc>
         <request>
-
             <param name="limit" style="query" required="false" type="xsd:string">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <para>Requests a specific page size. Expect a response to a limited request to return between zero items
@@ -374,9 +373,6 @@
         </wadl:doc>
         <request>
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-member-update-request.json"/>
-                </wadl:doc>
                 <param name="visibility" style="query" type="xsd:string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"> Filters images on visibility. Options for visibility are
                         as follows: <variablelist>

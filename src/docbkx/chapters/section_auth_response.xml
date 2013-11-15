@@ -24,25 +24,25 @@
     </para>
     <para> The authentication response contains the following elements: <itemizedlist>
             <listitem>
-                <para><emphasis role="bold">&lt;serviceCatalog></emphasis> - a list of services</para>
+                <para><emphasis role="bold">serviceCatalog</emphasis> - a list of services</para>
                 <para> The number and type of services vary by account. Service objects include the following elements: <itemizedlist>
                         <listitem>
-                            <para><emphasis role="bold">&lt;name</emphasis> - the service name</para>
+                            <para><emphasis role="bold">name</emphasis> - the service name</para>
                         </listitem>
                         <listitem>
-                            <para><emphasis role="bold">&lt;type</emphasis> - the OpenStack service type</para>
+                            <para><emphasis role="bold">type</emphasis> - the OpenStack service type</para>
                         </listitem>
                         <listitem>
-                            <para><emphasis role="bold">&lt;endpoints</emphasis> - the list of service endpoints</para>
+                            <para><emphasis role="bold">endpoints</emphasis> - the list of service endpoints</para>
                         </listitem>
                     </itemizedlist>
                 </para>
             </listitem>
             <listitem>
-                <para><emphasis role="bold">&lt;token></emphasis> - the token and details about the token</para>
+                <para><emphasis role="bold">token</emphasis> - the token and details about the token</para>
             </listitem>
             <listitem>
-                <para><emphasis role="bold">&lt;user></emphasis> - details about the user who requested authentication</para>
+                <para><emphasis role="bold">user</emphasis> - details about the user who requested authentication</para>
             </listitem>
         </itemizedlist>
     </para>
@@ -51,15 +51,15 @@
         <calloutlist>
             <callout arearefs="credentials.xml.name">
                 <para><emphasis role="bold">The name of the service</emphasis> appears in the <code>name</code> field of the
-                    unnamed service object within the <code>serviceCatalog</code> element.</para>
+                    service object within the <code>serviceCatalog</code> element.</para>
                 <para>Locate the correct service name in the service catalog. For example, the service name for Cloud Images
                     is <literal>cloudImages</literal>. </para>
                 <para> </para>
             </callout>
             <callout arearefs="credentials.xml.endpoints">
                 <para><emphasis role="bold">Endpoints for requesting Rackspace Cloud services</emphasis> appear in the
-                        <code>endpoints</code> element in the unnamed service object within the <code>serviceCatalog</code>
-                    element. </para>
+                        <code>endpoints</code> element in the service object within the <code>serviceCatalog</code>
+                    element.</para>
                 <para>Endpoint information includes the public URL, region, tenant ID, and version information. </para>
                 <para>Multiple endpoints might be shown to enable regional choice. Select the appropriate endpoint for the
                     region that you want to interact with by examining the <code>region</code> field.</para>
@@ -69,8 +69,8 @@
                 <para><emphasis role="bold">The public URL for the service</emphasis> appears in the <code>publicURL</code>
                     element in the <literal>endpoints</literal> element. Use this element to access the chosen
                     service.</para>
-                <para>To access the &CImS;, include the <code>publicURL</code> value for the <literal>cloudImages</literal>
-                    for your chosen endpoint. </para>
+                <para>To access the &CImS;, use the <code>publicURL</code> value for the <literal>cloudImages</literal> for
+                    your chosen endpoint. </para>
                 <para> </para>
             </callout>
             <callout arearefs="credentials.xml.expires">
@@ -99,7 +99,7 @@
     <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>
                     <prompt>$</prompt> export images_url="https://iad.images.api.rackspacecloud.com/v2"
                     <prompt>$</prompt> export token="abcd123abcd1234567a01b2cdefe3a45"
-                    <prompt>$</prompt> curl -s $url/images \-H "X-Auth-Token: $token" | python -m json.tool</programlisting>
+                    <prompt>$</prompt> curl -s $url/images -H "X-Auth-Token: $token" | python -m json.tool</programlisting>
     <para> </para>
     <?hard-pagebreak?>
 </section>
