@@ -30,12 +30,14 @@
 				>images</glossterm>. </para>
 		<!--- this section comes from 1 WADL: image-2.0 -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- list images -->
 			<wadl:resource href="../../wadl/image-2.0.wadl#Images">
 				<wadl:method href="listImages"/>
 			</wadl:resource>
-			<!-- list images, get image, delete image -->
+			<!-- get image, update image, and delete image -->
 			<wadl:resource href="../../wadl/image-2.0.wadl#ImageID">
 				<wadl:method href="getImage"/>
+				<wadl:method href="updateImage"/>
 				<wadl:method href="deleteImage"/>
 			</wadl:resource>
 		</wadl:resources>

@@ -130,6 +130,7 @@
 
     <!-- Update Image -->
     <method name="PATCH" id="updateImage">
+
         <wadl:doc xml:lang="EN" title="Update Image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Updates the specified image. </para>
             <para>The request body must conform to one of the following media types:</para>
@@ -141,8 +142,15 @@
                     <para><code>application/openstack-images-v2.1-json-patch</code></para>
                 </listitem>
             </itemizedlist>
-            <para>You can also use the <code>PATCH</code> method to add or remove image properties. </para>
+            <para>You can also use the <code>PATCH</code> method to add or remove image properties. For more information, go
+                to the <code>HTTP PATCH</code>method section in the Concepts chapter of this &CImA; guide.</para>
         </wadl:doc>
+        <!-- Fix and uncomment this once we have viable link for external client guide -->
+        <!--        <doc xml:lang="EN">
+            <p xmlns="http://www.w3.org/1999/xhtml">For more information about the <code>PATCH</code> method, see the <a
+                    href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html"
+                    >"Sample Authentication Request and Response"</a> section. </p>
+        </doc>-->
         <request>
             <representation mediaType="application/json" element="image">
                 <doc xml:lang="EN">

@@ -4,6 +4,13 @@
 <glossary xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Glossary-000">
     <title>Glossary</title>
+    <glossentry xml:id="gl-abnf">
+        <glossterm><emphasis role="bold">ABNF</emphasis></glossterm>
+        <glossdef>
+            <para>The Augmented BNF (ABNF) format is a plain-text (non-XML) representation, which is similar to a traditional
+                BNF (Backus-Naur Form) grammar, and is used as a bidirectional communications protocol.</para>
+        </glossdef>
+    </glossentry>
     <glossentry xml:id="gl-curl">
         <glossterm><emphasis role="bold">cURL</emphasis></glossterm>
         <glossdef>
@@ -25,8 +32,8 @@
         <glossterm><emphasis role="bold">Image</emphasis></glossterm>
         <glossdef>
             <para>A virtual machine image is a single file which contains a virtual disk that has an installed bootable
-                operating system. In the &CImA;, an image is represented by a JSON-encoded data structure (the image
-                schema) and its raw binary data (the image file).</para>
+                operating system. In the &CImA;, an image is represented by a JSON-encoded data structure (the image schema)
+                and its raw binary data (the image file).</para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-file">
@@ -61,6 +68,15 @@
             <para>Javascript Object Notation, json, is an open standard format that uses human-readable text to transmit data
                 objects consisting of key:value pairs. The following json example might be used to represent an object that
                 describes a person: <code> { "firstname": "John", "lastname": "Smith", "age": 25 } </code></para>
+        </glossdef>
+    </glossentry>
+    <glossentry xml:id="gl-json-ptr">
+        <glossterm><emphasis role="bold">JSON Pointer</emphasis></glossterm>
+        <glossdef>
+            <para>A JSON Pointer defines a syntax for identifying a specific value within a JSON document. In this &CImA;
+                guide, a restricted JSON pointer is a Unicode string containing a sequence of exactly one reference token,
+                prefixed by a '/' (%x2F) character. Each reference token is a sequence of unreserved and/or percent-encoded
+                characters.</para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-kvm">
@@ -100,11 +116,19 @@
                 character, and then by a scheme-specific part (which varies depending on the context).</para>
         </glossdef>
     </glossentry>
+    <glossentry xml:id="gl-unicode">
+        <glossterm><emphasis role="bold">Unicode</emphasis></glossterm>
+        <glossdef>
+            <para>The Unicode Standard is the universal character encoding standard for written characters and text. It
+                defines a consistent way of encoding multilingual text that enables the exchange of text data internationally
+                and creates the foundation for global software.</para>
+        </glossdef>
+    </glossentry>
     <glossentry xml:id="gl-uuid">
         <glossterm><emphasis role="bold">UUID</emphasis></glossterm>
         <glossdef>
             <para>A universal unique identifier (UUID) is a 128-bit that is used to uniquely identify an object on the
-                internet. </para>
+                internet.</para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-vmm">

@@ -8,8 +8,7 @@
     <para>To take advantage of the &CImS;, it is helpful to be familiar with the concepts outlined in this section.</para>
 
     <!--Image Entities-->
-    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
-        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="image-entities">
+    <section xml:id="image-entities">
         <title>Image Entities</title>
         <para>An image entity is represented by a <glossterm baseform="JSON">JSON-encoded</glossterm> data structure and its
             raw binary data. </para>
@@ -46,7 +45,7 @@
     </section>
 
     <!--Image Statuses-->
-<!--    <section xml:id="image-statuses" security="internal">
+    <!--    <section xml:id="image-statuses" security="internal">
         <title>Image Statuses</title>
         <para>Images in the &CImS; can have one of the following statuses:</para>
         <variablelist>
@@ -115,7 +114,7 @@
             <para>You can set your image's disk format to <!--one of--> the following type<!--s-->:</para>
             <variablelist>
                 <!-- Per Brian, only supported type at launch is vhd -->
-<!--                <varlistentry>
+                <!--                <varlistentry>
                     <term><emphasis role="bold">raw</emphasis></term>
                     <listitem>
                         <para>An unstructured disk format, natively supported by both <glossterm>KVM</glossterm> and
@@ -189,7 +188,9 @@
                     </listitem>
                 </varlistentry>-->
             </variablelist>
-            <note><para>There are other formats, but vhd is currently the only supported format in &CImS;.</para></note>
+            <note>
+                <para>There are other formats, but vhd is currently the only supported format in &CImS;.</para>
+            </note>
         </section>
 
         <!--Container Format-->
@@ -205,7 +206,7 @@
             <para>You can set your image's container format to <!--one of--> the following type<!--s-->:</para>
             <variablelist>
                 <!-- Only supported format is ovf at launch, per Brian-->
-<!--                <varlistentry>
+                <!--                <varlistentry>
                     <term><emphasis role="bold">bare</emphasis></term>
                     <listitem>
                         <para>No container or metadata envelope for the image</para>
@@ -218,7 +219,7 @@
                             distributing software and applications for virtual machines</para>
                     </listitem>
                 </varlistentry>
-<!--                <varlistentry>
+                <!--                <varlistentry>
                     <term><emphasis role="bold">aki</emphasis></term>
                     <listitem>
                         <para>An Amazon kernel image (AKI)</para>
@@ -237,7 +238,9 @@
                     </listitem>
                 </varlistentry>-->
             </variablelist>
-            <note><para>There are other formats, but ovf is currently the only supported format in &CImS;.</para></note>
+            <note>
+                <para>There are other formats, but ovf is currently the only supported format in &CImS;.</para>
+            </note>
         </section>
     </section>
 
@@ -248,7 +251,7 @@
         <para>The available properties and their expected values include the following options:</para>
         <glosslist>
             <!-- Per Brian, at launch only valid properties are os-distro and os-version -->
-<!--            <glossentry>
+            <!--            <glossentry>
                 
                 <glossterm><emphasis role="bold">architecture</emphasis></glossterm>
                 <glossdef>
@@ -587,5 +590,125 @@
                 </glossdef>
             </glossentry>
         </glosslist>
+    </section>
+
+    <!-- HTTP PATCH Method -->
+    <section xml:id="patch-method">
+        <title>HTTP PATCH Method</title>
+        <para>The &CImA; uses the <code>HTTP PATCH</code> to update image properties.</para>
+        <para>The HTTP PATCH request must provide a <glossterm baseform="Media type">media type</glossterm> so the server can
+            determine how the patch should be applied to an image resource. An unsupported media type will result in an
+                <errorcode>HTTP 415</errorcode> error code. For image resources, the supported media types for patch requests
+            are as follows: <itemizedlist>
+                <listitem>
+                    <para><code>'application/openstack-images-v2.0-json-patch'</code></para>
+                </listitem>
+                <listitem>
+                    <para><code>'application/openstack-images-v2.1-json-patch'</code></para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>The properties that can be modified in the &CImA; are as follows: <itemizedlist>
+                <listitem>
+                    <para>property 1 - sets the thingy</para>
+                </listitem>
+                <listitem>
+                    <para>property 2 - sets the other thingy</para>
+                </listitem>
+                <listitem>
+                    <para>property 3 - sets a completely different thingy</para>
+                </listitem>
+            </itemizedlist>
+        </para>
+
+        <section xml:id="restricted-json">
+            <title>Restricted JSON Pointers</title>
+            <para>The <literal>application/openstack-images-v2.0-json-patch</literal>
+                <glossterm baseform="Media type">media type</glossterm> defined in this section adopts a restricted form of
+                    <glossterm baseform="JSON Pointers">JSON-Pointers</glossterm>, limiting the number of tokens allowed to
+                one tokens. Restricted JSON Pointers are evaluated as ordinary JSON pointers.</para>
+            <note>
+                <para>If a reference token contains a tilde (<emphasis role="bold">~</emphasis> or <literal>(%x7E)</literal>)
+                    or a forward slash (<emphasis role="bold">/</emphasis> or <literal>(%x2F)</literal>), encode them as '~0'
+                    and '~1' respectively.</para>
+                <para>The <glossterm>ABNF</glossterm> syntax is as follows:
+                    <programlisting>
+restricted-json-pointer = "/" reference-token
+reference-token = *( unescaped / escaped )
+unescaped = %x00-2E / %x30-7D / %x7F-10FFFF
+escaped = "~" ( "0" / "1" )
+                    </programlisting>
+                </para>
+            </note>
+            <para>An example of converting image properties to JSON Pointers, which is necessary to use the <code>HTTP
+                    PATCH</code> method, is as follows:</para>
+            <para>Given the following <literal>image</literal> entity:
+                <programlisting>
+{
+    "id": "da3b75d9-3f4a-40e7-8a2c-bfab23927dea",
+    "name": "cirros-0.3.0-x86_64-uec-ramdisk",
+    "status": "active",
+    "visibility": "public",
+    "size": 2254249,
+    "checksum": "2cec138d7dae2aa59038ef8c9aec2390",
+    "~/.ssh/": "present",
+    "tags": ["ping", "pong"],
+    "created_at": "2012-08-10T19:23:50Z",
+    "updated_at": "2012-08-10T19:23:50Z",
+    "self": "/v2/images/da3b75d9-3f4a-40e7-8a2c-bfab23927dea",
+    "file": "/v2/images/da3b75d9-3f4a-40e7-8a2c-bfab23927dea/file",
+    "schema": "/v2/schemas/image"
+}             
+            </programlisting>
+            </para>
+            <para>The comparison of the JSON Pointer to the image entity key pair is as follows:
+                <programlisting>
+JSON Pointer        Image Entity Key Pair
+ /name          "name":"cirros-0.3.0-x86_64-uec-ramdisk"
+ /size          "size":"2254249"             
+ /tags          "tags":["ping", "pong"]
+ /~0~1.ssh~1    "~/.ssh/":"present"               
+            </programlisting>
+            </para>
+        </section>
+
+        <section xml:id="using-patch">
+            <title>Using the <code>HTTP PATCH</code> Method</title>
+            <para>The supported <glossterm baseform="Media types">media types</glossterm> for the <code>HTTP PATCH</code>
+                method allow a subset of operations defined in the <literal>application/json-patch</literal> media type. In
+                order to perform and operation, you need an operation object that consists of an operation member key pair
+                (the operation and its member value) and optional additional information, depending on the operation.</para>
+            <para>The allowed operations are as follows:<itemizedlist>
+                    <listitem>
+                        <para>add</para>
+                    </listitem>
+                    <listitem>
+                        <para>remove</para>
+                    </listitem>
+                    <listitem>
+                        <para>replace</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>The member value is a string containing a restricted <glossterm baseform="JSON Pointer">JSON
+                    pointer</glossterm> value that references the location within the target image entity to on which to
+                perform the operation.</para>
+            <note>
+                <para>If an operation object contains no recognized operation member, or more than one operation member, an
+                    error condition results.</para>
+            </note>
+            <para>The allowed operation values (or properties for the &CImA;) are:<itemizedlist>
+                    <listitem>
+                        <para>property 1</para>
+                    </listitem>
+                    <listitem>
+                        <para>property 2</para>
+                    </listitem>
+                    <listitem>
+                        <para>property 3</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
     </section>
 </chapter>
