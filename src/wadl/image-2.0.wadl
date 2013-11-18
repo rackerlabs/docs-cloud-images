@@ -143,7 +143,7 @@
                 </listitem>
             </itemizedlist>
             <para>You can also use the <code>PATCH</code> method to add or remove image properties. For more information, go
-                to the <code>HTTP PATCH</code>method section in the Concepts chapter of this &CImA; guide.</para>
+                to the <code>HTTP PATCH</code> method section in the Concepts chapter of this &CImA; guide.</para>
         </wadl:doc>
         <!-- Fix and uncomment this once we have viable link for external client guide -->
         <!--        <doc xml:lang="EN">

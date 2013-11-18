@@ -678,18 +678,6 @@ JSON Pointer        Image Entity Key Pair
                 method allow a subset of operations defined in the <literal>application/json-patch</literal> media type. In
                 order to perform and operation, you need an operation object that consists of an operation member key pair
                 (the operation and its member value) and optional additional information, depending on the operation.</para>
-            <para>The allowed operations are as follows:<itemizedlist>
-                    <listitem>
-                        <para>add</para>
-                    </listitem>
-                    <listitem>
-                        <para>remove</para>
-                    </listitem>
-                    <listitem>
-                        <para>replace</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
             <para>The member value is a string containing a restricted <glossterm baseform="JSON Pointer">JSON
                     pointer</glossterm> value that references the location within the target image entity to on which to
                 perform the operation.</para>
@@ -709,6 +697,48 @@ JSON Pointer        Image Entity Key Pair
                     </listitem>
                 </itemizedlist>
             </para>
+            <para>The allowed operations are as follows:<itemizedlist>
+                    <listitem>
+                        <para><olink targetdoc="ci-devguide" targetptr="patch_add">add</olink></para>
+                    </listitem>
+                    <listitem>
+                        <para><olink targetdoc="ci-devguide" targetptr="patch_remove">remove</olink></para>
+                    </listitem>
+                    <listitem>
+                        <para><olink targetdoc="ci-devguide" targetptr="patch_replace">replace</olink></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+
+            <section xml:id="patch_add">
+                <title>HTTP PATCH Add Method</title>
+                <para>The <emphasis role="bold">add</emphasis> method adds a new value at a specified location in the
+                    target image. The location must reference an image property to add to an existing image. The operation
+                    object contains a <parameter>value</parameter> member that specifies the value to be added. </para>
+                <para>For Example:</para>
+                <programlisting>
+{ "add": "/login-name", "value": "kvothe"}                
+                </programlisting>
+            </section>
+            <section xml:id="patch_remove">
+                <title>HTTP PATCH Remove Method</title>
+                <para>The <emphasis role="bold">remove</emphasis> method removes the specified image property from the
+                    target image. If no image property exists at the specified location, an error results. </para>
+                <para>Example</para>
+                <programlisting>
+{ "remove": "/login-name" }                
+                </programlisting>
+            </section>
+            <section xml:id="patch_replace">
+                <title>HTTP PATCH Replace Method</title>
+                <para>The <emphasis role="bold">replace</emphasis> method replaces the value of the specified image
+                    property in the target image with a new value. The operation object contains a
+                        <parameter>value</parameter> member that specifies the replacement value. </para>
+                <para>Example</para>
+                <programlisting>
+{ "replace": "/login-name", "value": "kote" }               
+                </programlisting>
+            </section>
         </section>
     </section>
 </chapter>
