@@ -595,7 +595,7 @@
     <!-- HTTP PATCH Method -->
     <section xml:id="patch-method">
         <title>HTTP PATCH Method</title>
-        <para>The &CImA; uses the <code>HTTP PATCH</code> to update image properties.</para>
+        <para>The &CImA; uses the <code>HTTP PATCH</code> to update any image properties.</para>
         <para>The HTTP PATCH request must provide a <glossterm baseform="Media type">media type</glossterm> so the server can
             determine how the patch should be applied to an image resource. An unsupported media type will result in an
                 <errorcode>HTTP 415</errorcode> error code. For image resources, the supported media types for patch requests
@@ -608,18 +608,13 @@
                 </listitem>
             </itemizedlist>
         </para>
-        <para>The properties that can be modified in the &CImA; are as follows: <itemizedlist>
-                <listitem>
-                    <para>property 1 - sets the thingy</para>
-                </listitem>
-                <listitem>
-                    <para>property 2 - sets the other thingy</para>
-                </listitem>
-                <listitem>
-                    <para>property 3 - sets a completely different thingy</para>
-                </listitem>
-            </itemizedlist>
-        </para>
+        <note>
+            <para>In addition to working with existing image properties, you can use the <code>HTTP PATCH</code> method to
+                add or modify user-defined properties, which you create, to make notes on an image. For example, you could
+                add <parameter>user_passed_qe</parameter> (with a true or false value or a date value) or
+                    <parameter>user_image_creator</parameter> (with a name for the value). All user-defined properties must
+                start with <emphasis role="bold">user_</emphasis>. </para>
+        </note>
 
         <section xml:id="restricted-json">
             <title>Restricted JSON Pointers</title>
@@ -685,18 +680,6 @@ JSON Pointer        Image Entity Key Pair
                 <para>If an operation object contains no recognized operation member, or more than one operation member, an
                     error condition results.</para>
             </note>
-            <para>The allowed operation values (or properties for the &CImA;) are:<itemizedlist>
-                    <listitem>
-                        <para>property 1</para>
-                    </listitem>
-                    <listitem>
-                        <para>property 2</para>
-                    </listitem>
-                    <listitem>
-                        <para>property 3</para>
-                    </listitem>
-                </itemizedlist>
-            </para>
             <para>The allowed operations are as follows:<itemizedlist>
                     <listitem>
                         <para><olink targetdoc="ci-devguide" targetptr="patch_add">add</olink></para>
@@ -712,9 +695,9 @@ JSON Pointer        Image Entity Key Pair
 
             <section xml:id="patch_add">
                 <title>HTTP PATCH Add Method</title>
-                <para>The <emphasis role="bold">add</emphasis> method adds a new value at a specified location in the
-                    target image. The location must reference an image property to add to an existing image. The operation
-                    object contains a <parameter>value</parameter> member that specifies the value to be added. </para>
+                <para>The <emphasis role="bold">add</emphasis> method adds a new value at a specified location in the target
+                    image. The location must reference an image property to add to an existing image. The operation object
+                    contains a <parameter>value</parameter> member that specifies the value to be added. </para>
                 <para>For Example:</para>
                 <programlisting>
 { "add": "/login-name", "value": "kvothe"}                
@@ -722,8 +705,8 @@ JSON Pointer        Image Entity Key Pair
             </section>
             <section xml:id="patch_remove">
                 <title>HTTP PATCH Remove Method</title>
-                <para>The <emphasis role="bold">remove</emphasis> method removes the specified image property from the
-                    target image. If no image property exists at the specified location, an error results. </para>
+                <para>The <emphasis role="bold">remove</emphasis> method removes the specified image property from the target
+                    image. If no image property exists at the specified location, an error results. </para>
                 <para>Example</para>
                 <programlisting>
 { "remove": "/login-name" }                
@@ -731,9 +714,9 @@ JSON Pointer        Image Entity Key Pair
             </section>
             <section xml:id="patch_replace">
                 <title>HTTP PATCH Replace Method</title>
-                <para>The <emphasis role="bold">replace</emphasis> method replaces the value of the specified image
-                    property in the target image with a new value. The operation object contains a
-                        <parameter>value</parameter> member that specifies the replacement value. </para>
+                <para>The <emphasis role="bold">replace</emphasis> method replaces the value of the specified image property
+                    in the target image with a new value. The operation object contains a <parameter>value</parameter> member
+                    that specifies the replacement value. </para>
                 <para>Example</para>
                 <programlisting>
 { "replace": "/login-name", "value": "kote" }               

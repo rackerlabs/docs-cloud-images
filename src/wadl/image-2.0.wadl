@@ -142,14 +142,15 @@
                     <para><code>application/openstack-images-v2.1-json-patch</code></para>
                 </listitem>
             </itemizedlist>
-            <para>You can also use the <code>PATCH</code> method to add or remove image properties. For more information, go
-                to the <code>HTTP PATCH</code> method section in the Concepts chapter of this &CImA; guide.</para>
+            <para>In addition to the Update Image operation, you can use the <code>HTTP PATCH</code> method to add or remove
+                image properties, including user-defined properties. For more information, go to the <code>HTTP PATCH</code> method section in the Concepts
+                chapter of this &CImA; guide.</para>
         </wadl:doc>
         <!-- Fix and uncomment this once we have viable link for external client guide -->
         <!--        <doc xml:lang="EN">
             <p xmlns="http://www.w3.org/1999/xhtml">For more information about the <code>PATCH</code> method, see the <a
-                    href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Sample_Request_Response-d1e64.html"
-                    >"Sample Authentication Request and Response"</a> section. </p>
+                    href="http://http://docs-internal-staging.rackspace.com/images/api/v1.0/ci-devguide-client/content/ch_image-concepts.html#patch-method.html"
+                    >HTTP PATCH Method</a> section. </p>
         </doc>-->
         <request>
             <representation mediaType="application/json" element="image">
@@ -272,7 +273,12 @@
             </param>
             <param name="owner" style="query" required="false" type="imageapi:string">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that shows images shared with me by the specified owner, where the owner is
+                    <para>Filter parameter that shows images shared with me by the specified tag.</para>
+                </wadl:doc>
+            </param>
+            <param name="tag" style="query" required="false" type="imageapi:string">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
+                    <para>Filter parameter that shows images with the specified tag, where the owner is
                         indicated by tenant ID.</para>
                 </wadl:doc>
             </param>
