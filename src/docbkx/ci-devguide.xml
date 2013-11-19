@@ -26,7 +26,7 @@
     </abstract>
     <revhistory>
       <revision>
-        <date>2013-11-07</date>
+        <date>2013-11-20</date>
         <revdescription>
           <para>Initial release.</para>
         </revdescription>
@@ -49,6 +49,6 @@
   <xi:include href="chapters/images-concepts.xml"/>
   <xi:include href="chapters/images-generalinfo.xml"/>
   <!-- this chapter is generated from the WADLs -->
-  <xi:include href="chapters/images-operations-client.xml"/>
+  <xi:include href="chapters/images-operations.xml"/>
   <xi:include href="chapters/images-glossary.xml"/>
 </book>

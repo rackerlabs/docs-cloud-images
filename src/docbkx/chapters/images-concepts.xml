@@ -595,10 +595,10 @@
     <!-- HTTP PATCH Method -->
     <section xml:id="patch-method">
         <title>HTTP PATCH Method</title>
-        <para>The &CImA; uses the <code>HTTP PATCH</code> to update any image properties.</para>
-        <para>The HTTP PATCH request must provide a <glossterm baseform="Media type">media type</glossterm> so the server can
-            determine how the patch should be applied to an image resource. An unsupported media type will result in an
-                <errorcode>HTTP 415</errorcode> error code. For image resources, the supported media types for patch requests
+        <para>The &CImA; uses the HTTP PATCH method to update image properties.</para>
+        <para>The HTTP PATCH request must provide a <glossterm baseform="Media type">media type</glossterm> so that the
+            server can determine how the changes should be applied to an image resource. An unsupported media type results in
+            an <errorcode>HTTP 415</errorcode> error code. For image resources, the supported media types for PATCH requests
             are as follows: <itemizedlist>
                 <listitem>
                     <para><code>'application/openstack-images-v2.0-json-patch'</code></para>
@@ -609,19 +609,20 @@
             </itemizedlist>
         </para>
         <note>
-            <para>In addition to working with existing image properties, you can use the <code>HTTP PATCH</code> method to
-                add or modify user-defined properties, which you create, to make notes on an image. For example, you could
-                add <parameter>user_passed_qe</parameter> (with a true or false value or a date value) or
-                    <parameter>user_image_creator</parameter> (with a name for the value). All user-defined properties must
-                start with <emphasis role="bold">user_</emphasis>. </para>
+            <para>In addition to working with existing image properties, you can use the HTTP PATCH method to add or modify
+                user-defined properties, which you create, to make notes on an image. For example, you could add
+                    <literal>user_passed_qe</literal> (with a true or false value or a date value) or
+                    <literal>user_image_creator</literal> (with a name for the value). All user-defined properties must start
+                with <emphasis role="bold">user_</emphasis>.</para>
         </note>
 
         <section xml:id="restricted-json">
             <title>Restricted JSON Pointers</title>
-            <para>The <literal>application/openstack-images-v2.0-json-patch</literal>
-                <glossterm baseform="Media type">media type</glossterm> defined in this section adopts a restricted form of
-                    <glossterm baseform="JSON Pointers">JSON-Pointers</glossterm>, limiting the number of tokens allowed to
-                one tokens. Restricted JSON Pointers are evaluated as ordinary JSON pointers.</para>
+            <para>The <literal>application/openstack-images-v2.0-json-patch</literal> and
+                    <literal>application/openstack-images-v2.1-json-patch</literal>
+                <glossterm baseform="Media type">media types</glossterm> adopt a restricted form of <glossterm
+                    baseform="JSON Pointer">JSON-Pointers</glossterm>, which limits the number of tokens allowed to one
+                token. Restricted JSON Pointers are evaluated as ordinary JSON Pointers.</para>
             <note>
                 <para>If a reference token contains a tilde (<emphasis role="bold">~</emphasis> or <literal>(%x7E)</literal>)
                     or a forward slash (<emphasis role="bold">/</emphasis> or <literal>(%x2F)</literal>), encode them as '~0'
@@ -636,8 +637,8 @@ escaped = "~" ( "0" / "1" )
                 </para>
             </note>
             <para>An example of converting image properties to JSON Pointers, which is necessary to use the <code>HTTP
-                    PATCH</code> method, is as follows:</para>
-            <para>Given the following <literal>image</literal> entity:
+                    PATCH</code> method, is as follows</para>
+            <para><guilabel>Image Entity</guilabel>:
                 <programlisting>
 {
     "id": "da3b75d9-3f4a-40e7-8a2c-bfab23927dea",
@@ -656,7 +657,7 @@ escaped = "~" ( "0" / "1" )
 }             
             </programlisting>
             </para>
-            <para>The comparison of the JSON Pointer to the image entity key pair is as follows:
+            <para><guilabel>Comparison of the JSON Pointer to the Image Entity Key Pair</guilabel>:
                 <programlisting>
 JSON Pointer        Image Entity Key Pair
  /name          "name":"cirros-0.3.0-x86_64-uec-ramdisk"
@@ -668,14 +669,13 @@ JSON Pointer        Image Entity Key Pair
         </section>
 
         <section xml:id="using-patch">
-            <title>Using the <code>HTTP PATCH</code> Method</title>
-            <para>The supported <glossterm baseform="Media types">media types</glossterm> for the <code>HTTP PATCH</code>
-                method allow a subset of operations defined in the <literal>application/json-patch</literal> media type. In
-                order to perform and operation, you need an operation object that consists of an operation member key pair
-                (the operation and its member value) and optional additional information, depending on the operation.</para>
-            <para>The member value is a string containing a restricted <glossterm baseform="JSON Pointer">JSON
-                    pointer</glossterm> value that references the location within the target image entity to on which to
-                perform the operation.</para>
+            <title>Using the HTTP PATCH Method</title>
+            <para>The supported <glossterm baseform="Media type">media types</glossterm> for the HTTP PATCH method allow a
+                subset of operations defined in the <literal>application/json-patch</literal> media type. To perform an
+                operation, you need an operation object that consists of an operation member key pair (the operation and its
+                member value) and optional additional information, depending on the operation.</para>
+            <para>The member value is a string that contains a restricted <glossterm>JSON Pointer</glossterm> value that
+                references the location within the target image entity on which to perform the operation.</para>
             <note>
                 <para>If an operation object contains no recognized operation member, or more than one operation member, an
                     error condition results.</para>
@@ -694,33 +694,34 @@ JSON Pointer        Image Entity Key Pair
             </para>
 
             <section xml:id="patch_add">
-                <title>HTTP PATCH Add Method</title>
-                <para>The <emphasis role="bold">add</emphasis> method adds a new value at a specified location in the target
-                    image. The location must reference an image property to add to an existing image. The operation object
-                    contains a <parameter>value</parameter> member that specifies the value to be added. </para>
-                <para>For Example:</para>
+                <title>HTTP PATCH Add Operation</title>
+                <para>The <command>add</command> operation adds a new value at a specified location in the
+                    target image. The location must reference an image property to add to an existing image. The operation
+                    object contains a value member that specifies the value to be added. </para>
+                <para><guilabel>Add Example</guilabel></para>
                 <programlisting>
 { "add": "/login-name", "value": "kvothe"}                
                 </programlisting>
             </section>
             <section xml:id="patch_remove">
-                <title>HTTP PATCH Remove Method</title>
-                <para>The <emphasis role="bold">remove</emphasis> method removes the specified image property from the target
-                    image. If no image property exists at the specified location, an error results. </para>
-                <para>Example</para>
+                <title>HTTP PATCH Remove Operation</title>
+                <para>The <command>remove</command> operation removes the specified image property from the
+                    target image. If no image property exists at the specified location, an error results. </para>
+                <para><guilabel>Remove Example</guilabel></para>
                 <programlisting>
 { "remove": "/login-name" }                
                 </programlisting>
             </section>
             <section xml:id="patch_replace">
-                <title>HTTP PATCH Replace Method</title>
-                <para>The <emphasis role="bold">replace</emphasis> method replaces the value of the specified image property
-                    in the target image with a new value. The operation object contains a <parameter>value</parameter> member
-                    that specifies the replacement value. </para>
-                <para>Example</para>
+                <title>HTTP PATCH Replace Operation</title>
+                <para>The <command>replace</command> operation replaces the value of the specified image
+                    property in the target image with a new value. The operation object contains a value member that
+                    specifies the replacement value. </para>
+                <para><guilabel>Replace Example</guilabel></para>
                 <programlisting>
 { "replace": "/login-name", "value": "kote" }               
                 </programlisting>
+
             </section>
         </section>
     </section>

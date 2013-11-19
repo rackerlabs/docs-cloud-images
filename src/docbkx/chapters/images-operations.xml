@@ -52,7 +52,7 @@
 			<title>Image Sharing between Image Producers and Image Consumers</title>
 			<para>Images can be created and deleted by image producers, updated by image consumers, and listed by both image
 				producers and image consumers.</para>
-			<para>The producer shares an image with the consumer by making the consumer a <glossterm baseform="Member"
+			<para>The producer shares an image with the consumer by making the consumer a <glossterm baseform="Image Member"
 					>member</glossterm> of that image. The consumer then accepts or rejects the image by changing the member
 				status. Once accepted, the image appears in the consumer's image list.</para>
 			<note>

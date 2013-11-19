@@ -37,7 +37,7 @@
 							<includes> 
 								<!--ci-gettingstarted.xml, 
 								ci-releasenotes.xml, -->
-								ci-devguide-client.xml 
+								ci-devguide.xml 
 							</includes>
 							<profileCondition>client</profileCondition>
 							<!-- These parameters only apply to webhelp -->
