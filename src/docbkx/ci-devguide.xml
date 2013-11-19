@@ -38,7 +38,7 @@
        values without first consulting with the CDT team.
     -->
     <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
-      <raxm:displayname>Client Developer Guide</raxm:displayname>
+      <raxm:displayname>Developer Guide</raxm:displayname>
       <!--validation error on raxm:product can be ignored-->
       <raxm:product version="v1.0">images</raxm:product>
       <raxm:priority>20</raxm:priority>
