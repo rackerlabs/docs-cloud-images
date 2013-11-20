@@ -133,18 +133,16 @@
 
         <wadl:doc xml:lang="EN" title="Update Image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Updates the specified image. </para>
-            <para>The request body must conform to one of the following media types:</para>
-            <itemizedlist spacing="compact">
-                <listitem>
-                    <para><code>application/openstack-images-v2.0-json-patch</code></para>
-                </listitem>
-                <listitem>
-                    <para><code>application/openstack-images-v2.1-json-patch</code></para>
-                </listitem>
-            </itemizedlist>
+            <para>The request body must conform to the <code>'application/openstack-images-v2.1-json-patch'</code> media
+                type:</para>
             <para>In addition to the Update Image operation, you can use the <code>HTTP PATCH</code> method to add or remove
-                image properties, including user-defined properties. For more information, go to the <code>HTTP PATCH</code> method section in the Concepts
-                chapter of this &CImA; guide.</para>
+                image properties, including user-defined properties. For more information, go to the <code>HTTP PATCH</code>
+                method section in the Concepts chapter of this &CImA; guide.</para>
+            <warning>
+                <para> This of the Images API acknowledges the ability of a cloud provider to employ <literal>property
+                        protections</literal>. Thus, there may be image properties that may not be updated or deleted by
+                    non-admin users. </para>
+            </warning>
         </wadl:doc>
         <!-- Fix and uncomment this once we have viable link for external client guide -->
         <!--        <doc xml:lang="EN">
@@ -187,7 +185,7 @@
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:sample>
-                        <xsdxt:code href="../common/samples/image-details-response.json"/>
+                        <xsdxt:code href="../common/samples/image-update-response.json"/>
                     </xsdxt:sample>
                 </doc>
             </representation>
@@ -278,8 +276,8 @@
             </param>
             <param name="tag" style="query" required="false" type="imageapi:string">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that shows images with the specified tag, where the owner is
-                        indicated by tenant ID.</para>
+                    <para>Filter parameter that shows images with the specified tag, where the owner is indicated by tenant
+                        ID.</para>
                 </wadl:doc>
             </param>
             <param name="status" style="query" required="false" type="xsd:int">
