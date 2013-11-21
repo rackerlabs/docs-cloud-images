@@ -143,18 +143,9 @@
                         protections</literal>. Thus, there may be image properties that may not be updated or deleted by
                     non-admin users. </para>
             </warning>
-            <p xmlns="http://www.w3.org/1999/xhtml"> or more information about the <code>PATCH</code> method, see the
-                <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->
-                <a
-                    href="http://docs-internal-staging.rackspace.com/images/api/v1.0/ci-devguide/content/ch_image-concepts.html#patch-method"
-                    >"HTTP PATCH Method"</a> section.</p>
+            <para>For more information about the <code>PATCH</code> method, see the
+                <xref linkend="patch-method"/> section.</para>
         </wadl:doc>
-        <!-- Fix and uncomment this once we have viable link for external client guide -->
-        <!--        <doc xml:lang="EN">
-            <p xmlns="http://www.w3.org/1999/xhtml">For more information about the <code>PATCH</code> method, see the <a
-                    href="http://docs-internal-staging.rackspace.com/images/api/v1.0/ci-devguide/content/ch_image-concepts.html#patch-method"
-                    >HTTP PATCH Method</a> section. </p>
-        </doc>-->
         <request>
             <representation mediaType="application/json" element="image">
                 <doc xml:lang="EN">
