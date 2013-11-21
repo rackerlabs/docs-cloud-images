@@ -135,19 +135,24 @@
             <para role="shortdesc">Updates the specified image. </para>
             <para>The request body must conform to the <code>'application/openstack-images-v2.1-json-patch'</code> media
                 type:</para>
-            <para>In addition to the Update Image operation, you can use the <code>HTTP PATCH</code> method to add or remove
-                image properties, including user-defined properties. For more information, go to the <code>HTTP PATCH</code>
+            <para>You can use the <code>HTTP PATCH</code> method to update existing properties, and to add or to remove
+                custom user-defined properties image properties. For more information, go to the <code>HTTP PATCH</code>
                 method section in the Concepts chapter of this &CImA; guide.</para>
             <warning>
-                <para> This of the Images API acknowledges the ability of a cloud provider to employ <literal>property
+                <para> This version of the &CImA; acknowledges the ability of a cloud provider to employ <literal>property
                         protections</literal>. Thus, there may be image properties that may not be updated or deleted by
                     non-admin users. </para>
             </warning>
+            <p xmlns="http://www.w3.org/1999/xhtml"> or more information about the <code>PATCH</code> method, see the
+                <!-- linking from this WADL-generated section to hand-coded section; THIS LINK FAILS until the document moves to production -->
+                <a
+                    href="http://docs-internal-staging.rackspace.com/images/api/v1.0/ci-devguide/content/ch_image-concepts.html#patch-method"
+                    >"HTTP PATCH Method"</a> section.</p>
         </wadl:doc>
         <!-- Fix and uncomment this once we have viable link for external client guide -->
         <!--        <doc xml:lang="EN">
             <p xmlns="http://www.w3.org/1999/xhtml">For more information about the <code>PATCH</code> method, see the <a
-                    href="http://http://docs-internal-staging.rackspace.com/images/api/v1.0/ci-devguide-client/content/ch_image-concepts.html#patch-method.html"
+                    href="http://docs-internal-staging.rackspace.com/images/api/v1.0/ci-devguide/content/ch_image-concepts.html#patch-method"
                     >HTTP PATCH Method</a> section. </p>
         </doc>-->
         <request>
@@ -157,7 +162,7 @@
                         <xsdxt:code href="../common/samples/image-update-req.json"/>
                     </xsdxt:sample>
                 </doc>
-                <param name="name" style="plain" type="xsd:string" required="true">
+                <param name="name" style="plain" type="xsd:string" required="false">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Images name">
                         <p>Name for the image. The name of an image is not unique to a Cloud Images node. The API cannot
                             expect users to know the names of images owned by others.</p>
