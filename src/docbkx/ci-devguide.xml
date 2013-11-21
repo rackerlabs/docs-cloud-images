@@ -40,7 +40,7 @@
     <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
       <raxm:displayname>Developer Guide</raxm:displayname>
       <!--validation error on raxm:product can be ignored-->
-      <raxm:product version="v1.0">images</raxm:product>
+      <raxm:product version="v2">images</raxm:product>
       <raxm:priority>20</raxm:priority>
     </raxm:metadata>
   </info>
