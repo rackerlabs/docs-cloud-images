@@ -44,7 +44,7 @@
 							<enableDisqus>intranet</enableDisqus>
 							<security>internal</security>
 							<statusBarText>PREVIEW CLIENT</statusBarText>
-							<canonicalUrlBase>http://docs.rackspace.com/images/api/v1.0/ci-devguide/content</canonicalUrlBase>
+							<canonicalUrlBase>http://docs.rackspace.com/images/api/v2/ci-devguide/content</canonicalUrlBase>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
 						</configuration>
 					</execution>
