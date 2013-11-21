@@ -136,15 +136,13 @@
             <para>The request body must conform to the <code>'application/openstack-images-v2.1-json-patch'</code> media
                 type:</para>
             <para>You can use the <code>HTTP PATCH</code> method to update existing properties, and to add or to remove
-                custom user-defined properties image properties. For more information, go to the <code>HTTP PATCH</code>
-                method section in the Concepts chapter of this &CImA; guide.</para>
+                custom user-defined properties image properties. For more information, see <xref linkend="patch-method"/> in
+                the Concepts chapter of this &CImA; guide.</para>
             <warning>
                 <para> This version of the &CImA; acknowledges the ability of a cloud provider to employ <literal>property
                         protections</literal>. Thus, there may be image properties that may not be updated or deleted by
                     non-admin users. </para>
             </warning>
-            <para>For more information about the <code>PATCH</code> method, see the
-                <xref linkend="patch-method"/> section.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/json" element="image">
