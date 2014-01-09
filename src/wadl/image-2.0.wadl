@@ -434,12 +434,17 @@
                                 </listitem>
                             </varlistentry>
                         </variablelist>
+                        <note><para>The member_status filter will be ignored if the visibility parameter is not set to 
+                            "shared".</para></note>
                     </wadl:doc>
                 </param>
                 <param name="owner" style="query" type="xsd:string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"> Filters images on acceptance status only. For example,
-                            <literal>owner=&lt;OWNER_ID></literal> shows only images shared with this user by the user whose
-                        tenant id is <literal>OWNER_ID</literal>. </wadl:doc>
+                        <literal>visibility=shared&amp;owner=&lt;OWNER_ID></literal> shows only images shared with this user by 
+                        the user whose tenant id is <literal>OWNER_ID</literal>. 
+                        <note><para>The owner filter will be ignored if the visibility parameter is not set to 
+                        "shared".</para></note>
+                    </wadl:doc>
                 </param>
             </representation>
         </request>

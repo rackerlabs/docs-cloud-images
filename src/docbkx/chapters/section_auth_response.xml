@@ -99,7 +99,7 @@
     <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>
                     <prompt>$</prompt> export images_url="https://iad.images.api.rackspacecloud.com/v2"
                     <prompt>$</prompt> export token="abcd123abcd1234567a01b2cdefe3a45"
-                    <prompt>$</prompt> curl -s $url/images -H "X-Auth-Token: $token" | python -m json.tool</programlisting>
+                    <prompt>$</prompt> curl -s $images_url/images -H "X-Auth-Token: $token" | python -m json.tool</programlisting>
     <para> </para>
     <?hard-pagebreak?>
 </section>

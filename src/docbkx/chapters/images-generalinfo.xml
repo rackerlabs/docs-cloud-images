@@ -4,7 +4,7 @@
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="general-api-information">
     <title>General API Information</title>
-    <?dbhtml stop-chunking?>
+<!--    <?dbhtml stop-chunking?>-->
     <para> Cloud Images brings access to the OpenStack Image Registry and Delivery Service directly to Rackspace open cloud
         customers, thereby providing services for discovering, registering, and retrieving virtual machine <glossterm
             baseform="Image">images</glossterm> and their metadata by using a RESTful API. </para>
@@ -72,8 +72,6 @@
             consumer validates server responses and client requests based on the published schemas. The schemas contained in
             this document are only examples and should not be used to validate your requests. A client should always fetch
             schemas from the server.</para>
-        <!--        <para security="internal">For uploading and downloading image files, the API also accepts and serves binary image
-            data.</para>-->
     </section>
 
     <!--Authentication-->

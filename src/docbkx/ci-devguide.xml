@@ -26,6 +26,42 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-01-10</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Corrected example in  
+                <olink targetdoc="ci-devguide" targetptr="auth-response-description" >"auth-response-description"</olink></para>
+            </listitem>
+            <listitem>
+              <para>Corrected example in  
+                <olink targetdoc="ci-devguide" targetptr="patch_replace" >"patch_replace"</olink></para>
+            </listitem>
+            <listitem>
+              <para>Added <olink targetdoc="ci-devguide" targetptr="TOS" >"TOS"</olink></para>
+            </listitem>
+            <listitem>
+              <para>Added usage warnings in 
+                <olink targetdoc="ci-devguide" targetptr="Image_Producer_Calls" >"Image_Producer_Calls"</olink> and 
+                <olink targetdoc="ci-devguide" targetptr="Image_Consumer_Calls" >"Image_Consumer_Calls"</olink></para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2013-12-17</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added constraint that 'member_status' and 'owner' filters are expected to work only with visibility=shared in 
+                <olink targetdoc="ci-devguide"
+                  targetptr="GET_listImageMembers_v2_images__image_id__members_Image_Both_Calls"
+                  >"GET_listImageMembers_v2_images__image_id__members_Image_Both_Calls"</olink></para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2013-12-10</date>
         <revdescription>
           <itemizedlist spacing="compact">
@@ -48,7 +84,7 @@
        values without first consulting with the CDT team.
     -->
     <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
-      <raxm:displayname>Developer Guide</raxm:displayname>
+      <raxm:displayname>API Developer Guide</raxm:displayname>
       <!--validation error on raxm:product can be ignored-->
       <raxm:product version="v2">images</raxm:product>
       <raxm:priority>20</raxm:priority>

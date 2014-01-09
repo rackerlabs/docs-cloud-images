@@ -790,7 +790,7 @@ JSON Pointer        Image Entity Key Pair
                 </warning>
                 <para><guilabel>Replace Example</guilabel></para>
                 <programlisting>
-{ "replace": "/login-name", "value": "kote" }               
+{  "op": "replace", "path": "/login-name", "value": "kote" }               
                 </programlisting>
                 <warning>
                     <para>If the specified image property does not exist for the target image, an error condition results.</para>
