@@ -45,6 +45,18 @@
                 <olink targetdoc="ci-devguide" targetptr="Image_Producer_Calls" >"Image_Producer_Calls"</olink> and 
                 <olink targetdoc="ci-devguide" targetptr="Image_Consumer_Calls" >"Image_Consumer_Calls"</olink></para>
             </listitem>
+            <listitem>
+              <para>Added json PATCH standard link to
+                <olink targetdoc="ci-devguide" targetptr="patch-method" >"patch-method"</olink>
+              </para>
+            </listitem>
+            <listitem>
+              <para>Updated property warnings in
+                <olink targetdoc="ci-devguide" targetptr="patch_add" >"patch_add"</olink>,
+                <olink targetdoc="ci-devguide" targetptr="patch_remove" >"patch_remove"</olink>, and
+                <olink targetdoc="ci-devguide" targetptr="patch_replace" >"patch_replace"</olink>.
+              </para>
+            </listitem>
           </itemizedlist>
         </revdescription>
       </revision>

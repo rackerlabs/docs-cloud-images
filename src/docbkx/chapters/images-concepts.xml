@@ -605,7 +605,8 @@
                 </listitem>
                 <listitem>
                     <para><code>'application/openstack-images-v2.1-json-patch'</code> - which provides useful and compatible
-                        functionality for JSON PATCH</para>
+                        functionality for JSON PATCH and is based on the JavaScript Object Notation (JSON) Patch standard RFC6902 
+                        (<link xlink:href="http://tools.ietf.org/html/rfc6902">http://tools.ietf.org/html/rfc6902</link>).</para>
                 </listitem>
             </itemizedlist>
         </para>
@@ -759,19 +760,25 @@ JSON Pointer        Image Entity Key Pair
                 <para>The <command>add</command> operation adds a new custom user-defined property at a specified path in the
                     target image. The path must reference an image property to add to an existing image. The operation object
                     contains a value member that specifies the value to be added. </para>
+                <warning>
+                    <para> To prevent property spoofing, user-specified image properties must be prefixed by the string 'user_'.  
+                        There is a small subset of standard image properties that can be added by users; please consult the  
+                        <link xlink:href="http://http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link> for 
+                        details. If you try to add any other properties as part of your PATCH request, the request will fail.</para>
+                </warning>
                 <para><guilabel>Add Example</guilabel></para>
                 <programlisting>
 { "op": "add", "path": "/login-name", "value": "kvothe"}                
                 </programlisting>
             </section>
+            
             <section xml:id="patch_remove">
                 <title>HTTP PATCH Remove Operation</title>
                 <para>The <command>remove</command> operation removes the custom user-defined image property from the target
                     image. If no image property exists at the specified location, an error results. </para>
                 <warning>
-                    <para> This of the Images API acknowledges the ability of a cloud provider to employ <code>property
-                            protections</code> Thus, there may be image properties that may not be updated or deleted by
-                        non-admin users. </para>
+                    <para> Some image properties used by the system are <code>protected</code>. If you try to remove any of
+                    these properties as part of your PATCH request, the request will fail.</para>
                 </warning>
                 <para><guilabel>Remove Example</guilabel></para>
                 <programlisting>
@@ -784,9 +791,12 @@ JSON Pointer        Image Entity Key Pair
                     target image with a new value. The operation object contains a value member that specifies the
                     replacement value. </para>
                 <warning>
-                    <para> This of the Images API acknowledges the ability of a cloud provider to employ <code>property
-                            protections</code> Thus, there may be image properties that may not be updated or deleted by
-                        non-admin users. </para>
+                    <para> Some image properties used by the system are <code>protected</code>. If you try to modify any of
+                        these properties as part of your PATCH request, the request will fail. To prevent property spoofing, 
+                        user-specified image properties must be prefixed by the string 'user_'.  
+                        There is a small subset of standard image properties that can be modified by users; please consult the  
+                        <link xlink:href="http://http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link> for 
+                        details. </para>
                 </warning>
                 <para><guilabel>Replace Example</guilabel></para>
                 <programlisting>
