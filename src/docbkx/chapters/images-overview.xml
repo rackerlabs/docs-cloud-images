@@ -38,11 +38,11 @@
         <!-- Table generated in output from revision element in the book element -->
     </section>
     <section xml:id="TOS">
-        <title>Terms of Service</title>
-        <para>It's important keep current on the contents of the   
-            <link xlink:href="http://www.rackspace.com/information/legal/cloud/tos">Rackspace Cloud Terms of Service</link>
-            and the <link xlink:href="http://www.rackspace.com/information/legal/aup">Rackspace US Acceptable Use Policy</link>.
-            Please review these periodically.</para>
+        <title>Rackspace Terms of Service</title>
+        <para>Periodically review the   
+            <link xlink:href="http://www.rackspace.com/information/legal/cloud/tos">Rackspace US Cloud Terms of Service</link>
+            and the <link xlink:href="http://www.rackspace.co.uk/legal/cloud-terms-of-service">Rackspace UK Cloud Terms of Service</link>
+            because they might be updated any time. These documents also include the Acceptable Use Policies.</para>
     </section>
 </chapter>
 

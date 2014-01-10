@@ -145,8 +145,9 @@
 				members</glossterm>.</para>
 			<warning>
 				<para>You are responsible for what you share with other cloud users.  Consult the  
-					<link xlink:href="http://www.rackspace.com/information/legal/cloud/tos">Rackspace Cloud Terms of Service</link>
-					and <link xlink:href="http://www.rackspace.com/information/legal/aup">Rackspace US Acceptable Use Policy</link>
+					<link xlink:href="http://www.rackspace.com/information/legal/cloud/tos">Rackspace US Cloud Terms of Service</link>
+					and <link xlink:href="http://www.rackspace.co.uk/legal/cloud-terms-of-service">Rackspace UK Cloud Terms of 
+						Service</link>
 					for details concerning the limitations on Rackspace support for non-standard software or operating system 
 					configurations, as well as your personal liabilities for sharing malicious software.</para>
 			</warning>

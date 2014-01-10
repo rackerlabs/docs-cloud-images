@@ -44,61 +44,6 @@
         </para>
     </section>
 
-    <!--Image Statuses-->
-    <!--    <section xml:id="image-statuses" security="internal">
-        <title>Image Statuses</title>
-        <para>Images in the &CImS; can have one of the following statuses:</para>
-        <variablelist>
-            <varlistentry>
-                <term><emphasis role="bold">queued</emphasis></term>
-                <listitem>
-                    <para> The image identifier has been reserved for an image in the Cloud Images registry. No image data
-                        has been uploaded to the &CImS;, and the image size was not explicitly set to zero on creation.
-                    </para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">saving</emphasis></term>
-                <listitem>
-                    <para> An image's raw data is being uploaded to the &CImS;.</para>
-                    <note>
-                        <para>An image that is registered using the &POST; /images operation and has the
-                            x-image-meta-location header present cannot have status of <emphasis role="bold"
-                                >saving</emphasis> status because the image data is already available in another location.
-                        </para>
-                    </note>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">active</emphasis></term>
-                <listitem>
-                    <para>The image is fully available in the &CImS;. This status applies either after the image is uploaded
-                        or if the image size is explicitly set to zero on creation. </para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">killed</emphasis></term>
-                <listitem>
-                    <para>An error occurred during the image upload process, and the image data is unreadable.</para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">deleted</emphasis></term>
-                <listitem>
-                    <para>The &CImS; has retained the information about the image, but the image is no longer available to
-                        use. An image with this status will be removed automatically at a later date.</para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">pending_delete</emphasis></term>
-                <listitem>
-                    <para>This status is similar to deleted, however, the &CImS; has not yet removed the image data. An image
-                        with this status is recoverable.</para>
-                </listitem>
-            </varlistentry>
-        </variablelist>
-    </section>-->
-
     <!--Disk and Container Formats-->
     <section xml:id="disk-container-formats">
         <title>Disk and Container Formats</title>
@@ -808,4 +753,98 @@ JSON Pointer        Image Entity Key Pair
             </section>
         </section>
     </section>
+
+    <!--Standard vs. Non-standard Imagess-->
+    <!-- based on https://etherpad.rax.io/p/kc-standard-images-v2-->
+    <!--<section xml:id="stdvnon-images">
+        <title>Standard versus Non-standard Images</title>
+        <?dbhtml stop-chunking?>
+        <para>The &CImS; allows you to use standard images (which are supported by Rackspace) and to create, share, and use 
+            non-standard images (which are not supported by Rackspace).</para>
+        <section xml:id="std-images">
+            <title>Standard Images</title>
+            <para>Standard images include the following:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>All base images supplied by Rackspace for your service level and/or Rackconnect status that have not 
+                        yet reached End of Life</para>
+                </listitem>
+            </itemizedlist>
+        </section>
+        <section xml:id="nonstd-images">
+            <title>Non-standard Images</title>
+            <para>Non-standard images include the following:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>All imported and exported images</para>
+                </listitem>
+                <listitem>
+                    <para>All end-of-life images</para>
+                </listitem>
+                <listitem>
+                    <para>All shared images</para>
+                </listitem>
+                <listitem>
+                    <para>All images that are not standard for your account's service level and Rackconnect status</para>
+                </listitem>
+            </itemizedlist>
+            <note>
+                <para>This is not an exhaustive list of non-standard images.</para>
+            </note>
+        </section>-->    
+    
+    <!--Image Statuses-->
+    <!--    <section xml:id="image-statuses" security="internal">
+        <title>Image Statuses</title>
+        <para>Images in the &CImS; can have one of the following statuses:</para>
+        <variablelist>
+            <varlistentry>
+                <term><emphasis role="bold">queued</emphasis></term>
+                <listitem>
+                    <para> The image identifier has been reserved for an image in the Cloud Images registry. No image data
+                        has been uploaded to the &CImS;, and the image size was not explicitly set to zero on creation.
+                    </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">saving</emphasis></term>
+                <listitem>
+                    <para> An image's raw data is being uploaded to the &CImS;.</para>
+                    <note>
+                        <para>An image that is registered using the &POST; /images operation and has the
+                            x-image-meta-location header present cannot have status of <emphasis role="bold"
+                                >saving</emphasis> status because the image data is already available in another location.
+                        </para>
+                    </note>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">active</emphasis></term>
+                <listitem>
+                    <para>The image is fully available in the &CImS;. This status applies either after the image is uploaded
+                        or if the image size is explicitly set to zero on creation. </para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">killed</emphasis></term>
+                <listitem>
+                    <para>An error occurred during the image upload process, and the image data is unreadable.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">deleted</emphasis></term>
+                <listitem>
+                    <para>The &CImS; has retained the information about the image, but the image is no longer available to
+                        use. An image with this status will be removed automatically at a later date.</para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><emphasis role="bold">pending_delete</emphasis></term>
+                <listitem>
+                    <para>This status is similar to deleted, however, the &CImS; has not yet removed the image data. An image
+                        with this status is recoverable.</para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+    </section>-->
 </chapter>
