@@ -27,6 +27,24 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-01-17</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Published externally.</para>
+            </listitem>
+            <listitem>
+              <para>Added <olink targetdoc="ci-devguide" targetptr="stdvnon-images" >"stdvnon-images"</olink></para>
+            </listitem>
+            <listitem>
+              <para>Added links to standard versus non-standard images and hidden images articles to 
+                <olink targetdoc="ci-devguide" targetptr="GET_listImages_v2_images_Image_Calls"
+                  >"GET_listImages_v2_images_Image_Calls"</olink></para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-01-10</date>
         <revdescription>
           <itemizedlist spacing="compact">

@@ -559,8 +559,7 @@
             <para>In addition to working with existing image properties, you can use the HTTP PATCH method to add or modify
                 user-defined properties, which you create, to make notes on an image. For example, you could add
                     <literal>user_passed_qe</literal> (with a true or false value or a date value) or
-                    <literal>user_image_creator</literal> (with a name for the value). All user-defined properties must start
-                with <emphasis role="bold">user_</emphasis>.</para>
+                    <literal>user_image_creator</literal> (with a name for the value).</para>
         </note>
 
         <section xml:id="restricted-json">
@@ -706,8 +705,7 @@ JSON Pointer        Image Entity Key Pair
                     target image. The path must reference an image property to add to an existing image. The operation object
                     contains a value member that specifies the value to be added. </para>
                 <warning>
-                    <para> To prevent property spoofing, user-specified image properties must be prefixed by the string 'user_'.  
-                        There is a small subset of standard image properties that can be added by users; please consult the  
+                    <para> There is a small subset of standard image properties that can be added by users; please consult the  
                         <link xlink:href="http://http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link> for 
                         details. If you try to add any other properties as part of your PATCH request, the request will fail.</para>
                 </warning>
@@ -737,8 +735,7 @@ JSON Pointer        Image Entity Key Pair
                     replacement value. </para>
                 <warning>
                     <para> Some image properties used by the system are <code>protected</code>. If you try to modify any of
-                        these properties as part of your PATCH request, the request will fail. To prevent property spoofing, 
-                        user-specified image properties must be prefixed by the string 'user_'.  
+                        these properties as part of your PATCH request, the request will fail.   
                         There is a small subset of standard image properties that can be modified by users; please consult the  
                         <link xlink:href="http://http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link> for 
                         details. </para>
@@ -754,13 +751,15 @@ JSON Pointer        Image Entity Key Pair
         </section>
     </section>
 
-    <!--Standard vs. Non-standard Imagess-->
-    <!-- based on https://etherpad.rax.io/p/kc-standard-images-v2-->
-    <!--<section xml:id="stdvnon-images">
+    <!--Standard vs. Non-standard Images-->
+    <section xml:id="stdvnon-images">
         <title>Standard versus Non-standard Images</title>
         <?dbhtml stop-chunking?>
         <para>The &CImS; allows you to use standard images (which are supported by Rackspace) and to create, share, and use 
-            non-standard images (which are not supported by Rackspace).</para>
+            non-standard images (which are not supported by Rackspace). For more information, see this 
+            <link xlink:href="http://www.rackspace.com/knowledge_center/article/rackspace-standard-and-non-standard-images"> 
+                article.</link>
+        </para>
         <section xml:id="std-images">
             <title>Standard Images</title>
             <para>Standard images include the following:</para>
@@ -791,8 +790,8 @@ JSON Pointer        Image Entity Key Pair
             <note>
                 <para>This is not an exhaustive list of non-standard images.</para>
             </note>
-        </section>-->    
-    
+        </section>    
+    </section>
     <!--Image Statuses-->
     <!--    <section xml:id="image-statuses" security="internal">
         <title>Image Statuses</title>

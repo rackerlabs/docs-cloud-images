@@ -205,8 +205,12 @@
     <method name="GET" id="listImages">
         <wadl:doc xml:lang="EN" title="List Images" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Lists public virtual machine (VM) images.</para>
-            <para>This operation returns a subset of the larger collection of images and a link that you can use to get the
-                next set of images. You should always check for the presence of a <parameter>next</parameter> link and use it
+            <para>This operation returns images you created, shared images that you accepted, and standard images. For more 
+                information about standard images, see <xref linkend="stdvnon-images"/>.
+            </para>
+            <para>
+                This operation returns a subset of the larger collection of images and a link that you can use to get the
+                next set of images. Always check for the presence of a <parameter>next</parameter> link and use it
                 as the URI in a subsequent &GET; request. Follow this pattern until a <parameter>next</parameter> link is no
                 longer provided. The next link preserves any query parameters that you send in your initial request. You can
                 use the <parameter>first</parameter> link to jump back to the first page of the collection. If you prefer to
@@ -226,6 +230,12 @@
             <para>You can sort the results of this operation by using the <parameter>sort_key</parameter> and
                     <parameter>sort_dir</parameter> parameters. The API uses the natural sorting of whatever image attribute
                 is provided as the <parameter>sort_key</parameter>. </para>
+            <note>
+                <para>Public images may reach end-of-life and be removed from the base image list.  This  
+                    <link xlink:href="http://www.rackspace.com/knowledge_center/article/hidden-base-images">
+                        article</link> contains images which have been removed from the base images list but which may still be 
+                    available.</para>
+            </note>
         </wadl:doc>
         <request>
             <param name="limit" style="query" required="false" type="xsd:string">
@@ -460,9 +470,10 @@
     <!-- Create Image Member -->
     <method name="POST" id="createImageMember">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Create Image Member">
-            <para role="shortdesc">Adds the specified <parameter>tenant ID</parameter> specified in the request body as an
+            <para role="shortdesc">Adds the specified <parameter>account ID/tenant ID</parameter> specified in the request body as an
                 image member.</para>
-            <para>The member status of a newly created image member is <literal>pending</literal>.</para>
+            <para>This operation allows you to add users to the list of members with whom the image is shared.  The member status 
+                of a newly created image member is <literal>pending</literal>.</para>
             <para>If the user making the call is not the image owner, the response is <errorcode>HTTP 404</errorcode>.</para>
         </wadl:doc>
         <request>
@@ -541,9 +552,10 @@
     <!-- Delete Image Member -->
     <method name="DELETE" id="deleteImageMember">
         <wadl:doc xml:lang="EN" title="Delete Image Member" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Deletes the specified <parameter>tenant ID</parameter> from the member list of the
+            <para role="shortdesc">Deletes the specified <parameter>account ID/tenant ID</parameter> from the member list of the
                 specified image.</para>
-            <para>This call can only be made by the image owner.</para>
+            <para>This call, which can only be made by the image owner, removes users from the list of members who have access to
+                a shared image.</para>
             <para>If the <parameter>{member_id}</parameter> is not a member of the specified image, the response is
                     <errorcode>HTTP 404</errorcode></para>
         </wadl:doc>
