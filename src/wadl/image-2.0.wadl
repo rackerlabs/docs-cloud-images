@@ -481,8 +481,8 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-create-request.json"/>
                 </wadl:doc>
-                <param name="member" style="plain" type="xsd:string" required="true">
-                    <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Image member status" path="$.member">
+                <param name="member" style="plain" type="xsd:string" required="true" path="$.member">
+                    <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Image member status">
                         <para>The member ID. This is the tenant ID of the user with whom the image is to be shared.</para>
                     </wadl:doc>
                 </param>
