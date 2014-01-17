@@ -92,13 +92,13 @@
                         <xsdxt:code href="../common/samples/image-create-req.json"/>
                     </xsdxt:sample>
                 </doc>
-                <param name="name" style="plain" type="xsd:string" required="true">
+                <param name="name" style="plain" type="xsd:string" required="true" path="$.name">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Images name">
                         <p>Name for the image. The name of an image is not unique to an image node, because the API does not
                             expect users to know the names of images owned by others.</p>
                     </wadl:doc>
                 </param>
-                <param name="id" style="plain" type="csapi:uuid" required="false">
+                <param name="id" style="plain" type="csapi:uuid" required="false" path="$.id">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image ID">
                         <p>The image ID.</p>
                     </wadl:doc>
@@ -109,7 +109,7 @@
                                 <code>public</code>.</p>
                     </wadl:doc>
                 </param>
-                <param name="tags" style="plain" type="xsd:dict" required="false">
+                <param name="tags" style="plain" type="xsd:dict" required="false" path="$.tags">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Tags">
                         <p>Image tags.</p>
                     </wadl:doc>
@@ -151,24 +151,24 @@
                         <xsdxt:code href="../common/samples/image-update-req.json"/>
                     </xsdxt:sample>
                 </doc>
-                <param name="name" style="plain" type="xsd:string" required="false">
+                <param name="name" style="plain" type="xsd:string" required="false" path="$.name">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Images name">
                         <p>Name for the image. The name of an image is not unique to a Cloud Images node. The API cannot
                             expect users to know the names of images owned by others.</p>
                     </wadl:doc>
                 </param>
-                <param name="id" style="plain" type="csapi:uuid" required="false">
+                <param name="id" style="plain" type="csapi:uuid" required="false" path="$.id">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image ID">
                         <p>The image ID.</p>
                     </wadl:doc>
                 </param>
-                <param name="visibility" style="plain" type="xsd:string" required="false">
+                <param name="visibility" style="plain" type="xsd:string" required="false" path="$.visibility">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Visibility">
                         <p>Image visibility. Valid values are <code>public</code> and <code>private</code>. The default is
                                 <code>public</code>.</p>
                     </wadl:doc>
                 </param>
-                <param name="tags" style="plain" type="xsd:dict" required="false">
+                <param name="tags" style="plain" type="xsd:dict" required="false" path="$.tags">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Tags">
                         <p>Image tags.</p>
                     </wadl:doc>
@@ -482,7 +482,7 @@
                     <xsdxt:code href="../common/samples/image-member-create-request.json"/>
                 </wadl:doc>
                 <param name="member" style="plain" type="xsd:string" required="true">
-                    <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Image member status">
+                    <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Image member status" path="$.member">
                         <para>The member ID. This is the tenant ID of the user with whom the image is to be shared.</para>
                     </wadl:doc>
                 </param>
@@ -509,7 +509,7 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-update-request.json"/>
                 </wadl:doc>
-                <param name="status" style="plain" type="xsd:string" required="true">
+                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
                     <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Image member status">
                         <para>The status to which this image member should be set. Valid values are as follows: <variablelist>
                                 <varlistentry>
