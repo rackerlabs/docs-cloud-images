@@ -62,6 +62,12 @@
             <para>An image tag is a string of characters used to identify a specific image or images.</para>
         </glossdef>
     </glossentry>
+    <glossentry xml:id="gl-task">
+        <glossterm><emphasis role="bold">Image Task</emphasis></glossterm>
+        <glossdef>
+            <para>An image task allows you to perform an asynchronous image-related tasks such as importing or exporting images.</para>
+        </glossdef>
+    </glossentry>
     <glossentry xml:id="gl-json">
         <glossterm><emphasis role="bold">JSON</emphasis></glossterm>
         <glossdef>

@@ -1,0 +1,9 @@
+{ 
+   "type": "export",
+   "input": 
+   {
+      "export_uuid": "deadbeef-dead-dead-dead-beefbeefbeef",
+      "export_to": "swift://cloud.foo/myaccount/mycontainer/path",
+      "export_format": "qcow2"
+   }
+}

@@ -1,0 +1,11 @@
+{ 
+  "type": "export",
+  "status" : "pending",
+  "input": 
+  {
+      "export_uuid" : "deadbeef-dead-dead-dead-beefbeefbeef",
+      "export_to": "swift://cloud.foo/myaccount/mycontainer/path",
+      "export_format": "qcow2",
+  },
+  "id": "43215678-4321-4321-4321-432156789abc"
+}

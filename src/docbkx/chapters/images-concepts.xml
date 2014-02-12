@@ -4,7 +4,7 @@
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_image-concepts">
     <title>Concepts</title>
-<!--    <?dbhtml stop-chunking?>-->
+    <!--    <?dbhtml stop-chunking?>-->
     <para>To take advantage of the &CImS;, it is helpful to be familiar with the concepts outlined in this section.</para>
 
     <!--Image Entities-->
@@ -42,6 +42,81 @@
                 </varlistentry>
             </variablelist>
         </para>
+    </section>
+
+    <!--Image Tasks-->
+    <section xml:id="image-tasks">
+        <title>Image Tasks (Importing and Exporting Images)</title>
+        <para>A <glossterm baseform="JSON">image task</glossterm> is a request to perform an asynchronous image-related
+            operation, such as importing or exporting an image. The request results in the creation of a task resource that
+            can be polled for information about the status of the operation.</para>
+        <para>The task resource includes an expiration time and date stamp. After the time in the stamp, the task resource
+            will expire. However, the result of the task, such as an imported image, will not expire.</para>
+        <para>A task request to import an image is necessary to give you cloud provider access to your image so that the
+            provider can make the image suitable for booting in its cloud.</para>
+        <para>To import an image, do the following: <orderedlist>
+                <listitem>
+                    <para>Put the image in a cloud storage account, since the cloud storage accounts are designed to handle
+                        large volumes of data uploading from connections of varying bandwidth.</para>
+                </listitem>
+                <listitem>
+                    <para> Submit the import request (see <olink targetdoc="ci-devguide"
+                            targetptr="POST_taskImport_v2_tasks_Image_Task_Calls"
+                            >POST_taskImport_v2_tasks_Image_Task_Calls</olink>).</para>
+                </listitem>
+                <listitem>
+                    <para>The &CImS; will fetch the image from your cloud storage, do the processing requored by the cloud
+                        provider for use in its cloud, and create a new image for you</para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>To export an image, do the following:<orderedlist>
+                <listitem>
+                    <para> Determine the UUID of the image you want to export.</para>
+                </listitem>
+                <listitem>
+                    <para>Submit the export request (see <olink targetdoc="ci-devguide"
+                            targetptr="POST_taskExport_v2_tasks_Image_Task_Calls"
+                            >POST_taskExport_v2_tasks_Image_Task_Calls</olink>).</para>
+                </listitem>
+                <listitem>
+                    <para>The &CImS; removes provider-specific information from the image, converts it to a standard
+                        interchange format, and transfers the exported image to your cloud storage account.</para>
+                </listitem>
+            </orderedlist>
+        </para>
+
+        <!--Task Statuses-->
+        <section xml:id="task-statuses">
+            <title>Task Statuses</title>
+            <para>Image Tasks in the &CImS; can have one of the following statuses when polled:</para>
+            <variablelist>
+                <varlistentry>
+                    <term><emphasis role="bold">pending</emphasis></term>
+                    <listitem>
+                        <para> The image task is waiting for execution.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">processing</emphasis></term>
+                    <listitem>
+                        <para> The image task is processing.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">successful</emphasis></term>
+                    <listitem>
+                        <para>The image task completed successfully.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">failed</emphasis></term>
+                    <listitem>
+                        <para>The image task completed unsuccessfully.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
     </section>
 
     <!--Disk and Container Formats-->
@@ -550,7 +625,8 @@
                 </listitem>
                 <listitem>
                     <para><code>'application/openstack-images-v2.1-json-patch'</code> - which provides useful and compatible
-                        functionality for JSON PATCH and is based on the JavaScript Object Notation (JSON) Patch standard RFC6902 
+                        functionality for JSON PATCH and is based on the JavaScript Object Notation (JSON) Patch standard
+                        RFC6902
                         (<link xlink:href="http://tools.ietf.org/html/rfc6902">http://tools.ietf.org/html/rfc6902</link>).</para>
                 </listitem>
             </itemizedlist>
@@ -695,8 +771,8 @@ JSON Pointer        Image Entity Key Pair
                 </varlistentry>
             </variablelist>
             <warning>
-                <para>If an operation object contains no recognized operation member, or more than one operation
-                    member, an error condition results.</para>
+                <para>If an operation object contains no recognized operation member, or more than one operation member, an
+                    error condition results.</para>
             </warning>
 
             <section xml:id="patch_add">
@@ -705,23 +781,25 @@ JSON Pointer        Image Entity Key Pair
                     target image. The path must reference an image property to add to an existing image. The operation object
                     contains a value member that specifies the value to be added. </para>
                 <warning>
-                    <para> There is a small subset of standard image properties that can be added by users; please consult the  
-                        <link xlink:href="http://http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link> for 
-                        details. If you try to add any other properties as part of your PATCH request, the request will fail.</para>
+                    <para> There is a small subset of standard image properties that can be added by users; please consult
+                        the
+                        <link xlink:href="http://http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link>
+                        for details. If you try to add any other properties as part of your PATCH request, the request will
+                        fail.</para>
                 </warning>
                 <para><guilabel>Add Example</guilabel></para>
                 <programlisting>
 { "op": "add", "path": "/login-name", "value": "kvothe"}                
                 </programlisting>
             </section>
-            
+
             <section xml:id="patch_remove">
                 <title>HTTP PATCH Remove Operation</title>
                 <para>The <command>remove</command> operation removes the custom user-defined image property from the target
                     image. If no image property exists at the specified location, an error results. </para>
                 <warning>
                     <para> Some image properties used by the system are <code>protected</code>. If you try to remove any of
-                    these properties as part of your PATCH request, the request will fail.</para>
+                        these properties as part of your PATCH request, the request will fail.</para>
                 </warning>
                 <para><guilabel>Remove Example</guilabel></para>
                 <programlisting>
@@ -735,17 +813,18 @@ JSON Pointer        Image Entity Key Pair
                     replacement value. </para>
                 <warning>
                     <para> Some image properties used by the system are <code>protected</code>. If you try to modify any of
-                        these properties as part of your PATCH request, the request will fail.   
-                        There is a small subset of standard image properties that can be modified by users; please consult the  
-                        <link xlink:href="http://http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link> for 
-                        details. </para>
+                        these properties as part of your PATCH request, the request will fail. There is a small subset of
+                        standard image properties that can be modified by users; please consult the
+                        <link xlink:href="http://http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link>
+                        for details. </para>
                 </warning>
                 <para><guilabel>Replace Example</guilabel></para>
                 <programlisting>
 {  "op": "replace", "path": "/login-name", "value": "kote" }               
                 </programlisting>
                 <warning>
-                    <para>If the specified image property does not exist for the target image, an error condition results.</para>
+                    <para>If the specified image property does not exist for the target image, an error condition
+                        results.</para>
                 </warning>
             </section>
         </section>
@@ -755,8 +834,8 @@ JSON Pointer        Image Entity Key Pair
     <section xml:id="stdvnon-images">
         <title>Standard versus Non-standard Images</title>
         <?dbhtml stop-chunking?>
-        <para>The &CImS; allows you to use standard images (which are supported by Rackspace) and to create, share, and use 
-            non-standard images (which are not supported by Rackspace). For more information, see this 
+        <para>The &CImS; allows you to use standard images (which are supported by Rackspace) and to create, share, and use
+            non-standard images (which are not supported by Rackspace). For more information, see this
             <link xlink:href="http://www.rackspace.com/knowledge_center/article/rackspace-standard-and-non-standard-images"> 
                 article.</link>
         </para>
@@ -765,8 +844,8 @@ JSON Pointer        Image Entity Key Pair
             <para>Standard images include the following:</para>
             <itemizedlist>
                 <listitem>
-                    <para>All base images supplied by Rackspace for your service level and/or Rackconnect status that have not 
-                        yet reached End of Life</para>
+                    <para>All base images supplied by Rackspace for your service level and/or Rackconnect status that have
+                        not yet reached End of Life</para>
                 </listitem>
             </itemizedlist>
         </section>
@@ -790,10 +869,11 @@ JSON Pointer        Image Entity Key Pair
             <note>
                 <para>This is not an exhaustive list of non-standard images.</para>
             </note>
-        </section>    
+        </section>
     </section>
+
     <!--Image Statuses-->
-    <!--    <section xml:id="image-statuses" security="internal">
+    <section xml:id="image-statuses">
         <title>Image Statuses</title>
         <para>Images in the &CImS; can have one of the following statuses:</para>
         <variablelist>
@@ -809,12 +889,6 @@ JSON Pointer        Image Entity Key Pair
                 <term><emphasis role="bold">saving</emphasis></term>
                 <listitem>
                     <para> An image's raw data is being uploaded to the &CImS;.</para>
-                    <note>
-                        <para>An image that is registered using the &POST; /images operation and has the
-                            x-image-meta-location header present cannot have status of <emphasis role="bold"
-                                >saving</emphasis> status because the image data is already available in another location.
-                        </para>
-                    </note>
                 </listitem>
             </varlistentry>
             <varlistentry>
@@ -845,5 +919,5 @@ JSON Pointer        Image Entity Key Pair
                 </listitem>
             </varlistentry>
         </variablelist>
-    </section>-->
+    </section>
 </chapter>

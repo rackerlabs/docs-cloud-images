@@ -70,6 +70,20 @@
                     </resource>
                 </resource>
             </resource>
+            <resource id="Tasks" path="tasks">
+                <method href="#taskImport"/>
+                <method href="#taskExport"/>
+                <resource id="TasksLocID" path="{locationID}">
+                    <param name="location_id" style="template" type="csapi:uuid">
+                        <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Location ID">
+                            <p>The location of the task resource, typically a UUID, which can be polled to get the status of
+                                the task progress. The location is provided as the result of an import or export task
+                                operation.</p>
+                        </wadl:doc>
+                    </param>
+                    <method href="#taskStatus"/>
+                </resource>
+            </resource>
         </resource>
     </resources>
 
@@ -152,7 +166,7 @@
                     </xsdxt:sample>
                 </doc>
                 <!--this is not an inclusive list of possible params, so leaving it out for now-->
-<!--                <param name="name" style="plain" type="xsd:string" required="false" path="$.name">
+                <!--                <param name="name" style="plain" type="xsd:string" required="false" path="$.name">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Images name">
                         <p>Name for the image. The name of an image is not unique to a Cloud Images node. The API cannot
                             expect users to know the names of images owned by others.</p>
@@ -206,15 +220,13 @@
     <method name="GET" id="listImages">
         <wadl:doc xml:lang="EN" title="List Images" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Lists public virtual machine (VM) images.</para>
-            <para>This operation returns images you created, shared images that you accepted, and standard images. For more 
-                information about standard images, see <xref linkend="stdvnon-images"/>.
-            </para>
-            <para>
-                This operation returns a subset of the larger collection of images and a link that you can use to get the
-                next set of images. Always check for the presence of a <parameter>next</parameter> link and use it
-                as the URI in a subsequent &GET; request. Follow this pattern until a <parameter>next</parameter> link is no
-                longer provided. The next link preserves any query parameters that you send in your initial request. You can
-                use the <parameter>first</parameter> link to jump back to the first page of the collection. If you prefer to
+            <para>This operation returns images you created, shared images that you accepted, and standard images. For more
+                information about standard images, see <xref linkend="stdvnon-images"/>. </para>
+            <para> This operation returns a subset of the larger collection of images and a link that you can use to get the
+                next set of images. Always check for the presence of a <parameter>next</parameter> link and use it as the URI
+                in a subsequent &GET; request. Follow this pattern until a <parameter>next</parameter> link is no longer
+                provided. The next link preserves any query parameters that you send in your initial request. You can use the
+                    <parameter>first</parameter> link to jump back to the first page of the collection. If you prefer to
                 paginate through images manually, use the <parameter>limit</parameter> and <parameter>marker</parameter>
                 parameters. </para>
             <para>The List Images operation accepts several types of query parameters that you can use to filter the results
@@ -232,9 +244,10 @@
                     <parameter>sort_dir</parameter> parameters. The API uses the natural sorting of whatever image attribute
                 is provided as the <parameter>sort_key</parameter>. </para>
             <note>
-                <para>Public images may reach end-of-life and be removed from the base image list.  This  
+                <para>Public images may reach end-of-life and be removed from the base image list. This
                     <link xlink:href="http://www.rackspace.com/knowledge_center/article/hidden-base-images">
-                        article</link> contains images which have been removed from the base images list but which may still be 
+                        article</link>
+                    contains images which have been removed from the base images list but which may still be
                     available.</para>
             </note>
         </wadl:doc>
@@ -445,16 +458,15 @@
                                 </listitem>
                             </varlistentry>
                         </variablelist>
-                        <note><para>The member_status filter will be ignored if the visibility parameter is not set to 
-                            "shared".</para></note>
+                        <note><para>The member_status filter will be ignored if the visibility parameter is not set to
+                                "shared".</para></note>
                     </wadl:doc>
                 </param>
                 <param name="owner" style="query" type="xsd:string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"> Filters images on acceptance status only. For example,
-                        <literal>visibility=shared&amp;owner=&lt;OWNER_ID></literal> shows only images shared with this user by 
-                        the user whose tenant id is <literal>OWNER_ID</literal>. 
-                        <note><para>The owner filter will be ignored if the visibility parameter is not set to 
-                        "shared".</para></note>
+                            <literal>visibility=shared&amp;owner=&lt;OWNER_ID></literal> shows only images shared with this
+                        user by the user whose tenant id is <literal>OWNER_ID</literal>. <note><para>The owner filter will be
+                                ignored if the visibility parameter is not set to "shared".</para></note>
                     </wadl:doc>
                 </param>
             </representation>
@@ -471,10 +483,10 @@
     <!-- Create Image Member -->
     <method name="POST" id="createImageMember">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Create Image Member">
-            <para role="shortdesc">Adds the specified <parameter>account ID/tenant ID</parameter> specified in the request body as an
-                image member.</para>
-            <para>This operation allows you to add users to the list of members with whom the image is shared.  The member status 
-                of a newly created image member is <literal>pending</literal>.</para>
+            <para role="shortdesc">Adds the specified <parameter>account ID/tenant ID</parameter> specified in the request
+                body as an image member.</para>
+            <para>This operation allows you to add users to the list of members with whom the image is shared. The member
+                status of a newly created image member is <literal>pending</literal>.</para>
             <para>If the user making the call is not the image owner, the response is <errorcode>HTTP 404</errorcode>.</para>
         </wadl:doc>
         <request>
@@ -553,87 +565,332 @@
     <!-- Delete Image Member -->
     <method name="DELETE" id="deleteImageMember">
         <wadl:doc xml:lang="EN" title="Delete Image Member" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Deletes the specified <parameter>account ID/tenant ID</parameter> from the member list of the
-                specified image.</para>
-            <para>This call, which can only be made by the image owner, removes users from the list of members who have access to
-                a shared image.</para>
+            <para role="shortdesc">Deletes the specified <parameter>account ID/tenant ID</parameter> from the member list of
+                the specified image.</para>
+            <para>This call, which can only be made by the image owner, removes users from the list of members who have
+                access to a shared image.</para>
             <para>If the <parameter>{member_id}</parameter> is not a member of the specified image, the response is
                     <errorcode>HTTP 404</errorcode></para>
         </wadl:doc>
         <response status="204"/> &commonFaults; </method>
 
-    <!-- Task Operations (need correct text and examples)-->
-    <!-- List Image Members -->
-    <!--    <method name="GET" id="listTasks">
-        <wadl:doc xml:lang="EN" title="List Tasks" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">This operation returns collection of tasks.</para>
+    <!-- Task Operations -->
+    <!-- Import Task -->
+    <method name="POST" id="taskImport">
+        <wadl:doc xml:lang="EN" title="Import Task" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Submits a task request to import an image.</para>
+            <para>This operation submits an task request to import an image. The request begins the import process and
+                returns the location of the task resource that can be subsequently polled to determine the status of the
+                import. For more information on the polling operation, see <olink targetdoc="ci-devguide"
+                    targetptr="POST_taskStatus_v2_tasks__locationID__Image_Task_Calls"
+                    >"POST_taskStatus_v2_tasks__locationID__Image_Task_Calls"</olink>.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-member-update-request.json"/>
+                    <xsdxt:code href="../common/samples/task-import-req.json"/>
                 </wadl:doc>
-                <param name="owner" style="query" type="xsd:string" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"> Filters images on acceptance status only. For example,
-                        <literal>owner=&lt;OWNER_ID></literal> shows only images shared with this user by the user whose
-                        tenant id is <literal>OWNER_ID</literal>. </wadl:doc>
+                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task. Use <code>import</code> for task
+                        imports.</wadl:doc>
+                </param>
+                <param name="import_from" style="plain" type="xsd:string" required="true" path="$.import_from">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The source of the task to be imported.</wadl:doc>
+                </param>
+                <param name="import_from_format" style="plain" type="xsd:string" required="true" path="$.import_from_format">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The format of the task to be imported. The standard
+                        format is qcow2, but your cloud provider may allow other formats.</wadl:doc>
+                </param>
+                <param name="name" style="plain" type="xsd:string" required="true" path="$.name">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The name of the task (image) to be imported.</wadl:doc>
+                </param>
+                <param name="tags" style="plain" type="xsd:string" required="false" path="$.import_from">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The tags for the task to be imported.</wadl:doc>
                 </param>
             </representation>
         </request>
-        <response status="200">
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-members-list-response.json"/>
-                </wadl:doc>
-            </representation>
+        <response status="201">
+            <param name="location_id" style="header" type="xsd:string" required="true" path="$.location_id">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">The location of the task resource that is needed for polling
+                    the progress of the import request.</wadl:doc>
+            </param>
         </response>
-    </method>-->
+    </method>
 
-    <!-- Create Task -->
-    <!--    <method name="POST" id="createTask">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Create Task">
-            <para role="shortdesc">Creates a task.</para>
+    <!-- Export Task -->
+    <method name="POST" id="taskExport">
+        <wadl:doc xml:lang="EN" title="Export Task" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Submits a task request to export an image.</para>
+            <para>This operation submits an task request to export an image. The request begins the export process and
+                returns the location of the task resource that can be subsequently polled to determine the status of the
+                export. For more information on the polling operation, see <olink targetdoc="ci-devguide"
+                    targetptr="POST_taskStatus_v2_tasks__locationID__Image_Task_Calls"
+                    >"POST_taskStatus_v2_tasks__locationID__Image_Task_Calls"</olink>.</para>
         </wadl:doc>
         <request>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-member-create-request.json"/>
+                    <xsdxt:code href="../common/samples/task-export-req.json"/>
                 </wadl:doc>
+                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task. Use <code>export</code> for task
+                        exports.</wadl:doc>
+                </param>
+                <param name="export_uuid" style="plain" type="xsd:string" required="true" path="$.export_uuid">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The unique identifier of the task to be
+                        exported.</wadl:doc>
+                </param>
+                <param name="export_to" style="plain" type="xsd:string" required="true" path="$.export_to">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The destination of the task to be exported.</wadl:doc>
+                </param>
+                <param name="export_format" style="plain" type="xsd:string" required="true" path="$.export_format">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The format of the task to be exported.</wadl:doc>
+                </param>
             </representation>
         </request>
-        <response status="200">
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-member-create-response.json"/>
-                </wadl:doc>
-            </representation>
-        </response> &commonFaults; </method>-->
+        <response status="201">
+            <param name="location_id" style="header" type="xsd:string" required="true" path="$.location_id">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">The location of the task resource that is needed for polling
+                    the progress of the export request.</wadl:doc>
+            </param>
+        </response>
+    </method>
 
-    <!-- Update Task -->
-    <!--    <method name="PUT" id="updateTask">
-        <wadl:doc xml:lang="EN" title="Update Task" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Updates the specified task.</para>
+    <!-- Task Status -->
+    <method name="POST" id="taskStatus">
+        <wadl:doc xml:lang="EN" title="Poll for Status of Task" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">This operation returns status of task import or export.</para>
+            <para>Stuff about polling for status of task imports or exports.</para>
         </wadl:doc>
-        <request>
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-member-update-request.json"/>
-                </wadl:doc>
-            </representation>
-        </request>
         <response status="200">
+            <!--import pending-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/image-member-update-response.json"/>
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Pending Response">
+                    <xsdxt:code href="../common/samples/task-import-pending-response.json"/>
                 </wadl:doc>
+                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>import</code> for task
+                        imports.</wadl:doc>
+                </param>
+                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>processing</code> while
+                        task is in progress.</wadl:doc>
+                </param>
+                <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource will expire.
+                                <note><para>Even after the task resource has expired (and is thus no longer available to be
+                                polled), the result of the task (such as an imported image) will still exist.</para></note>
+                    </wadl:doc>
+                </param>
+                <param name="import_from" style="plain" type="xsd:string" required="true" path="$.import_from">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The source of the imported
+                        task.</wadl:doc>
+                </param>
+                <param name="import_from_format" style="plain" type="xsd:string" required="true" path="$.import_from_format">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The format of the imported
+                        task.</wadl:doc>
+                </param>
+                <param name="name" style="plain" type="xsd:string" required="true" path="$.name">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The name of the imported
+                        task.</wadl:doc>
+                </param>
+                <param name="tags" style="plain" type="xsd:string" required="false" path="$.tags">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The tags for the imported
+                        task.</wadl:doc>
+                </param>
             </representation>
-        </response> &commonFaults; </method>-->
-
-    <!-- Delete Task -->
-    <!--    <method name="DELETE" id="deleteTask">
-        <wadl:doc xml:lang="EN" title="Delete Task" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Deletes the specified <parameter>task ID</parameter>.</para>
-        </wadl:doc>
-        <response status="204"/> &commonFaults; </method>-->
-
+            <!--import success-->
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Success Response">
+                    <xsdxt:code href="../common/samples/task-import-success-response.json"/>
+                </wadl:doc>
+                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>import</code> for task
+                        imports.</wadl:doc>
+                </param>
+                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>success</code> if task
+                        action worked.</wadl:doc>
+                </param>
+                <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource will expire.
+                                <note><para>Even after the task resource has expired (and is thus no longer available to be
+                                polled), the result of the task (such as an imported image) will still exist.</para></note>
+                    </wadl:doc>
+                </param>
+                <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The id of the task.</wadl:doc>
+                </param>
+                <param name="image_uuid" style="plain" type="xsd:string" required="false" path="$.image_uuid">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For successful import tasks) The unique identifier of
+                        the imported task.</wadl:doc>
+                </param>
+                <param name="import_from" style="plain" type="xsd:string" required="true" path="$.import_from">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The source of the imported
+                        task.</wadl:doc>
+                </param>
+                <param name="import_from_format" style="plain" type="xsd:string" required="true" path="$.import_from_format">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The format of the imported
+                        task.</wadl:doc>
+                </param>
+                <param name="name" style="plain" type="xsd:string" required="true" path="$.name">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The name of the imported
+                        task.</wadl:doc>
+                </param>
+                <param name="tags" style="plain" type="xsd:string" required="false" path="$.tags">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The tags for the imported
+                        task.</wadl:doc>
+                </param>
+            </representation>
+            <!--import failure-->
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Failure Response">
+                    <xsdxt:code href="../common/samples/task-import-failure-response.json"/>
+                </wadl:doc>
+                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>import</code> for task
+                        imports.</wadl:doc>
+                </param>
+                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>failure</code> if task
+                        action failed.</wadl:doc>
+                </param>
+                <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource will expire.
+                                <note><para>Even after the task resource has expired (and is thus no longer available to be
+                                polled), the result of the task (such as an imported image) will still exist.</para></note>
+                    </wadl:doc>
+                </param>
+                <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The id of the task.</wadl:doc>
+                </param>
+                <param name="message" style="plain" type="xsd:string" required="false" path="$.message">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For failed tasks) The reason why the task import or
+                        export failed.</wadl:doc>
+                </param>
+                <param name="import_from" style="plain" type="xsd:string" required="true" path="$.import_from">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The source of the imported
+                        task.</wadl:doc>
+                </param>
+                <param name="import_from_format" style="plain" type="xsd:string" required="true" path="$.import_from_format">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The format of the imported
+                        task.</wadl:doc>
+                </param>
+                <param name="name" style="plain" type="xsd:string" required="true" path="$.name">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The name of the imported
+                        task.</wadl:doc>
+                </param>
+                <param name="tags" style="plain" type="xsd:string" required="false" path="$.tags">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The tags for the imported
+                        task.</wadl:doc>
+                </param>
+            </representation>
+            <!--export pending-->
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Pending Response">
+                    <xsdxt:code href="../common/samples/task-export-pending-response.json"/>
+                </wadl:doc>
+                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>export</code> for task
+                        exports.</wadl:doc>
+                </param>
+                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>pending</code> while task
+                        is in progress</wadl:doc>
+                </param>
+                <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The id of the task.</wadl:doc>
+                </param>
+                <param name="export_uuid" style="plain" type="xsd:string" required="false" path="$.export_uuid">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The unique identifier of the exported
+                        task.</wadl:doc>
+                </param>
+                <param name="export_to" style="plain" type="xsd:string" required="false" path="$.export_to">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The destination of the exported
+                        task.</wadl:doc>
+                </param>
+                <param name="export_format" style="plain" type="xsd:string" required="false" path="$.export_format">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The format of the exported
+                        task.</wadl:doc>
+                </param>
+            </representation>
+            <!--export success-->
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Success Response">
+                    <xsdxt:code href="../common/samples/task-export-success-response.json"/>
+                </wadl:doc>
+                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>export</code> for task
+                        exports.</wadl:doc>
+                </param>
+                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>success</code> if task
+                        action worked.</wadl:doc>
+                </param>
+                <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource will expire.
+                                <note><para>Even after the task resource has expired (and is thus no longer available to be
+                                polled), the result of the task (such as an imported image) will still exist.</para></note>
+                    </wadl:doc>
+                </param>
+                <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The id of the task.</wadl:doc>
+                </param>
+                <param name="export_location" style="plain" type="xsd:string" required="false" path="$.export_location">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For successful export tasks) The location of the
+                        exported task.</wadl:doc>
+                </param>
+                <param name="export_uuid" style="plain" type="xsd:string" required="false" path="$.export_uuid">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The unique identifier of the exported
+                        task.</wadl:doc>
+                </param>
+                <param name="export_to" style="plain" type="xsd:string" required="false" path="$.export_to">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The destination of the exported
+                        task.</wadl:doc>
+                </param>
+                <param name="export_format" style="plain" type="xsd:string" required="false" path="$.export_format">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The format of the exported
+                        task.</wadl:doc>
+                </param>
+            </representation>
+            <!--export failure-->
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Failure Response">
+                    <xsdxt:code href="../common/samples/task-export-failure-response.json"/>
+                </wadl:doc>
+                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>export</code> for task
+                        exports.</wadl:doc>
+                </param>
+                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>failure</code> if task
+                        action failed.</wadl:doc>
+                </param>
+                <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource will expire.
+                                <note><para>Even after the task resource has expired (and is thus no longer available to be
+                                polled), the result of the task (such as an imported image) will still exist.</para></note>
+                    </wadl:doc>
+                </param>
+                <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The id of the task.</wadl:doc>
+                </param>
+                <param name="message" style="plain" type="xsd:string" required="false" path="$.message">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For failed tasks) The reason why the task import or
+                        export failed.</wadl:doc>
+                </param>
+                <param name="export_uuid" style="plain" type="xsd:string" required="false" path="$.export_uuid">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The unique identifier of the exported
+                        task.</wadl:doc>
+                </param>
+                <param name="export_to" style="plain" type="xsd:string" required="false" path="$.export_to">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The destination of the exported
+                        task.</wadl:doc>
+                </param>
+                <param name="export_format" style="plain" type="xsd:string" required="false" path="$.export_format">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The format of the exported
+                        task.</wadl:doc>
+                </param>
+            </representation>
+        </response>&commonFaults; </method>
 </application>

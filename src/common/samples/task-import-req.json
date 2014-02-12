@@ -1,0 +1,11 @@
+{ 
+   "type": "import",
+   "input": {
+      "import_from": "swift://cloud.foo/myaccount/mycontainer/path",
+      "import_from_format": "qcow2",
+      "image_properties" : {
+          "name": "GreatStack 1.22",
+          "tags": ["lamp", "custom"]
+       }
+    }
+}

@@ -17,6 +17,9 @@
 				<para>Create and manage <glossterm baseform="Image Tag">image tags</glossterm></para>
 			</listitem>
 			<listitem>
+				<para>Import and export images using <glossterm baseform="Image Task">image tasks</glossterm></para>
+			</listitem>
+			<listitem>
 				<para>Get information about image <glossterm baseform="Schema">schemas</glossterm></para>
 			</listitem>
 		</itemizedlist>
@@ -105,8 +108,8 @@
 						to the possibility of being reminded by the producer that the image is available, the consumer uses
 						the &CImA; to change the member status to <literal>pending</literal>. </para>
 					<para>The API method (including request body details) is: <olink targetdoc="ci-devguide"
-						targetptr="PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"
-						>"PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"</olink></para>
+							targetptr="PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"
+							>"PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"</olink></para>
 				</listitem>
 			</orderedlist>
 			<note>
@@ -144,11 +147,12 @@
 				images from users, by creating or deleting <glossterm baseform="Image Member">image
 				members</glossterm>.</para>
 			<warning>
-				<para>You are responsible for what you share with other cloud users.  Consult the  
+				<para>You are responsible for what you share with other cloud users. Consult the
 					<link xlink:href="http://www.rackspace.com/information/legal/cloud/tos">Rackspace US Cloud Terms of Service</link>
-					and <link xlink:href="http://www.rackspace.co.uk/legal/cloud-terms-of-service">Rackspace UK Cloud Terms of 
+					and
+					<link xlink:href="http://www.rackspace.co.uk/legal/cloud-terms-of-service">Rackspace UK Cloud Terms of 
 						Service</link>
-					for details concerning the limitations on Rackspace support for non-standard software or operating system 
+					for details concerning the limitations on Rackspace support for non-standard software or operating system
 					configurations, as well as your personal liabilities for sharing malicious software.</para>
 			</warning>
 			<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
@@ -168,8 +172,8 @@
 			<para> Service developers use the operations described in this section to update the status of a specified shared
 				image for the <glossterm baseform="Image Member">image member</glossterm>. </para>
 			<warning>
-				<para>Before using a shared image, consider its source.  It's a good idea to build critical infrastructure 
-					components using only images produced by people who have earned your trust.  Further, as outlined in your  
+				<para>Before using a shared image, consider its source. It's a good idea to build critical infrastructure
+					components using only images produced by people who have earned your trust. Further, as outlined in your
 					<link xlink:href="http://www.rackspace.com/information/legal/cloud/tos">Rackspace Cloud Terms of Service</link>,
 					support for a non-Rackspace image is on an AS IS basis.</para>
 			</warning>
@@ -226,4 +230,24 @@
 		</wadl:resources>
 	</section>
 
+	<!-- Image Tasks -->
+	<section xml:id="Image_Task_Calls">
+		<title>Image Task Operations</title>
+		<para> Service developers use the operations described in this section to manage <glossterm baseform="Image-Task"
+				>image tasks</glossterm> for importing and exporting images. For more information on tasks, see <olink
+				targetdoc="ci-devguide" targetptr="image-tasks">“Image Tasks (Importing and Exporting
+			Images)”</olink>.</para>
+		<!--- this section comes from 1 WADL: image-2.0 -->
+		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- import and export tasks -->
+			<wadl:resource href="../../wadl/image-2.0.wadl#Tasks">
+				<wadl:method href="taskImport"/>
+				<wadl:method href="taskExport"/>
+			</wadl:resource>
+			<!-- poll image tasks -->
+			<wadl:resource href="../../wadl/image-2.0.wadl#TasksLocID">
+				<wadl:method href="taskStatus"/>
+			</wadl:resource>
+		</wadl:resources>
+	</section>
 </chapter>

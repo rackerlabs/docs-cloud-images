@@ -1,0 +1,7 @@
+{ 
+  "status": "failure",
+  "message": "Could not retrieve image.  Received 404 response for url 'swift://cloud.foo/myaccount/mycontainer/path'.",
+  "expires_at": "2013-05-21T15:19:56+0000",
+  "input" : "stuff in braces",
+  "id": "12345678-1234-1234-1234-123456789abc"
+}

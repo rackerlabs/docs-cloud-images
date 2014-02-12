@@ -1,0 +1,16 @@
+{ 
+  "type": "export",
+  "status" : "success",
+  "input": 
+  {
+      "export_uuid" : "deadbeef-dead-dead-dead-beefbeefbeef",
+      "export_to": "swift://cloud.foo/myaccount/mycontainer/path",
+      "export_format": "qcow2",
+  },
+  "result": 
+  {
+      "export_location": "swift://cloud.foo/myaccount/mycontainer/path/12345678-abcd-abcd-abcd-987654321abc"
+  },
+  "expires_at" : "2013-05-21T15:19:56+0000",
+  "id": "43215678-4321-4321-4321-432156789abc"
+}
