@@ -25,7 +25,7 @@
     <!--*******************************************************-->
     <!--             All Resources                             -->
     <!--*******************************************************-->
-    <resources base="https://glance.example.com/">
+    <resources base="https://glance.example.com/" xml:id="images-v2">
         <resource id="info" path="v2">
             <resource id="Images" path="images">
                 <method href="#createImage"/>
@@ -581,9 +581,15 @@
             <para role="shortdesc">Submits a task request to import an image.</para>
             <para>This operation submits an task request to import an image. The request begins the import process and
                 returns the location of the task resource that can be subsequently polled to determine the status of the
-                import. For more information on the polling operation, see <olink targetdoc="ci-devguide"
-                    targetptr="POST_taskStatus_v2_tasks__locationID__Image_Task_Calls"
-                    >"POST_taskStatus_v2_tasks__locationID__Image_Task_Calls"</olink>.</para>
+                import. For more information on the polling operation, see
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_taskStatus_v2_tasks__locationID__Image_Task_Calls.html">Poll for Status of Task</link>.</para>
+            <note>
+                <para> As described in the
+                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html">Rackspace Terms of Service</link>,
+                    you should be aware of and respect all licensing restrictions that apply to any software that you
+                    import into the Rackspace open cloud. In particular, be aware that Microsoft licensing rules are very
+                    restrictive. If you have questions, please contact the software vendor. </para>
+            </note>
         </wadl:doc>
         <request>
             <representation mediaType="application/json">
@@ -623,9 +629,13 @@
             <para role="shortdesc">Submits a task request to export an image.</para>
             <para>This operation submits an task request to export an image. The request begins the export process and
                 returns the location of the task resource that can be subsequently polled to determine the status of the
-                export. For more information on the polling operation, see <olink targetdoc="ci-devguide"
-                    targetptr="POST_taskStatus_v2_tasks__locationID__Image_Task_Calls"
-                    >"POST_taskStatus_v2_tasks__locationID__Image_Task_Calls"</olink>.</para>
+                export. For more information on the polling operation, see
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_taskStatus_v2_tasks__locationID__Image_Task_Calls.html">Poll for Status of Task</link>.</para>
+            <note>
+                <para>The exported image is deposited in your Cloud Files account, staying in the Rackspace open cloud. You
+                    are responsible for ensuring that any distribution of your image from the Rackspace open cloud complies
+                    with any licensing restrictions.</para>
+            </note>
         </wadl:doc>
         <request>
             <representation mediaType="application/json">

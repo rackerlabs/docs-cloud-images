@@ -32,19 +32,19 @@
     <!--             All Resources                             -->
     <!--*******************************************************-->
 
-    <resources base="https://glance.example.com/">
+    <resources base="https://glance.example.com/"  xml:id="images-schema-v2">
         <resource id="info" path="v2">
             <resource id="schemas" path="schemas">
-                <resource id="Image-schemas" type="#SchemasList" path="images">
+                <resource id="Image-schemas" path="images">
                     <method href="#getImagesSchema"/>
                 </resource>
-                <resource id="Image-schema" type="#SchemaList" path="image">
+                <resource id="Image-schema" path="image">
                     <method href="#getImageSchema"/>
                 </resource>
-                <resource id="Image-members-schemas" type="#SchemasList" path="members">
+                <resource id="Image-members-schemas" path="members">
                     <method href="#getImageMembersSchemas"/>
                 </resource>
-                <resource id="Image-member-schema" type="#SchemaList" path="member">
+                <resource id="Image-member-schema" path="member">
                     <method href="#getImageMemberSchema"/>
                 </resource>
             </resource>

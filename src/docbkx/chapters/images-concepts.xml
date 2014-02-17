@@ -50,14 +50,12 @@
         <para>A <glossterm baseform="JSON">image task</glossterm> is a request to perform an asynchronous image-related
             operation, such as importing or exporting an image. The request results in the creation of a task resource that
             can be polled for information about the status of the operation.</para>
-        <para>The task resource includes an expiration time and date stamp. After the time in the stamp, the task resource
-            will expire. However, the result of the task, such as an imported image, will not expire.</para>
-        <para>A task request to import an image is necessary to give you cloud provider access to your image so that the
-            provider can make the image suitable for booting in its cloud.</para>
+        <para>When the task resource reaches a final status of <code>success</code> or <code>failure</code>, the poll reponse
+            will include an expiration timestamp. After that expiration time, the task resource itself will expire and be
+            subject to deletion. However, the result of the task, such as an imported image, will not expire.</para>
         <para>To import an image, do the following: <orderedlist>
                 <listitem>
-                    <para>Put the image in a cloud storage account, since the cloud storage accounts are designed to handle
-                        large volumes of data uploading from connections of varying bandwidth.</para>
+                    <para>Put the image into your Cloud Files account.</para>
                 </listitem>
                 <listitem>
                     <para> Submit the import request (see <olink targetdoc="ci-devguide"
@@ -65,8 +63,7 @@
                             >POST_taskImport_v2_tasks_Image_Task_Calls</olink>).</para>
                 </listitem>
                 <listitem>
-                    <para>The &CImS; will fetch the image from your cloud storage, do the processing requored by the cloud
-                        provider for use in its cloud, and create a new image for you</para>
+                    <para>The &CImS; will fetch the image from your cloud storage and create a new image for you.</para>
                 </listitem>
             </orderedlist>
         </para>
@@ -80,8 +77,9 @@
                             >POST_taskExport_v2_tasks_Image_Task_Calls</olink>).</para>
                 </listitem>
                 <listitem>
-                    <para>The &CImS; removes provider-specific information from the image, converts it to a standard
-                        interchange format, and transfers the exported image to your cloud storage account.</para>
+                    <para>The &CImS; processes the image, converts it to a convenient format for a future export of the image
+                        to another cloud (or to another region of the Rackspace cloud), and transfers the exported image to
+                        your Cloud Files account.</para>
                 </listitem>
             </orderedlist>
         </para>
@@ -104,13 +102,13 @@
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term><emphasis role="bold">successful</emphasis></term>
+                    <term><emphasis role="bold">success</emphasis></term>
                     <listitem>
                         <para>The image task completed successfully.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
-                    <term><emphasis role="bold">failed</emphasis></term>
+                    <term><emphasis role="bold">failure</emphasis></term>
                     <listitem>
                         <para>The image task completed unsuccessfully.</para>
                     </listitem>
@@ -119,29 +117,30 @@
         </section>
     </section>
 
+    <!--Per Brian, we only accept one format, so hide whole section -->
     <!--Disk and Container Formats-->
-    <section xml:id="disk-container-formats">
+    <!--<section xml:id="disk-container-formats">
         <title>Disk and Container Formats</title>
         <para>When adding an image to Cloud Images, you can specify the image's <emphasis role="italic">disk
                 format</emphasis> and the <emphasis role="italic">container format</emphasis>. These formats are configurable
             for each image and are defined in the following sections.</para>
 
-        <!--Disk Format-->
+        <!-\-Disk Format-\->
         <section xml:id="disk-format">
             <title>Disk Formats</title>
             <para>The disk format of a virtual machine image is the format of the underlying disk image. Virtual appliance
                 vendors have different formats for laying out the information contained in a virtual machine image.</para>
-            <para>You can set your image's disk format to <!--one of--> the following type<!--s-->:</para>
+            <para>You can set your image's disk format to <!-\-one of-\-> the following type<!-\-s-\->:</para>
             <variablelist>
-                <!-- Per Brian, only supported type at launch is vhd -->
-                <!--                <varlistentry>
+                <!-\- Per Brian, only supported type at launch is vhd -\->
+                <!-\-                <varlistentry>
                     <term><emphasis role="bold">raw</emphasis></term>
                     <listitem>
                         <para>An unstructured disk format, natively supported by both <glossterm>KVM</glossterm> and
                                 <glossterm>Xen</glossterm>
                             <glossterm baseform="Hypervisor">hypervisors</glossterm></para>
                     </listitem>
-                </varlistentry>-->
+                </varlistentry>-\->
                 <varlistentry>
                     <term><emphasis role="bold">vhd</emphasis></term>
                     <listitem>
@@ -149,7 +148,7 @@
                                 monitors</glossterm> from VMware, Xen, Microsoft, VirtualBox, and others</para>
                     </listitem>
                 </varlistentry>
-                <!--<varlistentry>
+                <!-\-<varlistentry>
                     <term><emphasis role="bold">vmdk</emphasis></term>
                     <listitem>
                         <para>A common disk format supported by many common <glossterm baseform="Virtual Machine Monitor"
@@ -206,14 +205,14 @@
                     <listitem>
                         <para>An Amazon machine image (AMI) in raw format</para>
                     </listitem>
-                </varlistentry>-->
+                </varlistentry>-\->
             </variablelist>
             <note>
                 <para>There are other formats, but vhd is currently the only supported format in &CImS;.</para>
             </note>
         </section>
 
-        <!--Container Format-->
+        <!-\-Container Format-\->
         <section xml:id="container-format">
             <title>Container Formats</title>
             <para>The container format refers to whether the virtual machine image is in a file format that also contains
@@ -223,15 +222,15 @@
                     OpenStack, so it is safe to specify <emphasis role="bold">bare</emphasis> as the container format, if you
                     are unsure.</para>
             </note>
-            <para>You can set your image's container format to <!--one of--> the following type<!--s-->:</para>
+            <para>You can set your image's container format to <!-\-one of-\-> the following type<!-\-s-\->:</para>
             <variablelist>
-                <!-- Only supported format is ovf at launch, per Brian-->
-                <!--                <varlistentry>
+                <!-\- Only supported format is ovf at launch, per Brian-\->
+                <!-\-                <varlistentry>
                     <term><emphasis role="bold">bare</emphasis></term>
                     <listitem>
                         <para>No container or metadata envelope for the image</para>
                     </listitem>
-                </varlistentry>-->
+                </varlistentry>-\->
                 <varlistentry>
                     <term><emphasis role="bold">ovf</emphasis></term>
                     <listitem>
@@ -239,7 +238,7 @@
                             distributing software and applications for virtual machines</para>
                     </listitem>
                 </varlistentry>
-                <!--                <varlistentry>
+                <!-\-                <varlistentry>
                     <term><emphasis role="bold">aki</emphasis></term>
                     <listitem>
                         <para>An Amazon kernel image (AKI)</para>
@@ -256,13 +255,13 @@
                     <listitem>
                         <para>An Amazon machine image (AMI)</para>
                     </listitem>
-                </varlistentry>-->
+                </varlistentry>-\->
             </variablelist>
             <note>
                 <para>There are other formats, but ovf is currently the only supported format in &CImS;.</para>
             </note>
         </section>
-    </section>
+    </section>-->
 
     <!--Common Image Properties-->
     <section xml:id="common-image-properties">
