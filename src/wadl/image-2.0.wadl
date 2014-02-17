@@ -246,7 +246,7 @@
             <note>
                 <para>Public images may reach end-of-life and be removed from the base image list. This
                     <link xlink:href="http://www.rackspace.com/knowledge_center/article/hidden-base-images">
-                        article</link>
+                        Hidden Base Images article</link>
                     contains images which have been removed from the base images list but which may still be
                     available.</para>
             </note>
@@ -582,12 +582,12 @@
             <para>This operation submits an task request to import an image. The request begins the import process and
                 returns the location of the task resource that can be subsequently polled to determine the status of the
                 import. For more information on the polling operation, see
-                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_taskStatus_v2_tasks__locationID__Image_Task_Calls.html">Poll for Status of Task</link>.</para>
+                <link xlink:href="POST_taskStatus_v2_tasks__locationID__Image_Task_Calls.html"/>.</para>
             <note>
                 <para> As described in the
                     <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html">Rackspace Terms of Service</link>,
-                    you should be aware of and respect all licensing restrictions that apply to any software that you
-                    import into the Rackspace open cloud. In particular, be aware that Microsoft licensing rules are very
+                    you should be aware of and respect all licensing restrictions that apply to any software that you import
+                    into the Rackspace open cloud. In particular, be aware that Microsoft licensing rules are very
                     restrictive. If you have questions, please contact the software vendor. </para>
             </note>
         </wadl:doc>
@@ -630,7 +630,7 @@
             <para>This operation submits an task request to export an image. The request begins the export process and
                 returns the location of the task resource that can be subsequently polled to determine the status of the
                 export. For more information on the polling operation, see
-                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_taskStatus_v2_tasks__locationID__Image_Task_Calls.html">Poll for Status of Task</link>.</para>
+                <link xlink:href="POST_taskStatus_v2_tasks__locationID__Image_Task_Calls.html"/>.</para>
             <note>
                 <para>The exported image is deposited in your Cloud Files account, staying in the Rackspace open cloud. You
                     are responsible for ensuring that any distribution of your image from the Rackspace open cloud complies
@@ -670,7 +670,10 @@
     <method name="POST" id="taskStatus">
         <wadl:doc xml:lang="EN" title="Poll for Status of Task" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">This operation returns status of task import or export.</para>
-            <para>Stuff about polling for status of task imports or exports.</para>
+            <para>When you submit a task import or export request, the &CImS; creates a task resource to manage the request
+                and returns the location of that task resource. This operation allows you to poll the task resource to find
+                the status of the request, using the location of the task resource. Ultimately, the poll request returns the
+                location of the image (if the request succeeds) or an error message (if it fails).</para>
         </wadl:doc>
         <response status="200">
             <!--import pending-->

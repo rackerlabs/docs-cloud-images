@@ -51,8 +51,8 @@
             operation, such as importing or exporting an image. The request results in the creation of a task resource that
             can be polled for information about the status of the operation.</para>
         <para>When the task resource reaches a final status of <code>success</code> or <code>failure</code>, the poll reponse
-            will include an expiration timestamp. After that expiration time, the task resource itself will expire and be
-            subject to deletion. However, the result of the task, such as an imported image, will not expire.</para>
+            will include an expiration timestamp. After that expiration time, the task resource itself expires and is subject
+            to deletion. However, the result of the task, such as an imported or exported image, do not expire.</para>
         <para>To import an image, do the following: <orderedlist>
                 <listitem>
                     <para>Put the image into your Cloud Files account.</para>
@@ -781,8 +781,7 @@ JSON Pointer        Image Entity Key Pair
                     contains a value member that specifies the value to be added. </para>
                 <warning>
                     <para> There is a small subset of standard image properties that can be added by users; please consult
-                        the
-                        <link xlink:href="http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link>
+                        the <link xlink:href="http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link>
                         for details. If you try to add any other properties as part of your PATCH request, the request will
                         fail.</para>
                 </warning>
@@ -814,8 +813,8 @@ JSON Pointer        Image Entity Key Pair
                     <para> Some image properties used by the system are <code>protected</code>. If you try to modify any of
                         these properties as part of your PATCH request, the request will fail. There is a small subset of
                         standard image properties that can be modified by users; please consult the
-                        <link xlink:href="http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link>
-                        for details. </para>
+                        <link xlink:href="http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link> for
+                        details. </para>
                 </warning>
                 <para><guilabel>Replace Example</guilabel></para>
                 <programlisting>
