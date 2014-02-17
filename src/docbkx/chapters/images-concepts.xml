@@ -782,7 +782,7 @@ JSON Pointer        Image Entity Key Pair
                 <warning>
                     <para> There is a small subset of standard image properties that can be added by users; please consult
                         the
-                        <link xlink:href="http://http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link>
+                        <link xlink:href="http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link>
                         for details. If you try to add any other properties as part of your PATCH request, the request will
                         fail.</para>
                 </warning>
@@ -814,7 +814,7 @@ JSON Pointer        Image Entity Key Pair
                     <para> Some image properties used by the system are <code>protected</code>. If you try to modify any of
                         these properties as part of your PATCH request, the request will fail. There is a small subset of
                         standard image properties that can be modified by users; please consult the
-                        <link xlink:href="http://http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link>
+                        <link xlink:href="http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link>
                         for details. </para>
                 </warning>
                 <para><guilabel>Replace Example</guilabel></para>
