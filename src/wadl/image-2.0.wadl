@@ -518,9 +518,9 @@
     <method name="GET" id="getImageMember">
         <wadl:doc xml:lang="EN" title="Get Image Member Details" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Gets the details for the specified image member. </para>
-            <para>This operation shows details of the image member. If the user making the call is not the image owner and
-                the user's <parameter>tenant_id</parameter> is not the same as the image member's
-                    <parameter>member_id</parameter>, the response is <errorcode>HTTP 404</errorcode>.</para>
+            <para>This operation shows details of the image member. To get a successful response, either the image owner must
+                make the call or the <parameter>tenant_id</parameter> of the user making the call must match the specified
+                    <parameter>member_id</parameter>. Otherwise the response is <errorcode>HTTP 404</errorcode>.</para>
         </wadl:doc>
         <response status="200">
             <representation mediaType="application/json">
@@ -536,7 +536,8 @@
     <method name="PUT" id="updateImageMember">
         <wadl:doc xml:lang="EN" title="Update Image Member" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Sets the specified status for the specified member of the specified image.</para>
-            <para>This operation updates the image member. If the call is made by the image owner, the response is <errorcode>HTTP 403 (Forbidden)</errorcode>.</para>
+            <para>This operation updates the image member. If the call is made by the image owner, the response is
+                    <errorcode>HTTP 403 (Forbidden)</errorcode>.</para>
             <para>If the call is made by a user who is not the owner and whose <parameter>tenant ID</parameter> is not the
                 same as the {member_id} is the operation URI, the response is <errorcode>HTTP 404</errorcode>.</para>
         </wadl:doc>
@@ -590,8 +591,8 @@
         <wadl:doc xml:lang="EN" title="Delete Image Member" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Deletes the specified <parameter>account ID/tenant ID</parameter> from the member list of
                 the specified image.</para>
-            <para>This operation deletes the image member from the image. This call, which can only be made by the image owner, removes users from the list of members who have
-                access to a shared image.</para>
+            <para>This operation deletes the image member from the image. This call, which can only be made by the image
+                owner, removes users from the list of members who have access to a shared image.</para>
             <para>If the <parameter>{member_id}</parameter> is not a member of the specified image, the response is
                     <errorcode>HTTP 404</errorcode></para>
         </wadl:doc>
