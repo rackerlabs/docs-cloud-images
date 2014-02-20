@@ -41,7 +41,7 @@
 							</includes>
 							<profileCondition>client</profileCondition>
 							<!-- These parameters only apply to webhelp -->
-							<enableDisqus>intranet</enableDisqus>
+							<enableDisqus>internet</enableDisqus>
 							<statusBarText>DRAFT</statusBarText>
 							<canonicalUrlBase>http://docs.rackspace.com/images/api/v2/ci-devguide/content</canonicalUrlBase>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>

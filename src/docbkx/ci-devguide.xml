@@ -32,7 +32,11 @@
           <itemizedlist spacing="compact">
             <listitem>
               <para>Added API section for importing, exporting, and polling image tasks: <olink targetdoc="ci-devguide"
-                  targetptr="GET_listImages_v2_images_Image_Calls">"GET_listImages_v2_images_Image_Calls"</olink>.</para>
+                targetptr="Image_Task_Calls">"Image_Task_Calls"</olink>.</para>
+            </listitem>
+            <listitem>
+              <para>Added <olink targetdoc="ci-devguide"
+                targetptr="GET_getImageMember_v2_images__image_id__members__member_id__Image_Both_Calls">"GET_getImageMember_v2_images__image_id__members__member_id__Image_Both_Calls"</olink> operation.</para>
             </listitem>
           </itemizedlist>
         </revdescription>

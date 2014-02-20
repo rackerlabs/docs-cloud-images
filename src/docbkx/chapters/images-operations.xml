@@ -138,6 +138,10 @@
 				<wadl:resource href="../../wadl/image-2.0.wadl#Members">
 					<wadl:method href="listImageMembers"/>
 				</wadl:resource>
+				<!-- show image member details -->
+				<wadl:resource href="../../wadl/image-2.0.wadl#MemberID">
+					<wadl:method href="getImageMember"/>
+				</wadl:resource>
 			</wadl:resources>
 		</section>
 
