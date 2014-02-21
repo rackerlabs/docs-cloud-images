@@ -32,11 +32,18 @@
           <itemizedlist spacing="compact">
             <listitem>
               <para>Added API section for importing, exporting, and polling image tasks: <olink targetdoc="ci-devguide"
-                targetptr="Image_Task_Calls">"Image_Task_Calls"</olink>.</para>
+                  targetptr="Image_Task_Calls">"Image_Task_Calls"</olink>.</para>
             </listitem>
             <listitem>
               <para>Added <olink targetdoc="ci-devguide"
-                targetptr="GET_getImageMember_v2_images__image_id__members__member_id__Image_Both_Calls">"GET_getImageMember_v2_images__image_id__members__member_id__Image_Both_Calls"</olink> operation.</para>
+                  targetptr="GET_getImageMember_v2_images__image_id__members__member_id__Image_Both_Calls"
+                  >"GET_getImageMember_v2_images__image_id__members__member_id__Image_Both_Calls"</olink> operation.</para>
+            </listitem>
+            <listitem>
+              <para>Added <olink targetdoc="ci-devguide" targetptr="GET_getTasksSchemas_v2_schemas_tasks_Schema_Calls"
+                  >"GET_getTasksSchemas_v2_schemas_tasks_Schema_Calls"</olink> operation and <olink targetdoc="ci-devguide"
+                  targetptr="GET_getTaskSchema_v2_schemas_task_Schema_Calls"
+                  >"GET_getTaskSchema_v2_schemas_task_Schema_Calls"</olink> operation.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -95,24 +102,15 @@
       <revision>
         <date>2013-12-17</date>
         <revdescription>
-          <itemizedlist spacing="compact">
-            <listitem>
-              <para>Added constraint that 'member_status' and 'owner' filters are expected to work only with
-                visibility=shared in <olink targetdoc="ci-devguide"
-                  targetptr="GET_listImageMembers_v2_images__image_id__members_Image_Both_Calls"
-                  >"GET_listImageMembers_v2_images__image_id__members_Image_Both_Calls"</olink></para>
-            </listitem>
-          </itemizedlist>
+          <para>Added constraint that 'member_status' and 'owner' filters are expected to work only with visibility=shared in
+              <olink targetdoc="ci-devguide" targetptr="GET_listImageMembers_v2_images__image_id__members_Image_Both_Calls"
+              >"GET_listImageMembers_v2_images__image_id__members_Image_Both_Calls"</olink></para>
         </revdescription>
       </revision>
       <revision>
         <date>2013-12-10</date>
         <revdescription>
-          <itemizedlist spacing="compact">
-            <listitem>
-              <para>Fixed Identity operation links in section <xref linkend="section_assign_roles_3"/></para>
-            </listitem>
-          </itemizedlist>
+          <para>Fixed Identity operation links in section <xref linkend="section_assign_roles_3"/></para>
         </revdescription>
       </revision>
       <revision>
@@ -135,7 +133,7 @@
     </raxm:metadata>
   </info>
 
-  <xi:include href="chapters/images-overview.xml"/>
+  <xi:include href="chapters/images-preface.xml"/>
   <xi:include href="chapters/images-concepts.xml"/>
   <xi:include href="chapters/images-generalinfo.xml"/>
   <!-- this chapter is generated from the WADLs -->

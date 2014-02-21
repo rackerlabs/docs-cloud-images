@@ -35,8 +35,8 @@
 						<phase>generate-sources</phase>
 						<configuration>
 							<includes> 
-								<!--ci-gettingstarted.xml, 
-								ci-releasenotes.xml, -->
+								ci-gettingstarted.xml, 
+								<!--ci-releasenotes.xml,--> 
 								ci-devguide.xml 
 							</includes>
 							<profileCondition>client</profileCondition>
