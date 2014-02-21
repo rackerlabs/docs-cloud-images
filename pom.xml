@@ -34,16 +34,34 @@
 						</goals>
 						<phase>generate-sources</phase>
 						<configuration>
-							<includes> 
-								ci-gettingstarted.xml, 
-								<!--ci-releasenotes.xml,--> 
+							<includes>  
 								ci-devguide.xml 
 							</includes>
-							<profileCondition>client</profileCondition>
+							<profileCondition>dev</profileCondition>
 							<!-- These parameters only apply to webhelp -->
 							<enableDisqus>internet</enableDisqus>
 							<statusBarText>DRAFT</statusBarText>
 							<canonicalUrlBase>http://docs.rackspace.com/images/api/v2/ci-devguide/content</canonicalUrlBase>
+							<enableGoogleAnalytics>0</enableGoogleAnalytics>
+						</configuration>
+					</execution>
+					<!-- HTML for images-getting-started-guide -->
+					<execution>
+						<id>g2-gs</id>
+						<goals>
+							<goal>generate-webhelp</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<includes> 
+								ci-gettingstarted.xml, 
+								<!--ci-releasenotes.xml,--> 
+							</includes>
+							<profileCondition>gs</profileCondition>
+							<!-- These parameters only apply to webhelp -->
+							<enableDisqus>internet</enableDisqus>
+							<statusBarText>DRAFT</statusBarText>
+							<canonicalUrlBase>http://docs.rackspace.com/images/api/v2/ci-gsguide/content</canonicalUrlBase>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
 						</configuration>
 					</execution>

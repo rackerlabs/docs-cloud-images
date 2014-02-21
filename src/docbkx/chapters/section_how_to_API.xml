@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE application [<!ENTITY % common  SYSTEM "../../common/common.ent">
+%common;]>
+
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Reqresponse">
+    <title>API Request and Response Information</title>
+    <para>The &CImA; primarily accepts and serves <glossterm baseform="JSON">JSON-encoded</glossterm> data. The
+        <glossterm baseform="Media type">media type</glossterm> required in the request varies by the following
+        request types: <itemizedlist>
+            <listitem>
+                <para>Requests that send JSON-encoded data use this <glossterm baseform="Media type">media
+                    type</glossterm> in their Content-Type header: <literal>'application/json'</literal>.</para>
+            </listitem>
+            <listitem>
+                <para>Requests that use HTTP &PATCH; syntax use the media type defined for the entity they intend to
+                    modify.</para>
+            </listitem>
+            <listitem>
+                <para>Requests that upload image data should use this media type
+                    <literal>'application/octet-stream'</literal>.</para>
+            </listitem>
+        </itemizedlist>
+    </para>
+    <para>The necessary json-schema documents are provided at predictable <glossterm baseform="URI">URIs</glossterm>. A
+        consumer validates server responses and client requests based on the published schemas. The schemas contained in
+        this document are only examples and should not be used to validate your requests. A client should always fetch
+        schemas from the server.</para>
+</section>

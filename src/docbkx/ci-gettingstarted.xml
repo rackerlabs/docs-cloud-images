@@ -39,10 +39,5 @@
     </raxm:metadata>
   </info>
   <xi:include href="chapters/images-preface.xml"/>
-  <chapter xml:id="Overview">
-    <title>Introduction</title>
-    <para>This would normally be a good place to introduce the product and API, but in this example document we'll look at
-      some commonly used constructs. The following an image with a title using the <tag>figure</tag> element. The oXygen
-      editor provides a convenient way to insert figures with the necessary markup. </para>
-  </chapter>
+  <xi:include href="chapters/images-overview.xml"/>
 </book>
