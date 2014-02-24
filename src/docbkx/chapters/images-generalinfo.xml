@@ -48,7 +48,7 @@
     </para>
 
     <!--API Request and Response Information-->
-    <!--<xi:include href="section_how_to_api.xml"/>-->
+    <xi:include href="section_how_to_API.xml"/>
 
     <!--Authentication-->
     <xi:include href="section_auth.xml"/>
