@@ -13,6 +13,7 @@
         <para>What are images and why use them? Need to fill in with pertinent details.</para>
     </section>
     <xi:include href="section_sharing.xml"/>
-    <xi:include condition="gs" href="section_how_to_api.xml"/>
+    <xi:include href="section_tasks.xml"/>
+    <!--<xi:include condition="gs" href="section_how_to_api.xml"/>-->
 </chapter>
 

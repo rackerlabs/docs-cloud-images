@@ -40,9 +40,12 @@
         </listitem>
         <listitem>
             <para>The producer uses the &CImA; to share the image with the consumer.</para>
-            <para>The API method (including request body details) is: <olink targetdoc="ci-devguide"
-                    targetptr="POST_createImageMember_v2_images__image_id__members_Image_Producer_Calls"
-                    >"POST_createImageMember_v2_images__image_id__members_Image_Producer_Calls"</olink></para>
+            <para>The API method (including request body details) is: <phrase condition="dev"><olink targetdoc="ci-devguide"
+                        targetptr="POST_createImageMember_v2_images__image_id__members_Image_Producer_Calls"
+                        >"POST_createImageMember_v2_images__image_id__members_Image_Producer_Calls"</olink></phrase>
+                <phrase condition="gs">
+                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_createImageMember_v2_images__image_id__members_Image_Producer_Calls.html">
+                        Section 4.2.2.1 "Create Image Member"</link></phrase>.</para>
         </listitem>
         <listitem>
             <para>The producer notifies the consumer via email that the image has been shared and provides the image's ID
@@ -51,18 +54,24 @@
         <listitem>
             <para>If the consumer wishes the image to appear in his/her image list, the consumer uses the &CImA; to change
                 the image status to <literal>accepted</literal>. </para>
-            <para>The API method (including request body details) is: <olink targetdoc="ci-devguide"
-                    targetptr="PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"
-                    >"PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"</olink></para>
+            <para>The API method (including request body details) is: <phrase condition="dev"><olink targetdoc="ci-devguide"
+                targetptr="PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"
+                >"PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"</olink></phrase>
+                <phrase condition="gs">
+                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls.html">
+                        Section 4.3.2.1 "Update Image Member"</link></phrase>.</para>
         </listitem>
         <listitem>
             <para>If the consumer subsequently wishes to hide the image, the consumer uses the &CImA; to change the member
                 status to <literal>rejected</literal>. If the consumer wishes to hide the image, but is open to the
                 possibility of being reminded by the producer that the image is available, the consumer uses the &CImA; to
                 change the member status to <literal>pending</literal>. </para>
-            <para>The API method (including request body details) is: <olink targetdoc="ci-devguide"
-                    targetptr="PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"
-                    >"PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"</olink></para>
+            <para>The API method (including request body details) is: <phrase condition="dev"><olink targetdoc="ci-devguide"
+                targetptr="PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"
+                >"PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"</olink></phrase>
+                <phrase condition="gs">
+                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls.html">
+                        Section 4.3.2.1 "Update Image Member"</link></phrase>.</para>
         </listitem>
     </orderedlist>
     <note>

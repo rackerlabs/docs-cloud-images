@@ -463,14 +463,14 @@
                                 </listitem>
                             </varlistentry>
                         </variablelist>
-                        <note><para>The member_status filter will be ignored if the visibility parameter is not set to
+                        <note><para>The member_status filter is ignored if the visibility parameter is not set to
                                 "shared".</para></note>
                     </wadl:doc>
                 </param>
                 <param name="owner" style="query" type="xsd:string" required="false">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook"> Filters images on acceptance status only. For example,
                             <literal>visibility=shared&amp;owner=&lt;OWNER_ID></literal> shows only images shared with this
-                        user by the user whose tenant id is <literal>OWNER_ID</literal>. <note><para>The owner filter will be
+                        user by the user whose tenant id is <literal>OWNER_ID</literal>. <note><para>The owner filter is
                                 ignored if the visibility parameter is not set to "shared".</para></note>
                     </wadl:doc>
                 </param>
@@ -714,9 +714,9 @@
                         task is in progress.</wadl:doc>
                 </param>
                 <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource will expire.
-                                <note><para>Even after the task resource has expired (and is thus no longer available to be
-                                polled), the result of the task (such as an imported image) will still exist.</para></note>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource expires.
+                                <note><para>Even after the task resource expires (and is thus no longer available to be
+                                polled), the result of the task (such as an imported image) still exists.</para></note>
                     </wadl:doc>
                 </param>
                 <param name="import_from" style="plain" type="xsd:string" required="true" path="$.import_from">
@@ -750,9 +750,9 @@
                         action worked.</wadl:doc>
                 </param>
                 <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource will expire.
-                                <note><para>Even after the task resource has expired (and is thus no longer available to be
-                                polled), the result of the task (such as an imported image) will still exist.</para></note>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource expires.
+                                <note><para>Even after the task resource expires (and is thus no longer available to be
+                                polled), the result of the task (such as an imported image) still exists.</para></note>
                     </wadl:doc>
                 </param>
                 <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
@@ -793,9 +793,9 @@
                         action failed.</wadl:doc>
                 </param>
                 <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource will expire.
-                                <note><para>Even after the task resource has expired (and is thus no longer available to be
-                                polled), the result of the task (such as an imported image) will still exist.</para></note>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource expires.
+                                <note><para>Even after the task resource expires (and is thus no longer available to be
+                                polled), the result of the task (such as an imported image) still exists.</para></note>
                     </wadl:doc>
                 </param>
                 <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
@@ -865,9 +865,9 @@
                         action worked.</wadl:doc>
                 </param>
                 <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource will expire.
-                                <note><para>Even after the task resource has expired (and is thus no longer available to be
-                                polled), the result of the task (such as an imported image) will still exist.</para></note>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource expires.
+                                <note><para>Even after the task resource expires (and is thus no longer available to be
+                                polled), the result of the task (such as an imported image) still exists.</para></note>
                     </wadl:doc>
                 </param>
                 <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
@@ -904,9 +904,9 @@
                         action failed.</wadl:doc>
                 </param>
                 <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource will expire.
-                                <note><para>Even after the task resource has expired (and is thus no longer available to be
-                                polled), the result of the task (such as an imported image) will still exist.</para></note>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource expires.
+                                <note><para>Even after the task resource expires (and is thus no longer available to be
+                                polled), the result of the task (such as an imported image) still exists.</para></note>
                     </wadl:doc>
                 </param>
                 <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
