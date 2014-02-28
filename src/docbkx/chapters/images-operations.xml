@@ -134,18 +134,21 @@
 		<title>Image Task Operations</title>
 		<para> Service developers use the operations described in this section to manage <glossterm baseform="Image Task"
 				>image tasks</glossterm> for importing and exporting images. For more information on tasks, see <olink
-				targetdoc="ci-devguide" targetptr="ch_image-tasks">“Image Tasks (Importing and Exporting
-			Images)”</olink>.</para>
+				targetdoc="ci-devguide" targetptr="ch_image-tasks">“Image Tasks (Importing and Exporting Images)”</olink>.</para>
 		<!--- this section comes from 1 WADL: image-2.0 -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
+			<!-- list tasks -->
+			<wadl:resource href="../../wadl/image-2.0.wadl#Tasks">
+				<wadl:method href="listTasks"/>
+			</wadl:resource>
+			<!-- get task details -->
+			<wadl:resource href="../../wadl/image-2.0.wadl#TaskID">
+				<wadl:method href="getTask"/>
+			</wadl:resource>
 			<!-- import and export tasks -->
 			<wadl:resource href="../../wadl/image-2.0.wadl#Tasks">
-				<wadl:method href="taskImport"/>
-				<wadl:method href="taskExport"/>
-			</wadl:resource>
-			<!-- poll image tasks -->
-			<wadl:resource href="../../wadl/image-2.0.wadl#TasksLocID">
-				<wadl:method href="taskStatus"/>
+				<wadl:method href="importTask"/>
+				<wadl:method href="exportTask"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>

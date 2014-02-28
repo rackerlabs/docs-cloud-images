@@ -72,17 +72,17 @@
                 </resource>
             </resource>
             <resource id="Tasks" path="tasks">
-                <method href="#taskImport"/>
-                <method href="#taskExport"/>
-                <resource id="TasksLocID" path="{locationID}">
-                    <param name="location_id" style="template" type="csapi:uuid">
-                        <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Location ID">
-                            <p>The location of the task resource, typically a UUID, which can be polled to get the status of
-                                the task progress. The location is provided as the result of an import or export task
-                                operation.</p>
+                <method href="#importTask"/>
+                <method href="#exportTask"/>
+                <method href="#listTasks"/>
+                <resource id="TaskID" path="{taskID}">
+                    <param name="task_id" style="template" type="csapi:uuid">
+                        <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Task ID">
+                            <p>The task id. This task id is the same as the id parameter returned in the Import Task or
+                                Export Task operation response body.</p>
                         </wadl:doc>
                     </param>
-                    <method href="#taskStatus"/>
+                    <method href="#getTask"/>
                 </resource>
             </resource>
         </resource>
@@ -400,11 +400,11 @@
     <!-- List Image Members -->
     <method name="GET" id="listImageMembers">
         <wadl:doc xml:lang="EN" title="List Image Members" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">This operation returns collection of members (users) with whom the image has been
-                shared.</para>
-            <para> If a user with whom this image is shared makes this call, the member list contains only information for
-                that user. If a user with whom this image has not been shared makes this call, the response is
-                    <errorcode>HTTP 404</errorcode>. </para>
+            <para role="shortdesc">Returns collection of members (users) with whom the image has been shared.</para>
+            <para> This operation returns collection of members (users) with whom the image has been shared. If a user with
+                whom this image is shared makes this call, the member list contains only information for that user. If a user
+                with whom this image has not been shared makes this call, the response is <errorcode>HTTP 404</errorcode>.
+            </para>
         </wadl:doc>
         <request>
             <representation mediaType="application/json">
@@ -600,13 +600,34 @@
 
     <!-- Task Operations -->
     <!-- Import Task -->
-    <method name="POST" id="taskImport">
+    <method name="POST" id="importTask">
         <wadl:doc xml:lang="EN" title="Import Task" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Submits a task request to import an image.</para>
+            <para role="shortdesc">Submits a task request to import an image. See the request body for specifics.</para>
             <para>This operation submits an task request to import an image. The request begins the import process and
-                returns the location of the task resource that can be subsequently polled to determine the status of the
-                import. For more information on the polling operation, see
-                <link xlink:href="POST_taskStatus_v2_tasks__locationID__Image_Task_Calls.html"/>.</para>
+                returns the task UUID that can be subsequently polled to determine the status of the import by using the
+                <xref linkend="GET_getTask_v2_tasks__taskID__Image_Task_Calls"/> operation.</para>
+            <para>To successfully import an image, </para>
+            <itemizedlist>
+                <listitem>
+                    <para>Format the image using the VHD format.</para>
+                    <note>
+                        <para>If you are importing an image that you have previously exported from Cloud Images in another
+                            region of the Rackspace open cloud, your image is already in the appropriate format. You can find
+                            information on
+                            <link xlink:href="http://www.rackspace.com/knowledge_center/article/preparing-an-image-for-import-into-the-rackspace-open-cloud">preparing a custom image for import</link>
+                            in the Rackspace Knowledge Center.</para>
+                    </note>
+                </listitem>
+                <listitem>
+                    <para>Store the in your Cloud Files account.</para>
+                </listitem>
+            </itemizedlist>
+            <warning>
+                <para>Please be aware that the final syntax of the request body for the import task may change. Specifically,
+                    there is an experimental <parameter>import_from_format</parameter> parameter in the
+                        <parameter>input</parameter> dict, which is required at the present time but may be removed as the
+                    product undergoes further development during the Early Access period.</para>
+            </warning>
             <note>
                 <para> As described in the
                     <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html">Rackspace Terms of Service</link>,
@@ -621,44 +642,53 @@
                     <xsdxt:code href="../common/samples/task-import-req.json"/>
                 </wadl:doc>
                 <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task. Use <code>import</code> for task
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of task. Use <code>import</code> for task
                         imports.</wadl:doc>
                 </param>
-                <param name="import_from" style="plain" type="xsd:string" required="true" path="$.import_from">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The source of the task to be imported.</wadl:doc>
+                <param name="input" style="plain" required="true" path="$.input">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The container for input parameters including
+                            <parameter>image_properties</parameter>, <parameter>import_from</parameter>, and
+                            <parameter>import_from_format</parameter>.</wadl:doc>
                 </param>
-                <param name="import_from_format" style="plain" type="xsd:string" required="true" path="$.import_from_format">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The format of the task to be imported. The standard
-                        format is qcow2, but your cloud provider may allow other formats.</wadl:doc>
+                <param name="image_properties" style="plain" required="true" path="$.image_properties">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The container for image properties including
+                            <parameter>name</parameter>.</wadl:doc>
                 </param>
                 <param name="name" style="plain" type="xsd:string" required="true" path="$.name">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The name of the task (image) to be imported.</wadl:doc>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The name of the image.</wadl:doc>
                 </param>
-                <param name="tags" style="plain" type="xsd:string" required="false" path="$.import_from">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The tags for the task to be imported.</wadl:doc>
+                <param name="import_from" style="plain" type="xsd:string" required="true" path="$.import_from">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The source of the imported image.</wadl:doc>
+                </param>
+                <param name="import_from_format" style="plain" type="xsd:string" required="true" path="$.import_from_format">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The format of the imported image ("vhd").</wadl:doc>
                 </param>
             </representation>
         </request>
         <response status="201">
-            <param name="location_id" style="header" type="xsd:string" required="true" path="$.location_id">
+            <representation>
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Pending Response">
+                    <xsdxt:code href="../common/samples/task-detail-import-pending-response.json"/>
+                </wadl:doc>
+                <!--<param name="location_id" style="header" type="xsd:string" required="true" path="$.location_id">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">The location of the task resource that is needed for polling
                     the progress of the import request.</wadl:doc>
-            </param>
+            </param>-->
+            </representation>
         </response>
     </method>
 
     <!-- Export Task -->
-    <method name="POST" id="taskExport">
+    <method name="POST" id="exportTask">
         <wadl:doc xml:lang="EN" title="Export Task" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Submits a task request to export an image.</para>
-            <para>This operation submits an task request to export an image. The request begins the export process and
-                returns the location of the task resource that can be subsequently polled to determine the status of the
-                export. For more information on the polling operation, see
-                <link xlink:href="POST_taskStatus_v2_tasks__locationID__Image_Task_Calls.html"/>.</para>
+            <para role="shortdesc">Submits a task request to export an image. See the request body for specifics.</para>
+            <para>This operation submits an task request to export an image in VHD format. The request begins the export
+                process and returns the task UUID that can be subsequently polled to determine the status of the export by
+                using the <xref linkend="GET_getTask_v2_tasks__taskID__Image_Task_Calls"/> operation.</para>
             <note>
-                <para>The exported image is deposited in your Cloud Files account, staying in the Rackspace open cloud. You
-                    are responsible for ensuring that any distribution of your image from the Rackspace open cloud complies
-                    with any licensing restrictions.</para>
+                <para>The exported image is deposited in your Cloud Files account and is identified by the
+                        <parameter>image_uuid</parameter> with a .vhd extension. You are responsible for ensuring that any
+                    distribution of your image from the Rackspace open cloud complies with any licensing restrictions.</para>
             </note>
         </wadl:doc>
         <request>
@@ -670,264 +700,90 @@
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task. Use <code>export</code> for task
                         exports.</wadl:doc>
                 </param>
-                <param name="export_uuid" style="plain" type="xsd:string" required="true" path="$.export_uuid">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The unique identifier of the task to be
-                        exported.</wadl:doc>
+                <param name="input" style="plain" required="true" path="$.input">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The container for input parameters including
+                            <parameter>image_uuid</parameter>, and
+                        <parameter>receiving_swift_container</parameter>.</wadl:doc>
                 </param>
-                <param name="export_to" style="plain" type="xsd:string" required="true" path="$.export_to">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The destination of the task to be exported.</wadl:doc>
+                <param name="image_uuid" style="plain" type="xsd:string" required="true" path="$.image_uuid">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The UUID for the exported image. You must own the image
+                        or the export task will fail.</wadl:doc>
                 </param>
-                <param name="export_format" style="plain" type="xsd:string" required="true" path="$.export_format">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The format of the task to be exported.</wadl:doc>
+                <param name="receiving_swift_container" style="plain" type="xsd:string" required="true"
+                    path="$.receiving_swift_container">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The Cloud Files container for the exported image. If the
+                        container does not exist, the task fails.</wadl:doc>
                 </param>
             </representation>
         </request>
         <response status="201">
-            <param name="location_id" style="header" type="xsd:string" required="true" path="$.location_id">
+            <representation>
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Pending Response">
+                    <xsdxt:code href="../common/samples/task-detail-export-pending-response.json"/>
+                </wadl:doc>
+                <!--<param name="location_id" style="header" type="xsd:string" required="true" path="$.location_id">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">The location of the task resource that is needed for polling
                     the progress of the export request.</wadl:doc>
-            </param>
+            </param>-->
+            </representation>
         </response>
     </method>
 
-    <!-- Task Status -->
-    <method name="POST" id="taskStatus">
-        <wadl:doc xml:lang="EN" title="Poll for Status of Task" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">This operation returns status of task import or export.</para>
-            <para>When you submit a task import or export request, the &CImS; creates a task resource to manage the request
-                and returns the location of that task resource. This operation allows you to poll the task resource to find
-                the status of the request, using the location of the task resource. Ultimately, the poll request returns the
-                location of the image (if the request succeeds) or an error message (if it fails).</para>
+    <!-- List Tasks -->
+    <method name="GET" id="listTasks">
+        <wadl:doc xml:lang="EN" title="List Tasks" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Lists tasks.</para>
+            <para>This operation returns list of tasks, with basic details about each task. The response conforms to the
+                Tasks Schema. For more information, see
+                <xref linkend="GET_getTasksSchemas_v2_schemas_tasks_Schema_Calls"/>.</para>
+        </wadl:doc>
+        <response status="200">
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="List Tasks">
+                    <xsdxt:code href="../common/samples/task-list-response.json"/>
+                </wadl:doc>
+            </representation>
+        </response>&commonFaults; </method>
+
+    <!-- Task Details -->
+    <method name="GET" id="getTask">
+        <wadl:doc xml:lang="EN" title="Get Task Details" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Gets the details for the specified task.</para>
+            <para>This operation shows the details for the specified task, including the status, so you'll know when the
+                import or export task completes and whether it worked. For more information on statuses, see
+                <xref linkend="task-statuses"/>. The response conforms to the Task Schema. For more information, see
+                <xref linkend="GET_getTaskSchema_v2_schemas_task_Schema_Calls"/>.</para>
         </wadl:doc>
         <response status="200">
             <!--import pending-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Pending Response">
-                    <xsdxt:code href="../common/samples/task-import-pending-response.json"/>
-                </wadl:doc>
-                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>import</code> for task
-                        imports.</wadl:doc>
-                </param>
-                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>processing</code> while
-                        task is in progress.</wadl:doc>
-                </param>
-                <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource expires.
-                                <note><para>Even after the task resource expires (and is thus no longer available to be
-                                polled), the result of the task (such as an imported image) still exists.</para></note>
-                    </wadl:doc>
-                </param>
-                <param name="import_from" style="plain" type="xsd:string" required="true" path="$.import_from">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The source of the imported
-                        task.</wadl:doc>
-                </param>
-                <param name="import_from_format" style="plain" type="xsd:string" required="true" path="$.import_from_format">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The format of the imported
-                        task.</wadl:doc>
-                </param>
-                <param name="name" style="plain" type="xsd:string" required="true" path="$.name">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The name of the imported
-                        task.</wadl:doc>
-                </param>
-                <param name="tags" style="plain" type="xsd:string" required="false" path="$.tags">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The tags for the imported
-                        task.</wadl:doc>
-                </param>
-            </representation>
+                    <xsdxt:code href="../common/samples/task-detail-import-pending-response.json"/>
+                </wadl:doc>&taskImportResponseParameters; </representation>
             <!--import success-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Success Response">
-                    <xsdxt:code href="../common/samples/task-import-success-response.json"/>
-                </wadl:doc>
-                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>import</code> for task
-                        imports.</wadl:doc>
-                </param>
-                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>success</code> if task
-                        action worked.</wadl:doc>
-                </param>
-                <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource expires.
-                                <note><para>Even after the task resource expires (and is thus no longer available to be
-                                polled), the result of the task (such as an imported image) still exists.</para></note>
-                    </wadl:doc>
-                </param>
-                <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The id of the task.</wadl:doc>
-                </param>
-                <param name="image_uuid" style="plain" type="xsd:string" required="false" path="$.image_uuid">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For successful import tasks) The unique identifier of
-                        the imported task.</wadl:doc>
-                </param>
-                <param name="import_from" style="plain" type="xsd:string" required="true" path="$.import_from">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The source of the imported
-                        task.</wadl:doc>
-                </param>
-                <param name="import_from_format" style="plain" type="xsd:string" required="true" path="$.import_from_format">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The format of the imported
-                        task.</wadl:doc>
-                </param>
-                <param name="name" style="plain" type="xsd:string" required="true" path="$.name">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The name of the imported
-                        task.</wadl:doc>
-                </param>
-                <param name="tags" style="plain" type="xsd:string" required="false" path="$.tags">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The tags for the imported
-                        task.</wadl:doc>
-                </param>
-            </representation>
+                    <xsdxt:code href="../common/samples/task-detail-import-success-response.json"/>
+                </wadl:doc></representation>
             <!--import failure-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Failure Response">
-                    <xsdxt:code href="../common/samples/task-import-failure-response.json"/>
-                </wadl:doc>
-                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>import</code> for task
-                        imports.</wadl:doc>
-                </param>
-                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>failure</code> if task
-                        action failed.</wadl:doc>
-                </param>
-                <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource expires.
-                                <note><para>Even after the task resource expires (and is thus no longer available to be
-                                polled), the result of the task (such as an imported image) still exists.</para></note>
-                    </wadl:doc>
-                </param>
-                <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The id of the task.</wadl:doc>
-                </param>
-                <param name="message" style="plain" type="xsd:string" required="false" path="$.message">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For failed tasks) The reason why the task import or
-                        export failed.</wadl:doc>
-                </param>
-                <param name="import_from" style="plain" type="xsd:string" required="true" path="$.import_from">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The source of the imported
-                        task.</wadl:doc>
-                </param>
-                <param name="import_from_format" style="plain" type="xsd:string" required="true" path="$.import_from_format">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The format of the imported
-                        task.</wadl:doc>
-                </param>
-                <param name="name" style="plain" type="xsd:string" required="true" path="$.name">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The name of the imported
-                        task.</wadl:doc>
-                </param>
-                <param name="tags" style="plain" type="xsd:string" required="false" path="$.tags">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For import tasks) The tags for the imported
-                        task.</wadl:doc>
-                </param>
-            </representation>
+                    <xsdxt:code href="../common/samples/task-detail-import-failure-response.json"/>
+                </wadl:doc></representation>
             <!--export pending-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Pending Response">
-                    <xsdxt:code href="../common/samples/task-export-pending-response.json"/>
-                </wadl:doc>
-                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>export</code> for task
-                        exports.</wadl:doc>
-                </param>
-                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>pending</code> while task
-                        is in progress</wadl:doc>
-                </param>
-                <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The id of the task.</wadl:doc>
-                </param>
-                <param name="export_uuid" style="plain" type="xsd:string" required="false" path="$.export_uuid">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The unique identifier of the exported
-                        task.</wadl:doc>
-                </param>
-                <param name="export_to" style="plain" type="xsd:string" required="false" path="$.export_to">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The destination of the exported
-                        task.</wadl:doc>
-                </param>
-                <param name="export_format" style="plain" type="xsd:string" required="false" path="$.export_format">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The format of the exported
-                        task.</wadl:doc>
-                </param>
-            </representation>
+                    <xsdxt:code href="../common/samples/task-detail-export-pending-response.json"/>
+                </wadl:doc>&taskExportResponseParameters; </representation>
             <!--export success-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Success Response">
-                    <xsdxt:code href="../common/samples/task-export-success-response.json"/>
-                </wadl:doc>
-                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>export</code> for task
-                        exports.</wadl:doc>
-                </param>
-                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>success</code> if task
-                        action worked.</wadl:doc>
-                </param>
-                <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource expires.
-                                <note><para>Even after the task resource expires (and is thus no longer available to be
-                                polled), the result of the task (such as an imported image) still exists.</para></note>
-                    </wadl:doc>
-                </param>
-                <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The id of the task.</wadl:doc>
-                </param>
-                <param name="export_location" style="plain" type="xsd:string" required="false" path="$.export_location">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For successful export tasks) The location of the
-                        exported task.</wadl:doc>
-                </param>
-                <param name="export_uuid" style="plain" type="xsd:string" required="false" path="$.export_uuid">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The unique identifier of the exported
-                        task.</wadl:doc>
-                </param>
-                <param name="export_to" style="plain" type="xsd:string" required="false" path="$.export_to">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The destination of the exported
-                        task.</wadl:doc>
-                </param>
-                <param name="export_format" style="plain" type="xsd:string" required="false" path="$.export_format">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The format of the exported
-                        task.</wadl:doc>
-                </param>
-            </representation>
+                    <xsdxt:code href="../common/samples/task-detail-export-success-response.json"/>
+                </wadl:doc></representation>
             <!--export failure-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Failure Response">
-                    <xsdxt:code href="../common/samples/task-export-failure-response.json"/>
-                </wadl:doc>
-                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task: <code>export</code> for task
-                        exports.</wadl:doc>
-                </param>
-                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The status of the task: <code>failure</code> if task
-                        action failed.</wadl:doc>
-                </param>
-                <param name="expires_at" style="plain" type="xsd:string" required="true" path="$.expires_at">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The date and time that the task resource expires.
-                                <note><para>Even after the task resource expires (and is thus no longer available to be
-                                polled), the result of the task (such as an imported image) still exists.</para></note>
-                    </wadl:doc>
-                </param>
-                <param name="id" style="plain" type="xsd:string" required="true" path="$.id">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The id of the task.</wadl:doc>
-                </param>
-                <param name="message" style="plain" type="xsd:string" required="false" path="$.message">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For failed tasks) The reason why the task import or
-                        export failed.</wadl:doc>
-                </param>
-                <param name="export_uuid" style="plain" type="xsd:string" required="false" path="$.export_uuid">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The unique identifier of the exported
-                        task.</wadl:doc>
-                </param>
-                <param name="export_to" style="plain" type="xsd:string" required="false" path="$.export_to">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The destination of the exported
-                        task.</wadl:doc>
-                </param>
-                <param name="export_format" style="plain" type="xsd:string" required="false" path="$.export_format">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">(For export tasks) The format of the exported
-                        task.</wadl:doc>
-                </param>
-            </representation>
+                    <xsdxt:code href="../common/samples/task-detail-export-failure-response.json"/>
+                </wadl:doc></representation>
         </response>&commonFaults; </method>
 </application>

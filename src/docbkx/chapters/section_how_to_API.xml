@@ -27,4 +27,5 @@
         consumer validates server responses and client requests based on the published schemas. The schemas contained in
         this document are only examples and should not be used to validate your requests. A client should always fetch
         schemas from the server.</para>
+    <xi:include href="section_curl_stuff.xml"/>
 </section>

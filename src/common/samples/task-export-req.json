@@ -1,9 +1,8 @@
-{ 
-   "type": "export",
-   "input": 
-   {
-      "export_uuid": "deadbeef-dead-dead-dead-beefbeefbeef",
-      "export_to": "swift://cloud.foo/myaccount/mycontainer/path",
-      "export_format": "qcow2"
-   }
+{
+    "type": "export",
+    "input": 
+    {
+        "image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6", 
+        "receiving_swift_container": "exports"
+    }
 }

@@ -65,7 +65,10 @@
     <glossentry xml:id="gl-task">
         <glossterm><emphasis role="bold">Image Task</emphasis></glossterm>
         <glossdef>
-            <para>An image task allows you to perform an asynchronous image-related tasks such as importing or exporting images.</para>
+            <para>An image task is a resource that allows you to perform an asynchronous image-related operations such as
+                importing or exporting images. The task resource may be polled to determine the status of the import or
+                export operation, and the resource is deleted at a set time identified by the
+                    <parameter>expires-at</parameter> parameter.</para>
         </glossdef>
     </glossentry>
     <glossentry xml:id="gl-json">

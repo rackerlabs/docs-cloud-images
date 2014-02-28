@@ -1,0 +1,21 @@
+{
+    "created_at": "2014-02-26T02:01:13Z", 
+    "expires_at": "2014-02-28T02:16:50Z", 
+    "id": "7bdc8ede-9098-4d79-9477-697f586cb333", 
+    "input": 
+    {
+        "image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6", 
+        "receiving_swift_container": "exports"
+    }, 
+    "message": "None", 
+    "owner": "00000123", 
+    "result": 
+    {
+        "export_location": "exports/ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6.vhd"
+    }, 
+    "schema": "/v2/schemas/task", 
+    "self": "/v2/tasks/7bdc8ede-9098-4d79-9477-697f586cb333", 
+    "status": "success", 
+    "type": "export", 
+    "updated_at": "2014-02-26T02:16:50Z"
+}

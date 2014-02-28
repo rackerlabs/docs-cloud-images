@@ -27,12 +27,12 @@
     </abstract>
     <revhistory>
       <revision>
-        <date>2014-02-20</date>
+        <date>2014-02-28</date>
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added API section for importing, exporting, and polling image tasks: <olink targetdoc="ci-devguide"
-                  targetptr="Image_Task_Calls">"Image_Task_Calls"</olink>.</para>
+              <para>Added API section for importing, exporting, listing and getting details for image tasks: <olink
+                  targetdoc="ci-devguide" targetptr="Image_Task_Calls">"Image_Task_Calls"</olink>.</para>
             </listitem>
             <listitem>
               <para>Added <olink targetdoc="ci-devguide"
