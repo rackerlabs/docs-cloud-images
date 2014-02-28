@@ -10,10 +10,13 @@
         Representational State Transfer (REST) web service interface.</para>
     <section xml:id="what-and-why">
         <title>Images</title>
-        <para>What are images and why use them? Need to fill in with pertinent details.</para>
+        <para>Server Images are used to store a snapshot of the server's configuration. If you take an image of the original
+            server, you can create a new server from that image. The new server will be exactly the same as the original
+            server at the time the image was created.</para>
+        <para>The &CImS; provides operations that allow you to manipulate images, import and export images (using tasks), and
+            to share images with other people.</para>
     </section>
     <xi:include href="section_sharing.xml"/>
     <xi:include href="section_tasks.xml"/>
     <!--<xi:include condition="gs" href="section_how_to_api.xml"/>-->
 </chapter>
-

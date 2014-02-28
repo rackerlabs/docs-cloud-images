@@ -14,17 +14,16 @@
     <para>To run the cURL request examples shown in this guide, copy each example from the HTML version of this guide
         directly to the command line or a script.</para>
 
-    <para>The following command is an example cURL command that provisions a server with an isolated network:</para>
+    <para>The following command is an example cURL command that updates an image:</para>
 
     <example xml:id="json_example">
         <title>cURL Command Example: JSON Request</title>
-        <programlisting language="bash" role="gutter: false"><?db-font-size 60%?><prompt>$</prompt> curl https://dfw.servers.api.rackspacecloud.com/v2/$account/servers \
-       -X POST \
-       -H "X-Auth-Project-Id: $account" \
-       -H "Content-Type: application/json" \
-       -H "Accept: application/json" \
+        <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>
+            <prompt>%</prompt> curl https://dfw.servers.api.rackspacecloud.com/v2/images/{image_id} \
+       -X PATCH \
        -H "X-Auth-Token: $token" \
-       -d '{"server": {"name": "my_server_with_network", "imageRef": "d42f821e-c2d1-4796-9f07-af5ed7912d0e", "flavorRef": "2", "max_count": 1, "min_count": 1, "networks": [{"uuid": "538a112a-34d1-47ff-bf1e-c40639e886e2"}, {"uuid": "00000000-0000-0000-0000-000000000000"}, {"uuid": "11111111-1111-1111-1111-111111111111"}]}}' \
+       -H "Content-Type: application/openstack-images-v2.1-json-patch" \
+       -d '[{"op": "add", "path": "/login-user", "value": "root"}]' \
       | python -m json.tool</programlisting>
     </example>
     <note>
@@ -70,10 +69,6 @@
                             </listitem>
                             <listitem>
                                 <para><literal>X-Auth-Token</literal>. Required. Specifies the authentication token.</para>
-                            </listitem>
-                            <listitem>
-                                <para><literal>X-Auth-Project-Id</literal>. Optional. Specifies the project ID, which can be
-                                    your account number or another value.</para>
                             </listitem>
                             <listitem>
                                 <para><literal>Accept</literal>. Optional. </para>

@@ -80,6 +80,15 @@
                     another cloud (or to another region of the Rackspace cloud), and transfers the exported image to your
                     Cloud Files account.</para>
             </listitem>
+            <listitem>
+                <para>Poll the task status using <phrase condition="dev"><olink targetdoc="ci-devguide"
+                            targetptr="GET_getTask_v2_tasks__taskID__Image_Task_Calls"
+                            >"GET_getTask_v2_tasks__taskID__Image_Task_Calls"</olink></phrase>
+                    <phrase condition="gs">
+                        <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_v2_tasks__taskID__Image_Task_Calls.html">
+                        Section 4.4.2. "Get Task Details"</link></phrase>
+                    until the task completes.</para>
+            </listitem>
         </orderedlist>
     </para>
 
