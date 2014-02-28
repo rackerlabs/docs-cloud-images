@@ -10,11 +10,15 @@
         Representational State Transfer (REST) web service interface.</para>
     <section xml:id="what-and-why">
         <title>Images</title>
-        <para>Server Images are used to store a snapshot of the server's configuration. If you take an image of the original
-            server, you can create a new server from that image. The new server will be exactly the same as the original
-            server at the time the image was created.</para>
-        <para>The &CImS; provides operations that allow you to manipulate images, import and export images (using tasks), and
+        <para>Server Images are used to store a snapshot of a server's configuration. If you take an image of a server, you
+            can create a new server from that image. The new server will be exactly the same as the original server was at
+            the time the image was created.</para>
+        <para>The &CImS; provides operations that allow you to manipulate images, to import and export images (using tasks), and
             to share images with other people.</para>
+        <para>To learn how to take an image of a server, see the first part of
+            <link xlink:href="http://www.rackspace.com/knowledge_center/article/cloud-essentials-4-creating-an-image-backup-cloning-and-rebuilding-a-server-from-a-saved">
+                Creating an Image Backup and Rebuilding a Server</link>
+            in the Knowledge Center. </para>
     </section>
     <xi:include href="section_sharing.xml"/>
     <xi:include href="section_tasks.xml"/>
