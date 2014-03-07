@@ -51,7 +51,7 @@
 		<title>Image Sharing Operations</title>
 		<para>Service developers use the operations described in the following sections to manage <glossterm
 				baseform="Image Member">image members</glossterm>. Please see <olink targetdoc="ci-devguide"
-				targetptr="ch_image-sharing">“Image Sharing”</olink> for more information about image sharing.</para>
+				targetptr="image-sharing">“Image Sharing”</olink> for more information about image sharing.</para>
 
 		<section xml:id="Image_Both_Calls">
 			<title>Image Operations for Both Producers and Consumers</title>
@@ -134,7 +134,7 @@
 		<title>Image Task Operations</title>
 		<para> Service developers use the operations described in this section to manage <glossterm baseform="Image Task"
 				>image tasks</glossterm> for importing and exporting images. For more information on tasks, see <olink
-				targetdoc="ci-devguide" targetptr="ch_image-tasks">“Image Tasks (Importing and Exporting Images)”</olink>.</para>
+				targetdoc="ci-devguide" targetptr="image-tasks">“Image Tasks (Importing and Exporting Images)”</olink>.</para>
 		<!--- this section comes from 1 WADL: image-2.0 -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list tasks -->

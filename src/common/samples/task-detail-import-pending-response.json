@@ -5,8 +5,7 @@
         "image_properties": {
             "name": "My excellent custom image"
         }, 
-        "import_from": "exports/ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6", 
-        "import_from_format": "vhd"
+        "import_from": "exports/my-excellent-image.vhd"
     }, 
     "message": "None", 
     "owner": "00000123", 

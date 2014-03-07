@@ -4,7 +4,7 @@
 %common;]>
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_image-tasks">
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="image-tasks">
     <title>Image Tasks (Importing and Exporting Images)</title>
     <para>A <glossterm baseform="Image Task">image task</glossterm> is a request to perform an asynchronous image-related
         operation, such as importing or exporting an image. The request results in the creation of a disposable task resource

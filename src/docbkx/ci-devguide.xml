@@ -33,7 +33,31 @@
           <itemizedlist spacing="compact">
             <listitem>
               <para>Added image creation note in <olink targetdoc="ci-devguide" targetptr="what-and-why"
-                  >“Images”</olink>.</para>
+                >“Images”</olink>.</para>
+            </listitem>
+            <listitem>
+              <para>Added clarity to the operation <olink targetdoc="ci-devguide"
+                  targetptr="PATCH_updateImage_v2_images__image_id__Image_Calls"
+                  >"PATCH_updateImage_v2_images__image_id__Image_Calls"</olink> operation.</para>
+            </listitem>
+            <listitem>
+              <para>Cleaned up and refined the error messages.</para>
+            </listitem>
+            <listitem>
+              <para>Provided more details for  
+                <olink targetdoc="ci-devguide"
+                  targetptr="PUT_addImageTag_v2_images__image_id__tags__tag__Image_Tag_Calls"
+                  >"PUT_addImageTag_v2_images__image_id__tags__tag__Image_Tag_Calls"</olink> and  
+                <olink targetdoc="ci-devguide"
+                  targetptr="DELETE_deleteImageTag_v2_images__image_id__tags__tag__Image_Tag_Calls"
+                  >"DELETE_deleteImageTag_v2_images__image_id__tags__tag__Image_Tag_Calls"</olink> operations.</para>
+            </listitem>
+            <listitem>
+              <para>Revised the sample workflow for sharing images in <olink targetdoc="ci-devguide" targetptr="image-sharing"
+                >“Images”</olink>.</para>
+            </listitem>
+            <listitem>
+              <para>Removed the <parameter>import_from_format</parameter> parameter from task operations.</para>
             </listitem>
           </itemizedlist>
         </revdescription>

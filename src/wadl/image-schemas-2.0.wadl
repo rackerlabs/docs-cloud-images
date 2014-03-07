@@ -71,6 +71,7 @@
                 authoritative.</para>
         </wadl:doc>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/schemas-images-get-response.json"/>
@@ -86,6 +87,7 @@
                 authoritative.</para>
         </wadl:doc>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/schemas-image-get-response.json"/>
@@ -103,6 +105,7 @@
                 authoritative.</para>
         </wadl:doc>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/schemas-image-members-get-response.json"/>
@@ -119,6 +122,7 @@
                 authoritative.</para>
         </wadl:doc>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/schemas-image-member-get-response.json"/>
@@ -136,6 +140,7 @@
                 response to the API call as authoritative.</para>
         </wadl:doc>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/schemas-tasks-get-response.json"/>
@@ -151,6 +156,7 @@
                 response to the API call as authoritative.</para>
         </wadl:doc>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:code href="../common/samples/schemas-task-get-response.json"/>

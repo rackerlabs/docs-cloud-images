@@ -8,8 +8,7 @@
         {
             "name": "my imported image"
         }, 
-        "import_from": "nonexistentcontainer/noimage.vhd",
-        "import_from_format": "vhd"
+        "import_from": "nonexistentcontainer/noimage.vhd"
     }, 
     "message": "Error: Image not found for import. Possible invalid location", 
     "owner": "00000123", 

@@ -47,7 +47,7 @@
                         <resource id="Tagstag" path="{tag}">
                             <param name="tag" style="template" type="xsd:string">
                                 <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Tag">
-                                    <p>Image tag.</p>
+                                    <p>Image tag (may be up to 255 characters in length).</p>
                                 </wadl:doc>
                             </param>
                             <method href="#addImageTag"/>
@@ -132,6 +132,7 @@
             </representation>
         </request>
         <response status="201">
+            <doc title="Success">Create Request succeeded.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                     <para> The response is created with a Location header that contains the newly created URI for the image.
@@ -145,19 +146,35 @@
 
     <!-- Update Image -->
     <method name="PATCH" id="updateImage">
-
         <wadl:doc xml:lang="EN" title="Update Image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Updates the specified image. </para>
-            <para>This operation updates the image. The request body must conform to the
-                    <code>'application/openstack-images-v2.1-json-patch'</code> media type:</para>
-            <para>You can use the <code>HTTP PATCH</code> method to update existing properties, and to add or to remove
-                custom user-defined properties image properties. For more information, see <xref linkend="patch-method"/> in
-                the Concepts chapter of this &CImA; guide.</para>
-            <warning>
+            <para>This operation allows you to update an image that you own. The request body must conform to the
+                    <code>'application/openstack-images-v2.1-json-patch'</code> media type.</para>
+            <para>You can use the <code>HTTP PATCH</code> method to update certain standard properties, and to add, update,
+                or remove custom, user-defined image properties. For more information, see <xref linkend="patch-method"/> in
+                this guide. Here are some guidelines for custom, user-defined properties. <itemizedlist>
+                    <listitem>
+                        <para>Adding properties: You can add custom properties to your image. We recommend you name a custom
+                            property by prefixing your domain or name, and we do not allow you to use
+                                <literal>com.rackspace</literal> as the prefix. For example,
+                                <literal>com.mycompany.myproperty</literal> and <literal>com.myname.myproperty</literal> are
+                            valid, and <literal>com.rackspace.myproperty</literal> is not allowed.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Deleting properties: You can delete any custom property which you previously added to your
+                            image.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Updating properties: You can update only the following standard parameters:
+                                <parameter>name</parameter> and <parameter>tags</parameter>. You can update or delete any
+                            custom properties that you previously added to your own image.</para>
+                    </listitem>
+                </itemizedlist></para>
+            <!--            <warning>
                 <para> This version of the &CImA; acknowledges the ability of a cloud provider to employ <literal>property
                         protections</literal>. Thus, there may be image properties that may not be updated or deleted by
                     non-admin users. </para>
-            </warning>
+            </warning>-->
         </wadl:doc>
         <request>
             <representation mediaType="application/json" element="image">
@@ -166,39 +183,32 @@
                         <xsdxt:code href="../common/samples/image-update-req.json"/>
                     </xsdxt:sample>
                 </doc>
-                <!--this is not an inclusive list of possible params, so leaving it out for now-->
-                <!--                <param name="name" style="plain" type="xsd:string" required="false" path="$.name">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Images name">
-                        <p>Name for the image. The name of an image is not unique to a Cloud Images node. The API cannot
-                            expect users to know the names of images owned by others.</p>
+                <param name="op" style="plain" type="xsd:string" required="true" path="$.op">
+                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
+                        <p>The operation to be executed (<code>add</code>, <code>remove</code>, or <code>replace</code>).</p>
                     </wadl:doc>
                 </param>
-                <param name="id" style="plain" type="csapi:uuid" required="false" path="$.id">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image ID">
-                        <p>The image ID.</p>
+                <param name="path" style="plain" type="xsd:string" required="true" path="$.path">
+                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
+                        <p>The location within the image where the operation is to be performed.</p>
                     </wadl:doc>
                 </param>
-                <param name="visibility" style="plain" type="xsd:string" required="false" path="$.visibility">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Visibility">
-                        <p>Image visibility. Valid values are <code>public</code> and <code>private</code>. The default is
-                                <code>public</code>.</p>
+                <param name="value" style="plain" type="xsd:string" required="false" path="$.value">
+                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
+                        <p>The actual value to be added or replaced. It is not required for the <code>delete</code>
+                            operation.</p>
                     </wadl:doc>
                 </param>
-                <param name="tags" style="plain" type="xsd:dict" required="false" path="$.tags">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Tags">
-                        <p>Image tags.</p>
-                    </wadl:doc>
-                </param>-->
             </representation>
         </request>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:sample>
                         <xsdxt:code href="../common/samples/image-update-response.json"/>
                     </xsdxt:sample>
-                </doc>
-            </representation>
+                </doc> &imageResponseParameters; </representation>
         </response> &commonFaults; &postPutFaults; </method>
 
     <!-- Get Image -->
@@ -213,8 +223,7 @@
                     <xsdxt:sample>
                         <xsdxt:code href="../common/samples/image-details-response.json"/>
                     </xsdxt:sample>
-                </doc>
-            </representation>
+                </doc> &imageResponseParameters; </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <!-- List Images -->
@@ -252,92 +261,29 @@
                     available.</para>
             </note>
         </wadl:doc>
-        <request>
-            <param name="limit" style="query" required="false" type="xsd:string">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Requests a specific page size. Expect a response to a limited request to return between zero items
-                        and the number specified. The typical pattern for using the <parameter>limit</parameter> and
-                            <parameter>marker</parameter> parameters is to make an initial limited request and then to use
-                        the ID of the last image from the response as the <parameter>marker</parameter> parameter in a
-                        subsequent limited request.</para>
-                </wadl:doc>
-            </param>
-            <param name="marker" style="query" required="false" type="xsd:string">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Specifies the ID of the last-seen image. The typical pattern for using the
-                            <parameter>limit</parameter> and <parameter>marker</parameter> parameters is to make an initial
-                        limited request and then to use the ID of the last image from the response as the
-                            <parameter>marker</parameter> parameter in a subsequent limited request.</para>
-                </wadl:doc>
-            </param>
-            <param name="name" style="query" required="false" type="xsd:string">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that specifies the name of the image as a string.</para>
-                </wadl:doc>
-            </param>
-            <param name="visibility" style="query" required="false" type="imageapi:string">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that specifies image visibility as either <code>public</code> or
-                            <code>private</code>.</para>
-                </wadl:doc>
-            </param>
-            <param name="member_status" style="query" required="false" type="imageapi:string">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that shows images with the specified member status. Valid values are
-                            <code>accepted</code>, <code>pending</code>, <code>rejected</code>, and <code>all</code>. The
-                        default is <code>accepted</code>.</para>
-                </wadl:doc>
-            </param>
-            <param name="owner" style="query" required="false" type="imageapi:string">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that shows images shared with me by the specified tag.</para>
-                </wadl:doc>
-            </param>
-            <param name="tag" style="query" required="false" type="imageapi:string">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that shows images with the specified tag, where the owner is indicated by tenant
-                        ID.</para>
-                </wadl:doc>
-            </param>
-            <param name="status" style="query" required="false" type="xsd:int">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that species the image status as <code>queued</code>, <code>saving</code>,
-                            <code>active</code>, <code>killed</code>, <code>deleted</code>, or
-                        <code>pending_delete</code>.</para>
-                </wadl:doc>
-            </param>
-            <param name="size_min" style="query" required="false" type="xsd:string" default="ALL">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that specifies the minimum size of the image in bytes.</para>
-                </wadl:doc>
-            </param>
-            <param name="size_max" style="query" required="false" type="xsd:string" default="ALL">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Filter parameter that specifies the maximum size of the image in bytes.</para>
-                </wadl:doc>
-            </param>
-            <param name="sort_key" style="query" required="false" type="xsd:string" default="ALL">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Sort key. All image attributes can be used as the sort key, except <code>tags</code> and
-                            <code>link</code> attributes. The default is <code>created_at</code>.</para>
-                </wadl:doc>
-            </param>
-            <param name="sort_dir" style="query" required="false" type="xsd:string" default="ALL">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <para>Sort direction. Valid values are <code>asc</code> (ascending) and <code>desc</code> (descending).
-                        The default is <code>desc</code>.</para>
-                </wadl:doc>
-            </param>
-        </request>
+        <request> &listImagesQueryParameters; </request>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:sample>
                         <xsdxt:code href="../common/samples/image-list-response.json"/>
                     </xsdxt:sample>
                 </doc>
+                <param name="images" style="plain" required="true" path="$.images">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The container for the images in the list.</wadl:doc>
+                </param> &imageResponseParameters; <param name="first " style="plain" type="xsd:string" required="true"
+                    path="$.first ">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The URI for the first image in the list.</wadl:doc>
+                </param>
+                <param name="next" style="plain" type="xsd:string" required="true" path="$.next">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The URI for the next image in the list.</wadl:doc>
+                </param>
+                <param name="schema " style="plain" type="xsd:string" required="true" path="$.schema ">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The schema of the images list.</wadl:doc>
+                </param>
             </representation>
-        </response>&commonFaults; &getFaults; </method>
+        </response> &commonFaults; &getFaults;</method>
 
     <!-- Delete Image -->
     <method name="DELETE" id="deleteImage">
@@ -350,7 +296,10 @@
                         <code>true</code> (boolean) results in a response code <errorcode>HTTP 403</errorcode>.</para>
             </warning>
         </wadl:doc>
-        <response status="204"/> &commonFaults; </method>
+        <response status="204">
+            <doc title="Delete Successful">Delete request succeeded.</doc>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults;</method>
 
     <!-- Image File Operations -->
     <!-- Upload Image -->
@@ -362,7 +311,9 @@
             <para>Content-Type must be <code>application/octet-stream</code>. The complete request body is stored and is
                 accessible in its entirety by issuing a &GET; request to the same URI. </para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; &postPutFaults; </method>
+        <response status="204">
+            <doc title="Success">Upload Request succeeded.</doc>
+        </response> &commonFaults; &postPutFaults; </method>
 
     <!-- Download Image -->
     <method name="GET" id="getImageFile">
@@ -374,27 +325,47 @@
                 of the image data that they receive by using this checksum.</para>
         </wadl:doc>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <wadl:doc xmlns="http://docbook.org/ns/docbook">
                 <para>If no image data exists, the response returns <errorcode>HTTP 204</errorcode> status code.</para>
             </wadl:doc>
-        </response>&commonFaults; &getFaults; </method>
+        </response>
+        <response status="204">
+            <doc title="No Data Exists"> Download request failed because no data exists.</doc>
+        </response> &commonFaults; &getFaults; </method>
 
     <!-- Image Tag Operations -->
     <!-- Add Image Tag -->
     <method name="PUT" id="addImageTag">
-        <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Add Image Tag">
-            <p xmlns="http://www.w3.org/1999/xhtml">Adds the specified tag to the specified image. </p>
-            <para>This operation adds the image tag to the image.</para>
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add Image Tag">
+            <para role="shortdesc">Adds the specified tag to the specified image. </para>
+            <para>This operation adds the specified tag to the specified image. </para>
+            <para>Include the tag you want to add in the request URI <replaceable>{tag}</replaceable> path segment of the
+                URI. For example, to tag image e7db3b45-8db7-47ad-8109-3fb55c2c24fd with 'miracle', you would use: <code>PUT
+                    /v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/tags/miracle</code>. The request body is ignored. </para>
+            <para>An image can only be tagged once with a specific string. Multiple attempts to tag an image with the same
+                string will result in a single instance of that string being added to the image's tags list.</para>
         </wadl:doc>
-        <response status="200"/> &commonFaults; &postPutFaults; </method>
+        <response status="204">
+            <doc title="Success">Request succeeded.</doc>
+        </response> &commonFaults; &postPutFaults; </method>
 
     <!-- Delete Image Tag -->
     <method name="DELETE" id="deleteImageTag">
         <wadl:doc xml:lang="EN" title="Delete Image Tag" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Deletes the specified tag from the specified image. </para>
-            <para>This operation deletes the image tag from the image.</para>
+            <para role="shortdesc">Deletes the specified tag from the image. </para>
+            <para>This operation deletes the specified tag from the specified image. </para>
+            <para>Include the tag you want to remove in the request URI <replaceable>{tag}</replaceable> path segment of the
+                URI. For example, to remove the image tag 'miracle' from image e7db3b45-8db7-47ad-8109-3fb55c2c24fd, you
+                would use: <code>DELETE /v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/tags/miracle</code>. The request body
+                is ignored. </para>
+            <para>An image tag can only be removed once. Subsequent attempts to remove the same tag will result in an
+                    <errorcode>HTTP 404</errorcode> error.</para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; </method>
+        <response status="204">
+            <doc title="Delete Successful">Delete request succeeded.</doc>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults; </method>
 
     <!-- Image Sharing/Member Operations -->
     <!-- List Image Members -->
@@ -477,13 +448,20 @@
             </representation>
         </request>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-members-list-response.json"/>
                 </wadl:doc>
+                <param name="member" style="plain" type="xsd:string" required="true" path="$.member">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The container for the list of image members.</wadl:doc>
+                </param>
+                &imageMemberResponseParameters;
+                <param name=" schema " style="plain" type="xsd:string" required="true" path="$. schema ">
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The schema of the image members.</wadl:doc>
+                </param>
             </representation>
-        </response>
-    </method>
+        </response> &commonFaults; &getFaults; </method>
 
     <!-- Create Image Member -->
     <method name="POST" id="createImageMember">
@@ -507,12 +485,13 @@
             </representation>
         </request>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-create-response.json"/>
-                </wadl:doc>
+                </wadl:doc>&imageMemberResponseParameters;
             </representation>
-        </response> &commonFaults; </method>
+        </response> &commonFaults; &postPutFaults;</method>
 
     <!-- Get Image Member-->
     <method name="GET" id="getImageMember">
@@ -523,12 +502,13 @@
                     <parameter>member_id</parameter>. Otherwise the response is <errorcode>HTTP 404</errorcode>.</para>
         </wadl:doc>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:sample>
                         <xsdxt:code href="../common/samples/image-member-details-response.json"/>
                     </xsdxt:sample>
-                </doc>
+                </doc>&imageMemberResponseParameters;
             </representation>
         </response> &commonFaults; &getFaults; </method>
 
@@ -547,7 +527,7 @@
                     <xsdxt:code href="../common/samples/image-member-update-request.json"/>
                 </wadl:doc>
                 <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
-                    <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Image member status">
+                    <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                         <para>The status to which this image member should be set. Valid values are as follows: <variablelist>
                                 <varlistentry>
                                     <term><code>pending</code></term>
@@ -579,12 +559,13 @@
             </representation>
         </request>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-update-response.json"/>
-                </wadl:doc>
+                </wadl:doc>&imageMemberResponseParameters;
             </representation>
-        </response> &commonFaults; </method>
+        </response> &commonFaults; &postPutFaults;</method>
 
     <!-- Delete Image Member -->
     <method name="DELETE" id="deleteImageMember">
@@ -596,7 +577,10 @@
             <para>If the <parameter>{member_id}</parameter> is not a member of the specified image, the response is
                     <errorcode>HTTP 404</errorcode></para>
         </wadl:doc>
-        <response status="204"/> &commonFaults; </method>
+        <response status="204">
+            <doc title="Success">Delete request succeeded.</doc>
+            <representation mediaType="application/json"/>
+        </response> &commonFaults; &getFaults;</method>
 
     <!-- Task Operations -->
     <!-- Import Task -->
@@ -622,12 +606,6 @@
                     <para>Store the in your Cloud Files account.</para>
                 </listitem>
             </itemizedlist>
-            <warning>
-                <para>Please be aware that the final syntax of the request body for the import task may change. Specifically,
-                    there is an experimental <parameter>import_from_format</parameter> parameter in the
-                        <parameter>input</parameter> dict, which is required at the present time but may be removed as the
-                    product undergoes further development during the Early Access period.</para>
-            </warning>
             <note>
                 <para> As described in the
                     <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html">Rackspace Terms of Service</link>,
@@ -640,32 +618,10 @@
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/task-import-req.json"/>
-                </wadl:doc>
-                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of task. Use <code>import</code> for task
-                        imports.</wadl:doc>
-                </param>
-                <param name="input" style="plain" required="true" path="$.input">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The container for input parameters including
-                            <parameter>image_properties</parameter>, <parameter>import_from</parameter>, and
-                            <parameter>import_from_format</parameter>.</wadl:doc>
-                </param>
-                <param name="image_properties" style="plain" required="true" path="$.image_properties">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The container for image properties including
-                            <parameter>name</parameter>.</wadl:doc>
-                </param>
-                <param name="name" style="plain" type="xsd:string" required="true" path="$.name">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The name of the image.</wadl:doc>
-                </param>
-                <param name="import_from" style="plain" type="xsd:string" required="true" path="$.import_from">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The source of the imported image.</wadl:doc>
-                </param>
-                <param name="import_from_format" style="plain" type="xsd:string" required="true" path="$.import_from_format">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The format of the imported image ("vhd").</wadl:doc>
-                </param>
-            </representation>
+                </wadl:doc>&taskImportRequestParameters; </representation>
         </request>
         <response status="201">
+            <doc title="Success">Task import request succeeded.</doc>
             <representation>
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Pending Response">
                     <xsdxt:code href="../common/samples/task-detail-import-pending-response.json"/>
@@ -674,9 +630,9 @@
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">The location of the task resource that is needed for polling
                     the progress of the import request.</wadl:doc>
             </param>-->
+                &task--portResponseParameters-top; &taskImportResponseParameters-input; &task--portResponseParameters-bottom;
             </representation>
-        </response>
-    </method>
+        </response>&commonFaults; &postPutFaults; </method>
 
     <!-- Export Task -->
     <method name="POST" id="exportTask">
@@ -695,39 +651,21 @@
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/task-export-req.json"/>
-                </wadl:doc>
-                <param name="type" style="plain" type="xsd:string" required="true" path="$.type">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The type of the task. Use <code>export</code> for task
-                        exports.</wadl:doc>
-                </param>
-                <param name="input" style="plain" required="true" path="$.input">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The container for input parameters including
-                            <parameter>image_uuid</parameter>, and
-                        <parameter>receiving_swift_container</parameter>.</wadl:doc>
-                </param>
-                <param name="image_uuid" style="plain" type="xsd:string" required="true" path="$.image_uuid">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The UUID for the exported image. You must own the image
-                        or the export task will fail.</wadl:doc>
-                </param>
-                <param name="receiving_swift_container" style="plain" type="xsd:string" required="true"
-                    path="$.receiving_swift_container">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The Cloud Files container for the exported image. If the
-                        container does not exist, the task fails.</wadl:doc>
-                </param>
-            </representation>
+                </wadl:doc>&taskExportRequestParameters; </representation>
         </request>
         <response status="201">
+            <doc title="Success">Task export request succeeded.</doc>
             <representation>
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Pending Response">
                     <xsdxt:code href="../common/samples/task-detail-export-pending-response.json"/>
-                </wadl:doc>
+                </wadl:doc> &task--portResponseParameters-top; &taskExportResponseParameters-input;
+                &task--portResponseParameters-bottom;
                 <!--<param name="location_id" style="header" type="xsd:string" required="true" path="$.location_id">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook">The location of the task resource that is needed for polling
                     the progress of the export request.</wadl:doc>
             </param>-->
             </representation>
-        </response>
-    </method>
+        </response>&commonFaults; &postPutFaults; </method>
 
     <!-- List Tasks -->
     <method name="GET" id="listTasks">
@@ -738,12 +676,12 @@
                 <xref linkend="GET_getTasksSchemas_v2_schemas_tasks_Schema_Calls"/>.</para>
         </wadl:doc>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="List Tasks">
                     <xsdxt:code href="../common/samples/task-list-response.json"/>
-                </wadl:doc>
-            </representation>
-        </response>&commonFaults; </method>
+                </wadl:doc> &taskListResponseParameters-top; &task--portResponseParameters-bottom; </representation>
+        </response>&commonFaults;&getFaults; </method>
 
     <!-- Task Details -->
     <method name="GET" id="getTask">
@@ -755,35 +693,42 @@
                 <xref linkend="GET_getTaskSchema_v2_schemas_task_Schema_Calls"/>.</para>
         </wadl:doc>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <!--import pending-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Pending Response">
                     <xsdxt:code href="../common/samples/task-detail-import-pending-response.json"/>
-                </wadl:doc>&taskImportResponseParameters; </representation>
+                </wadl:doc>&task--portResponseParameters-top; &taskImportResponseParameters-input;
+                &task--portResponseParameters-bottom; </representation>
             <!--import success-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Success Response">
                     <xsdxt:code href="../common/samples/task-detail-import-success-response.json"/>
-                </wadl:doc></representation>
+                </wadl:doc>
+            </representation>
             <!--import failure-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Failure Response">
                     <xsdxt:code href="../common/samples/task-detail-import-failure-response.json"/>
-                </wadl:doc></representation>
+                </wadl:doc>
+            </representation>
             <!--export pending-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Pending Response">
                     <xsdxt:code href="../common/samples/task-detail-export-pending-response.json"/>
-                </wadl:doc>&taskExportResponseParameters; </representation>
+                </wadl:doc> &task--portResponseParameters-top; &taskExportResponseParameters-input;
+                &task--portResponseParameters-bottom; </representation>
             <!--export success-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Success Response">
                     <xsdxt:code href="../common/samples/task-detail-export-success-response.json"/>
-                </wadl:doc></representation>
+                </wadl:doc>
+            </representation>
             <!--export failure-->
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Failure Response">
                     <xsdxt:code href="../common/samples/task-detail-export-failure-response.json"/>
-                </wadl:doc></representation>
-        </response>&commonFaults; </method>
+                </wadl:doc>
+            </representation>
+        </response>&commonFaults;&getFaults;</method>
 </application>
