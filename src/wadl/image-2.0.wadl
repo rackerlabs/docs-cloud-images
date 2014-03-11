@@ -126,7 +126,7 @@
                 </param>
                 <param name="tags" style="plain" type="xsd:dict" required="false" path="$.tags">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Tags">
-                        <p>Image tags.</p>
+                        <p>The user-defined image tags.</p>
                     </wadl:doc>
                 </param>
             </representation>
@@ -165,16 +165,51 @@
                             image.</para>
                     </listitem>
                     <listitem>
-                        <para>Updating properties: You can update only the following standard parameters:
-                                <parameter>name</parameter> and <parameter>tags</parameter>. You can update or delete any
-                            custom properties that you previously added to your own image.</para>
+                        <para>Updating properties: You can update any custom properties that you previously added to your own
+                            image, and you can update the following standard properties:</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para><parameter>name</parameter></para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>tags</parameter></para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>os_distro</parameter></para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>os_version</parameter></para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>protected</parameter></para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>container_format</parameter> (changing this may render your image
+                                    unusable)</para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>disk_format</parameter> (changing this may render your image
+                                    unusable)</para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>min_disk</parameter> (changing this affects what flavors you can use with
+                                    the image)</para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>min_ram</parameter> (changing this affects what flavors you can use with the
+                                    image)</para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>ramdisk_id</parameter> (only applies to disk_format of
+                                        <literal>ami</literal>)</para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>kernel_id</parameter> (only applies to disk_format of
+                                    <literal>ami</literal>)</para>
+                            </listitem>
+                        </itemizedlist>
                     </listitem>
                 </itemizedlist></para>
-            <!--            <warning>
-                <para> This version of the &CImA; acknowledges the ability of a cloud provider to employ <literal>property
-                        protections</literal>. Thus, there may be image properties that may not be updated or deleted by
-                    non-admin users. </para>
-            </warning>-->
         </wadl:doc>
         <request>
             <representation mediaType="application/json" element="image">
@@ -348,6 +383,7 @@
         </wadl:doc>
         <response status="204">
             <doc title="Success">Request succeeded.</doc>
+            <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
 
     <!-- Delete Image Tag -->
@@ -378,74 +414,7 @@
             </para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/json">
-                <param name="visibility" style="query" type="xsd:string" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"> Filters images on visibility. Options for visibility are
-                        as follows: <variablelist>
-                            <varlistentry>
-                                <term><code>shared</code></term>
-                                <listitem>
-                                    <para>Shows images that are shared with the user where the member status is
-                                            <literal>accepted</literal>.</para>
-                                </listitem>
-                            </varlistentry>
-                            <varlistentry>
-                                <term><code>private</code></term>
-                                <listitem>
-                                    <para>Shows images that the user owns.</para>
-                                </listitem>
-                            </varlistentry>
-                            <varlistentry>
-                                <term><code>public</code></term>
-                                <listitem>
-                                    <para>Shows images that are public images, published by the cloud provider, and available
-                                        to everyone. Public images do not have members.</para>
-                                </listitem>
-                            </varlistentry>
-                        </variablelist>
-                    </wadl:doc>
-                </param>
-                <param name="member_status" style="query" type="xsd:string" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"> Filters images on any chosen status. For example,
-                            <literal>visibility=shared&amp;member_status=pending</literal> shows only images shared with the
-                        user where the member status is <literal>pending</literal>. Options for member_status are as follows: <variablelist>
-                            <varlistentry>
-                                <term><code>pending</code></term>
-                                <listitem>
-                                    <para>Shows images where member_status is <literal>pending</literal>.</para>
-                                </listitem>
-                            </varlistentry>
-                            <varlistentry>
-                                <term><code>accepted</code></term>
-                                <listitem>
-                                    <para>Shows images where member_status is <literal>accepted</literal>.</para>
-                                </listitem>
-                            </varlistentry>
-                            <varlistentry>
-                                <term><code>rejected</code></term>
-                                <listitem>
-                                    <para>Shows images where member_status is <literal>rejected</literal>. </para>
-                                </listitem>
-                            </varlistentry>
-                            <varlistentry>
-                                <term><code>all</code></term>
-                                <listitem>
-                                    <para>Shows images regardless of member_status. </para>
-                                </listitem>
-                            </varlistentry>
-                        </variablelist>
-                        <note><para>The member_status filter is ignored if the visibility parameter is not set to
-                                "shared".</para></note>
-                    </wadl:doc>
-                </param>
-                <param name="owner" style="query" type="xsd:string" required="false">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook"> Filters images on acceptance status only. For example,
-                            <literal>visibility=shared&amp;owner=&lt;OWNER_ID></literal> shows only images shared with this
-                        user by the user whose tenant id is <literal>OWNER_ID</literal>. <note><para>The owner filter is
-                                ignored if the visibility parameter is not set to "shared".</para></note>
-                    </wadl:doc>
-                </param>
-            </representation>
+            <representation mediaType="application/json"> &listImageMembersQueryParameters; </representation>
         </request>
         <response status="200">
             <doc title="Success">Request succeeded.</doc>
@@ -455,9 +424,8 @@
                 </wadl:doc>
                 <param name="member" style="plain" type="xsd:string" required="true" path="$.member">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">The container for the list of image members.</wadl:doc>
-                </param>
-                &imageMemberResponseParameters;
-                <param name=" schema " style="plain" type="xsd:string" required="true" path="$. schema ">
+                </param> &imageMemberResponseParameters; <param name=" schema " style="plain" type="xsd:string"
+                    required="true" path="$. schema ">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook">The schema of the image members.</wadl:doc>
                 </param>
             </representation>
@@ -489,8 +457,7 @@
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-create-response.json"/>
-                </wadl:doc>&imageMemberResponseParameters;
-            </representation>
+                </wadl:doc>&imageMemberResponseParameters; </representation>
         </response> &commonFaults; &postPutFaults;</method>
 
     <!-- Get Image Member-->
@@ -508,8 +475,7 @@
                     <xsdxt:sample>
                         <xsdxt:code href="../common/samples/image-member-details-response.json"/>
                     </xsdxt:sample>
-                </doc>&imageMemberResponseParameters;
-            </representation>
+                </doc>&imageMemberResponseParameters; </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <!-- Update Image Member -->
@@ -563,8 +529,7 @@
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-update-response.json"/>
-                </wadl:doc>&imageMemberResponseParameters;
-            </representation>
+                </wadl:doc>&imageMemberResponseParameters; </representation>
         </response> &commonFaults; &postPutFaults;</method>
 
     <!-- Delete Image Member -->

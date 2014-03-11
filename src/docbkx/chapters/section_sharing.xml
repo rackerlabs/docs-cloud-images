@@ -33,7 +33,7 @@
     <para>Here is a sample workflow for image sharing, after image creation:</para>
     <note>
         <para>Communication between the image producer and the consumer, which can include notifications, questions, and
-            requests, should be arranged independent of the &CImA;, via email, phone, Twitter, or other channels. </para>
+            requests, must be arranged independent of the &CImA;, via email, phone, Twitter, or other channels. </para>
     </note>
     <orderedlist>
         <listitem>
