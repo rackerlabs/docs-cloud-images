@@ -25,67 +25,72 @@
     <!--*******************************************************-->
     <!--             All Resources                             -->
     <!--*******************************************************-->
-    <resources base="https://glance.example.com/" xml:id="images-v2">
-        <resource id="info" path="v2">
-            <resource id="Images" path="images">
-                <method href="#createImage"/>
-                <method href="#listImages"/>
-                <resource id="ImageID" path="{image_id}">
-                    <param name="image_id" style="template" type="csapi:uuid">
-                        <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image ID">
-                            <p>Image ID stored through the image API, typically a UUID.</p>
-                        </wadl:doc>
-                    </param>
-                    <method href="#getImage"/>
-                    <method href="#updateImage"/>
-                    <method href="#deleteImage"/>
-                    <resource id="file" path="file">
+    <!--<resources base="https://glance.example.com/" xml:id="images-v2">-->
+    <resources base="https://ord.images.api.rackspacecloud.com/" xml:id="images-v2">
+        <!--<resource id="info" path=" ">-->
+        <!--<param name="X-Auth-Token" style="header" type="xsd:string" required="true">
+                    <doc>A valid authentication token</doc>
+                </param>-->
+        <!--Brain asked to not include this-->
+        <resource id="Images" path="images">
+            <method href="#listImages"/>
+            <resource id="ImageID" path="{image_id}">
+                <param name="image_id" style="template" type="csapi:uuid">
+                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image ID">
+                        <p>Image ID stored through the image API, typically a UUID.</p>
+                    </wadl:doc>
+                </param>
+                <method href="#getImage"/>
+                <method href="#updateImage"/>
+                <method href="#deleteImage"/>
+                <!--<method href="#createImage"/>-->
+                <!--<resource id="file" path="file">
                         <method href="#storeImageFile"/>
                         <method href="#getImageFile"/>
-                    </resource>
-                    <resource id="Tags" path="tags">
-                        <resource id="Tagstag" path="{tag}">
-                            <param name="tag" style="template" type="xsd:string">
-                                <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Tag">
-                                    <p>Image tag (may be up to 255 characters in length).</p>
-                                </wadl:doc>
-                            </param>
-                            <method href="#addImageTag"/>
-                            <method href="#deleteImageTag"/>
-                        </resource>
-                    </resource>
-                    <resource id="Members" path="members">
-                        <method href="#createImageMember"/>
-                        <method href="#listImageMembers"/>
-                        <resource id="MemberID" path="{member_id}">
-                            <param name="member_id" style="template" type="xsd:string">
-                                <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Members">
-                                    <p>Image member ID. For example, the tenant ID of the user with whom the image is being
-                                        shared.</p>
-                                </wadl:doc>
-                            </param>
-                            <method href="#getImageMember"/>
-                            <method href="#deleteImageMember"/>
-                            <method href="#updateImageMember"/>
-                        </resource>
+                    </resource>-->
+                <resource id="Tags" path="tags">
+                    <resource id="Tagstag" path="{tag}">
+                        <param name="tag" style="template" type="xsd:string">
+                            <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Tag">
+                                <p>Image tag (may be up to 255 characters in length).</p>
+                            </wadl:doc>
+                        </param>
+                        <method href="#addImageTag"/>
+                        <method href="#deleteImageTag"/>
                     </resource>
                 </resource>
-            </resource>
-            <resource id="Tasks" path="tasks">
-                <method href="#importTask"/>
-                <method href="#exportTask"/>
-                <method href="#listTasks"/>
-                <resource id="TaskID" path="{taskID}">
-                    <param name="task_id" style="template" type="csapi:uuid">
-                        <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Task ID">
-                            <p>The task id. This task id is the same as the id parameter returned in the Import Task or
-                                Export Task operation response body.</p>
-                        </wadl:doc>
-                    </param>
-                    <method href="#getTask"/>
+                <resource id="Members" path="members">
+                    <method href="#createImageMember"/>
+                    <method href="#listImageMembers"/>
+                    <resource id="MemberID" path="{member_id}">
+                        <param name="member_id" style="template" type="xsd:string">
+                            <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Members">
+                                <p>Image member ID. For example, the tenant ID of the user with whom the image is being
+                                    shared.</p>
+                            </wadl:doc>
+                        </param>
+                        <method href="#getImageMember"/>
+                        <method href="#deleteImageMember"/>
+                        <method href="#updateImageMember"/>
+                    </resource>
                 </resource>
             </resource>
         </resource>
+        <resource id="Tasks" path="tasks">
+            <method href="#importImage"/>
+            <method href="#exportImage"/>
+            <method href="#listTasks"/>
+            <resource id="TaskID" path="{taskID}">
+                <param name="task_id" style="template" type="csapi:uuid">
+                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Task ID">
+                        <p>The task id. This task id is the same as the id parameter returned in the Import Task or Export
+                            Task operation response body.</p>
+                    </wadl:doc>
+                </param>
+                <method href="#getTask"/>
+            </resource>
+        </resource>
+        <!--</resource>-->
     </resources>
 
     <!--*******************************************************-->
@@ -93,8 +98,204 @@
     <!--*******************************************************-->
 
     <!-- Image Operations -->
+    <!-- List Images -->
+    <method name="GET" id="listImages">
+        <wadl:doc xml:lang="EN" title="List Images" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Lists public virtual machine (VM) images.</para>
+            <para>This operation returns images you created, shared images that you accepted, and standard images. For more
+                information about standard images, see <xref linkend="stdvnon-images"/>. The response conforms to the schema
+                found in <xref linkend="GET_getImagesSchema_schemas_images_Schema_Calls"/>.</para>
+            <para> This operation returns a subset of the larger collection of images and a link that you can use to get the
+                next set of images. Always check for the presence of a <parameter>next</parameter> link and use it as the URI
+                in a subsequent &GET; request. Follow this pattern until a <parameter>next</parameter> link is no longer
+                provided. The next link preserves any query parameters that you send in your initial request. You can use the
+                    <parameter>first</parameter> link to jump back to the first page of the collection. If you prefer to
+                paginate through images manually, use the <parameter>limit</parameter> and <parameter>marker</parameter>
+                parameters. </para>
+            <para>The List Images operation accepts several types of query parameters that you can use to filter the results
+                of the returned collection. </para>
+            <para>A client can provide direct comparison filters by using most image attributes, such as
+                    <code>name=Ubuntu</code>, <code>visibility=public</code>, and so on. A client cannot filter on tags or
+                anything defined as a link in the json-schema, such as <parameter>self</parameter>,
+                    <parameter>file</parameter>, or <parameter>schema</parameter>. </para>
+            <para>You can use the <parameter>size_min</parameter> and <parameter>size_max</parameter> query parameters to
+                perform greater-than and less-than filtering of images based on their <parameter>size</parameter> attribute.
+                The size is measured in bytes and refers to the size of an image when it is stored on disk.</para>
+            <para>For example, sending a <parameter>size_min</parameter> filter of 1048576 and size_max of 4194304 filters
+                the container to include only images that are between 1 MB and 4 MB in size.</para>
+            <para>You can sort the results of this operation by using the <parameter>sort_key</parameter> and
+                    <parameter>sort_dir</parameter> parameters. The API uses the natural sorting of whatever image attribute
+                is provided as the <parameter>sort_key</parameter>. </para>
+            <note>
+                <para>Public images may reach end-of-life and be removed from the base image list. This
+                    <link xlink:href="http://www.rackspace.com/knowledge_center/article/hidden-base-images">
+                        Hidden Base Images article</link>
+                    contains images which have been removed from the base images list but which may still be
+                    available.</para>
+            </note>
+        </wadl:doc>
+        <request>
+            <representation mediaType="application/json"> &imagesListQueryParameters;</representation>
+        </request>
+        <response status="200">
+            <doc title="Success">Request succeeded.</doc>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:sample>
+                        <xsdxt:code href="../common/samples/image-list-response.json"/>
+                    </xsdxt:sample>
+                </doc> &imageListResponseParameters; </representation>
+        </response> &commonFaults; &getFaults;</method>
+
+    <!-- Get Image -->
+    <method name="GET" id="getImage">
+        <wadl:doc xml:lang="EN" title="Get Image Details" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Gets the details for the specified image. </para>
+            <para>This operation shows the details for the image. The response body is a single image entity and conforms to
+                the schema found in <xref linkend="GET_getImageSchema_schemas_image_Schema_Calls"/>.</para>
+        </wadl:doc>
+        <response status="200">
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:sample>
+                        <xsdxt:code href="../common/samples/image-details-response.json"/>
+                    </xsdxt:sample>
+                </doc>&imageResponseParameters; </representation>
+        </response> &commonFaults; &getFaults; </method>
+
+    <!-- Update Image -->
+    <method name="PATCH" id="updateImage">
+        <wadl:doc xml:lang="EN" title="Update Image" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Updates the specified image. </para>
+            <para>This operation allows you to update an image that you own. The request body must conform to the
+                    <code>'application/openstack-images-v2.1-json-patch'</code> media type. The response conforms to the
+                schema found in <xref linkend="GET_getImageSchema_schemas_image_Schema_Calls"/>.</para>
+            <para>You can use the <code>HTTP PATCH</code> method to update certain standard properties, and to add, update,
+                or remove custom, user-defined image properties. For more information, see <xref linkend="patch-method"/> in
+                this guide. Here are some guidelines for custom, user-defined properties. <itemizedlist>
+                    <listitem>
+                        <para>Adding properties: You can add custom properties to your image.</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para>Naming properties: We recommend you name a custom property by prefixing your domain or
+                                    name, and we do not allow you to use <literal>com.rackspace</literal> as the prefix. For
+                                    example, <literal>com.mycompany.myproperty</literal> and
+                                        <literal>myname.myproperty</literal> are valid, and
+                                        <literal>com.rackspace.myproperty</literal> is not allowed.</para>
+                                <para>Do not use the prefix <literal>org.openstack</literal> since OpenStack might add a
+                                    property with the same name.</para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                    <listitem>
+                        <para>Deleting properties: You can delete any custom property which you previously added to your
+                            image.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Updating properties: You can update any custom properties that you previously added to an image
+                            that you own, and you can update the following standard properties:</para>
+                        <itemizedlist>
+                            <listitem>
+                                <para><parameter>name</parameter></para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>tags</parameter></para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>os_distro</parameter></para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>os_version</parameter></para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>protected</parameter></para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>container_format</parameter> (changing this may render your image
+                                    unusable)</para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>disk_format</parameter> (changing this may render your image
+                                    unusable)</para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>min_disk</parameter> (changing this affects what flavors you can use with
+                                    the image)</para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>min_ram</parameter> (changing this affects what flavors you can use with the
+                                    image)</para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>ramdisk_id</parameter> (only applies to disk_format of
+                                        <literal>ami</literal>)</para>
+                            </listitem>
+                            <listitem>
+                                <para><parameter>kernel_id</parameter> (only applies to disk_format of
+                                    <literal>ami</literal>)</para>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>In general, you can update any properties you own, but do not expect to be able to update anyone else's
+                properties. For example, you can't update any properties starting with <literal>com.rackspace</literal>, and
+                you might not be able to update some properties starting with <literal>org.openstack</literal>.</para>
+        </wadl:doc>
+        <request>
+            <representation mediaType="application/json" element="image">
+                <doc xml:lang="EN">
+                    <xsdxt:sample>
+                        <xsdxt:code href="../common/samples/image-update-req.json"/>
+                    </xsdxt:sample>
+                </doc>
+                <param name="." style="plain" path="$.parameters "/>
+                <param name="op" style="plain" type="xsd:string" required="true" path="$.parameters.op">
+                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
+                        <p>The operation to be executed (<code>add</code>, <code>remove</code>, or <code>replace</code>).</p>
+                    </wadl:doc>
+                </param>
+                <param name="path" style="plain" type="xsd:string" required="true" path="$.parameters.path">
+                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
+                        <p>The location within the image where the operation is to be performed.</p>
+                    </wadl:doc>
+                </param>
+                <param name="value" style="plain" type="xsd:string" required="false" path="$.parameters.value">
+                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
+                        <p>The actual value to be added or replaced. It is not required for the <code>delete</code>
+                            operation.</p>
+                    </wadl:doc>
+                </param>
+            </representation>
+        </request>
+        <response status="200">
+            <doc title="Success">Request succeeded.</doc>
+            <representation mediaType="application/json">
+                <doc xml:lang="EN">
+                    <xsdxt:sample>
+                        <xsdxt:code href="../common/samples/image-update-response.json"/>
+                    </xsdxt:sample>
+                </doc> &imageResponseParameters; </representation>
+        </response> &commonFaults; &postPutFaults; </method>
+
+    <!-- Delete Image -->
+    <method name="DELETE" id="deleteImage">
+        <wadl:doc xml:lang="EN" title="Delete Image" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Deletes the specified image. </para>
+            <para>This operation deletes the image. Make sure you set <parameter>protected</parameter> parameter to false
+                (Boolean) before performing the delete. If the operation succeeds, it returns an <errorcode>HTTP
+                    204</errorcode> status code with no response body. </para>
+            <warning><para>An attempt to delete an image with the <parameter>protected</parameter> parameter set to
+                        <code>true</code> (boolean) results in a response code <errorcode>HTTP 403</errorcode>.</para>
+            </warning>
+        </wadl:doc>
+        <response status="204">
+            <doc title="Delete Successful">Delete request succeeded.</doc>
+            <!--<representation mediaType="application/json"/>-->
+        </response> &commonFaults; &getFaults;</method>
+
     <!--Create Image -->
-    <method name="POST" id="createImage">
+    <!--    <method name="POST" id="createImage">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Create Image">
             <para role="shortdesc">Creates a virtual machine (VM) image. </para>
             <para>This operation creates an image with a Location header that contains the newly-created URI for the image.
@@ -142,203 +343,11 @@
                     </xsdxt:sample>
                 </wadl:doc>
             </representation>
-        </response> &commonFaults; &postPutFaults; </method>
-
-    <!-- Update Image -->
-    <method name="PATCH" id="updateImage">
-        <wadl:doc xml:lang="EN" title="Update Image" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Updates the specified image. </para>
-            <para>This operation allows you to update an image that you own. The request body must conform to the
-                    <code>'application/openstack-images-v2.1-json-patch'</code> media type.</para>
-            <para>You can use the <code>HTTP PATCH</code> method to update certain standard properties, and to add, update,
-                or remove custom, user-defined image properties. For more information, see <xref linkend="patch-method"/> in
-                this guide. Here are some guidelines for custom, user-defined properties. <itemizedlist>
-                    <listitem>
-                        <para>Adding properties: You can add custom properties to your image. We recommend you name a custom
-                            property by prefixing your domain or name, and we do not allow you to use
-                                <literal>com.rackspace</literal> as the prefix. For example,
-                                <literal>com.mycompany.myproperty</literal> and <literal>com.myname.myproperty</literal> are
-                            valid, and <literal>com.rackspace.myproperty</literal> is not allowed.</para>
-                    </listitem>
-                    <listitem>
-                        <para>Deleting properties: You can delete any custom property which you previously added to your
-                            image.</para>
-                    </listitem>
-                    <listitem>
-                        <para>Updating properties: You can update any custom properties that you previously added to your own
-                            image, and you can update the following standard properties:</para>
-                        <itemizedlist>
-                            <listitem>
-                                <para><parameter>name</parameter></para>
-                            </listitem>
-                            <listitem>
-                                <para><parameter>tags</parameter></para>
-                            </listitem>
-                            <listitem>
-                                <para><parameter>os_distro</parameter></para>
-                            </listitem>
-                            <listitem>
-                                <para><parameter>os_version</parameter></para>
-                            </listitem>
-                            <listitem>
-                                <para><parameter>protected</parameter></para>
-                            </listitem>
-                            <listitem>
-                                <para><parameter>container_format</parameter> (changing this may render your image
-                                    unusable)</para>
-                            </listitem>
-                            <listitem>
-                                <para><parameter>disk_format</parameter> (changing this may render your image
-                                    unusable)</para>
-                            </listitem>
-                            <listitem>
-                                <para><parameter>min_disk</parameter> (changing this affects what flavors you can use with
-                                    the image)</para>
-                            </listitem>
-                            <listitem>
-                                <para><parameter>min_ram</parameter> (changing this affects what flavors you can use with the
-                                    image)</para>
-                            </listitem>
-                            <listitem>
-                                <para><parameter>ramdisk_id</parameter> (only applies to disk_format of
-                                        <literal>ami</literal>)</para>
-                            </listitem>
-                            <listitem>
-                                <para><parameter>kernel_id</parameter> (only applies to disk_format of
-                                    <literal>ami</literal>)</para>
-                            </listitem>
-                        </itemizedlist>
-                    </listitem>
-                </itemizedlist></para>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/json" element="image">
-                <doc xml:lang="EN">
-                    <xsdxt:sample>
-                        <xsdxt:code href="../common/samples/image-update-req.json"/>
-                    </xsdxt:sample>
-                </doc>
-                <param name="op" style="plain" type="xsd:string" required="true" path="$.op">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
-                        <p>The operation to be executed (<code>add</code>, <code>remove</code>, or <code>replace</code>).</p>
-                    </wadl:doc>
-                </param>
-                <param name="path" style="plain" type="xsd:string" required="true" path="$.path">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
-                        <p>The location within the image where the operation is to be performed.</p>
-                    </wadl:doc>
-                </param>
-                <param name="value" style="plain" type="xsd:string" required="false" path="$.value">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
-                        <p>The actual value to be added or replaced. It is not required for the <code>delete</code>
-                            operation.</p>
-                    </wadl:doc>
-                </param>
-            </representation>
-        </request>
-        <response status="200">
-            <doc title="Success">Request succeeded.</doc>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:sample>
-                        <xsdxt:code href="../common/samples/image-update-response.json"/>
-                    </xsdxt:sample>
-                </doc> &imageResponseParameters; </representation>
-        </response> &commonFaults; &postPutFaults; </method>
-
-    <!-- Get Image -->
-    <method name="GET" id="getImage">
-        <wadl:doc xml:lang="EN" title="Get Image Details" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Gets the details for the specified image. </para>
-            <para>This operation shows the details for the image. The response body is a single image entity.</para>
-        </wadl:doc>
-        <response status="200">
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:sample>
-                        <xsdxt:code href="../common/samples/image-details-response.json"/>
-                    </xsdxt:sample>
-                </doc> &imageResponseParameters; </representation>
-        </response> &commonFaults; &getFaults; </method>
-
-    <!-- List Images -->
-    <method name="GET" id="listImages">
-        <wadl:doc xml:lang="EN" title="List Images" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Lists public virtual machine (VM) images.</para>
-            <para>This operation returns images you created, shared images that you accepted, and standard images. For more
-                information about standard images, see <xref linkend="stdvnon-images"/>. </para>
-            <para> This operation returns a subset of the larger collection of images and a link that you can use to get the
-                next set of images. Always check for the presence of a <parameter>next</parameter> link and use it as the URI
-                in a subsequent &GET; request. Follow this pattern until a <parameter>next</parameter> link is no longer
-                provided. The next link preserves any query parameters that you send in your initial request. You can use the
-                    <parameter>first</parameter> link to jump back to the first page of the collection. If you prefer to
-                paginate through images manually, use the <parameter>limit</parameter> and <parameter>marker</parameter>
-                parameters. </para>
-            <para>The List Images operation accepts several types of query parameters that you can use to filter the results
-                of the returned collection. </para>
-            <para>A client can provide direct comparison filters by using most image attributes, such as
-                    <code>name=Ubuntu</code>, <code>visibility=public</code>, and so on. A client cannot filter on tags or
-                anything defined as a link in the json-schema, such as <parameter>self</parameter>,
-                    <parameter>file</parameter>, or <parameter>schema</parameter>. </para>
-            <para>You can use the <parameter>size_min</parameter> and <parameter>size_max</parameter> query parameters to
-                perform greater-than and less-than filtering of images based on their <parameter>size</parameter> attribute.
-                The size is measured in bytes and refers to the size of an image when it is stored on disk.</para>
-            <para>For example, sending a <parameter>size_min</parameter> filter of 1048576 and size_max of 4194304 filters
-                the container to include only images that are between 1 MB and 4 MB in size.</para>
-            <para>You can sort the results of this operation by using the <parameter>sort_key</parameter> and
-                    <parameter>sort_dir</parameter> parameters. The API uses the natural sorting of whatever image attribute
-                is provided as the <parameter>sort_key</parameter>. </para>
-            <note>
-                <para>Public images may reach end-of-life and be removed from the base image list. This
-                    <link xlink:href="http://www.rackspace.com/knowledge_center/article/hidden-base-images">
-                        Hidden Base Images article</link>
-                    contains images which have been removed from the base images list but which may still be
-                    available.</para>
-            </note>
-        </wadl:doc>
-        <request> &listImagesQueryParameters; </request>
-        <response status="200">
-            <doc title="Success">Request succeeded.</doc>
-            <representation mediaType="application/json">
-                <doc xml:lang="EN">
-                    <xsdxt:sample>
-                        <xsdxt:code href="../common/samples/image-list-response.json"/>
-                    </xsdxt:sample>
-                </doc>
-                <param name="images" style="plain" required="true" path="$.images">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The container for the images in the list.</wadl:doc>
-                </param> &imageResponseParameters; <param name="first " style="plain" type="xsd:string" required="true"
-                    path="$.first ">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The URI for the first image in the list.</wadl:doc>
-                </param>
-                <param name="next" style="plain" type="xsd:string" required="true" path="$.next">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The URI for the next image in the list.</wadl:doc>
-                </param>
-                <param name="schema " style="plain" type="xsd:string" required="true" path="$.schema ">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The schema of the images list.</wadl:doc>
-                </param>
-            </representation>
-        </response> &commonFaults; &getFaults;</method>
-
-    <!-- Delete Image -->
-    <method name="DELETE" id="deleteImage">
-        <wadl:doc xml:lang="EN" title="Delete Image" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Deletes the specified image. </para>
-            <para>This operation deletes the image. Make sure you set <parameter>protected</parameter> parameter to false
-                (Boolean) before performing the delete. If the operation succeeds, it returns an <errorcode>HTTP
-                    204</errorcode> status code with no response body. </para>
-            <warning><para>An attempt to delete an image with the <parameter>protected</parameter> parameter set to
-                        <code>true</code> (boolean) results in a response code <errorcode>HTTP 403</errorcode>.</para>
-            </warning>
-        </wadl:doc>
-        <response status="204">
-            <doc title="Delete Successful">Delete request succeeded.</doc>
-            <!--<representation mediaType="application/json"/>-->
-        </response> &commonFaults; &getFaults;</method>
+        </response> &commonFaults; &postPutFaults; </method>-->
 
     <!-- Image File Operations -->
     <!-- Upload Image -->
-    <method name="PUT" id="storeImageFile">
+    <!--    <method name="PUT" id="storeImageFile">
         <wadl:doc xml:lang="EN" title="Upload Binary Image Data" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Uploads binary image data. </para>
             <para>This operation uploads the binary image data. An image record must exist before a client can store binary
@@ -348,10 +357,10 @@
         </wadl:doc>
         <response status="204">
             <doc title="Success">Upload Request succeeded.</doc>
-        </response> &commonFaults; &postPutFaults; </method>
+        </response> &commonFaults; &postPutFaults; </method>-->
 
     <!-- Download Image -->
-    <method name="GET" id="getImageFile">
+    <!--    <method name="GET" id="getImageFile">
         <wadl:doc xml:lang="EN" title="Download Binary Image Data" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Downloads binary image data.</para>
             <para>This operation downloads the binary image data. The response body contains the raw binary data that
@@ -367,7 +376,7 @@
         </response>
         <response status="204">
             <doc title="No Data Exists"> Download request failed because no data exists.</doc>
-        </response> &commonFaults; &getFaults; </method>
+        </response> &commonFaults; &getFaults; </method>-->
 
     <!-- Image Tag Operations -->
     <!-- Add Image Tag -->
@@ -408,27 +417,22 @@
     <method name="GET" id="listImageMembers">
         <wadl:doc xml:lang="EN" title="List Image Members" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Returns collection of members (users) with whom the image has been shared.</para>
-            <para> This operation returns collection of members (users) with whom the image has been shared. If a user with
-                whom this image is shared makes this call, the member list contains only information for that user. If a user
-                with whom this image has not been shared makes this call, the response is <errorcode>HTTP 404</errorcode>.
-            </para>
+            <para> This operation returns collection of members (users) with whom the image has been shared. The response
+                conforms to the schema found in
+                <xref linkend="GET_getImageMembersSchemas_schemas_members_Schema_Calls"/>.</para>
+            <para>If a user with whom this image is shared makes this call, the member list contains only information for
+                that user. If a user with whom this image has not been shared makes this call, the response is
+                    <errorcode>HTTP 404</errorcode>. </para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/json"> &listImageMembersQueryParameters; </representation>
+            <representation mediaType="application/json"> &imageMembersListQueryParameters; </representation>
         </request>
         <response status="200">
             <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-members-list-response.json"/>
-                </wadl:doc>
-                <param name="member" style="plain" type="xsd:string" required="true" path="$.member">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The container for the list of image members.</wadl:doc>
-                </param> &imageMemberResponseParameters; <param name=" schema " style="plain" type="xsd:string"
-                    required="true" path="$. schema ">
-                    <wadl:doc xmlns="http://docbook.org/ns/docbook">The schema of the image members.</wadl:doc>
-                </param>
-            </representation>
+                </wadl:doc> &imageMemberListResponseParameters; </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <!-- Create Image Member -->
@@ -437,7 +441,8 @@
             <para role="shortdesc">Adds the specified <parameter>account ID/tenant ID</parameter> specified in the request
                 body as an image member.</para>
             <para>This operation allows you to add users to the list of members with whom the image is shared. The member
-                status of a newly created image member is <literal>pending</literal>.</para>
+                status of a newly created image member is <literal>pending</literal>. The response conforms to the schema
+                found in <xref linkend="GET_getImageMemberSchema_schemas_member_Schema_Calls"/>.</para>
             <para>If the user making the call is not the image owner, the response is <errorcode>HTTP 404</errorcode>.</para>
         </wadl:doc>
         <request>
@@ -445,7 +450,8 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-create-request.json"/>
                 </wadl:doc>
-                <param name="member" style="plain" type="xsd:string" required="true" path="$.member">
+                <param name="." style="plain" path="$.parameters "/>
+                <param name="member" style="plain" type="xsd:string" required="true" path="$.parameters.member">
                     <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Image member status">
                         <para>The member ID. This is the tenant ID of the user with whom the image is to be shared.</para>
                     </wadl:doc>
@@ -457,15 +463,18 @@
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-create-response.json"/>
-                </wadl:doc>&imageMemberResponseParameters; </representation>
+                </wadl:doc>
+                <param name="." style="plain" path="$.parameters "/> &imageMemberResponseParameters; </representation>
         </response> &commonFaults; &postPutFaults;</method>
 
     <!-- Get Image Member-->
     <method name="GET" id="getImageMember">
         <wadl:doc xml:lang="EN" title="Get Image Member Details" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Gets the details for the specified image member. </para>
-            <para>This operation shows details of the image member. To get a successful response, either the image owner must
-                make the call or the <parameter>tenant_id</parameter> of the user making the call must match the specified
+            <para>This operation shows details of the image member. The response conforms to the schema found in
+                <xref linkend="GET_getImageMemberSchema_schemas_member_Schema_Calls"/>.</para>
+            <para>To get a successful response, either the image owner must make the call or the
+                    <parameter>tenant_id</parameter> of the user making the call must match the specified
                     <parameter>member_id</parameter>. Otherwise the response is <errorcode>HTTP 404</errorcode>.</para>
         </wadl:doc>
         <response status="200">
@@ -475,15 +484,17 @@
                     <xsdxt:sample>
                         <xsdxt:code href="../common/samples/image-member-details-response.json"/>
                     </xsdxt:sample>
-                </doc>&imageMemberResponseParameters; </representation>
+                </doc>
+                <param name="." style="plain" path="$.parameters "/> &imageMemberResponseParameters; </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <!-- Update Image Member -->
     <method name="PUT" id="updateImageMember">
         <wadl:doc xml:lang="EN" title="Update Image Member" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Sets the specified status for the specified member of the specified image.</para>
-            <para>This operation updates the image member. If the call is made by the image owner, the response is
-                    <errorcode>HTTP 403 (Forbidden)</errorcode>.</para>
+            <para>This operation updates the image member. The response conforms to the schema found in
+                <xref linkend="GET_getImageMemberSchema_schemas_member_Schema_Calls"/>.</para>
+            <para>If the call is made by the image owner, the response is <errorcode>HTTP 403 (Forbidden)</errorcode>.</para>
             <para>If the call is made by a user who is not the owner and whose <parameter>tenant ID</parameter> is not the
                 same as the {member_id} is the operation URI, the response is <errorcode>HTTP 404</errorcode>.</para>
         </wadl:doc>
@@ -492,7 +503,8 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-update-request.json"/>
                 </wadl:doc>
-                <param name="status" style="plain" type="xsd:string" required="true" path="$.status">
+                <param name="." style="plain" path="$.parameters "/>
+                <param name="status" style="plain" type="xsd:string" required="true" path="$.parameters.status">
                     <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                         <para>The status to which this image member should be set. Valid values are as follows: <variablelist>
                                 <varlistentry>
@@ -529,7 +541,8 @@
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-update-response.json"/>
-                </wadl:doc>&imageMemberResponseParameters; </representation>
+                </wadl:doc>
+                <param name="." style="plain" path="$.parameters "/> &imageMemberResponseParameters; </representation>
         </response> &commonFaults; &postPutFaults;</method>
 
     <!-- Delete Image Member -->
@@ -548,104 +561,19 @@
         </response> &commonFaults; &getFaults;</method>
 
     <!-- Task Operations -->
-    <!-- Import Task -->
-    <method name="POST" id="importTask">
-        <wadl:doc xml:lang="EN" title="Import Task" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Submits a task request to import an image. See the request body for specifics.</para>
-            <para>This operation submits an task request to import an image. The request begins the import process and
-                returns the task UUID that can be subsequently polled to determine the status of the import by using the
-                <xref linkend="GET_getTask_v2_tasks__taskID__Image_Task_Calls"/> operation.</para>
-            <para>To successfully import an image, </para>
-            <itemizedlist>
-                <listitem>
-                    <para>Format the image using the VHD format.</para>
-                    <note>
-                        <para>If you are importing an image that you have previously exported from Cloud Images in another
-                            region of the Rackspace open cloud, your image is already in the appropriate format. You can find
-                            information on
-                            <link xlink:href="http://www.rackspace.com/knowledge_center/article/preparing-an-image-for-import-into-the-rackspace-open-cloud">preparing a custom image for import</link>
-                            in the Rackspace Knowledge Center.</para>
-                    </note>
-                </listitem>
-                <listitem>
-                    <para>Store the in your Cloud Files account.</para>
-                </listitem>
-            </itemizedlist>
-            <note>
-                <para> As described in the
-                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html">Rackspace Terms of Service</link>,
-                    you should be aware of and respect all licensing restrictions that apply to any software that you import
-                    into the Rackspace open cloud. In particular, be aware that Microsoft licensing rules are very
-                    restrictive. If you have questions, please contact the software vendor. </para>
-            </note>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/task-import-req.json"/>
-                </wadl:doc>&taskImportRequestParameters; </representation>
-        </request>
-        <response status="201">
-            <doc title="Success">Task import request succeeded.</doc>
-            <representation>
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Pending Response">
-                    <xsdxt:code href="../common/samples/task-detail-import-pending-response.json"/>
-                </wadl:doc>
-                <!--<param name="location_id" style="header" type="xsd:string" required="true" path="$.location_id">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">The location of the task resource that is needed for polling
-                    the progress of the import request.</wadl:doc>
-            </param>-->
-                &task--portResponseParameters-top; &taskImportResponseParameters-input; &task--portResponseParameters-bottom;
-            </representation>
-        </response>&commonFaults; &postPutFaults; </method>
-
-    <!-- Export Task -->
-    <method name="POST" id="exportTask">
-        <wadl:doc xml:lang="EN" title="Export Task" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Submits a task request to export an image. See the request body for specifics.</para>
-            <para>This operation submits an task request to export an image in VHD format. The request begins the export
-                process and returns the task UUID that can be subsequently polled to determine the status of the export by
-                using the <xref linkend="GET_getTask_v2_tasks__taskID__Image_Task_Calls"/> operation.</para>
-            <note>
-                <para>The exported image is deposited in your Cloud Files account and is identified by the
-                        <parameter>image_uuid</parameter> with a .vhd extension. You are responsible for ensuring that any
-                    distribution of your image from the Rackspace open cloud complies with any licensing restrictions.</para>
-            </note>
-        </wadl:doc>
-        <request>
-            <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
-                    <xsdxt:code href="../common/samples/task-export-req.json"/>
-                </wadl:doc>&taskExportRequestParameters; </representation>
-        </request>
-        <response status="201">
-            <doc title="Success">Task export request succeeded.</doc>
-            <representation>
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Pending Response">
-                    <xsdxt:code href="../common/samples/task-detail-export-pending-response.json"/>
-                </wadl:doc> &task--portResponseParameters-top; &taskExportResponseParameters-input;
-                &task--portResponseParameters-bottom;
-                <!--<param name="location_id" style="header" type="xsd:string" required="true" path="$.location_id">
-                <wadl:doc xmlns="http://docbook.org/ns/docbook">The location of the task resource that is needed for polling
-                    the progress of the export request.</wadl:doc>
-            </param>-->
-            </representation>
-        </response>&commonFaults; &postPutFaults; </method>
-
     <!-- List Tasks -->
     <method name="GET" id="listTasks">
         <wadl:doc xml:lang="EN" title="List Tasks" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Lists tasks.</para>
             <para>This operation returns list of tasks, with basic details about each task. The response conforms to the
-                Tasks Schema. For more information, see
-                <xref linkend="GET_getTasksSchemas_v2_schemas_tasks_Schema_Calls"/>.</para>
+                schema found in <xref linkend="GET_getTasksSchemas_schemas_tasks_Schema_Calls"/>.</para>
         </wadl:doc>
         <response status="200">
             <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="List Tasks">
                     <xsdxt:code href="../common/samples/task-list-response.json"/>
-                </wadl:doc> &taskListResponseParameters-top; &task--portResponseParameters-bottom; </representation>
+                </wadl:doc> &taskListResponseParameters; </representation>
         </response>&commonFaults;&getFaults; </method>
 
     <!-- Task Details -->
@@ -654,8 +582,8 @@
             <para role="shortdesc">Gets the details for the specified task.</para>
             <para>This operation shows the details for the specified task, including the status, so you'll know when the
                 import or export task completes and whether it worked. For more information on statuses, see
-                <xref linkend="task-statuses"/>. The response conforms to the Task Schema. For more information, see
-                <xref linkend="GET_getTaskSchema_v2_schemas_task_Schema_Calls"/>.</para>
+                <xref linkend="task-statuses"/>. The response conforms to the schema found in
+                <xref linkend="GET_getTaskSchema_schemas_task_Schema_Calls"/>.</para>
         </wadl:doc>
         <response status="200">
             <doc title="Success">Request succeeded.</doc>
@@ -663,7 +591,7 @@
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Pending Response">
                     <xsdxt:code href="../common/samples/task-detail-import-pending-response.json"/>
-                </wadl:doc>&task--portResponseParameters-top; &taskImportResponseParameters-input;
+                </wadl:doc> &task--portResponseParameters-top; &taskImportResponseParameters-input;
                 &task--portResponseParameters-bottom; </representation>
             <!--import success-->
             <representation mediaType="application/json">
@@ -696,4 +624,96 @@
                 </wadl:doc>
             </representation>
         </response>&commonFaults;&getFaults;</method>
+
+    <!-- Import Image -->
+    <method name="POST" id="importImage">
+        <wadl:doc xml:lang="EN" title="Task to Import Image" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Imports an image using an asynchronous task request. See the request body for specific
+                details.</para>
+            <para>This operation imports an image using an asynchronous task request. The request begins the import process
+                and returns the task UUID that can be subsequently polled to determine the status of the import by using the
+                <xref linkend="GET_getTask_tasks__taskID__Image_Task_Calls"/> operation. The response conforms to the schema
+                found in <xref linkend="GET_getTaskSchema_schemas_task_Schema_Calls"/>.</para>
+            <para>To successfully import an image, </para>
+            <itemizedlist>
+                <listitem>
+                    <para>Format the image using the VHD format.</para>
+                    <note>
+                        <para>If you are importing an image that you have previously exported from Cloud Images in another
+                            region of the Rackspace open cloud, your image is already in the appropriate format. You can find
+                            information on
+                            <link xlink:href="http://www.rackspace.com/knowledge_center/article/preparing-an-image-for-import-into-the-rackspace-open-cloud">preparing a custom image for import</link>
+                            in the Rackspace Knowledge Center.</para>
+                    </note>
+                </listitem>
+                <listitem>
+                    <para>Store the image in your Cloud Files account.</para>
+                </listitem>
+            </itemizedlist>
+            <note>
+                <para> As described in the
+                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html">
+                        Rackspace Terms of Service</link>,
+                    you should be aware of and respect all licensing restrictions that apply to any software that you import
+                    into the Rackspace open cloud. For example, Microsoft licensing rules are very restrictive. Microsoft
+                    product use rights do not allow the use of License Mobility for Windows licenses. Given the limitations
+                    related to this software platform, image import is not available for Windows images. If you have
+                    questions, please contact the software vendor. </para>
+            </note>
+        </wadl:doc>
+        <request>
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/task-import-req.json"/>
+                </wadl:doc>&taskImportRequestParameters; </representation>
+        </request>
+        <response status="201">
+            <doc title="Success">Request succeeded.</doc>
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Pending Response">
+                    <xsdxt:code href="../common/samples/task-detail-import-pending-response.json"/>
+                </wadl:doc>
+                <!--<param name="location_id" style="header" type="xsd:string" required="true" path="$.location_id">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">The location of the task resource that is needed for polling
+                    the progress of the import request.</wadl:doc>
+            </param>-->
+                &task--portResponseParameters-top;&taskImportResponseParameters-input; &task--portResponseParameters-bottom;
+            </representation>
+        </response>&commonFaults; &postPutFaults; </method>
+
+    <!-- Export Image -->
+    <method name="POST" id="exportImage">
+        <wadl:doc xml:lang="EN" title="Task to Export Image" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Exports an image using an asynchronous task request. See the request body for specific
+                details.</para>
+            <para>This operation exports an image in VHD format using an asynchronous task request to export. The request
+                begins the export process and returns the task UUID that can be subsequently polled to determine the status
+                of the export by using the <xref linkend="GET_getTask_tasks__taskID__Image_Task_Calls"/> operation. The
+                response conforms to the schema found in <xref linkend="GET_getTaskSchema_schemas_task_Schema_Calls"/>. </para>
+            <note>
+                <para>The exported image is deposited in your Cloud Files account and is identified by the
+                        <parameter>image_uuid</parameter> with a .vhd extension. You are responsible for ensuring that any
+                    distribution of your image from the Rackspace open cloud complies with any licensing restrictions.</para>
+            </note>
+        </wadl:doc>
+        <request>
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
+                    <xsdxt:code href="../common/samples/task-export-req.json"/>
+                </wadl:doc>&taskExportRequestParameters;</representation>
+        </request>
+        <response status="201">
+            <doc title="Success">Task export request succeeded.</doc>
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Pending Response">
+                    <xsdxt:code href="../common/samples/task-detail-export-pending-response.json"/>
+                </wadl:doc> &task--portResponseParameters-top; &taskExportResponseParameters-input;
+                &task--portResponseParameters-bottom;
+                <!--<param name="location_id" style="header" type="xsd:string" required="true" path="$.location_id">
+                <wadl:doc xmlns="http://docbook.org/ns/docbook">The location of the task resource that is needed for polling
+                    the progress of the export request.</wadl:doc>
+            </param>-->
+            </representation>
+        </response>&commonFaults; &postPutFaults; </method>
+
 </application>

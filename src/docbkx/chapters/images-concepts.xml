@@ -540,6 +540,7 @@
 
     <!-- HTTP PATCH Method -->
     <section xml:id="patch-method">
+        <?dbhtml stop-chunking?>
         <title>HTTP PATCH Method</title>
         <para>The &CImA; uses the HTTP PATCH method to update image properties.</para>
         <para>The HTTP PATCH request must provide a <glossterm baseform="Media type">media type</glossterm> so that the
@@ -738,10 +739,14 @@ JSON Pointer        Image Entity Key Pair
                     replacement value. </para>
                 <warning>
                     <para> Some image properties used by the system are <code>protected</code>. If you try to modify any of
-                        these properties as part of your PATCH request, the request will fail. There is a small subset of
-                        standard image properties that can be modified by users; please consult the
-                        <link xlink:href="http://www.rackspace.com/knowledge_center/">Rackspace Knowledge Center</link> for
-                        details. </para>
+                        these properties as part of your PATCH request, the request will fail. To learn which
+                        standard image properties can be modified by users see 
+                        <phrase condition="dev"><olink targetdoc="ci-devguide"
+                            targetptr="PATCH_updateImage_images__image_id__Image_Calls"
+                            >"PATCH_updateImage_images__image_id__Image_Calls"</olink></phrase>
+                        <phrase condition="gs">
+                            <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/PATCH_updateImage_images__image_id__Image_Calls.html">
+                        Section 4.3.1 "Update Image"</link></phrase>.</para>
                 </warning>
                 <para><guilabel>Replace Example</guilabel></para>
                 <programlisting>
@@ -755,94 +760,4 @@ JSON Pointer        Image Entity Key Pair
         </section>
     </section>
 
-    <!--Standard vs. Non-standard Images-->
-    <section xml:id="stdvnon-images">
-        <title>Standard versus Non-standard Images</title>
-        <?dbhtml stop-chunking?>
-        <para>The &CImS; allows you to use standard images (which are supported by Rackspace) and to create, share, and use
-            non-standard images (which are not supported by Rackspace). For more information, see this
-            <link xlink:href="http://www.rackspace.com/knowledge_center/article/rackspace-standard-and-non-standard-images"> 
-                article.</link>
-        </para>
-        <section xml:id="std-images">
-            <title>Standard Images</title>
-            <para>Standard images include the following:</para>
-            <itemizedlist>
-                <listitem>
-                    <para>All base images supplied by Rackspace for your service level and/or Rackconnect status that have
-                        not yet reached End of Life</para>
-                </listitem>
-            </itemizedlist>
-        </section>
-        <section xml:id="nonstd-images">
-            <title>Non-standard Images</title>
-            <para>Non-standard images include the following:</para>
-            <itemizedlist>
-                <listitem>
-                    <para>All imported and exported images</para>
-                </listitem>
-                <listitem>
-                    <para>All end-of-life images</para>
-                </listitem>
-                <listitem>
-                    <para>All shared images</para>
-                </listitem>
-                <listitem>
-                    <para>All images that are not standard for your account's service level and Rackconnect status</para>
-                </listitem>
-            </itemizedlist>
-            <note>
-                <para>This is not an exhaustive list of non-standard images.</para>
-            </note>
-        </section>
-    </section>
-
-    <!--Image Statuses-->
-    <section xml:id="image-statuses">
-        <title>Image Statuses</title>
-        <para>Images in the &CImS; can have one of the following statuses:</para>
-        <variablelist>
-            <varlistentry>
-                <term><emphasis role="bold">queued</emphasis></term>
-                <listitem>
-                    <para> The image identifier has been reserved for an image in the Cloud Images registry. No image data
-                        has been uploaded to the &CImS;, and the image size was not explicitly set to zero on creation.
-                    </para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">saving</emphasis></term>
-                <listitem>
-                    <para> An image's raw data is being uploaded to the &CImS;.</para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">active</emphasis></term>
-                <listitem>
-                    <para>The image is fully available in the &CImS;. This status applies either after the image is uploaded
-                        or if the image size is explicitly set to zero on creation. </para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">killed</emphasis></term>
-                <listitem>
-                    <para>An error occurred during the image upload process, and the image data is unreadable.</para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">deleted</emphasis></term>
-                <listitem>
-                    <para>The &CImS; has retained the information about the image, but the image is no longer available to
-                        use. An image with this status will be removed automatically at a later date.</para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">pending_delete</emphasis></term>
-                <listitem>
-                    <para>This status is similar to deleted, however, the &CImS; has not yet removed the image data. An image
-                        with this status is recoverable.</para>
-                </listitem>
-            </varlistentry>
-        </variablelist>
-    </section>
 </chapter>

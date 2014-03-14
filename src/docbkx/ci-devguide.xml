@@ -28,6 +28,33 @@
     <revhistory>
       <revision>
         <!--fix rev date-->
+        <date>2014-03-30</date>
+        <revdescription>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Added X_AUTH_TOKEN header to all API operation examples.</para>
+            </listitem>
+            <listitem>
+              <para>Included additional custom property warnings in <olink targetdoc="ci-devguide"
+                  targetptr="PATCH_updateImage_images__image_id__Image_Calls"
+                  >"PATCH_updateImage_images__image_id__Image_Calls"</olink>.</para>
+            </listitem>
+            <listitem>
+              <para>Renamed Import and Export Image operations (formerly Import Task and Export Task).</para>
+            </listitem>
+            <listitem>
+              <para>Moved Image Statuses and Standard versus Non-standard Image sections under <olink targetdoc="ci-devguide"
+                  targetptr="what-and-why">"Images"</olink>.</para>
+            </listitem>
+            <listitem>
+              <para>Removed the "v2" from the API operation URIs since the version is already part of the endpoint URL in the
+                service catalog provided during authentication.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <!--fix rev date-->
         <date>2014-03-11</date>
         <revdescription>
           <itemizedlist spacing="compact">
@@ -36,25 +63,23 @@
                 >“Images”</olink>.</para>
             </listitem>
             <listitem>
-              <para>Added clarity to the operation <olink targetdoc="ci-devguide"
-                  targetptr="PATCH_updateImage_v2_images__image_id__Image_Calls"
-                  >"PATCH_updateImage_v2_images__image_id__Image_Calls"</olink> operation.</para>
+              <para>Added clarity to <olink targetdoc="ci-devguide"
+                  targetptr="PATCH_updateImage_images__image_id__Image_Calls"
+                  >"PATCH_updateImage_images__image_id__Image_Calls"</olink>.</para>
             </listitem>
             <listitem>
               <para>Cleaned up and refined the error messages.</para>
             </listitem>
             <listitem>
-              <para>Provided more details for  
-                <olink targetdoc="ci-devguide"
-                  targetptr="PUT_addImageTag_v2_images__image_id__tags__tag__Image_Tag_Calls"
-                  >"PUT_addImageTag_v2_images__image_id__tags__tag__Image_Tag_Calls"</olink> and  
-                <olink targetdoc="ci-devguide"
-                  targetptr="DELETE_deleteImageTag_v2_images__image_id__tags__tag__Image_Tag_Calls"
-                  >"DELETE_deleteImageTag_v2_images__image_id__tags__tag__Image_Tag_Calls"</olink> operations.</para>
+              <para>Provided more details for <olink targetdoc="ci-devguide"
+                  targetptr="PUT_addImageTag_images__image_id__tags__tag__Image_Tag_Calls"
+                  >"PUT_addImageTag_images__image_id__tags__tag__Image_Tag_Calls"</olink> and <olink
+                  targetdoc="ci-devguide" targetptr="DELETE_deleteImageTag_images__image_id__tags__tag__Image_Tag_Calls"
+                  >"DELETE_deleteImageTag_images__image_id__tags__tag__Image_Tag_Calls"</olink>.</para>
             </listitem>
             <listitem>
-              <para>Revised the sample workflow for sharing images in <olink targetdoc="ci-devguide" targetptr="image-sharing"
-                >“Images”</olink>.</para>
+              <para>Revised the sample workflow for sharing images in <olink targetdoc="ci-devguide"
+                  targetptr="image-sharing">“Images”</olink>.</para>
             </listitem>
             <listitem>
               <para>Removed the <parameter>import_from_format</parameter> parameter from task operations.</para>
@@ -72,14 +97,14 @@
             </listitem>
             <listitem>
               <para>Added <olink targetdoc="ci-devguide"
-                  targetptr="GET_getImageMember_v2_images__image_id__members__member_id__Image_Both_Calls"
-                  >"GET_getImageMember_v2_images__image_id__members__member_id__Image_Both_Calls"</olink> operation.</para>
+                  targetptr="GET_getImageMember_images__image_id__members__member_id__Image_Both_Calls"
+                  >"GET_getImageMember_images__image_id__members__member_id__Image_Both_Calls"</olink> operation.</para>
             </listitem>
             <listitem>
-              <para>Added <olink targetdoc="ci-devguide" targetptr="GET_getTasksSchemas_v2_schemas_tasks_Schema_Calls"
-                  >"GET_getTasksSchemas_v2_schemas_tasks_Schema_Calls"</olink> operation and <olink targetdoc="ci-devguide"
-                  targetptr="GET_getTaskSchema_v2_schemas_task_Schema_Calls"
-                  >"GET_getTaskSchema_v2_schemas_task_Schema_Calls"</olink> operation.</para>
+              <para>Added <olink targetdoc="ci-devguide" targetptr="GET_getTasksSchemas_schemas_tasks_Schema_Calls"
+                  >"GET_getTasksSchemas_schemas_tasks_Schema_Calls"</olink> operation and <olink targetdoc="ci-devguide"
+                  targetptr="GET_getTaskSchema_schemas_task_Schema_Calls"
+                  >"GET_getTaskSchema_schemas_task_Schema_Calls"</olink> operation.</para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -96,8 +121,8 @@
             </listitem>
             <listitem>
               <para>Added links to standard versus non-standard images and hidden images articles to <olink
-                  targetdoc="ci-devguide" targetptr="GET_listImages_v2_images_Image_Calls"
-                  >"GET_listImages_v2_images_Image_Calls"</olink></para>
+                  targetdoc="ci-devguide" targetptr="GET_listImages_images_Image_Calls"
+                  >"GET_listImages_images_Image_Calls"</olink></para>
             </listitem>
           </itemizedlist>
         </revdescription>
@@ -139,8 +164,8 @@
         <date>2013-12-17</date>
         <revdescription>
           <para>Added constraint that 'member_status' and 'owner' filters are expected to work only with visibility=shared in
-              <olink targetdoc="ci-devguide" targetptr="GET_listImageMembers_v2_images__image_id__members_Image_Both_Calls"
-              >"GET_listImageMembers_v2_images__image_id__members_Image_Both_Calls"</olink></para>
+              <olink targetdoc="ci-devguide" targetptr="GET_listImageMembers_images__image_id__members_Image_Both_Calls"
+              >"GET_listImageMembers_images__image_id__members_Image_Both_Calls"</olink></para>
         </revdescription>
       </revision>
       <revision>

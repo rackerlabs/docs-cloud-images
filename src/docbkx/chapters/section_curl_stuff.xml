@@ -11,20 +11,38 @@
         enables you to work with the API directly. It is available for Linux distributions, Mac OS X, and Windows. For
         information about cURL, see <link xlink:href="http://curl.haxx.se/">http://curl.haxx.se/</link>. </para>
 
-    <para>To run the cURL request examples shown in this guide, copy each example from the HTML version of this guide
-        directly to the command line or a script.</para>
+    <para>To run the cURL requests shown in this guide, export your <literal>tenant ID</literal> and the
+            <literal>token</literal> that you got during authentication (see <olink targetdoc="ci-devguide" targetptr="auth"
+            >“Authenticate through the Rackspace Cloud Identity Service”</olink>) to environment variables and then copy the
+        example from this guide to the command line, script, or tool, changing URI parameters or body parameters as
+        needed.</para>
+    <para>To export environment variables: <orderedlist>
+            <listitem>
+                <para>Export your tenant ID to the <literal>account</literal> environment variable:</para>
+                <programlisting><prompt>$</prompt> export account="tenantID"</programlisting>
+                <para>Where <literal>tenantID</literal> is your account ID.</para>
+            </listitem>
+            <listitem>
+                <para>Export your authentication token to the <literal>token</literal> environment variable:</para>
+                <programlisting><prompt>$</prompt> export token="token_id"</programlisting>
+                <para>Where <literal>token_id</literal> is the authentication token value in the <literal>id</literal> field
+                    of the <literal>token</literal> element in the authentication response. For information about finding the
+                    token ID, see <olink targetdoc="ci-devguide" targetptr="auth-response-description">“Authentication
+                        Response”</olink>.</para>
+            </listitem>
+        </orderedlist></para>
 
     <para>The following command is an example cURL command that updates an image:</para>
-
     <example xml:id="json_example">
         <title>cURL Command Example: JSON Request</title>
         <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>
-            <prompt>%</prompt> curl https://dfw.servers.api.rackspacecloud.com/v2/images/{image_id} \
+            <prompt>%</prompt> curl https://iad.images.api.rackspacecloud.com/v2/$account/images/{image_id} \
        -X PATCH \
        -H "X-Auth-Token: $token" \
        -H "Content-Type: application/openstack-images-v2.1-json-patch" \
        -d '[{"op": "add", "path": "/login-user", "value": "root"}]' \
-      | python -m json.tool</programlisting>
+      | python -m json.tool
+        </programlisting>
     </example>
     <note>
         <para>The carriage returns in the cURL request examples use a backslash (<literal>\</literal>) as an escape
@@ -48,8 +66,8 @@
                     <option>-d</option>
                 </td>
                 <td>
-                    <para>Sends the specified data in a &POST; request to the HTTP server. Use this option to send a JSON or
-                        XML request body to the server.</para>
+                    <para>Sends the specified data in a request to the HTTP server. Use this option to send a JSON request
+                        body to the server.</para>
                 </td>
             </tr>
             <tr>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application [<!ENTITY % common  SYSTEM "../../common/common.ent">
+%common;]>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_gs-authentication">
+    <title>Authentication</title>
+    <!--    <?dbhtml stop-chunking?>-->
+    <para>To take advantage of the &CImS;, it is helpful to be familiar with the concepts outlined in this section.</para>
+
+    <xi:include href="section_auth.xml"/>
+
+</chapter>

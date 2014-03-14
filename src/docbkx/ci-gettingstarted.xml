@@ -40,7 +40,7 @@
   </info>
   <xi:include href="chapters/images-preface.xml"/>
   <xi:include href="chapters/images-overview.xml"/>
-  <!--<xi:include href="chapters/images-gs-authentication.xml"/>-->
+  <xi:include href="chapters/images-gs-authentication.xml"/>
   <!--<xi:include href="chapters/images-using-images.xml"/>-->
   <!--<xi:include href="chapters/images-sharing-images.xml"/>-->
 </book>

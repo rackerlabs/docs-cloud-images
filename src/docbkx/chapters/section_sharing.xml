@@ -46,20 +46,20 @@
         <listitem>
             <para>The producer uses the &CImA; to share the image with the consumer.</para>
             <para>The API method (including request body details) is: <phrase condition="dev"><olink targetdoc="ci-devguide"
-                        targetptr="POST_createImageMember_v2_images__image_id__members_Image_Producer_Calls"
-                        >"POST_createImageMember_v2_images__image_id__members_Image_Producer_Calls"</olink></phrase>
+                        targetptr="POST_createImageMember_images__image_id__members_Image_Producer_Calls"
+                        >"POST_createImageMember_images__image_id__members_Image_Producer_Calls"</olink></phrase>
                 <phrase condition="gs">
-                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_createImageMember_v2_images__image_id__members_Image_Producer_Calls.html">
+                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_createImageMember_images__image_id__members_Image_Producer_Calls.html">
                         Section 4.2.2.1 "Create Image Member"</link></phrase>.</para>
         </listitem>
         <listitem>
             <para>Optionally, the producer notifies the consumer that the image has been shared and provides the image's ID
                     (<glossterm>UUID</glossterm>).
                 <!--The consumer can also use the operation <phrase condition="dev"><olink
-                        targetdoc="ci-devguide" targetptr="GET_listImages_v2_images_Image_Calls"
-                        >"GET_listImages_v2_images_Image_Calls"</olink></phrase>
+                        targetdoc="ci-devguide" targetptr="GET_listImages_images_Image_Calls"
+                        >"GET_listImages_images_Image_Calls"</olink></phrase>
                 <phrase condition="gs">
-                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_listImages_v2_images_Image_Calls.html">
+                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_listImages_images_Image_Calls.html">
                         Section 4.1.1 "List Images"</link></phrase>
                 (using filter ?visibility=shared&amp;member_status=pending&amp;owner=<replaceable>producer's tenant
                     ID</replaceable>) to discover if shared images are available from the producer.--></para>
@@ -68,10 +68,10 @@
             <para>If the consumer wishes the image to appear in his/her image list, the consumer uses the &CImA; to change
                 the image status to <literal>accepted</literal>. </para>
             <para>The API method (including request body details) is: <phrase condition="dev"><olink targetdoc="ci-devguide"
-                        targetptr="PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"
-                        >"PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"</olink></phrase>
+                        targetptr="PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"
+                        >"PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"</olink></phrase>
                 <phrase condition="gs">
-                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls.html">
+                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls.html">
                         Section 4.3.2.1 "Update Image Member"</link></phrase>.</para>
         </listitem>
         <listitem>
@@ -80,10 +80,10 @@
                 possibility of being reminded by the producer that the image is available, the consumer uses the &CImA; to
                 change the member status to <literal>pending</literal>. </para>
             <para>The API method (including request body details) is: <phrase condition="dev"><olink targetdoc="ci-devguide"
-                        targetptr="PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"
-                        >"PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls"</olink></phrase>
+                        targetptr="PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"
+                        >"PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"</olink></phrase>
                 <phrase condition="gs">
-                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/PUT_updateImageMember_v2_images__image_id__members__member_id__Image_Consumer_Calls.html">
+                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls.html">
                         Section 4.3.2.1 "Update Image Member"</link></phrase>.</para>
         </listitem>
     </orderedlist>
@@ -97,10 +97,10 @@
                     <para>The consumer's image list may be filtered by status to see shared images in the various member
                         statuses. For example, the consumer can discover images that have been shared with him or her by
                         using <phrase condition="dev"><olink targetdoc="ci-devguide"
-                                targetptr="GET_listImages_v2_images_Image_Calls"
-                                >"GET_listImages_v2_images_Image_Calls"</olink></phrase>
+                                targetptr="GET_listImages_images_Image_Calls"
+                                >"GET_listImages_images_Image_Calls"</olink></phrase>
                         <phrase condition="gs">
-                            <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_listImages_v2_images_Image_Calls.html">
+                            <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_listImages_images_Image_Calls.html">
                         Section 4.1.1 "List Images"</link></phrase>
                         and filtering on <code>visibility=shared&amp;member_status=pending</code>.</para>
                 </listitem>

@@ -46,7 +46,7 @@
 						</configuration>
 					</execution>
 					<!-- HTML for images-getting-started-guide -->
-					<execution>
+					<!--<execution>
 						<id>g2-gs</id>
 						<goals>
 							<goal>generate-webhelp</goal>
@@ -55,16 +55,16 @@
 						<configuration>
 							<includes> 
 								ci-gettingstarted.xml, 
-								<!--ci-releasenotes.xml,--> 
+								<!-\-ci-releasenotes.xml,-\-> 
 							</includes>
 							<profileCondition>gs</profileCondition>
-							<!-- These parameters only apply to webhelp -->
+							<!-\- These parameters only apply to webhelp -\->
 							<enableDisqus>internet</enableDisqus>
 							<statusBarText>DRAFT</statusBarText>
 							<canonicalUrlBase>http://docs.rackspace.com/images/api/v2/ci-gsguide/content</canonicalUrlBase>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
 						</configuration>
-					</execution>
+					</execution>-->
 				</executions>
 				<configuration>
 					<!-- Set to Internet or intranet to turn on comments -->

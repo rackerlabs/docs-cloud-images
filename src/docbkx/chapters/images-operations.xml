@@ -6,9 +6,9 @@
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="API_Operations" version="5.0" role="api-reference">
 	<title>API Operations for Service Developers</title>
-	<para> Service developers use the operations descried in this chapter to perform the following tasks: <itemizedlist>
+	<para>Service developers use the operations descried in this chapter to perform the following tasks: <itemizedlist>
 			<listitem>
-				<para>Create and manage <glossterm baseform="Image">images</glossterm></para>
+				<para>Manage <glossterm baseform="Image">images</glossterm></para>
 			</listitem>
 			<listitem>
 				<para>Create and manage <glossterm baseform="Image Member">image members</glossterm></para>
@@ -17,14 +17,18 @@
 				<para>Create and manage <glossterm baseform="Image Tag">image tags</glossterm></para>
 			</listitem>
 			<listitem>
-				<para>Import and export images using <glossterm baseform="Image Task">image tasks</glossterm></para>
+				<para>Manage <glossterm baseform="Image Task">image tasks</glossterm> like importing and exporting
+					images</para>
 			</listitem>
 			<listitem>
 				<para>Get information about image <glossterm baseform="Schema">schemas</glossterm></para>
 			</listitem>
 		</itemizedlist>
 	</para>
-
+	<note>
+		<para>You must include your authentication token (see <olink targetdoc="ci-devguide" targetptr="auth">“Authenticate
+				through the Rackspace Cloud Identity Service”</olink>) in the header of all &CImA; operation requests.</para>
+	</note>
 
 	<!-- Images -->
 	<section xml:id="Image_Calls">
@@ -132,9 +136,15 @@
 	<!-- Image Tasks -->
 	<section xml:id="Image_Task_Calls">
 		<title>Image Task Operations</title>
-		<para> Service developers use the operations described in this section to manage <glossterm baseform="Image Task"
-				>image tasks</glossterm> for importing and exporting images. For more information on tasks, see <olink
-				targetdoc="ci-devguide" targetptr="image-tasks">“Image Tasks (Importing and Exporting Images)”</olink>.</para>
+		<para> Service developers use the operations described in this section to initiate and manage <glossterm
+				baseform="Image Task">asynchronous image tasks</glossterm> like those created when importing and exporting
+			images. For more information on tasks, see <olink targetdoc="ci-devguide" targetptr="image-tasks">“Image Tasks
+				(Importing and Exporting Images)”</olink>.</para>
+		<note>
+			<para>The method and URI (<command>POST tasks</command>) used to create an asynchronous task is the same for both
+				importing and export images. However, the operations are listed separately to reduce confusion. The desired
+				end result, the request and response bodies, and the examples of the two operations are different.</para>
+		</note>
 		<!--- this section comes from 1 WADL: image-2.0 -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">
 			<!-- list tasks -->
@@ -145,10 +155,10 @@
 			<wadl:resource href="../../wadl/image-2.0.wadl#TaskID">
 				<wadl:method href="getTask"/>
 			</wadl:resource>
-			<!-- import and export tasks -->
+			<!-- import and export images (asynchronous tasks) -->
 			<wadl:resource href="../../wadl/image-2.0.wadl#Tasks">
-				<wadl:method href="importTask"/>
-				<wadl:method href="exportTask"/>
+				<wadl:method href="importImage"/>
+				<wadl:method href="exportImage"/>
 			</wadl:resource>
 		</wadl:resources>
 	</section>
