@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application [<!ENTITY % common  SYSTEM "../../common/common.ent">
+%common;]>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_gs-authentication">
+    <title>Authentication</title>
+    <!--    <?dbhtml stop-chunking?>-->
+    <para>To start using the &CImA;, you must first authenticate with the Rackspace cloud. This section shows you how to
+        get an authentication token, which allows you to access the &CImS;.</para>
+
+    <xi:include href="section_auth.xml"/>
+
+</chapter>
