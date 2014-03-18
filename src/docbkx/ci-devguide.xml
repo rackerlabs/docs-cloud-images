@@ -73,8 +73,8 @@
             <listitem>
               <para>Provided more details for <olink targetdoc="ci-devguide"
                   targetptr="PUT_addImageTag_images__image_id__tags__tag__Image_Tag_Calls"
-                  >"PUT_addImageTag_images__image_id__tags__tag__Image_Tag_Calls"</olink> and <olink
-                  targetdoc="ci-devguide" targetptr="DELETE_deleteImageTag_images__image_id__tags__tag__Image_Tag_Calls"
+                  >"PUT_addImageTag_images__image_id__tags__tag__Image_Tag_Calls"</olink> and <olink targetdoc="ci-devguide"
+                  targetptr="DELETE_deleteImageTag_images__image_id__tags__tag__Image_Tag_Calls"
                   >"DELETE_deleteImageTag_images__image_id__tags__tag__Image_Tag_Calls"</olink>.</para>
             </listitem>
             <listitem>
