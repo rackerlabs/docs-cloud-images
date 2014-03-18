@@ -7,7 +7,7 @@
 <!--    <?dbhtml stop-chunking?>-->
     <para> Cloud Images brings access to the OpenStack Image Registry and Delivery Service directly to Rackspace open cloud
         customers, thereby providing services for discovering, registering, and retrieving virtual machine <glossterm
-            baseform="Image">images</glossterm> and their metadata by using a RESTful API. </para>
+            baseform="image">images</glossterm> and their metadata by using a RESTful API. </para>
     <para>Image <emphasis role="italics">sharing</emphasis> provides a mechanism for customers to give access to images in
         their account to other customers. Customer A initiates sharing with Customer B, and Customer B accepts the offer. The
         image is not copied into Customer B's repository, but Customer B has access to the image in Customer A's
@@ -48,9 +48,9 @@
     </para>
 
     <!--API Request and Response Information-->
-    <xi:include href="section_how_to_API.xml"/>
+    <xi:include href="images-how-to-API.xml"/>
 
     <!--Authentication-->
-    <xi:include href="section_auth.xml"/>
-    <xi:include href="section_identity_3roles.xml"/>
+    <xi:include href="images-main-auth.xml"/>
+    <xi:include href="images-identity-3roles.xml"/>
 </chapter>

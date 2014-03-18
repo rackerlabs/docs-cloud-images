@@ -8,7 +8,7 @@
 	<title>API Operations for Service Developers</title>
 	<para>Service developers use the operations descried in this chapter to perform the following tasks: <itemizedlist>
 			<listitem>
-				<para>Manage <glossterm baseform="Image">images</glossterm></para>
+				<para>Manage <glossterm baseform="image">images</glossterm></para>
 			</listitem>
 			<listitem>
 				<para>Create and manage <glossterm baseform="Image Member">image members</glossterm></para>
@@ -33,7 +33,7 @@
 	<!-- Images -->
 	<section xml:id="Image_Calls">
 		<title>Image Operations</title>
-		<para> Service developers use the operations described in this section to manage <glossterm baseform="Image"
+		<para> Service developers use the operations described in this section to manage <glossterm baseform="image"
 				>images</glossterm>. </para>
 		<!--- this section comes from 1 WADL: image-2.0 -->
 		<wadl:resources xmlns:wadl="http://wadl.dev.java.net/2009/02">

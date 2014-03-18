@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application [<!ENTITY % common  SYSTEM "../../common/common.ent">
+%common;]>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="gs-first-things">
+    <title>Prepare to Get Started</title>
+    <!--    <?dbhtml stop-chunking?>-->
+    <para>Before you get started using and sharing images, take a moment to review how to use API operations to send requests
+        to and receive responses from Rackspace cloud services. Also, before you can use the &CImA;, you must first
+        authenticate with the Rackspace cloud. If you're already familiar with these activities and you have your
+        authentication token, go to <olink targetdoc="ci-gettingstarted" targetptr="get-started">Get Started With
+            Images</olink>.</para>
+    <para> The following sections show you how to: </para>
+    <itemizedlist>
+        <listitem>
+            <para> Work with API requests: see <olink targetdoc="ci-gettingstarted" targetptr="Reqresponse">“Sending API
+                    Requests and Receiving Responses”</olink>.</para>
+        </listitem>
+        <listitem>
+            <para> Authenticate within Rackspace: see <olink targetdoc="ci-gettingstarted" targetptr="auth">“Authenticate
+                    through the Rackspace Cloud Identity Service”</olink>.</para>
+        </listitem>
+    </itemizedlist>
+    <xi:include href="images-how-to-API.xml"/>
+    <xi:include href="images-main-auth.xml"/>
+
+</chapter>

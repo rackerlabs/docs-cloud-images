@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application [<!ENTITY % common  SYSTEM "../../common/common.ent">
+%common;]>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="using-images">
+    <title>Using Images</title>
+    <para>List of Using images api calls</para>
+    <itemizedlist>
+        <listitem>
+            <para>list images</para>
+        </listitem>
+        <listitem>
+            <para>get details for an image</para>
+        </listitem>
+        <listitem>
+            <para>update an image</para>
+        </listitem>
+        <listitem>
+            <para>delete an image</para>
+        </listitem>
+        <listitem>
+            <para>import an image</para>
+        </listitem>
+        <listitem>
+            <para>export an image</para>
+        </listitem>
+    </itemizedlist>
+</section>

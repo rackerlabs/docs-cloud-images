@@ -12,6 +12,28 @@
         authentication token expires after 24 hours, you must generate a token once a day. </para>
     <para> The following sections list the &CIS; endpoints, show you how make an authentication request, and describe the
         authentication response. </para>
+    <itemizedlist>
+        <listitem>
+            <para><phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="auth_endpoints">“Rackspace
+                        Cloud Identity service Endpoints”</olink></phrase><phrase condition="gs">
+                    <olink targetdoc="ci-gettingstarted" targetptr="auth_endpoints">“Rackspace Cloud Identity service
+                        Endpoints”</olink></phrase></para>
+        </listitem>
+        <listitem>
+            <para><phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="curl_auth">“Authentication
+                        Request”</olink></phrase><phrase condition="gs">
+                    <olink targetdoc="ci-gettingstarted" targetptr="curl_auth">“Authentication
+                Request”</olink></phrase></para>
+        </listitem>
+        <listitem>
+            <para><phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="auth-response-description"
+                        >“Authentication Response”</olink></phrase><phrase condition="gs">
+                    <olink targetdoc="ci-gettingstarted" targetptr="auth-response-description">“Authentication
+                        Response”</olink></phrase>
+            </para>
+        </listitem>
+    </itemizedlist>
+
     <para> For detailed information about the OpenStack Keystone Identity Service v2.0, see
         <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/index.html">
                 <citetitle>Cloud Identity Client Developer Guide API v2.0</citetitle></link>. </para>
@@ -69,18 +91,21 @@
             </listitem>
         </itemizedlist>
         <para> Your user name and password are the ones that you use to log in to the Rackspace Cloud Control Panel. </para>
-        <para>To obtain your API key, 
-            <orderedlist>
+        <para>To obtain your API key, <orderedlist>
                 <listitem>
                     <para>Log in to
-                    <link xlink:href="http://mycloud.rackspace.com" xml:id="newwin">http://mycloud.rackspace.com</link>.
+                        <link xlink:href="http://mycloud.rackspace.com" xml:id="newwin">http://mycloud.rackspace.com</link>.
                     </para>
                 </listitem>
-                <listitem><para>Click your user name, and select <guilabel>Account Settings</guilabel>.</para></listitem>
-                <listitem><para>Click <guilabel>Show</guilabel> on "API Key" line to expose the key.</para></listitem>
+                <listitem>
+                    <para>Click your user name, and select <guilabel>Account Settings</guilabel>.</para>
+                </listitem>
+                <listitem>
+                    <para>Click <guilabel>Show</guilabel> on "API Key" line to expose the key.</para>
+                </listitem>
             </orderedlist>
         </para>
-        <para>The following cURL examples show how to get an authentication token by entering your user name and either your 
+        <para>The following cURL examples show how to get an authentication token by entering your user name and either your
             password, or your API key.</para>
         <example>
             <title>Authenticate to US Identity Endpoint &ndash; Username and Password: JSON Request</title>
@@ -95,11 +120,11 @@
      -H "Content-Type: application/json" | python -m json.tool</programlisting>
         </example>
         <note>
-            <para>In these examples, the following code is appended to the cURL commands to format (pretty print) the JSON output:
-                <informalexample>
+            <para>In these examples, the following code is appended to the cURL commands to format (pretty print) the JSON
+                output: <informalexample>
                     <programlisting language="bash" role="gutter: false">| python -m json.tool</programlisting>
                 </informalexample>
-<!--                <example>
+                <!--                <example>
                     <title>Pretty Printing cURL Output</title>
                     <programlisting language="bash" role="gutter: false">| python -m json.tool</programlisting>
                 </example>-->
@@ -107,6 +132,6 @@
         </note>
     </section>
 
-    <xi:include href="section_auth_response.xml"/>
+    <xi:include href="images-auth-response.xml"/>
 
 </section>

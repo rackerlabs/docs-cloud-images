@@ -40,8 +40,6 @@
   </info>
   <xi:include href="chapters/images-preface.xml"/>
   <xi:include href="chapters/images-overview.xml"/>
-  <xi:include href="chapters/images-gs-first-things.xml"/>
-  
-  <!--<xi:include href="chapters/images-use-images.xml"/>-->
-  <!--<xi:include href="chapters/images-share-images.xml"/>-->
+  <xi:include href="chapters/images-first-things.xml"/>
+  <xi:include href="chapters/images-get-started.xml"/>
 </book>

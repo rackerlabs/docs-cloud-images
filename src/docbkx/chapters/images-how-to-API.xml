@@ -62,5 +62,5 @@
         schemas from the server.</para>
     </section>
 
-    <xi:include href="section_curl_stuff.xml"/>
+    <xi:include href="images-curl.xml"/>
 </section>

@@ -26,7 +26,9 @@
             in the Knowledge Center.</para>
         <para>To learn how to use an existing image, see <phrase condition="dev"><olink targetdoc="ci-devguide"
                     targetptr="POST_importImage_tasks_Image_Task_Calls"
-                >"POST_importImage_tasks_Image_Task_Calls"</olink></phrase>.</para>
+            >"POST_importImage_tasks_Image_Task_Calls"</olink></phrase><phrase condition="gs">
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_importImage_tasks_Image_Task_Calls.html">
+                        Section 4.4.3. "Task to Import Image"</link></phrase>.</para>
         <!--Image Statuses-->
         <section xml:id="image-statuses">
             <title>Image Statuses</title>
@@ -82,7 +84,7 @@
             <para>The &CImS; allows you to use standard images (which are supported by Rackspace) and to create, share, and
                 use non-standard images (which are not supported by Rackspace). For more information, see this
                 <link xlink:href="http://www.rackspace.com/knowledge_center/article/rackspace-standard-and-non-standard-images"> 
-                article.</link>
+                Rackspace Standard and Non-Standard Images</link> article in the Knowledge Center.
             </para>
             <section xml:id="std-images">
                 <title>Standard Images</title>
@@ -117,7 +119,6 @@
             </section>
         </section>
     </section>
-    <xi:include href="section_sharing.xml"/>
-    <xi:include href="section_tasks.xml"/>
-    <!--<xi:include condition="gs" href="section_how_to_api.xml"/>-->
+    <xi:include href="images-sharing.xml"/>
+    <xi:include href="images-tasks.xml"/>
 </chapter>

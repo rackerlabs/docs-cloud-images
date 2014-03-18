@@ -200,6 +200,6 @@
   <xi:include href="chapters/images-generalinfo.xml"/>
   <!-- this chapter is generated from the WADLs -->
   <xi:include href="chapters/images-operations.xml"/>
-  <xi:include href="chapters/images-glossary.xml"/>
-
+  <!--<xi:include href="chapters/images-glossary.xml"/>-->
+  <glossary role="auto"/>
 </book>
