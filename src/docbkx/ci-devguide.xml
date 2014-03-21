@@ -50,6 +50,7 @@
               <para>Removed the "v2" from the API operation URIs since the version is already part of the endpoint URL in the
                 service catalog provided during authentication.</para>
             </listitem>
+            <listitem><para>Add note about special characters in container names for Export Image Task.</para></listitem>
           </itemizedlist>
         </revdescription>
       </revision>
