@@ -291,7 +291,7 @@
         </wadl:doc>
         <response status="204">
             <doc title="Delete Successful">Delete request succeeded.</doc>
-            <!--<representation mediaType="application/json"/>-->
+            <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults;</method>
 
     <!--Create Image -->
@@ -392,7 +392,7 @@
         </wadl:doc>
         <response status="204">
             <doc title="Success">Request succeeded.</doc>
-            <!--<representation mediaType="application/json"/>-->
+            <representation mediaType="application/json"/>
         </response> &commonFaults; &postPutFaults; </method>
 
     <!-- Delete Image Tag -->
@@ -409,7 +409,7 @@
         </wadl:doc>
         <response status="204">
             <doc title="Delete Successful">Delete request succeeded.</doc>
-            <!--<representation mediaType="application/json"/>-->
+            <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; </method>
 
     <!-- Image Sharing/Member Operations -->
@@ -557,7 +557,7 @@
         </wadl:doc>
         <response status="204">
             <doc title="Success">Delete request succeeded.</doc>
-            <!--<representation mediaType="application/json"/>-->
+            <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults;</method>
 
     <!-- Task Operations -->
