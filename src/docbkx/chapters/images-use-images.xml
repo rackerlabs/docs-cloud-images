@@ -4,19 +4,14 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="using-images">
     <title>Using Images</title>
-    <para>List of Using images api calls</para>
+    <para>To get started exploring Cloud Images, try some of the following operations, using cURL.</para>
     <itemizedlist>
         <listitem>
-            <para>list images</para>
+            <para><olink targetdoc="ci-gettingstarted" targetptr="list-images">“List Images”</olink></para>
         </listitem>
         <listitem>
-            <para>get details for an image</para>
-        </listitem>
-        <listitem>
-            <para>update an image</para>
-        </listitem>
-        <listitem>
-            <para>delete an image</para>
+            <para><olink targetdoc="ci-gettingstarted" targetptr="get-image-details">“Get Details for an
+                Image”</olink></para>
         </listitem>
         <listitem>
             <para>import an image</para>
@@ -25,4 +20,269 @@
             <para>export an image</para>
         </listitem>
     </itemizedlist>
+    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="list-images">
+        <title>List Images</title>
+        <procedure>
+            <title>To List Images with cURL</title>
+            <step>
+                <para>Issue the following cURL command.</para>
+                <programlisting>
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images -H "X-Auth-Token: $token" |python -m json.tool
+                </programlisting>
+                <para><emphasis role="bold">Options:</emphasis>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
+                                provides the authentication token. If you previously exported the token environment variable
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
+                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                Otherwise, substitute your actual token for the variable.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
+                                the json output. For more infomration about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">Json.tool</olink>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>The command returns an array of images. The specifics for the Ubuntu 12.04 image within the array are
+                    shown in following example, with other images removed for brevity.</para>
+                <example>
+                    <title>List Images with cURL Response</title>
+                    <programlisting language="json">
+{
+   "images":
+   [
+      { ... }
+      {
+        "auto_disk_config": "disabled",
+        "cache_in_nova": "True",
+        "checksum": "acd9be13a17af33ec8f66ac5b1afc44a",
+        "com.rackspace__1__build_core": "1",
+        "com.rackspace__1__build_managed": "1",
+        "com.rackspace__1__build_rackconnect": "1",
+        "com.rackspace__1__options": "0",
+        "com.rackspace__1__platform_target": "PublicCloud",
+        "com.rackspace__1__release_build_date": "2014-03-19_10-50-10",
+        "com.rackspace__1__release_id": "1003",
+        "com.rackspace__1__release_version": "3",
+        "com.rackspace__1__source": "kickstart",
+        "com.rackspace__1__visible_core": "1",
+        "com.rackspace__1__visible_managed": "0",
+        "com.rackspace__1__visible_rackconnect": "1",
+        "container_format": "ovf",
+        "created_at": "2014-03-19T16:28:33Z",
+        "disk_format": "vhd",
+        "file": "/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2/file",
+        "id": "c9c7732f-5129-4930-a835-3781255fb1e2",
+        "image_type": "base",
+        "min_disk": 20,
+        "min_ram": 512,
+        "name": "Ubuntu 12.04 LTS (Precise Pangolin) (PVHVM)",
+        "org.openstack__1__architecture": "x64",
+        "org.openstack__1__os_distro": "com.ubuntu",
+        "org.openstack__1__os_version": "12.04",
+        "os_distro": "ubuntu",
+        "os_type": "linux",
+        "protected": false,
+        "schema": "/v2/schemas/image",
+        "self": "/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2",
+        "size": 647449489,
+        "status": "active",
+        "tags": [],
+        "updated_at": "2014-03-26T21:44:54Z",
+        "visibility": "public",
+        "vm_mode": "hvm"
+     }
+   ],
+   "next": "/v2/images?marker=c9c7732f-5129-4930-a835-3781255fb1e2",
+   "schema": "/v2/schemas/images"
+}
+                    </programlisting>
+                </example>
+            </step>
+            <step>
+                <para>Copy the image ID of the image you want to use. Find the image ID in the <literal>id</literal> field of
+                    the output. In this example, the <literal>id</literal> of the Ubuntu 12.04 image is:
+                        <literal>c9c7732f-5129-4930-a835-3781255fb1e2</literal>.</para>
+            </step>
+        </procedure>
+    </section>
+    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="get-image-details">
+        <title>Get Details for an Image</title>
+        <procedure>
+            <title>To Get Details for an Image with cURL</title>
+            <step>
+                <para>Issue the following cURL command to get details for the Ubuntu 12.04 image, using the id which you got
+                    from the <olink targetdoc="ci-gettingstarted" targetptr="list-images">“List Images”</olink>
+                    command.</para>
+                <programlisting>
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-5129-4930-a835-3781255fb1e2 -H "X-Auth-Token: $token" |python -m json.tool
+                </programlisting>
+                <para><emphasis role="bold">Options:</emphasis>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
+                                provides the authentication token. If you previously exported the token environment variable
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
+                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                Otherwise, substitute your actual token for the variable.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
+                                the json output. For more infomration about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">Json.tool</olink>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>The command returns the following response.</para>
+                <example>
+                    <title>Get Image Details with cURL Response</title>
+                    <programlisting language="json">
+{
+    "auto_disk_config": "disabled",
+    "cache_in_nova": "True",
+    "checksum": "acd9be13a17af33ec8f66ac5b1afc44a",
+    "com.rackspace__1__build_core": "1",
+    "com.rackspace__1__build_managed": "1",
+    "com.rackspace__1__build_rackconnect": "1",
+    "com.rackspace__1__options": "0",
+    "com.rackspace__1__platform_target": "PublicCloud",
+    "com.rackspace__1__release_build_date": "2014-03-19_10-50-10",
+    "com.rackspace__1__release_id": "1003",
+    "com.rackspace__1__release_version": "3",
+    "com.rackspace__1__source": "kickstart",
+    "com.rackspace__1__visible_core": "1",
+    "com.rackspace__1__visible_managed": "0",
+    "com.rackspace__1__visible_rackconnect": "1",
+    "container_format": "ovf",
+    "created_at": "2014-03-19T16:28:33Z",
+    "disk_format": "vhd",
+    "file": "/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2/file",
+    "id": "c9c7732f-5129-4930-a835-3781255fb1e2",
+    "image_type": "base",
+    "min_disk": 20,
+    "min_ram": 512,
+    "name": "Ubuntu 12.04 LTS (Precise Pangolin) (PVHVM)",
+    "org.openstack__1__architecture": "x64",
+    "org.openstack__1__os_distro": "com.ubuntu",
+    "org.openstack__1__os_version": "12.04",
+    "os_distro": "ubuntu",
+    "os_type": "linux",
+    "protected": false,
+    "schema": "/v2/schemas/image",
+    "self": "/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2",
+    "size": 647449489,
+    "status": "active",
+    "tags": [],
+    "updated_at": "2014-03-26T21:44:54Z",
+    "visibility": "public",
+    "vm_mode": "hvm"
+}
+                    </programlisting>
+                </example>
+            </step>
+        </procedure>
+    </section>
+    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="import-image">
+        <title>Import an Image</title>
+        <procedure>
+            <title>To Import an Image with cURL</title>
+            <step>
+                <para>Issue the following cURL command to import the ??? image, using the id which you got from ???.</para>
+                <programlisting>
+???
+                </programlisting>
+                <para><emphasis role="bold">Options:</emphasis>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-X</emphasis>: Identifies the HHTP command. If no "-X" parameter is
+                                specified, the default is &GET;</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
+                                provides the authentication token. If you previously exported the token environment variable
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
+                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                Otherwise, substitute your actual token for the variable.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
+                                the json output. For more infomration about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">Json.tool</olink>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>The command returns the following response.</para>
+                <example>
+                    <title>Import Image with cURL Response</title>
+                    <programlisting language="json">
+???
+                    </programlisting>
+                </example>
+            </step>
+        </procedure>
+    </section>
+
+    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="export-image">
+        <title>Export an Image</title>
+        <procedure>
+            <title>To Export an Image with cURL</title>
+            <step>
+                <para>Issue the following cURL command to export the ??? image, using the id which you got from ???.</para>
+                <programlisting>
+???
+                </programlisting>
+                <para><emphasis role="bold">Options:</emphasis>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-X</emphasis>: Identifies the HHTP command. If no "-X" parameter is
+                                specified, the default is &GET;</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
+                                provides the authentication token. If you previously exported the token environment variable
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
+                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                Otherwise, substitute your actual token for the variable.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
+                                the json output. For more infomration about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">Json.tool</olink>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>The command returns the following response.</para>
+                <example>
+                    <title>Import Image with cURL Response</title>
+                    <programlisting language="json">
+???
+                    </programlisting>
+                </example>
+            </step>
+        </procedure>
+    </section>
 </section>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
-  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" version="5.0" xml:id="ci-devguide"
-  status="DRAFT">
+  xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" version="5.0" xml:id="ci-devguide">
   <title>Rackspace Cloud Images Developer Guide</title>
   <?rax title.font.size="32px" 
      status.bar.text.font.size="40px"?>
@@ -31,9 +30,6 @@
         <revdescription>
           <itemizedlist spacing="compact">
             <listitem>
-              <para>Added X_AUTH_TOKEN header to all API operation examples.</para>
-            </listitem>
-            <listitem>
               <para>Included additional custom property warnings in <olink targetdoc="ci-devguide"
                   targetptr="PATCH_updateImage_images__image_id__Image_Calls"
                   >"PATCH_updateImage_images__image_id__Image_Calls"</olink>.</para>
@@ -56,7 +52,6 @@
         </revdescription>
       </revision>
       <revision>
-        <!--fix rev date-->
         <date>2014-03-11</date>
         <revdescription>
           <itemizedlist spacing="compact">

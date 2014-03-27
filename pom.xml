@@ -61,7 +61,6 @@
 							<profileCondition>dev</profileCondition>
 							<!-- These parameters only apply to webhelp -->
 							<enableDisqus>internet</enableDisqus>
-							<statusBarText>DRAFT</statusBarText>
 							<canonicalUrlBase>http://docs.rackspace.com/images/api/v2/ci-devguide/content</canonicalUrlBase>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
 						</configuration>
@@ -78,8 +77,8 @@
 							</includes>
 							<profileCondition>gs</profileCondition>
 							<!-- These parameters only apply to webhelp -->
+							<!--<statusBarText>DRAFT</statusBarText>-->
 							<enableDisqus>internet</enableDisqus>
-							<statusBarText>DRAFT</statusBarText>
 							<canonicalUrlBase>http://docs.rackspace.com/images/api/v2/ci-gsguide/content</canonicalUrlBase>
 							<enableGoogleAnalytics>0</enableGoogleAnalytics>
 						</configuration>
