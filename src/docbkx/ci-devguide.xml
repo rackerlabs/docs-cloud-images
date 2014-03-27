@@ -48,6 +48,10 @@
             <listitem>
               <para>Added note about special characters in container names for Export Image Task.</para>
             </listitem>
+            <listitem>
+              <para> Added warning about tenant id in the authentication endpoint publicURL in <olink targetdoc="ci-devguide"
+                  targetptr="auth-response-description">“Authentication Response”</olink>.</para>
+            </listitem>
           </itemizedlist>
         </revdescription>
       </revision>

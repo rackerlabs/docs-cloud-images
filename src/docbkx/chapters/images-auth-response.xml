@@ -71,6 +71,20 @@
                     service.</para>
                 <para>To access the &CImS;, use the <code>publicURL</code> value for the <literal>cloudImages</literal> for
                     your chosen endpoint. </para>
+                <note>
+                    <para>Due to an inconsistency in the initial &CImA; release, the publicURL value may include your tenant
+                        ID. Thus, your response may contain lines that look like this:
+                        <programlisting>
+"publicURL": "https://iad.images.api.rackspacecloud.com/v2/000000"
+                    </programlisting></para>
+                    <para>Please do not write any automation or scripting that depends upon the tenant ID being included in
+                        the public URL, because this is not the intended behavior. We are working to update the API behavior
+                        in the coming weeks. When the update is released, the tenant ID will no longer be used in the URL,
+                        and your service catalog response will look just like the response in the documentation above.</para>
+                    <para>Until the update is released, URLs that contain the tenant ID are being filtered so that they will
+                        work with the Images API -- so if you are programmatically extracting the publicURL from the service
+                        catalog and using it to construct API requests, your requests will work as expected.</para>
+                </note>
                 <para> </para>
             </callout>
             <callout arearefs="credentials.xml.expires">

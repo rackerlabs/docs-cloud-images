@@ -124,10 +124,6 @@
                 output: <informalexample>
                     <programlisting language="bash" role="gutter: false">| python -m json.tool</programlisting>
                 </informalexample>
-                <!--                <example>
-                    <title>Pretty Printing cURL Output</title>
-                    <programlisting language="bash" role="gutter: false">| python -m json.tool</programlisting>
-                </example>-->
             </para>
         </note>
     </section>
