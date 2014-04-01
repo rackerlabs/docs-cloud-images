@@ -26,6 +26,14 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-04-01</date>
+        <revdescription>
+          <para>Added tip about Header Content-Type in <olink targetdoc="ci-devguide"
+              targetptr="PATCH_updateImage_images__image_id__Image_Calls"
+              >"PATCH_updateImage_images__image_id__Image_Calls"</olink></para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-03-27</date>
         <revdescription>
           <itemizedlist spacing="compact">

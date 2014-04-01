@@ -4,22 +4,290 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="sharing-images">
     <title>Sharing images</title>
-    <para>list of image sharing apis</para>
+    <para>The &CImA; allows users to share images they have created with others and to use images created by someone else. To
+        learn more about the fundamentals of image sharing, see <olink targetdoc="ci-gettingstarted"
+            targetptr="image-sharing">“Image Sharing”</olink>. The following examples show some basic image sharing
+        operations with cURL examples. </para>
     <itemizedlist>
         <listitem>
-            <para>create image member</para>
+            <para><olink targetdoc="ci-gettingstarted" targetptr="create-image-member">“Create an Image
+                Member”</olink></para>
         </listitem>
         <listitem>
-            <para>delete image member</para>
+            <para><olink targetdoc="ci-gettingstarted" targetptr="delete-image-member">“Delete an Image
+                Member”</olink></para>
         </listitem>
         <listitem>
-            <para>update image member</para>
+            <para><olink targetdoc="ci-gettingstarted" targetptr="update-image-member">“Update an Image
+                Member”</olink></para>
         </listitem>
         <listitem>
-            <para>list image members</para>
+            <para><olink targetdoc="ci-gettingstarted" targetptr="list-image-member">“List Image Members”</olink></para>
         </listitem>
         <listitem>
-            <para>get details for an image member</para>
+            <para><olink targetdoc="ci-gettingstarted" targetptr="detail-image-member">“Get Image Member
+                Details”</olink></para>
         </listitem>
     </itemizedlist>
+    <section xml:id="create-image-member" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+        <title>Create an Image Member</title>
+        <para>If you have an image you'd like to share with a particular user, you need to create an image member for that
+            user and associate it with the image.</para>
+        <procedure>
+            <title>To Create an Image Member with cURL</title>
+            <step>
+                <para>Issue the following cURL command to create an image member for an image. In this example, we share the
+                    image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal> with user
+                        <literal>8989447062e04a818baf9e073fd04fa7</literal>.</para>
+                <programlisting>
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
+-d '{"member":"8989447062e04a818baf9e073fd04fa7"}' -H "X-Auth-Token: $token" |python -m json.tool
+                </programlisting>
+                <para><emphasis role="bold">Options:</emphasis>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
+                                provides the authentication token. If you previously exported the token environment variable
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
+                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                Otherwise, substitute your actual token for the variable.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
+                                the json output. For more information about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>The command returns the following response.</para>
+                <example>
+                    <title>Create Image Member with cURL Response</title>
+                    <programlisting language="json">
+{
+    "created_at": "2013-09-20T19:22:19Z",
+    "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
+    "member_id": "8989447062e04a818baf9e073fd04fa7",
+    "schema": "/v2/schemas/member",
+    "status": "pending",
+    "updated_at": "2013-09-20T19:25:31Z"
+}
+                    </programlisting>
+                </example>
+            </step>
+        </procedure>
+    </section>
+    <section xml:id="delete-image-member" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+        <title>Delete an Image Member</title>
+        <para>If you decide to no longer share your image with a user, you need to delete that image member.</para>
+        <procedure>
+            <title>To Delete an Image Member with cURL</title>
+            <step>
+                <para>Issue the following cURL command to delete an image member for an image. In this example, we delete the
+                    user <literal>8989447062e04a818baf9e073fd04fa7</literal>, so that the user can no longer share the image
+                        <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
+                <programlisting>
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/8989447062e04a818baf9e073fd04fa7 \
+-H "X-Auth-Token: $token" |python -m json.tool
+                </programlisting>
+                <para><emphasis role="bold">Options:</emphasis>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
+                                provides the authentication token. If you previously exported the token environment variable
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
+                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                Otherwise, substitute your actual token for the variable.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
+                                the json output. For more information about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>If it is successful, the command returns an <errorcode>204</errorcode>.</para>
+            </step>
+        </procedure>
+    </section>
+    <section xml:id="update-image-member" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+        <title>Update an Image Member</title>
+        <para>If someone wants to share an image with you, they create an image member with your tenant ID. You must update
+            the image member to accept or reject the offer of the shared image.</para>
+        <procedure>
+            <title>To Update an Image Member with cURL</title>
+            <step>
+                <para>Issue the following cURL command to update an image member for an image. In this example, we accept
+                    offer of the shared image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
+                <programlisting>
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/8989447062e04a818baf9e073fd04fa7 \
+-d '{"status":"accepted"}' -H "X-Auth-Token: $token" |python -m json.tool
+                </programlisting>
+                <para><emphasis role="bold">Options:</emphasis>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
+                                provides the authentication token. If you previously exported the token environment variable
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
+                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                Otherwise, substitute your actual token for the variable.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
+                                the json output. For more information about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>The command returns the following response.</para>
+                <example>
+                    <title>Update Image Member with cURL Response</title>
+                    <programlisting language="json">
+{
+    "created_at": "2013-09-20T19:22:19Z",
+    "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
+    "member_id": "8989447062e04a818baf9e073fd04fa7",
+    "schema": "/v2/schemas/member",
+    "status": "accepted",
+    "updated_at": "2013-09-20T20:15:31Z"
+}
+                    </programlisting>
+                </example>
+            </step>
+        </procedure>
+    </section>
+    <section xml:id="list-image-member" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+        <title>List Image Members</title>
+        <para>If you want to see everyone with whom you've shared an image and the status of each member, list the image
+            members.</para>
+        <procedure>
+            <title>To List Image Members with cURL</title>
+            <step>
+                <para>Issue the following cURL command to list the image members for an image. In this example, we list
+                    members for image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
+                <programlisting>
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
+-H "X-Auth-Token: $token" |python -m json.tool
+                </programlisting>
+                <para><emphasis role="bold">Options:</emphasis>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
+                                provides the authentication token. If you previously exported the token environment variable
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
+                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                Otherwise, substitute your actual token for the variable.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
+                                the json output. For more information about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>The command returns the following response.</para>
+                <example>
+                    <title>List Image Members with cURL Response</title>
+                    <programlisting language="json">
+{
+    "members": [
+        {
+            "created_at": "2013-10-07T17:58:03Z",
+            "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
+            "member_id": "123456789",
+            "schema": "/v2/schemas/member",
+            "status": "pending",
+            "updated_at": "2013-10-07T17:58:03Z"
+        },
+        {
+            "created_at": "2013-10-07T17:58:55Z",
+            "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
+            "member_id": "987654321",
+            "schema": "/v2/schemas/member",
+            "status": "accepted",
+            "updated_at": "2013-10-08T12:08:55Z"
+        }
+    ],
+    "schema": "/v2/schemas/members"
+}
+                    </programlisting>
+                </example>
+            </step>
+        </procedure>
+    </section>
+    <section xml:id="detail-image-member" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+        <title>Get Image Member Details</title>
+        <para>If you want to see details for a specific image member, get the image member's details.</para>
+        <procedure>
+            <title>To Get An Image Member's Details with cURL</title>
+            <step>
+                <para>Issue the following cURL command to get the image member's details. In this example, we list member's
+                    details for image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal> and member
+                        <literal>123456789</literal>.</para>
+                <programlisting>
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456789 \
+-H "X-Auth-Token: $token" |python -m json.tool
+                </programlisting>
+                <para><emphasis role="bold">Options:</emphasis>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
+                                provides the authentication token. If you previously exported the token environment variable
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
+                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                Otherwise, substitute your actual token for the variable.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
+                                the json output. For more information about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>The command returns the following response.</para>
+                <example>
+                    <title>List Image Member's Details with cURL Response</title>
+                    <programlisting language="json">
+{
+    "members":
+        {
+            "created_at": "2013-10-07T17:58:03Z",
+            "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
+            "member_id": "123456789",
+            "schema": "/v2/schemas/member",
+            "status": "pending",
+            "updated_at": "2013-10-07T17:58:03Z"
+        },
+    "schema": "/v2/schemas/members"
+}
+                    </programlisting>
+                </example>
+            </step>
+        </procedure>
+    </section>
 </section>

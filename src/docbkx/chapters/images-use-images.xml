@@ -4,7 +4,8 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="using-images">
     <title>Using Images</title>
-    <para>To get started exploring Cloud Images, try some of the following operations, using cURL.</para>
+    <para>To help you get started exploring Cloud Images, the following examples show some basic image operations with cURL
+        examples.</para>
     <itemizedlist>
         <listitem>
             <para><olink targetdoc="ci-gettingstarted" targetptr="list-images">“List Images”</olink></para>
@@ -14,15 +15,19 @@
                 Image”</olink></para>
         </listitem>
         <listitem>
-            <para>import an image</para>
+            <para><olink targetdoc="ci-gettingstarted" targetptr="import-image">“Import an Image Using Tasks”</olink></para>
         </listitem>
         <listitem>
-            <para>export an image</para>
+            <para><olink targetdoc="ci-gettingstarted" targetptr="export-image">“Export an Image Using Tasks”</olink></para>
+        </listitem>
+        <listitem>
+            <para><olink targetdoc="ci-gettingstarted" targetptr="get-task-details">“Get Details for a Task”</olink></para>
         </listitem>
     </itemizedlist>
-    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
-        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="list-images">
+    <section xml:id="list-images" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
         <title>List Images</title>
+        <para>To find out what images are available, list them.</para>
         <procedure>
             <title>To List Images with cURL</title>
             <step>
@@ -44,8 +49,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images -H "X-Auth-
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
-                                the json output. For more infomration about the json.tool, see <olink
-                                    targetdoc="ci-gettingstarted" targetptr="json_tool">Json.tool</olink>.</para>
+                                the json output. For more information about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
                         </listitem>
                     </itemizedlist>
                 </para>
@@ -112,17 +117,19 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images -H "X-Auth-
             </step>
         </procedure>
     </section>
-    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
-        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="get-image-details">
+    <section xml:id="get-image-details" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
         <title>Get Details for an Image</title>
+        <para>If you need to see any additional details about an image, get the details for that image.</para>
         <procedure>
             <title>To Get Details for an Image with cURL</title>
             <step>
-                <para>Issue the following cURL command to get details for the Ubuntu 12.04 image, using the id which you got
-                    from the <olink targetdoc="ci-gettingstarted" targetptr="list-images">“List Images”</olink>
+                <para>Issue the following cURL command to get details for the Ubuntu 12.04 image, using the image id which
+                    you got from the <olink targetdoc="ci-gettingstarted" targetptr="list-images">“List Images”</olink>
                     command.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-5129-4930-a835-3781255fb1e2 -H "X-Auth-Token: $token" |python -m json.tool
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
+-H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
@@ -138,8 +145,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
-                                the json output. For more infomration about the json.tool, see <olink
-                                    targetdoc="ci-gettingstarted" targetptr="json_tool">Json.tool</olink>.</para>
+                                the json output. For more information about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
                         </listitem>
                     </itemizedlist>
                 </para>
@@ -192,22 +199,30 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
             </step>
         </procedure>
     </section>
-    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
-        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="import-image">
-        <title>Import an Image</title>
+    <section xml:id="update-image" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+        <title>Update an Image</title>
+        <para>If you need to change certain details about an image, such as adding, removing, or modifying image properties,
+            update that image. For more information on how to update images using the HTTP PATCH method, see
+            <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/patch-method.html">HTTP PATCH Method</link>
+            in <citetitle>Cloud Images Developer Guide</citetitle>. For more information on which properties can be updated,
+            see
+            <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/PATCH_updateImage_images__image_id__Image_Calls.html">
+                Update Image</link>
+            in <citetitle>Cloud Images Developer Guide</citetitle>.</para>
         <procedure>
-            <title>To Import an Image with cURL</title>
+            <title>To Update an Image with cURL</title>
             <step>
-                <para>Issue the following cURL command to import the ??? image, using the id which you got from ???.</para>
+                <para>Issue the following cURL command to update an image. In this example, we are changing the name of image
+                        <literal>c9c7732f-5129-4930-a835-3781255fb1e2</literal> from <literal>Ubuntu 12.04 LTS (Precise
+                        Pangolin) (PVHVM)</literal> to <literal>My Favorite Ubuntu</literal>.</para>
                 <programlisting>
-???
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
+-d'{{"op": "replace", "path": "/name", "value": "My Favorite Ubuntu"}}' \
+-H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
-                        <listitem>
-                            <para><emphasis role="bold">-X</emphasis>: Identifies the HHTP command. If no "-X" parameter is
-                                specified, the default is &GET;</para>
-                        </listitem>
                         <listitem>
                             <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
                         </listitem>
@@ -223,31 +238,48 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
-                                the json output. For more infomration about the json.tool, see <olink
-                                    targetdoc="ci-gettingstarted" targetptr="json_tool">Json.tool</olink>.</para>
+                                the json output. For more information about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
                         </listitem>
                     </itemizedlist>
                 </para>
                 <para>The command returns the following response.</para>
                 <example>
-                    <title>Import Image with cURL Response</title>
+                    <title>Update Image with cURL Response</title>
                     <programlisting language="json">
-???
+{
+    "id":"c9c7732f-5129-4930-a835-3781255fb1e2",
+    "name":"My Favorite Ubuntu",
+    "status":"queued",
+    "visibility":"public",
+    "tags": [""],
+    "created_at":"2012-08-11T17:15:52Z",
+    "updated_at":"2012-08-11T17:15:52Z",
+    "self":"/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2",
+    "file":"/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2/file",
+    "schema":"/v2/schemas/image"
+}
                     </programlisting>
                 </example>
             </step>
         </procedure>
     </section>
-
-    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
-        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="export-image">
-        <title>Export an Image</title>
+    <section xml:id="import-image" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+        <title>Import an Image Using Tasks</title>
+        <para>To import an image to the &CImS;, so that it is available to use and to share, create an import task. For more
+            information on image tasks, see <olink targetdoc="ci-gettingstarted" targetptr="image-tasks">“Asynchronous Image
+                Tasks”</olink>.</para>
         <procedure>
-            <title>To Export an Image with cURL</title>
+            <title>To Import an Image with cURL</title>
             <step>
-                <para>Issue the following cURL command to export the ??? image, using the id which you got from ???.</para>
+                <para>Issue the following cURL command to create a task to import an image. In this example, the source file
+                    for image, <literal>my-excellent-image.vhd</literal>, is in the <literal>exports</literal> directory on
+                    your Cloud Files account.</para>
                 <programlisting>
-???
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
+-d '{"type": "import","input":{"image_properties": {"name": "My excellent custom image"},"import_from": "exports/my-excellent-image.vhd"}}' \
+-H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
@@ -270,8 +302,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
-                                the json output. For more infomration about the json.tool, see <olink
-                                    targetdoc="ci-gettingstarted" targetptr="json_tool">Json.tool</olink>.</para>
+                                the json output. For more information about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
                         </listitem>
                     </itemizedlist>
                 </para>
@@ -279,7 +311,225 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                 <example>
                     <title>Import Image with cURL Response</title>
                     <programlisting language="json">
-???
+{
+    "created_at": "2014-02-26T02:58:46Z",
+    "id": "fc29a67c-ad76-49bc-a317-a5f38dcb44c0",
+    "input": {
+        "image_properties": {
+            "name": "My excellent custom image"
+        },
+        "import_from": "exports/my-excellent-image.vhd"
+    },
+    "message": "None",
+    "owner": "00000123",
+    "schema": "/v2/schemas/task",
+    "self": "/v2/tasks/fc29a67c-ad76-49bc-a317-a5f38dcb44c0",
+    "status": "pending",
+    "type": "import",
+    "updated_at": "2014-02-26T02:58:46Z"
+}
+                    </programlisting>
+                </example>
+            </step>
+            <step>
+                <para>Make a note of the task <parameter>id</parameter> (in this example,
+                        <literal>fc29a67c-ad76-49bc-a317-a5f38dcb44c0</literal>), so you can poll the status of the task
+                    using <olink targetdoc="ci-gettingstarted" targetptr="get-task-details">“Get Details for a Task”</olink>
+                    until the task succeeds or fails.</para>
+            </step>
+        </procedure>
+    </section>
+    <section xml:id="export-image" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+        <title>Export an Image Using Tasks</title>
+        <para>To export an image from the &CImS;, so that you can store a copy offline, create an export task. For more
+            information on image tasks, see <olink targetdoc="ci-gettingstarted" targetptr="image-tasks">“Asynchronous Image
+                Tasks”</olink>.</para>
+        <procedure>
+            <title>To Export an Image with cURL</title>
+            <step>
+                <para>Issue the following cURL command to create a task to export the image. In this example, the image
+                        <literal>ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6</literal> will be exported to the
+                        <literal>exports</literal> directory on your Cloud Files account.</para>
+                <programlisting>
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
+-d '{"type": "export","input":{"image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6","receiving_swift_container": "exports"}}' \
+-H "X-Auth-Token: $token" |python -m json.tool
+                </programlisting>
+                <para><emphasis role="bold">Options:</emphasis>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-X</emphasis>: Identifies the HHTP command. If no "-X" parameter is
+                                specified, the default is &GET;</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
+                                provides the authentication token. If you previously exported the token environment variable
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
+                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                Otherwise, substitute your actual token for the variable.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
+                                the json output. For more information about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>The command returns the following response.</para>
+                <example>
+                    <title>Export Image with cURL Response</title>
+                    <programlisting language="json">
+{
+    "created_at": "2014-02-26T02:01:13Z",
+    "id": "7bdc8ede-9098-4d79-9477-697f586cb333",
+    "input":{
+        "image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6",
+        "receiving_swift_container": "exports"
+    },
+    "message": "None",
+    "owner": "00000123",
+    "schema": "/v2/schemas/task",
+    "self": "/v2/tasks/7bdc8ede-9098-4d79-9477-697f586cb333",
+    "status": "pending",
+    "type": "export",
+    "updated_at": "2014-02-26T02:01:13Z"
+}
+                    </programlisting>
+                </example>
+            </step>
+            <step>
+                <para>Make a note of the task <parameter>id</parameter> (in this example,
+                        <literal>7bdc8ede-9098-4d79-9477-697f586cb333</literal>), so you can poll the status of the task
+                    using <olink targetdoc="ci-gettingstarted" targetptr="get-task-details">“Get Details for a Task”</olink>
+                    until the task succeeds or fails.</para>
+            </step>
+        </procedure>
+    </section>
+    <section xml:id="get-task-details" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+        <title>Get Details for an Task</title>
+        <para>To find when an import or export task finishes (and whether it worked or not), get the details for that
+            task.</para>
+        <procedure>
+            <title>To Get Details for an Task with cURL</title>
+            <step>
+                <para>Issue the following cURL command to get details for an import task, using the task id which you got
+                    from the <olink targetdoc="ci-gettingstarted" targetptr="import-image">“Import Image”</olink> command. In
+                    this example, we poll task <literal>fc29a67c-ad76-49bc-a317-a5f38dcb44c0</literal> and get a
+                        <parameter>status</parameter> of <literal>pending</literal>. If we continue polling, we'll eventually
+                    get a <parameter>status</parameter> of <literal>success</literal> or <literal>failure</literal>.</para>
+                <programlisting>
+curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks/fc29a67c-ad76-49bc-a317-a5f38dcb44c0  \
+-H "X-Auth-Token: $token" |python -m json.tool
+                </programlisting>
+                <para><emphasis role="bold">Options:</emphasis>
+                    <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
+                                provides the authentication token. If you previously exported the token environment variable
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
+                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                Otherwise, substitute your actual token for the variable.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
+                                the json output. For more information about the json.tool, see <olink
+                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+                <para>The command returns the following responses.</para>
+                <example>
+                    <title>Get Import Task Details with cURL Response (<literal>pending</literal>)</title>
+                    <programlisting language="json">
+{
+    "created_at": "2014-02-26T02:58:46Z",
+    "id": "fc29a67c-ad76-49bc-a317-a5f38dcb44c0",
+    "input": {
+        "image_properties": {
+            "name": "My excellent custom image"
+        },
+        "import_from": "exports/my-excellent-image.vhd"
+    },
+    "message": "None",
+    "owner": "00000123",
+    "schema": "/v2/schemas/task",
+    "self": "/v2/tasks/fc29a67c-ad76-49bc-a317-a5f38dcb44c0",
+    "status": "pending",
+    "type": "import",
+    "updated_at": "2014-02-26T02:58:46Z"
+}
+                    </programlisting>
+                </example>
+            </step>
+            <step>
+                <para>Until the <parameter>status</parameter> is either <literal>success</literal> or
+                        <literal>failure</literal>, keep re-issuing the Get Task Details operation.</para>
+                <para>When an import task completes successfully, make note of the <parameter>image_id</parameter> so you can
+                    share it or use it to boot a server. In this example, the <parameter>image_id</parameter> is
+                        <literal>1d944ab7-6748-4f3c-b7e2-3553bf006677</literal>.</para>
+                <example>
+                    <title>Get Import Task Details with cURL Response (<literal>success</literal>)</title>
+                    <programlisting language="json">
+{
+    "created_at": "2014-02-26T03:02:23Z",
+    "expires_at": "2014-02-28T03:28:18Z",
+    "id": "d8dd8c24-2534-473c-881f-9097bc784068",
+    "input": {
+        "image_properties": {
+            "name": "My excellent custom image"
+        },
+        "import_from": "exports/my-excellent-image.vhd"
+    },
+    "message": "None",
+    "owner": "00000123",
+    "result": {
+        "image_id": "1d944ab7-6748-4f3c-b7e2-3553bf006677"
+    },
+    "schema": "/v2/schemas/task",
+    "self": "/v2/tasks/d8dd8c24-2534-473c-881f-9097bc784068",
+    "status": "success",
+    "type": "import",
+    "updated_at": "2014-02-26T03:28:18Z"
+}
+                    </programlisting>
+                </example>
+                <para>When an export task completes successfully, make note of the <parameter>export_location</parameter> so
+                    you can find the image file in your Cloud Files account. In this example, the
+                        <parameter>export_location</parameter> is
+                        <literal>exports/ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6.vhd</literal>.</para>
+                <example>
+                    <title>Get Export Task Details with cURL Response (<literal>success</literal>)</title>
+                    <programlisting language="json">
+{
+    "created_at": "2014-02-26T02:01:13Z",
+    "expires_at": "2014-02-28T02:16:50Z",
+    "id": "7bdc8ede-9098-4d79-9477-697f586cb333",
+    "input":{
+        "image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6",
+        "receiving_swift_container": "exports"
+    },
+    "message": "None",
+    "owner": "00000123",
+    "result":{
+        "export_location": "exports/ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6.vhd"
+    },
+    "schema": "/v2/schemas/task",
+    "self": "/v2/tasks/7bdc8ede-9098-4d79-9477-697f586cb333",
+    "status": "success",
+    "type": "export",
+    "updated_at": "2014-02-26T02:16:50Z"
+}
                     </programlisting>
                 </example>
             </step>

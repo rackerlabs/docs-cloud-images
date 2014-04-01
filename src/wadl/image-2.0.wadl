@@ -244,11 +244,19 @@
         </wadl:doc>
         <request>
             <representation mediaType="application/json" element="image">
-                <doc xml:lang="EN">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
+                    <para>The following example updates two properties for the image: <literal>name</literal> and
+                            <literal>tag</literal>.</para>
+                    <tip><para>Like all Images API calls, the Image Update operation requires the Content-Type header to
+                            match the media type used for the body of the request. If this header is missing or does not
+                            match a supported media type, the call results in a <errorcode>415</errorcode> error. Don't
+                            forget that the Content-type for the Image Update operation must be the appropriate media-type
+                            descriptor for the HTTP Patch method (see <xref linkend="patch-method"/>). For example:
+                                <literal>Content-Type: application/openstack-images-v2.1-json-patch</literal>.</para></tip>
                     <xsdxt:sample>
                         <xsdxt:code href="../common/samples/image-update-req.json"/>
                     </xsdxt:sample>
-                </doc>
+                </wadl:doc>
                 <param name="." style="plain" path="$.parameters "/>
                 <param name="op" style="plain" type="xsd:string" required="true" path="$.parameters.op">
                     <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
