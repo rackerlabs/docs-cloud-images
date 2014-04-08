@@ -4,18 +4,19 @@
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="auth">
-    <title>Authenticate through the Rackspace Cloud Identity Service</title>
+    <title>Authenticate through the Rackspace Cloud Identity service</title>
     <para> To authenticate your access to Rackspace Cloud services, you issue an authentication request to a &CIS; endpoint.
         The &CIS; is an implementation of the OpenStack Keystone Identity Service v2.0. </para>
     <para> In response to valid credentials, an authentication request to the &CIS; returns an authentication token and a
-        service catalog that contains a list of all services and endpoints available for this token. Because the
-        authentication token expires after 24 hours, you must generate a token once a day. </para>
+        service catalog that contains a list of all services and endpoints available for this token. The authentication token
+        expires after 24 hours, unless revoked earlier. Once the token has expired or has been revoked, you must generate a
+        new token if you want to continue accessing Rackspace Cloud services. </para>
     <para> The following sections list the &CIS; endpoints, show you how make an authentication request, and describe the
         authentication response. </para>
     <itemizedlist>
         <listitem>
-            <para><phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="auth_endpoints">“Rackspace
-                        Cloud Identity service Endpoints”</olink></phrase><phrase condition="gs">
+            <para><phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="auth_endpoints">“Rackspace Cloud Identity
+                        service Endpoints”</olink></phrase><phrase condition="gs">
                     <olink targetdoc="ci-gettingstarted" targetptr="auth_endpoints">“Rackspace Cloud Identity service
                         Endpoints”</olink></phrase></para>
         </listitem>
@@ -33,17 +34,17 @@
             </para>
         </listitem>
     </itemizedlist>
-
-    <para> For detailed information about the OpenStack Keystone Identity Service v2.0, see
+    <para> For detailed information about the &CIS; v2.0, see
         <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/index.html">
                 <citetitle>Cloud Identity Client Developer Guide API v2.0</citetitle></link>. </para>
+
     <section xml:id="auth_endpoints">
-        <title>&CIS; Endpoints</title>
+        <title>&CIS; endpoints</title>
         <important>
             <para> Multiple &CIS; endpoints exist. You may use any endpoint, regardless of where your account was created.
             </para>
         </important>
-        <para>When you authenticate, use one of the following endpoints:</para>
+        <para>When you authenticate to the &CIS;, use one of the following endpoints:</para>
         <para>
             <table rules="all">
                 <caption>&CIS; Endpoints</caption>
@@ -57,7 +58,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>US </td>
+                        <td>US/SYD/HK</td>
                         <td>
                             <link xlink:href="https://identity.api.rackspacecloud.com/v2.0">https://identity.api.rackspacecloud.com/v2.0</link>
                         </td>
@@ -71,14 +72,10 @@
                 </tbody>
             </table>
         </para>
-        <para>For information about support for legacy identity endpoints, see
-            <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Endpoints-d1e180.html">
-                Alternate Authentication Endpoints</link>.
-        </para>
     </section>
 
     <section xml:id="curl_auth">
-        <title>Authentication Request</title>
+        <title>Authentication request</title>
         <para>To authenticate, you issue a &POST; <command>/tokens</command> request to the appropriate Rackspace Cloud
             Identity Service endpoint.</para>
         <para>In the request body, supply one of the following sets of credentials:</para>

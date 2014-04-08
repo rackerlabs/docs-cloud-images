@@ -3,7 +3,7 @@
 %common;]>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="auth-response-description">
-    <title>Authentication Response</title>
+    <title>Authentication response</title>
     <para>In response to valid credentials, this service returns an authentication token and a service catalog with the
         endpoints that you use to request services. </para>
     <para>Do not include explicit API endpoints in your scripts and applications. Instead, find the endpoint for your service
@@ -14,7 +14,7 @@
                 <areaspec>
                     <area xml:id="credentials.xml.name" units="linecolumn" coords="14 30"/>
                     <area xml:id="credentials.xml.endpoints" units="linecolumn" coords="16 23"/>
-                    <area xml:id="credentials.xml.publicURL" units="linecolumn" coords="17 75"/>
+                    <area xml:id="credentials.xml.publicURL" units="linecolumn" coords="17 80"/>
                     <area xml:id="credentials.xml.expires" units="linecolumn" coords="40 50"/>
                     <area xml:id="credentials.xml.token" units="linecolumn" coords="41 50"/>
                 </areaspec>
@@ -71,11 +71,11 @@
                     service.</para>
                 <para>To access the &CImS;, use the <code>publicURL</code> value for the <literal>cloudImages</literal> for
                     your chosen endpoint. </para>
-                <note>
+                <warning>
                     <para>Due to an inconsistency in the initial &CImA; release, the publicURL value may include your tenant
-                        ID. Thus, your response may contain lines that look like this:
+                        ID. Thus, if your tenant ID is 123456, your response may contain lines that look like this:
                         <programlisting>
-"publicURL": "https://iad.images.api.rackspacecloud.com/v2/000000"
+"publicURL": "https://iad.images.api.rackspacecloud.com/v2/123456"
                     </programlisting></para>
                     <para>Please do not write any automation or scripting that depends upon the tenant ID being included in
                         the public URL, because this is not the intended behavior. We are working to update the API behavior
@@ -84,7 +84,7 @@
                     <para>Until the update is released, URLs that contain the tenant ID are being filtered so that they will
                         work with the Images API -- so if you are programmatically extracting the publicURL from the service
                         catalog and using it to construct API requests, your requests will work as expected.</para>
-                </note>
+                </warning>
                 <para> </para>
             </callout>
             <callout arearefs="credentials.xml.expires">

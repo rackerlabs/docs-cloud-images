@@ -5,16 +5,18 @@
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="curl_stuff">
-    <title>How cURL Commands Work</title>
+    <title>How cURL commands work</title>
     <para>cURL is a command-line tool that you can use to interact with Representational State Transfer (REST) interfaces.
         cURL lets you to transmit and receive HTTP requests and responses from the command line or a shell script, which
         enables you to work with the API directly. It is available for Linux distributions, Mac OS X, and Windows. For
         information about cURL, see <link xlink:href="http://curl.haxx.se/">http://curl.haxx.se/</link>. </para>
 
-    <para>To easily run cURL examples in this guide, export your account id and authentication token. For more information,
-        see <olink condition="gs" targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL Environment
-            Variables”</olink><olink condition="dev" targetdoc="ci-devguide" targetptr="export-curl-vars">“Exporting cURL Environment
-            Variables”</olink></para>
+    <para condition="gs">To easily run the cURL commands shown in the examples in this guide, see <olink
+            targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment variables”</olink> to learn how
+        to export your account id and authentication token.</para>
+    <para condition="dev">To easily run cURL commands, see <olink targetdoc="ci-devguide" targetptr="export_env_vars"
+            >“Exporting environment variables”</olink> to learn how to export your account id and authentication
+        token.</para>
 
     <para>The following command is an example cURL command that updates an image:</para>
     <example xml:id="json_example">
@@ -130,27 +132,27 @@
         <para>If you do not want to pretty-print JSON output, omit this code. </para>
     </note>
     <section xml:id="export-curl-vars">
-        <title>Exporting cURL Environment Variables</title>
-            <para>To run the cURL requests shown in this guide, export your <literal>tenant ID</literal> and the
-            <literal>token</literal> that you got during authentication (see <olink targetdoc="ci-devguide" targetptr="auth"
-            >“Authenticate through the Rackspace Cloud Identity Service”</olink>) to environment variables and then copy the
-        example from this guide to the command line, script, or tool, changing URI parameters or body parameters as
-        needed.</para>
-    <para>To export environment variables: <orderedlist>
-            <listitem>
-                <para>Export your tenant ID to the <literal>account</literal> environment variable:</para>
-                <programlisting><prompt>$</prompt> export account="tenantID"</programlisting>
-                <para>Where <literal>tenantID</literal> is your account ID.</para>
-            </listitem>
-            <listitem>
-                <para>Export your authentication token to the <literal>token</literal> environment variable:</para>
-                <programlisting><prompt>$</prompt> export token="token_id"</programlisting>
-                <para>Where <literal>token_id</literal> is the authentication token value in the <literal>id</literal> field
-                    of the <literal>token</literal> element in the authentication response. For information about finding the
-                    token ID, see <olink targetdoc="ci-devguide" targetptr="auth-response-description">“Authentication
-                        Response”</olink>.</para>
-            </listitem>
-        </orderedlist></para>
+        <title>Exporting environment variables</title>
+        <para>To run the cURL requests shown in this guide, export your <literal>tenant ID</literal> and the
+                <literal>token</literal> that you got during authentication (see <olink targetdoc="ci-devguide"
+                targetptr="auth">“Authenticate through the Rackspace Cloud Identity Service”</olink>) to environment
+            variables and then copy the example from this guide to the command line, script, or tool, changing URI parameters
+            or body parameters as needed.</para>
+        <para>To export environment variables: <orderedlist>
+                <listitem>
+                    <para>Export your tenant ID to the <literal>account</literal> environment variable:</para>
+                    <programlisting><prompt>$</prompt> export account="tenantID"</programlisting>
+                    <para>Where <literal>tenantID</literal> is your account ID.</para>
+                </listitem>
+                <listitem>
+                    <para>Export your authentication token to the <literal>token</literal> environment variable:</para>
+                    <programlisting><prompt>$</prompt> export token="token_id"</programlisting>
+                    <para>Where <literal>token_id</literal> is the authentication token value in the <literal>id</literal>
+                        field of the <literal>token</literal> element in the authentication response. For information about
+                        finding the token ID, see <olink targetdoc="ci-devguide" targetptr="auth-response-description"
+                            >“Authentication Response”</olink>.</para>
+                </listitem>
+            </orderedlist></para>
     </section>
 
 </section>

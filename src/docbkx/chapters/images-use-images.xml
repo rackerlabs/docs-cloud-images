@@ -3,7 +3,7 @@
 %common;]>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="using-images">
-    <title>Using Images</title>
+    <title>Using images</title>
     <para>To help you get started exploring Cloud Images, the following examples show some basic image operations with cURL
         examples.</para>
     <itemizedlist>
@@ -26,10 +26,10 @@
     </itemizedlist>
     <section xml:id="list-images" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
-        <title>List Images</title>
+        <title>List images</title>
         <para>To find out what images are available, list them.</para>
         <procedure>
-            <title>To List Images with cURL</title>
+            <title>To list images with cURL</title>
             <step>
                 <para>Issue the following cURL command.</para>
                 <programlisting>
@@ -57,7 +57,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images -H "X-Auth-
                 <para>The command returns an array of images. The specifics for the Ubuntu 12.04 image within the array are
                     shown in following example, with other images removed for brevity.</para>
                 <example>
-                    <title>List Images with cURL Response</title>
+                    <title>List images with cURL response</title>
                     <programlisting language="json">
 {
    "images":
@@ -119,10 +119,10 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images -H "X-Auth-
     </section>
     <section xml:id="get-image-details" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
-        <title>Get Details for an Image</title>
+        <title>Get details for an image</title>
         <para>If you need to see any additional details about an image, get the details for that image.</para>
         <procedure>
-            <title>To Get Details for an Image with cURL</title>
+            <title>To get details for an image with cURL</title>
             <step>
                 <para>Issue the following cURL command to get details for the Ubuntu 12.04 image, using the image id which
                     you got from the <olink targetdoc="ci-gettingstarted" targetptr="list-images">“List Images”</olink>
@@ -152,7 +152,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                 </para>
                 <para>The command returns the following response.</para>
                 <example>
-                    <title>Get Image Details with cURL Response</title>
+                    <title>Get details for an image with cURL response</title>
                     <programlisting language="json">
 {
     "auto_disk_config": "disabled",
@@ -201,7 +201,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
     </section>
     <section xml:id="update-image" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
-        <title>Update an Image</title>
+        <title>Update an image</title>
         <para>If you need to change certain details about an image, such as adding, removing, or modifying image properties,
             update that image. For more information on how to update images using the HTTP PATCH method, see
             <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/patch-method.html">HTTP PATCH Method</link>
@@ -211,7 +211,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                 Update Image</link>
             in <citetitle>Cloud Images Developer Guide</citetitle>.</para>
         <procedure>
-            <title>To Update an Image with cURL</title>
+            <title>To update an image with cURL</title>
             <step>
                 <para>Issue the following cURL command to update an image. In this example, we are changing the name of image
                         <literal>c9c7732f-5129-4930-a835-3781255fb1e2</literal> from <literal>Ubuntu 12.04 LTS (Precise
@@ -245,7 +245,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                 </para>
                 <para>The command returns the following response.</para>
                 <example>
-                    <title>Update Image with cURL Response</title>
+                    <title>Update an image with cURL response</title>
                     <programlisting language="json">
 {
     "id":"c9c7732f-5129-4930-a835-3781255fb1e2",
@@ -266,12 +266,12 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
     </section>
     <section xml:id="import-image" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
-        <title>Import an Image Using Tasks</title>
+        <title>Import an image using tasks</title>
         <para>To import an image to the &CImS;, so that it is available to use and to share, create an import task. For more
             information on image tasks, see <olink targetdoc="ci-gettingstarted" targetptr="image-tasks">“Asynchronous Image
                 Tasks”</olink>.</para>
         <procedure>
-            <title>To Import an Image with cURL</title>
+            <title>To import an image with cURL</title>
             <step>
                 <para>Issue the following cURL command to create a task to import an image. In this example, the source file
                     for image, <literal>my-excellent-image.vhd</literal>, is in the <literal>exports</literal> directory on
@@ -309,7 +309,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
                 </para>
                 <para>The command returns the following response.</para>
                 <example>
-                    <title>Import Image with cURL Response</title>
+                    <title>Import an image with cURL response</title>
                     <programlisting language="json">
 {
     "created_at": "2014-02-26T02:58:46Z",
@@ -341,12 +341,12 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
     </section>
     <section xml:id="export-image" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
-        <title>Export an Image Using Tasks</title>
+        <title>Export an image using tasks</title>
         <para>To export an image from the &CImS;, so that you can store a copy offline, create an export task. For more
             information on image tasks, see <olink targetdoc="ci-gettingstarted" targetptr="image-tasks">“Asynchronous Image
                 Tasks”</olink>.</para>
         <procedure>
-            <title>To Export an Image with cURL</title>
+            <title>To export an image with cURL</title>
             <step>
                 <para>Issue the following cURL command to create a task to export the image. In this example, the image
                         <literal>ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6</literal> will be exported to the
@@ -384,7 +384,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
                 </para>
                 <para>The command returns the following response.</para>
                 <example>
-                    <title>Export Image with cURL Response</title>
+                    <title>Export an image with cURL response</title>
                     <programlisting language="json">
 {
     "created_at": "2014-02-26T02:01:13Z",
@@ -414,11 +414,11 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
     </section>
     <section xml:id="get-task-details" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
-        <title>Get Details for an Task</title>
-        <para>To find when an import or export task finishes (and whether it worked or not), get the details for that
+        <title>Get details for a task</title>
+        <para>To find when an import or export task finishes and whether it worked or not, get the details for that
             task.</para>
         <procedure>
-            <title>To Get Details for an Task with cURL</title>
+            <title>To get details for a task with cURL</title>
             <step>
                 <para>Issue the following cURL command to get details for an import task, using the task id which you got
                     from the <olink targetdoc="ci-gettingstarted" targetptr="import-image">“Import Image”</olink> command. In
@@ -450,7 +450,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks/fc29a67c-ad7
                 </para>
                 <para>The command returns the following responses.</para>
                 <example>
-                    <title>Get Import Task Details with cURL Response (<literal>pending</literal>)</title>
+                    <title>Get details for a task with cURL response (<literal>pending</literal>)</title>
                     <programlisting language="json">
 {
     "created_at": "2014-02-26T02:58:46Z",
@@ -479,7 +479,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks/fc29a67c-ad7
                     share it or use it to boot a server. In this example, the <parameter>image_id</parameter> is
                         <literal>1d944ab7-6748-4f3c-b7e2-3553bf006677</literal>.</para>
                 <example>
-                    <title>Get Import Task Details with cURL Response (<literal>success</literal>)</title>
+                    <title>Get details for a task with cURL response (<literal>success</literal>)</title>
                     <programlisting language="json">
 {
     "created_at": "2014-02-26T03:02:23Z",
@@ -509,7 +509,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks/fc29a67c-ad7
                         <parameter>export_location</parameter> is
                         <literal>exports/ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6.vhd</literal>.</para>
                 <example>
-                    <title>Get Export Task Details with cURL Response (<literal>success</literal>)</title>
+                    <title>Get details for a task with cURL response (<literal>success</literal>)</title>
                     <programlisting language="json">
 {
     "created_at": "2014-02-26T02:01:13Z",

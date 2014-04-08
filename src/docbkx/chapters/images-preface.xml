@@ -6,15 +6,16 @@
 <preface xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_image_preface">
     <title>Preface</title>
-    <para>The Rackspace &CImS; offers retrieval, storage, and metadata assignment for images through a simple
-        Representational State Transfer (REST) web service interface.</para>
+    <para>The Rackspace &CImS; offers retrieval, storage, and metadata assignment for Rackspace Cloud Server images through a
+        simple Representational State Transfer (REST) web service interface.</para>
     <section xml:id="intended-audience">
-        <title>Intended Audience</title>
+        <title>Intended audience</title>
         <para>This guide is intended to assist software developers who want to develop applications by using the Rackspace
-            &CImS; application programming interface API. It fully documents the REST (API), which enables developers to
-            interact with the storage components of the &CImS;. To use the information provided here, you should have a
-            general understanding of the &CImS; and have access to an installation of the &CImS;. You should also be familiar
-            with the following technologies:</para>
+            &CImS; REST application programming interface (API). <phrase condition="dev">It fully documents the &CImA;, which
+                enables developers</phrase><phrase condition="gs">It introduces developers to the &CImS;, so they can begin
+            </phrase> to interact with the storage components of the &CImS;.</para>
+        <para>To use the information provided here, you should have a general understanding of the &CImS; and have access to
+            an installation of the &CImS;. You should also be familiar with the following technologies:</para>
         <itemizedlist spacing="compact">
             <listitem>
                 <para>RESTful web services</para>
@@ -25,18 +26,21 @@
         </itemizedlist>
     </section>
     <section xml:id="doc-change-history">
-        <title>Document Change History</title>
+        <title>Document change history</title>
         <para>This version of the reference guide replaces all earlier versions. The most recent changes are described in the
             following table:</para>
         <?rax revhistory?>
         <!-- Table generated in output from revision element in the book element -->
     </section>
     <section xml:id="TOS">
-        <title>Rackspace Terms of Service</title>
-        <para>Periodically review the   
+        <title>Rackspace pricing and Terms of Service</title>
+        <para>Cloud Images is part of the Rackspace Cloud and your use of the &CImA; will be billed according to the schedule
+            at
+            <link xlink:href="http://www.rackspace.com/cloud/images/">http://www.rackspace.com/cloud/images</link>.</para>
+        <para>Periodically review the
             <link xlink:href="http://www.rackspace.com/information/legal/cloud/tos">Rackspace US Cloud Terms of Service</link>
-            and the <link xlink:href="http://www.rackspace.co.uk/legal/cloud-terms-of-service">Rackspace UK Cloud Terms of Service</link>
+            and the
+            <link xlink:href="http://www.rackspace.co.uk/legal/cloud-terms-of-service">Rackspace UK Cloud Terms of Service</link>
             because they might be updated any time. These documents also include the Acceptable Use Policies.</para>
     </section>
 </preface>
-

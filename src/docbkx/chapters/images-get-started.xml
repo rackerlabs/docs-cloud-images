@@ -3,7 +3,7 @@
 %common;]>
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="get-started">
-    <title>Get Started With Images</title>
+    <title>Get started with images</title>
     <!--    <?dbhtml stop-chunking?>-->
     <para>To start using the &CImA;, you must first authenticate with the Rackspace cloud. If you don't already have an
         authentication token and endpoint, see <olink targetdoc="ci-gettingstarted" targetptr="auth">“Authenticate through

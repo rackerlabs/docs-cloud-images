@@ -5,12 +5,13 @@
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="image-sharing">
-    <title>Image Sharing</title>
+    <title>Image sharing</title>
     <para>Images can be created and deleted by image producers, updated by image consumers, and listed by both image
         producers and image consumers.</para>
     <para>The producer shares an image with the consumer by making the consumer a <glossterm baseform="Image Member"
-            >member</glossterm> of that image. The consumer then accepts or rejects the image by changing the member status.
-        Once accepted, the image appears in the consumer's image list.</para>
+            >member</glossterm> of that image. Image members are users who have been granted access to an image by the image
+        producer. The consumer then accepts or rejects the image by changing their image member status. Once accepted, the
+        image appears in the consumer's image list.</para>
     <note>
         <para>
             <itemizedlist>
@@ -45,12 +46,13 @@
         </listitem>
         <listitem>
             <para>The producer uses the &CImA; to share the image with the consumer.</para>
-            <para>The API method (including request body details) is: <phrase condition="dev"><olink targetdoc="ci-devguide"
+            <para><phrase condition="dev"><olink targetdoc="ci-devguide"
                         targetptr="POST_createImageMember_images__image_id__members_Image_Producer_Calls"
                         >"POST_createImageMember_images__image_id__members_Image_Producer_Calls"</olink></phrase>
                 <phrase condition="gs">
                     <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_createImageMember_images__image_id__members_Image_Producer_Calls.html">
-                        Section 4.2.2.1 "Create Image Member"</link></phrase>.</para>
+                        Section 4.2.2.1 "Create Image Member"</link>
+                    of the &CImDG;</phrase> shows the API method details.</para>
         </listitem>
         <listitem>
             <para>Optionally, the producer notifies the consumer that the image has been shared and provides the image's ID
@@ -60,49 +62,52 @@
                         >"GET_listImages_images_Image_Calls"</olink></phrase>
                 <phrase condition="gs">
                     <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_listImages_images_Image_Calls.html">
-                        Section 4.1.1 "List Images"</link></phrase>
+                        Section 4.1.1 "List Images"</link> of the <citetitle>Rackspace Cloud Images Developer Guide</citetitle></phrase>
                 (using filter ?visibility=shared&amp;member_status=pending&amp;owner=<replaceable>producer's tenant
                     ID</replaceable>) to discover if shared images are available from the producer.--></para>
         </listitem>
         <listitem>
-            <para>If the consumer wishes the image to appear in his/her image list, the consumer uses the &CImA; to change
-                the image status to <literal>accepted</literal>. </para>
-            <para>The API method (including request body details) is: <phrase condition="dev"><olink targetdoc="ci-devguide"
+            <para>If the consumer wants the image to appear in the image list, the consumer uses the &CImA; to change the
+                image member status to <literal>accepted</literal>.</para>
+            <para><phrase condition="dev"><olink targetdoc="ci-devguide"
                         targetptr="PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"
                         >"PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"</olink></phrase>
                 <phrase condition="gs">
                     <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls.html">
-                        Section 4.3.2.1 "Update Image Member"</link></phrase>.</para>
+                        Section 4.3.2.1 "Update Image Member"</link>
+                    of the &CImDG;</phrase> shows the API method details.</para>
         </listitem>
         <listitem>
-            <para>If the consumer subsequently wishes to hide the image, the consumer uses the &CImA; to change the member
-                status to <literal>rejected</literal>. If the consumer wishes to hide the image, but is open to the
+            <para>If the consumer subsequently wants to hide the image, the consumer uses the &CImA; to change the image
+                member status to <literal>rejected</literal>. If the consumer wants to hide the image, but is open to the
                 possibility of being reminded by the producer that the image is available, the consumer uses the &CImA; to
-                change the member status to <literal>pending</literal>. </para>
-            <para>The API method (including request body details) is: <phrase condition="dev"><olink targetdoc="ci-devguide"
+                change the image member status to <literal>pending</literal>. </para>
+            <para><phrase condition="dev"><olink targetdoc="ci-devguide"
                         targetptr="PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"
                         >"PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"</olink></phrase>
                 <phrase condition="gs">
                     <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls.html">
-                        Section 4.3.2.1 "Update Image Member"</link></phrase>.</para>
+                        Section 4.3.2.1 "Update Image Member"</link>
+                    of the &CImDG;</phrase> shows the API method details.</para>
         </listitem>
     </orderedlist>
     <note>
-        <para>In the &CImA;, the member status has two possible effects: <itemizedlist>
+        <para>In the &CImA;, the image member status has two possible effects: <itemizedlist>
                 <listitem>
-                    <para>If the member status is not <literal>accepted</literal>, the image will not appear in the
+                    <para>If the image member status is not <literal>accepted</literal>, the image will not appear in the
                         consumer's default image list. </para>
                 </listitem>
                 <listitem>
-                    <para>The consumer's image list may be filtered by status to see shared images in the various member
-                        statuses. For example, the consumer can discover images that have been shared with him or her by
-                        using <phrase condition="dev"><olink targetdoc="ci-devguide"
+                    <para>The consumer's image list may be filtered by status to see shared images in the various image
+                        member statuses. For example, the consumer can discover images that have been shared with him or her
+                        by using <phrase condition="dev"><olink targetdoc="ci-devguide"
                                 targetptr="GET_listImages_images_Image_Calls"
-                                >"GET_listImages_images_Image_Calls"</olink></phrase>
+                            >"GET_listImages_images_Image_Calls"</olink></phrase>
                         <phrase condition="gs">
                             <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_listImages_images_Image_Calls.html">
-                        Section 4.1.1 "List Images"</link></phrase>
-                        and filtering on <code>visibility=shared&amp;member_status=pending</code>.</para>
+                        Section 4.1.1 "List Images"</link>
+                            of the &CImDG;</phrase> and filtering on
+                        <code>visibility=shared&amp;member_status=pending</code>.</para>
                 </listitem>
             </itemizedlist>
         </para>

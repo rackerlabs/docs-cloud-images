@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE section [<!ENTITY % common  SYSTEM "../../common/common.ent">
+%common;]>
+
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="export_env_vars">
+    <title>Exporting environment variables</title>
+    <para>To run the cURL requests shown in this guide, export your <literal>tenant ID</literal> and the
+            <literal>token</literal> that you got during authentication (see <olink targetdoc="ci-devguide" targetptr="auth"
+            >“Authenticate through the Rackspace Cloud Identity Service”</olink>) to environment variables and then copy the
+        example from this guide to the command line, script, or tool, changing URI parameters or body parameters as
+        needed.</para>
+    <para>To export environment variables: <orderedlist>
+            <listitem>
+                <para>Export your tenant ID to the <literal>account</literal> environment variable:</para>
+                <programlisting><prompt>$</prompt> export account="tenantID"</programlisting>
+                <para>Where <literal>tenantID</literal> is your account ID.</para>
+            </listitem>
+            <listitem>
+                <para>Export your authentication token to the <literal>token</literal> environment variable:</para>
+                <programlisting><prompt>$</prompt> export token="token_id"</programlisting>
+                <para>Where <literal>token_id</literal> is the authentication token value in the <literal>id</literal> field
+                    of the <literal>token</literal> element in the authentication response. For information about finding the
+                    token ID, see <olink targetdoc="ci-devguide" targetptr="auth-response-description">“Authentication
+                        Response”</olink>.</para>
+            </listitem>
+        </orderedlist></para>
+</section>

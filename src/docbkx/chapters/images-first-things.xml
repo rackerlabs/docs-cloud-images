@@ -3,26 +3,39 @@
 %common;]>
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="gs-first-things">
-    <title>Prepare to Get Started</title>
+    <title>Prepare to get started</title>
     <!--    <?dbhtml stop-chunking?>-->
-    <para>Before you get started using and sharing images, take a moment to review how to use API operations to send requests
-        to and receive responses from Rackspace cloud services. Also, before you can use the &CImA;, you must first
-        authenticate with the Rackspace cloud.</para>
-    <para>If you are already familiar with API requests, you have exported your cURL environment variables, and you have your
-        authentication token, go to <olink targetdoc="ci-gettingstarted" targetptr="get-started">Get Started With
-            Images</olink>.</para>
-    <para> The following sections show you how to: </para>
-    <itemizedlist>
-        <listitem>
-            <para> Understand API requests, understand cURL, and export environment variables: see <olink targetdoc="ci-gettingstarted" targetptr="Reqresponse">“Sending API
-                    Requests and Receiving Responses”</olink>.</para>
-        </listitem>
-        <listitem>
-            <para> Authenticate within Rackspace: see <olink targetdoc="ci-gettingstarted" targetptr="auth">“Authenticate
-                    through the Rackspace Cloud Identity Service”</olink>.</para>
-        </listitem>
-    </itemizedlist>
+    <para>The <olink targetdoc="ci-gettingstarted" targetptr="using-images">“Using Images”</olink> and <olink
+            targetdoc="ci-gettingstarted" targetptr="sharing-images">“Sharing images”</olink> sections of this guide use cURL
+        examples to illustrate the &CImA; operations used to perform those functions. Before you get started using or sharing
+        images, it is important that you understand API requests and responses, that you understand how to use cURL commands,
+        that you have your authentication token, and that you have exported your cURL environment variables. If you are
+        already comfortable with these topics, go to <olink targetdoc="ci-gettingstarted" targetptr="get-started">Get Started
+            With Images</olink>.</para>
+    <para>If you want a refresher course on API requests or cURL, or want help with getting an authentication token or
+        exporting environment variables, take a moment to review the following sections. <itemizedlist>
+            <listitem>
+                <para>See <olink targetdoc="ci-gettingstarted" targetptr="Reqresponse">“Sending API Requests and Receiving
+                        Responses”</olink> to learn more about API requests and responses.</para>
+            </listitem>
+            <listitem>
+                <para>See <olink targetdoc="ci-gettingstarted" targetptr="curl_stuff">“How cURL Commands Work”</olink> to
+                    learn more about cURL.</para>
+            </listitem>
+            <listitem>
+                <para>See <olink targetdoc="ci-gettingstarted" targetptr="auth">“Authenticate through the Rackspace Cloud
+                        Identity Service”</olink> to learn more about authentication within Rackspace.</para>
+            </listitem>
+            <listitem>
+                <para>See <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting environment
+                        variables”</olink> to learn more about exporting environment variables.</para>
+            </listitem>
+        </itemizedlist>
+    </para>
+
     <xi:include href="images-how-to-API.xml"/>
-    <xi:include href="images-main-auth.xml"/> 
+    <xi:include href="images-curl.xml"/>
+    <xi:include href="images-auth-main.xml"/>
+    <xi:include href="images-export-env-vars.xml"/>
 
 </chapter>

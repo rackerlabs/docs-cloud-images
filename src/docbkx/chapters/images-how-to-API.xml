@@ -4,7 +4,7 @@
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="Reqresponse">
-    <title>Sending API Requests and Receiving Responses</title>
+    <title>Sending API requests and receiving responses</title>
     <para>You have several options for sending requests through an API: <itemizedlist>
             <listitem>
                 <para>Developers and testers may prefer to use cURL with the command-line tool from
@@ -34,7 +34,7 @@
     <?dbhtml stop-chunking?>
     <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="MediaTypes">
-        <title>Media Types</title>
+        <title>Media types</title>
     <para>The &CImA; primarily accepts and serves <glossterm baseform="JSON">JSON-encoded</glossterm> data. The <glossterm
             baseform="Media type">media type</glossterm> required in the request varies by the following request types: <itemizedlist>
             <listitem>
@@ -53,13 +53,11 @@
     </para>
     </section>
     <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
-        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="JSONSchemas">
-        <title>Json Schemas</title>
-    <para>The necessary json-schema documents are provided at predictable <glossterm baseform="URI">URIs</glossterm>. A
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="JSONSchemas" condition="dev">
+        <title>JSON schemas</title>
+    <para>The necessary JSON-schema documents are provided at predictable <glossterm baseform="URI">URIs</glossterm>. A
         consumer validates server responses and client requests based on the published schemas. The schemas contained in this
         document are only examples and should not be used to validate your requests. A client should always fetch current
         schemas from the server.</para>
     </section>
-
-    <xi:include href="images-curl.xml"/>
 </section>
