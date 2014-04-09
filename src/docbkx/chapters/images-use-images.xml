@@ -43,8 +43,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images -H "X-Auth-
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
-                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
                                 Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
@@ -139,8 +139,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
-                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
                                 Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
@@ -229,8 +229,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
-                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
                                 Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
@@ -293,8 +293,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
-                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
                                 Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
@@ -368,8 +368,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
-                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
                                 Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
@@ -437,8 +437,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks/fc29a67c-ad7
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
-                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
                                 Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>

@@ -25,18 +25,16 @@
             OpenStack installations, with each task resource containing both <parameter>input</parameter> and
                 <parameter>result</parameter> parameters. The API design allows individual providers, like Rackspace, to
             easily customize these two parameters. </para>
-        <para>The <phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="POST_importImage_tasks_Image_Task_Calls"
-                    >"POST_importImage_tasks_Image_Task_Calls"</olink></phrase>
-            <phrase condition="gs">
-                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_importImage_tasks_Image_Task_Calls.html">
+        <para>The <olink condition="dev" targetdoc="ci-devguide" targetptr="POST_importImage_tasks_Image_Task_Calls"
+                >"POST_importImage_tasks_Image_Task_Calls"</olink>
+            <link condition="gs" xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_importImage_tasks_Image_Task_Calls.html">
                         Section 4.4.3. "Task to Import Image"</link>
-                </phrase>, and <phrase condition="dev"><olink targetdoc="ci-devguide"
-                    targetptr="POST_exportImage_tasks_Image_Task_Calls"
-                >"POST_exportImage_tasks_Image_Task_Calls"</olink></phrase>
-            <phrase condition="gs">
-                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_exportImage_tasks_Image_Task_Calls.html">
+            , and <olink condition="dev" targetdoc="ci-devguide" targetptr="POST_exportImage_tasks_Image_Task_Calls"
+                >"POST_exportImage_tasks_Image_Task_Calls"</olink>
+            <link condition="gs" xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_exportImage_tasks_Image_Task_Calls.html">
                         Section 4.4.4. "Task to Export Image"</link>
-            </phrase> operations<phrase condition="gs"> of the &CImDG;</phrase> describe what Rackspace requires for these parameters.</para>
+                operations<phrase condition="gs"> of the &CImDG;</phrase> describe what Rackspace requires for these
+            parameters.</para>
     </note>
     <para>To import an image, execute the following steps. <orderedlist>
             <listitem>

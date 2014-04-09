@@ -53,9 +53,9 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
-                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
-                                Otherwise, substitute your actual token for the variable.</para>
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                                    variables”</olink>, you can use the <parameter>$token</parameter> variable. Otherwise,
+                                substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
@@ -106,8 +106,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
-                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
                                 Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
@@ -169,8 +169,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
-                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
                                 Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
@@ -225,8 +225,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
-                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
                                 Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
@@ -278,8 +278,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL
-                                    Environment Variables”</olink>, you can use the <parameter>$token</parameter> variable.
+                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
                                 Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>

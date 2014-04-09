@@ -26,6 +26,12 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-04-17</date>
+        <revdescription>
+          <para>Minor formatting changes such as using sentence case for section titles.</para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-04-01</date>
         <revdescription>
           <para>Added tip about Header Content-Type in <olink targetdoc="ci-devguide"

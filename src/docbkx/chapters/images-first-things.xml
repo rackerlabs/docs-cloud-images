@@ -27,8 +27,8 @@
                         Identity Service”</olink> to learn more about authentication within Rackspace.</para>
             </listitem>
             <listitem>
-                <para>See <olink targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting environment
-                        variables”</olink> to learn more about exporting environment variables.</para>
+                <para>See <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
+                    variables”</olink> to learn more about exporting environment variables.</para>
             </listitem>
         </itemizedlist>
     </para>
