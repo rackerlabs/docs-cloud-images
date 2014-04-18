@@ -132,7 +132,8 @@
               <para>Published externally.</para>
             </listitem>
             <listitem>
-              <para>Added <olink targetdoc="ci-devguide" targetptr="stdvnon-images">"stdvnon-images"</olink></para>
+              <para>Added standard and non-standard images to <olink targetdoc="ci-devguide" targetptr="what-and-why"
+                >“Images”</olink>.</para>
             </listitem>
             <listitem>
               <para>Added links to standard versus non-standard images and hidden images articles to <olink

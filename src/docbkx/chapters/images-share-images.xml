@@ -4,8 +4,8 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="sharing-images">
     <title>Sharing images</title>
-    <para>The &CImA; allows users to share images they have created with others and to use images created by someone else. To
-        learn more about the fundamentals of image sharing, see <olink targetdoc="ci-gettingstarted"
+    <para>The &CImA; enables users to share images that they have created with others and to use images created by someone
+        else. To learn more about the fundamentals of image sharing, see <olink targetdoc="ci-gettingstarted"
             targetptr="image-sharing">“Image Sharing”</olink>. The following examples show some basic image sharing
         operations with cURL examples. </para>
     <itemizedlist>
@@ -37,33 +37,39 @@
         <procedure>
             <title>To create an image member with cURL</title>
             <step>
-                <para>Issue the following cURL command to create an image member for an image. In this example, we share the
-                    image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>, which we created, with user
-                        <literal>8989447062e04a818baf9e073fd04fa7</literal>. Possibly we blogged about our image, and the
-                    user emailed us requesting access, so we know his user ID.</para>
+                <para>Issue the following cURL command to create an image member for an image. In this example, you share the
+                    image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>, which you created, with user
+                        <literal>8989447062e04a818baf9e073fd04fa7</literal>. You might have blogged about your image, and the
+                    user emailed you requesting access, so you know the user's user ID and can use it as the value for the
+                    member parameter.</para>
                 <programlisting>
 curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
+-X POST \
 -d '{"member":"8989447062e04a818baf9e073fd04fa7"}' -H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-X</emphasis>: Identifies the HTTP command. If no <code>-X</code>
+                                parameter is specified, the default is &GET;.</para>
+                        </listitem>
                         <listitem>
                             <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
-                                    variables”</olink>, you can use the <parameter>$token</parameter> variable. Otherwise,
-                                substitute your actual token for the variable.</para>
+                                as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting
+                                    environment variables”</olink>, you can use the $token variable. Otherwise, substitute
+                                your actual token for the variable.</para>
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
                         </listitem>
                         <listitem>
-                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
-                                the json output. For more information about the json.tool, see <olink
-                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies json.tool, which pretty-prints the
+                                JSON output. For more information about json.tool, see <olink targetdoc="ci-gettingstarted"
+                                    targetptr="json_tool">json.tool</olink>.</para>
                         </listitem>
                     </itemizedlist>
                 </para>
@@ -92,7 +98,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
         <procedure>
             <title>To list image members with cURL</title>
             <step>
-                <para>Issue the following cURL command to list the image members for an image. In this example, we list
+                <para>Issue the following cURL command to list the image members for an image. In this example, you list
                     members for image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
 curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
@@ -106,14 +112,14 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
-                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
-                                Otherwise, substitute your actual token for the variable.</para>
+                                as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting
+                                    environment variables”</olink>, you can use the $token variable. Otherwise, substitute
+                                your actual token for the variable.</para>
                         </listitem>
                         <listitem>
-                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
-                                the json output. For more information about the json.tool, see <olink
-                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies json.tool, which pretty-prints the
+                                JSON output. For more information about json.tool, see <olink targetdoc="ci-gettingstarted"
+                                    targetptr="json_tool">json.tool</olink>.</para>
                         </listitem>
                     </itemizedlist>
                 </para>
@@ -154,9 +160,9 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
         <procedure>
             <title>To get an image member's details with cURL</title>
             <step>
-                <para>Issue the following cURL command to get the image member's details. In this example, we list member's
-                    details for image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal> and member
-                        <literal>123456789</literal>.</para>
+                <para>Issue the following cURL command to get the image member's details. In this example, you list details
+                    for member <literal>123456789</literal> of image
+                    <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
 curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456789 \
 -H "X-Auth-Token: $token" |python -m json.tool
@@ -169,14 +175,14 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
-                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
-                                Otherwise, substitute your actual token for the variable.</para>
+                                as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting
+                                    environment variables”</olink>, you can use the $token variable. Otherwise, substitute
+                                your actual token for the variable.</para>
                         </listitem>
                         <listitem>
-                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
-                                the json output. For more information about the json.tool, see <olink
-                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies json.tool, which pretty-prints the
+                                JSON output. For more information about json.tool, see <olink targetdoc="ci-gettingstarted"
+                                    targetptr="json_tool">json.tool</olink>.</para>
                         </listitem>
                     </itemizedlist>
                 </para>
@@ -204,38 +210,43 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
     <section xml:id="update-image-member" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
         <title>Update an image member</title>
-        <para>If sent a request to someone asking for access to their image outside of this API process, that image producer
-            creates an image member with your tenant ID using <olink targetdoc="ci-gettingstarted"
-                targetptr="create-image-member">“Create an image member”</olink>. You must update the image member for the
-            image to accept or reject the offer of the shared image.</para>
+        <para>If you send a request to someone asking for access to their image outside of this API process, that image
+            producer creates an image member with your tenant ID by using the instructions in <olink
+                targetdoc="ci-gettingstarted" targetptr="create-image-member">“Create an image member”</olink>. In response,
+            you must update the image member for the image to accept or reject the offer of the shared image.</para>
         <procedure>
             <title>To update an image member with cURL</title>
             <step>
-                <para>Issue the following cURL command to update an image member for an image. In this example, we accept
-                    offer of the shared image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
+                <para>Issue the following cURL command to update an image member for an image. In this example, you accept
+                    the offer of the shared image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
 curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/8989447062e04a818baf9e073fd04fa7 \
+-X PUT \
 -d '{"status":"accepted"}' -H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-X</emphasis>: Identifies the HTTP command. If no <code>-X</code>
+                                parameter is specified, the default is &GET;.</para>
+                        </listitem>
                         <listitem>
                             <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
-                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
-                                Otherwise, substitute your actual token for the variable.</para>
+                                as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting
+                                    environment variables”</olink>, you can use the $token variable. Otherwise, substitute
+                                your actual token for the variable.</para>
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
                         </listitem>
                         <listitem>
-                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
-                                the json output. For more information about the json.tool, see <olink
-                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies json.tool, which pretty-prints the
+                                JSON output. For more information about json.tool, see <olink targetdoc="ci-gettingstarted"
+                                    targetptr="json_tool">json.tool</olink>.</para>
                         </listitem>
                     </itemizedlist>
                 </para>
@@ -259,37 +270,43 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
     <section xml:id="delete-image-member" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
         <title>Delete an image member</title>
-        <para>If you decide to no longer share your image with a user, you need to delete that image member.</para>
+        <para>If you decide to no longer share your image with a user, you must delete that image member.</para>
         <procedure>
             <title>To delete an image member with cURL</title>
             <step>
-                <para>Issue the following cURL command to delete an image member for an image. In this example, we delete the
-                    user <literal>8989447062e04a818baf9e073fd04fa7</literal>, so that the user can no longer share the image
-                        <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
+                <para>Issue the following cURL command to delete an image member for an image. In this example, you delete
+                    the user <literal>8989447062e04a818baf9e073fd04fa7</literal> so that the user can no longer share the
+                    image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
 curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/8989447062e04a818baf9e073fd04fa7 \
+-X DELETE \
 -H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">-X</emphasis>: Identifies the HTTP command. If no <code>-X</code>
+                                parameter is specified, the default is &GET;.</para>
+                        </listitem>
                         <listitem>
                             <para><emphasis role="bold">-s</emphasis>: Runs the command in silent mode.</para>
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
                                 provides the authentication token. If you previously exported the token environment variable
-                                in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment
-                                    variables”</olink>, you can use the <parameter>$token</parameter> variable.
-                                Otherwise, substitute your actual token for the variable.</para>
+                                as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting
+                                    environment variables”</olink>, you can use the $token variable. Otherwise, substitute
+                                your actual token for the variable.</para>
                         </listitem>
                         <listitem>
-                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies the json.tool, which pretty-prints
-                                the json output. For more information about the json.tool, see <olink
-                                    targetdoc="ci-gettingstarted" targetptr="json_tool">json.tool</olink>.</para>
+                            <para><emphasis role="bold">-m json.tool</emphasis>: Specifies json.tool, which pretty-prints the
+                                JSON output. For more information about json.tool, see <olink targetdoc="ci-gettingstarted"
+                                    targetptr="json_tool">json.tool</olink>.</para>
                         </listitem>
                     </itemizedlist>
                 </para>
-                <para>If it is successful, the command returns an <errorcode>204</errorcode> with no response body.</para>
+                <para>If the operation is successful, it returns an <errorcode>HTTP 204</errorcode> response code with no
+                    response body.</para>
             </step>
         </procedure>
     </section>

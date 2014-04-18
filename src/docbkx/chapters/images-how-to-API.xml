@@ -7,26 +7,27 @@
     <title>Sending API requests and receiving responses</title>
     <para>You have several options for sending requests through an API: <itemizedlist>
             <listitem>
-                <para>Developers and testers may prefer to use cURL with the command-line tool from
+                <para>Developers and testers might prefer to use cURL with the command-line tool from
                     <link xlink:href="http://curl.haxx.se/">http://curl.haxx.se/</link>.</para>
-                <para>For more information about using cURL, see <olink targetdoc="ci-devguide" targetptr="curl_stuff">“How
-                        cURL Commands Work”</olink>.</para>
+                <para>For more information about using cURL, see <phrase condition="dev"><olink targetdoc="ci-devguide"
+                            targetptr="curl_stuff">“How cURL commands work”</olink></phrase><phrase condition="gs"><olink
+                            targetdoc="ci-gettingstarted" targetptr="curl_stuff">“How cURL commands work”</olink></phrase>.
+                </para>
             </listitem>
             <listitem>
-                <para>If you like to use a more graphical interface, the REST client for Firefox also works well for testing
-                    and trying out commands
-                    (<link xlink:href="https://addons.mozilla.org/en-US/firefox/addon/restclient/">
-                        https://addons.mozilla.org/en-US/firefox/addon/restclient/</link>).</para>
-                <para>Similar browser plugins are available for browsers other than Firefox and can be found by
-                    searching Google or other search engines.</para>
+                <para>If you like to use a more graphical interface, the REST client for Mozilla Firefox also works well for
+                    testing and trying out commands. See
+                    <link xlink:href="https://addons.mozilla.org/en-US/firefox/addon/restclient/">
+                        https://addons.mozilla.org/en-US/firefox/addon/restclient/</link>.</para>
+                <para>Similar browser plug-ins are available for browsers other than Firefox.</para>
                 <note>
-                    <para>If you use a browser plugin, be sure to include the Header elements for
+                    <para>If you use a browser plug-in, be sure to include the Header elements for
                             <literal>Content-Type</literal> and <literal>X-Auth-Token</literal> with appropriate
                         values.</para>
                 </note>
             </listitem>
             <listitem>
-                <para>You can also download and install rest-client, a Java application to test ReSTful web services, from
+                <para>You can download and install RESTclient, a Java application for testing ReSTful web services, from
                     <link xlink:href="http://code.google.com/p/rest-client/">http://code.google.com/p/rest-client/</link>.
                 </para>
             </listitem>
@@ -35,29 +36,32 @@
     <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="MediaTypes">
         <title>Media types</title>
-    <para>The &CImA; primarily accepts and serves <glossterm baseform="JSON">JSON-encoded</glossterm> data. The <glossterm
-            baseform="Media type">media type</glossterm> required in the request varies by the following request types: <itemizedlist>
-            <listitem>
-                <para>Requests that send JSON-encoded data use this <glossterm baseform="Media type">media type</glossterm>
-                    in their Content-Type header: <literal>'application/json'</literal>.</para>
-            </listitem>
-            <listitem>
-                <para>Requests that use HTTP &PATCH; syntax use this media type in their Content-type header:
-                        <literal>'application/openstack-images-v2.1-json-patch'</literal>.</para>
-            </listitem>
-            <!--            <listitem>
-                <para>Requests that upload image data should use this media type in their Content-type header:
-                        <literal>'application/octet-stream'</literal>.</para>
+        <para>The &CImA; primarily accepts and serves <glossterm baseform="JSON">JSON-encoded</glossterm> data. The
+                <glossterm baseform="Media type">media type</glossterm> required in the request varies by the following
+            request types: <itemizedlist>
+                <listitem>
+                    <para>Requests that send JSON-encoded data use the following <glossterm baseform="Media type">media
+                            type</glossterm> in their <parameter>Content-Type</parameter> header:
+                            <literal>'application/json'</literal>.</para>
+                </listitem>
+                <listitem>
+                    <para>Requests that use HTTP &PATCH; syntax use the following media type in their
+                            <parameter>Content-Type</parameter> header:
+                            <literal>'application/openstack-images-v2.1-json-patch'</literal>.</para>
+                </listitem>
+                <!--            <listitem>
+                <para>Requests that upload image data should use this media type in their <parameter>Content-type</parameter> 
+                    header: <literal>'application/octet-stream'</literal>.</para>
             </listitem>-->
-        </itemizedlist>
-    </para>
+            </itemizedlist>
+        </para>
     </section>
     <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="JSONSchemas" condition="dev">
         <title>JSON schemas</title>
-    <para>The necessary JSON-schema documents are provided at predictable <glossterm baseform="URI">URIs</glossterm>. A
-        consumer validates server responses and client requests based on the published schemas. The schemas contained in this
-        document are only examples and should not be used to validate your requests. A client should always fetch current
-        schemas from the server.</para>
+        <para>The necessary JSON-schema documents are provided at predictable <glossterm baseform="URI">URIs</glossterm>. A
+            consumer validates server responses and client requests based on the published schemas. The schemas contained in
+            this document are only examples and should not be used to validate your requests. A client should always fetch
+            current schemas from the server.</para>
     </section>
 </section>

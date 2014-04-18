@@ -13,14 +13,14 @@
         <para>This guide is intended to assist software developers who want to develop applications by using the Rackspace
             &CImS; REST application programming interface (API). <phrase condition="dev">It fully documents the &CImA;, which
                 enables developers</phrase><phrase condition="gs">It introduces developers to the &CImS;, so they can begin
-            </phrase> to interact with the storage components of the &CImS;.</para>
+            </phrase> to interact with the storage components of the service.</para>
         <para>The &CImS; is closely aligned with the Rackspace Cloud Servers service and Cloud Files service. Images are
-            captured from, and applied to, cloud servers and are stored on, and retrieved from, cloud files storage.</para>
+            captured from, and applied to, cloud servers and are stored on, and retrieved from, Cloud Files storage.</para>
         <para>To use the information provided here, you should have a general understanding of the &CImS; (see <olink
                 condition="dev" targetdoc="ci-devguide" targetptr="ch_image-service-dev-overview">Overview</olink>
-            <olink condition="gs" targetdoc="ci-gettingstarted" targetptr="ch_image-service-dev-overview">Find out
-                more about images</olink>) and have access to an installation of the &CImS;. You should also be familiar with
-            the following technologies:</para>
+            <olink condition="gs" targetdoc="ci-gettingstarted" targetptr="ch_image-service-dev-overview">Find out more about
+                images</olink>) and have access to an installation of the &CImS;. You should also be familiar with the
+            following technologies:</para>
         <itemizedlist spacing="compact">
             <listitem>
                 <para>RESTful web services</para>
@@ -38,8 +38,8 @@
         <!-- Table generated in output from revision element in the book element -->
     </section>
     <section xml:id="TOS">
-        <title>Rackspace pricing and Terms of Service</title>
-        <para>Cloud Images is part of the Rackspace Cloud and your use of the &CImA; will be billed according to the schedule
+        <title>Rackspace pricing and terms of service</title>
+        <para>Cloud Images is part of the Rackspace cloud and your use of the &CImA; will be billed according to the schedule
             at <link xlink:href="http://www.rackspace.com/cloud/images/">http://www.rackspace.com/cloud/images</link>.</para>
         <para>Periodically review the
             <link xlink:href="http://www.rackspace.com/information/legal/cloud/tos">Rackspace US Cloud Terms of Service</link>

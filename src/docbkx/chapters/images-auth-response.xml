@@ -4,12 +4,37 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="auth-response-description">
     <title>Authentication response</title>
-    <para>In response to valid credentials, this service returns an authentication token and a service catalog with the
+    <para>In response to valid credentials, the &CIS; returns an authentication token and a service catalog with the
         endpoints that you use to request services. </para>
     <para>Do not include explicit API endpoints in your scripts and applications. Instead, find the endpoint for your service
         and use it. </para>
-    <para>The following output shows a partial authentication response in JSON format. <example>
-            <title>Authenticate: JSON Response</title>
+    <para> The authentication response contains the following elements: <itemizedlist>
+            <listitem>
+                <para><emphasis role="bold">serviceCatalog</emphasis> - A list of services. The number and type of services
+                    vary by account. Service objects include the following elements: <itemizedlist>
+                        <listitem>
+                            <para><emphasis role="bold">name</emphasis> - The service name.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">type</emphasis> - The service type.</para>
+                        </listitem>
+                        <listitem>
+                            <para><emphasis role="bold">endpoints</emphasis> - The list of service endpoints.</para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+            </listitem>
+            <listitem>
+                <para><emphasis role="bold">token</emphasis> - The token and details about the token.</para>
+            </listitem>
+            <listitem>
+                <para><emphasis role="bold">user</emphasis> - Details about the user who requested authentication.</para>
+            </listitem>
+        </itemizedlist>
+    </para>
+    <para>The following output shows a partial authentication response in JSON format. The items that correspond to the
+        call-out numbers in the example are explained following the example.<example>
+            <title>Authenticate: JSON response</title>
             <programlistingco>
                 <areaspec>
                     <area xml:id="credentials.xml.name" units="linecolumn" coords="14 30"/>
@@ -22,30 +47,6 @@
             </programlistingco>
         </example>
     </para>
-    <para> The authentication response contains the following elements: <itemizedlist>
-            <listitem>
-                <para><emphasis role="bold">serviceCatalog</emphasis> - a list of services</para>
-                <para> The number and type of services vary by account. Service objects include the following elements: <itemizedlist>
-                        <listitem>
-                            <para><emphasis role="bold">name</emphasis> - the service name</para>
-                        </listitem>
-                        <listitem>
-                            <para><emphasis role="bold">type</emphasis> - the OpenStack service type</para>
-                        </listitem>
-                        <listitem>
-                            <para><emphasis role="bold">endpoints</emphasis> - the list of service endpoints</para>
-                        </listitem>
-                    </itemizedlist>
-                </para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="bold">token</emphasis> - the token and details about the token</para>
-            </listitem>
-            <listitem>
-                <para><emphasis role="bold">user</emphasis> - details about the user who requested authentication</para>
-            </listitem>
-        </itemizedlist>
-    </para>
     <para>Successful authentication returns the following information:</para>
     <para>
         <calloutlist>
@@ -57,7 +58,7 @@
                 <para> </para>
             </callout>
             <callout arearefs="credentials.xml.endpoints">
-                <para><emphasis role="bold">Endpoints for requesting Rackspace Cloud services</emphasis> appear in the
+                <para><emphasis role="bold">Endpoints for requesting Rackspace cloud services</emphasis> appear in the
                         <code>endpoints</code> element in the service object within the <code>serviceCatalog</code>
                     element.</para>
                 <para>Endpoint information includes the public URL, region, tenant ID, and version information. </para>
@@ -72,18 +73,19 @@
                 <para>To access the &CImS;, use the <code>publicURL</code> value for the <literal>cloudImages</literal> for
                     your chosen endpoint. </para>
                 <warning>
-                    <para>Due to an inconsistency in the initial &CImA; release, the publicURL value may include your tenant
-                        ID. Thus, if your tenant ID is 123456, your response may contain lines that look like this:
+                    <para>Due to an inconsistency in the initial &CImA; release, the <parameter>publicURL</parameter> value
+                        might include your tenant ID. Thus, if your tenant ID is 123456, your response might contain lines
+                        that look as follows:
                         <programlisting>
 "publicURL": "https://iad.images.api.rackspacecloud.com/v2/123456"
                     </programlisting></para>
-                    <para>Please do not write any automation or scripting that depends upon the tenant ID being included in
-                        the public URL, because this is not the intended behavior. We are working to update the API behavior
-                        in the coming weeks. When the update is released, the tenant ID will no longer be used in the URL,
-                        and your service catalog response will look just like the response in the documentation above.</para>
+                    <para>Do not write any automation or scripting that depends on the tenant ID being included in the public
+                        URL, because this is not the intended behavior. We are working to update the API behavior in the
+                        coming weeks. When the update is released, the tenant ID will no longer be used in the URL, and your
+                        service catalog response will look just like the response in the preceding example.</para>
                     <para>Until the update is released, URLs that contain the tenant ID are being filtered so that they will
-                        work with the Images API -- so if you are programmatically extracting the publicURL from the service
-                        catalog and using it to construct API requests, your requests will work as expected.</para>
+                        work with the Images API. As a result if you are programmatically extracting the publicURL from the
+                        service catalog and using it to construct API requests, your requests will work as expected.</para>
                 </warning>
                 <para> </para>
             </callout>

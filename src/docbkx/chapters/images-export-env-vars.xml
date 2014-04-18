@@ -6,12 +6,14 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="export_env_vars">
     <title>Exporting environment variables</title>
-    <para>To run the cURL requests <phrase condition="gs">shown in this guide</phrase>, export your <literal>tenant
-            ID</literal> and the <literal>token</literal> that you got during authentication (see <olink
-            targetdoc="ci-devguide" targetptr="auth">“Authenticate through the Rackspace Cloud Identity Service”</olink>) to
-        environment variables and then <phrase condition="gs">copy the example from this guide to</phrase>
-        <phrase condition="gs">build a cURL command using API operation and </phrase> the command line, script, or tool, changing URI parameters or body parameters as
-        needed.</para>
+    <para>To run <phrase condition="gs">the</phrase> cURL requests <phrase condition="gs">shown in this guide</phrase>,
+        export your tenant ID and the token that you got during authentication (see <phrase condition="dev"><olink
+                targetdoc="ci-devguide" targetptr="auth">“Authenticate through the Rackspace Cloud Identity
+            Service”</olink></phrase><phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="auth"
+                >“Authenticate through the Rackspace Cloud Identity service”</olink></phrase>) to environment variables. Then
+            <phrase condition="gs">copy the examples from this guide to</phrase>
+        <phrase condition="dev">build a cURL command based on an API operation and use</phrase> the command line, script, or
+        tool of your choice, changing URI parameters or body parameters as needed.</para>
     <para>To export environment variables: <orderedlist>
             <listitem>
                 <para>Export your tenant ID to the <literal>account</literal> environment variable:</para>
@@ -23,8 +25,10 @@
                 <programlisting><prompt>$</prompt> export token="token_id"</programlisting>
                 <para>Where <literal>token_id</literal> is the authentication token value in the <literal>id</literal> field
                     of the <literal>token</literal> element in the authentication response. For information about finding the
-                    token ID, see <olink targetdoc="ci-devguide" targetptr="auth-response-description">“Authentication
-                        Response”</olink>.</para>
+                    token ID, see <phrase condition="dev"><olink targetdoc="ci-devguide"
+                            targetptr="auth-response-description">“Authentication Response”</olink></phrase><phrase
+                        condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="auth-response-description"
+                            >“Authentication response”</olink></phrase>.</para>
             </listitem>
         </orderedlist></para>
 </section>
