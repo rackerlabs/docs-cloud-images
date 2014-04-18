@@ -5,34 +5,87 @@
 
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="ch_image-service-dev-overview">
-    <title>Overview</title>
-    <para>The Rackspace &CImS; allows developers create and manipulate images, image members, and associated metadata through
-        a simple Representational State Transfer (REST) web service interface.</para>
-    <para>The <citetitle>Rackspace Cloud Images Developer Guide</citetitle> describes the &CImA; v2.</para>
+    <title><phrase condition="dev">Overview</phrase><phrase condition="gs">Find out more about images</phrase></title>
+    <para>The Rackspace &CImS; enables developers to create and manipulate images, image members, and associated metadata
+        through a simple Representational State Transfer (REST) web service interface.</para>
+    <para condition="dev">The <citetitle>Rackspace Cloud Images Developer Guide</citetitle> provides detailed information
+        about how to use the &CImA; v2.</para>
     <para>This chapter describes what images are, how you share images with others, and how you use asynchronous image
         tasks.</para>
     <para/>
     <section xml:id="what-and-why">
         <?dbhtml stop-chunking?>
         <title>Images</title>
-        <para>Server Images are used to store a snapshot of a server's configuration. If you take an image of a server, you
-            can create a new server from that image. The new server will be exactly the same as the original server was at
-            the time the image was created.</para>
-        <para>The &CImS; provides operations that allow you to manipulate images, to import and export images (using tasks),
-            and to share images with other people.</para>
-        <para>To learn how to take an image of a server, see the first part of
-            <link xlink:href="http://www.rackspace.com/knowledge_center/article/cloud-essentials-4-creating-an-image-backup-cloning-and-rebuilding-a-server-from-a-saved">
-                Creating an Image Backup and Rebuilding a Server</link>
-            in the Knowledge Center.</para>
+        <para>Server images are used to store a snapshot of a server's configuration. If you take an image of a server, you
+            can create a new server from that image. The new server will have the same files and operating system that the
+            original server had at the time the image was created.</para>
+        <para>The &CImS; provides operations that enable you to manipulate images, to import and export images (by using
+            tasks), and to share images with other people.</para>
         <para>To learn how to use an existing image, see <phrase condition="dev"><olink targetdoc="ci-devguide"
                     targetptr="POST_importImage_tasks_Image_Task_Calls"
-            >"POST_importImage_tasks_Image_Task_Calls"</olink></phrase><phrase condition="gs">
+                >"POST_importImage_tasks_Image_Task_Calls"</olink></phrase>
+            <phrase condition="gs">
                 <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_importImage_tasks_Image_Task_Calls.html">
-                        Section 4.4.3. "Task to Import Image"</link></phrase>.</para>
+                    Section 4.4.3. "Task to Import Image"</link>
+                in the <citetitle>Cloud Images Developer Guide</citetitle></phrase>.</para>
+        <para>The &CImS; enables you to use standard images (which are supported by Rackspace) and to create, share, and use
+            nonstandard images (which are not supported by Rackspace). For more information, see
+            <link xlink:href="http://www.rackspace.com/knowledge_center/article/rackspace-standard-and-non-standard-images"> 
+                <citetitle>Rackspace Standard and Non-Standard Images</citetitle></link>
+            at http://www.rackspace.com/knowledge_center/article/rackspace-standard-and-non-standard-images.</para>
+        <section xml:id="std-images">
+            <title>Standard images</title>
+            <para>Standard images include the following images:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>All base images that have not reached their end of life and that are supplied by Rackspace for your
+                        service level</para>
+                </listitem>
+                <listitem>
+                    <para>All images that have not reached their end of life and that are provided specifically for
+                        RackConnect customers</para>
+                </listitem>
+            </itemizedlist>
+        </section>
+        <section xml:id="nonstd-images">
+            <title>Nonstandard images</title>
+            <para>Nonstandard images include the following images:</para>
+            <itemizedlist>
+                <listitem>
+                    <para>All imported and exported images</para>
+                </listitem>
+                <listitem>
+                    <para>All end-of-life images</para>
+                </listitem>
+                <listitem>
+                    <para>All shared images</para>
+                </listitem>
+                <listitem>
+                    <para>All images that are not standard for your account's service level and that are not included in the
+                        subset of images provided for RackConnect customers</para>
+                </listitem>
+            </itemizedlist>
+            <note>
+                <para>This is not an exhaustive list of nonstandard images.</para>
+            </note>
+        </section>
+    </section>
+    <xi:include href="images-sharing.xml"/>
+    <xi:include href="images-tasks.xml"/>
+    <!-- All Statuses -->
+    <section xml:id="statuses">
+        <title>Statuses</title>
+        <para>The &CImA; uses a variety of statuses to identify the state of images or image components. This section
+            describes the statuses and their values.</para>
         <!--Image Statuses-->
         <section xml:id="image-statuses">
-            <title>Image Statuses</title>
-            <para>Images in the &CImS; can have one of the following statuses:</para>
+            <title>Image statuses</title>
+            <para>Images in the &CImS; can have any of the following statuses when you display details by using the
+                instructions in <phrase condition="dev"><olink targetdoc="ci-devguide"
+                        targetptr="GET_getImage_images__image_id__Image_Calls"
+                        >"GET_getImage_images__image_id__Image_Calls"</olink></phrase>
+                <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="get-image-details">“Get details for an
+                        image”</olink></phrase>.</para>
             <variablelist>
                 <varlistentry>
                     <term><emphasis role="bold">queued</emphasis></term>
@@ -77,48 +130,72 @@
                 </varlistentry>
             </variablelist>
         </section>
-        <!--Standard vs. Non-standard Images-->
-        <section xml:id="stdvnon-images">
-            <title>Standard versus Non-standard Images</title>
-            <?dbhtml stop-chunking?>
-            <para>The &CImS; allows you to use standard images (which are supported by Rackspace) and to create, share, and
-                use non-standard images (which are not supported by Rackspace). For more information, see this
-                <link xlink:href="http://www.rackspace.com/knowledge_center/article/rackspace-standard-and-non-standard-images"> 
-                Rackspace Standard and Non-Standard Images</link> article in the Knowledge Center.
-            </para>
-            <section xml:id="std-images">
-                <title>Standard Images</title>
-                <para>Standard images include the following:</para>
-                <itemizedlist>
+        <!--Task Statuses-->
+        <section xml:id="task-statuses">
+            <title>Task statuses</title>
+            <para>Image tasks in the &CImS; can have any of the following statuses when you poll them by using instructions
+                in <olink condition="dev" targetdoc="ci-devguide" targetptr="GET_getTask_tasks__taskID__Image_Task_Calls">
+                    "GET_getTask_tasks__taskID__Image_Task_Calls"</olink>
+                <olink condition="gs" targetdoc="ci-gettingstarted" targetptr="get-task-details">“Get details for a
+                    task”</olink>.</para>
+            <variablelist>
+                <varlistentry>
+                    <term><emphasis role="bold">pending</emphasis></term>
                     <listitem>
-                        <para>All base images supplied by Rackspace for your service level and/or Rackconnect status that
-                            have not yet reached End of Life</para>
+                        <para> The image task is waiting for execution.</para>
                     </listitem>
-                </itemizedlist>
-            </section>
-            <section xml:id="nonstd-images">
-                <title>Non-standard Images</title>
-                <para>Non-standard images include the following:</para>
-                <itemizedlist>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">processing</emphasis></term>
                     <listitem>
-                        <para>All imported and exported images</para>
+                        <para> The image task is processing.</para>
                     </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">success</emphasis></term>
                     <listitem>
-                        <para>All end-of-life images</para>
+                        <para>The image task completed successfully.</para>
                     </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">failure</emphasis></term>
                     <listitem>
-                        <para>All shared images</para>
+                        <para>The image task did not complete successfully.</para>
                     </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+        <!--Image Member Statutses-->
+        <section xml:id="member-statuses">
+            <title>Image member statuses</title>
+            <para/>
+            <para>Image members can have any of the following statuses when you view image member details by using the
+                instructions in <phrase condition="dev"><olink targetdoc="ci-devguide"
+                        targetptr="GET_getImageMember_images__image_id__members__member_id__Image_Both_Calls"
+                        >"GET_getImageMember_images__image_id__members__member_id__Image_Both_Calls"</olink></phrase>
+                <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="detail-image-member">“Get image member
+                        details”</olink></phrase>.</para>
+            <variablelist>
+                <varlistentry>
+                    <term>accepted</term>
                     <listitem>
-                        <para>All images that are not standard for your account's service level and Rackconnect status</para>
+                        <para>The member has accepted the invitation to potentially use the offered image.</para>
                     </listitem>
-                </itemizedlist>
-                <note>
-                    <para>This is not an exhaustive list of non-standard images.</para>
-                </note>
-            </section>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">rejected</emphasis></term>
+                    <listitem>
+                        <para>The member has declined the invitation to potentially use the offered image.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><emphasis role="bold">pending</emphasis></term>
+                    <listitem>
+                        <para>The member has neither accepted nor declined the invitation to potentially use the offered
+                            image.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
         </section>
     </section>
-    <xi:include href="images-sharing.xml"/>
-    <xi:include href="images-tasks.xml"/>
 </chapter>

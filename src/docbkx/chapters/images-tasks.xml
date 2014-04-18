@@ -5,123 +5,89 @@
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="image-tasks">
-    <title>Asynchronous Image Tasks</title>
+    <title>Asynchronous image tasks</title>
     <?dbhtml stop-chunking?>
-    <para>A <glossterm baseform="Image Task">image task</glossterm> is a request to perform an asynchronous image-related
+    <para>An <glossterm baseform="Image Task">image task</glossterm> is a request to perform an asynchronous image-related
         operation, such as importing or exporting an image. The request results in the creation of a disposable task resource
         that can be polled for information about the status of the operation.</para>
-    <para>Once you initiate an image import or export, poll the status of the created task using <phrase condition="dev"
-                ><olink targetdoc="ci-devguide" targetptr="GET_getTask_tasks__taskID__Image_Task_Calls"
+    <para>After you initiate an image import or export, poll the status of the created task by using the instructions in
+            <phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="GET_getTask_tasks__taskID__Image_Task_Calls"
                 >"GET_getTask_tasks__taskID__Image_Task_Calls"</olink></phrase>
-        <phrase condition="gs">
-            <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html">
-                        Section 4.4.2. "Get Task Details"</link></phrase>.
-        When the task resource reaches a final status of <literal>success</literal> or <literal>failure</literal>, the poll
-        response will include an expiration date and time stamp. After that expiration time, the disposable task resource
-        itself expires and is subject to deletion. However, the result of the task, such as an imported or exported image,
-        does not expire.</para>
+        <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="get-task-details">“Get details for a
+                task”</olink></phrase>. When the task resource reaches a final status of <literal>success</literal> or
+            <literal>failure</literal>, the poll response includes an expiration date and time stamp. After that expiration
+        date and time, the disposable task resource itself expires and is subject to deletion. However, the result of the
+        task, such as an imported or exported image, does not expire.</para>
     <note>
-        <para>Tasks are defined in the OpenStack Images v2 API. They provide a uniform interface for image task functionality
-            across OpenStack installations. Because OpenStack cloud providers may have quite different implementations, tasks
-            have been designed so that individual providers can easily customize them. Thus, each task resource contains
-                <parameter>input</parameter> and <parameter>result</parameter> parameters. The <phrase condition="dev"><olink
-                    targetdoc="ci-devguide" targetptr="POST_importImage_tasks_Image_Task_Calls"
-                    >"POST_importImage_tasks_Image_Task_Calls"</olink></phrase>
-            <phrase condition="gs">
-                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_importImage_tasks_Image_Task_Calls.html">
-                        Section 4.4.3. "Task to Import Image"</link></phrase>,
-            and <phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="POST_exportImage_tasks_Image_Task_Calls"
-                    >"POST_exportImage_tasks_Image_Task_Calls"</olink></phrase>
-            <phrase condition="gs">
-                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_exportImage_tasks_Image_Task_Calls.html">
-                        Section 4.4.4. "Task to Export Image"</link></phrase>
-            operations show what Rackspace requires for these parameters. Other cloud providers may define these parameters
-            differently.</para>
+        <para>Tasks in the &CImA; conform to the uniform task interface provided by the OpenStack Images v2 API for all
+            OpenStack installations, with each task resource containing both input and result parameters. The API design
+            enables individual providers, like Rackspace, to easily customize these two parameters. </para>
+        <para>The <olink condition="dev" targetdoc="ci-devguide" targetptr="POST_importImage_tasks_Image_Task_Calls"
+                >"POST_importImage_tasks_Image_Task_Calls"</olink>
+            <link condition="gs" xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_importImage_tasks_Image_Task_Calls.html">
+                        Section 4.4.3. "Task to import image"</link>
+            and <olink condition="dev" targetdoc="ci-devguide" targetptr="POST_exportImage_tasks_Image_Task_Calls"
+                >"POST_exportImage_tasks_Image_Task_Calls"</olink>
+            <link condition="gs" xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_exportImage_tasks_Image_Task_Calls.html">
+                        Section 4.4.4. "Task to export image"</link>
+            operations <phrase condition="gs">described in the &CImDG;</phrase> detail what Rackspace requires for these
+            parameters.</para>
     </note>
-    <para>To import an image, do the following: <orderedlist>
+    <para>Following is the high-level process for importing an image:<orderedlist>
             <listitem>
                 <para>Put the image into your Cloud Files account.</para>
             </listitem>
             <listitem>
-                <para>Submit the import request <phrase condition="dev"><olink targetdoc="ci-devguide"
-                            targetptr="POST_importImage_tasks_Image_Task_Calls"
+                <para>Submit the asynchronous import request by using the instructions in <phrase condition="dev"><olink
+                            targetdoc="ci-devguide" targetptr="POST_importImage_tasks_Image_Task_Calls"
                             >"POST_importImage_tasks_Image_Task_Calls"</olink></phrase>
                     <phrase condition="gs">
                         <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_importImage_tasks_Image_Task_Calls.html">
-                        Section 4.4.3.. "Task to Import Image"</link></phrase>.</para>
+                        Section 4.4.3. "Task to import image"</link>
+                        of the &CImDG;</phrase>.</para>
             </listitem>
             <listitem>
-                <para>The &CImS; will fetch the image from your cloud storage and create a new image for you.</para>
+                <para>The &CImS; begins the process of fetching the image from your cloud storage and creating a new image
+                    for you. This activity takes some time.</para>
             </listitem>
             <listitem>
-                <para>Poll the task status using <phrase condition="dev"><olink targetdoc="ci-devguide"
-                            targetptr="GET_getTask_tasks__taskID__Image_Task_Calls"
+                <para>Poll the task status by using the instructions in <phrase condition="dev"><olink
+                            targetdoc="ci-devguide" targetptr="GET_getTask_tasks__taskID__Image_Task_Calls"
                             >"GET_getTask_tasks__taskID__Image_Task_Calls"</olink></phrase>
                     <phrase condition="gs">
                         <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html">
-                        Section 4.4.2. "Get Task Details"</link></phrase>
-                    until the task completes.</para>
+                        Section 4.4.2. "Get task details"</link>
+                        of the &CImDG;</phrase> until the task completes.</para>
             </listitem>
         </orderedlist>
     </para>
-    <para>To export an image, do the following:<orderedlist>
+    <para>Following is the high-level process for importing an image:<orderedlist>
             <listitem>
                 <para> Determine the UUID of the image you want to export.</para>
             </listitem>
             <listitem>
-                <para>Submit the export request <phrase condition="dev"><olink targetdoc="ci-devguide"
-                            targetptr="POST_exportImage_tasks_Image_Task_Calls"
+                <para>Submit the export request by using the instructions in <phrase condition="dev"><olink
+                            targetdoc="ci-devguide" targetptr="POST_exportImage_tasks_Image_Task_Calls"
                             >"POST_exportImage_tasks_Image_Task_Calls"</olink></phrase>
                     <phrase condition="gs">
                         <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_exportImage_tasks_Image_Task_Calls.html">
-                        Section 4.4.4. "Task to Export Image"</link></phrase>.</para>
+                        Section 4.4.4. "Task to export image"</link>
+                        of the &CImDG;</phrase>.</para>
             </listitem>
             <listitem>
-                <para>The &CImS; processes the image, converts it to a convenient format for a future export of the image to
-                    another cloud (or to another region of the Rackspace cloud), and transfers the exported image to your
-                    Cloud Files account.</para>
+                <para>The &CImS; begins to process the image, to convert it to a convenient format for a future export of the
+                    image to another cloud (or to another region of the Rackspace cloud), and to transfer the exported image
+                    to your Cloud Files account. This activity takes some time.</para>
             </listitem>
             <listitem>
-                <para>Poll the task status using <phrase condition="dev"><olink targetdoc="ci-devguide"
-                            targetptr="GET_getTask_tasks__taskID__Image_Task_Calls"
+                <para>Poll the task status by using the instructions in <phrase condition="dev"><olink
+                            targetdoc="ci-devguide" targetptr="GET_getTask_tasks__taskID__Image_Task_Calls"
                             >"GET_getTask_tasks__taskID__Image_Task_Calls"</olink></phrase>
                     <phrase condition="gs">
                         <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html">
-                        Section 4.4.2. "Get Task Details"</link></phrase>
-                    until the task completes.</para>
+                        Section 4.4.2. "Get task details"</link>
+                        of the &CImDG;</phrase> until the task completes.</para>
             </listitem>
         </orderedlist>
     </para>
-
-    <!--Task Statuses-->
-    <section xml:id="task-statuses">
-        <title>Task Statuses</title>
-        <para>Image Tasks in the &CImS; can have one of the following statuses when polled:</para>
-        <variablelist>
-            <varlistentry>
-                <term><emphasis role="bold">pending</emphasis></term>
-                <listitem>
-                    <para> The image task is waiting for execution.</para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">processing</emphasis></term>
-                <listitem>
-                    <para> The image task is processing.</para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">success</emphasis></term>
-                <listitem>
-                    <para>The image task completed successfully.</para>
-                </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term><emphasis role="bold">failure</emphasis></term>
-                <listitem>
-                    <para>The image task completed unsuccessfully.</para>
-                </listitem>
-            </varlistentry>
-        </variablelist>
-    </section>
 </section>

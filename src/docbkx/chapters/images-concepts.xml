@@ -9,7 +9,7 @@
 
     <!--Image Entities-->
     <section xml:id="image-entities">
-        <title>Image Entities</title>
+        <title>Image entities</title>
         <para>An image entity is represented by a <glossterm baseform="JSON">JSON-encoded</glossterm> data structure and its
             raw binary data. </para>
         <para>An image entity has an identifier (ID) that is guaranteed to be unique within its endpoint. The ID is used as a
@@ -23,7 +23,7 @@
 
     <!--Image Identifiers-->
     <section xml:id="image-identifiers">
-        <title>Image Identifiers</title>
+        <title>Image identifiers</title>
         <para>Images are uniquely identified by a <glossterm>URI</glossterm> that matches the following signature:</para>
         <para><code>{image server location}/v2/images/{image_ID}</code></para>
         <para>
@@ -192,7 +192,7 @@
 
     <!--Common Image Properties-->
     <section xml:id="common-image-properties">
-        <title>Common Image Properties</title>
+        <title>Common image properties</title>
         <para> To help end users use your images, you can put additional common properties, or metadata, on your images. </para>
         <para>The available properties and their expected values include the following options:</para>
         <glosslist>
@@ -541,7 +541,7 @@
     <!-- HTTP PATCH Method -->
     <section xml:id="patch-method">
         <?dbhtml stop-chunking?>
-        <title>HTTP PATCH Method</title>
+        <title>HTTP PATCH method</title>
         <para>The &CImA; uses the HTTP PATCH method to update image properties.</para>
         <para>The HTTP PATCH request must provide a <glossterm baseform="Media type">media type</glossterm> so that the
             server can determine how the changes should be applied to an image resource. An unsupported media type results in
@@ -566,7 +566,7 @@
         </note>
 
         <section xml:id="restricted-json">
-            <title>Restricted JSON Pointers</title>
+            <title>Restricted JSON pointers</title>
             <para>The <literal>application/openstack-images-v2.1-json-patch</literal>
                 <glossterm baseform="Media type">media type</glossterm> adopts a restricted form of <glossterm
                     baseform="JSON Pointer">JSON-Pointers</glossterm>, which limits the number of tokens allowed to one
@@ -617,7 +617,7 @@ JSON Pointer        Image Entity Key Pair
         </section>
 
         <section xml:id="using-patch">
-            <title>Using the HTTP PATCH Method</title>
+            <title>Using the HTTP PATCH method</title>
             <para>The <code>'application/openstack-images-v2.1-json-patch'</code>
                 <glossterm baseform="Media type">media type</glossterm> for the HTTP PATCH method allows a subset of
                 operations defined in the <literal>application/json-patch+json</literal> media type. To perform an operation,
@@ -703,7 +703,7 @@ JSON Pointer        Image Entity Key Pair
             </warning>
 
             <section xml:id="patch_add">
-                <title>HTTP PATCH Add Operation</title>
+                <title>HTTP PATCH add operation</title>
                 <para>The <command>add</command> operation adds a new custom user-defined property at a specified path in the
                     target image. The path must reference an image property to add to an existing image. The operation object
                     contains a value member that specifies the value to be added. </para>
@@ -720,7 +720,7 @@ JSON Pointer        Image Entity Key Pair
             </section>
 
             <section xml:id="patch_remove">
-                <title>HTTP PATCH Remove Operation</title>
+                <title>HTTP PATCH remove operation</title>
                 <para>The <command>remove</command> operation removes the custom user-defined image property from the target
                     image. If no image property exists at the specified location, an error results. </para>
                 <warning>
@@ -733,7 +733,7 @@ JSON Pointer        Image Entity Key Pair
                 </programlisting>
             </section>
             <section xml:id="patch_replace">
-                <title>HTTP PATCH Replace Operation</title>
+                <title>HTTP PATCH replace operation</title>
                 <para>The <command>replace</command> operation replaces the value of the specified image property in the
                     target image with a new value. The operation object contains a value member that specifies the
                     replacement value. </para>

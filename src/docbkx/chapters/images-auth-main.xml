@@ -4,18 +4,19 @@
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="auth">
-    <title>Authenticate through the Rackspace Cloud Identity Service</title>
-    <para> To authenticate your access to Rackspace Cloud services, you issue an authentication request to a &CIS; endpoint.
+    <title>Authenticate through the Rackspace Cloud Identity service</title>
+    <para>To authenticate your access to Rackspace cloud services, you issue an authentication request to a &CIS; endpoint.
         The &CIS; is an implementation of the OpenStack Keystone Identity Service v2.0. </para>
     <para> In response to valid credentials, an authentication request to the &CIS; returns an authentication token and a
-        service catalog that contains a list of all services and endpoints available for this token. Because the
-        authentication token expires after 24 hours, you must generate a token once a day. </para>
+        service catalog that contains a list of all services and endpoints available for this token. The authentication token
+        expires after 24 hours, unless it is revoked earlier. After the token expire or is revoked, you must generate a new
+        token if you want to continue accessing Rackspace cloud services. </para>
     <para> The following sections list the &CIS; endpoints, show you how make an authentication request, and describe the
-        authentication response. </para>
+        authentication response: </para>
     <itemizedlist>
         <listitem>
-            <para><phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="auth_endpoints">“Rackspace
-                        Cloud Identity service Endpoints”</olink></phrase><phrase condition="gs">
+            <para><phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="auth_endpoints">“Rackspace Cloud Identity
+                        service Endpoints”</olink></phrase><phrase condition="gs">
                     <olink targetdoc="ci-gettingstarted" targetptr="auth_endpoints">“Rackspace Cloud Identity service
                         Endpoints”</olink></phrase></para>
         </listitem>
@@ -33,31 +34,28 @@
             </para>
         </listitem>
     </itemizedlist>
-
-    <para> For detailed information about the OpenStack Keystone Identity Service v2.0, see
+    <para> For detailed information about the &CIS; v2.0, see
         <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/index.html">
                 <citetitle>Cloud Identity Client Developer Guide API v2.0</citetitle></link>. </para>
+
     <section xml:id="auth_endpoints">
-        <title>&CIS; Endpoints</title>
-        <important>
-            <para> Multiple &CIS; endpoints exist. You may use any endpoint, regardless of where your account was created.
-            </para>
-        </important>
-        <para>When you authenticate, use one of the following endpoints:</para>
+        <title>&CIS; endpoints</title>
+        <para>When you authenticate to the &CIS;, use one of the following endpoints. You may use any endpoint, regardless of
+            where your account was created.</para>
         <para>
             <table rules="all">
-                <caption>&CIS; Endpoints</caption>
+                <caption>&CIS; endpoints</caption>
                 <col width="25%"/>
                 <col width="75%"/>
                 <thead>
                     <tr>
-                        <th>Location of Account</th>
-                        <th>&CIS; Endpoint</th>
+                        <th>Location of account</th>
+                        <th>&CIS; endpoint</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>US </td>
+                        <td>US, Sydney, Hong Kong</td>
                         <td>
                             <link xlink:href="https://identity.api.rackspacecloud.com/v2.0">https://identity.api.rackspacecloud.com/v2.0</link>
                         </td>
@@ -71,16 +69,11 @@
                 </tbody>
             </table>
         </para>
-        <para>For information about support for legacy identity endpoints, see
-            <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/Endpoints-d1e180.html">
-                Alternate Authentication Endpoints</link>.
-        </para>
     </section>
 
     <section xml:id="curl_auth">
-        <title>Authentication Request</title>
-        <para>To authenticate, you issue a &POST; <command>/tokens</command> request to the appropriate Rackspace Cloud
-            Identity Service endpoint.</para>
+        <title>Authentication request</title>
+        <para>To authenticate, you issue a &POST; <command>/tokens</command> request to a &CIS; endpoint.</para>
         <para>In the request body, supply one of the following sets of credentials:</para>
         <itemizedlist>
             <listitem>
@@ -90,37 +83,38 @@
                 <para>User name and API key</para>
             </listitem>
         </itemizedlist>
-        <para> Your user name and password are the ones that you use to log in to the Rackspace Cloud Control Panel. </para>
-        <para>To obtain your API key, <orderedlist>
+        <para>Your user name and password are the ones that you use to log in to the Rackspace Cloud Control Panel.</para>
+        <para>To obtain your API key, perform the following steps:<orderedlist>
                 <listitem>
                     <para>Log in to
                         <link xlink:href="http://mycloud.rackspace.com" xml:id="newwin">http://mycloud.rackspace.com</link>.
                     </para>
                 </listitem>
                 <listitem>
-                    <para>Click your user name, and select <guilabel>Account Settings</guilabel>.</para>
+                    <para>Click your user name in the top-right corner of the panel, and select <guilabel>Account
+                            Settings</guilabel>.</para>
                 </listitem>
                 <listitem>
-                    <para>Click <guilabel>Show</guilabel> on "API Key" line to expose the key.</para>
+                    <para>For API Key, click <guilabel>Show</guilabel> to expose the key.</para>
                 </listitem>
             </orderedlist>
         </para>
         <para>The following cURL examples show how to get an authentication token by entering your user name and either your
-            password, or your API key.</para>
+            password or your API key.</para>
         <example>
-            <title>Authenticate to US Identity Endpoint &ndash; Username and Password: JSON Request</title>
+            <title>Authenticate to US Identity endpoint &ndash; user name and password: JSON request</title>
             <programlisting language="bash" role="gutter: false"><?db-font-size 55%?><prompt>$</prompt> curl -s https://identity.api.rackspacecloud.com/v2.0/tokens -X 'POST' \
-     -d '{"auth":{"passwordCredentials":{"username":"yourUserName", "password":"yourPassword"}}}' \
+     -d '{"auth":{"passwordCredentials":{"username":"<emphasis>yourUserName</emphasis>", "password":"<emphasis>yourPassword</emphasis>"}}}' \
      -H "Content-Type: application/json" | python -m json.tool</programlisting>
         </example>
         <example>
-            <title>Authenticate to US Identity Endpoint &ndash; Username and API Key: JSON Request</title>
+            <title>Authenticate to US Identity endpoint &ndash; user name and API key: JSON request</title>
             <programlisting language="bash" role="gutter: false"><?db-font-size 55%?><prompt>$</prompt> curl -s https://identity.api.rackspacecloud.com/v2.0/tokens -X 'POST' \
-     -d '{"auth":{"RAX-KSKEY:apiKeyCredentials":{"username":"yourUserName", "apiKey":"yourApiKey"}}}' \
+     -d '{"auth":{"RAX-KSKEY:apiKeyCredentials":{"username":"<emphasis>yourUserName</emphasis>", "apiKey":"<emphasis>yourAPIKey</emphasis>"}}}' \
      -H "Content-Type: application/json" | python -m json.tool</programlisting>
         </example>
         <note>
-            <para>In these examples, the following code is appended to the cURL commands to format (pretty print) the JSON
+            <para>In these examples, the following code is appended to the cURL commands to format (pretty-print) the JSON
                 output: <informalexample>
                     <programlisting language="bash" role="gutter: false">| python -m json.tool</programlisting>
                 </informalexample>

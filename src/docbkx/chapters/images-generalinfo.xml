@@ -4,7 +4,6 @@
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="general-api-information">
     <title>General API Information</title>
-<!--    <?dbhtml stop-chunking?>-->
     <para> Cloud Images brings access to the OpenStack Image Registry and Delivery Service directly to Rackspace open cloud
         customers, thereby providing services for discovering, registering, and retrieving virtual machine <glossterm
             baseform="image">images</glossterm> and their metadata by using a RESTful API. </para>
@@ -50,7 +49,13 @@
     <!--API Request and Response Information-->
     <xi:include href="images-how-to-API.xml"/>
 
+    <!--cURL Info-->
+    <xi:include href="images-curl.xml"/>
+
     <!--Authentication-->
-    <xi:include href="images-main-auth.xml"/>
+    <xi:include href="images-auth-main.xml"/>
     <xi:include href="images-identity-3roles.xml"/>
+    
+    <!--Export Env Vars-->
+    <xi:include href="images-export-env-vars.xml"/>
 </chapter>

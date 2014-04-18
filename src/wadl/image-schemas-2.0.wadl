@@ -67,7 +67,7 @@
     <!-- Image Schema Operations -->
     <!-- List Images Schema -->
     <method name="GET" id="getImagesSchema">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Images Schema">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get images schema">
             <para role="shortdesc">Gets a json-schema document that represents an image members entity, which is a container
                 of image member entities.</para>
             <para>The following schema is just an example. Consider only the response to the API call as
@@ -84,7 +84,7 @@
 
     <!-- Get Image Schema -->
     <method name="GET" id="getImageSchema">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Schema">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get image schema">
             <para role="shortdesc">Gets a json-schema document that represents a single image entity. </para>
             <para>The following schema is just an example. Consider only the response to the API call as
                 authoritative.</para>
@@ -101,7 +101,7 @@
     <!-- Image Member Schema Operations -->
     <!-- List Image Members Schema -->
     <method name="GET" id="getImageMembersSchemas">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Members Schema">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get image members schema">
             <para role="shortdesc">Gets a json-schema document that represents an image members entity (a container of member
                 entities).</para>
             <para>The following schema is just an example. Consider only the response to the API call as
@@ -119,7 +119,7 @@
 
     <!-- Get Image Member Schema -->
     <method name="GET" id="getImageMemberSchema">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Image Member Schema">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get image member schema">
             <para role="shortdesc">Gets a json-schema document that represents an image member entity.</para>
             <para>The following schema is just an example. Consider only the response to the API call as
                 authoritative.</para>
@@ -137,7 +137,7 @@
     <!-- Task Schema Operations (need correct text and examples)-->
     <!-- List Tasks Schemas -->
     <method name="GET" id="getTasksSchemas">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Tasks Schema">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get tasks schema">
             <para role="shortdesc">Gets a json-schema document that represents a container of tasks entities.</para>
             <para>This operation returns a list of task entities. The following response is just an example. Consider the
                 response to the API call as authoritative.</para>
@@ -153,7 +153,7 @@
 
     <!-- Get Task Schema -->
     <method name="GET" id="getTaskSchema">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get Task Schema">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get task schema">
             <para role="shortdesc">Gets a json-schema document that represents an task entity.</para>
             <para>This operation returns the specified task entity. The following response is just an example. Consider the
                 response to the API call as authoritative.</para>

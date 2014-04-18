@@ -5,22 +5,24 @@
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="curl_stuff">
-    <title>How cURL Commands Work</title>
+    <title>How cURL commands work</title>
     <para>cURL is a command-line tool that you can use to interact with Representational State Transfer (REST) interfaces.
-        cURL lets you to transmit and receive HTTP requests and responses from the command line or a shell script, which
-        enables you to work with the API directly. It is available for Linux distributions, Mac OS X, and Windows. For
+        You use cURL to transmit and receive HTTP requests and responses from the command line or a shell script, which
+        enables you to work with the API directly. cURL is available for Linux distributions, Mac OS X, and Windows. For
         information about cURL, see <link xlink:href="http://curl.haxx.se/">http://curl.haxx.se/</link>. </para>
 
-    <para>To easily run cURL examples in this guide, export your account id and authentication token. For more information,
-        see <olink condition="gs" targetdoc="ci-gettingstarted" targetptr="export-curl-vars">“Exporting cURL Environment
-            Variables”</olink><olink condition="dev" targetdoc="ci-devguide" targetptr="export-curl-vars">“Exporting cURL Environment
-            Variables”</olink></para>
+    <para condition="gs">To easily run the cURL commands shown in the examples in this guide, see <olink
+            targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting environment variables”</olink> to learn how
+        to export your account ID and authentication token.</para>
+    <para condition="dev">To easily run cURL commands, see <olink targetdoc="ci-devguide" targetptr="export_env_vars"
+            >“Exporting environment variables”</olink> to learn how to export your account id and authentication
+        token.</para>
 
-    <para>The following command is an example cURL command that updates an image:</para>
+    <para>The following command is an example cURL command that updates an image.</para>
     <example xml:id="json_example">
-        <title>cURL Command Example: JSON Request</title>
+        <title>cURL command example: JSON request</title>
         <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>
-            <prompt>%</prompt> curl https://iad.images.api.rackspacecloud.com/v2/$account/images/{image_id} \
+   <prompt>%</prompt> curl https://iad.images.api.rackspacecloud.com/v2/$account/images/{image_id} \
        -X PATCH \
        -H "X-Auth-Token: $token" \
        -H "Content-Type: application/openstack-images-v2.1-json-patch" \
@@ -34,9 +36,9 @@
             the escape character in the JSON or XML request body within the cURL command.</para>
     </note>
     <?hard-pagebreak?>
-    <para>The cURL examples in this guide use the following command-line options:</para>
+    <para>The cURL examples in this guide use the following command-line options.</para>
     <table xml:id="curl_options" rules="all" width="85%">
-        <caption>cURL Command-Line Options</caption>
+        <caption>cURL command-line options</caption>
 
         <thead>
             <tr>
@@ -63,20 +65,20 @@
                         each header with the <option>-H</option> option. </para>
                     <para>Common headers in Rackspace API requests are as follows:<itemizedlist>
                             <listitem>
-                                <para><literal>Content-Type</literal>. Required for operations with a request body. </para>
+                                <para><literal>Content-Type</literal>. (Required for operations with a request body) </para>
                                 <para>Specifies the format of the request body. Following is the syntax for the header where
                                         <parameter>format</parameter> is either <literal>json</literal> or
                                         <literal>xml</literal>.</para>
                                 <screen><computeroutput>Content-Type: application/<parameter>format</parameter></computeroutput></screen>
                             </listitem>
                             <listitem>
-                                <para><literal>X-Auth-Token</literal>. Required. Specifies the authentication token.</para>
+                                <para><literal>X-Auth-Token</literal>. (Required) Specifies the authentication token.</para>
                             </listitem>
                             <listitem>
-                                <para><literal>Accept</literal>. Optional. </para>
-                                <para>Specifies the format of the response body. Following is the syntax for the header where
-                                        <parameter>format</parameter> is either <literal>json</literal> or
-                                        <literal>xml</literal>. The default is <literal>json</literal>.</para>
+                                <para><literal>Accept</literal>. (Optional) Specifies the format of the response body.
+                                    Following is the syntax for the header where <parameter>format</parameter> is either
+                                        <literal>json</literal> or <literal>xml</literal>. The default is
+                                        <literal>json</literal>.</para>
                                 <screen><computeroutput>Accept: application/<parameter>format</parameter></computeroutput></screen>
                             </listitem>
                         </itemizedlist></para>
@@ -124,33 +126,9 @@
         <programlisting language="bash" role="gutter: false">| python -m json.tool</programlisting>
         <para>To use json.tool, import the json module. For information about json.tool, see
             <link xlink:href="http://docs.python.org/2/library/json.html">json — JSON encoder and decoder</link>. </para>
-        <para>If you run a Python version older than 2.6, import the simplejson module and use simplejson.tool. For
+        <para>If you run a Python version earlier than 2.6, import the simplejson module and use simplejson.tool. For
             information about simplejson.tool, see
             <link xlink:href="http://simplejson.googlecode.com/svn/tags/simplejson-2.0.9/docs/index.html">simplejson — JSON encoder and decoder</link>.</para>
         <para>If you do not want to pretty-print JSON output, omit this code. </para>
     </note>
-    <section xml:id="export-curl-vars">
-        <title>Exporting cURL Environment Variables</title>
-            <para>To run the cURL requests shown in this guide, export your <literal>tenant ID</literal> and the
-            <literal>token</literal> that you got during authentication (see <olink targetdoc="ci-devguide" targetptr="auth"
-            >“Authenticate through the Rackspace Cloud Identity Service”</olink>) to environment variables and then copy the
-        example from this guide to the command line, script, or tool, changing URI parameters or body parameters as
-        needed.</para>
-    <para>To export environment variables: <orderedlist>
-            <listitem>
-                <para>Export your tenant ID to the <literal>account</literal> environment variable:</para>
-                <programlisting><prompt>$</prompt> export account="tenantID"</programlisting>
-                <para>Where <literal>tenantID</literal> is your account ID.</para>
-            </listitem>
-            <listitem>
-                <para>Export your authentication token to the <literal>token</literal> environment variable:</para>
-                <programlisting><prompt>$</prompt> export token="token_id"</programlisting>
-                <para>Where <literal>token_id</literal> is the authentication token value in the <literal>id</literal> field
-                    of the <literal>token</literal> element in the authentication response. For information about finding the
-                    token ID, see <olink targetdoc="ci-devguide" targetptr="auth-response-description">“Authentication
-                        Response”</olink>.</para>
-            </listitem>
-        </orderedlist></para>
-    </section>
-
 </section>

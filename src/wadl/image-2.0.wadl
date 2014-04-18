@@ -97,13 +97,16 @@
     <!--               All Methods                             -->
     <!--*******************************************************-->
 
+    <!-- ================ -->
     <!-- Image Operations -->
+    <!-- ================ -->
+    
     <!-- List Images -->
     <method name="GET" id="listImages">
-        <wadl:doc xml:lang="EN" title="List Images" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="List images" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Lists public virtual machine (VM) images.</para>
             <para>This operation returns images you created, shared images that you accepted, and standard images. For more
-                information about standard images, see <xref linkend="stdvnon-images"/>. The response conforms to the schema
+                information about standard images, see <xref linkend="std-images"/>. The response conforms to the schema
                 found in <xref linkend="GET_getImagesSchema_schemas_images_Schema_Calls"/>.</para>
             <para> This operation returns a subset of the larger collection of images and a link that you can use to get the
                 next set of images. Always check for the presence of a <parameter>next</parameter> link and use it as the URI
@@ -149,7 +152,7 @@
 
     <!-- Get Image -->
     <method name="GET" id="getImage">
-        <wadl:doc xml:lang="EN" title="Get Image Details" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="Get image details" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Gets the details for the specified image. </para>
             <para>This operation shows the details for the image. The response body is a single image entity and conforms to
                 the schema found in <xref linkend="GET_getImageSchema_schemas_image_Schema_Calls"/>.</para>
@@ -165,7 +168,7 @@
 
     <!-- Update Image -->
     <method name="PATCH" id="updateImage">
-        <wadl:doc xml:lang="EN" title="Update Image" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="Update image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Updates the specified image. </para>
             <para>This operation allows you to update an image that you own. The request body must conform to the
                     <code>'application/openstack-images-v2.1-json-patch'</code> media type. The response conforms to the
@@ -288,7 +291,7 @@
 
     <!-- Delete Image -->
     <method name="DELETE" id="deleteImage">
-        <wadl:doc xml:lang="EN" title="Delete Image" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="Delete image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Deletes the specified image. </para>
             <para>This operation deletes the image. Make sure you set <parameter>protected</parameter> parameter to false
                 (Boolean) before performing the delete. If the operation succeeds, it returns an <errorcode>HTTP
@@ -353,43 +356,13 @@
             </representation>
         </response> &commonFaults; &postPutFaults; </method>-->
 
-    <!-- Image File Operations -->
-    <!-- Upload Image -->
-    <!--    <method name="PUT" id="storeImageFile">
-        <wadl:doc xml:lang="EN" title="Upload Binary Image Data" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Uploads binary image data. </para>
-            <para>This operation uploads the binary image data. An image record must exist before a client can store binary
-                image data with it. </para>
-            <para>Content-Type must be <code>application/octet-stream</code>. The complete request body is stored and is
-                accessible in its entirety by issuing a &GET; request to the same URI. </para>
-        </wadl:doc>
-        <response status="204">
-            <doc title="Success">Upload Request succeeded.</doc>
-        </response> &commonFaults; &postPutFaults; </method>-->
-
-    <!-- Download Image -->
-    <!--    <method name="GET" id="getImageFile">
-        <wadl:doc xml:lang="EN" title="Download Binary Image Data" xmlns="http://docbook.org/ns/docbook">
-            <para role="shortdesc">Downloads binary image data.</para>
-            <para>This operation downloads the binary image data. The response body contains the raw binary data that
-                represents the actual virtual disk. The Content-Type header is <code>application/octet-stream</code>. The
-                Content-MD5 header contains an MD5 checksum of the image data. Clients are encouraged to verify the integrity
-                of the image data that they receive by using this checksum.</para>
-        </wadl:doc>
-        <response status="200">
-            <doc title="Success">Request succeeded.</doc>
-            <wadl:doc xmlns="http://docbook.org/ns/docbook">
-                <para>If no image data exists, the response returns <errorcode>HTTP 204</errorcode> status code.</para>
-            </wadl:doc>
-        </response>
-        <response status="204">
-            <doc title="No Data Exists"> Download request failed because no data exists.</doc>
-        </response> &commonFaults; &getFaults; </method>-->
-
+    <!-- ==================== -->
     <!-- Image Tag Operations -->
+    <!-- ==================== -->
+    
     <!-- Add Image Tag -->
     <method name="PUT" id="addImageTag">
-        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add Image Tag">
+        <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add image tag">
             <para role="shortdesc">Adds the specified tag to the specified image. </para>
             <para>This operation adds the specified tag to the specified image. </para>
             <para>Include the tag you want to add in the request URI <replaceable>{tag}</replaceable> path segment of the
@@ -405,7 +378,7 @@
 
     <!-- Delete Image Tag -->
     <method name="DELETE" id="deleteImageTag">
-        <wadl:doc xml:lang="EN" title="Delete Image Tag" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="Delete image tag" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Deletes the specified tag from the image. </para>
             <para>This operation deletes the specified tag from the specified image. </para>
             <para>Include the tag you want to remove in the request URI <replaceable>{tag}</replaceable> path segment of the
@@ -420,10 +393,13 @@
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults; </method>
 
+    <!-- =============================== -->
     <!-- Image Sharing/Member Operations -->
+    <!-- =============================== -->
+    
     <!-- List Image Members -->
     <method name="GET" id="listImageMembers">
-        <wadl:doc xml:lang="EN" title="List Image Members" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="List image members" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Returns collection of members (users) with whom the image has been shared.</para>
             <para> This operation returns collection of members (users) with whom the image has been shared. The response
                 conforms to the schema found in
@@ -445,7 +421,7 @@
 
     <!-- Create Image Member -->
     <method name="POST" id="createImageMember">
-        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Create Image Member">
+        <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Create image member">
             <para role="shortdesc">Adds the specified <parameter>account ID/tenant ID</parameter> specified in the request
                 body as an image member.</para>
             <para>This operation allows you to add users to the list of members with whom the image is shared. The member
@@ -477,7 +453,7 @@
 
     <!-- Get Image Member-->
     <method name="GET" id="getImageMember">
-        <wadl:doc xml:lang="EN" title="Get Image Member Details" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="Get image member details" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Gets the details for the specified image member. </para>
             <para>This operation shows details of the image member. The response conforms to the schema found in
                 <xref linkend="GET_getImageMemberSchema_schemas_member_Schema_Calls"/>.</para>
@@ -498,7 +474,7 @@
 
     <!-- Update Image Member -->
     <method name="PUT" id="updateImageMember">
-        <wadl:doc xml:lang="EN" title="Update Image Member" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="Update image member" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Sets the specified status for the specified member of the specified image.</para>
             <para>This operation updates the image member. The response conforms to the schema found in
                 <xref linkend="GET_getImageMemberSchema_schemas_member_Schema_Calls"/>.</para>
@@ -555,7 +531,7 @@
 
     <!-- Delete Image Member -->
     <method name="DELETE" id="deleteImageMember">
-        <wadl:doc xml:lang="EN" title="Delete Image Member" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="Delete image member" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Deletes the specified <parameter>account ID/tenant ID</parameter> from the member list of
                 the specified image.</para>
             <para>This operation deletes the image member from the image. This call, which can only be made by the image
@@ -568,10 +544,13 @@
             <representation mediaType="application/json"/>
         </response> &commonFaults; &getFaults;</method>
 
+    <!-- =============== -->
     <!-- Task Operations -->
+    <!-- =============== -->
+    
     <!-- List Tasks -->
     <method name="GET" id="listTasks">
-        <wadl:doc xml:lang="EN" title="List Tasks" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="List tasks" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Lists tasks.</para>
             <para>This operation returns list of tasks, with basic details about each task. The response conforms to the
                 schema found in <xref linkend="GET_getTasksSchemas_schemas_tasks_Schema_Calls"/>.</para>
@@ -586,7 +565,7 @@
 
     <!-- Task Details -->
     <method name="GET" id="getTask">
-        <wadl:doc xml:lang="EN" title="Get Task Details" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="Get task details" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Gets the details for the specified task.</para>
             <para>This operation shows the details for the specified task, including the status, so you'll know when the
                 import or export task completes and whether it worked. For more information on statuses, see
@@ -635,7 +614,7 @@
 
     <!-- Import Image -->
     <method name="POST" id="importImage">
-        <wadl:doc xml:lang="EN" title="Task to Import Image" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="Task to import image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Imports an image using an asynchronous task request. See the request body for specific
                 details.</para>
             <para>This operation imports an image using an asynchronous task request. The request begins the import process
@@ -691,7 +670,7 @@
 
     <!-- Export Image -->
     <method name="POST" id="exportImage">
-        <wadl:doc xml:lang="EN" title="Task to Export Image" xmlns="http://docbook.org/ns/docbook">
+        <wadl:doc xml:lang="EN" title="Task to export image" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Exports an image using an asynchronous task request. See the request body for specific
                 details.</para>
             <para>This operation exports an image in VHD format using an asynchronous task request to export. The request
@@ -723,5 +702,40 @@
             </param>-->
             </representation>
         </response>&commonFaults; &postPutFaults; </method>
-
+    
+    <!-- ===================== -->
+    <!-- Image File Operations -->
+    <!-- ===================== -->
+    
+    <!-- Upload Image -->
+    <!--    <method name="PUT" id="storeImageFile">
+        <wadl:doc xml:lang="EN" title="Upload Binary Image Data" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Uploads binary image data. </para>
+            <para>This operation uploads the binary image data. An image record must exist before a client can store binary
+                image data with it. </para>
+            <para>Content-Type must be <code>application/octet-stream</code>. The complete request body is stored and is
+                accessible in its entirety by issuing a &GET; request to the same URI. </para>
+        </wadl:doc>
+        <response status="204">
+            <doc title="Success">Upload Request succeeded.</doc>
+        </response> &commonFaults; &postPutFaults; </method>-->
+    
+    <!-- Download Image -->
+    <!--    <method name="GET" id="getImageFile">
+        <wadl:doc xml:lang="EN" title="Download Binary Image Data" xmlns="http://docbook.org/ns/docbook">
+            <para role="shortdesc">Downloads binary image data.</para>
+            <para>This operation downloads the binary image data. The response body contains the raw binary data that
+                represents the actual virtual disk. The Content-Type header is <code>application/octet-stream</code>. The
+                Content-MD5 header contains an MD5 checksum of the image data. Clients are encouraged to verify the integrity
+                of the image data that they receive by using this checksum.</para>
+        </wadl:doc>
+        <response status="200">
+            <doc title="Success">Request succeeded.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook">
+                <para>If no image data exists, the response returns <errorcode>HTTP 204</errorcode> status code.</para>
+            </wadl:doc>
+        </response>
+        <response status="204">
+            <doc title="No Data Exists"> Download request failed because no data exists.</doc>
+        </response> &commonFaults; &getFaults; </method>-->
 </application>

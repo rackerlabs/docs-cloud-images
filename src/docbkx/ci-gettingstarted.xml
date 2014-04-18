@@ -9,7 +9,7 @@
       <year>2013</year>
       <holder>Rackspace US, Inc.</holder>
     </copyright>
-    <releaseinfo>API v1.0</releaseinfo>
+    <releaseinfo>API v2</releaseinfo>
     <productname>Rackspace Cloud Images</productname>
     <!--Note that the <productname> text matches the first few words of the 
       title. The build system splits the title into productname + rest of title on the pdf cover.-->
@@ -39,7 +39,7 @@
     </raxm:metadata>
   </info>
   <xi:include href="chapters/images-preface.xml"/>
-  <xi:include href="chapters/images-overview.xml"/>
   <xi:include href="chapters/images-first-things.xml"/>
   <xi:include href="chapters/images-get-started.xml"/>
+  <xi:include href="chapters/images-overview.xml"/>
 </book>

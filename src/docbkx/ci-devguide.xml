@@ -26,6 +26,12 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-04-17</date>
+        <revdescription>
+          <para>Minor formatting changes such as using sentence case for section titles.</para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-04-01</date>
         <revdescription>
           <para>Added tip about Header Content-Type in <olink targetdoc="ci-devguide"
@@ -126,7 +132,8 @@
               <para>Published externally.</para>
             </listitem>
             <listitem>
-              <para>Added <olink targetdoc="ci-devguide" targetptr="stdvnon-images">"stdvnon-images"</olink></para>
+              <para>Added standard and non-standard images to <olink targetdoc="ci-devguide" targetptr="what-and-why"
+                >“Images”</olink>.</para>
             </listitem>
             <listitem>
               <para>Added links to standard versus non-standard images and hidden images articles to <olink
