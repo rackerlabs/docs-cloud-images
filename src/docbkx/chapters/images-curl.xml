@@ -75,11 +75,9 @@
                                 <para><literal>X-Auth-Token</literal>. (Required) Specifies the authentication token.</para>
                             </listitem>
                             <listitem>
-                                <para><literal>Accept</literal>. (Optional) Specifies the format of the response body.
-                                    Following is the syntax for the header where <parameter>format</parameter> is either
-                                        <literal>json</literal> or <literal>xml</literal>. The default is
-                                        <literal>json</literal>.</para>
-                                <screen><computeroutput>Accept: application/<parameter>format</parameter></computeroutput></screen>
+                                <para><literal>Accept</literal>. (Optional) Specifies the format of the response body. The
+                                    default is <literal>json</literal>.</para>
+                                <screen><computeroutput>Accept: application/json</computeroutput></screen>
                             </listitem>
                         </itemizedlist></para>
                 </td>

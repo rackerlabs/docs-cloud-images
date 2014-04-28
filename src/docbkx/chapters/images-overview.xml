@@ -8,8 +8,11 @@
     <title><phrase condition="dev">Overview</phrase><phrase condition="gs">Find out more about images</phrase></title>
     <para>The Rackspace &CImS; enables developers to create and manipulate images, image members, and associated metadata
         through a simple Representational State Transfer (REST) web service interface.</para>
-    <para condition="dev">The <citetitle>Rackspace Cloud Images Developer Guide</citetitle> provides detailed information
-        about how to use the &CImA; v2.</para>
+    <para condition="gs">The
+        <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image_preface.html">
+                    <citetitle>Rackspace Cloud Images Developer Guide</citetitle></link>
+        provides detailed information about how to use the &CImA; v2, and this guide provides some easy steps to get started
+        using images.</para>
     <para>This chapter describes what images are, how you share images with others, and how you use asynchronous image
         tasks.</para>
     <para/>
@@ -21,13 +24,11 @@
             original server had at the time the image was created.</para>
         <para>The &CImS; provides operations that enable you to manipulate images, to import and export images (by using
             tasks), and to share images with other people.</para>
-        <para>To learn how to use an existing image, see <phrase condition="dev"><olink targetdoc="ci-devguide"
-                    targetptr="POST_importImage_tasks_Image_Task_Calls"
-                >"POST_importImage_tasks_Image_Task_Calls"</olink></phrase>
-            <phrase condition="gs">
-                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_importImage_tasks_Image_Task_Calls.html">
+        <para>To learn how to use an existing image, see <olink condition="dev" targetdoc="ci-devguide"
+                targetptr="POST_importImage_tasks_Image_Task_Calls">"POST_importImage_tasks_Image_Task_Calls"</olink>
+            <link condition="gs" xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_importImage_tasks_Image_Task_Calls.html">
                     Section 4.4.3. "Task to Import Image"</link>
-                in the <citetitle>Cloud Images Developer Guide</citetitle></phrase>.</para>
+            in the <citetitle>Cloud Images Developer Guide</citetitle>.</para>
         <para>The &CImS; enables you to use standard images (which are supported by Rackspace) and to create, share, and use
             nonstandard images (which are not supported by Rackspace). For more information, see
             <link xlink:href="http://www.rackspace.com/knowledge_center/article/rackspace-standard-and-non-standard-images"> 
@@ -81,11 +82,11 @@
         <section xml:id="image-statuses">
             <title>Image statuses</title>
             <para>Images in the &CImS; can have any of the following statuses when you display details by using the
-                instructions in <phrase condition="dev"><olink targetdoc="ci-devguide"
-                        targetptr="GET_getImage_images__image_id__Image_Calls"
-                        >"GET_getImage_images__image_id__Image_Calls"</olink></phrase>
-                <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="get-image-details">“Get details for an
-                        image”</olink></phrase>.</para>
+                instructions in <olink condition="dev" targetdoc="ci-devguide"
+                    targetptr="GET_getImage_images__image_id__Image_Calls"
+                    >"GET_getImage_images__image_id__Image_Calls"</olink>
+                <olink condition="gs" targetdoc="ci-gettingstarted" targetptr="get-image-details">“Get details for an
+                    image”</olink>.</para>
             <variablelist>
                 <varlistentry>
                     <term><emphasis role="bold">queued</emphasis></term>
@@ -133,6 +134,10 @@
         <!--Task Statuses-->
         <section xml:id="task-statuses">
             <title>Task statuses</title>
+            <para>Image tasks are used for importing images from your Cloud Files account and for exporting images to your
+                Cloud files account. For more information on image tasks, see <olink condition="dev" targetdoc="ci-devguide"
+                    targetptr="image-tasks">“Asynchronous image tasks”</olink><olink condition="gs"
+                    targetdoc="ci-gettingstarted" targetptr="image-tasks">“Asynchronous image tasks”</olink>.</para>
             <para>Image tasks in the &CImS; can have any of the following statuses when you poll them by using instructions
                 in <olink condition="dev" targetdoc="ci-devguide" targetptr="GET_getTask_tasks__taskID__Image_Task_Calls">
                     "GET_getTask_tasks__taskID__Image_Task_Calls"</olink>
@@ -168,31 +173,87 @@
         <!--Image Member Statutses-->
         <section xml:id="member-statuses">
             <title>Image member statuses</title>
+            <para>When an image producer wants to share an image with a potential image consumer, the producer creates an
+                image member, linking the image and the consumer. Once an image is shared, the image is available for the
+                consumer to use, regardless of image member status. Both producers and consumers can check the status of an
+                image member.</para>
+            <para>Image member status both controls whether the image appears in the consumer's image list and lets the
+                producer know whether the consumer acknowledges the offer. If the consumer wants the image to appear in the
+                image list, the consumer accepts the image. Otherwise, the consumer rejects the image.</para>
             <para/>
-            <para>Image members can have any of the following statuses when you view image member details by using the
-                instructions in <phrase condition="dev"><olink targetdoc="ci-devguide"
-                        targetptr="GET_getImageMember_images__image_id__members__member_id__Image_Both_Calls"
-                        >"GET_getImageMember_images__image_id__members__member_id__Image_Both_Calls"</olink></phrase>
-                <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="detail-image-member">“Get image member
-                        details”</olink></phrase>.</para>
+            <para>If the image producer no longer wants the share an image with a consumer, the producer deletes the image
+                member. Once the image member is deleted, the consumer cannot use the image, and the image is removed from
+                the consumer's image list.</para>
+            <para>For more information on image sharing, see <olink condition="dev" targetdoc="ci-devguide"
+                    targetptr="image-sharing">“Image sharing”</olink><olink condition="gs" targetdoc="ci-gettingstarted"
+                    targetptr="image-sharing">“Image sharing”</olink>.</para>
+            <tip>
+                <para><itemizedlist>
+                        <listitem>
+                            <para>Consumers and producers view the image status by using the instructions in <olink
+                                    condition="dev" targetdoc="ci-devguide"
+                                    targetptr="GET_getImageMember_images__image_id__members__member_id__Image_Both_Calls"
+                                    >"GET_getImageMember_images__image_id__members__member_id__Image_Both_Calls"</olink>
+                                <olink condition="gs" targetdoc="ci-gettingstarted" targetptr="detail-image-member">“Get
+                                    image member details”</olink></para>
+                        </listitem>
+                        <listitem>
+                            <para>Consumers change the status any time by using the instructions in <olink condition="dev"
+                                    targetdoc="ci-devguide"
+                                    targetptr="PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"
+                                    >"PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"</olink><olink
+                                    condition="gs" targetdoc="ci-gettingstarted" targetptr="update-image-member">“Update an
+                                    image member”</olink></para>
+                        </listitem>
+                        <listitem>
+                            <para>Producers add image members by using the instructions in <olink condition="dev"
+                                    targetdoc="ci-devguide"
+                                    targetptr="POST_createImageMember_images__image_id__members_Image_Producer_Calls"
+                                    >"POST_createImageMember_images__image_id__members_Image_Producer_Calls"</olink><olink
+                                    condition="gs" targetdoc="ci-gettingstarted" targetptr="create-image-member">“Create an
+                                    image member”</olink></para>
+                        </listitem>
+                        <listitem>
+                            <para>Producers delete image members by using the instructions in <olink condition="dev"
+                                    targetdoc="ci-devguide"
+                                    targetptr="DELETE_deleteImageMember_images__image_id__members__member_id__Image_Producer_Calls"
+                                    >"DELETE_deleteImageMember_images__image_id__members__member_id__Image_Producer_Calls"</olink>
+                                    ><olink condition="gs" targetdoc="ci-gettingstarted" targetptr="delete-image-member"
+                                    >“Delete an image member”</olink></para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+            </tip>
+            <para>Image members can have any of the following statuses.</para>
             <variablelist>
                 <varlistentry>
-                    <term>accepted</term>
+                    <term><emphasis role="bold">accepted</emphasis></term>
                     <listitem>
-                        <para>The member has accepted the invitation to potentially use the offered image.</para>
+                        <para>The consumer accepts the invitation to potentially use the offered image, and the image appears
+                            in the consumer's image list. The producer knows that the consumer made an active decision about
+                            the image.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">rejected</emphasis></term>
                     <listitem>
-                        <para>The member has declined the invitation to potentially use the offered image.</para>
+                        <para>The consumer declines the invitation to potentially use the offered image, and the image does
+                            not appears in the consumer's image list. The producer knows that the consumer made an active
+                            decision about the image.<note>
+                                <para>The consumer can still use the image, but must know the image ID, since the image is
+                                    not in the image list.</para>
+                            </note></para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><emphasis role="bold">pending</emphasis></term>
                     <listitem>
-                        <para>The member has neither accepted nor declined the invitation to potentially use the offered
-                            image.</para>
+                        <para>The consumer neither accepts nor declines the invitation to potentially use the offered image,
+                            and may not have even noticed the offer. The producer might elect to send a reminder that the
+                            image is available, but this is outside the scope of the &CImA;. <note>
+                                <para>The consumer can still use the image, but must know the image ID, since the image is
+                                    not in the image list.</para>
+                            </note></para>
                     </listitem>
                 </varlistentry>
             </variablelist>

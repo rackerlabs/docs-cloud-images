@@ -43,7 +43,7 @@
                     <area xml:id="credentials.xml.expires" units="linecolumn" coords="40 50"/>
                     <area xml:id="credentials.xml.token" units="linecolumn" coords="41 50"/>
                 </areaspec>
-                <programlisting language="json"><?db-font-size 55%?><xi:include href="../../common/samples/auth-response.json" parse="text"/></programlisting>
+                <programlisting language="json"><?db-font-size 80%?><xi:include href="../../common/samples/auth-response.json" parse="text"/></programlisting>
             </programlistingco>
         </example>
     </para>
@@ -92,13 +92,12 @@
             <callout arearefs="credentials.xml.expires">
                 <para><emphasis role="bold">The expiration date and time for the authentication token</emphasis> appear in
                     the <code>expires</code> field in the <code>token</code> element. After this date and time, the token is
-                    no longer valid.</para>
+                    no longer valid. Clients are encouraged to cache a token until it expires.</para>
                 <para>This field shows the maximum lifespan for a token, but a token could be manually revoked before it
-                    reaches the maximum lifespan. </para>
-                <para>Clients are encouraged to cache a token until it expires. </para>
+                    reaches the maximum lifespan.</para>
                 <note>
-                    <para>Because the authentication token expires after 24 hours, you must generate a token once a day.
-                    </para>
+                    <para>Because the authentication token expires after 24 hours, you must generate a token once a day for
+                        as long as you want to continuously access Rackspace cloud services.</para>
                 </note>
                 <para> </para>
             </callout>
@@ -112,7 +111,7 @@
     <para>For example, to list images for the IAD endpoint, export the publicURL to the <literal>images_url</literal>
         environment variable, and export the authentication token to the <literal>token</literal> environment variable.
         Finally, issue a cURL command.</para>
-    <programlisting language="bash" role="gutter: false"><?db-font-size 60%?>
+    <programlisting language="bash" role="gutter: false"><?db-font-size 80%?>
                     <prompt>$</prompt> export images_url="https://iad.images.api.rackspacecloud.com/v2"
                     <prompt>$</prompt> export token="abcd123abcd1234567a01b2cdefe3a45"
                     <prompt>$</prompt> curl -s $images_url/images -H "X-Auth-Token: $token" | python -m json.tool</programlisting>

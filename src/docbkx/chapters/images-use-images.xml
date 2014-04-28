@@ -4,6 +4,10 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="using-images">
     <title>Using images</title>
+    <para>The &CImS; provides basic operations for managing images, such as listing and updating images. You can also use
+        tasks to import images to and export images from your Cloud Files account. To learn more about the fundamentals of
+        image tasks, see <olink targetdoc="ci-gettingstarted" targetptr="image-tasks">“Asynchronous image
+        tasks”</olink>.</para>
     <para>To help you get started exploring Cloud Images, the following examples show some basic image operations with cURL
         examples:</para>
     <itemizedlist>
@@ -264,7 +268,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
     "name":"My Favorite Ubuntu",
     "status":"queued",
     "visibility":"public",
-    "tags": [""],
+    "tags": [],
     "created_at":"2012-08-11T17:15:52Z",
     "updated_at":"2012-08-11T17:15:52Z",
     "self":"/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2",

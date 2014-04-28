@@ -26,9 +26,17 @@
     </abstract>
     <revhistory>
       <revision>
-        <date>2014-04-17</date>
+        <date>2014-04-28</date>
         <revdescription>
-          <para>Minor formatting changes such as using sentence case for section titles.</para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>Minor formatting changes such as using sentence case for section titles.</para>
+            </listitem>
+            <listitem>
+              <para>Also moved all the status sections (for images, image members, and tasks) to a single <olink
+                  targetdoc="ci-devguide" targetptr="statuses">“Statuses”</olink></para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
       <revision>
@@ -133,7 +141,7 @@
             </listitem>
             <listitem>
               <para>Added standard and non-standard images to <olink targetdoc="ci-devguide" targetptr="what-and-why"
-                >“Images”</olink>.</para>
+                  >“Images”</olink>.</para>
             </listitem>
             <listitem>
               <para>Added links to standard versus non-standard images and hidden images articles to <olink

@@ -9,7 +9,7 @@
         The &CIS; is an implementation of the OpenStack Keystone Identity Service v2.0. </para>
     <para> In response to valid credentials, an authentication request to the &CIS; returns an authentication token and a
         service catalog that contains a list of all services and endpoints available for this token. The authentication token
-        expires after 24 hours, unless it is revoked earlier. After the token expire or is revoked, you must generate a new
+        expires after 24 hours, unless it is revoked earlier. After the token expires or is revoked, you must generate a new
         token if you want to continue accessing Rackspace cloud services. </para>
     <para> The following sections list the &CIS; endpoints, show you how make an authentication request, and describe the
         authentication response: </para>
@@ -103,13 +103,13 @@
             password or your API key.</para>
         <example>
             <title>Authenticate to US Identity endpoint &ndash; user name and password: JSON request</title>
-            <programlisting language="bash" role="gutter: false"><?db-font-size 55%?><prompt>$</prompt> curl -s https://identity.api.rackspacecloud.com/v2.0/tokens -X 'POST' \
+            <programlisting language="bash" role="gutter: false"><?db-font-size 80%?><prompt>$</prompt> curl -s https://identity.api.rackspacecloud.com/v2.0/tokens -X 'POST' \
      -d '{"auth":{"passwordCredentials":{"username":"<emphasis>yourUserName</emphasis>", "password":"<emphasis>yourPassword</emphasis>"}}}' \
      -H "Content-Type: application/json" | python -m json.tool</programlisting>
         </example>
         <example>
             <title>Authenticate to US Identity endpoint &ndash; user name and API key: JSON request</title>
-            <programlisting language="bash" role="gutter: false"><?db-font-size 55%?><prompt>$</prompt> curl -s https://identity.api.rackspacecloud.com/v2.0/tokens -X 'POST' \
+            <programlisting language="bash" role="gutter: false"><?db-font-size 80%?><prompt>$</prompt> curl -s https://identity.api.rackspacecloud.com/v2.0/tokens -X 'POST' \
      -d '{"auth":{"RAX-KSKEY:apiKeyCredentials":{"username":"<emphasis>yourUserName</emphasis>", "apiKey":"<emphasis>yourAPIKey</emphasis>"}}}' \
      -H "Content-Type: application/json" | python -m json.tool</programlisting>
         </example>
