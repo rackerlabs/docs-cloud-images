@@ -231,7 +231,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
 curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
 -X PATCH \
 -d'{{"op": "replace", "path": "/name", "value": "My Favorite Ubuntu"}}' \
--H "X-Auth-Token: $token" |python -m json.tool
+-H "X-Auth-Token: $token" -H "Accept: application/openstack-images-v2.1-json-patch" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>

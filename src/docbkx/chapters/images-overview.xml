@@ -13,9 +13,12 @@
                     <citetitle>Rackspace Cloud Images Developer Guide</citetitle></link>
         provides detailed information about how to use the &CImA; v2, and this guide provides some easy steps to get started
         using images.</para>
+    <para>The
+        <link xlink:href="http://www.rackspace.com/knowledge_center/article/cloud-images-frequently-asked-questions">
+                    <citetitle>Cloud Images FAQ</citetitle></link>
+        in the Knowledge Center provides more information about the &CImS;.</para>
     <para>This chapter describes what images are, how you share images with others, and how you use asynchronous image
         tasks.</para>
-    <para/>
     <section xml:id="what-and-why">
         <?dbhtml stop-chunking?>
         <title>Images</title>

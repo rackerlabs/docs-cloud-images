@@ -76,8 +76,10 @@
                             </listitem>
                             <listitem>
                                 <para><literal>Accept</literal>. (Optional) Specifies the format of the response body. The
-                                    default is <literal>json</literal>.</para>
+                                    default is <literal>json</literal>. The PATCH operation, used for updating images, requires
+                                        <literal>openstack-images-v2.1-json-patch</literal>.</para>
                                 <screen><computeroutput>Accept: application/json</computeroutput></screen>
+                                <screen><computeroutput>Accept: application/openstack-images-v2.1-json-patch</computeroutput></screen>
                             </listitem>
                         </itemizedlist></para>
                 </td>
