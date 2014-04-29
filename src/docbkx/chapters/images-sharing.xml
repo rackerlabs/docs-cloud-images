@@ -6,105 +6,116 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="image-sharing">
     <title>Image sharing</title>
-    <para>Images can be created and deleted by image producers, updated by image consumers, and listed by both producers and
-        consumers.</para>
-    <para>The producer shares an image with the consumer by making the consumer a <glossterm baseform="Image Member"
-            >member</glossterm> of that image. Image members are users who have been granted access to an image by the image
-        producer. The consumer then accepts or rejects the image by changing their image member status. After it is accepted,
-        the image appears in the consumer's image list.</para>
+    <?dbhtml stop-chunking?>
+    <para>Image producers create and share images with image consumers, allowing the consumers to use the shared image when
+        booting a server. The image producer shares an image with the consumer, granting the consumer access to the image, by
+        making the consumer a <glossterm baseform="Image Member">member</glossterm> of that image. The consumer then accepts
+        or rejects the image by changing the image member status. After it is accepted, the image appears in the consumer's
+        image list. As long as the consumer is an member of the image, the consumer can use the image, regardless of the
+        image member status.</para>
     <note>
-        <para>
-            <itemizedlist>
+        <para>In the &CImA;, the image member status three purposes: <itemizedlist>
                 <listitem>
-                    <para>Image producers add or remove image members, but may not modify the member status of an image
-                        member. </para>
+                    <para>The member status controls whether image appears in the consumer's image list. If the image member
+                        status is <literal>accepted</literal>, the image appears in the consumer's image list. Otherwise, the
+                        image does not appear in the image list.</para>
                 </listitem>
                 <listitem>
-                    <para>Image consumers change their own member status, but may not add or remove themselves as an image
-                        member. </para>
-                </listitem>
-                <listitem>
-                    <para>Image consumers can boot from any image shared by the image producer, regardless of the member
-                        status, as long as the image consumer knows the image ID.</para>
-                </listitem>
-            </itemizedlist>
-        </para>
-    </note>
-    <para/>
-    <para>Following is a sample workflow for image sharing, after image creation:</para>
-    <note>
-        <para>Communication between the image producer and the consumer, which can include notifications, questions, and
-            requests, must be arranged independent of the &CImA;, via email, phone, Twitter, or other channels. </para>
-    </note>
-    <orderedlist>
-        <listitem>
-            <para>The producer posts the availability of specific images.</para>
-        </listitem>
-        <listitem>
-            <para>A potential consumer provides the producer with the consumer's tenant ID. Optionally, the producer might
-                request the consumer's email address for notification purposes, but this is outside the scope of the
-                API.</para>
-        </listitem>
-        <listitem>
-            <para>The producer uses the &CImA; to share the image with the consumer.</para>
-            <para><phrase condition="dev"><olink targetdoc="ci-devguide"
-                        targetptr="POST_createImageMember_images__image_id__members_Image_Producer_Calls"
-                        >"POST_createImageMember_images__image_id__members_Image_Producer_Calls"</olink> shows the API method
-                    details.</phrase>
-                <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="create-image-member">“Create an image
-                        member”</olink> shows an example.</phrase></para>
-        </listitem>
-        <listitem>
-            <para>Optionally, the producer notifies the consumer that the image has been shared and provides the image's ID
-                    (<glossterm>UUID</glossterm>).
-                <!--The consumer can also use the operation <phrase condition="dev"><olink
-                        targetdoc="ci-devguide" targetptr="GET_listImages_images_Image_Calls"
-                        >"GET_listImages_images_Image_Calls"</olink></phrase>
-                <phrase condition="gs">
-                    <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_listImages_images_Image_Calls.html">
-                        Section 4.1.1 "List Images"</link> of the <citetitle>Rackspace Cloud Images Developer Guide</citetitle></phrase>
-                (using filter ?visibility=shared&amp;member_status=pending&amp;owner=<replaceable>producer's tenant
-                    ID</replaceable>) to discover if shared images are available from the producer.--></para>
-        </listitem>
-        <listitem>
-            <para>If the consumer wants the image to appear in the image list, the consumer uses the &CImA; to change the
-                image member status to <literal>accepted</literal>.</para>
-            <para><phrase condition="dev"><olink targetdoc="ci-devguide"
-                        targetptr="PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"
-                        >"PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"</olink> shows the
-                    API method details.</phrase>
-                <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="update-image-member">“Update an image
-                        member”</olink> shows an example.</phrase></para>
-        </listitem>
-        <listitem>
-            <para>If the consumer subsequently wants to hide the image, the consumer uses the &CImA; to change the image
-                member status to <literal>rejected</literal>. If the consumer wants to hide the image, but is open to the
-                possibility of being reminded by the producer that the image is available, the consumer uses the &CImA; to
-                change the image member status to <literal>pending</literal>. </para>
-            <para><phrase condition="dev"><olink targetdoc="ci-devguide"
-                        targetptr="PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"
-                        >"PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"</olink></phrase>
-                <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="update-image-member">“Update an image
-                        member”</olink></phrase> shows the API method details.</para>
-        </listitem>
-    </orderedlist>
-    <note>
-        <para>In the &CImA;, the image member status has two possible effects: <itemizedlist>
-                <listitem>
-                    <para>If the image member status is not <literal>accepted</literal>, the image does not appear in the
-                        consumer's default image list. </para>
-                </listitem>
-                <listitem>
-                    <para>The consumer's image list can be filtered by status to see shared images in the various image
-                        member statuses. For example, the consumer can discover images that have been shared with him or her
-                        by using the instructions in <phrase condition="dev"><olink targetdoc="ci-devguide"
-                                targetptr="GET_listImages_images_Image_Calls"
-                            >"GET_listImages_images_Image_Calls"</olink></phrase>
+                    <para>The member status can be used to filter the consumer's image list. For example, the consumer can
+                        discover images that have been shared with him or her by using the instructions in <phrase
+                            condition="dev"><olink targetdoc="ci-devguide" targetptr="GET_listImages_images_Image_Calls"
+                                >"GET_listImages_images_Image_Calls"</olink></phrase>
                         <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="list-images">“List
-                                images”</olink></phrase> and filtering on
+                                images”</olink></phrase> and filtering the request by using
                             <code>visibility=shared&amp;member_status=pending</code>.</para>
                 </listitem>
+                <listitem>
+                    <para>The member status let's the producer know whether the consumer has seen and acted on the shared
+                        image. If the status is <literal>accepted</literal> or <literal>rejected</literal>, the consumer has
+                        definitely seen the shared image. If the status is <literal>pending</literal>, the consumer may not
+                        have seen the request or may not have made a decision about it.</para>
+                </listitem>
             </itemizedlist>
         </para>
+        <para>For more information on image member status, see <olink condition="dev" targetdoc="ci-devguide"
+                targetptr="member-statuses">“Image member statuses”</olink><olink condition="gs"
+                targetdoc="ci-gettingstarted" targetptr="member-statuses">“Image member statuses”</olink>.</para>
     </note>
+    <para> Image producers and consumers have different abilities and responsibilities regarding image sharing. The following
+        list shows these abilities:<itemizedlist>
+            <listitem>
+                <para>Image producers add or remove image members, but they may not modify the member status of an image
+                    member. </para>
+            </listitem>
+            <listitem>
+                <para>Image producers and consumers view the status of image members. When listing image members, the
+                    producers see all the image members, and the consumers see only themselves.</para>
+            </listitem>
+            <listitem>
+                <para>Image consumers change their own member status, but they may not add or remove themselves as an image
+                    member. </para>
+            </listitem>
+
+            <listitem>
+                <para>Image consumers can boot from any image shared by the image producer, regardless of the member status,
+                    as long as the consumer knows the image ID.</para>
+            </listitem>
+        </itemizedlist>
+    </para>
+
+    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="sharing-flow">
+        <title>Sample workflow for image sharing, after image creation</title>
+        <!--<para>Following is a sample workflow for image sharing, after image creation:</para>-->
+        <note>
+            <para>Communications between the image producer and the consumer, like those described in this sample workflow,
+                can include notifications, questions, and requests and must be arranged independent of the &CImA;, via email,
+                phone, Twitter, or other channels.</para>
+        </note>
+        <orderedlist>
+            <listitem>
+                <para>The producer posts the availability of specific images.</para>
+            </listitem>
+            <listitem>
+                <para>A potential consumer provides the producer with the consumer's tenant ID. Optionally, the producer
+                    might request the consumer's email address for notification purposes, but this is outside the scope of
+                    the API.</para>
+            </listitem>
+            <listitem>
+                <para>The producer uses the &CImA; to share the image with the consumer.</para>
+                <para><phrase condition="dev"><olink targetdoc="ci-devguide"
+                            targetptr="POST_createImageMember_images__image_id__members_Image_Producer_Calls"
+                            >"POST_createImageMember_images__image_id__members_Image_Producer_Calls"</olink> shows the API
+                        method details.</phrase>
+                    <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="create-image-member">“Create an
+                            image member”</olink> shows an example.</phrase></para>
+            </listitem>
+            <listitem>
+                <para>Optionally, the producer notifies the consumer that the image has been shared and provides the image's
+                    ID (<glossterm>UUID</glossterm>).</para>
+            </listitem>
+            <listitem>
+                <para>If the consumer wants the image to appear in the image list, the consumer uses the &CImA; to change the
+                    image member status to <literal>accepted</literal>.</para>
+                <para><phrase condition="dev"><olink targetdoc="ci-devguide"
+                            targetptr="PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"
+                            >"PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"</olink> shows
+                        the API method details.</phrase>
+                    <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="update-image-member">“Update an
+                            image member”</olink> shows an example.</phrase></para>
+            </listitem>
+            <listitem>
+                <para>If the consumer subsequently wants to hide the image, the consumer uses the &CImA; to change the image
+                    member status to <literal>rejected</literal>. If the consumer wants to hide the image, but is open to the
+                    possibility of being reminded by the producer that the image is available, the consumer uses the &CImA;
+                    to change the image member status to <literal>pending</literal>. </para>
+                <para><phrase condition="dev"><olink targetdoc="ci-devguide"
+                            targetptr="PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"
+                            >"PUT_updateImageMember_images__image_id__members__member_id__Image_Consumer_Calls"</olink> shows
+                        the API method details.</phrase>
+                    <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="update-image-member">“Update an
+                            image member”</olink> shows an example.</phrase></para>
+            </listitem>
+        </orderedlist>
+    </section>
 </section>

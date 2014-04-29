@@ -3,7 +3,7 @@
 %common;]>
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="general-api-information">
-    <title>General API Information</title>
+    <title>General API information</title>
     <para> Cloud Images brings access to the OpenStack Image Registry and Delivery Service directly to Rackspace open cloud
         customers, thereby providing services for discovering, registering, and retrieving virtual machine <glossterm
             baseform="image">images</glossterm> and their metadata by using a RESTful API. </para>

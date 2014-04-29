@@ -11,13 +11,20 @@
         operation, such as importing or exporting an image. The request results in the creation of a disposable task resource
         that can be polled for information about the status of the operation.</para>
     <para>After you initiate an image import or export, poll the status of the created task by using the instructions in
-            <phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="GET_getTask_tasks__taskID__Image_Task_Calls"
-                >"GET_getTask_tasks__taskID__Image_Task_Calls"</olink></phrase>
-        <phrase condition="gs"><olink targetdoc="ci-gettingstarted" targetptr="get-task-details">“Get details for a
-                task”</olink></phrase>. When the task resource reaches a final status of <literal>success</literal> or
-            <literal>failure</literal>, the poll response includes an expiration date and time stamp. After that expiration
-        date and time, the disposable task resource itself expires and is subject to deletion. However, the result of the
-        task, such as an imported or exported image, does not expire.</para>
+            <olink condition="dev" targetdoc="ci-devguide" targetptr="GET_getTask_tasks__taskID__Image_Task_Calls"
+            >"GET_getTask_tasks__taskID__Image_Task_Calls"</olink>
+        <phrase condition="gs">
+            <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html">
+                        Section 4.4.2. "Get task details"</link>
+            of the &CImDG;</phrase> until the task completes. <phrase condition="gs"><olink targetdoc="ci-gettingstarted"
+                targetptr="get-task-details">“Get details for a task”</olink> of this guide shows an example</phrase>.</para>
+    <para>When the task resource reaches a final status of <literal>success</literal> or <literal>failure</literal>, the poll
+        response includes an expiration date and time stamp. After that expiration date and time, the disposable task
+        resource itself expires and is subject to deletion. However, the result of the task, such as an imported or exported
+        image, neither expires nor disappears.</para>
+    <para>For more information on task statuses, see <olink condition="dev" targetdoc="ci-devguide" targetptr="task-statuses"
+            >“Task statuses”</olink><olink condition="gs" targetdoc="ci-gettingstarted" targetptr="task-statuses">“Task
+            statuses”</olink>.</para>
     <note>
         <para>Tasks in the &CImA; conform to the uniform task interface provided by the OpenStack Images v2 API for all
             OpenStack installations, with each task resource containing both input and result parameters. The API design
@@ -33,7 +40,11 @@
             operations <phrase condition="gs">described in the &CImDG;</phrase> detail what Rackspace requires for these
             parameters.</para>
     </note>
-    <para>Following is the high-level process for importing an image:<orderedlist>
+    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="import-tasks-flow">
+        <title>High-level process for importing an image</title>
+        <!--<para>Following is the high-level process for importing an image:</para>-->
+        <orderedlist>
             <listitem>
                 <para>Put the image into your Cloud Files account.</para>
             </listitem>
@@ -44,7 +55,8 @@
                     <phrase condition="gs">
                         <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_importImage_tasks_Image_Task_Calls.html">
                         Section 4.4.3. "Task to import image"</link>
-                        of the &CImDG;</phrase>.</para>
+                        of the &CImDG;. <olink targetdoc="ci-gettingstarted" targetptr="import-image">“Import an image by
+                            using tasks”</olink> of this guide shows an example</phrase>.</para>
             </listitem>
             <listitem>
                 <para>The &CImS; begins the process of fetching the image from your cloud storage and creating a new image
@@ -57,11 +69,17 @@
                     <phrase condition="gs">
                         <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html">
                         Section 4.4.2. "Get task details"</link>
-                        of the &CImDG;</phrase> until the task completes.</para>
+                        of the &CImDG;</phrase> until the task completes. <phrase condition="gs"><olink
+                            targetdoc="ci-gettingstarted" targetptr="get-task-details">“Get details for a task”</olink> of
+                        this guide shows an example.</phrase></para>
             </listitem>
         </orderedlist>
-    </para>
-    <para>Following is the high-level process for importing an image:<orderedlist>
+    </section>
+    <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="export-tasks-flow">
+        <title>High-level process for exporting an image</title>
+        <!--   <para>Following is the high-level process for exporting an image:</para>-->
+        <orderedlist>
             <listitem>
                 <para> Determine the UUID of the image you want to export.</para>
             </listitem>
@@ -72,7 +90,8 @@
                     <phrase condition="gs">
                         <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/POST_exportImage_tasks_Image_Task_Calls.html">
                         Section 4.4.4. "Task to export image"</link>
-                        of the &CImDG;</phrase>.</para>
+                        of the &CImDG;. <olink targetdoc="ci-gettingstarted" targetptr="export-image">“Export an image by
+                            using tasks”</olink> of this guide shows an example</phrase>.</para>
             </listitem>
             <listitem>
                 <para>The &CImS; begins to process the image, to convert it to a convenient format for a future export of the
@@ -80,14 +99,16 @@
                     to your Cloud Files account. This activity takes some time.</para>
             </listitem>
             <listitem>
-                <para>Poll the task status by using the instructions in <phrase condition="dev"><olink
-                            targetdoc="ci-devguide" targetptr="GET_getTask_tasks__taskID__Image_Task_Calls"
-                            >"GET_getTask_tasks__taskID__Image_Task_Calls"</olink></phrase>
+                <para>Poll the task status by using the instructions in <olink condition="dev" targetdoc="ci-devguide"
+                        targetptr="GET_getTask_tasks__taskID__Image_Task_Calls"
+                        >"GET_getTask_tasks__taskID__Image_Task_Calls"</olink>
                     <phrase condition="gs">
                         <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html">
                         Section 4.4.2. "Get task details"</link>
-                        of the &CImDG;</phrase> until the task completes.</para>
+                        of the &CImDG;</phrase> until the task completes. <phrase condition="gs"><olink
+                            targetdoc="ci-gettingstarted" targetptr="get-task-details">“Get details for a task”</olink> of
+                        this guide shows an example.</phrase></para>
             </listitem>
         </orderedlist>
-    </para>
+    </section>
 </section>

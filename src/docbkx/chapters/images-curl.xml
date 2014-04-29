@@ -75,11 +75,11 @@
                                 <para><literal>X-Auth-Token</literal>. (Required) Specifies the authentication token.</para>
                             </listitem>
                             <listitem>
-                                <para><literal>Accept</literal>. (Optional) Specifies the format of the response body.
-                                    Following is the syntax for the header where <parameter>format</parameter> is either
-                                        <literal>json</literal> or <literal>xml</literal>. The default is
-                                        <literal>json</literal>.</para>
-                                <screen><computeroutput>Accept: application/<parameter>format</parameter></computeroutput></screen>
+                                <para><literal>Accept</literal>. (Optional) Specifies the format of the response body. The
+                                    default is <literal>json</literal>. The PATCH operation, used for updating images, requires
+                                        <literal>openstack-images-v2.1-json-patch</literal>.</para>
+                                <screen><computeroutput>Accept: application/json</computeroutput></screen>
+                                <screen><computeroutput>Accept: application/openstack-images-v2.1-json-patch</computeroutput></screen>
                             </listitem>
                         </itemizedlist></para>
                 </td>
