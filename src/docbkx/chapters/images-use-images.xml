@@ -244,10 +244,16 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
-                                provides the authentication token. If you previously exported the token environment variable
-                                as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting
-                                    environment variables”</olink>, you can use the $token variable. Otherwise, substitute
-                                your actual token for the variable.</para>
+                                provides the authentication token and the special format for the response body
+                                    (<literal>application/openstack-images-v2.1-json-patch</literal> instead of
+                                    <literal>application/json</literal>). If you previously exported the token environment
+                                variable as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars"
+                                    >“Exporting environment variables”</olink>, you can use the $token variable. Otherwise,
+                                substitute your actual token for the variable. To learn more about the response body format,
+                                see
+                                <link xlink:href="http://docs-internal.rackspace.com/images/api/v2/ci-devguide/content/patch-method.html">
+                    2.4. HTTP PATCH method</link>
+                                in the <citetitle>Cloud Images Developer Guide</citetitle></para>
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
