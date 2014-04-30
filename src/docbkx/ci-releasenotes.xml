@@ -33,7 +33,7 @@
     -->
     <raxm:metadata xmlns:raxm="http://docs.rackspace.com/api/metadata">
       <raxm:displayname>Release Notes</raxm:displayname>
-      <raxm:product version="v2.0">images</raxm:product>
+      <raxm:product version="v2">images</raxm:product>
       <raxm:priority>30</raxm:priority>
     </raxm:metadata>
   </info>
