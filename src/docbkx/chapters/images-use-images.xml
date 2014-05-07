@@ -71,7 +71,6 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images -H "X-Auth-
 {
    "images":
    [
-      { ... }
       {
         "auto_disk_config": "disabled",
         "cache_in_nova": "True",

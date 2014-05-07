@@ -16,6 +16,17 @@
     <pubdate><!--If you leave the <pubdate> element empty, the build system inserts today's date automatically. --></pubdate>
     <revhistory>
       <revision>
+        <date>2014-05-07</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Corrected json example in <olink targetdoc="ci-gettingstarted" targetptr="list-images">“List
+                  images”</olink>.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-04-29</date>
         <revdescription>
           <para>Initial release.</para>
