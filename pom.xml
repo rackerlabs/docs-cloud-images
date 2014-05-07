@@ -47,8 +47,7 @@
 			<plugin>
 				<groupId>com.rackspace.cloud.api</groupId>
 				<artifactId>clouddocs-maven-plugin</artifactId>
-				<version>1.15.0</version>
-				<!--<version>2.0.0</version>-->
+				<version>2.0.0</version>
 				<executions>
 					<!-- HTML for images-client-devguide -->
 					<execution>
@@ -74,8 +73,7 @@
 						</goals>
 						<phase>generate-sources</phase>
 						<configuration>
-							<includes> ci-gettingstarted.xml
-							</includes>
+							<includes> ci-gettingstarted.xml </includes>
 							<profileCondition>gs</profileCondition>
 							<!-- These parameters only apply to webhelp -->
 							<!--<statusBarText>DRAFT</statusBarText>-->
