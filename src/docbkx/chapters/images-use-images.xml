@@ -230,7 +230,8 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
 curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
 -X PATCH \
 -d'{{"op": "replace", "path": "/name", "value": "My Favorite Ubuntu"}}' \
--H "X-Auth-Token: $token" -H "Accept: application/openstack-images-v2.1-json-patch" |python -m json.tool
+-H "Content-Type: application/json" -H "X-Auth-Token: $token" \
+-H "Accept: application/openstack-images-v2.1-json-patch" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
@@ -243,15 +244,15 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
-                                provides the authentication token and the special format for the response body
-                                    (<literal>application/openstack-images-v2.1-json-patch</literal> instead of
+                                provides the content type, the authentication token, and the special format for the response
+                                body (<literal>application/openstack-images-v2.1-json-patch</literal> instead of
                                     <literal>application/json</literal>). If you previously exported the token environment
                                 variable as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars"
                                     >“Exporting environment variables”</olink>, you can use the $token variable. Otherwise,
                                 substitute your actual token for the variable. To learn more about the response body format,
                                 see
                                 <link xlink:href="http://docs-internal.rackspace.com/images/api/v2/ci-devguide/content/patch-method.html">
-                    2.4. HTTP PATCH method</link>
+                                      2.4. HTTP PATCH method</link>
                                 in the <citetitle>Cloud Images Developer Guide</citetitle></para>
                         </listitem>
                         <listitem>
@@ -301,7 +302,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
 curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
 -X POST \
 -d '{"type": "import","input":{"image_properties": {"name": "My excellent custom image"},"import_from": "exports/my-excellent-image.vhd"}}' \
--H "X-Auth-Token: $token" |python -m json.tool
+-H "Content-Type: application/json" -H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
@@ -314,10 +315,10 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
-                                provides the authentication token. If you previously exported the token environment variable
-                                as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting
-                                    environment variables”</olink>, you can use the $token variable. Otherwise, substitute
-                                your actual token for the variable.</para>
+                                provides the content type and the authentication token. If you previously exported the token
+                                environment variable as instructed in <olink targetdoc="ci-gettingstarted"
+                                    targetptr="export_env_vars">“Exporting environment variables”</olink>, you can use the
+                                $token variable. Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
@@ -377,7 +378,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
 curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
 -X POST \
 -d '{"type": "export","input":{"image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6","receiving_swift_container": "exports"}}' \
--H "X-Auth-Token: $token" |python -m json.tool
+-H "Content-Type: application/json" -H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
@@ -390,10 +391,10 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
-                                provides the authentication token. If you previously exported the token environment variable
-                                as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting
-                                    environment variables”</olink>, you can use the $token variable. Otherwise, substitute
-                                your actual token for the variable.</para>
+                                provides the content type and the authentication token. If you previously exported the token
+                                environment variable as instructed in <olink targetdoc="ci-gettingstarted"
+                                    targetptr="export_env_vars">“Exporting environment variables”</olink>, you can use the
+                                $token variable. Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>

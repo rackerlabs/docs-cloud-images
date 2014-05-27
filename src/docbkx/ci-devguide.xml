@@ -26,6 +26,20 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-05-27</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Updated content for <olink targetdoc="ci-devguide" targetptr="image-tasks">“Asynchronous image
+                  tasks”</olink></para>
+            </listitem>
+            <listitem>
+              <para>Add figure for <olink targetdoc="ci-devguide" targetptr="image-sharing">“Image sharing”</olink></para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-04-29</date>
         <revdescription>
           <itemizedlist spacing="compact">

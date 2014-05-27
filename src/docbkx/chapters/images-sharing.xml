@@ -8,11 +8,18 @@
     <title>Image sharing</title>
     <?dbhtml stop-chunking?>
     <para>Image producers create and share images with image consumers, allowing the consumers to use the shared image when
-        booting a server. The image producer shares an image with the consumer, granting the consumer access to the image, by
-        making the consumer a <glossterm baseform="Image Member">member</glossterm> of that image. The consumer then accepts
-        or rejects the image by changing the image member status. After it is accepted, the image appears in the consumer's
-        image list. As long as the consumer is an member of the image, the consumer can use the image, regardless of the
-        image member status.</para>
+        booting a server. The producer shares an image with the consumer by making the consumer a <glossterm
+            baseform="Image Member">member</glossterm> of that image. The consumer then accepts or rejects the image by
+        changing the image member status. After it is accepted, the image appears in the consumer's image list. As long as
+        the consumer is an member of the image, the consumer can use the image, regardless of the image member status.</para>
+    <figure>
+        <title>Sharing an image</title>
+        <mediaobject>
+            <imageobject>
+                <imagedata fileref="../../figures/image-member.png" contentwidth="3in"/>
+            </imageobject>
+        </mediaobject>
+    </figure>
     <note>
         <para>In the &CImA;, the image member status three purposes: <itemizedlist>
                 <listitem>

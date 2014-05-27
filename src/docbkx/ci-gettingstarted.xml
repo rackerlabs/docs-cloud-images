@@ -16,14 +16,33 @@
     <pubdate><!--If you leave the <pubdate> element empty, the build system inserts today's date automatically. --></pubdate>
     <revhistory>
       <revision>
-        <date>2014-05-07</date>
+        <date>2014-05-27</date>
         <revdescription>
           <itemizedlist>
             <listitem>
-              <para>Corrected json example in <olink targetdoc="ci-gettingstarted" targetptr="list-images">“List
-                  images”</olink>.</para>
+              <para>Added Content-type headers to operations: <olink targetdoc="ci-gettingstarted"
+                  targetptr="create-image-member">“Create an image member”</olink>, <olink targetdoc="ci-gettingstarted"
+                  targetptr="update-image-member">“Update an image member”</olink>, <olink targetdoc="ci-gettingstarted"
+                  targetptr="update-image">“Update an image”</olink>, <olink targetdoc="ci-gettingstarted"
+                  targetptr="import-image">“Import an image by using tasks”</olink>, and <olink targetdoc="ci-gettingstarted"
+                  targetptr="export-image">“Export an image by using tasks”</olink>.</para>
+            </listitem>
+            <listitem>
+              <para>Updated content for <olink targetdoc="ci-gettingstarted" targetptr="image-tasks">“Asynchronous image
+                  tasks”</olink></para>
+            </listitem>
+            <listitem>
+              <para>Add figure for <olink targetdoc="ci-gettingstarted" targetptr="image-sharing">“Image
+                sharing”</olink></para>
             </listitem>
           </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2014-05-07</date>
+        <revdescription>
+          <para>Corrected json example in <olink targetdoc="ci-gettingstarted" targetptr="list-images">“List
+            images”</olink>.</para>
         </revdescription>
       </revision>
       <revision>

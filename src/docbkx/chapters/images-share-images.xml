@@ -45,7 +45,8 @@
                 <programlisting>
 curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
 -X POST \
--d '{"member":"8989447062e04a818baf9e073fd04fa7"}' -H "X-Auth-Token: $token" |python -m json.tool
+-d '{"member":"8989447062e04a818baf9e073fd04fa7"}' -H "X-Auth-Token: $token" 
+-H "Content-Type:application/json" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
@@ -58,10 +59,10 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
-                                provides the authentication token. If you previously exported the token environment variable
-                                as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting
-                                    environment variables”</olink>, you can use the $token variable. Otherwise, substitute
-                                your actual token for the variable.</para>
+                                provides the content type and the authentication token. If you previously exported the token
+                                environment variable as instructed in <olink targetdoc="ci-gettingstarted"
+                                    targetptr="export_env_vars">“Exporting environment variables”</olink>, you can use the
+                                $token variable. Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
@@ -222,8 +223,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                     the offer of the shared image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
 curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/8989447062e04a818baf9e073fd04fa7 \
--X PUT \
--d '{"status":"accepted"}' -H "X-Auth-Token: $token" |python -m json.tool
+-X PUT -d '{"status":"accepted"}' -H "Content-Type: application/json" -H "X-Auth-Token: $token"|python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
@@ -236,10 +236,10 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-H</emphasis>: Specified header information. In this case, it
-                                provides the authentication token. If you previously exported the token environment variable
-                                as instructed in <olink targetdoc="ci-gettingstarted" targetptr="export_env_vars">“Exporting
-                                    environment variables”</olink>, you can use the $token variable. Otherwise, substitute
-                                your actual token for the variable.</para>
+                                provides the content-type and the authentication token. If you previously exported the token
+                                environment variable as instructed in <olink targetdoc="ci-gettingstarted"
+                                    targetptr="export_env_vars">“Exporting environment variables”</olink>, you can use the
+                                $token variable. Otherwise, substitute your actual token for the variable.</para>
                         </listitem>
                         <listitem>
                             <para><emphasis role="bold">-d</emphasis>: Specifies the JSON request body.</para>
