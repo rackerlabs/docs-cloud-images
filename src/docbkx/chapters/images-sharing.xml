@@ -37,7 +37,7 @@
                             <code>visibility=shared&amp;member_status=pending</code>.</para>
                 </listitem>
                 <listitem>
-                    <para>The member status let's the producer know whether the consumer has seen and acted on the shared
+                    <para>The member status lets the producer know whether the consumer has seen and acted on the shared
                         image. If the status is <literal>accepted</literal> or <literal>rejected</literal>, the consumer has
                         definitely seen the shared image. If the status is <literal>pending</literal>, the consumer may not
                         have seen the request or may not have made a decision about it.</para>
