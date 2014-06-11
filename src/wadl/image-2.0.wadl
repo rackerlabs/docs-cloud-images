@@ -36,8 +36,8 @@
             <method href="#listImages"/>
             <resource id="ImageID" path="{image_id}">
                 <param name="image_id" style="template" type="csapi:uuid">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image ID">
-                        <p>Image ID stored through the image API, typically a UUID.</p>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Image ID">
+                        <para>Image ID stored through the image API, typically a UUID.</para>
                     </wadl:doc>
                 </param>
                 <method href="#getImage"/>
@@ -45,14 +45,14 @@
                 <method href="#deleteImage"/>
                 <!--<method href="#createImage"/>-->
                 <!--<resource id="file" path="file">
-                        <method href="#storeImageFile"/>
-                        <method href="#getImageFile"/>
-                    </resource>-->
+                            <method href="#storeImageFile"/>
+                            <method href="#getImageFile"/>
+                        </resource>-->
                 <resource id="Tags" path="tags">
                     <resource id="Tagstag" path="{tag}">
                         <param name="tag" style="template" type="xsd:string">
-                            <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Tag">
-                                <p>Image tag (may be up to 255 characters in length).</p>
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Tag">
+                                <para>Image tag (may be up to 255 characters in length).</para>
                             </wadl:doc>
                         </param>
                         <method href="#addImageTag"/>
@@ -64,9 +64,9 @@
                     <method href="#listImageMembers"/>
                     <resource id="MemberID" path="{member_id}">
                         <param name="member_id" style="template" type="xsd:string">
-                            <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Members">
-                                <p>Image member ID. For example, the tenant ID of the user with whom the image is being
-                                    shared.</p>
+                            <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Members">
+                                <para>Image member ID. For example, the tenant ID of the user with whom the image is being
+                                    shared.</para>
                             </wadl:doc>
                         </param>
                         <method href="#getImageMember"/>
@@ -82,15 +82,15 @@
             <method href="#listTasks"/>
             <resource id="TaskID" path="{taskID}">
                 <param name="task_id" style="template" type="csapi:uuid">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Task ID">
-                        <p>The task id. This task id is the same as the id parameter returned in the Import Task or Export
-                            Task operation response body.</p>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Task ID">
+                        <para>The task id. This task id is the same as the id parameter returned in the Import Task or Export
+                            Task operation response body.</para>
                     </wadl:doc>
                 </param>
                 <method href="#getTask"/>
+                <!--</resource>-->
             </resource>
         </resource>
-        <!--</resource>-->
     </resources>
 
     <!--*******************************************************-->
@@ -100,7 +100,7 @@
     <!-- ================ -->
     <!-- Image Operations -->
     <!-- ================ -->
-    
+
     <!-- List Images -->
     <method name="GET" id="listImages">
         <wadl:doc xml:lang="EN" title="List images" xmlns="http://docbook.org/ns/docbook">
@@ -262,19 +262,20 @@
                 </wadl:doc>
                 <param name="." style="plain" path="$.parameters "/>
                 <param name="op" style="plain" type="xsd:string" required="true" path="$.parameters.op">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
-                        <p>The operation to be executed (<code>add</code>, <code>remove</code>, or <code>replace</code>).</p>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The operation to be executed (<code>add</code>, <code>remove</code>, or
+                            <code>replace</code>).</para>
                     </wadl:doc>
                 </param>
                 <param name="path" style="plain" type="xsd:string" required="true" path="$.parameters.path">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
-                        <p>The location within the image where the operation is to be performed.</p>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The location within the image where the operation is to be performed.</para>
                     </wadl:doc>
                 </param>
                 <param name="value" style="plain" type="xsd:string" required="false" path="$.parameters.value">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN">
-                        <p>The actual value to be added or replaced. It is not required for the <code>delete</code>
-                            operation.</p>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                        <para>The actual value to be added or replaced. It is not required for the <code>delete</code>
+                            operation.</para>
                     </wadl:doc>
                 </param>
             </representation>
@@ -306,7 +307,7 @@
         </response> &commonFaults; &getFaults;</method>
 
     <!--Create Image -->
-    <!--    <method name="POST" id="createImage">
+    <!--<method name="POST" id="createImage">
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Create Image">
             <para role="shortdesc">Creates a virtual machine (VM) image. </para>
             <para>This operation creates an image with a Location header that contains the newly-created URI for the image.
@@ -320,25 +321,25 @@
                     </xsdxt:sample>
                 </doc>
                 <param name="name" style="plain" type="xsd:string" required="true" path="$.name">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Images name">
-                        <p>Name for the image. The name of an image is not unique to an image node, because the API does not
-                            expect users to know the names of images owned by others.</p>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Images name">
+                        <para>Name for the image. The name of an image is not unique to an image node, because the API does
+                            not expect users to know the names of images owned by others.</para>
                     </wadl:doc>
                 </param>
                 <param name="id" style="plain" type="csapi:uuid" required="false" path="$.id">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Image ID">
-                        <p>The image ID.</p>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Image ID">
+                        <para>The image ID.</para>
                     </wadl:doc>
                 </param>
                 <param name="visibility" style="plain" type="xsd:string" required="false">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Visibility">
-                        <p>Image visibility. Valid values are <code>public</code> or <code>private</code>. The default is
-                                <code>public</code>.</p>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Visibility">
+                        <para>Image visibility. Valid values are <code>public</code> or <code>private</code>. The default is
+                                <code>public</code>.</para>
                     </wadl:doc>
                 </param>
                 <param name="tags" style="plain" type="xsd:dict" required="false" path="$.tags">
-                    <wadl:doc xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" title="Tags">
-                        <p>The user-defined image tags.</p>
+                    <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Tags">
+                        <para>The user-defined image tags.</para>
                     </wadl:doc>
                 </param>
             </representation>
@@ -359,7 +360,7 @@
     <!-- ==================== -->
     <!-- Image Tag Operations -->
     <!-- ==================== -->
-    
+
     <!-- Add Image Tag -->
     <method name="PUT" id="addImageTag">
         <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN" title="Add image tag">
@@ -396,7 +397,7 @@
     <!-- =============================== -->
     <!-- Image Sharing/Member Operations -->
     <!-- =============================== -->
-    
+
     <!-- List Image Members -->
     <method name="GET" id="listImageMembers">
         <wadl:doc xml:lang="EN" title="List image members" xmlns="http://docbook.org/ns/docbook">
@@ -547,7 +548,7 @@
     <!-- =============== -->
     <!-- Task Operations -->
     <!-- =============== -->
-    
+
     <!-- List Tasks -->
     <method name="GET" id="listTasks">
         <wadl:doc xml:lang="EN" title="List tasks" xmlns="http://docbook.org/ns/docbook">
@@ -702,11 +703,11 @@
             </param>-->
             </representation>
         </response>&commonFaults; &postPutFaults; </method>
-    
+
     <!-- ===================== -->
     <!-- Image File Operations -->
     <!-- ===================== -->
-    
+
     <!-- Upload Image -->
     <!--    <method name="PUT" id="storeImageFile">
         <wadl:doc xml:lang="EN" title="Upload Binary Image Data" xmlns="http://docbook.org/ns/docbook">
@@ -719,7 +720,7 @@
         <response status="204">
             <doc title="Success">Upload Request succeeded.</doc>
         </response> &commonFaults; &postPutFaults; </method>-->
-    
+
     <!-- Download Image -->
     <!--    <method name="GET" id="getImageFile">
         <wadl:doc xml:lang="EN" title="Download Binary Image Data" xmlns="http://docbook.org/ns/docbook">
