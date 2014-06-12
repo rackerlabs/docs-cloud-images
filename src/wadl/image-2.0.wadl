@@ -260,7 +260,7 @@
                         <xsdxt:code href="../common/samples/image-update-req.json"/>
                     </xsdxt:sample>
                 </wadl:doc>
-                <param name="." style="plain" path="$.parameters "/>
+                <!--<param name="." style="plain" path="$.parameters "/>-->
                 <param name="op" style="plain" type="xsd:string" required="true" path="$.parameters.op">
                     <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
                         <para>The operation to be executed (<code>add</code>, <code>remove</code>, or
@@ -435,7 +435,7 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-create-request.json"/>
                 </wadl:doc>
-                <param name="." style="plain" path="$.parameters "/>
+                <!--<param name="." style="plain" path="$.parameters "/>-->
                 <param name="member" style="plain" type="xsd:string" required="true" path="$.parameters.member">
                     <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Image member status">
                         <para>The member ID. This is the tenant ID of the user with whom the image is to be shared.</para>
@@ -449,7 +449,7 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-create-response.json"/>
                 </wadl:doc>
-                <param name="." style="plain" path="$.parameters "/> &imageMemberResponseParameters; </representation>
+                <!--<param name="." style="plain" path="$.parameters "/>--> &imageMemberResponseParameters; </representation>
         </response> &commonFaults; &postPutFaults;</method>
 
     <!-- Get Image Member-->
@@ -470,7 +470,7 @@
                         <xsdxt:code href="../common/samples/image-member-details-response.json"/>
                     </xsdxt:sample>
                 </doc>
-                <param name="." style="plain" path="$.parameters "/> &imageMemberResponseParameters; </representation>
+                <!--<param name="." style="plain" path="$.parameters "/>--> &imageMemberResponseParameters; </representation>
         </response> &commonFaults; &getFaults; </method>
 
     <!-- Update Image Member -->
@@ -488,7 +488,7 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-update-request.json"/>
                 </wadl:doc>
-                <param name="." style="plain" path="$.parameters "/>
+                <!--<param name="." style="plain" path="$.parameters "/>-->
                 <param name="status" style="plain" type="xsd:string" required="true" path="$.parameters.status">
                     <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                         <para>The status to which this image member should be set. Valid values are as follows: <variablelist>
@@ -527,7 +527,7 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-member-update-response.json"/>
                 </wadl:doc>
-                <param name="." style="plain" path="$.parameters "/> &imageMemberResponseParameters; </representation>
+                <!--<param name="." style="plain" path="$.parameters "/>--> &imageMemberResponseParameters; </representation>
         </response> &commonFaults; &postPutFaults;</method>
 
     <!-- Delete Image Member -->
