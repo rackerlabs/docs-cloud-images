@@ -26,6 +26,12 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-06-13</date>
+        <revdescription>
+          <para>Fixed parameter lists in the API operations.</para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-05-27</date>
         <revdescription>
           <itemizedlist>
