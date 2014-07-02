@@ -26,6 +26,12 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-07-02</date>
+        <revdescription>
+          <para>Fixed path in image sharing section and updated build files.</para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-06-13</date>
         <revdescription>
           <para>Fixed parameter lists in the API operations.</para>

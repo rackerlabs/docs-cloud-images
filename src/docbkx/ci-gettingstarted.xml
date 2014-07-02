@@ -16,6 +16,12 @@
     <pubdate><!--If you leave the <pubdate> element empty, the build system inserts today's date automatically. --></pubdate>
     <revhistory>
       <revision>
+        <date>2014-07-02</date>
+        <revdescription>
+          <para>Fixed path in image sharing section and updated build files.</para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-05-27</date>
         <revdescription>
           <itemizedlist>
