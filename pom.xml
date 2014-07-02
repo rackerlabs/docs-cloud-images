@@ -8,10 +8,11 @@
 	<name>Cloud Images API Docs</name>
 	<build>
 		<plugins>
+			<!-- Olinks -->
 			<plugin>
 				<groupId>com.rackspace.cloud.api</groupId>
 				<artifactId>olink-maven-plugin</artifactId>
-				<version>1.1.0</version>
+				<version>1.2.6</version>
 				<executions>
 					<execution>
 						<phase>initialize</phase>
@@ -21,6 +22,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Maven Dependency -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -44,10 +46,11 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Maven Clouddocs -->
 			<plugin>
 				<groupId>com.rackspace.cloud.api</groupId>
 				<artifactId>clouddocs-maven-plugin</artifactId>
-				<version>2.0.4</version>
+				<version>2.1.1</version>
 				<executions>
 					<!-- HTML for images-client-devguide -->
 					<execution>
@@ -110,6 +113,7 @@
 					<!--<glossaryCollection>file:///${project.basedir}/src/docbkx/chapters/images-glossary.xml</glossaryCollection>-->
 				</configuration>
 			</plugin>
+			<!--Maven Assembly -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>

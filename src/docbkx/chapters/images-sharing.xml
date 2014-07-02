@@ -16,7 +16,7 @@
         <title>Sharing an image</title>
         <mediaobject>
             <imageobject>
-                <imagedata fileref="../../figures/image-member.png" contentwidth="3in"/>
+                <imagedata fileref="../figures/image-member.png" contentwidth="3in"/>
             </imageobject>
         </mediaobject>
     </figure>
