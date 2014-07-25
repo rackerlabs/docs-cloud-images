@@ -33,9 +33,14 @@
         </itemizedlist>
     </para>
 
+    <!--API Request and Response Information-->
     <xi:include href="images-how-to-API.xml"/>
+    <!--cURL Info-->
     <xi:include href="images-curl.xml"/>
+    <!--Authentication-->
     <xi:include href="images-auth-main.xml"/>
+    <!--Export Env Vars-->
     <xi:include href="images-export-env-vars.xml"/>
-
+    <!--Regional Endpoints-->
+    <xi:include href="images-endpoints.xml"/>
 </chapter>

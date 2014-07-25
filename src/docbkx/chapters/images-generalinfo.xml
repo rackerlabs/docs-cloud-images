@@ -58,4 +58,7 @@
     
     <!--Export Env Vars-->
     <xi:include href="images-export-env-vars.xml"/>
+    
+    <!--Regional Endpoints-->
+    <xi:include href="images-endpoints.xml"/>
 </chapter>

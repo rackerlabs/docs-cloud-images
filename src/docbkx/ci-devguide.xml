@@ -26,6 +26,14 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-07-24</date>
+        <revdescription>
+          <para>Added guidance for selecting regions in <olink targetdoc="ci-devguide" targetptr="auth_endpoints"
+            >“Cloud Images service endpoints”</olink> and <olink targetdoc="ci-devguide" targetptr="service_endpoints"
+              >“Service Access Endpoints”</olink>.</para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-07-02</date>
         <revdescription>
           <para>Fixed path in image sharing section and updated build files.</para>

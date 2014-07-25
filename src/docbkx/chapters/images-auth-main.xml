@@ -42,6 +42,15 @@
         <title>&CIS; endpoints</title>
         <para>When you authenticate to the &CIS;, use one of the following endpoints. You may use any endpoint, regardless of
             where your account was created.</para>
+        <tip>
+            <para> To help you decide which regionalized endpoint to use, read about special considerations for choosing a
+                data center at
+                <link xlink:href="http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions">http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions</link>. </para>
+            <para>For more guidance, see <phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="service_endpoints"
+                        >“Service access endpoints”</olink></phrase><phrase condition="gs">
+                    <olink targetdoc="ci-gettingstarted" targetptr="service_endpoints">“Service access
+                    endpoints”</olink></phrase>.</para>
+        </tip>
         <para>
             <table rules="all">
                 <caption>&CIS; endpoints</caption>

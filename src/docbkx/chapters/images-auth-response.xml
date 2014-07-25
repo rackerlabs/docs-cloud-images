@@ -72,7 +72,8 @@
                     service.</para>
                 <para>To access the &CImS;, use the <code>publicURL</code> value for the <literal>cloudImages</literal> for
                     your chosen endpoint. </para>
-                <warning>
+<!--per brian this can be removed. i've commented it 7/2014 just in case he wants it back.  delete after 9/2014 -->
+                <!--                <warning>
                     <para>Due to an inconsistency in the initial &CImA; release, the <parameter>publicURL</parameter> value
                         might include your tenant ID. Thus, if your tenant ID is 123456, your response might contain lines
                         that look as follows:
@@ -86,7 +87,7 @@
                     <para>Until the update is released, URLs that contain the tenant ID are being filtered so that they will
                         work with the Images API. As a result if you are programmatically extracting the publicURL from the
                         service catalog and using it to construct API requests, your requests will work as expected.</para>
-                </warning>
+                </warning>-->
                 <para> </para>
             </callout>
             <callout arearefs="credentials.xml.expires">
