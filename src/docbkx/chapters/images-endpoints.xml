@@ -9,7 +9,7 @@
     <tip>
         <para> To help you decide which regionalized endpoint to use, read about special considerations for choosing a data
             center at
-            <link xlink:href="http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw">http://www.rackspace.com/knowledge_center/article/what-is-ord-and-dfw</link>.
+            <link xlink:href="http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions">http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions</link>.
         </para>
     </tip>
     <para>If you are working with cloud services that are in one of the Rackspace data centers, using the ServiceNet endpoint

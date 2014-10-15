@@ -26,23 +26,50 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-10-15</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Added array brackets around HTTP Patch examples in <olink targetdoc="ci-devguide" targetptr="using-patch"
+                  >“Using the HTTP PATCH method”</olink>.</para>
+            </listitem>
+            <listitem>
+              <para>Added feedback link to <olink targetdoc="ci-devguide" targetptr="ch_image_preface"
+                >“Preface”</olink></para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-07-24</date>
         <revdescription>
-          <para>Added guidance for selecting regions in <olink targetdoc="ci-devguide" targetptr="auth_endpoints"
-            >“Cloud Images service endpoints”</olink> and <olink targetdoc="ci-devguide" targetptr="service_endpoints"
-              >“Service Access Endpoints”</olink>.</para>
+          <itemizedlist>
+            <listitem>
+              <para>Added guidance for selecting regions in <olink targetdoc="ci-devguide" targetptr="auth_endpoints">“Cloud
+                  Images service endpoints”</olink> and <olink targetdoc="ci-devguide" targetptr="service_endpoints">“Service
+                  Access Endpoints”</olink>.</para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
       <revision>
         <date>2014-07-02</date>
         <revdescription>
-          <para>Fixed path in image sharing section and updated build files.</para>
+          <itemizedlist>
+            <listitem>
+              <para>Fixed path in image sharing section and updated build files.</para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
       <revision>
         <date>2014-06-13</date>
         <revdescription>
-          <para>Fixed parameter lists in the API operations.</para>
+          <itemizedlist>
+            <listitem>
+              <para>Fixed parameter lists in the API operations.</para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
       <revision>
@@ -76,9 +103,13 @@
       <revision>
         <date>2014-04-01</date>
         <revdescription>
-          <para>Added tip about Header Content-Type in <olink targetdoc="ci-devguide"
-              targetptr="PATCH_updateImage_images__image_id__Image_Calls"
-              >"PATCH_updateImage_images__image_id__Image_Calls"</olink></para>
+          <itemizedlist>
+            <listitem>
+              <para>Added tip about Header Content-Type in <olink targetdoc="ci-devguide"
+                  targetptr="PATCH_updateImage_images__image_id__Image_Calls"
+                  >"PATCH_updateImage_images__image_id__Image_Calls"</olink></para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
       <revision>
@@ -221,21 +252,34 @@
       <revision>
         <date>2013-12-17</date>
         <revdescription>
-          <para>Added constraint that 'member_status' and 'owner' filters are expected to work only with visibility=shared in
-              <olink targetdoc="ci-devguide" targetptr="GET_listImageMembers_images__image_id__members_Image_Both_Calls"
-              >"GET_listImageMembers_images__image_id__members_Image_Both_Calls"</olink></para>
+          <itemizedlist>
+            <listitem>
+              <para>Added constraint that 'member_status' and 'owner' filters are expected to work only with
+                visibility=shared in <olink targetdoc="ci-devguide"
+                  targetptr="GET_listImageMembers_images__image_id__members_Image_Both_Calls"
+                  >"GET_listImageMembers_images__image_id__members_Image_Both_Calls"</olink></para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
       <revision>
         <date>2013-12-10</date>
         <revdescription>
-          <para>Fixed Identity operation links in section <xref linkend="section_assign_roles_3"/></para>
+          <itemizedlist>
+            <listitem>
+              <para>Fixed Identity operation links in section <xref linkend="section_assign_roles_3"/></para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
       <revision>
         <date>2013-11-21</date>
         <revdescription>
-          <para>Initial release.</para>
+          <itemizedlist>
+            <listitem>
+              <para>Initial release.</para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
     </revhistory>

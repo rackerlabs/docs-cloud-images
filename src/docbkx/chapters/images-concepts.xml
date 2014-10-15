@@ -716,7 +716,7 @@ JSON Pointer        Image Entity Key Pair
                 </warning>
                 <para><guilabel>Add Example</guilabel></para>
                 <programlisting>
-{ "op": "add", "path": "/login-name", "value": "kvothe"}                
+[ { "op": "add", "path": "/login-name", "value": "kvothe"} ]                
                 </programlisting>
             </section>
 
@@ -730,7 +730,7 @@ JSON Pointer        Image Entity Key Pair
                 </warning>
                 <para><guilabel>Remove Example</guilabel></para>
                 <programlisting>
-{ "op": "remove", "path": "/login-name" }                
+[ { "op": "remove", "path": "/login-name" } ]                
                 </programlisting>
             </section>
             <section xml:id="patch_replace">
@@ -751,7 +751,7 @@ JSON Pointer        Image Entity Key Pair
                 </warning>
                 <para><guilabel>Replace Example</guilabel></para>
                 <programlisting>
-{  "op": "replace", "path": "/login-name", "value": "kote" }               
+[ {  "op": "replace", "path": "/login-name", "value": "kote" } ]              
                 </programlisting>
                 <warning>
                     <para>If the specified image property does not exist for the target image, an error condition
