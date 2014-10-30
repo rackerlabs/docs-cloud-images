@@ -42,7 +42,7 @@
             <step>
                 <para>Issue the following cURL command:</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images -H "X-Auth-Token: $token" |python -m json.tool
+curl -s https://iad.images.api.rackspacecloud.com/v2/images -H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
                     <itemizedlist>
@@ -136,7 +136,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images -H "X-Auth-
                     got from the <olink targetdoc="ci-gettingstarted" targetptr="list-images">“List Images”</olink>
                     command.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
+curl -s https://iad.images.api.rackspacecloud.com/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
 -H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
@@ -227,7 +227,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                     image <literal>c9c7732f-5129-4930-a835-3781255fb1e2</literal> from <literal>Ubuntu 12.04 LTS (Precise
                         Pangolin) (PVHVM)</literal> to <literal>My Favorite Ubuntu</literal>.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
+curl -s https://iad.images.api.rackspacecloud.com/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
 -X PATCH \
 -d'{{"op": "replace", "path": "/name", "value": "My Favorite Ubuntu"}}' \
 -H "Content-Type: application/json" -H "X-Auth-Token: $token" \
@@ -299,7 +299,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/c9c7732f-51
                     for the <literal>my-excellent-image.vhd</literal> image, is in the <literal>exports</literal> directory
                     on your Cloud Files account.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
+curl -s https://iad.images.api.rackspacecloud.com/v2/tasks \
 -X POST \
 -d '{"type": "import","input":{"image_properties": {"name": "My excellent custom image"},"import_from": "exports/my-excellent-image.vhd"}}' \
 -H "Content-Type: application/json" -H "X-Auth-Token: $token" |python -m json.tool
@@ -375,7 +375,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
                         <literal>ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6</literal> is exported to the <literal>exports</literal>
                     directory on your Cloud Files account.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
+curl -s https://iad.images.api.rackspacecloud.com/v2/tasks \
 -X POST \
 -d '{"type": "export","input":{"image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6","receiving_swift_container": "exports"}}' \
 -H "Content-Type: application/json" -H "X-Auth-Token: $token" |python -m json.tool
@@ -449,7 +449,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks \
                         <literal>pending</literal>. If you continue polling, you will eventually get a status of
                         <literal>success</literal> or <literal>failure</literal>.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/$account/tasks/fc29a67c-ad76-49bc-a317-a5f38dcb44c0  \
+curl -s https://iad.images.api.rackspacecloud.com/v2/tasks/fc29a67c-ad76-49bc-a317-a5f38dcb44c0  \
 -H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>

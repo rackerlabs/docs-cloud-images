@@ -43,7 +43,7 @@
                     user emailed you requesting access, so you know the user's user ID and can use it as the value for the
                     member parameter.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
+curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
 -X POST \
 -d '{"member":"8989447062e04a818baf9e073fd04fa7"}' -H "X-Auth-Token: $token" 
 -H "Content-Type:application/json" |python -m json.tool
@@ -102,7 +102,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                 <para>Issue the following cURL command to list the image members for an image. In this example, you list
                     members for image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
+curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
 -H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
@@ -165,7 +165,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                     for member <literal>123456789</literal> of image
                     <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456789 \
+curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456789 \
 -H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
@@ -222,7 +222,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                 <para>Issue the following cURL command to update an image member for an image. In this example, you accept
                     the offer of the shared image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/8989447062e04a818baf9e073fd04fa7 \
+curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/8989447062e04a818baf9e073fd04fa7 \
 -X PUT -d '{"status":"accepted"}' -H "Content-Type: application/json" -H "X-Auth-Token: $token"|python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
@@ -279,7 +279,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-85
                     the user <literal>8989447062e04a818baf9e073fd04fa7</literal> so that the user can no longer share the
                     image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
-curl -i https://iad.images.api.rackspacecloud.com/v2/$account/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/8989447062e04a818baf9e073fd04fa7 \
+curl -i https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/8989447062e04a818baf9e073fd04fa7 \
 -X DELETE \
 -H "X-Auth-Token: $token"
                 </programlisting>
