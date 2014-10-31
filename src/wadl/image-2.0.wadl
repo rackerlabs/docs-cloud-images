@@ -425,9 +425,10 @@
         <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Create image member">
             <para role="shortdesc">Adds the specified <parameter>account ID/tenant ID</parameter> specified in the request
                 body as an image member.</para>
-            <para>This operation allows you to add users to the list of members with whom the image is shared. The member
-                status of a newly created image member is <literal>pending</literal>. The response conforms to the schema
-                found in <xref linkend="GET_getImageMemberSchema_schemas_member_Schema_Calls"/>.</para>
+            <para>This operation allows you to add users, by <parameter>member_id</parameter> (which is the
+                    <parameter>tenant_id</parameter>) to the list of members with whom the image is shared. The member status
+                of a newly created image member is <literal>pending</literal>. The response conforms to the schema found in
+                <xref linkend="GET_getImageMemberSchema_schemas_member_Schema_Calls"/>.</para>
             <para>If the user making the call is not the image owner, the response is <errorcode>HTTP 404</errorcode>.</para>
         </wadl:doc>
         <request>

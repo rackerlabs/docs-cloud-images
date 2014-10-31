@@ -16,13 +16,24 @@
     <pubdate><!--If you leave the <pubdate> element empty, the build system inserts today's date automatically. --></pubdate>
     <revhistory>
       <revision>
+        <date>2014-10-31</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Emphasized that member_id is the user's tenant ID for <olink targetdoc="ci-gettingstarted"
+                targetptr="sharing-images">“Sharing images”</olink>.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-10-30</date>
         <revdescription>
           <itemizedlist>
             <listitem>
               <para>Removed "$account" from cURL example URIs for <olink targetdoc="ci-gettingstarted"
                   targetptr="using-images">“Using images”</olink> and <olink targetdoc="ci-gettingstarted"
-                  targetptr="sharing-images">“Sharing images”</olink></para>
+                  targetptr="sharing-images">“Sharing images”</olink>.</para>
             </listitem>
           </itemizedlist>
         </revdescription>

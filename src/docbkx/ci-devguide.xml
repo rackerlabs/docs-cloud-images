@@ -26,6 +26,16 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-10-31</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Emphasized that member_id is the user's tenant ID for image sharing.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-10-15</date>
         <revdescription>
           <itemizedlist>

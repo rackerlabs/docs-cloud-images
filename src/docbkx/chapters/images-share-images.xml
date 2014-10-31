@@ -4,8 +4,8 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="sharing-images">
     <title>Sharing images</title>
-    <para>The &CImA; enables users to share images that they have created with others and to use images created by someone
-        else. To learn more about the fundamentals of image sharing, see <olink targetdoc="ci-gettingstarted"
+    <para>The &CImA; enables image owners to share images that they have created with others and to use images created by
+        someone else. To learn more about the fundamentals of image sharing, see <olink targetdoc="ci-gettingstarted"
             targetptr="image-sharing">“Image Sharing”</olink>. The following examples show some basic image sharing
         operations with cURL examples. </para>
     <itemizedlist>
@@ -29,6 +29,10 @@
                 member”</olink></para>
         </listitem>
     </itemizedlist>
+    <note>
+        <para>The user with whom the image is being shared in these examples is identified by a
+                <parameter>member_id</parameter>, which is the same as that user's tenant_id.</para>
+    </note>
     <section xml:id="create-image-member" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
         <title>Create an image member</title>
@@ -39,13 +43,13 @@
             <step>
                 <para>Issue the following cURL command to create an image member for an image. In this example, you share the
                     image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>, which you created, with user
-                        <literal>8989447062e04a818baf9e073fd04fa7</literal>. You might have blogged about your image, and the
-                    user emailed you requesting access, so you know the user's user ID and can use it as the value for the
-                    member parameter.</para>
+                        <literal>123456</literal>. You might have blogged about your image, and the user emailed you
+                    requesting access, so you know the user's user ID and can use it as the value for the member
+                    parameter.</para>
                 <programlisting>
 curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
 -X POST \
--d '{"member":"8989447062e04a818baf9e073fd04fa7"}' -H "X-Auth-Token: $token" 
+-d '{"member":"123456"}' -H "X-Auth-Token: $token" 
 -H "Content-Type:application/json" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
@@ -81,7 +85,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-9
 {
     "created_at": "2013-09-20T19:22:19Z",
     "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
-    "member_id": "8989447062e04a818baf9e073fd04fa7",
+    "member_id": "123456",
     "schema": "/v2/schemas/member",
     "status": "pending",
     "updated_at": "2013-09-20T19:25:31Z"
@@ -133,7 +137,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-9
         {
             "created_at": "2013-10-07T17:58:03Z",
             "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
-            "member_id": "123456789",
+            "member_id": "123456",
             "schema": "/v2/schemas/member",
             "status": "pending",
             "updated_at": "2013-10-07T17:58:03Z"
@@ -141,7 +145,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-9
         {
             "created_at": "2013-10-07T17:58:55Z",
             "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
-            "member_id": "987654321",
+            "member_id": "9876543",
             "schema": "/v2/schemas/member",
             "status": "accepted",
             "updated_at": "2013-10-08T12:08:55Z"
@@ -162,10 +166,10 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-9
             <title>To get an image member's details with cURL</title>
             <step>
                 <para>Issue the following cURL command to get the image member's details. In this example, you list details
-                    for member <literal>123456789</literal> of image
+                    for member <literal>123456</literal> of image
                     <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456789 \
+curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456 \
 -H "X-Auth-Token: $token" |python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
@@ -194,7 +198,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-9
 {
     "created_at": "2013-10-07T17:58:03Z",
     "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
-    "member_id": "123456789",
+    "member_id": "123456",
     "schema": "/v2/schemas/member",
     "status": "pending",
     "updated_at": "2013-10-07T17:58:03Z"
@@ -209,9 +213,10 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-9
         <title>Update an image member</title>
         <para>If you send a request, outside of the &CImA; to an image producer asking for access to an image, the image
             producer creates an image member with your tenant ID by using the instructions in <olink
-                targetdoc="ci-gettingstarted" targetptr="create-image-member">“Create an image member”</olink>. You can
-            either accept the image, which adds it to your image list, or reject the image, which notifies the producer that
-            you received the image share notification and don't want it in your image list.</para>
+                targetdoc="ci-gettingstarted" targetptr="create-image-member">“Create an image member”</olink>. Once the
+            image member has been created for you, you update the image member, either accepting the image (which adds it to
+            your image list), or rejecting the image (which notifies the producer that you received the image share
+            notification and don't want it in your image list).</para>
         <tip>
             <para>For more information about image member statuses, see <phrase condition="gs"/><olink
                     targetdoc="ci-gettingstarted" targetptr="member-statuses">“Image member statuses”</olink>.</para>
@@ -219,10 +224,11 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-9
         <procedure>
             <title>To update an image member with cURL</title>
             <step>
-                <para>Issue the following cURL command to update an image member for an image. In this example, you accept
-                    the offer of the shared image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
+                <para>Issue the following cURL command to update an image member for an image. In this example, you (member
+                    ID <literal>123456</literal>) accept the offer of the shared image
+                        <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
-curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/8989447062e04a818baf9e073fd04fa7 \
+curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456 \
 -X PUT -d '{"status":"accepted"}' -H "Content-Type: application/json" -H "X-Auth-Token: $token"|python -m json.tool
                 </programlisting>
                 <para><emphasis role="bold">Options:</emphasis>
@@ -258,7 +264,7 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-9
 {
     "created_at": "2013-09-20T19:22:19Z",
     "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
-    "member_id": "8989447062e04a818baf9e073fd04fa7",
+    "member_id": "123456",
     "schema": "/v2/schemas/member",
     "status": "accepted",
     "updated_at": "2013-09-20T20:15:31Z"
@@ -276,10 +282,10 @@ curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-9
             <title>To delete an image member with cURL</title>
             <step>
                 <para>Issue the following cURL command to delete an image member for an image. In this example, you delete
-                    the user <literal>8989447062e04a818baf9e073fd04fa7</literal> so that the user can no longer share the
-                    image <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
+                    the user <literal>123456</literal> so that the user can no longer share the image
+                        <literal>a96be11e-8536-4910-92cb-de50aa19dfe6</literal>.</para>
                 <programlisting>
-curl -i https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/8989447062e04a818baf9e073fd04fa7 \
+curl -i https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456 \
 -X DELETE \
 -H "X-Auth-Token: $token"
                 </programlisting>
