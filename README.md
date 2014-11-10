@@ -50,8 +50,8 @@ You can use any text editor to work with these source files. If you want to use 
 
 The files that are most likely to be of interest to you are as follows:
 
-* [src/resources/wadl/images-2.0.wadl](src/resources/wadl/images-2.0.wadl) - images API operations wadl
-* [src/resources/wadl/images-schemas-2.0.wadl](src/resources/wadl/images-schemas-2.0.wadl) - images schema API operations wadl
+* [src/wadl/images-2.0.wadl](src/resources/wadl/images-2.0.wadl) - images API operations wadl
+* [src/wadl/images-schemas-2.0.wadl](src/resources/wadl/images-schemas-2.0.wadl) - images schema API operations wadl
 * [src/docbkx/ci-devguide.xml](src/docbkx/ci-devguide.xml) - main source file for Developer's Guide
 * [src/dockbkx/ci-gettingstarted.xml](src/dockbkx/ci-gettingstarted.xml) - main source file for Getting Started Guide
 * [src/docbkx/ci-releasenotes.xml](src/docbkx/ci-releasenotes.xml) - main source file for Release Notes
