@@ -138,7 +138,7 @@
             </note>
         </wadl:doc>
         <request>
-            <representation mediaType="application/json"> &imagesListQueryParameters;</representation>
+            <representation mediaType="application/json"><doc xml:lang="EN"/>&imagesListQueryParameters;</representation> 
         </request>
         <response status="200">
             <doc title="Success">Request succeeded.</doc>
