@@ -21,7 +21,7 @@
         </mediaobject>
     </figure>
     <note>
-        <para>In the &CImA;, the image member status three purposes: <itemizedlist>
+        <para>In the &CImA;, the image member status serves three purposes: <itemizedlist>
                 <listitem>
                     <para>The member status controls whether image appears in the consumer's image list. If the image member
                         status is <literal>accepted</literal>, the image appears in the consumer's image list. Otherwise, the
@@ -40,7 +40,7 @@
                     <para>The member status lets the producer know whether the consumer has seen and acted on the shared
                         image. If the status is <literal>accepted</literal> or <literal>rejected</literal>, the consumer has
                         definitely seen the shared image. If the status is <literal>pending</literal>, the consumer may not
-                        have seen the request or may not have made a decision about it.</para>
+                        be aware that an image was shared.</para>
                 </listitem>
             </itemizedlist>
         </para>
@@ -76,7 +76,7 @@
         <!--<para>Following is a sample workflow for image sharing, after image creation:</para>-->
         <note>
             <para>Communications between the image producer and the consumer, like those described in this sample workflow,
-                can include notifications, questions, and requests and must be arranged independent of the &CImA;, via email,
+                must be arranged independent of the &CImA;. The consumer and producer can send notifications by using email,
                 phone, Twitter, or other channels.</para>
         </note>
         <orderedlist>
