@@ -27,6 +27,18 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-12-19</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Updated error code listings for <olink targetdoc="ci-devguide"
+                  targetptr="GET_getTask_tasks__taskID__Image_Task_Calls"
+                  >"GET_getTask_tasks__taskID__Image_Task_Calls"</olink>.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2014-12-15</date>
         <revdescription>
           <itemizedlist>

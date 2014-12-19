@@ -575,40 +575,41 @@
                 <xref linkend="GET_getTaskSchema_schemas_task_Schema_Calls"/>.</para>
         </wadl:doc>
         <response status="200">
-            <doc title="Success">Request succeeded.</doc>
+            <representation mediaType="application/json">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import examples:"></wadl:doc>
+            </representation>
             <!--import pending-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Pending Response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get import task details - pending response">
                     <xsdxt:code href="../common/samples/task-detail-import-pending-response.json"/>
-                </wadl:doc> &task--portResponseParameters-top; &taskImportResponseParameters-input;
-                &task--portResponseParameters-bottom; </representation>
+                </wadl:doc> &task--portResponseParameters-top; &taskImportResponseParameters-input;&task--portResponseParameters-bottom; </representation>
             <!--import success-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Success Response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get import task details - success response">
                     <xsdxt:code href="../common/samples/task-detail-import-success-response.json"/>
                 </wadl:doc>
             </representation>
             <!--import failure-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import Task - Failure Response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get import task details - failure response">
                     <xsdxt:code href="../common/samples/task-detail-import-failure-response.json"/>
                 </wadl:doc>
             </representation>
             <!--export pending-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Pending Response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get export task details - pending response">
                     <xsdxt:code href="../common/samples/task-detail-export-pending-response.json"/>
                 </wadl:doc> &task--portResponseParameters-top; &taskExportResponseParameters-input;
                 &task--portResponseParameters-bottom; </representation>
             <!--export success-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Success Response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get export task details - success response">
                     <xsdxt:code href="../common/samples/task-detail-export-success-response.json"/>
                 </wadl:doc>
             </representation>
             <!--export failure-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Export Task - Failure Response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get export task details - failure response">
                     <xsdxt:code href="../common/samples/task-detail-export-failure-response.json"/>
                 </wadl:doc>
             </representation>
