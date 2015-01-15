@@ -8,6 +8,12 @@
         endpoints that you use to request services. </para>
     <para>Do not include explicit API endpoints in your scripts and applications. Instead, find the endpoint for your service
         and use it. </para>
+    <note>
+        <para>If you authenticated with username and password credentials, and the Identity service returns a 401 message requesting 
+            additional credentials, your account is configured for multi-factor authentication. To complete the authentication process, 
+            <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/proc_mfa_auth.html">submit a 
+                second POST tokens request with multi-factor authentication credentials</link>.</para>
+    </note>
     <para> The authentication response contains the following elements: <itemizedlist>
             <listitem>
                 <para><emphasis role="bold">serviceCatalog</emphasis> - A list of services. The number and type of services
