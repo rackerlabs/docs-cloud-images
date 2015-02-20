@@ -410,7 +410,7 @@
                     <errorcode>HTTP 404</errorcode>. </para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/json"> &imageMembersListQueryParameters; </representation>
+            <representation mediaType="application/json"> <!--&imageMembersListQueryParameters; --></representation>
         </request>
         <response status="200">
             <doc title="Success">Request succeeded.</doc>
@@ -575,6 +575,7 @@
                 <xref linkend="GET_getTaskSchema_schemas_task_Schema_Calls"/>.</para>
         </wadl:doc>
         <response status="200">
+            <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import examples:"></wadl:doc>
             </representation>
