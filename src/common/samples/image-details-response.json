@@ -1,17 +1,33 @@
 {
-   "id":"da3b75d9-3f4a-40e7-8a2c-bfab23927dea",
-   "name":"cirros-0.3.0-x86_64-uec-ramdisk",
-   "status":"active",
-   "visibility":"public",
-   "size":2254249,
-   "checksum":"2cec138d7dae2aa59038ef8c9aec2390",
-   "tags":[
-      "ping",
-      "pong"
-   ],
-   "created_at":"2012-08-10T19:23:50Z",
-   "updated_at":"2012-08-10T19:23:50Z",
-   "self":"/v2/images/da3b75d9-3f4a-40e7-8a2c-bfab23927dea",
-   "file":"/v2/images/da3b75d9-3f4a-40e7-8a2c-bfab23927dea/file",
+  "image": {
+    "status": "ACTIVE",
+    "updated": "2015-01-29T00:13:09Z",
+    "links": [
+      {
+        "href": "https://dfw.servers.api.rackspacecloud.com/v2/820712/images/126a6674-6308-421f-801e-fc302ab4f53f",
+        "rel": "self"
+      },
+      {
+        "href": "https://dfw.servers.api.rackspacecloud.com/820712/images/126a6674-6308-421f-801e-fc302ab4f53f",
+        "rel": "bookmark"
+      },
+    ],
+    "OS-DCF:diskConfig": "MANUAL",
+    "id": "126a6674-6308-421f-801e-fc302ab4f53f",
+    "OS-EXT-IMG-SIZE:size": 758777106,
+    "name": "CentOS 7 (PVHVM)",
+    "created": "2015-01-28T19:31:37Z",
+    "minDisk": 20,
+    "minRam": 512,
+    "visibility":"public",
+    "tags":[
+        "ping",
+        "pong"
+    ],
+    "metadata": {
+        "flavor_classes": "*,!onmetal",
+        "auto_disk_config": "disabled"
+    },
    "schema":"/v2/schemas/image"
+  }
 }

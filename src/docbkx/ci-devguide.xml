@@ -29,9 +29,18 @@
       <revision>
         <date>2015-02-20</date>
         <revdescription>
-          <para>Updated <olink targetdoc="ci-devguide"
-            targetptr="GET_listImageMembers_images__image_id__members_Image_Both_Calls"
-            >"GET_listImageMembers_images__image_id__members_Image_Both_Calls"</olink>, removing the filter parameters.</para>
+          <itemizedlist>
+            <listitem>
+              <para>Updated <olink targetdoc="ci-devguide"
+                  targetptr="GET_listImageMembers_images__image_id__members_Image_Both_Calls"
+                  >"GET_listImageMembers_images__image_id__members_Image_Both_Calls"</olink>, removing the filter
+                parameters.</para>
+            </listitem>
+            <listitem>
+              <para>Updated <olink targetdoc="ci-devguide" targetptr="GET_getImage_images__image_id__Image_Calls"
+                  >"GET_listImageMembers_images__image_id__members_Image_Both_Calls"</olink>, updating parameters.</para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
       <revision>
