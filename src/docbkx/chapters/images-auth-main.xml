@@ -40,44 +40,8 @@
 
     <section xml:id="auth_endpoints">
         <title>&CIS; endpoints</title>
-        <para>When you authenticate to the &CIS;, use one of the following endpoints. You may use any endpoint, regardless of
-            where your account was created.</para>
-        <tip>
-            <para> To help you decide which regionalized endpoint to use, read about special considerations for choosing a
-                data center at
-                <link xlink:href="http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions">http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions</link>. </para>
-            <para>For more guidance, see <phrase condition="dev"><olink targetdoc="ci-devguide" targetptr="service_endpoints"
-                        >“Service access endpoints”</olink></phrase><phrase condition="gs">
-                    <olink targetdoc="ci-gettingstarted" targetptr="service_endpoints">“Service access
-                    endpoints”</olink></phrase>.</para>
-        </tip>
-        <para>
-            <table rules="all">
-                <caption>&CIS; endpoints</caption>
-                <col width="25%"/>
-                <col width="75%"/>
-                <thead>
-                    <tr>
-                        <th>Location of account</th>
-                        <th>&CIS; endpoint</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>US, Sydney, Hong Kong</td>
-                        <td>
-                            <link xlink:href="https://identity.api.rackspacecloud.com/v2.0">https://identity.api.rackspacecloud.com/v2.0</link>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>UK</td>
-                        <td>
-                            <link xlink:href="https://lon.identity.api.rackspacecloud.com/v2.0">https://lon.identity.api.rackspacecloud.com/v2.0</link>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </para>
+        <para>When you authenticate to the &CIS;, use the following endpoint:
+            <link xlink:href="https://identity.api.rackspacecloud.com/v2.0">https://identity.api.rackspacecloud.com/v2.0</link></para>
     </section>
 
     <section xml:id="curl_auth">
@@ -94,12 +58,11 @@
         </itemizedlist>
         <para>Your user name and password are the ones that you use to log in to the Rackspace Cloud Control Panel.</para>
         <note>
-            <para>
-                If you authenticate with username and password credentials, you can use multi-factor authentication to add an additional 
-                level of account security. This feature is not implemented for username and API credentials. For more information, 
-                see <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/MFA_Ops.html">Multifactor authentication</link> 
-                in the <citetitle>Cloud Identity Client Developer Guide</citetitle>.
-            </para>
+            <para> If you authenticate with username and password credentials, you can use multi-factor authentication to add
+                an additional level of account security. This feature is not implemented for username and API credentials.
+                For more information, see
+                <link xlink:href="http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/MFA_Ops.html">Multifactor authentication</link>
+                in the <citetitle>Cloud Identity Client Developer Guide</citetitle>. </para>
         </note>
         <para>To obtain your API key, perform the following steps:<orderedlist>
                 <listitem>
@@ -119,13 +82,13 @@
         <para>The following cURL examples show how to get an authentication token by entering your user name and either your
             password or your API key.</para>
         <example>
-            <title>Authenticate to US Identity endpoint &ndash; user name and password: JSON request</title>
+            <title>Authenticate to Identity endpoint &ndash; user name and password: JSON request</title>
             <programlisting language="bash" role="gutter: false"><?db-font-size 80%?><prompt>$</prompt> curl -s https://identity.api.rackspacecloud.com/v2.0/tokens -X 'POST' \
      -d '{"auth":{"passwordCredentials":{"username":"<emphasis>yourUserName</emphasis>", "password":"<emphasis>yourPassword</emphasis>"}}}' \
      -H "Content-Type: application/json" | python -m json.tool</programlisting>
         </example>
         <example>
-            <title>Authenticate to US Identity endpoint &ndash; user name and API key: JSON request</title>
+            <title>Authenticate to Identity endpoint &ndash; user name and API key: JSON request</title>
             <programlisting language="bash" role="gutter: false"><?db-font-size 80%?><prompt>$</prompt> curl -s https://identity.api.rackspacecloud.com/v2.0/tokens -X 'POST' \
      -d '{"auth":{"RAX-KSKEY:apiKeyCredentials":{"username":"<emphasis>yourUserName</emphasis>", "apiKey":"<emphasis>yourAPIKey</emphasis>"}}}' \
      -H "Content-Type: application/json" | python -m json.tool</programlisting>

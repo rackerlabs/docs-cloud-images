@@ -18,6 +18,14 @@
     <pubdate><!--If you leave the <pubdate> element empty, the build system inserts today's date automatically. --></pubdate>
     <revhistory>
       <revision>
+        <date>2015-03-06</date>
+        <revdescription>
+          <para>Updated Identity API endpoint documentation to remove references to regional endpoints. All customers can
+            authenticate using the https://identity.api.rackspacecloud.com global endpoint, regardless of geographic
+            location.</para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2015-01-15</date>
         <revdescription>
           <para>Updated <xref linkend="curl_auth"/> and <xref linkend="auth-response-description"/> documentation with

@@ -62,7 +62,7 @@
 							<!-- These parameters only apply to webhelp -->
 							<enableDisqus>internet</enableDisqus>
 							<canonicalUrlBase>http://docs.rackspace.com/images/api/v2/ci-devguide/content</canonicalUrlBase>
-							<enableGoogleAnalytics>0</enableGoogleAnalytics>
+							<enableGoogleAnalytics>1</enableGoogleAnalytics>
 						</configuration>
 					</execution>
 					<!-- HTML for images-getting-started-guide -->
@@ -79,7 +79,7 @@
 							<!--<statusBarText>DRAFT</statusBarText>-->
 							<enableDisqus>internet</enableDisqus>
 							<canonicalUrlBase>http://docs.rackspace.com/images/api/v2/ci-gsguide/content</canonicalUrlBase>
-							<enableGoogleAnalytics>0</enableGoogleAnalytics>
+							<enableGoogleAnalytics>1</enableGoogleAnalytics>
 						</configuration>
 					</execution>
 					<!-- HTML for images-release-notes -->
@@ -95,7 +95,7 @@
 							<!-- These parameters only apply to webhelp -->
 							<enableDisqus>internet</enableDisqus>
 							<canonicalUrlBase>http://docs.rackspace.com/images/api/v2/ci-release/content</canonicalUrlBase>
-							<enableGoogleAnalytics>0</enableGoogleAnalytics>
+							<enableGoogleAnalytics>1</enableGoogleAnalytics>
 						</configuration>
 					</execution>
 				</executions>
