@@ -27,6 +27,16 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2014-12-19</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Reformatted cross-reference links in API Operations section.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2015-03-06</date>
         <revdescription>
           <para>Updated Identity API endpoint documentation to remove references to regional endpoints. All customers can

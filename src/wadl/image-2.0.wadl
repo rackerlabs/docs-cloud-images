@@ -27,11 +27,6 @@
     <!--*******************************************************-->
     <!--<resources base="https://glance.example.com/" xml:id="images-v2">-->
     <resources base="https://ord.images.api.rackspacecloud.com/" xml:id="images-v2">
-        <!--<resource id="info" path=" ">-->
-        <!--<param name="X-Auth-Token" style="header" type="xsd:string" required="true">
-                    <doc>A valid authentication token</doc>
-                </param>-->
-        <!--Brain asked to not include this-->
         <resource id="Images" path="images">
             <method href="#listImages"/>
             <resource id="ImageID" path="{image_id}">
@@ -91,7 +86,9 @@
                 <!--</resource>-->
             </resource>
         </resource>
+
     </resources>
+
 
     <!--*******************************************************-->
     <!--               All Methods                             -->
@@ -106,8 +103,12 @@
         <wadl:doc xml:lang="EN" title="List images" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Lists public virtual machine (VM) images.</para>
             <para>This operation returns images you created, shared images that you accepted, and standard images. For more
-                information about standard images, see <xref linkend="std-images"/>. The response conforms to the schema
-                found in <xref linkend="GET_getImagesSchema_schemas_images_Schema_Calls"/>.</para>
+                information about standard images, see
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/what-and-why.html#std-images">
+                    1.1.1. Standard images</link>.
+                The response conforms to the schema found in
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImagesSchema_schemas_images_Schema_Calls.html">
+                    4.5.1. Get images schema</link>.</para>
             <para> This operation returns a subset of the larger collection of images and a link that you can use to get the
                 next set of images. Always check for the presence of a <parameter>next</parameter> link and use it as the URI
                 in a subsequent &GET; request. Follow this pattern until a <parameter>next</parameter> link is no longer
@@ -138,7 +139,8 @@
             </note>
         </wadl:doc>
         <request>
-            <representation mediaType="application/json"><doc xml:lang="EN"/>&imagesListQueryParameters;</representation> 
+            <representation mediaType="application/json">
+                <doc xml:lang="EN"/>&imagesListQueryParameters;</representation>
         </request>
         <response status="200">
             <doc title="Success">Request succeeded.</doc>
@@ -155,7 +157,9 @@
         <wadl:doc xml:lang="EN" title="Get image details" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Gets the details for the specified image. </para>
             <para>This operation shows the details for the image. The response body is a single image entity and conforms to
-                the schema found in <xref linkend="GET_getImageSchema_schemas_image_Schema_Calls"/>.</para>
+                the schema found in
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageSchema_schemas_image_Schema_Calls.html">
+                    4.5.2. Get image schema</link>.</para>
         </wadl:doc>
         <response status="200">
             <representation mediaType="application/json">
@@ -172,10 +176,14 @@
             <para role="shortdesc">Updates the specified image. </para>
             <para>This operation allows you to update an image that you own. The request body must conform to the
                     <code>'application/openstack-images-v2.1-json-patch'</code> media type. The response conforms to the
-                schema found in <xref linkend="GET_getImageSchema_schemas_image_Schema_Calls"/>.</para>
+                schema found in
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageSchema_schemas_image_Schema_Calls.html">
+                    4.5.2. Get image schema</link>.</para>
             <para>You can use the <code>HTTP PATCH</code> method to update certain standard properties, and to add, update,
-                or remove custom, user-defined image properties. For more information, see <xref linkend="patch-method"/> in
-                this guide. Here are some guidelines for custom, user-defined properties. <itemizedlist>
+                or remove custom, user-defined image properties. For more information, see
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/patch-method.html">
+                     2.4. HTTP PATCH method</link>
+                in this guide. Here are some guidelines for custom, user-defined properties. <itemizedlist>
                     <listitem>
                         <para>Adding properties: You can add custom properties to your image.</para>
                         <itemizedlist>
@@ -254,8 +262,11 @@
                             match the media type used for the body of the request. If this header is missing or does not
                             match a supported media type, the call results in a <errorcode>415</errorcode> error. Don't
                             forget that the Content-type for the Image Update operation must be the appropriate media-type
-                            descriptor for the HTTP Patch method (see <xref linkend="patch-method"/>). For example:
-                                <literal>Content-Type: application/openstack-images-v2.1-json-patch</literal>.</para></tip>
+                            descriptor for the HTTP Patch method (see
+                            <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/patch-method.html">
+                     2.4. HTTP PATCH method</link>).
+                            For example: <literal>Content-Type:
+                            application/openstack-images-v2.1-json-patch</literal>.</para></tip>
                     <xsdxt:sample>
                         <xsdxt:code href="../common/samples/image-update-req.json"/>
                     </xsdxt:sample>
@@ -404,13 +415,15 @@
             <para role="shortdesc">Returns collection of members (users) with whom the image has been shared.</para>
             <para> This operation returns collection of members (users) with whom the image has been shared. The response
                 conforms to the schema found in
-                <xref linkend="GET_getImageMembersSchemas_schemas_members_Schema_Calls"/>.</para>
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html">
+                    4.5.3. Get image members schema</link>.</para>
             <para>If a user with whom this image is shared makes this call, the member list contains only information for
                 that user. If a user with whom this image has not been shared makes this call, the response is
-                    <errorcode>HTTP 404</errorcode>. </para>
+                    <errorcode>HTTP 404</errorcode>.</para>
         </wadl:doc>
         <request>
-            <representation mediaType="application/json"> <!--&imageMembersListQueryParameters; --></representation>
+            <representation mediaType="application/json">
+                <!--&imageMembersListQueryParameters; --></representation>
         </request>
         <response status="200">
             <doc title="Success">Request succeeded.</doc>
@@ -428,7 +441,8 @@
             <para>This operation allows you to add users, by <parameter>member_id</parameter> (which is the
                     <parameter>tenant_id</parameter>) to the list of members with whom the image is shared. The member status
                 of a newly created image member is <literal>pending</literal>. The response conforms to the schema found in
-                <xref linkend="GET_getImageMemberSchema_schemas_member_Schema_Calls"/>.</para>
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html">
+                    4.5.3. Get image members schema</link>.</para>
             <para>If the user making the call is not the image owner, the response is <errorcode>HTTP 404</errorcode>.</para>
         </wadl:doc>
         <request>
@@ -458,7 +472,8 @@
         <wadl:doc xml:lang="EN" title="Get image member details" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Gets the details for the specified image member. </para>
             <para>This operation shows details of the image member. The response conforms to the schema found in
-                <xref linkend="GET_getImageMemberSchema_schemas_member_Schema_Calls"/>.</para>
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html">
+                    4.5.3. Get image members schema</link>.</para>
             <para>To get a successful response, either the image owner must make the call or the
                     <parameter>tenant_id</parameter> of the user making the call must match the specified
                     <parameter>member_id</parameter>. Otherwise the response is <errorcode>HTTP 404</errorcode>.</para>
@@ -479,7 +494,8 @@
         <wadl:doc xml:lang="EN" title="Update image member" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Sets the specified status for the specified member of the specified image.</para>
             <para>This operation updates the image member. The response conforms to the schema found in
-                <xref linkend="GET_getImageMemberSchema_schemas_member_Schema_Calls"/>.</para>
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html">
+                    4.5.3. Get image members schema</link>.</para>
             <para>If the call is made by the image owner, the response is <errorcode>HTTP 403 (Forbidden)</errorcode>.</para>
             <para>If the call is made by a user who is not the owner and whose <parameter>tenant ID</parameter> is not the
                 same as the {member_id} is the operation URI, the response is <errorcode>HTTP 404</errorcode>.</para>
@@ -555,7 +571,9 @@
         <wadl:doc xml:lang="EN" title="List tasks" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Lists tasks.</para>
             <para>This operation returns list of tasks, with basic details about each task. The response conforms to the
-                schema found in <xref linkend="GET_getTasksSchemas_schemas_tasks_Schema_Calls"/>.</para>
+                schema found in
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html">
+                    4.5.5. Get tasks schema</link>.</para>
         </wadl:doc>
         <response status="200">
             <doc title="Success">Request succeeded.</doc>
@@ -571,46 +589,56 @@
             <para role="shortdesc">Gets the details for the specified task.</para>
             <para>This operation shows the details for the specified task, including the status, so you'll know when the
                 import or export task completes and whether it worked. For more information on statuses, see
-                <xref linkend="task-statuses"/>. The response conforms to the schema found in
-                <xref linkend="GET_getTaskSchema_schemas_task_Schema_Calls"/>.</para>
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/task-statuses.html">
+                    1.4.2. Task statuses</link>.
+                The response conforms to the schema found in
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html">
+                    4.5.5. Get tasks schema</link>.</para>
         </wadl:doc>
         <response status="200">
             <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import examples:"></wadl:doc>
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Import examples:"/>
             </representation>
             <!--import pending-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get import task details - pending response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+                    title="Get import task details - pending response">
                     <xsdxt:code href="../common/samples/task-detail-import-pending-response.json"/>
-                </wadl:doc> &task--portResponseParameters-top; &taskImportResponseParameters-input;&task--portResponseParameters-bottom; </representation>
+                </wadl:doc> &task--portResponseParameters-top;
+                &taskImportResponseParameters-input;&task--portResponseParameters-bottom; </representation>
             <!--import success-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get import task details - success response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+                    title="Get import task details - success response">
                     <xsdxt:code href="../common/samples/task-detail-import-success-response.json"/>
                 </wadl:doc>
             </representation>
             <!--import failure-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get import task details - failure response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+                    title="Get import task details - failure response">
                     <xsdxt:code href="../common/samples/task-detail-import-failure-response.json"/>
                 </wadl:doc>
             </representation>
             <!--export pending-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get export task details - pending response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+                    title="Get export task details - pending response">
                     <xsdxt:code href="../common/samples/task-detail-export-pending-response.json"/>
                 </wadl:doc> &task--portResponseParameters-top; &taskExportResponseParameters-input;
                 &task--portResponseParameters-bottom; </representation>
             <!--export success-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get export task details - success response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+                    title="Get export task details - success response">
                     <xsdxt:code href="../common/samples/task-detail-export-success-response.json"/>
                 </wadl:doc>
             </representation>
             <!--export failure-->
             <representation mediaType="application/json">
-                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="Get export task details - failure response">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+                    title="Get export task details - failure response">
                     <xsdxt:code href="../common/samples/task-detail-export-failure-response.json"/>
                 </wadl:doc>
             </representation>
@@ -623,9 +651,13 @@
                 details.</para>
             <para>This operation imports an image using an asynchronous task request. The request begins the import process
                 and returns the task UUID that can be subsequently polled to determine the status of the import by using the
-                <xref linkend="GET_getTask_tasks__taskID__Image_Task_Calls"/> operation. The response conforms to the schema
-                found in <xref linkend="GET_getTaskSchema_schemas_task_Schema_Calls"/>.</para>
-            <para>To successfully import an image, </para>
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html">
+                    4.4.2. Get task details</link>
+                operation. The response conforms to the schema found in
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html">
+                    4.5.6. Get tasks schema</link>
+                .</para>
+            <para>To successfully import an image: </para>
             <itemizedlist>
                 <listitem>
                     <para>Format the image using the VHD format.</para>
@@ -679,8 +711,12 @@
                 details.</para>
             <para>This operation exports an image in VHD format using an asynchronous task request to export. The request
                 begins the export process and returns the task UUID that can be subsequently polled to determine the status
-                of the export by using the <xref linkend="GET_getTask_tasks__taskID__Image_Task_Calls"/> operation. The
-                response conforms to the schema found in <xref linkend="GET_getTaskSchema_schemas_task_Schema_Calls"/>. </para>
+                of the export by using the
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html">
+                    4.4.2. Get task details</link>
+                operation. The response conforms to the schema found in
+                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html">
+                    4.5.5. Get tasks schema</link>. </para>
             <note>
                 <para>The exported image is deposited in your Cloud Files account and is identified by the
                         <parameter>image_uuid</parameter> with a .vhd extension. You are responsible for ensuring that any
