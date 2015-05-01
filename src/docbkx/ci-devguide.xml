@@ -27,6 +27,23 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2015-05-01</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>Added "deactivated" to list of image statuses in <olink targetdoc="ci-devguide" targetptr="image-statuses"
+                  >“Image statuses”</olink>.</para>
+            </listitem>
+            <listitem>
+              <para>Corrected the list image query parameters, adding "shared" as option for visibility and mentioning
+                that member_status only applies if the image is "shared" for the <olink targetdoc="ci-devguide"
+                  targetptr="GET_listImages_images_Image_Calls">"GET_listImages_images_Image_Calls"</olink>
+                operation.</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2015-03-21</date>
         <revdescription>
           <itemizedlist>
