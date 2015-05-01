@@ -136,7 +136,7 @@
                     <term><emphasis role="bold">deactivated</emphasis></term>
                     <listitem>
                         <para>The administrator has marked the image as unavailable while it is under investigation. Image
-                            operations like list, get details, image sharing, and set metadata work, however, users cannot
+                            operations like list, get details, image sharing, and set metadata work; however, users cannot
                             perform operations that must access image data. For example, users cannot boot from a deactivated
                             image or export a deactivated image.</para>
                     </listitem>
