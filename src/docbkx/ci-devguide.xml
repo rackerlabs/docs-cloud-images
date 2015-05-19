@@ -27,6 +27,12 @@
     </abstract>
     <revhistory>
       <revision>
+        <date>2015-05-19</date>
+        <revdescription>
+          <para>Updated link to Knowledge Center article that provides help for selecting endpoint region.</para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2015-05-01</date>
         <revdescription>
           <itemizedlist>

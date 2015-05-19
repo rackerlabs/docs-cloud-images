@@ -18,6 +18,12 @@
     <pubdate><!--If you leave the <pubdate> element empty, the build system inserts today's date automatically. --></pubdate>
     <revhistory>
       <revision>
+        <date>2015-05-19</date>
+        <revdescription>
+          <para>Updated link to Knowledge Center article that provides help for selecting endpoint region.</para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2015-03-06</date>
         <revdescription>
           <para>Updated Identity API endpoint documentation to remove references to regional endpoints. All customers can
