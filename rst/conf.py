@@ -43,7 +43,7 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'cloud-images/dev-guide/index'
+master_doc = 'dev-guide/index'
 
 # General information about the project.
 project = 'Rackspace Developer Portal'
