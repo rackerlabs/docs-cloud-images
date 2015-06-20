@@ -24,7 +24,7 @@ For more information on task statuses, search for "task statuses".
    individual providers, like Rackspace, to easily customize these two
    parameters.
 
-   The *Task to import image* and *Task to export image sections
+   The *Task to import image* and *Task to export image* sections
    and "POST\exportImage\tasks\Image\Task\" show the Rackspace requirements for these 
    parameters.
 
@@ -59,4 +59,3 @@ High-level process for exporting an image
 
 #. Poll the task status by using the *Get task details* operation repeatedly. The “Get 
    details for a task” section of this guide shows an example.
-
