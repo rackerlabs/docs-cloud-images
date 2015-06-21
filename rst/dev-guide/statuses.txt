@@ -1,9 +1,13 @@
+.. _ci-dg-overview-statuses:
+
 Statuses
 --------
 
 The Cloud Images API uses a variety of statuses to identify the state of
 images or image components. This section describes the statuses and
 their values.
+
+.. _ci-dg-overview-image-statuses:
 
 Image statuses
 ~~~~~~~~~~~~~~
@@ -46,6 +50,8 @@ statuses when you display details by using the *Get image details* API operation
     access image data. For example, users cannot boot from a deactivated image
     or export a deactivated image.
 
+.. _ci-dg-overview-task-statuses:
+
 Task statuses
 ~~~~~~~~~~~~~
 
@@ -67,6 +73,8 @@ statuses when you poll them by using the *Get details for a task* API operation.
 
 **failure**
     The image task did not complete successfully.
+
+.. _ci-dg-overview-member-statuses:
 
 Image member statuses
 ~~~~~~~~~~~~~~~~~~~~~

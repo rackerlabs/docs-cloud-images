@@ -28,50 +28,7 @@ server with an isolated network::
    (``\``) as an escape character. The escape character allows continuation
    of the command across multiple lines. However, do not include the escape
    character in the JSON request body within the cURL command.
-
-The cURL examples in this guide use the following command-line options:
-
-``-d``: Sends the specified data in a **POST** request to the HTTP server. Use
-this option to send a JSON request body to the server.
-
-``-H``: Specifies an extra HTTP header in the request. You can specify any
-number of extra headers. Precede each header with the ``-H`` option.
-
-Common headers in Rackspace API requests are as follows:
-
--  ``Content-Type``. Required for operations with a request body.
-
-   Specifies the format of the request body. 
-
-   .. code::
-
-      Content-Type: application/json
-
--  ``X-Auth-Token``. Required. Specifies the authentication token.
-
--  ``X-Auth-Project-Id``. Optional. Specifies the project ID, which can
-   be your account number or another value.
-
--  ``Accept``. Optional.
-
-   Specifies the format of the response body. The default is ``json``.
-
-   .. code::
-
-       Accept: application/json
-
-``-i``: Includes the HTTP header in the output.
-
-``-s``: Specifies silent or quiet mode, which makes cURL mute. No progress or
-error messages are shown.
-
-``-T``: Transfers the specified local file to the remote URL.
-
-``-X``: Specifies the request method to use when communicating with the HTTP
-server. The specified request is used instead of the default method,
-which is **GET**.
-
-
+   
 .. note::
    For commands that return a response, you can append the following
    code to the command to call json.tool to pretty-print output:
@@ -90,6 +47,57 @@ which is **GET**.
    and use simplejson.tool. For information about simplejson.tool, see
    `simplejson — JSON encoder and decoder 
    <http://simplejson.googlecode.com/svn/tags/simplejson-2.0.9/docs/index.html>`__.
+
+The cURL examples in this guide use the following command-line options.
+
++------------------+-----------------------------------------------------------------------+
+| Option           | Description                                                           |
++==================+=======================================================================+
+| **-d**           | Sends the specified data in a **POST** request to the HTTP server.    |
+|                  | Use this option to send a JSON request body to the server.            |
++------------------+-----------------------------------------------------------------------+
+| **-H**           | Specifies an extra HTTP header in the request. You can specify any    |
+|                  | number of extra headers. Precede each header with the ``-H`` option.  |
+|                  |                                                                       |
+|                  | Common headers in Rackspace API requests are as follows:              |
+|                  |                                                                       |
+|                  |                                                                       |
+|                  | -  ``Content-Type``: Required for operations with a request body.     |
+|                  |                                                                       |
+|                  |    Specifies the format of the request body. Following is the syntax  |
+|                  |    for the header where ``format`` is ``json``:                       |
+|                  |                                                                       |
+|                  |    *Content-Type: application/format*                                 |
+|                  |                                                                       |
+|                  | -  ``X-Auth-Token``: Required.                                        |
+|                  |    Specifies the authentication token.                                |
+|                  |                                                                       |       
+|                  | -  ``X-Auth-Project-Id``: Optional.                                   |
+|                  |    Specifies the project ID, which can be your account number or      |
+|                  |    another value.                                                     |
+|                  |                                                                       |
+|                  | -  ``Accept``: Optional.                                              |
+|                  |                                                                       |
+|                  |    Specifies the format of the response body. Following is the syntax |
+|                  |    for the header where the ``format`` is ``json``, which is the      |
+|                  |    default:                                                           |
+|                  |                                                                       |
+|                  |    *Accept: application/format*                                       |
+|                  |                                                                       |
+|                  |                                                                       |
++------------------+-----------------------------------------------------------------------+
+| **-i**           | Includes the HTTP header in the output.                               |
++------------------+-----------------------------------------------------------------------+
+| **-s**           | Specifies silent or quiet mode, which makes cURL mute. No progress or |
+|                  | error messages are shown.                                             |
++------------------+-----------------------------------------------------------------------+
+| **-T**           | Transfers the specified local file to the remote URL.                 |
++------------------+-----------------------------------------------------------------------+
+| **-X**           | Specifies the request method to use when communicating with the HTTP  |
+|                  | server. The specified request is used instead of the default method,  |
+|                  | which is **GET**.                                                     |
++------------------+-----------------------------------------------------------------------+
+
 
 
 
