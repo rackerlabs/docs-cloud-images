@@ -1,3 +1,5 @@
+.. _ci-dg-overview:
+
 ========
 Overview
 ========
@@ -27,6 +29,8 @@ Cloud Files for future downloading.
 
 This chapter describes what images are, how you share images with
 others, and how you use asynchronous image tasks.
+
+.. _ci-dg-overview-images:
 
 Images
 ------
@@ -63,6 +67,7 @@ Cloud Images has the following expected benefits:
 
      - Images are shared as an informal "image marketplace".
 
+.. _ci-dg-overview-standard-images:
 
 Standard images
 ~~~~~~~~~~~~~~~
@@ -74,6 +79,8 @@ Standard images include the following images:
 
 *  All images that have not reached their end of life and that are
    provided specifically for RackConnect customers
+
+.. _ci-dg-overview-nonstandard-images:
 
 Nonstandard images
 ~~~~~~~~~~~~~~~~~~

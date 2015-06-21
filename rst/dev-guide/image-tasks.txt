@@ -1,3 +1,5 @@
+.. _ci-dg-overview-image-tasks:
+
 Asynchronous image tasks
 ------------------------
 
