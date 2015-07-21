@@ -1,16 +1,4 @@
-=======================
-General API Information
-=======================
-
-This chapter contains helpful information for using API operations, authenticating, 
-and using service endpoints.
-
-The Cloud Images API is defined as a RESTful HTTP service that uses all aspects of the 
-HTTP protocol, including methods, URIs, media types, and response codes. To request 
-Cloud Images services, you must first issue an authentication request to the Rackspace 
-Cloud Identity Service.
-
-The Cloud Images API supports JSON data serialization request and response formats. 
+.. _images-dg-gen-info-send-request-receive-response:
 
 Sending API requests and receiving responses
 --------------------------------------------
@@ -35,6 +23,8 @@ You have several options for sending requests through an API:
 - You can download and install RESTclient, a Java application for testing ReSTful web 
   services, from http://code.google.com/p/rest-client/. 
 
+.. _images-dg-gen-info-media-types:
+
 Media Types
 -----------
 
@@ -47,6 +37,9 @@ request varies by the following request types:
 - Requests that use **HTTP PATCH syntax** use the following media type in their 
   ``Content-Type header: 'application/openstack-images-v2.1-json-patch'``.
 
+
+.. _images-dg-gen-info-json-schemas:
+
 JSON Schemas
 ------------
 
@@ -55,10 +48,3 @@ validates server responses and client requests based on the published schemas. T
 schemas contained in this document are only examples and should not be used to validate 
 your requests. A client should always fetch current schemas from the server.
 
-.. include:: how-curl-commands-work.txt
-
-.. include:: authenticate.txt
-
-.. include:: role-based-access-control.txt
-
-.. include:: service-access-endpoints.txt

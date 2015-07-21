@@ -1,6 +1,8 @@
-============
-Cloud Images
-============
+.. _ci-dg-overview:
+
+========
+Overview 
+========
 
 The Rackspace Cloud Images service enables developers to create and
 manipulate images, image members, and associated metadata through a
@@ -25,12 +27,9 @@ Cloud Images has the following expected benefits:
      - Images are shared as an informal "image marketplace".
 
 
-.. toctree::
-   :includehidden:   
-   :maxdepth: 99
+.. toctree:: :hidden:
+    :maxdepth: 3
 
-   overview/index
-   concepts/index
-   general-api-info/index
-   api-operations/index
-   
+    intended-audience
+    additional-resources
+    pricing-service-level
