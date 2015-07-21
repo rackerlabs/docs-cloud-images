@@ -8,29 +8,23 @@ simple Representational State Transfer (REST) web service interface.
 
 Cloud Images has the following expected benefits:
 
-- You can import and export images across multiple sources: public cloud, private cloud, 
-  and sources external to Rackspace. 
+- You can import and export images across multiple sources: public cloud, private cloud,
+  and sources external to Rackspace.
 
-     - Images are portable, taking full advantage of the open cloud.
+  - Images are portable, taking full advantage of the open cloud.
 
-     - Images are imported from a private cloud into the public cloud for cloud-bursting.
+  - Images are imported from a private cloud into the public cloud for cloud-bursting.
 
-     - Images created in the public cloud can be imported to a private cloud, or to 
-       another provider's cloud, for redundancy and high availability.
+  - Images created in the public cloud can be imported to a private cloud, or to
+    another provider's cloud, for redundancy and high availability.
 
 - Customers share images.
 
-     - Users with multiple accounts share images among the accounts.
+  - Users with multiple accounts share images among the accounts.
 
-     - Images are shared as an informal "image marketplace".
+  - Images are shared as an informal "image marketplace".
 
-
-.. toctree::
-   :includehidden:   
-   :maxdepth: 99
-
-   overview/index
-   concepts/index
-   general-api-info/index
-   api-operations/index
-   
+.. include:: overview/index.rst
+.. include:: concepts/index.rst
+.. include:: general-api-info/index.rst
+.. include:: api-operations/index.rst

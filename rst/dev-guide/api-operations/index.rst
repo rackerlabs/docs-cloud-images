@@ -17,6 +17,10 @@ Developers use the operations described in this chapter to perform the following
 - Get information about image schemas
 
 
+.. include:: api-operations/image-2.0/images-operations.rst
+.. include:: api-operations/image-2.0/image-sharing-operations.rst
+
+
 .. toctree:: :hidden:
    :maxdepth: 2
 
@@ -25,4 +29,3 @@ Developers use the operations described in this chapter to perform the following
    image-2.0/image-tag-operations
    image-2.0/image-task-operations
    image-schemas-2.0/index
-    
