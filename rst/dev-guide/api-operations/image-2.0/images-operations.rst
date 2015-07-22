@@ -2,18 +2,9 @@
 
 Images
 --------
-Use the images API operations to list, delete, and update images. 
+Use the images API operations to list, delete, and update images.
 
-.. toctree:: :hidden:
-    :maxdepth: 1
-
-    List images <get-list-images-images>
-    Get image details <get-get-image-details-images-image-id>
-    Update image <patch-update-image-images-image-id>
-    Delete image <delete-delete-image-images-image-id>
-  
-
-
-
-
-
+.. include:: api-operations/image-2.0/get-list-images-images.rst
+.. include:: api-operations/image-2.0/get-get-image-details-images-image-id.rst
+.. include:: api-operations/image-2.0/patch-update-image-images-image-id.rst
+.. include:: api-operations/image-2.0/delete-delete-image-images-image-id.rst

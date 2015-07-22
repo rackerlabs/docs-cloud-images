@@ -3,15 +3,12 @@
 Image sharing
 --------------
 
-Use image sharing operations to distribute and manage 
-images. For more information, 
+Use image sharing operations to distribute and manage
+images. For more information,
 see *Image sharing* in the Cloud Images Developer Guide.
 
-.. toctree::
-   :maxdepth: 1
-
-    List image members <get-list-images-images>
-    Get image member details <get-get-image-member-details-images-image-id-members-member-id>
-    Create image members <post-create-image-member-images-image-id-members>
-    Delete image members <delete-delete-image-member-images-image-id-members-member-id>
-    Update image member <put-update-image-member-images-image-id-members-member-id>
+.. include:: api-operations/image-2.0/get-list-images-images.rst
+.. include:: api-operations/image-2.0/get-get-image-member-details-images-image-id-members-member-id.rst
+.. include:: api-operations/image-2.0/post-create-image-member-images-image-id-members.rst
+.. include:: api-operations/image-2.0/delete-delete-image-member-images-image-id-members-member-id.rst
+.. include:: api-operations/image-2.0/put-update-image-member-images-image-id-members-member-id.rst
