@@ -1,3 +1,5 @@
+.. _intended-audience:
+
 Intended Audience
 -----------------
 
