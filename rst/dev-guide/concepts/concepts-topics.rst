@@ -1,4 +1,4 @@
-.. _ci-concepts-images:
+.. _images:
 
 Images
 ------
@@ -9,10 +9,10 @@ image. The new server will have the same files and operating system that
 the original server had at the time the image was created.
 
 
-The Cloud Images service enables you to use standard, Rackspace-supported images 
-and to create, share, and use nonstandard images that are not supported by Rackspace. 
+The Cloud Images service enables you to use standard, Rackspace-supported images
+and to create, share, and use nonstandard images that are not supported by Rackspace.
 
-.. _ci-concepts-standard-images:
+.. _standard-images:
 
 Standard images
 ~~~~~~~~~~~~~~~
@@ -25,7 +25,7 @@ Standard images include the following images:
 *  All images that have not reached their end of life and that are
    provided specifically for RackConnect customers
 
-.. _ci-concepts-nonstandard-images:
+.. _nonstandard-images:
 
 Nonstandard images
 ~~~~~~~~~~~~~~~~~~
@@ -44,27 +44,27 @@ Nonstandard images include the following images:
 
 .. note::
    This is not an exhaustive list of nonstandard images.
-   
-   
-.. ci-concepts-image-entities:
+
+
+.. _image-entities:
 
 Image entities
 --------------
 
 An image entity is represented by a JSON-encoded data structure and its raw binary data.
 
-An image entity has an identifier (ID) that is guaranteed to be unique within its 
+An image entity has an identifier (ID) that is guaranteed to be unique within its
 endpoint. The ID is used as a token in request URIs to interact with that specific image.
 
-An image is always guaranteed to have the following attributes: id, status, visibility, 
-protected, tags, created_at, file and self. The other attributes defined in the image 
-schema are guaranteed to be defined, but will only be returned with an image entity if 
+An image is always guaranteed to have the following attributes: id, status, visibility,
+protected, tags, created_at, file and self. The other attributes defined in the image
+schema are guaranteed to be defined, but will only be returned with an image entity if
 they have been explicitly set.
 
-A client may set arbitrarily-named attributes on their images if the image json-schema 
+A client may set arbitrarily-named attributes on their images if the image json-schema
 allows it. These user-defined attributes will appear like any other image attributes.
 
-.. _ci-concepts-image-identifiers:
+.. _image-identifiers:
 
 Image identifiers
 -----------------
@@ -83,7 +83,7 @@ where:
 ``{image_ID}``
     The image identifier, which is a *UUID*, making it globally unique
 
-.. _ci-concepts-common-image-properties:
+.. _common-image-properties:
 
 Common image properties
 -----------------------
@@ -96,11 +96,11 @@ options:
 
 **os\_version**
     The operating system version as specified by the distributor
-    
+
 **os\_distro**
     The common name of the operating system distribution
 
-.. important:: The common name of the os\distro must be all lowercase and entered exactly 
+.. important:: The common name of the os\distro must be all lowercase and entered exactly
     as shown here. The allowed values are as follows:
 
     **arch**
@@ -160,7 +160,7 @@ options:
     **windows**
         Microsoft Windows
 
-.. _ci-concepts-image-sharing:
+.. _image-sharing:
 
 Image sharing
 -------------
@@ -236,7 +236,7 @@ Sample workflow for image sharing, after image creation
    address for notification purposes, but this is outside the scope of
    the API.
 
-#. The producer shares the image with the consumer,  by using the 
+#. The producer shares the image with the consumer,  by using the
    *Create image member* API operation.
 
 #. Optionally, the producer notifies the consumer that the image has
@@ -253,7 +253,7 @@ Sample workflow for image sharing, after image creation
    available, the consumer uses the Cloud Images API to change the image
    member status to ``pending``, by using the *Update image member* API operation.
 
-.. _ci-concepts-asynchronous-image-tasks:
+.. _asynchronous-image-tasks:
 
 Asynchronous image tasks
 ------------------------
@@ -263,8 +263,8 @@ operation, such as importing or exporting an image. The request creates
 a disposable task resource that you poll for information about the
 operation's status.
 
-After you initiate an image import or export, poll the task's status by using 
-the *Get task details* API operation repeatedly until the task completes. The 
+After you initiate an image import or export, poll the task's status by using
+the *Get task details* API operation repeatedly until the task completes. The
 “Get details for a task” section of this guide shows an example.
 
 When the poll response has a status of ``success`` or ``failure``, the
@@ -282,7 +282,7 @@ For more information on task statuses, search for "task statuses".
    parameters.
 
    The *Task to import image* and *Task to export image* sections
-   and "POST\exportImage\tasks\Image\Task\" show the Rackspace requirements for these 
+   and "POST\exportImage\tasks\Image\Task\" show the Rackspace requirements for these
    parameters.
 
 High-level process for importing an image
@@ -297,7 +297,7 @@ High-level process for importing an image
    storage and to create a new image for you. This activity takes some
    time.
 
-#. Poll the task status by using the *Get task details* operation repeatedly. The “Get 
+#. Poll the task status by using the *Get task details* operation repeatedly. The “Get
    details for a task” section of this guide shows an example.
 
 High-level process for exporting an image
@@ -305,7 +305,7 @@ High-level process for exporting an image
 
 #. Determine the UUID of the image you want to export.
 
-#. Submit the export request by using the *Task to export image* API operation. The 
+#. Submit the export request by using the *Task to export image* API operation. The
    “Export an image by using tasks” section of this guide shows an example.
 
 #. The Cloud Images service begins to process the image, to convert it
@@ -314,10 +314,10 @@ High-level process for exporting an image
    the exported image to your Cloud Files account. This activity takes
    some time.
 
-#. Poll the task status by using the *Get task details* operation repeatedly. The “Get 
+#. Poll the task status by using the *Get task details* operation repeatedly. The “Get
    details for a task” section of this guide shows an example.
 
-.. _ci-concepts-statuses:
+.. _statuses:
 
 Statuses
 --------
@@ -325,8 +325,6 @@ Statuses
 The Cloud Images API uses a variety of statuses to identify the state of
 images or image components. This section describes the statuses and
 their values.
-
-.. _ci-dg-overview-image-statuses:
 
 Image statuses
 ~~~~~~~~~~~~~~
@@ -451,10 +449,10 @@ Image members can have any of the following statuses.
     available, but this is outside the scope of the Cloud Images API.
 
 .. note::
-   With a ``rejected`` or ``pending``  image member status, the consumer can still use the 
+   With a ``rejected`` or ``pending``  image member status, the consumer can still use the
    image but must know the image ID, since the image is not in the image list.
 
-.. _ci-concepts-http-patch-method:
+.. _http-patch-method:
 
 HTTP PATCH method
 -----------------
@@ -502,7 +500,7 @@ The *ABNF* syntax is as follows:
     reference-token = *( unescaped / escaped )
     unescaped = %x00-2E / %x30-7D / %x7F-10FFFF
     escaped = "~" ( "0" / "1" )
-                        
+
 
 An example of converting image properties to JSON Pointers, which is
 necessary to use the ``HTTP PATCH`` method, is as
@@ -526,8 +524,8 @@ Image Entity:
         "self": "/v2/images/da3b75d9-3f4a-40e7-8a2c-bfab23927dea",
         "file": "/v2/images/da3b75d9-3f4a-40e7-8a2c-bfab23927dea/file",
         "schema": "/v2/schemas/image"
-    }             
-                
+    }
+
 
 Comparison of the JSON Pointer to the Image Entity Key Pair:
 
@@ -535,10 +533,10 @@ Comparison of the JSON Pointer to the Image Entity Key Pair:
 
     JSON Pointer        Image Entity Key Pair
      /name          "name":"cirros-0.3.0-x86_64-uec-ramdisk"
-     /size          "size":"2254249"             
+     /size          "size":"2254249"
      /tags          "tags":["ping", "pong"]
-     /~0~1.ssh~1    "~/.ssh/":"present"               
-                
+     /~0~1.ssh~1    "~/.ssh/":"present"
+
 
 Using the HTTP PATCH method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -598,7 +596,7 @@ specified path in the target image. The path must reference an image
 property to add to an existing image. The operation object contains a
 value member that specifies the value to be added.
 
-.. warning:: 
+.. warning::
    There is a small subset of standard image properties that can be
    added by users; please consult the `Rackspace Knowledge Center <http://www.rackspace.com/knowledge_center/>`__ for details. If
    you add any other properties as part of your PATCH request, the
@@ -650,4 +648,3 @@ Replace Example
 .. warning::
    If the specified image property does not exist for the target
    image, an error condition results.
-

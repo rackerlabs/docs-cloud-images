@@ -1,3 +1,5 @@
+.. _service-access-endpoints:
+
 Service access endpoints
 ------------------------
 
@@ -36,4 +38,3 @@ environments.
    If you do not know your account ID or which data center you are
    working in, you can find that information in your Cloud Control Panel at
    `mycloud.rackspace.com. <http://mycloud.rackspace.com>`__
-

@@ -1,26 +1,26 @@
-.. _ci-dg-generalapi-curl:
+.. _how-curl-commands-work:
 
 
 ======================
 How cURL commands work
 ======================
 
-cURL is a command-line tool that you can use to interact with REST interfaces. cURL lets 
-you to transmit and receive HTTP requests and responses from the command line or a shell 
-script, which enables you to work with the API directly. It is available for Linux distributions, 
+cURL is a command-line tool that you can use to interact with REST interfaces. cURL lets
+you to transmit and receive HTTP requests and responses from the command line or a shell
+script, which enables you to work with the API directly. It is available for Linux distributions,
 Mac OS X, and Windows. For information about cURL, see http://curl.haxx.se/.
 
-To run the cURL request examples shown in this guide, copy each example from the HTML version 
+To run the cURL request examples shown in this guide, copy each example from the HTML version
 of this guide directly to the command line or a script.
 
 .. _cn-dg-generalapi-curl-json:
 
-The following command is an example cURL command that provisions a server with an isolated 
+The following command is an example cURL command that provisions a server with an isolated
 network using JSON.
 
 **cURL command example: JSON request**
 
-.. code::  
+.. code::
 
                 $ curl https://dfw.servers.api.rackspacecloud.com/v2/$account/servers \
            -X POST \
@@ -33,7 +33,7 @@ network using JSON.
 
 ..  note::
 
-    The carriage returns in the cURL request examples use a backslash (``\``) as an escape 
+    The carriage returns in the cURL request examples use a backslash (``\``) as an escape
     character. The escape character allows continuation of the command across multiple lines.
 
 The cURL examples in this guide use the following command-line options.
@@ -62,7 +62,7 @@ The cURL examples in this guide use the following command-line options.
 |           | ``X-Auth-Token``: Required.                                           |
 |           |                                                                       |
 |           | - Specifies the authentication token.                                 |
-|           |                                                                       |       
+|           |                                                                       |
 |           | ``X-Auth-Project-Id``: Optional.                                      |
 |           |                                                                       |
 |           | - Specifies the project ID, which can be your account number or       |
@@ -93,19 +93,19 @@ The cURL examples in this guide use the following command-line options.
 +-----------+-----------------------------------------------------------------------+
 
 
-For commands that return a response, use json.tool to pretty-print the output by 
+For commands that return a response, use json.tool to pretty-print the output by
 appending the following command to the cURL call:
 
-.. code::  
+.. code::
 
    | python -m json.tool
 
 ..  note::
 
-    To use json.tool, import the JSON module. For information about json.tool, see 
+    To use json.tool, import the JSON module. For information about json.tool, see
     `JSON encoder and decoder`_.
 
-    If you run a Python version earlier than 2.6, import the simplejson module and use 
+    If you run a Python version earlier than 2.6, import the simplejson module and use
     simplejson.tool. For information about simplejson.tool, see `simplejson encoder and decoder`_.
 
     If you do not want to pretty-print JSON output, omit this code.

@@ -1,4 +1,4 @@
-.. _images-api-operations-images:
+.. _api-operations-images:
 
 Images
 --------

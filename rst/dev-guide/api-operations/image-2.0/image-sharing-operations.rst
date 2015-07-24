@@ -1,4 +1,4 @@
-.. _images-api-operations-image-sharing:
+.. _api-operations-image-sharing:
 
 Image sharing
 --------------

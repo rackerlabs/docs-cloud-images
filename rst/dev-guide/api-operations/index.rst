@@ -1,4 +1,4 @@
-.. _images-dg-api-operations:
+.. _api-operations:
 
 ================
 API Operations
@@ -21,8 +21,8 @@ Developers use the operations described in this chapter to perform the following
 .. include:: api-operations/image-2.0/image-sharing-operations.rst
 
 
-.. toctree:: :hidden:
-   :maxdepth: 2
+.. toctree::
+   :hidden:
 
    image-2.0/images-operations
    image-2.0/image-sharing-operations
