@@ -1,7 +1,7 @@
 .. _role-based-access-control:
 
 Role Based Access Control
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Role Based Access Control (RBAC) restricts access to the capabilities of
 Rackspace Cloud services, including the next gen Cloud Servers API, to
@@ -16,7 +16,7 @@ or product-specific (for example, next gen Cloud Servers), to account
 users.
 
 Assigning Roles to Account Users
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The account owner (identity:user-admin) can create account users on the
 account and then assign roles to those users. The roles grant the
@@ -38,7 +38,7 @@ to perform the following tasks:
    additional roles because it already has full access to all capabilities.
 
 Roles Available for Cloud Images
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Three roles (observer, creator, and admin) can be used to access the Cloud Images API
 specifically. The following section describes these roles and their permissions.
@@ -63,7 +63,7 @@ section describes these roles and their permissions.
 - **observer** This role provides Read permission in all products, where access is granted.
 
 Resolving Conflicts Between Roles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The account owner can set roles for both multiproduct and Cloud Images scope, and it is
 important to understand how any potential conflicts among these roles are resolved. When
@@ -94,7 +94,7 @@ Permissions: The user can perform product admin functions in the control panel f
 The Cloud Images **observer** role is ignored.
 
 RBAC Permissions Cross-reference to Cloud Images API Operations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 API operations for Cloud Images may or may not be available to all roles. To see which
 operations are permitted to invoke which calls, please review `the Knowledge Center

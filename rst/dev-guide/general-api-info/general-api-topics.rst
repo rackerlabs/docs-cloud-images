@@ -1,7 +1,7 @@
 .. _send-request-receive-responses:
 
 Sending API requests and receiving responses
---------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You have several options for sending requests through an API:
 
@@ -23,10 +23,13 @@ You have several options for sending requests through an API:
 - You can download and install RESTclient, a Java application for testing ReSTful web
   services, from http://code.google.com/p/rest-client/.
 
+- You can download and install RESTclient, a Java application for testing ReSTful web
+  services, from http://code.google.com/p/rest-client/.
+
 .. _media-types:
 
 Media Types
------------
+~~~~~~~~~~~
 
 The Cloud Images API accepts and serves JSON-encoded data. The media type required in the
 request varies by the following request types:
@@ -41,7 +44,7 @@ request varies by the following request types:
 .. _json-schemas:
 
 JSON Schemas
-------------
+~~~~~~~~~~~~
 
 The necessary JSON-schema documents are provided at predictable URIs. A consumer
 validates server responses and client requests based on the published schemas. The

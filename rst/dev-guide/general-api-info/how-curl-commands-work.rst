@@ -1,9 +1,7 @@
 .. _how-curl-commands-work:
 
-
-======================
 How cURL commands work
-======================
+~~~~~~~~~~~~~~~~~~~~~~
 
 cURL is a command-line tool that you can use to interact with REST interfaces. cURL lets
 you to transmit and receive HTTP requests and responses from the command line or a shell
