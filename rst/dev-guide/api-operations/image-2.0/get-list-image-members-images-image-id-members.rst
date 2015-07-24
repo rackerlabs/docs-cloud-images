@@ -10,7 +10,7 @@ List Image Members
 
 Returns collection of members (users) with whom the image has been shared.
 
-This operation returns collection of members (users) with whom the image has been shared. The response conforms to the schema found in ` 4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
+This operation returns collection of members (users) with whom the image has been shared. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
 
 If a user with whom this image is shared makes this call, the member list contains only information for that user. If a user with whom this image has not been shared makes this call, the response is ``HTTP 404``.
 

@@ -10,7 +10,7 @@ Get Image Member Details
 
 Gets the details for the specified image member. 
 
-This operation shows details of the image member. The response conforms to the schema found in ` 4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
+This operation shows details of the image member. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
 
 To get a successful response, either the image owner must make the call or the ``tenant_id`` of the user making the call must match the specified ``member_id``. Otherwise the response is ``HTTP 404``.
 

@@ -10,7 +10,7 @@ List Tasks
 
 Lists tasks.
 
-This operation returns list of tasks, with basic details about each task. The response conforms to the schema found in ` 4.5.5. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__.
+This operation returns list of tasks, with basic details about each task. The response conforms to the schema found in `4.5.5. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__.
 
 
 

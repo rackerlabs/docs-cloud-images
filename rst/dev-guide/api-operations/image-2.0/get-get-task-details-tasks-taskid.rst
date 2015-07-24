@@ -10,7 +10,7 @@ Get Task Details
 
 Gets the details for the specified task.
 
-This operation shows the details for the specified task, including the status, so you'll know when the import or export task completes and whether it worked. For more information on statuses, see ` 1.4.2. Task statuses <http://docs.rackspace.com/images/api/v2/ci-devguide/content/task-statuses.html>`__. The response conforms to the schema found in ` 4.5.5. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__.
+This operation shows the details for the specified task, including the status, so you'll know when the import or export task completes and whether it worked. For more information on statuses, see `1.4.2. Task statuses <http://docs.rackspace.com/images/api/v2/ci-devguide/content/task-statuses.html>`__. The response conforms to the schema found in `4.5.5. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__.
 
 
 

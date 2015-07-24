@@ -10,7 +10,7 @@ Create Image Member
 
 Adds the specified ``account ID/tenant ID`` specified in the request body as an image member.
 
-This operation allows you to add users, by ``member_id`` (which is the ``tenant_id`` ) to the list of members with whom the image is shared. The member status of a newly created image member is ``pending``. The response conforms to the schema found in ` 4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
+This operation allows you to add users, by ``member_id`` (which is the ``tenant_id`` ) to the list of members with whom the image is shared. The member status of a newly created image member is ``pending``. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
 
 If the user making the call is not the image owner, the response is ``HTTP 404``.
 

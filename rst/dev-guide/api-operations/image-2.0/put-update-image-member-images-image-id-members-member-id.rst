@@ -10,7 +10,7 @@ Update Image Member
 
 Sets the specified status for the specified member of the specified image.
 
-This operation updates the image member. The response conforms to the schema found in ` 4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
+This operation updates the image member. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
 
 If the call is made by the image owner, the response is ``HTTP 403 (Forbidden)``.
 

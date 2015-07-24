@@ -10,7 +10,7 @@ Get Image Details
 
 Gets the details for the specified image. 
 
-This operation shows the details for the image. The response body is a single image entity and conforms to the schema found in ` 4.5.2. Get image schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageSchema_schemas_image_Schema_Calls.html>`__.
+This operation shows the details for the image. The response body is a single image entity and conforms to the schema found in `4.5.2. Get image schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageSchema_schemas_image_Schema_Calls.html>`__.
 
 
 
