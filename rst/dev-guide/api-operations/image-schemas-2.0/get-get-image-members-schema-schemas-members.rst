@@ -1,15 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-=============================================================================
-Get Image Members Schema -  1
-=============================================================================
-
 Get Image Members Schema
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Request <get-get-image-members-schema-schemas-members.html#request>`__
-`Response <get-get-image-members-schema-schemas-members.html#response>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -32,7 +25,7 @@ This table shows the possible response codes for this operation:
 
 
 Request
-^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 
@@ -43,7 +36,7 @@ Request
 
 
 Response
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 

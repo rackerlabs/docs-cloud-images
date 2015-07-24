@@ -1,15 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-=============================================================================
-Get Task Schema -  1
-=============================================================================
-
 Get Task Schema
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Request <get-get-task-schema-schemas-task.html#request>`__
-`Response <get-get-task-schema-schemas-task.html#response>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -50,7 +43,7 @@ This table shows the possible response codes for this operation:
 
 
 Request
-^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 
@@ -61,7 +54,7 @@ Request
 
 
 Response
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 

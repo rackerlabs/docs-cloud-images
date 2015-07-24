@@ -1,15 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-=============================================================================
-Get Task Details -  1
-=============================================================================
-
 Get Task Details
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Request <get-get-task-details-tasks-taskid.html#request>`__
-`Response <get-get-task-details-tasks-taskid.html#response>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -17,7 +10,7 @@ Get Task Details
 
 Gets the details for the specified task.
 
-This operation shows the details for the specified task, including the status, so you'll know when the import or export task completes and whether it worked. For more information on statuses, see ` 1.4.2. Task statuses <http://docs.rackspace.com/images/api/v2/ci-devguide/content/task-statuses.html>`__. The response conforms to the schema found in ` 4.5.5. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__.
+This operation shows the details for the specified task, including the status, so you'll know when the import or export task completes and whether it worked. For more information on statuses, see `1.4.2. Task statuses <http://docs.rackspace.com/images/api/v2/ci-devguide/content/task-statuses.html>`__. The response conforms to the schema found in `4.5.5. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__.
 
 
 
@@ -52,7 +45,7 @@ This table shows the possible response codes for this operation:
 
 
 Request
-^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 This table shows the URI parameters for the request:
 
@@ -75,7 +68,7 @@ This table shows the URI parameters for the request:
 
 
 Response
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 This table shows the body parameters for the response:

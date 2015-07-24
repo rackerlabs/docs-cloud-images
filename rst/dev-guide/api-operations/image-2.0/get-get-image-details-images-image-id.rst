@@ -1,15 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-=============================================================================
-Get Image Details -  1
-=============================================================================
-
 Get Image Details
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Request <get-get-image-details-images-image-id.html#request>`__
-`Response <get-get-image-details-images-image-id.html#response>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -17,7 +10,7 @@ Get Image Details
 
 Gets the details for the specified image. 
 
-This operation shows the details for the image. The response body is a single image entity and conforms to the schema found in ` 4.5.2. Get image schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageSchema_schemas_image_Schema_Calls.html>`__.
+This operation shows the details for the image. The response body is a single image entity and conforms to the schema found in `4.5.2. Get image schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageSchema_schemas_image_Schema_Calls.html>`__.
 
 
 
@@ -52,7 +45,7 @@ This table shows the possible response codes for this operation:
 
 
 Request
-^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 This table shows the URI parameters for the request:
 
@@ -72,7 +65,7 @@ This table shows the URI parameters for the request:
 
 
 Response
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 This table shows the body parameters for the response:

@@ -1,15 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-=============================================================================
-Update Image Member -  1
-=============================================================================
-
 Update Image Member
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Request <put-update-image-member-images-image-id-members-member-id.html#request>`__
-`Response <put-update-image-member-images-image-id-members-member-id.html#response>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -17,7 +10,7 @@ Update Image Member
 
 Sets the specified status for the specified member of the specified image.
 
-This operation updates the image member. The response conforms to the schema found in ` 4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
+This operation updates the image member. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
 
 If the call is made by the image owner, the response is ``HTTP 403 (Forbidden)``.
 
@@ -59,7 +52,7 @@ This table shows the possible response codes for this operation:
 
 
 Request
-^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 This table shows the URI parameters for the request:
 
@@ -128,7 +121,7 @@ This table shows the body parameters for the request:
 
 
 Response
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 This table shows the body parameters for the response:

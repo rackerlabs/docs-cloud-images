@@ -1,15 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-=============================================================================
-Get Image Member Details -  1
-=============================================================================
-
 Get Image Member Details
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Request <get-get-image-member-details-images-image-id-members-member-id.html#request>`__
-`Response <get-get-image-member-details-images-image-id-members-member-id.html#response>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -17,7 +10,7 @@ Get Image Member Details
 
 Gets the details for the specified image member. 
 
-This operation shows details of the image member. The response conforms to the schema found in ` 4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
+This operation shows details of the image member. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
 
 To get a successful response, either the image owner must make the call or the ``tenant_id`` of the user making the call must match the specified ``member_id``. Otherwise the response is ``HTTP 404``.
 
@@ -54,7 +47,7 @@ This table shows the possible response codes for this operation:
 
 
 Request
-^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 This table shows the URI parameters for the request:
 
@@ -80,7 +73,7 @@ This table shows the URI parameters for the request:
 
 
 Response
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 This table shows the body parameters for the response:

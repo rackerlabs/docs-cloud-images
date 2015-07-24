@@ -1,15 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-=============================================================================
-Update Image -  1
-=============================================================================
-
 Update Image
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Request <patch-update-image-images-image-id.html#request>`__
-`Response <patch-update-image-images-image-id.html#response>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -17,9 +10,9 @@ Update Image
 
 Updates the specified image. 
 
-This operation allows you to update an image that you own. The request body must conform to the ``'application/openstack-images-v2.1-json-patch'`` media type. The response conforms to the schema found in ` 4.5.2. Get image schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageSchema_schemas_image_Schema_Calls.html>`__.
+This operation allows you to update an image that you own. The request body must conform to the ``'application/openstack-images-v2.1-json-patch'`` media type. The response conforms to the schema found in `4.5.2. Get image schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageSchema_schemas_image_Schema_Calls.html>`__.
 
-You can use the ``HTTP PATCH`` method to update certain standard properties, and to add, update, or remove custom, user-defined image properties. For more information, see ` 2.4. HTTP PATCH method <http://docs.rackspace.com/images/api/v2/ci-devguide/content/patch-method.html>`__ in this guide. Here are some guidelines for custom, user-defined properties. 
+You can use the ``HTTP PATCH`` method to update certain standard properties, and to add, update, or remove custom, user-defined image properties. For more information, see `2.4. HTTP PATCH method <http://docs.rackspace.com/images/api/v2/ci-devguide/content/patch-method.html>`__ in this guide. Here are some guidelines for custom, user-defined properties. 
 
 * Adding properties: You can add custom properties to your image.
  
@@ -86,7 +79,7 @@ This table shows the possible response codes for this operation:
 
 
 Request
-^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 This table shows the URI parameters for the request:
 
@@ -139,7 +132,7 @@ This table shows the body parameters for the request:
 
 
 Response
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 This table shows the body parameters for the response:
