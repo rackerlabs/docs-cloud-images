@@ -1,7 +1,7 @@
-.. _images-api-operations-image-sharing:
+.. _api-operations-image-sharing:
 
 Image sharing
---------------
+~~~~~~~~~~~~~
 
 Use image sharing operations to distribute and manage
 images. For more information,

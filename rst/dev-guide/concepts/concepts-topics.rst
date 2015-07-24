@@ -1,7 +1,7 @@
 .. _ci-concepts-images:
 
 Images
-------
+~~~~~~
 
 Server images are used to store a snapshot of a server's configuration.
 If you take an image of a server, you can create a new server from that
@@ -9,13 +9,13 @@ image. The new server will have the same files and operating system that
 the original server had at the time the image was created.
 
 
-The Cloud Images service enables you to use standard, Rackspace-supported images 
-and to create, share, and use nonstandard images that are not supported by Rackspace. 
+The Cloud Images service enables you to use standard, Rackspace-supported images
+and to create, share, and use nonstandard images that are not supported by Rackspace.
 
 .. _ci-concepts-standard-images:
 
 Standard images
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 Standard images include the following images:
 
@@ -28,7 +28,7 @@ Standard images include the following images:
 .. _ci-concepts-nonstandard-images:
 
 Nonstandard images
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 Nonstandard images include the following images:
 
@@ -44,30 +44,30 @@ Nonstandard images include the following images:
 
 .. note::
    This is not an exhaustive list of nonstandard images.
-   
-   
+
+
 .. ci-concepts-image-entities:
 
 Image entities
---------------
+~~~~~~~~~~~~~~
 
 An image entity is represented by a JSON-encoded data structure and its raw binary data.
 
-An image entity has an identifier (ID) that is guaranteed to be unique within its 
+An image entity has an identifier (ID) that is guaranteed to be unique within its
 endpoint. The ID is used as a token in request URIs to interact with that specific image.
 
-An image is always guaranteed to have the following attributes: id, status, visibility, 
-protected, tags, created_at, file and self. The other attributes defined in the image 
-schema are guaranteed to be defined, but will only be returned with an image entity if 
+An image is always guaranteed to have the following attributes: id, status, visibility,
+protected, tags, created_at, file and self. The other attributes defined in the image
+schema are guaranteed to be defined, but will only be returned with an image entity if
 they have been explicitly set.
 
-A client may set arbitrarily-named attributes on their images if the image json-schema 
+A client may set arbitrarily-named attributes on their images if the image json-schema
 allows it. These user-defined attributes will appear like any other image attributes.
 
 .. _ci-concepts-image-identifiers:
 
 Image identifiers
------------------
+~~~~~~~~~~~~~~~~~
 
 Images are uniquely identified by a *URI* that matches the following
 signature:
@@ -86,7 +86,7 @@ where:
 .. _ci-concepts-common-image-properties:
 
 Common image properties
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
 To help end users use your images, you can put additional common
 properties, or metadata, on your images.
@@ -96,11 +96,11 @@ options:
 
 **os\_version**
     The operating system version as specified by the distributor
-    
+
 **os\_distro**
     The common name of the operating system distribution
 
-.. important:: The common name of the os\distro must be all lowercase and entered exactly 
+.. important:: The common name of the os\distro must be all lowercase and entered exactly
     as shown here. The allowed values are as follows:
 
     **arch**
@@ -163,7 +163,7 @@ options:
 .. _ci-concepts-image-sharing:
 
 Image sharing
--------------
+~~~~~~~~~~~~~
 
 Image producers create and share images with image consumers, allowing
 the consumers to use the shared image when booting a server. The
@@ -174,9 +174,9 @@ appears in the consumer's image list. As long as the consumer is an
 member of the image, the consumer can use the image, regardless of the
 image member status.
 
-**Figure: Sharing an image**
+.. figure:: ../_images/image-member.png
 
-.. image:: ../_images/image-member.png
+   Figure: Sharing an image
 
 .. note::
    In the Cloud Images API, the image member status serves three
@@ -221,7 +221,7 @@ abilities:
    image ID.
 
 Sample workflow for image sharing, after image creation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
    Communications between the image producer and the consumer, like
@@ -236,7 +236,7 @@ Sample workflow for image sharing, after image creation
    address for notification purposes, but this is outside the scope of
    the API.
 
-#. The producer shares the image with the consumer,  by using the 
+#. The producer shares the image with the consumer,  by using the
    *Create image member* API operation.
 
 #. Optionally, the producer notifies the consumer that the image has
@@ -256,15 +256,15 @@ Sample workflow for image sharing, after image creation
 .. _ci-concepts-asynchronous-image-tasks:
 
 Asynchronous image tasks
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 An image task request performs an asynchronous image-related
 operation, such as importing or exporting an image. The request creates
 a disposable task resource that you poll for information about the
 operation's status.
 
-After you initiate an image import or export, poll the task's status by using 
-the *Get task details* API operation repeatedly until the task completes. The 
+After you initiate an image import or export, poll the task's status by using
+the *Get task details* API operation repeatedly until the task completes. The
 “Get details for a task” section of this guide shows an example.
 
 When the poll response has a status of ``success`` or ``failure``, the
@@ -282,11 +282,11 @@ For more information on task statuses, search for "task statuses".
    parameters.
 
    The *Task to import image* and *Task to export image* sections
-   and "POST\exportImage\tasks\Image\Task\" show the Rackspace requirements for these 
+   and "POST\exportImage\tasks\Image\Task\" show the Rackspace requirements for these
    parameters.
 
 High-level process for importing an image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Put the image into your Cloud Files account.
 
@@ -297,15 +297,15 @@ High-level process for importing an image
    storage and to create a new image for you. This activity takes some
    time.
 
-#. Poll the task status by using the *Get task details* operation repeatedly. The “Get 
+#. Poll the task status by using the *Get task details* operation repeatedly. The “Get
    details for a task” section of this guide shows an example.
 
 High-level process for exporting an image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Determine the UUID of the image you want to export.
 
-#. Submit the export request by using the *Task to export image* API operation. The 
+#. Submit the export request by using the *Task to export image* API operation. The
    “Export an image by using tasks” section of this guide shows an example.
 
 #. The Cloud Images service begins to process the image, to convert it
@@ -314,13 +314,13 @@ High-level process for exporting an image
    the exported image to your Cloud Files account. This activity takes
    some time.
 
-#. Poll the task status by using the *Get task details* operation repeatedly. The “Get 
+#. Poll the task status by using the *Get task details* operation repeatedly. The “Get
    details for a task” section of this guide shows an example.
 
 .. _ci-concepts-statuses:
 
 Statuses
---------
+~~~~~~~~
 
 The Cloud Images API uses a variety of statuses to identify the state of
 images or image components. This section describes the statuses and
@@ -329,7 +329,7 @@ their values.
 .. _ci-dg-overview-image-statuses:
 
 Image statuses
-~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^
 
 Images in the Cloud Images service can have any of the following
 statuses when you display details by using the *Get image details* API operation.
@@ -372,7 +372,7 @@ statuses when you display details by using the *Get image details* API operation
 .. _ci-dg-overview-task-statuses:
 
 Task statuses
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 Image tasks are used for importing images from your Cloud Files account
 and for exporting images to your Cloud files account. For more
@@ -396,7 +396,7 @@ statuses when you poll them by using the *Get details for a task* API operation.
 .. _ci-dg-overview-member-statuses:
 
 Image member statuses
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 When an image producer wants to share an image with a potential image
 consumer, the producer creates an image member, linking the image and
@@ -451,13 +451,13 @@ Image members can have any of the following statuses.
     available, but this is outside the scope of the Cloud Images API.
 
 .. note::
-   With a ``rejected`` or ``pending``  image member status, the consumer can still use the 
+   With a ``rejected`` or ``pending``  image member status, the consumer can still use the
    image but must know the image ID, since the image is not in the image list.
 
 .. _ci-concepts-http-patch-method:
 
 HTTP PATCH method
------------------
+~~~~~~~~~~~~~~~~~
 
 The Cloud Images API uses the HTTP PATCH method to update image
 properties.
@@ -483,7 +483,7 @@ resources, the supported media types for PATCH requests are as follows:
    ``user_image_creator`` (with a name for the value).
 
 Restricted JSON pointers
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``application/openstack-images-v2.1-json-patch`` media type adopts
 a restricted form of JSON Pointers, which limits the allowed number of tokens
@@ -502,7 +502,7 @@ The *ABNF* syntax is as follows:
     reference-token = *( unescaped / escaped )
     unescaped = %x00-2E / %x30-7D / %x7F-10FFFF
     escaped = "~" ( "0" / "1" )
-                        
+
 
 An example of converting image properties to JSON Pointers, which is
 necessary to use the ``HTTP PATCH`` method, is as
@@ -526,8 +526,8 @@ Image Entity:
         "self": "/v2/images/da3b75d9-3f4a-40e7-8a2c-bfab23927dea",
         "file": "/v2/images/da3b75d9-3f4a-40e7-8a2c-bfab23927dea/file",
         "schema": "/v2/schemas/image"
-    }             
-                
+    }
+
 
 Comparison of the JSON Pointer to the Image Entity Key Pair:
 
@@ -535,13 +535,13 @@ Comparison of the JSON Pointer to the Image Entity Key Pair:
 
     JSON Pointer        Image Entity Key Pair
      /name          "name":"cirros-0.3.0-x86_64-uec-ramdisk"
-     /size          "size":"2254249"             
+     /size          "size":"2254249"
      /tags          "tags":["ping", "pong"]
-     /~0~1.ssh~1    "~/.ssh/":"present"               
-                
+     /~0~1.ssh~1    "~/.ssh/":"present"
+
 
 Using the HTTP PATCH method
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``'application/openstack-images-v2.1-json-patch'`` media type for
 the HTTP PATCH method allows a subset of operations defined in the
@@ -598,7 +598,7 @@ specified path in the target image. The path must reference an image
 property to add to an existing image. The operation object contains a
 value member that specifies the value to be added.
 
-.. warning:: 
+.. warning::
    There is a small subset of standard image properties that can be
    added by users; please consult the `Rackspace Knowledge Center <http://www.rackspace.com/knowledge_center/>`__ for details. If
    you add any other properties as part of your PATCH request, the
@@ -650,4 +650,3 @@ Replace Example
 .. warning::
    If the specified image property does not exist for the target
    image, an error condition results.
-

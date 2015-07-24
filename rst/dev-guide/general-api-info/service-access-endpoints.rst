@@ -1,5 +1,5 @@
 Service access endpoints
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Rackspace Cloud Images service is a regionalized service. The user
 of the service is therefore responsible for selecting the appropriate
@@ -36,4 +36,3 @@ environments.
    If you do not know your account ID or which data center you are
    working in, you can find that information in your Cloud Control Panel at
    `mycloud.rackspace.com. <http://mycloud.rackspace.com>`__
-

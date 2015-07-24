@@ -1,8 +1,7 @@
-.. _images-dg-api-operations:
+.. _api-operations:
 
-================
 API Operations
-================
+--------------
 
 Developers use the operations described in this chapter to perform the following tasks:
 
