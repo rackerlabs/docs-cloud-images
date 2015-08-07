@@ -1,0 +1,134 @@
+=============================================================================
+Get Task Schema -  Rackspace Cloud Images Developer Guide - API v2.0
+=============================================================================
+
+Get Task Schema
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`Request <GET_get_task_schema_schemas_task.rst#request>`__
+`Response <GET_get_task_schema_schemas_task.rst#response>`__
+
+.. code-block:: javascript
+
+    GET /schemas/task
+
+Gets a json-schema document that represents an task entity.
+
+This operation returns the specified task entity. The following response is just an example. Consider the response to the API call as authoritative.
+
+
+
+This table shows the possible response codes for this operation:
+
+
++--------------------------+-------------------------+-------------------------+
+|Response Code             |Name                     |Description              |
++==========================+=========================+=========================+
+|200                       |Success                  |Request succeeded.       |
++--------------------------+-------------------------+-------------------------+
+|400                       |Error                    |A general error has      |
+|                          |                         |occured.                 |
++--------------------------+-------------------------+-------------------------+
+|401                       |Unauthorized             |Unauthorized.            |
++--------------------------+-------------------------+-------------------------+
+|403                       |Forbidden                |Forbidden.               |
++--------------------------+-------------------------+-------------------------+
+|405                       |Bad Method               |Bad method.              |
++--------------------------+-------------------------+-------------------------+
+|413                       |Over Limit               |The number of items      |
+|                          |                         |returned is above the    |
+|                          |                         |allowed limit.           |
++--------------------------+-------------------------+-------------------------+
+|503                       |Service Unavailable      |The requested service is |
+|                          |                         |unavailable.             |
++--------------------------+-------------------------+-------------------------+
+|500                       |API Fault                |API fault.               |
++--------------------------+-------------------------+-------------------------+
+
+
+Request
+^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+Response
+^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+**Example Get Task Schema: JSON request**
+
+
+.. code::
+
+    {
+        "name": "task", 
+        "properties": {
+            "created_at": {
+                "description": "Datetime when this resource was created", 
+                "type": "string"
+            }, 
+            "expires_at": {
+                "description": "Datetime when this resource would be subject to removal", 
+                "type": "string"
+            }, 
+            "id": {
+                "description": "An identifier for the task", 
+                "pattern": "^([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}$", 
+                "type": "string"
+            }, 
+            "input": {
+                "description": "The parameters required by task, JSON blob", 
+                "type": "object"
+            }, 
+            "message": {
+                "description": "Human-readable informative message only included when appropriate (usually on failure)", 
+                "type": "string"
+            }, 
+            "owner": {
+                "description": "An identifier for the owner of this task", 
+                "type": "string"
+            }, 
+            "result": {
+                "description": "The result of current task, JSON blob", 
+                "type": "object"
+            }, 
+            "schema": {
+                "type": "string"
+            }, 
+            "self": {
+                "type": "string"
+            }, 
+            "status": {
+                "description": "The current status of this task", 
+                "enum": [
+                    "pending", 
+                    "processing", 
+                    "success", 
+                    "failure"
+                ], 
+                "type": "string"
+            }, 
+            "type": {
+                "description": "The type of task represented by this content", 
+                "enum": [
+                    "import", 
+                    "export"
+                ], 
+                "type": "string"
+            }, 
+            "updated_at": {
+                "description": "Datetime when this resource was updated", 
+                "type": "string"
+            }
+        }
+    }
+

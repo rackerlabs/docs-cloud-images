@@ -1,0 +1,7 @@
+src/wadl/image-2.0.wadl:
+    title: Rackspace Cloud Images Developer Guide - API v2.0
+    output_directory: rst/api-operations/image-2.0
+
+src/wadl/image-schemas-2.0.wadl:
+    title: Rackspace Cloud Images Developer Guide - API v2.0
+    output_directory: rst/api-operations/image-schemas-2.0
