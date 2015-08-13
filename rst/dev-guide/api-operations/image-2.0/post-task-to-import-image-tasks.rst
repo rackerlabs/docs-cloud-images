@@ -1,15 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-=============================================================================
-Task To Import Image -  1
-=============================================================================
-
 Task To Import Image
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Request <post-task-to-import-image-tasks.html#request>`__
-`Response <post-task-to-import-image-tasks.html#response>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -17,7 +10,7 @@ Task To Import Image
 
 Imports an image using an asynchronous task request. See the request body for specific details.
 
-This operation imports an image using an asynchronous task request. The request begins the import process and returns the task UUID that can be subsequently polled to determine the status of the import by using the ` 4.4.2. Get task details <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html>`__ operation. The response conforms to the schema found in ` 4.5.6. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__.
+This operation imports an image using an asynchronous task request. The request begins the import process and returns the task UUID that can be subsequently polled to determine the status of the import by using the `4.4.2. Get task details <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html>`__ operation. The response conforms to the schema found in `4.5.6. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__.
 
 To successfully import an image: 
 
@@ -31,7 +24,7 @@ To successfully import an image:
 
 
 .. note::
-   As described in the ` Rackspace Terms of Service <http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html>`__, you should be aware of and respect all licensing restrictions that apply to any software that you import into the Rackspace open cloud. For example, Microsoft licensing rules are very restrictive. Microsoft product use rights do not allow the use of License Mobility for Windows licenses. Given the limitations related to this software platform, image import is not available for Windows images. If you have questions, please contact the software vendor. 
+   As described in the `Rackspace Terms of Service <http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html>`__, you should be aware of and respect all licensing restrictions that apply to any software that you import into the Rackspace open cloud. For example, Microsoft licensing rules are very restrictive. Microsoft product use rights do not allow the use of License Mobility for Windows licenses. Given the limitations related to this software platform, image import is not available for Windows images. If you have questions, please contact the software vendor. 
    
    
 
@@ -71,7 +64,7 @@ This table shows the possible response codes for this operation:
 
 
 Request
-^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 
@@ -127,7 +120,7 @@ This table shows the body parameters for the request:
 
 
 Response
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 This table shows the body parameters for the response:

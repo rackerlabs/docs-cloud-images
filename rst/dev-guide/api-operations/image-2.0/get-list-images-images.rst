@@ -1,15 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-=============================================================================
-List Images -  1
-=============================================================================
-
 List Images
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Request <get-list-images-images.html#request>`__
-`Response <get-list-images-images.html#response>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -17,7 +10,7 @@ List Images
 
 Lists public virtual machine (VM) images.
 
-This operation returns images you created, shared images that you accepted, and standard images. For more information about standard images, see ` 1.1.1. Standard images <http://docs.rackspace.com/images/api/v2/ci-devguide/content/what-and-why.html#std-images>`__. The response conforms to the schema found in ` 4.5.1. Get images schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImagesSchema_schemas_images_Schema_Calls.html>`__.
+This operation returns images you created, shared images that you accepted, and standard images. For more information about standard images, see `1.1.1. Standard images <http://docs.rackspace.com/images/api/v2/ci-devguide/content/what-and-why.html#std-images>`__. The response conforms to the schema found in `4.5.1. Get images schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImagesSchema_schemas_images_Schema_Calls.html>`__.
 
 This operation returns a subset of the larger collection of images and a link that you can use to get the next set of images. Always check for the presence of a ``next`` link and use it as the URI in a subsequent ``GET`` request. Follow this pattern until a ``next`` link is no longer provided. The next link preserves any query parameters that you send in your initial request. You can use the ``first`` link to jump back to the first page of the collection. If you prefer to paginate through images manually, use the ``limit`` and ``marker`` parameters. 
 
@@ -32,7 +25,7 @@ For example, sending a ``size_min`` filter of 1048576 and size_max of 4194304 fi
 You can sort the results of this operation by using the ``sort_key`` and ``sort_dir`` parameters. The API uses the natural sorting of whatever image attribute is provided as the ``sort_key``. 
 
 .. note::
-   Public images may reach end-of-life and be removed from the base image list. This ` Hidden Base Images article <http://www.rackspace.com/knowledge_center/article/hidden-base-images>`__ contains images which have been removed from the base images list but which may still be available.
+   Public images may reach end-of-life and be removed from the base image list. This `Hidden Base Images article <http://www.rackspace.com/knowledge_center/article/hidden-base-images>`__ contains images which have been removed from the base images list but which may still be available.
    
    
 
@@ -69,7 +62,7 @@ This table shows the possible response codes for this operation:
 
 
 Request
-^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 
@@ -181,7 +174,7 @@ This table shows the query parameters for the request:
 
 
 Response
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 This table shows the body parameters for the response:

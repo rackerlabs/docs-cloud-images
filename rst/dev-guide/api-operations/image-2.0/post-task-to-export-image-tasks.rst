@@ -1,15 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-=============================================================================
-Task To Export Image -  1
-=============================================================================
-
 Task To Export Image
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Request <post-task-to-export-image-tasks.html#request>`__
-`Response <post-task-to-export-image-tasks.html#response>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -17,7 +10,7 @@ Task To Export Image
 
 Exports an image using an asynchronous task request. See the request body for specific details.
 
-This operation exports an image in VHD format using an asynchronous task request to export. The request begins the export process and returns the task UUID that can be subsequently polled to determine the status of the export by using the ` 4.4.2. Get task details <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html>`__ operation. The response conforms to the schema found in ` 4.5.5. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__. 
+This operation exports an image in VHD format using an asynchronous task request to export. The request begins the export process and returns the task UUID that can be subsequently polled to determine the status of the export by using the `4.4.2. Get task details <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html>`__ operation. The response conforms to the schema found in `4.5.5. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__. 
 
 .. note::
    The exported image is deposited in your Cloud Files account and is identified by the ``image_uuid`` with a.vhd extension. You are responsible for ensuring that any distribution of your image from the Rackspace open cloud complies with any licensing restrictions.
@@ -61,7 +54,7 @@ This table shows the possible response codes for this operation:
 
 
 Request
-^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 
@@ -120,7 +113,7 @@ This table shows the body parameters for the request:
 
 
 Response
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 This table shows the body parameters for the response:

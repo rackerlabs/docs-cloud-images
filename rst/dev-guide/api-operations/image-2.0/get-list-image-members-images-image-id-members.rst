@@ -1,15 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-=============================================================================
-List Image Members -  1
-=============================================================================
-
 List Image Members
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Request <get-list-image-members-images-image-id-members.html#request>`__
-`Response <get-list-image-members-images-image-id-members.html#response>`__
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
@@ -17,7 +10,7 @@ List Image Members
 
 Returns collection of members (users) with whom the image has been shared.
 
-This operation returns collection of members (users) with whom the image has been shared. The response conforms to the schema found in ` 4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
+This operation returns collection of members (users) with whom the image has been shared. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
 
 If a user with whom this image is shared makes this call, the member list contains only information for that user. If a user with whom this image has not been shared makes this call, the response is ``HTTP 404``.
 
@@ -54,7 +47,7 @@ This table shows the possible response codes for this operation:
 
 
 Request
-^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 This table shows the URI parameters for the request:
 
@@ -74,7 +67,7 @@ This table shows the URI parameters for the request:
 
 
 Response
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 
 This table shows the body parameters for the response:
