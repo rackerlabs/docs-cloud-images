@@ -1,5 +1,5 @@
 Intended Audience
------------------
+~~~~~~~~~~~~~~~~~
 
 This guide is intended to assist software developers who want to develop applications by
 using the Rackspace Cloud Images service REST application programming interface (API).

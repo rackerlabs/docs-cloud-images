@@ -1,7 +1,8 @@
+.. _api-operations-image-schemas
 
 JSON schemas
---------------
-Ue the JSON schemas API operations to get 
+~~~~~~~~~~~~
+Ue the JSON schemas API operations to get
 details about JSON schema images, members, and tasks.
 
 .. toctree:: :hidden:
@@ -13,4 +14,3 @@ details about JSON schema images, members, and tasks.
    Get image member schema <get-get-image-member-schema-schemas-member>
    Get tasks schema <get-get-task-schema-schemas-task>
    Get task schema <get-get-tasks-schema-schemas-tasks>
-

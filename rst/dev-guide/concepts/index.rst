@@ -1,4 +1,4 @@
-.. _ci-dg-concepts:
+.. _concepts:
 
 Concepts
 --------

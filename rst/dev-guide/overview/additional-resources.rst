@@ -1,5 +1,5 @@
 Additional resources
----------------------
+~~~~~~~~~~~~~~~~~~~~
 
 The `Cloud Images
 FAQ <http://www.rackspace.com/knowledge_center/article/cloud-images-frequently-asked-questions>`__
