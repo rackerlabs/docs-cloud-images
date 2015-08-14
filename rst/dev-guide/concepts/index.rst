@@ -1,4 +1,4 @@
-.. _ci-dg-concepts:
+.. _concepts:
 
 Concepts
 --------
@@ -7,3 +7,8 @@ To understand the Cloud Images service and API, review the following key terms a
 concepts.
 
 .. include:: concepts/concepts-topics.rst
+
+.. toctree::
+   :hidden:
+
+   concepts-topics

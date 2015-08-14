@@ -1,3 +1,5 @@
+.. _authenticate-through-the-rackspace-cloud-identity-service:
+
 Authenticate through the Rackspace Cloud Identity Service
 ---------------------------------------------------------
 
@@ -20,13 +22,13 @@ For detailed information about the Identity Service v2.0, see the
 Rackspace Cloud Identity Service Endpoint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you authenticate, use the following endpoint: 
+When you authenticate, use the following endpoint:
 ``https://identity.api.rackspacecloud.com/v2.0/``
 
 Authentication Request
 ~~~~~~~~~~~~~~~~~~~~~~
 
-To authenticate, issue a **POST** **/tokens** request to the Rackspace Cloud Identity 
+To authenticate, issue a **POST** **/tokens** request to the Rackspace Cloud Identity
 Service endpoint.
 
 In the request body, supply one of the following sets of credentials:
@@ -42,7 +44,7 @@ Rackspace Cloud Control Panel.
    use multi-factor authentication to add an additional level of account
    security. This feature is not implemented for username and API
    credentials. For more information, search for multifactor authentication
-   on the Rackspace site. 
+   on the Rackspace site.
 
 To find your API key, perform the following steps:
 
@@ -80,7 +82,7 @@ Key: JSON Request**
          -H "Content-Type: application/json" | python -m json.tool
 
 
-.. note:: 
+.. note::
    In these examples, the following pipe command makes the JSON output
    more readable:
    ::
@@ -118,21 +120,21 @@ format:
                 {
                     "endpoints": [
                         {
-                            "internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_530f8649-324c-499c-a075-2195854d52a7", 
-                            "publicURL": "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_530f8649-324c-499c-a075-2195854d52a7", 
-                            "region": "DFW", 
+                            "internalURL": "https://snet-storage101.dfw1.clouddrive.com/v1/MossoCloudFS_530f8649-324c-499c-a075-2195854d52a7",
+                            "publicURL": "https://storage101.dfw1.clouddrive.com/v1/MossoCloudFS_530f8649-324c-499c-a075-2195854d52a7",
+                            "region": "DFW",
                             "tenantId": "MossoCloudFS_530f8649-324c-499c-a075-2195854d52a7"
-                        }, 
+                        },
                         {
-                            "internalURL": "https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_530f8649-324c-499c-a075-2195854d52a7", 
-                            "publicURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_530f8649-324c-499c-a075-2195854d52a7", 
-                            "region": "ORD", 
+                            "internalURL": "https://snet-storage101.ord1.clouddrive.com/v1/MossoCloudFS_530f8649-324c-499c-a075-2195854d52a7",
+                            "publicURL": "https://storage101.ord1.clouddrive.com/v1/MossoCloudFS_530f8649-324c-499c-a075-2195854d52a7",
+                            "region": "ORD",
                             "tenantId": "MossoCloudFS_530f8649-324c-499c-a075-2195854d52a7"
                         }
-                    ], 
-                    "name": "cloudFiles", 
+                    ],
+                    "name": "cloudFiles",
                     "type": "object-store"
-                }, 
+                },
  				{
         			"endpoints": [
           				{
@@ -165,44 +167,44 @@ format:
         			"type": "image"
       			},
                 {
-                    "endpoints": [ 
+                    "endpoints": [
                         {
-                            "publicURL": "https://dfw.servers.api.rackspacecloud.com/v2/010101", 
-                            "region": "DFW", 
-                            "tenantId": "010101", 
-                            "versionId": "2", 
-                            "versionInfo": "https://dfw.servers.api.rackspacecloud.com/v2", 
+                            "publicURL": "https://dfw.servers.api.rackspacecloud.com/v2/010101",
+                            "region": "DFW",
+                            "tenantId": "010101",
+                            "versionId": "2",
+                            "versionInfo": "https://dfw.servers.api.rackspacecloud.com/v2",
                             "versionList": "https://dfw.servers.api.rackspacecloud.com/"
-                        }, 
+                        },
                         {
-                            "publicURL": "https://ord.servers.api.rackspacecloud.com/v2/010101", 
-                            "region": "ORD", 
-                            "tenantId": "010101", 
-                            "versionId": "2", 
-                            "versionInfo": "https://ord.servers.api.rackspacecloud.com/v2", 
+                            "publicURL": "https://ord.servers.api.rackspacecloud.com/v2/010101",
+                            "region": "ORD",
+                            "tenantId": "010101",
+                            "versionId": "2",
+                            "versionInfo": "https://ord.servers.api.rackspacecloud.com/v2",
                             "versionList": "https://ord.servers.api.rackspacecloud.com/"
                         }
-                    ], 
-                    "name": "cloudServersOpenStack", 
+                    ],
+                    "name": "cloudServersOpenStack",
                     "type": "compute"
                 }
-            ], 
+            ],
             "token": {
-                "expires": "2012-09-14T15:11:57.585-05:00", 
-                "id": "858fb4c2-bf15-4dac-917d-8ec750ae9baa", 
+                "expires": "2012-09-14T15:11:57.585-05:00",
+                "id": "858fb4c2-bf15-4dac-917d-8ec750ae9baa",
                 "tenant": {
-                    "id": "010101", 
+                    "id": "010101",
                     "name": "010101"
                 }
-            }, 
+            },
             "user": {
-                "RAX-AUTH:defaultRegion": "DFW", 
-                "id": "170454", 
-                "name": "MyRackspaceAcct", 
+                "RAX-AUTH:defaultRegion": "DFW",
+                "id": "170454",
+                "name": "MyRackspaceAcct",
                 "roles": [
                     {
-                        "description": "User Admin Role.", 
-                        "id": "3", 
+                        "description": "User Admin Role.",
+                        "id": "3",
                         "name": "identity:user-admin"
                     }
                 ]
@@ -248,7 +250,7 @@ Locate the correct service name in the service catalog, as follows:
    special considerations for choosing a data center at
    http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions.
 
-If you use the authentication token to access this service, you can perform Cloud Images 
+If you use the authentication token to access this service, you can perform Cloud Images
 API operations.
 
 **Expiration date and time for authentication token**. Appears in the
@@ -270,7 +272,7 @@ element.
 You pass the authentication token in the ``X-Auth-Token`` header each
 time that you send a request to a service.
 
-Once you have your authentication token and your endpoint you are ready to send a 
+Once you have your authentication token and your endpoint you are ready to send a
 request to the Cloud Images service.
 
 In the following example, you first export the tenant ID, ``010101``, to the
