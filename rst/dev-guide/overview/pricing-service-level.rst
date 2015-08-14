@@ -1,4 +1,4 @@
-.. _ci-dg-pricing-service-level
+.. _pricing-service-level:
 
 Rackspace pricing and terms of service
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

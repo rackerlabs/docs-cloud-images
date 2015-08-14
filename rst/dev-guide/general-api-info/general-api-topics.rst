@@ -1,4 +1,4 @@
-.. _images-dg-gen-info-send-request-receive-response:
+.. _send-request-receive-responses:
 
 Sending API requests and receiving responses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -23,7 +23,7 @@ You have several options for sending requests through an API:
 - You can download and install RESTclient, a Java application for testing ReSTful web
   services, from http://code.google.com/p/rest-client/.
 
-.. _images-dg-gen-info-media-types:
+.. _media-types:
 
 Media Types
 ~~~~~~~~~~~
@@ -38,7 +38,7 @@ request varies by the following request types:
   ``Content-Type header: 'application/openstack-images-v2.1-json-patch'``.
 
 
-.. _images-dg-gen-info-json-schemas:
+.. _json-schemas:
 
 JSON Schemas
 ~~~~~~~~~~~~

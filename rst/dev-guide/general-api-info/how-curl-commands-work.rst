@@ -1,4 +1,4 @@
-.. _ci-dg-generalapi-curl:
+.. _how-curl-commands-work:
 
 How cURL commands work
 ~~~~~~~~~~~~~~~~~~~~~~

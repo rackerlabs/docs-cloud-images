@@ -1,4 +1,4 @@
-.. _ci-concepts-images:
+.. _images:
 
 Images
 ~~~~~~
@@ -12,7 +12,7 @@ the original server had at the time the image was created.
 The Cloud Images service enables you to use standard, Rackspace-supported images
 and to create, share, and use nonstandard images that are not supported by Rackspace.
 
-.. _ci-concepts-standard-images:
+.. _standard-images:
 
 Standard images
 ^^^^^^^^^^^^^^^
@@ -25,7 +25,7 @@ Standard images include the following images:
 *  All images that have not reached their end of life and that are
    provided specifically for RackConnect customers
 
-.. _ci-concepts-nonstandard-images:
+.. _nonstandard-images:
 
 Nonstandard images
 ^^^^^^^^^^^^^^^^^^
@@ -46,7 +46,7 @@ Nonstandard images include the following images:
    This is not an exhaustive list of nonstandard images.
 
 
-.. ci-concepts-image-entities:
+.. _image-entities:
 
 Image entities
 ~~~~~~~~~~~~~~
@@ -64,7 +64,7 @@ they have been explicitly set.
 A client may set arbitrarily-named attributes on their images if the image json-schema
 allows it. These user-defined attributes will appear like any other image attributes.
 
-.. _ci-concepts-image-identifiers:
+.. _image-identifiers:
 
 Image identifiers
 ~~~~~~~~~~~~~~~~~
@@ -83,7 +83,7 @@ where:
 ``{image_ID}``
     The image identifier, which is a *UUID*, making it globally unique
 
-.. _ci-concepts-common-image-properties:
+.. _common-image-properties:
 
 Common image properties
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -160,7 +160,7 @@ options:
     **windows**
         Microsoft Windows
 
-.. _ci-concepts-image-sharing:
+.. _image-sharing:
 
 Image sharing
 ~~~~~~~~~~~~~
@@ -253,7 +253,7 @@ Sample workflow for image sharing, after image creation
    available, the consumer uses the Cloud Images API to change the image
    member status to ``pending``, by using the *Update image member* API operation.
 
-.. _ci-concepts-asynchronous-image-tasks:
+.. _asynchronous-image-tasks:
 
 Asynchronous image tasks
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -317,7 +317,7 @@ High-level process for exporting an image
 #. Poll the task status by using the *Get task details* operation repeatedly. The “Get
    details for a task” section of this guide shows an example.
 
-.. _ci-concepts-statuses:
+.. _statuses:
 
 Statuses
 ~~~~~~~~
@@ -325,8 +325,6 @@ Statuses
 The Cloud Images API uses a variety of statuses to identify the state of
 images or image components. This section describes the statuses and
 their values.
-
-.. _ci-dg-overview-image-statuses:
 
 Image statuses
 ^^^^^^^^^^^^^^
@@ -454,7 +452,7 @@ Image members can have any of the following statuses.
    With a ``rejected`` or ``pending``  image member status, the consumer can still use the
    image but must know the image ID, since the image is not in the image list.
 
-.. _ci-concepts-http-patch-method:
+.. _http-patch-method:
 
 HTTP PATCH method
 ~~~~~~~~~~~~~~~~~
