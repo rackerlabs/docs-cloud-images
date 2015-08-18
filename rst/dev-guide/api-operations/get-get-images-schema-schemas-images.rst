@@ -1,7 +1,7 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-Get Images Schema
+Get images schema
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
@@ -29,18 +29,18 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
+|404                       |Not Found                |Resource not found.      |
++--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|503                       |Service Unavailable      |The requested service is |
-|                          |                         |unavailable.             |
-+--------------------------+-------------------------+-------------------------+
 |500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
+|503                       |Service Unavailable      |The requested service is |
+|                          |                         |unavailable.             |
 +--------------------------+-------------------------+-------------------------+
 
 
@@ -54,6 +54,10 @@ Request
 
 
 
+This operation does not accept a request body.
+
+
+
 
 Response
 """"""""""""""""
@@ -62,7 +66,9 @@ Response
 
 
 
-**Example Get Images Schema: JSON response**
+
+
+**Example Get images schema: JSON response**
 
 
 .. code::
@@ -275,4 +281,5 @@ Response
             }
         ]
     }
+
 

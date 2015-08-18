@@ -1,4 +1,4 @@
-.. _images:
+.. _images-concepts:
 
 Images
 ~~~~~~
@@ -98,10 +98,11 @@ options:
     The operating system version as specified by the distributor
 
 **os\_distro**
-    The common name of the operating system distribution
+    The common name of the operating system distribution. 
 
-.. important:: The common name of the os\distro must be all lowercase and entered exactly
-    as shown here. The allowed values are as follows:
+    .. important:: You must specify the common name of the os\distro in lowercase. 
+    
+    The allowed values are as follows:
 
     **arch**
         Arch Linux
@@ -176,7 +177,7 @@ image member status.
 
 .. figure:: ../_images/image-member.png
 
-   Figure: Sharing an image
+            Sharing an image
 
 .. note::
    In the Cloud Images API, the image member status serves three

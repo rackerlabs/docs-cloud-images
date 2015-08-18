@@ -1,7 +1,7 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-List Images
+List images
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
@@ -37,7 +37,7 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |Success                  |Request succeeded.       |
+|200                       |Success                  |Request succeeded        |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Error                    |A general error has      |
 |                          |                         |occured.                 |
@@ -46,18 +46,18 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
+|404                       |Not Found                |Resource not found.      |
++--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|503                       |Service Unavailable      |The requested service is |
-|                          |                         |unavailable.             |
-+--------------------------+-------------------------+-------------------------+
 |500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
+|503                       |Service Unavailable      |The requested service is |
+|                          |                         |unavailable.             |
 +--------------------------+-------------------------+-------------------------+
 
 
@@ -67,12 +67,14 @@ Request
 
 
 
+
+
 This table shows the query parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|limit                     |xsd:string *(Required)*  |Requests a specific page |
+|limit                     |String *(Optional)*      |Requests a specific page |
 |                          |                         |size. Expect a response  |
 |                          |                         |to a limited request to  |
 |                          |                         |return between zero      |
@@ -89,7 +91,7 @@ This table shows the query parameters for the request:
 |                          |                         |a subsequent limited     |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|marker                    |xsd:string *(Required)*  |Specifies the ID of the  |
+|marker                    |String *(Optional)*      |Specifies the ID of the  |
 |                          |                         |last-seen image. The     |
 |                          |                         |typical pattern for      |
 |                          |                         |using the ``limit`` and  |
@@ -103,18 +105,18 @@ This table shows the query parameters for the request:
 |                          |                         |a subsequent limited     |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|name                      |xsd:string *(Required)*  |Filter parameter that    |
+|name                      |String *(Optional)*      |Filter parameter that    |
 |                          |                         |specifies the name of    |
 |                          |                         |the image as a string.   |
 +--------------------------+-------------------------+-------------------------+
-|visibility                |imageapi:string          |Filter parameter that    |
-|                          |*(Required)*             |specifies image          |
+|visibility                |String *(Optional)*      |Filter parameter that    |
+|                          |                         |specifies image          |
 |                          |                         |visibility as either     |
 |                          |                         |``public``, ``private``, |
 |                          |                         |or ``shared``.           |
 +--------------------------+-------------------------+-------------------------+
-|member_status             |imageapi:string          |Filter parameter that    |
-|                          |*(Required)*             |shows images with the    |
+|member_status             |String *(Optional)*      |Filter parameter that    |
+|                          |                         |shows images with the    |
 |                          |                         |specified member status  |
 |                          |                         |for only those images    |
 |                          |                         |shared with the user.    |
@@ -125,42 +127,42 @@ This table shows the query parameters for the request:
 |                          |                         |``all``. The default is  |
 |                          |                         |``accepted``.            |
 +--------------------------+-------------------------+-------------------------+
-|owner                     |imageapi:string          |Filter parameter that    |
-|                          |*(Required)*             |shows images shared with |
+|owner                     |String *(Optional)*      |Filter parameter that    |
+|                          |                         |shows images shared with |
 |                          |                         |the user by the          |
 |                          |                         |specified tag.           |
 +--------------------------+-------------------------+-------------------------+
-|tag                       |imageapi:string          |Filter parameter that    |
-|                          |*(Required)*             |shows images with the    |
+|tag                       |String *(Optional)*      |Filter parameter that    |
+|                          |                         |shows images with the    |
 |                          |                         |specified tag, where the |
 |                          |                         |owner is indicated by    |
 |                          |                         |tenant ID.               |
 +--------------------------+-------------------------+-------------------------+
-|status                    |xsd:int *(Required)*     |Filter parameter that    |
+|status                    |Int *(Optional)*         |Filter parameter that    |
 |                          |                         |species the image status |
 |                          |                         |as ``queued``,           |
 |                          |                         |``saving``, ``active``,  |
 |                          |                         |``killed``, ``deleted``, |
 |                          |                         |or ``pending_delete``.   |
 +--------------------------+-------------------------+-------------------------+
-|size_min                  |xsd:string *(Required)*  |Filter parameter that    |
+|size_min                  |String *(Optional)*      |Filter parameter that    |
 |                          |                         |specifies the minimum    |
 |                          |                         |size of the image in     |
 |                          |                         |bytes.                   |
 +--------------------------+-------------------------+-------------------------+
-|size_max                  |xsd:string *(Required)*  |Filter parameter that    |
+|size_max                  |String *(Optional)*      |Filter parameter that    |
 |                          |                         |specifies the maximum    |
 |                          |                         |size of the image in     |
 |                          |                         |bytes.                   |
 +--------------------------+-------------------------+-------------------------+
-|sort_key                  |xsd:string *(Required)*  |Sort key. All image      |
+|sort_key                  |String *(Optional)*      |Sort key. All image      |
 |                          |                         |attributes can be used   |
 |                          |                         |as the sort key, except  |
 |                          |                         |``tags`` and ``link``    |
 |                          |                         |attributes. The default  |
 |                          |                         |is ``created_at``.       |
 +--------------------------+-------------------------+-------------------------+
-|sort_dir                  |xsd:string *(Required)*  |Sort direction. Valid    |
+|sort_dir                  |String *(Optional)*      |Sort direction. Valid    |
 |                          |                         |values are ``asc``       |
 |                          |                         |(ascending) and ``desc`` |
 |                          |                         |(descending). The        |
@@ -170,6 +172,8 @@ This table shows the query parameters for the request:
 
 
 
+This operation does not accept a request body.
+
 
 
 
@@ -177,59 +181,61 @@ Response
 """"""""""""""""
 
 
+
+
 This table shows the body parameters for the response:
 
 +----------------+---------------+---------------------------------------------+
 |Name            |Type           |Description                                  |
 +================+===============+=============================================+
-|images          |array          |The array of the images in the list.         |
+|images          |Array          |The array of the images in the list.         |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|id              |xsd:string     |The UUID of the image.                       |
+|id              |String         |The UUID of the image.                       |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|name            |xsd:string     |The name of the image.                       |
+|name            |String         |The name of the image.                       |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|status          |xsd:string     |The status of the image. For possible image  |
+|status          |String         |The status of the image. For possible image  |
 |                |*(Required)*   |statuses, see ` 1.4.1. Image statuses        |
 |                |               |<http://docs.rackspace.com/images/api/v2/ci- |
 |                |               |devguide/content/image-statuses.html>`__.    |
 +----------------+---------------+---------------------------------------------+
-|visibility      |xsd:string     |Specifies image visibility as either         |
+|visibility      |String         |Specifies image visibility as either         |
 |                |*(Required)*   |``public``, ``private``, or ``shared``.      |
 +----------------+---------------+---------------------------------------------+
-|size            |xsd:integer    |The size of the image in bytes.              |
+|size            |Integer        |The size of the image in bytes.              |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|checksum        |xsd:string     |The checksum of the image.                   |
+|checksum        |String         |The checksum of the image.                   |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|tags            |xsd:string     |The user-defined image tags.                 |
+|tags            |String         |The user-defined image tags.                 |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|created_at      |xsd:string     |The date and time that the image was created.|
+|created_at      |String         |The date and time that the image was created.|
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|updated_at      |xsd:string     |The date and time that the image was updated.|
+|updated_at      |String         |The date and time that the image was updated.|
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|self            |xsd:string     |The link to the image.                       |
+|self            |String         |The link to the image.                       |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|file            |xsd:string     |The image file.                              |
+|file            |String         |The image file.                              |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|schema          |xsd:string     |The schema of the image.                     |
+|schema          |String         |The schema of the image.                     |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|first           |xsd:string     |The URI for the first image in the list.     |
+|first           |String         |The URI for the first image in the list.     |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|next            |xsd:string     |The URI for the next image in the list.      |
+|next            |String         |The URI for the next image in the list.      |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|schema          |xsd:string     |The schema of the images list.               |
+|schema          |String         |The schema of the images list.               |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
 
@@ -237,7 +243,7 @@ This table shows the body parameters for the response:
 
 
 
-**Example List Images: JSON response**
+**Example List images: JSON response**
 
 
 .. code::
@@ -293,4 +299,5 @@ This table shows the body parameters for the response:
        "schema":"/v2/schemas/images"
     }
     
+
 

@@ -6,7 +6,7 @@
 
 * :ref:`concepts`
 
-  * :ref:`images`
+  * :ref:`images-concepts`
   * :ref:`image-entities`
   * :ref:`image-identifiers`
   * :ref:`common-image-properties`
@@ -25,7 +25,10 @@
   * :ref:`role-based-access-control`
   * :ref:`service-access-endpoints`
 
-* :ref:`api-operations`
+* :ref:`api-operations-index`
 
   * :ref:`api-operations-images`
   * :ref:`api-operations-image-sharing`
+  * :ref:`api-operations-image-tag`
+  * :ref:`api-operations-image-tasks`
+  * :ref:`api-operations-image-schemas`

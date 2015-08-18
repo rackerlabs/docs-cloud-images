@@ -1,7 +1,7 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-Task To Import Image
+Task to import image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
@@ -51,15 +51,15 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|503                       |Service Unavailable      |The requested service is |
-|                          |                         |unavailable.             |
-+--------------------------+-------------------------+-------------------------+
-|500                       |API Fault                |API fault.               |
-+--------------------------+-------------------------+-------------------------+
 |415                       |Bad Media Type           |Bad media type. This may |
 |                          |                         |result if the wrong      |
 |                          |                         |media type is used in    |
 |                          |                         |the cURL request.        |
++--------------------------+-------------------------+-------------------------+
+|500                       |API Fault                |API fault.               |
++--------------------------+-------------------------+-------------------------+
+|503                       |Service Unavailable      |The requested service is |
+|                          |                         |unavailable.             |
 +--------------------------+-------------------------+-------------------------+
 
 
@@ -71,12 +71,14 @@ Request
 
 
 
+
+
 This table shows the body parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|type                      |xsd:string *(Required)*  |The type of task. Use    |
+|type                      |String *(Required)*      |The type of task. Use    |
 |                          |                         |``import`` for task      |
 |                          |                         |imports.                 |
 +--------------------------+-------------------------+-------------------------+
@@ -86,7 +88,7 @@ This table shows the body parameters for the request:
 |image_properties          |*(Required)*             |The container for image  |
 |                          |                         |properties.              |
 +--------------------------+-------------------------+-------------------------+
-|name                      |xsd:string *(Required)*  |The name of the image.   |
+|name                      |String *(Required)*      |The name of the image.   |
 |                          |                         |.. warning:: Name is the |
 |                          |                         |only property that can   |
 |                          |                         |be included in ``image-  |
@@ -95,7 +97,7 @@ This table shows the body parameters for the request:
 |                          |                         |cause the operation to   |
 |                          |                         |fail.                    |
 +--------------------------+-------------------------+-------------------------+
-|import_from               |xsd:string *(Required)*  |The source of the        |
+|import_from               |String *(Required)*      |The source of the        |
 |                          |                         |imported image.          |
 +--------------------------+-------------------------+-------------------------+
 
@@ -103,7 +105,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example Task To Import Image: JSON request**
+**Example Task to import image: JSON request**
 
 
 .. code::
@@ -123,16 +125,18 @@ Response
 """"""""""""""""
 
 
+
+
 This table shows the body parameters for the response:
 
 +-----------------+--------------+---------------------------------------------+
 |Name             |Type          |Description                                  |
 +=================+==============+=============================================+
-|created_at       |xsd:string    |The date and time that the task resource was |
+|created_at       |String        |The date and time that the task resource was |
 |                 |*(Required)*  |created.                                     |
 +-----------------+--------------+---------------------------------------------+
-|expires_at       |xsd:string    |The date and time that the task resource     |
-|                 |*(Required)*  |expires. Even after the task resource        |
+|expires_at       |String        |The date and time that the task resource     |
+|                 |*(Optional)*  |expires. Even after the task resource        |
 |                 |              |expires (and is thus no longer available to  |
 |                 |              |be polled), the result of the task (such as  |
 |                 |              |an imported or exported image) still exists. |
@@ -140,20 +144,20 @@ This table shows the body parameters for the response:
 |                 |              |responses with ``status`` of ``success`` and |
 |                 |              |``failure``.                                 |
 +-----------------+--------------+---------------------------------------------+
-|id               |xsd:string    |The UUID of the task resource.               |
+|id               |String        |The UUID of the task resource.               |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
 |input            |*(Required)*  |The container for import input parameters.   |
 +-----------------+--------------+---------------------------------------------+
 |image_properties |*(Required)*  |The container for image properties.          |
 +-----------------+--------------+---------------------------------------------+
-|name             |xsd:string    |The name of the image.                       |
+|name             |String        |The name of the image.                       |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
-|import_from      |xsd:string    |The source of the imported image.            |
+|import_from      |String        |The source of the imported image.            |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
-|message          |xsd:string    |``None`` if task import succeeded or the     |
+|message          |String        |``None`` if task import succeeded or the     |
 |                 |*(Required)*  |reason why the import failed. Possible       |
 |                 |              |errors include the following: 111: The image |
 |                 |              |cannot be imported. There is an unspecified  |
@@ -172,31 +176,31 @@ This table shows the body parameters for the response:
 |                 |              |has a parent disk. Only a stand-alone VHD    |
 |                 |              |may be imported.                             |
 +-----------------+--------------+---------------------------------------------+
-|result           |*(Required)*  |The container for results. .. note:: This    |
+|result           |*(Optional)*  |The container for results. .. note:: This    |
 |                 |              |parameter is required for responses with     |
 |                 |              |``status`` of ``success``.                   |
 +-----------------+--------------+---------------------------------------------+
-|image_id         |xsd:uuid      |The UUID of the image.                       |
+|image_id         |Uuid          |The UUID of the image.                       |
+|                 |*(Optional)*  |                                             |
++-----------------+--------------+---------------------------------------------+
+|owner            |String        |The tenant-id of the task owner.             |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
-|owner            |xsd:string    |The tenant-id of the task owner.             |
+|schema           |String        |The schema of the task.                      |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
-|schema           |xsd:string    |The schema of the task.                      |
+|self             |String        |The link to the task.                        |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
-|self             |xsd:string    |The link to the task.                        |
-|                 |*(Required)*  |                                             |
-+-----------------+--------------+---------------------------------------------+
-|status           |xsd:string    |The status of the task. For possible task    |
+|status           |String        |The status of the task. For possible task    |
 |                 |*(Required)*  |statuses, see ` 1.4.2. Task statuses         |
 |                 |              |<http://docs.rackspace.com/images/api/v2/ci- |
 |                 |              |devguide/content/task-statuses.html>`__.     |
 +-----------------+--------------+---------------------------------------------+
-|type             |xsd:string    |The type of the task ( ``export`` for task   |
+|type             |String        |The type of the task ( ``export`` for task   |
 |                 |*(Required)*  |exports).                                    |
 +-----------------+--------------+---------------------------------------------+
-|updated_at       |xsd:string    |The date and time that the task resource was |
+|updated_at       |String        |The date and time that the task resource was |
 |                 |*(Required)*  |updated.                                     |
 +-----------------+--------------+---------------------------------------------+
 
@@ -227,4 +231,5 @@ This table shows the body parameters for the response:
         "updated_at": "2014-02-26T02:58:46Z"
     }
      
+
 

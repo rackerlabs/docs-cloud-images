@@ -1,7 +1,7 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-Get Task Schema
+Get task schema
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
@@ -35,10 +35,10 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
+|500                       |API Fault                |API fault.               |
++--------------------------+-------------------------+-------------------------+
 |503                       |Service Unavailable      |The requested service is |
 |                          |                         |unavailable.             |
-+--------------------------+-------------------------+-------------------------+
-|500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+
 
 
@@ -52,6 +52,10 @@ Request
 
 
 
+This operation does not accept a request body.
+
+
+
 
 Response
 """"""""""""""""
@@ -60,7 +64,9 @@ Response
 
 
 
-**Example Get Task Schema: JSON response**
+
+
+**Example Get task schema: JSON response**
 
 
 .. code::
@@ -127,4 +133,5 @@ Response
             }
         }
     }
+
 

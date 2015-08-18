@@ -1,7 +1,7 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-Get Image Members Schema
+Get image members schema
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
@@ -34,6 +34,10 @@ Request
 
 
 
+This operation does not accept a request body.
+
+
+
 
 Response
 """"""""""""""""
@@ -42,7 +46,9 @@ Response
 
 
 
-**Example Get Image Members Schema: JSON response**
+
+
+**Example Get image members schema: JSON response**
 
 
 .. code::
@@ -98,4 +104,5 @@ Response
             }
         ]
     }
+
 

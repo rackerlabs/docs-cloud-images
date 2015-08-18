@@ -1,7 +1,7 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-Get Image Details
+Get image details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
@@ -20,7 +20,7 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |                         |                         |
+|200                       |Success                  |Request succeeded.       |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Error                    |A general error has      |
 |                          |                         |occured.                 |
@@ -29,30 +29,33 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
+|404                       |Not Found                |Resource not found.      |
++--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|503                       |Service Unavailable      |The requested service is |
-|                          |                         |unavailable.             |
-+--------------------------+-------------------------+-------------------------+
 |500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
+|503                       |Service Unavailable      |The requested service is |
+|                          |                         |unavailable.             |
 +--------------------------+-------------------------+-------------------------+
 
 
 Request
 """"""""""""""""
 
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{image_id}                |csapi:uuid               |Image ID stored through  |
+|{image_id}                |Uuid                     |Image ID stored through  |
 |                          |                         |the image API, typically |
 |                          |                         |a UUID.                  |
 +--------------------------+-------------------------+-------------------------+
@@ -61,6 +64,8 @@ This table shows the URI parameters for the request:
 
 
 
+This operation does not accept a request body.
+
 
 
 
@@ -68,45 +73,47 @@ Response
 """"""""""""""""
 
 
+
+
 This table shows the body parameters for the response:
 
 +----------------+---------------+---------------------------------------------+
 |Name            |Type           |Description                                  |
 +================+===============+=============================================+
-|id              |xsd:string     |The UUID of the image.                       |
+|id              |String         |The UUID of the image.                       |
 +----------------+---------------+---------------------------------------------+
-|name            |xsd:string     |The name of the image.                       |
+|name            |String         |The name of the image.                       |
 +----------------+---------------+---------------------------------------------+
-|status          |xsd:string     |The status of the image. For possible image  |
+|status          |String         |The status of the image. For possible image  |
 |                |               |statuses, see ` 1.4.1. Image statuses        |
 |                |               |<http://docs.rackspace.com/images/api/v2/ci- |
 |                |               |devguide/content/image-statuses.html>`__.    |
 +----------------+---------------+---------------------------------------------+
-|visibility      |xsd:string     |Specifies image visibility as either         |
+|visibility      |String         |Specifies image visibility as either         |
 |                |               |``public``, ``private``, or ``shared``.      |
 +----------------+---------------+---------------------------------------------+
-|checksum        |xsd:string     |The checksum of the image.                   |
+|checksum        |String         |The checksum of the image.                   |
 +----------------+---------------+---------------------------------------------+
-|minRam          |xsd:string     |The minimum server RAM required for this     |
+|minRam          |String         |The minimum server RAM required for this     |
 |                |               |image.                                       |
 +----------------+---------------+---------------------------------------------+
-|minDisk         |xsd:string     |The minimum server disk size required for    |
+|minDisk         |String         |The minimum server disk size required for    |
 |                |               |this image.                                  |
 +----------------+---------------+---------------------------------------------+
-|tags            |array          |An array of user-defined image tags.         |
+|tags            |Array          |An array of user-defined image tags.         |
 +----------------+---------------+---------------------------------------------+
-|created_at      |xsd:string     |The date and time that the image was created.|
+|created_at      |String         |The date and time that the image was created.|
 +----------------+---------------+---------------------------------------------+
-|updated_at      |xsd:string     |The date and time that the image was updated.|
+|updated_at      |String         |The date and time that the image was updated.|
 +----------------+---------------+---------------------------------------------+
-|schema          |xsd:string     |The schema of the image.                     |
+|schema          |String         |The schema of the image.                     |
 +----------------+---------------+---------------------------------------------+
 
 
 
 
 
-**Example Get Image Details: JSON response**
+**Example Get image details: JSON response**
 
 
 .. code::
@@ -155,4 +162,5 @@ This table shows the body parameters for the response:
         "org.openstack__1__os_distro": "org.centos"
     }
     
+
 

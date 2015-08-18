@@ -1,18 +1,20 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-Get Image Member Details
+Update image member
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    GET /images/{image_id}/members/{member_id}
+    PUT /images/{image_id}/members/{member_id}
 
-Gets the details for the specified image member. 
+Sets the specified status for the specified member of the specified image.
 
-This operation shows details of the image member. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
+This operation updates the image member. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
 
-To get a successful response, either the image owner must make the call or the ``tenant_id`` of the user making the call must match the specified ``member_id``. Otherwise the response is ``HTTP 404``.
+If the call is made by the image owner, the response is ``HTTP 403 (Forbidden)``.
+
+If the call is made by a user who is not the owner and whose ``tenant ID`` is not the same as the {member_id} is the operation URI, the response is ``HTTP 404``.
 
 
 
@@ -37,28 +39,34 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|503                       |Service Unavailable      |The requested service is |
-|                          |                         |unavailable.             |
+|415                       |Bad Media Type           |Bad media type. This may |
+|                          |                         |result if the wrong      |
+|                          |                         |media type is used in    |
+|                          |                         |the cURL request.        |
 +--------------------------+-------------------------+-------------------------+
 |500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
+|503                       |Service Unavailable      |The requested service is |
+|                          |                         |unavailable.             |
 +--------------------------+-------------------------+-------------------------+
 
 
 Request
 """"""""""""""""
 
+
+
+
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{image_id}                |csapi:uuid               |Image ID stored through  |
+|{image_id}                |Uuid                     |Image ID stored through  |
 |                          |                         |the image API, typically |
 |                          |                         |a UUID.                  |
 +--------------------------+-------------------------+-------------------------+
-|{member_id}               |xsd:string               |Image member ID. For     |
+|{member_id}               |String                   |Image member ID. For     |
 |                          |                         |example, the tenant ID   |
 |                          |                         |of the user with whom    |
 |                          |                         |the image is being       |
@@ -69,11 +77,56 @@ This table shows the URI parameters for the request:
 
 
 
+This table shows the body parameters for the request:
 
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|status                    |String *(Required)*      |The status to which this |
+|                          |                         |image member should be   |
+|                          |                         |set. Valid values are as |
+|                          |                         |follows: ``pending`` At  |
+|                          |                         |creation, the member's   |
+|                          |                         |status is set to         |
+|                          |                         |pending. The image is    |
+|                          |                         |not visible in the       |
+|                          |                         |member's image-list, but |
+|                          |                         |the member can still     |
+|                          |                         |boot instances from the  |
+|                          |                         |image. ``accepted`` The  |
+|                          |                         |image is visible in the  |
+|                          |                         |member's image-list. The |
+|                          |                         |member can boot          |
+|                          |                         |instances from the       |
+|                          |                         |image. ``rejected`` The  |
+|                          |                         |member has decided that  |
+|                          |                         |he or she does not want  |
+|                          |                         |to see the image. The    |
+|                          |                         |image is not visible in  |
+|                          |                         |the member's image-list, |
+|                          |                         |but the member can still |
+|                          |                         |boot instances from the  |
+|                          |                         |image.                   |
++--------------------------+-------------------------+-------------------------+
+
+
+
+
+
+**Example Update image member: JSON request**
+
+
+.. code::
+
+    {
+        "status": "accepted"
+    }
 
 
 Response
 """"""""""""""""
+
+
 
 
 This table shows the body parameters for the response:
@@ -81,24 +134,24 @@ This table shows the body parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|created_at                |xsd:string *(Required)*  |The date and time that   |
+|created_at                |String *(Required)*      |The date and time that   |
 |                          |                         |the image member was     |
 |                          |                         |created.                 |
 +--------------------------+-------------------------+-------------------------+
-|image_id                  |xsd:string *(Required)*  |The UUID of the image.   |
+|image_id                  |String *(Required)*      |The UUID of the image.   |
 +--------------------------+-------------------------+-------------------------+
-|member_id                 |xsd:string *(Required)*  |The id of the image      |
+|member_id                 |String *(Required)*      |The id of the image      |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|schema                    |xsd:string *(Required)*  |The schema of the image  |
+|schema                    |String *(Required)*      |The schema of the image  |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|status                    |xsd:string *(Required)*  |The status of the image  |
+|status                    |String *(Required)*      |The status of the image  |
 |                          |                         |member ( ``pending``,    |
 |                          |                         |``accepted``, or         |
 |                          |                         |``rejected``.            |
 +--------------------------+-------------------------+-------------------------+
-|updated_at                |xsd:string *(Required)*  |The date and time that   |
+|updated_at                |String *(Required)*      |The date and time that   |
 |                          |                         |the image member was     |
 |                          |                         |updated.                 |
 +--------------------------+-------------------------+-------------------------+
@@ -107,17 +160,18 @@ This table shows the body parameters for the response:
 
 
 
-**Example Get Image Member Details: JSON response**
+**Example Update image member: JSON response**
 
 
 .. code::
 
     {
-        "created_at": "2014-02-20T04:15:17Z",
-        "image_id": "634985e5-0f2e-488e-bd7c-928d9a8ea82a",
-        "member_id": "348129",
+        "created_at": "2013-09-20T19:22:19Z",
+        "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
+        "member_id": "554433",
         "schema": "/v2/schemas/member",
-        "status": "pending",
-        "updated_at": "2014-02-20T04:15:17Z"
+        "status": "accepted",
+        "updated_at": "2013-09-20T20:15:31Z"
     }
+
 

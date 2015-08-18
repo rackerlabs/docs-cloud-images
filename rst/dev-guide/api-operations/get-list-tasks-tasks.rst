@@ -1,7 +1,7 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-List Tasks
+List tasks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
@@ -29,18 +29,18 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
+|404                       |Not Found                |Resource not found.      |
++--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|503                       |Service Unavailable      |The requested service is |
-|                          |                         |unavailable.             |
-+--------------------------+-------------------------+-------------------------+
 |500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
+|503                       |Service Unavailable      |The requested service is |
+|                          |                         |unavailable.             |
 +--------------------------+-------------------------+-------------------------+
 
 
@@ -54,9 +54,15 @@ Request
 
 
 
+This operation does not accept a request body.
+
+
+
 
 Response
 """"""""""""""""
+
+
 
 
 This table shows the body parameters for the response:
@@ -64,39 +70,39 @@ This table shows the body parameters for the response:
 +----------------+---------------+---------------------------------------------+
 |Name            |Type           |Description                                  |
 +================+===============+=============================================+
-|first           |xsd:string     |The URI for the first task in the list.      |
+|first           |String         |The URI for the first task in the list.      |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|schema          |xsd:string     |The schema of the tasks list.                |
+|schema          |String         |The schema of the tasks list.                |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|tasks           |array          |The container for tasks in the list.         |
+|tasks           |Array          |The container for tasks in the list.         |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|created_at      |xsd:string     |The date and time that the task resource was |
+|created_at      |String         |The date and time that the task resource was |
 |                |*(Required)*   |created.                                     |
 +----------------+---------------+---------------------------------------------+
-|id              |xsd:string     |The UUID of the task resource.               |
+|id              |String         |The UUID of the task resource.               |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|owner           |xsd:string     |The tenant-id of the task owner.             |
+|owner           |String         |The tenant-id of the task owner.             |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|schema          |xsd:string     |The schema of the task.                      |
+|schema          |String         |The schema of the task.                      |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|self            |xsd:string     |The link to the task.                        |
+|self            |String         |The link to the task.                        |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|status          |xsd:string     |The status of the task. For possible task    |
+|status          |String         |The status of the task. For possible task    |
 |                |*(Required)*   |statuses, see ` 1.4.1. Image statuses        |
 |                |               |<http://docs.rackspace.com/images/api/v2/ci- |
 |                |               |devguide/content/image-statuses.html>`__.    |
 +----------------+---------------+---------------------------------------------+
-|type            |xsd:string     |The type of the task ( ``export`` for task   |
+|type            |String         |The type of the task ( ``export`` for task   |
 |                |*(Required)*   |exports).                                    |
 +----------------+---------------+---------------------------------------------+
-|updated_at      |xsd:string     |The date and time that the task resource was |
+|updated_at      |String         |The date and time that the task resource was |
 |                |*(Required)*   |updated.                                     |
 +----------------+---------------+---------------------------------------------+
 
@@ -136,4 +142,5 @@ This table shows the body parameters for the response:
         ]
     }
     
+
 

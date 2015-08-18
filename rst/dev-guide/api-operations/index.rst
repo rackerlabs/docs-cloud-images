@@ -1,4 +1,4 @@
-.. _api-operations:
+.. _api-operations-index:
 
 API Operations
 --------------
@@ -16,15 +16,10 @@ Developers use the operations described in this chapter to perform the following
 - Get information about image schemas
 
 
-.. include:: api-operations/image-2.0/images-operations.rst
-.. include:: api-operations/image-2.0/image-sharing-operations.rst
+.. include::  images-operations.rst
+.. include::  image-sharing-operations.rst
+.. include::  image-tag-operations.rst
+.. include::  image-task-operations.rst
+.. include::  image-schema-operations.rst
 
 
-.. toctree::
-   :hidden:
-
-   image-2.0/images-operations
-   image-2.0/image-sharing-operations
-   image-2.0/image-tag-operations
-   image-2.0/image-task-operations
-   image-schemas-2.0/index

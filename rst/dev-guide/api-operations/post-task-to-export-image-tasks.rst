@@ -1,7 +1,7 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-Task To Export Image
+Task to export image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
@@ -41,15 +41,15 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|503                       |Service Unavailable      |The requested service is |
-|                          |                         |unavailable.             |
-+--------------------------+-------------------------+-------------------------+
-|500                       |API Fault                |API fault.               |
-+--------------------------+-------------------------+-------------------------+
 |415                       |Bad Media Type           |Bad media type. This may |
 |                          |                         |result if the wrong      |
 |                          |                         |media type is used in    |
 |                          |                         |the cURL request.        |
++--------------------------+-------------------------+-------------------------+
+|500                       |API Fault                |API fault.               |
++--------------------------+-------------------------+-------------------------+
+|503                       |Service Unavailable      |The requested service is |
+|                          |                         |unavailable.             |
 +--------------------------+-------------------------+-------------------------+
 
 
@@ -61,24 +61,26 @@ Request
 
 
 
+
+
 This table shows the body parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|type                      |xsd:string *(Required)*  |The type of the task.    |
+|type                      |String *(Required)*      |The type of the task.    |
 |                          |                         |Use ``export`` for task  |
 |                          |                         |exports.                 |
 +--------------------------+-------------------------+-------------------------+
 |input                     |*(Required)*             |The container for export |
 |                          |                         |input parameters.        |
 +--------------------------+-------------------------+-------------------------+
-|image_uuid                |xsd:string *(Required)*  |The UUID for the         |
+|image_uuid                |String *(Required)*      |The UUID for the         |
 |                          |                         |exported image. You must |
 |                          |                         |own the image or the     |
 |                          |                         |export task will fail.   |
 +--------------------------+-------------------------+-------------------------+
-|receiving_swift_container |xsd:string *(Required)*  |The Cloud Files          |
+|receiving_swift_container |String *(Required)*      |The Cloud Files          |
 |                          |                         |container for the        |
 |                          |                         |exported image. If the   |
 |                          |                         |container does not       |
@@ -97,7 +99,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example Task To Export Image: JSON request**
+**Example Task to export image: JSON request**
 
 
 .. code::
@@ -116,16 +118,18 @@ Response
 """"""""""""""""
 
 
+
+
 This table shows the body parameters for the response:
 
 +--------------------------+-------------+---------------------------------------------+
 |Name                      |Type         |Description                                  |
 +==========================+=============+=============================================+
-|created_at                |xsd:string   |The date and time that the task resource was |
+|created_at                |String       |The date and time that the task resource was |
 |                          |*(Required)* |created.                                     |
 +--------------------------+-------------+---------------------------------------------+
-|expires_at                |xsd:string   |The date and time that the task resource     |
-|                          |*(Required)* |expires. Even after the task resource        |
+|expires_at                |String       |The date and time that the task resource     |
+|                          |*(Optional)* |expires. Even after the task resource        |
 |                          |             |expires (and is thus no longer available to  |
 |                          |             |be polled), the result of the task (such as  |
 |                          |             |an imported or exported image) still exists. |
@@ -133,7 +137,7 @@ This table shows the body parameters for the response:
 |                          |             |responses with ``status`` of ``success`` and |
 |                          |             |``failure``.                                 |
 +--------------------------+-------------+---------------------------------------------+
-|id                        |xsd:string   |The UUID of the task resource.               |
+|id                        |String       |The UUID of the task resource.               |
 |                          |*(Required)* |                                             |
 +--------------------------+-------------+---------------------------------------------+
 |input                     |*(Required)* |The container for export export input        |
@@ -141,37 +145,37 @@ This table shows the body parameters for the response:
 +--------------------------+-------------+---------------------------------------------+
 |image_uuid                |*(Required)* |The UUID for the exported image.             |
 +--------------------------+-------------+---------------------------------------------+
-|receiving_swift_container |xsd:string   |The Cloud Files container for the exported   |
+|receiving_swift_container |String       |The Cloud Files container for the exported   |
 |                          |*(Required)* |image.                                       |
 +--------------------------+-------------+---------------------------------------------+
-|message                   |xsd:string   |``None`` if task export succeeded or the     |
+|message                   |String       |``None`` if task export succeeded or the     |
 |                          |*(Required)* |reason why the export failed.                |
 +--------------------------+-------------+---------------------------------------------+
-|result                    |*(Required)* |The container for results. .. note:: This    |
+|result                    |*(Optional)* |The container for results. .. note:: This    |
 |                          |             |parameter is required for responses with     |
 |                          |             |``status`` of ``success``.                   |
 +--------------------------+-------------+---------------------------------------------+
-|export_location           |xsd:string   |The location of the exported image in Cloud  |
-|                          |*(Required)* |Files.                                       |
+|export_location           |String       |The location of the exported image in Cloud  |
+|                          |*(Optional)* |Files.                                       |
 +--------------------------+-------------+---------------------------------------------+
-|owner                     |xsd:string   |The tenant-id of the task owner.             |
+|owner                     |String       |The tenant-id of the task owner.             |
 |                          |*(Required)* |                                             |
 +--------------------------+-------------+---------------------------------------------+
-|schema                    |xsd:string   |The schema of the task.                      |
+|schema                    |String       |The schema of the task.                      |
 |                          |*(Required)* |                                             |
 +--------------------------+-------------+---------------------------------------------+
-|self                      |xsd:string   |The link to the task.                        |
+|self                      |String       |The link to the task.                        |
 |                          |*(Required)* |                                             |
 +--------------------------+-------------+---------------------------------------------+
-|status                    |xsd:string   |The status of the task. For possible task    |
+|status                    |String       |The status of the task. For possible task    |
 |                          |*(Required)* |statuses, see ` 1.4.2. Task statuses         |
 |                          |             |<http://docs.rackspace.com/images/api/v2/ci- |
 |                          |             |devguide/content/task-statuses.html>`__.     |
 +--------------------------+-------------+---------------------------------------------+
-|type                      |xsd:string   |The type of the task ( ``export`` for task   |
+|type                      |String       |The type of the task ( ``export`` for task   |
 |                          |*(Required)* |exports).                                    |
 +--------------------------+-------------+---------------------------------------------+
-|updated_at                |xsd:string   |The date and time that the task resource was |
+|updated_at                |String       |The date and time that the task resource was |
 |                          |*(Required)* |updated.                                     |
 +--------------------------+-------------+---------------------------------------------+
 
@@ -200,4 +204,5 @@ This table shows the body parameters for the response:
         "type": "export", 
         "updated_at": "2014-02-26T02:01:13Z"
     }
+
 
