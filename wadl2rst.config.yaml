@@ -1,0 +1,12 @@
+
+#
+# Example wadl2rst config file
+#
+
+src/wadl/image-2.0.wadl:
+    title: 1
+    output directory: /rst/dev-guide/api-operations 
+
+src/wadl/image-schemas-2.0.wadl:
+    title: 1
+    output directory: /rst/dev-guide/api-operations
