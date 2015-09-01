@@ -426,7 +426,7 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-members-list-response.json"/>
                 </wadl:doc> &imageMemberListResponseParameters; </representation>
-        </response> &commonFaults; &getFaults; </method>
+        </response> &commonFaults;&getFaults;</method>
 
     <!-- Create Image Member -->
     <method name="POST" id="createImageMember">

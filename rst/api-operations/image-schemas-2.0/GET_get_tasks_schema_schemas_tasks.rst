@@ -1,12 +1,14 @@
+=============================================================================
+Get Tasks Schema -  Rackspace Cloud Images Developer Guide - API v2.0
+=============================================================================
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+Get Tasks Schema
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _get-get-tasks-schema-schemas-tasks:
+`Request <GET_get_tasks_schema_schemas_tasks.rst#request>`__
+`Response <GET_get_tasks_schema_schemas_tasks.rst#response>`__
 
-Get tasks schema
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code::
+.. code-block:: javascript
 
     GET /schemas/tasks
 
@@ -37,41 +39,32 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|500                       |API Fault                |API fault.               |
-+--------------------------+-------------------------+-------------------------+
 |503                       |Service Unavailable      |The requested service is |
 |                          |                         |unavailable.             |
++--------------------------+-------------------------+-------------------------+
+|500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+
 
 
 Request
-""""""""""""""""
+^^^^^^^^^^^^^^^^^
 
 
 
 
 
-
-
-
-This operation does not accept a request body.
 
 
 
 
 Response
-""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 
 
 
 
 
-
-
-
-
-
-**Example Get tasks schema: JSON response**
+**Example Get Tasks Schema: JSON request**
 
 
 .. code::

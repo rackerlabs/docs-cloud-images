@@ -7,15 +7,18 @@ This chapter contains helpful information for using API operations, authenticati
 and using service endpoints.
 
 The Cloud Images API is defined as a RESTful HTTP service that uses all aspects of the
-HTTP protocol, including methods, URIs, media types, and response codes. To request
-Cloud Images services, you must first issue an authentication request to the Rackspace
-Cloud Identity Service.
+HTTP protocol, including methods, URIs, media types, and response codes. Review the topics 
+in this section To learn more 
+about these API components and how to access and use the API for this service. 
 
 The Cloud Images API supports JSON data serialization request and response formats.
 
-.. include:: general-api-topics.rst
-.. include:: how-curl-commands-work.rst
-.. include:: authenticate.rst
-.. include:: role-based-access-control.rst
-.. include:: service-access-endpoints.rst
+.. toctree:: :hidden:
+   :maxdepth: 1
+
+   request-response
+   how-curl-commands-work
+   authenticate
+   role-based-access-control
+   service-access-endpoints
 

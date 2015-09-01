@@ -31,6 +31,9 @@ import os
 extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.todo',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.extlinks'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -70,7 +73,7 @@ release = '1'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', 'samples']
+exclude_patterns = ['_build', 'samples','include /*']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.

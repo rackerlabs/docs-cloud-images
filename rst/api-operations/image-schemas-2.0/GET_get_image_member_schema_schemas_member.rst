@@ -1,12 +1,14 @@
+=============================================================================
+Get Image Member Schema -  Rackspace Cloud Images Developer Guide - API v2.0
+=============================================================================
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+Get Image Member Schema
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _get-get-image-member-schema-schemas-member:
+`Request <GET_get_image_member_schema_schemas_member.rst#request>`__
+`Response <GET_get_image_member_schema_schemas_member.rst#response>`__
 
-Get image member schema
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code::
+.. code-block:: javascript
 
     GET /schemas/member
 
@@ -27,33 +29,24 @@ This table shows the possible response codes for this operation:
 
 
 Request
-""""""""""""""""
+^^^^^^^^^^^^^^^^^
 
 
 
 
 
-
-
-
-This operation does not accept a request body.
 
 
 
 
 Response
-""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 
 
 
 
 
-
-
-
-
-
-**Example Get image member schema: JSON response**
+**Example Get Image Member Schema: JSON request**
 
 
 .. code::

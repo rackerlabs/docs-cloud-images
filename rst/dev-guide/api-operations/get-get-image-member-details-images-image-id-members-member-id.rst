@@ -1,6 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
+.. _get-get-image-member-details-images-image-id-members-member-id:
+
 Get image member details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -83,6 +85,7 @@ Response
 
 
 
+
 This table shows the body parameters for the response:
 
 +--------------------------+-------------------------+-------------------------+
@@ -114,6 +117,8 @@ This table shows the body parameters for the response:
 
 
 
+
+
 **Example Get image member details: JSON response**
 
 
@@ -127,5 +132,4 @@ This table shows the body parameters for the response:
         "status": "pending",
         "updated_at": "2014-02-20T04:15:17Z"
     }
-
 

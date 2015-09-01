@@ -1,7 +1,7 @@
 .. _api-operations-index:
 
 API Operations
---------------
+----------------
 
 Developers use the operations described in this chapter to perform the following tasks:
 
@@ -15,11 +15,13 @@ Developers use the operations described in this chapter to perform the following
 
 - Get information about image schemas
 
-
-.. include::  images-operations.rst
-.. include::  image-sharing-operations.rst
-.. include::  image-tag-operations.rst
-.. include::  image-task-operations.rst
-.. include::  image-schema-operations.rst
+.. toctree:: :hidden:
+   :maxdepth: 2
+   
+   images-operations.rst
+   image-sharing-operations.rst
+   image-tag-operations.rst
+   image-task-operations.rst
+   image-schema-operations.rst
 
 

@@ -20,7 +20,7 @@ network using JSON.
 
 .. code::
 
-                $ curl https://dfw.servers.api.rackspacecloud.com/v2/$account/servers \
+        $ curl https://dfw.servers.api.rackspacecloud.com/v2/$account/servers \
            -X POST \
            -H "X-Auth-Project-Id: $account" \
            -H "Content-Type: application/json" \

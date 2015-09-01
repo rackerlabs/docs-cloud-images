@@ -1,6 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
+.. _post-task-to-import-image-tasks:
+
 Task to import image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -127,6 +129,7 @@ Response
 
 
 
+
 This table shows the body parameters for the response:
 
 +-----------------+--------------+---------------------------------------------+
@@ -208,6 +211,8 @@ This table shows the body parameters for the response:
 
 
 
+
+
 **Example Import Task - Pending Response**
 
 
@@ -231,5 +236,4 @@ This table shows the body parameters for the response:
         "updated_at": "2014-02-26T02:58:46Z"
     }
      
-
 

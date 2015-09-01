@@ -1,7 +1,7 @@
 .. _api-operations-images:
 
 Images
-~~~~~~
+-------
 Use the images API operations to list, delete, and update images.
 
 .. include:: get-list-images-images.rst

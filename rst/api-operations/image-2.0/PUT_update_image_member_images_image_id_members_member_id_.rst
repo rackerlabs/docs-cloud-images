@@ -1,12 +1,14 @@
+=============================================================================
+Update Image Member -  Rackspace Cloud Images Developer Guide - API v2.0
+=============================================================================
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+Update Image Member
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _put-update-image-member-images-image-id-members-member-id:
+`Request <PUT_update_image_member_images_image_id_members_member_id_.rst#request>`__
+`Response <PUT_update_image_member_images_image_id_members_member_id_.rst#response>`__
 
-Update image member
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code::
+.. code-block:: javascript
 
     PUT /images/{image_id}/members/{member_id}
 
@@ -41,34 +43,31 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
+|503                       |Service Unavailable      |The requested service is |
+|                          |                         |unavailable.             |
++--------------------------+-------------------------+-------------------------+
+|500                       |API Fault                |API fault.               |
++--------------------------+-------------------------+-------------------------+
 |415                       |Bad Media Type           |Bad media type. This may |
 |                          |                         |result if the wrong      |
 |                          |                         |media type is used in    |
 |                          |                         |the cURL request.        |
 +--------------------------+-------------------------+-------------------------+
-|500                       |API Fault                |API fault.               |
-+--------------------------+-------------------------+-------------------------+
-|503                       |Service Unavailable      |The requested service is |
-|                          |                         |unavailable.             |
-+--------------------------+-------------------------+-------------------------+
 
 
 Request
-""""""""""""""""
-
-
-
+^^^^^^^^^^^^^^^^^
 
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{image_id}                |Uuid                     |Image ID stored through  |
+|{image_id}                |csapi:uuid               |Image ID stored through  |
 |                          |                         |the image API, typically |
 |                          |                         |a UUID.                  |
 +--------------------------+-------------------------+-------------------------+
-|{member_id}               |String                   |Image member ID. For     |
+|{member_id}               |xsd:string               |Image member ID. For     |
 |                          |                         |example, the tenant ID   |
 |                          |                         |of the user with whom    |
 |                          |                         |the image is being       |
@@ -84,7 +83,7 @@ This table shows the body parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|status                    |String *(Required)*      |The status to which this |
+|status                    |xsd:string *(Required)*  |The status to which this |
 |                          |                         |image member should be   |
 |                          |                         |set. Valid values are as |
 |                          |                         |follows: ``pending``At   |
@@ -115,7 +114,7 @@ This table shows the body parameters for the request:
 
 
 
-**Example Update image member: JSON request**
+**Example Update Image Member: JSON request**
 
 
 .. code::
@@ -126,10 +125,7 @@ This table shows the body parameters for the request:
 
 
 Response
-""""""""""""""""
-
-
-
+^^^^^^^^^^^^^^^^^^
 
 
 This table shows the body parameters for the response:
@@ -137,24 +133,24 @@ This table shows the body parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|created_at                |String *(Required)*      |The date and time that   |
+|created_at                |xsd:string *(Required)*  |The date and time that   |
 |                          |                         |the image member was     |
 |                          |                         |created.                 |
 +--------------------------+-------------------------+-------------------------+
-|image_id                  |String *(Required)*      |The UUID of the image.   |
+|image_id                  |xsd:string *(Required)*  |The UUID of the image.   |
 +--------------------------+-------------------------+-------------------------+
-|member_id                 |String *(Required)*      |The id of the image      |
+|member_id                 |xsd:string *(Required)*  |The id of the image      |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|schema                    |String *(Required)*      |The schema of the image  |
+|schema                    |xsd:string *(Required)*  |The schema of the image  |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|status                    |String *(Required)*      |The status of the image  |
+|status                    |xsd:string *(Required)*  |The status of the image  |
 |                          |                         |member ( ``pending``,    |
 |                          |                         |``accepted``, or         |
 |                          |                         |``rejected``.            |
 +--------------------------+-------------------------+-------------------------+
-|updated_at                |String *(Required)*      |The date and time that   |
+|updated_at                |xsd:string *(Required)*  |The date and time that   |
 |                          |                         |the image member was     |
 |                          |                         |updated.                 |
 +--------------------------+-------------------------+-------------------------+
@@ -163,9 +159,7 @@ This table shows the body parameters for the response:
 
 
 
-
-
-**Example Update image member: JSON response**
+**Example Update Image Member: JSON request**
 
 
 .. code::

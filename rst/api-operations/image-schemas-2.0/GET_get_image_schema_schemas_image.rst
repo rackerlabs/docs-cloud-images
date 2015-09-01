@@ -1,16 +1,18 @@
+=============================================================================
+Get Image Schema -  Rackspace Cloud Images Developer Guide - API v2.0
+=============================================================================
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+Get Image Schema
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _get-get-image-schema-schemas-image:
+`Request <GET_get_image_schema_schemas_image.rst#request>`__
+`Response <GET_get_image_schema_schemas_image.rst#response>`__
 
-Get image schema
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code::
+.. code-block:: javascript
 
     GET /schemas/image
 
-Gets a json-schema document that represents a single image entity. 
+Gets a json-schema document that represents a single image entity.
 
 The following schema is just an example. Consider only the response to the API call as authoritative.
 
@@ -31,49 +33,40 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
-+--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|500                       |API Fault                |API fault.               |
-+--------------------------+-------------------------+-------------------------+
 |503                       |Service Unavailable      |The requested service is |
 |                          |                         |unavailable.             |
++--------------------------+-------------------------+-------------------------+
+|500                       |API Fault                |API fault.               |
++--------------------------+-------------------------+-------------------------+
+|404                       |Not Found                |Resource not found.      |
 +--------------------------+-------------------------+-------------------------+
 
 
 Request
-""""""""""""""""
+^^^^^^^^^^^^^^^^^
 
 
 
 
 
-
-
-
-This operation does not accept a request body.
 
 
 
 
 Response
-""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 
 
 
 
 
-
-
-
-
-
-**Example Get image schema: JSON response**
+**Example Get Image Schema: JSON request**
 
 
 .. code::

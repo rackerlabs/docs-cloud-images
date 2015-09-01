@@ -1,12 +1,14 @@
+=============================================================================
+Get Task Details -  Rackspace Cloud Images Developer Guide - API v2.0
+=============================================================================
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+Get Task Details
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _get-get-task-details-tasks-taskid:
+`Request <GET_get_task_details_tasks_taskid_.rst#request>`__
+`Response <GET_get_task_details_tasks_taskid_.rst#response>`__
 
-Get task details
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code::
+.. code-block:: javascript
 
     GET /tasks/{taskID}
 
@@ -31,33 +33,30 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
-+--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|500                       |API Fault                |API fault.               |
-+--------------------------+-------------------------+-------------------------+
 |503                       |Service Unavailable      |The requested service is |
 |                          |                         |unavailable.             |
++--------------------------+-------------------------+-------------------------+
+|500                       |API Fault                |API fault.               |
++--------------------------+-------------------------+-------------------------+
+|404                       |Not Found                |Resource not found.      |
 +--------------------------+-------------------------+-------------------------+
 
 
 Request
-""""""""""""""""
-
-
-
+^^^^^^^^^^^^^^^^^
 
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{task_id}                 |Uuid                     |The task id. This task   |
+|{task_id}                 |csapi:uuid               |The task id. This task   |
 |                          |                         |id is the same as the id |
 |                          |                         |parameter returned in    |
 |                          |                         |the Import Task or       |
@@ -69,16 +68,11 @@ This table shows the URI parameters for the request:
 
 
 
-This operation does not accept a request body.
-
 
 
 
 Response
-""""""""""""""""
-
-
-
+^^^^^^^^^^^^^^^^^^
 
 
 This table shows the body parameters for the response:
@@ -86,79 +80,77 @@ This table shows the body parameters for the response:
 +-----------------+--------------+---------------------------------------------+
 |Name             |Type          |Description                                  |
 +=================+==============+=============================================+
-|created_at       |String        |The date and time that the task resource was |
+|created_at       |xsd:string    |The date and time that the task resource was |
 |                 |*(Required)*  |created.                                     |
 +-----------------+--------------+---------------------------------------------+
-|expires_at       |String        |The date and time that the task resource     |
-|                 |*(Optional)*  |expires. Even after the task resource        |
+|expires_at       |xsd:string    |The date and time that the task resource     |
+|                 |*(Required)*  |expires. Even after the task resource        |
 |                 |              |expires (and is thus no longer available to  |
 |                 |              |be polled), the result of the task (such as  |
 |                 |              |an imported or exported image) still exists. |
-|                 |              |.. note:: This parameter is required for     |
-|                 |              |responses with ``status`` of ``success`` and |
+|                 |              |This parameter is required for responses     |
+|                 |              |with ``status`` of ``success`` and           |
 |                 |              |``failure``.                                 |
 +-----------------+--------------+---------------------------------------------+
-|id               |String        |The UUID of the task resource.               |
+|id               |xsd:string    |The UUID of the task resource.               |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
 |input            |*(Required)*  |The container for import input parameters.   |
 +-----------------+--------------+---------------------------------------------+
 |image_properties |*(Required)*  |The container for image properties.          |
 +-----------------+--------------+---------------------------------------------+
-|name             |String        |The name of the image.                       |
+|name             |xsd:string    |The name of the image.                       |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
-|import_from      |String        |The source of the imported image.            |
+|import_from      |xsd:string    |The source of the imported image.            |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
-|message          |String        |``None`` if task import succeeded or the     |
+|message          |xsd:string    |``None`` if task import succeeded or the     |
 |                 |*(Required)*  |reason why the import failed. Possible       |
 |                 |              |errors include the following: 111: The image |
 |                 |              |cannot be imported. There is an unspecified  |
 |                 |              |problem with your VHD that caused it to fail |
-|                 |              |our validation checks. 396: The image cannot |
-|                 |              |be imported. The file is not a valid VHD.    |
-|                 |              |413: The image cannot be imported. The       |
+|                 |              |our validation checks.396: The image cannot  |
+|                 |              |be imported. The file is not a valid         |
+|                 |              |VHD.413: The image cannot be imported. The   |
 |                 |              |virtual size of the disk exceeds the 40GB    |
-|                 |              |limit. 523: The image cannot be imported.    |
-|                 |              |Only fixed or dynamic disks may be imported. |
-|                 |              |609: The image cannot be imported. The       |
-|                 |              |physical size of the disk exceeds the 40GB   |
-|                 |              |limit. 614: The image cannot be imported.    |
-|                 |              |The internal UUID of the VHD is all zeros.   |
-|                 |              |721: The image cannot be imported. Your VHD  |
-|                 |              |has a parent disk. Only a stand-alone VHD    |
-|                 |              |may be imported.                             |
+|                 |              |limit.523: The image cannot be imported.     |
+|                 |              |Only fixed or dynamic disks may be           |
+|                 |              |imported.609: The image cannot be imported.  |
+|                 |              |The physical size of the disk exceeds the    |
+|                 |              |40GB limit.614: The image cannot be          |
+|                 |              |imported. The internal UUID of the VHD is    |
+|                 |              |all zeros.721: The image cannot be imported. |
+|                 |              |Your VHD has a parent disk. Only a stand-    |
+|                 |              |alone VHD may be imported.                   |
 +-----------------+--------------+---------------------------------------------+
-|result           |*(Optional)*  |The container for results. .. note:: This    |
-|                 |              |parameter is required for responses with     |
-|                 |              |``status`` of ``success``.                   |
+|result           |*(Required)*  |The container for results. This parameter is |
+|                 |              |required for responses with ``status`` of    |
+|                 |              |``success``.                                 |
 +-----------------+--------------+---------------------------------------------+
-|image_id         |Uuid          |The UUID of the image.                       |
-|                 |*(Optional)*  |                                             |
-+-----------------+--------------+---------------------------------------------+
-|owner            |String        |The tenant-id of the task owner.             |
+|image_id         |xsd:uuid      |The UUID of the image.                       |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
-|schema           |String        |The schema of the task.                      |
+|owner            |xsd:string    |The tenant-id of the task owner.             |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
-|self             |String        |The link to the task.                        |
+|schema           |xsd:string    |The schema of the task.                      |
 |                 |*(Required)*  |                                             |
 +-----------------+--------------+---------------------------------------------+
-|status           |String        |The status of the task. For possible task    |
-|                 |*(Required)*  |statuses, see ` 1.4.2. Task statuses         |
+|self             |xsd:string    |The link to the task.                        |
+|                 |*(Required)*  |                                             |
++-----------------+--------------+---------------------------------------------+
+|status           |xsd:string    |The status of the task. For possible task    |
+|                 |*(Required)*  |statuses, see `1.4.2. Task statuses          |
 |                 |              |<http://docs.rackspace.com/images/api/v2/ci- |
 |                 |              |devguide/content/task-statuses.html>`__.     |
 +-----------------+--------------+---------------------------------------------+
-|type             |String        |The type of the task ( ``export`` for task   |
+|type             |xsd:string    |The type of the task ( ``export`` for task   |
 |                 |*(Required)*  |exports).                                    |
 +-----------------+--------------+---------------------------------------------+
-|updated_at       |String        |The date and time that the task resource was |
+|updated_at       |xsd:string    |The date and time that the task resource was |
 |                 |*(Required)*  |updated.                                     |
 +-----------------+--------------+---------------------------------------------+
-
-
 
 
 

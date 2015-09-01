@@ -1,6 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
+.. _post-create-image-member-images-image-id-members:
+
 Create image member
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -100,6 +102,7 @@ Response
 
 
 
+
 This table shows the body parameters for the response:
 
 +--------------------------+-------------------------+-------------------------+
@@ -131,6 +134,8 @@ This table shows the body parameters for the response:
 
 
 
+
+
 **Example Create image member: JSON response**
 
 
@@ -144,5 +149,4 @@ This table shows the body parameters for the response:
         "status": "pending",
         "updated_at": "2013-09-20T19:25:31Z"
     }
-
 

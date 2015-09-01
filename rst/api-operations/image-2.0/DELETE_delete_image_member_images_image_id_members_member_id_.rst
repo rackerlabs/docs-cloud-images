@@ -1,22 +1,22 @@
+=============================================================================
+Delete Image Member -  Rackspace Cloud Images Developer Guide - API v2.0
+=============================================================================
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+Delete Image Member
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _put-add-image-tag-images-image-id-tags-tag:
+`Request <DELETE_delete_image_member_images_image_id_members_member_id_.rst#request>`__
+`Response <DELETE_delete_image_member_images_image_id_members_member_id_.rst#response>`__
 
-Add image tag
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. code-block:: javascript
 
-.. code::
+    DELETE /images/{image_id}/members/{member_id}
 
-    PUT /images/{image_id}/tags/{tag}
+Deletes the specified ``account ID/tenant ID`` from the member list of the specified image.
 
-Adds the specified tag to the specified image. 
+This operation deletes the image member from the image. This call, which can only be made by the image owner, removes users from the list of members who have access to a shared image.
 
-This operation adds the specified tag to the specified image. 
-
-Include the tag you want to add in the request URI ``{tag}`` path segment of the URI. For example, to tag image e7db3b45-8db7-47ad-8109-3fb55c2c24fd with 'miracle', you would use: ``PUT /v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/tags/miracle``. The request body is ignored. 
-
-An image can only be tagged once with a specific string. Multiple attempts to tag an image with the same string will result in a single instance of that string being added to the image's tags list.
+If the ``{member_id}`` is not a member of the specified image, the response is ``HTTP 404``
 
 
 
@@ -26,7 +26,7 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|204                       |Success                  |Request succeeded.       |
+|204                       |Success                  |Delete request succeeded.|
 +--------------------------+-------------------------+-------------------------+
 |400                       |Error                    |A general error has      |
 |                          |                         |occured.                 |
@@ -41,56 +41,43 @@ This table shows the possible response codes for this operation:
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|415                       |Bad Media Type           |Bad media type. This may |
-|                          |                         |result if the wrong      |
-|                          |                         |media type is used in    |
-|                          |                         |the cURL request.        |
+|503                       |Service Unavailable      |The requested service is |
+|                          |                         |unavailable.             |
 +--------------------------+-------------------------+-------------------------+
 |500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+
-|503                       |Service Unavailable      |The requested service is |
-|                          |                         |unavailable.             |
+|404                       |Not Found                |Resource not found.      |
 +--------------------------+-------------------------+-------------------------+
 
 
 Request
-""""""""""""""""
-
-
-
+^^^^^^^^^^^^^^^^^
 
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{image_id}                |Uuid                     |Image ID stored through  |
+|{image_id}                |csapi:uuid               |Image ID stored through  |
 |                          |                         |the image API, typically |
 |                          |                         |a UUID.                  |
 +--------------------------+-------------------------+-------------------------+
-|{tag}                     |String                   |Image tag (may be up to  |
-|                          |                         |255 characters in        |
-|                          |                         |length).                 |
+|{member_id}               |xsd:string               |Image member ID. For     |
+|                          |                         |example, the tenant ID   |
+|                          |                         |of the user with whom    |
+|                          |                         |the image is being       |
+|                          |                         |shared.                  |
 +--------------------------+-------------------------+-------------------------+
 
 
 
 
-
-This operation does not accept a request body.
 
 
 
 
 Response
-""""""""""""""""
-
-
-
-
-
-
-This operation does not return a response body.
+^^^^^^^^^^^^^^^^^^
 
 
 

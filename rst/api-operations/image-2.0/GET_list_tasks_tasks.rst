@@ -1,12 +1,14 @@
+=============================================================================
+List Tasks -  Rackspace Cloud Images Developer Guide - API v2.0
+=============================================================================
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+List Tasks
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _get-list-tasks-tasks:
+`Request <GET_list_tasks_tasks.rst#request>`__
+`Response <GET_list_tasks_tasks.rst#response>`__
 
-List tasks
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code::
+.. code-block:: javascript
 
     GET /tasks
 
@@ -31,41 +33,34 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
-+--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|500                       |API Fault                |API fault.               |
-+--------------------------+-------------------------+-------------------------+
 |503                       |Service Unavailable      |The requested service is |
 |                          |                         |unavailable.             |
++--------------------------+-------------------------+-------------------------+
+|500                       |API Fault                |API fault.               |
++--------------------------+-------------------------+-------------------------+
+|404                       |Not Found                |Resource not found.      |
 +--------------------------+-------------------------+-------------------------+
 
 
 Request
-""""""""""""""""
+^^^^^^^^^^^^^^^^^
 
 
 
 
 
-
-
-
-This operation does not accept a request body.
 
 
 
 
 Response
-""""""""""""""""
-
-
-
+^^^^^^^^^^^^^^^^^^
 
 
 This table shows the body parameters for the response:
@@ -73,43 +68,41 @@ This table shows the body parameters for the response:
 +----------------+---------------+---------------------------------------------+
 |Name            |Type           |Description                                  |
 +================+===============+=============================================+
-|first           |String         |The URI for the first task in the list.      |
+|first           |xsd:string     |The URI for the first task in the list.      |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|schema          |String         |The schema of the tasks list.                |
+|schema          |xsd:string     |The schema of the tasks list.                |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|tasks           |Array          |The container for tasks in the list.         |
+|tasks           |array          |The container for tasks in the list.         |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|created_at      |String         |The date and time that the task resource was |
+|created_at      |xsd:string     |The date and time that the task resource was |
 |                |*(Required)*   |created.                                     |
 +----------------+---------------+---------------------------------------------+
-|id              |String         |The UUID of the task resource.               |
+|id              |xsd:string     |The UUID of the task resource.               |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|owner           |String         |The tenant-id of the task owner.             |
+|owner           |xsd:string     |The tenant-id of the task owner.             |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|schema          |String         |The schema of the task.                      |
+|schema          |xsd:string     |The schema of the task.                      |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|self            |String         |The link to the task.                        |
+|self            |xsd:string     |The link to the task.                        |
 |                |*(Required)*   |                                             |
 +----------------+---------------+---------------------------------------------+
-|status          |String         |The status of the task. For possible task    |
-|                |*(Required)*   |statuses, see ` 1.4.1. Image statuses        |
+|status          |xsd:string     |The status of the task. For possible task    |
+|                |*(Required)*   |statuses, see `1.4.1. Image statuses         |
 |                |               |<http://docs.rackspace.com/images/api/v2/ci- |
 |                |               |devguide/content/image-statuses.html>`__.    |
 +----------------+---------------+---------------------------------------------+
-|type            |String         |The type of the task ( ``export`` for task   |
+|type            |xsd:string     |The type of the task ( ``export`` for task   |
 |                |*(Required)*   |exports).                                    |
 +----------------+---------------+---------------------------------------------+
-|updated_at      |String         |The date and time that the task resource was |
+|updated_at      |xsd:string     |The date and time that the task resource was |
 |                |*(Required)*   |updated.                                     |
 +----------------+---------------+---------------------------------------------+
-
-
 
 
 

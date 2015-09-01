@@ -1,6 +1,8 @@
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
+.. _post-task-to-export-image-tasks:
+
 Task to export image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -120,6 +122,7 @@ Response
 
 
 
+
 This table shows the body parameters for the response:
 
 +--------------------------+-------------+---------------------------------------------+
@@ -183,6 +186,8 @@ This table shows the body parameters for the response:
 
 
 
+
+
 **Example Export Task - Pending Response**
 
 
@@ -204,5 +209,4 @@ This table shows the body parameters for the response:
         "type": "export", 
         "updated_at": "2014-02-26T02:01:13Z"
     }
-
 

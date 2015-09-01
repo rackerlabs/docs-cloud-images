@@ -1,12 +1,14 @@
+=============================================================================
+List Image Members -  Rackspace Cloud Images Developer Guide - API v2.0
+=============================================================================
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+List Image Members
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _get-list-image-members-images-image-id-members:
+`Request <GET_list_image_members_images_image_id_members.rst#request>`__
+`Response <GET_list_image_members_images_image_id_members.rst#response>`__
 
-List image members
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code::
+.. code-block:: javascript
 
     GET /images/{image_id}/members
 
@@ -33,33 +35,30 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
-+--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
 +--------------------------+-------------------------+-------------------------+
-|500                       |API Fault                |API fault.               |
-+--------------------------+-------------------------+-------------------------+
 |503                       |Service Unavailable      |The requested service is |
 |                          |                         |unavailable.             |
++--------------------------+-------------------------+-------------------------+
+|500                       |API Fault                |API fault.               |
++--------------------------+-------------------------+-------------------------+
+|404                       |Not Found                |Resource not found.      |
 +--------------------------+-------------------------+-------------------------+
 
 
 Request
-""""""""""""""""
-
-
-
+^^^^^^^^^^^^^^^^^
 
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{image_id}                |Uuid                     |Image ID stored through  |
+|{image_id}                |csapi:uuid               |Image ID stored through  |
 |                          |                         |the image API, typically |
 |                          |                         |a UUID.                  |
 +--------------------------+-------------------------+-------------------------+
@@ -68,16 +67,11 @@ This table shows the URI parameters for the request:
 
 
 
-This operation does not accept a request body.
-
 
 
 
 Response
-""""""""""""""""
-
-
-
+^^^^^^^^^^^^^^^^^^
 
 
 This table shows the body parameters for the response:
@@ -85,31 +79,31 @@ This table shows the body parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|members                   |Array *(Required)*       |The array of image       |
+|members                   |array *(Required)*       |The array of image       |
 |                          |                         |members.                 |
 +--------------------------+-------------------------+-------------------------+
-|created_at                |String *(Required)*      |The date and time that   |
+|created_at                |xsd:string *(Required)*  |The date and time that   |
 |                          |                         |the image member was     |
 |                          |                         |created.                 |
 +--------------------------+-------------------------+-------------------------+
-|image_id                  |String *(Required)*      |The UUID of the image.   |
+|image_id                  |xsd:string *(Required)*  |The UUID of the image.   |
 +--------------------------+-------------------------+-------------------------+
-|member_id                 |String *(Required)*      |The id of the image      |
+|member_id                 |xsd:string *(Required)*  |The id of the image      |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|schema                    |String *(Required)*      |The schema of the image  |
+|schema                    |xsd:string *(Required)*  |The schema of the image  |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|status                    |String *(Required)*      |The status of the image  |
+|status                    |xsd:string *(Required)*  |The status of the image  |
 |                          |                         |member ( ``pending``,    |
 |                          |                         |``accepted``, or         |
 |                          |                         |``rejected``.            |
 +--------------------------+-------------------------+-------------------------+
-|updated_at                |String *(Required)*      |The date and time that   |
+|updated_at                |xsd:string *(Required)*  |The date and time that   |
 |                          |                         |the image member was     |
 |                          |                         |updated.                 |
 +--------------------------+-------------------------+-------------------------+
-|schema                    |String *(Required)*      |The schema of the image  |
+|schema                    |xsd:string *(Required)*  |The schema of the image  |
 |                          |                         |members.                 |
 +--------------------------+-------------------------+-------------------------+
 
@@ -117,9 +111,7 @@ This table shows the body parameters for the response:
 
 
 
-
-
-**Example List image members: JSON response**
+**Example List Image Members: JSON request**
 
 
 .. code::
