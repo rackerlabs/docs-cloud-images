@@ -157,12 +157,19 @@ This table shows the query parameters for the request:
 |                          |                         |size of the image in     |
 |                          |                         |bytes.                   |
 +--------------------------+-------------------------+-------------------------+
-|sort_key                  |String *(Optional)*      |Sort key. All image      |
-|                          |                         |attributes can be used   |
-|                          |                         |as the sort key, except  |
-|                          |                         |``tags`` and ``link``    |
-|                          |                         |attributes. The default  |
-|                          |                         |is ``created_at``.       |
+|sort_key                  |String *(Optional)*      |Sort key. Results will   |
+|                          |                         |be sorted by the         |
+|                          |                         |requested image          |
+|                          |                         |property. Accepted       |
+|                          |                         |values are ``name``,     |
+|                          |                         |``status``,              |
+|                          |                         |``container_format``,    |
+|                          |                         |``disk_format``,         |
+|                          |                         |``size``, ``id``,        |
+|                          |                         |``created_at``, and      |
+|                          |                         |``updated_at``. The      |
+|                          |                         |default is               |
+|                          |                         |``created_at``.          |
 +--------------------------+-------------------------+-------------------------+
 |sort_dir                  |String *(Optional)*      |Sort direction. Valid    |
 |                          |                         |values are ``asc``       |

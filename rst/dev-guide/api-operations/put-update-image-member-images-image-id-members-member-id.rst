@@ -87,20 +87,21 @@ This table shows the body parameters for the request:
 |status                    |String *(Required)*      |The status to which this |
 |                          |                         |image member should be   |
 |                          |                         |set. Valid values are as |
-|                          |                         |follows: ``pending``At   |
-|                          |                         |creation, the member's   |
+|                          |                         |follows: ``pending``     |
+|                          |                         |At make creation,        |
+|                          |                         |open the member's        |
 |                          |                         |status is set to         |
 |                          |                         |pending. The image is    |
 |                          |                         |not visible in the       |
 |                          |                         |member's image-list, but |
 |                          |                         |the member can still     |
 |                          |                         |boot instances from the  |
-|                          |                         |image. ``accepted``The   |
+|                          |                         |image. ``accepted`` The  |
 |                          |                         |image is visible in the  |
 |                          |                         |member's image-list. The |
 |                          |                         |member can boot          |
 |                          |                         |instances from the       |
-|                          |                         |image. ``rejected``The   |
+|                          |                         |image. ``rejected`` The  |
 |                          |                         |member has decided that  |
 |                          |                         |he or she does not want  |
 |                          |                         |to see the image. The    |
