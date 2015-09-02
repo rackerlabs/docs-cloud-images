@@ -1,7 +1,8 @@
-.. _overview:
+.. _index:
 
-Overview
-----------
+=========================================================
+Rackspace Cloud Images version 1.0 API Developer Guide
+=========================================================
 
 The Rackspace Cloud Images service enables developers to create and manipulate images, 
 image members, and associated metadata through a simple Representational State Transfer 
@@ -11,8 +12,9 @@ The Cloud Images FAQ in the Knowledge Center provides more information about the
 Images service.
 
 .. toctree:: :hidden:
-   :maxdepth: 2
+   :maxdepth: 3
    
-   intended-audience
-   additional-resources
-   pricing-service-level
+   overview/index
+   concepts/index    
+   general-api-info/index
+   api-operations/index    
