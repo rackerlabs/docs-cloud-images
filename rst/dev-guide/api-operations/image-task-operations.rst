@@ -3,6 +3,10 @@
 Image task
 ~~~~~~~~~~
 
+.. contents::
+   :depth: 1
+   :local:
+
 Use image task operations to initiate and manage asynchronous image tasks
 like those created when importing and exporting images.
 For more information, see *Asynchronous image tasks* in the Cloud Images Developer

@@ -2,6 +2,11 @@
 
 Images
 -------
+
+.. contents::
+   :depth: 1
+   :local:
+   
 Use the images API operations to list, delete, and update images.
 
 .. include:: get-list-images-images.rst

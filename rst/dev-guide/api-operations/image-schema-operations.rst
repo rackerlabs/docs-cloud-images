@@ -2,7 +2,12 @@
 
 JSON schemas
 ~~~~~~~~~~~~
-Ue the JSON schemas API operations to get
+
+.. contents::
+   :depth: 1
+   :local:  
+   
+Use the JSON schemas API operations to get
 details about JSON schema images, members, and tasks.
    
 .. include:: get-get-images-schema-schemas-images.rst

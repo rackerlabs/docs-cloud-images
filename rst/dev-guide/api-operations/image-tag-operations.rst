@@ -3,11 +3,13 @@
 Image tag
 ~~~~~~~~~
 
+.. contents::
+   :depth: 1
+   :local:
+
 Use image tag API operations to add and remove
 image tags.
 
-.. toctree:: :hidden:
-   :maxdepth: 3
-   
-   put-add-image-tag-images-image-id-tags-tag.rst
-   delete-delete-image-tag-images-image-id-tags-tag.rst
+
+.. include:: put-add-image-tag-images-image-id-tags-tag.rst
+.. include:: delete-delete-image-tag-images-image-id-tags-tag.rst
