@@ -16,7 +16,7 @@ Developers use the operations described in this chapter to perform the following
 - Get information about image schemas
 
 .. toctree:: :hidden:
-   :maxdepth: 2
+   :maxdepth: 4
    
    images-operations.rst
    image-sharing-operations.rst
