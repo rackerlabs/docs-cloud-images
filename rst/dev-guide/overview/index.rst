@@ -11,7 +11,7 @@ The Cloud Images FAQ in the Knowledge Center provides more information about the
 Images service.
 
 .. toctree:: :hidden:
-   :maxdepth: 2
+   :maxdepth: 3
    
    intended-audience
    additional-resources
