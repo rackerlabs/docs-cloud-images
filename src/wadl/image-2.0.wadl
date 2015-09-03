@@ -140,14 +140,15 @@
                 <doc xml:lang="EN"/>&imagesListQueryParameters;</representation>
         </request>
         <response status="200">
-            <doc title="Success">Request succeeded.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                xml:lang="EN" title="Success">Request succeeded</wadl:doc>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:sample>
                         <xsdxt:code href="../common/samples/image-list-response.json"/>
                     </xsdxt:sample>
                 </doc> &imageListResponseParameters; </representation>
-        </response> &commonFaults; &getFaults;</method>
+        </response> &getFaults; &commonFaults;</method>
 
     <!-- Get Image -->
     <method name="GET" id="getImage">
@@ -158,6 +159,8 @@
                 <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageSchema_schemas_image_Schema_Calls.html">4.5.2. Get image schema</link>.</para>
         </wadl:doc>
         <response status="200">
+            <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                xml:lang="EN" title="Success">Request succeeded.</wadl:doc>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:sample>
@@ -177,7 +180,8 @@
             <para>You can use the <code>HTTP PATCH</code> method to update certain standard properties, and to add, update,
                 or remove custom, user-defined image properties. For more information, see
                 <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/patch-method.html">2.4. HTTP PATCH method</link>
-                in this guide. Here are some guidelines for custom, user-defined properties. <itemizedlist>
+                in this guide. Here are some guidelines for custom, user-defined properties.</para>
+                <itemizedlist>
                     <listitem>
                         <para>Adding properties: You can add custom properties to your image.</para>
                         <itemizedlist>
@@ -187,8 +191,7 @@
                                     example, <literal>com.mycompany.myproperty</literal> and
                                         <literal>myname.myproperty</literal> are valid, and
                                         <literal>com.rackspace.myproperty</literal> is not allowed.</para>
-                                <para>Do not use the prefix <literal>org.openstack</literal> since OpenStack might add a
-                                    property with the same name.</para>
+                                 <para>Do not use the prefix <literal>org.openstack</literal> since OpenStack might add a property with the same name.</para>
                             </listitem>
                         </itemizedlist>
                     </listitem>
@@ -242,7 +245,6 @@
                         </itemizedlist>
                     </listitem>
                 </itemizedlist>
-            </para>
             <para>In general, you can update any properties you own, but do not expect to be able to update anyone else's
                 properties. For example, you can't update any properties starting with <literal>com.rackspace</literal>, and
                 you might not be able to update some properties starting with <literal>org.openstack</literal>.</para>
@@ -285,7 +287,8 @@
             </representation>
         </request>
         <response status="200">
-            <doc title="Success">Request succeeded.</doc>
+            <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                xml:lang="EN" title="Success">Request succeeded</wadl:doc>
             <representation mediaType="application/json">
                 <doc xml:lang="EN">
                     <xsdxt:sample>
@@ -423,7 +426,7 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook">
                     <xsdxt:code href="../common/samples/image-members-list-response.json"/>
                 </wadl:doc> &imageMemberListResponseParameters; </representation>
-        </response> &commonFaults; &getFaults; </method>
+        </response> &commonFaults;&getFaults;</method>
 
     <!-- Create Image Member -->
     <method name="POST" id="createImageMember">

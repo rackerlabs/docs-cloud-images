@@ -1,15 +1,18 @@
 .. _overview:
 
 Overview
---------
+----------
 
-.. include:: overview/intended-audience.rst
-.. include:: overview/additional-resources.rst
-.. include:: overview/pricing-service-level.rst
+The Rackspace Cloud Images service enables developers to create and manipulate images, 
+image members, and associated metadata through a simple Representational State Transfer 
+(REST) web service interface.
 
-.. toctree::
-   :hidden:
+The Cloud Images FAQ in the Knowledge Center provides more information about the Cloud 
+Images service.
 
+.. toctree:: :hidden:
+   :maxdepth: 3
+   
    intended-audience
    additional-resources
    pricing-service-level

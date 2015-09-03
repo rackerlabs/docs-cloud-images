@@ -1,30 +1,20 @@
-============
-Cloud Images
-============
+.. _index:
 
-The Rackspace Cloud Images service enables developers to create and
-manipulate images, image members, and associated metadata through a
-simple Representational State Transfer (REST) web service interface.
+=========================================================
+Rackspace Cloud Images version 1.0 API Developer Guide
+=========================================================
 
-Cloud Images has the following expected benefits:
+The Rackspace Cloud Images service enables developers to create and manipulate images, 
+image members, and associated metadata through a simple Representational State Transfer 
+(REST) web service interface.
 
-- You can import and export images across multiple sources: public cloud, private cloud,
-  and sources external to Rackspace.
+The Cloud Images FAQ in the Knowledge Center provides more information about the Cloud 
+Images service.
 
-  - Images are portable, taking full advantage of the open cloud.
-
-  - Images are imported from a private cloud into the public cloud for cloud-bursting.
-
-  - Images created in the public cloud can be imported to a private cloud, or to
-    another provider's cloud, for redundancy and high availability.
-
-- Customers share images.
-
-  - Users with multiple accounts share images among the accounts.
-
-  - Images are shared as an informal "image marketplace".
-
-.. include:: overview/index.rst
-.. include:: concepts/index.rst
-.. include:: general-api-info/index.rst
-.. include:: api-operations/index.rst
+.. toctree:: :hidden:
+   :maxdepth: 3
+   
+   overview/index
+   concepts/index    
+   general-api-info/index
+   api-operations/index    
