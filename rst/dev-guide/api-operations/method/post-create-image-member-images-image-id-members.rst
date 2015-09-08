@@ -1,23 +1,21 @@
-:orphan:   
+   
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-.. _put-update-image-member-images-image-id-members-member-id:
+.. _post-create-image-member-images-image-id-members:
 
-Update image member
+Create image member
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    PUT /images/{image_id}/members/{member_id}
+    POST /images/{image_id}/members
 
-Sets the specified status for the specified member of the specified image.
+Adds the specified ``account ID/tenant ID`` specified in the request body as an image member.
 
-This operation updates the image member. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
+This operation allows you to add users, by ``member_id`` (which is the ``tenant_id`` ) to the list of members with whom the image is shared. The member status of a newly created image member is ``pending``. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
 
-If the call is made by the image owner, the response is ``HTTP 403 (Forbidden)``.
-
-If the call is made by a user who is not the owner and whose ``tenant ID`` is not the same as the {member_id} is the operation URI, the response is ``HTTP 404``.
+If the user making the call is not the image owner, the response is ``HTTP 404``.
 
 
 
@@ -69,12 +67,6 @@ This table shows the URI parameters for the request:
 |                          |                         |the image API, typically |
 |                          |                         |a UUID.                  |
 +--------------------------+-------------------------+-------------------------+
-|{member_id}               |String                   |Image member ID. For     |
-|                          |                         |example, the tenant ID   |
-|                          |                         |of the user with whom    |
-|                          |                         |the image is being       |
-|                          |                         |shared.                  |
-+--------------------------+-------------------------+-------------------------+
 
 
 
@@ -85,45 +77,23 @@ This table shows the body parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|status                    |String *(Required)*      |The status to which this |
-|                          |                         |image member should be   |
-|                          |                         |set. Valid values are as |
-|                          |                         |follows: ``pending``     |
-|                          |                         |At make creation,        |
-|                          |                         |open the member's        |
-|                          |                         |status is set to         |
-|                          |                         |pending. The image is    |
-|                          |                         |not visible in the       |
-|                          |                         |member's image-list, but |
-|                          |                         |the member can still     |
-|                          |                         |boot instances from the  |
-|                          |                         |image. ``accepted`` The  |
-|                          |                         |image is visible in the  |
-|                          |                         |member's image-list. The |
-|                          |                         |member can boot          |
-|                          |                         |instances from the       |
-|                          |                         |image. ``rejected`` The  |
-|                          |                         |member has decided that  |
-|                          |                         |he or she does not want  |
-|                          |                         |to see the image. The    |
-|                          |                         |image is not visible in  |
-|                          |                         |the member's image-list, |
-|                          |                         |but the member can still |
-|                          |                         |boot instances from the  |
-|                          |                         |image.                   |
+|member                    |String *(Required)*      |The member ID. This is   |
+|                          |                         |the tenant ID of the     |
+|                          |                         |user with whom the image |
+|                          |                         |is to be shared.         |
 +--------------------------+-------------------------+-------------------------+
 
 
 
 
 
-**Example Update image member: JSON request**
+**Example Create image member: JSON request**
 
 
 .. code::
 
     {
-        "status": "accepted"
+        "member": "554433"
     }
 
 
@@ -167,7 +137,7 @@ This table shows the body parameters for the response:
 
 
 
-**Example Update image member: JSON response**
+**Example Create image member: JSON response**
 
 
 .. code::
@@ -177,7 +147,7 @@ This table shows the body parameters for the response:
         "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
         "member_id": "554433",
         "schema": "/v2/schemas/member",
-        "status": "accepted",
-        "updated_at": "2013-09-20T20:15:31Z"
+        "status": "pending",
+        "updated_at": "2013-09-20T19:25:31Z"
     }
 

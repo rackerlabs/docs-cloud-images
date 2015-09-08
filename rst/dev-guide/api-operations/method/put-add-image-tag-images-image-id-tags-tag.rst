@@ -1,23 +1,23 @@
-:orphan:     
+   
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-.. _delete-delete-image-tag-images-image-id-tags-tag:
+.. _put-add-image-tag-images-image-id-tags-tag:
 
-Delete image tag
+Add image tag
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    DELETE /images/{image_id}/tags/{tag}
+    PUT /images/{image_id}/tags/{tag}
 
-Deletes the specified tag from the image. 
+Adds the specified tag to the specified image. 
 
-This operation deletes the specified tag from the specified image. 
+This operation adds the specified tag to the specified image. 
 
-Include the tag you want to remove in the request URI ``{tag}`` path segment of the URI. For example, to remove the image tag 'miracle' from image e7db3b45-8db7-47ad-8109-3fb55c2c24fd, you would use: ``DELETE /v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/tags/miracle``. The request body is ignored. 
+Include the tag you want to add in the request URI ``{tag}`` path segment of the URI. For example, to tag image e7db3b45-8db7-47ad-8109-3fb55c2c24fd with 'miracle', you would use: ``PUT /v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/tags/miracle``. The request body is ignored. 
 
-An image tag can only be removed once. Subsequent attempts to remove the same tag will result in an ``HTTP 404`` error.
+An image can only be tagged once with a specific string. Multiple attempts to tag an image with the same string will result in a single instance of that string being added to the image's tags list.
 
 
 
@@ -27,7 +27,7 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|204                       |Delete Successful        |Delete request succeeded.|
+|204                       |Success                  |Request succeeded.       |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Error                    |A general error has      |
 |                          |                         |occured.                 |
@@ -36,13 +36,16 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
-+--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
++--------------------------+-------------------------+-------------------------+
+|415                       |Bad Media Type           |Bad media type. This may |
+|                          |                         |result if the wrong      |
+|                          |                         |media type is used in    |
+|                          |                         |the cURL request.        |
 +--------------------------+-------------------------+-------------------------+
 |500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+

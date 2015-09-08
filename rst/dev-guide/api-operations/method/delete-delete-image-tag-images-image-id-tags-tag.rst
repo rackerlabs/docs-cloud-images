@@ -1,24 +1,23 @@
-:orphan:  
+     
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-.. _delete-delete-image-images-image-id:
+.. _delete-delete-image-tag-images-image-id-tags-tag:
 
-Delete image
+Delete image tag
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    DELETE /images/{image_id}
+    DELETE /images/{image_id}/tags/{tag}
 
-Deletes the specified image. 
+Deletes the specified tag from the image. 
 
-This operation deletes the image. Make sure you set ``protected`` parameter to false (Boolean) before performing the delete. If the operation succeeds, it returns an ``HTTP 204`` status code with no response body. 
+This operation deletes the specified tag from the specified image. 
 
-.. warning::
-   An attempt to delete an image with the ``protected`` parameter set to ``true`` (boolean) results in a response code ``HTTP 403``.
-   
-   
+Include the tag you want to remove in the request URI ``{tag}`` path segment of the URI. For example, to remove the image tag 'miracle' from image e7db3b45-8db7-47ad-8109-3fb55c2c24fd, you would use: ``DELETE /v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/tags/miracle``. The request body is ignored. 
+
+An image tag can only be removed once. Subsequent attempts to remove the same tag will result in an ``HTTP 404`` error.
 
 
 
@@ -66,6 +65,10 @@ This table shows the URI parameters for the request:
 |{image_id}                |Uuid                     |Image ID stored through  |
 |                          |                         |the image API, typically |
 |                          |                         |a UUID.                  |
++--------------------------+-------------------------+-------------------------+
+|{tag}                     |String                   |Image tag (may be up to  |
+|                          |                         |255 characters in        |
+|                          |                         |length).                 |
 +--------------------------+-------------------------+-------------------------+
 
 

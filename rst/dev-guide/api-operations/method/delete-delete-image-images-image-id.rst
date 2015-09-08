@@ -1,23 +1,24 @@
-:orphan:   
+  
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-.. _put-add-image-tag-images-image-id-tags-tag:
+.. _delete-delete-image-images-image-id:
 
-Add image tag
+Delete image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    PUT /images/{image_id}/tags/{tag}
+    DELETE /images/{image_id}
 
-Adds the specified tag to the specified image. 
+Deletes the specified image. 
 
-This operation adds the specified tag to the specified image. 
+This operation deletes the image. Make sure you set ``protected`` parameter to false (Boolean) before performing the delete. If the operation succeeds, it returns an ``HTTP 204`` status code with no response body. 
 
-Include the tag you want to add in the request URI ``{tag}`` path segment of the URI. For example, to tag image e7db3b45-8db7-47ad-8109-3fb55c2c24fd with 'miracle', you would use: ``PUT /v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/tags/miracle``. The request body is ignored. 
-
-An image can only be tagged once with a specific string. Multiple attempts to tag an image with the same string will result in a single instance of that string being added to the image's tags list.
+.. warning::
+   An attempt to delete an image with the ``protected`` parameter set to ``true`` (boolean) results in a response code ``HTTP 403``.
+   
+   
 
 
 
@@ -27,7 +28,7 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|204                       |Success                  |Request succeeded.       |
+|204                       |Delete Successful        |Delete request succeeded.|
 +--------------------------+-------------------------+-------------------------+
 |400                       |Error                    |A general error has      |
 |                          |                         |occured.                 |
@@ -36,16 +37,13 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
+|404                       |Not Found                |Resource not found.      |
++--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
-+--------------------------+-------------------------+-------------------------+
-|415                       |Bad Media Type           |Bad media type. This may |
-|                          |                         |result if the wrong      |
-|                          |                         |media type is used in    |
-|                          |                         |the cURL request.        |
 +--------------------------+-------------------------+-------------------------+
 |500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+
@@ -68,10 +66,6 @@ This table shows the URI parameters for the request:
 |{image_id}                |Uuid                     |Image ID stored through  |
 |                          |                         |the image API, typically |
 |                          |                         |a UUID.                  |
-+--------------------------+-------------------------+-------------------------+
-|{tag}                     |String                   |Image tag (may be up to  |
-|                          |                         |255 characters in        |
-|                          |                         |length).                 |
 +--------------------------+-------------------------+-------------------------+
 
 

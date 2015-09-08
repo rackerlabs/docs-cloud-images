@@ -1,29 +1,44 @@
-:orphan:   
+  
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-.. _get-get-task-details-tasks-taskid:
+.. _post-task-to-import-image-tasks:
 
-Get task details
+Task to import image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    GET /tasks/{taskID}
+    POST /tasks
 
-Gets the details for the specified task.
+Imports an image using an asynchronous task request. See the request body for specific details.
 
-This operation shows the details for the specified task, including the status, so you'll know when the import or export task completes and whether it worked. For more information on statuses, see `1.4.2. Task statuses <http://docs.rackspace.com/images/api/v2/ci-devguide/content/task-statuses.html>`__. The response conforms to the schema found in `4.5.5. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__.
+This operation imports an image using an asynchronous task request. The request begins the import process and returns the task UUID that can be subsequently polled to determine the status of the import by using the `4.4.2. Get task details <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html>`__ operation. The response conforms to the schema found in `4.5.6. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__.
+
+To successfully import an image: 
+
+
+
+*  Format the image using the VHD format.
+   
+   .. note::
+      If you are importing an image that you have previously exported from Cloud Images in another region of the Rackspace open cloud, your image is already in the appropriate format. You can find information on `preparing a custom image for import <http://www.rackspace.com/knowledge_center/article/preparing-an-image-for-import-into-the-rackspace-open-cloud>`__ in the Rackspace Knowledge Center.
+*  Store the image in your Cloud Files account.
+
+
+.. note::
+   As described in the `Rackspace Terms of Service <http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html>`__, you should be aware of and respect all licensing restrictions that apply to any software that you import into the Rackspace open cloud. For example, Microsoft licensing rules are very restrictive. Microsoft product use rights do not allow the use of License Mobility for Windows licenses. Given the limitations related to this software platform, image import is not available for Windows images. If you have questions, please contact the software vendor. 
+   
+   
 
 
 
 This table shows the possible response codes for this operation:
 
-
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |Success                  |Request succeeded.       |
+|201                       |Success                  |Request succeeded.       |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Error                    |A general error has      |
 |                          |                         |occured.                 |
@@ -32,13 +47,16 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
-+--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
++--------------------------+-------------------------+-------------------------+
+|415                       |Bad Media Type           |Bad media type. This may |
+|                          |                         |result if the wrong      |
+|                          |                         |media type is used in    |
+|                          |                         |the cURL request.        |
 +--------------------------+-------------------------+-------------------------+
 |500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+
@@ -49,38 +67,57 @@ This table shows the possible response codes for this operation:
 
 Request
 """"""""""""""""
-
-
-
-
-This table shows the URI parameters for the request:
+   
+This table shows the body parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|{task_id}                 |Uuid                     |The task id. This task   |
-|                          |                         |id is the same as the id |
-|                          |                         |parameter returned in    |
-|                          |                         |the Import Task or       |
-|                          |                         |Export Task operation    |
-|                          |                         |response body.           |
+|type                      |String *(Required)*      |The type of task. Use    |
+|                          |                         |``import`` for task      |
+|                          |                         |imports.                 |
++--------------------------+-------------------------+-------------------------+
+|input                     |*(Required)*             |The container for import |
+|                          |                         |input parameters.        |
++--------------------------+-------------------------+-------------------------+
+|image_properties          |*(Required)*             |The container for image  |
+|                          |                         |properties.              |
++--------------------------+-------------------------+-------------------------+
+|name                      |String *(Required)*      |The name of the image.   |
+|                          |                         |.. warning:: Name is the |
+|                          |                         |only property that can   |
+|                          |                         |be included in ``image-  |
+|                          |                         |properties``. Including  |
+|                          |                         |any other property will  |
+|                          |                         |cause the operation to   |
+|                          |                         |fail.                    |
++--------------------------+-------------------------+-------------------------+
+|import_from               |String *(Required)*      |The source of the        |
+|                          |                         |imported image.          |
 +--------------------------+-------------------------+-------------------------+
 
 
 
 
 
-This operation does not accept a request body.
+**Example Task to import image: JSON request**
 
 
+.. code::
+
+    {
+        "type": "import",
+        "input": {
+            "image_properties": {
+                "name": "My excellent custom image"
+            }, 
+            "import_from": "exports/my-excellent-image.vhd"
+        }
+    }
 
 
 Response
 """"""""""""""""
-
-
-
-
 
 This table shows the body parameters for the response:
 
@@ -95,9 +132,12 @@ This table shows the body parameters for the response:
 |                 |              |expires (and is thus no longer available to  |
 |                 |              |be polled), the result of the task (such as  |
 |                 |              |an imported or exported image) still exists. |
-|                 |              |.. note:: This parameter is required for     |
-|                 |              |responses with ``status`` of ``success`` and |
-|                 |              |``failure``.                                 |
+|                 |              |                                             |
+|                 |              |.. note::                                    |
+|                 |              |   This parameter is required for responses  |
+|                 |              |   with ``status`` of  ```success``` and     |
+|                 |              |   failure``.                                |
+|                 |              |                                             |
 +-----------------+--------------+---------------------------------------------+
 |id               |String        |The UUID of the task resource.               |
 |                 |*(Required)*  |                                             |
@@ -157,15 +197,9 @@ This table shows the body parameters for the response:
 +-----------------+--------------+---------------------------------------------+
 |updated_at       |String        |The date and time that the task resource was |
 |                 |*(Required)*  |updated.                                     |
-+-----------------+--------------+---------------------------------------------+
++-----------------+--------------+---------------------------------------------+   
 
-
-
-
-
-
-
-**Example Get import task details - pending response**
+**Example Import Task - Pending Response**
 
 
 .. code::
@@ -188,134 +222,4 @@ This table shows the body parameters for the response:
         "updated_at": "2014-02-26T02:58:46Z"
     }
      
-
-
-**Example Get import task details - success response**
-
-
-.. code::
-
-    {
-        "created_at": "2014-02-26T03:02:23Z", 
-        "expires_at": "2014-02-28T03:28:18Z", 
-        "id": "d8dd8c24-2534-473c-881f-9097bc784068", 
-        "input": {
-            "image_properties": {
-                "name": "My excellent custom image"
-            }, 
-            "import_from": "exports/my-excellent-image.vhd"
-        }, 
-        "message": "None", 
-        "owner": "00000123", 
-        "result": {
-            "image_id": "1d944ab7-6748-4f3c-b7e2-3553bf006677"
-        }, 
-        "schema": "/v2/schemas/task", 
-        "self": "/v2/tasks/d8dd8c24-2534-473c-881f-9097bc784068", 
-        "status": "success", 
-        "type": "import", 
-        "updated_at": "2014-02-26T03:28:18Z"
-    }
-
-
-**Example Get import task details - failure response**
-
-
-.. code::
-
-    {
-        "created_at": "2014-02-26T02:58:46Z", 
-        "expires_at": "2014-02-28T02:58:49Z", 
-        "id": "fc29a67c-ad76-49bc-a317-a5f38dcb44c0", 
-        "input": 
-        {
-            "image_properties": 
-            {
-                "name": "my imported image"
-            }, 
-            "import_from": "nonexistentcontainer/noimage.vhd"
-        }, 
-        "message": "Error: Image not found for import. Possible invalid location", 
-        "owner": "00000123", 
-        "schema": "/v2/schemas/task", 
-        "self": "/v2/tasks/fc29a67c-ad76-49bc-a317-a5f38dcb44c0", 
-        "status": "failure", 
-        "type": "import", 
-        "updated_at": "2014-02-26T02:58:49Z"
-    }
-
-
-**Example Get export task details - pending response**
-
-
-.. code::
-
-    {
-        "created_at": "2014-02-26T02:01:13Z", 
-        "id": "7bdc8ede-9098-4d79-9477-697f586cb333", 
-        "input": 
-        {
-            "image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6", 
-            "receiving_swift_container": "exports"
-        }, 
-        "message": "None", 
-        "owner": "00000123", 
-        "schema": "/v2/schemas/task", 
-        "self": "/v2/tasks/7bdc8ede-9098-4d79-9477-697f586cb333", 
-        "status": "pending", 
-        "type": "export", 
-        "updated_at": "2014-02-26T02:01:13Z"
-    }
-
-
-**Example Get export task details - success response**
-
-
-.. code::
-
-    {
-        "created_at": "2014-02-26T02:01:13Z", 
-        "expires_at": "2014-02-28T02:16:50Z", 
-        "id": "7bdc8ede-9098-4d79-9477-697f586cb333", 
-        "input": 
-        {
-            "image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6", 
-            "receiving_swift_container": "exports"
-        }, 
-        "message": "None", 
-        "owner": "00000123", 
-        "result": 
-        {
-            "export_location": "exports/ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6.vhd"
-        }, 
-        "schema": "/v2/schemas/task", 
-        "self": "/v2/tasks/7bdc8ede-9098-4d79-9477-697f586cb333", 
-        "status": "success", 
-        "type": "export", 
-        "updated_at": "2014-02-26T02:16:50Z"
-    }
-
-
-**Example Get export task details - failure response**
-
-
-.. code::
-
-    {
-        "created_at": "2014-02-26T02:04:18Z", 
-        "expires_at": "2014-02-28T02:25:12Z", 
-        "id": "baef2134-9c33-47b9-9d63-c29a2a224715", 
-        "input": 
-        {
-            "image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6", 
-            "receiving_swift_container": "exports"
-        }, 
-        "message": "Swift already has an object with id 'ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6.vhd' in container 'exports'", 
-        "owner": "00000123",
-        "schema": "/v2/schemas/task", 
-        "self": "/v2/tasks/baef2134-9c33-47b9-9d63-c29a2a224715", 
-        "status": "failure", 
-        "type": "export", 
-        "updated_at": "2014-02-26T02:25:12Z"
-    }
 

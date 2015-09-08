@@ -1,19 +1,50 @@
-:orphan:     
+   
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-.. _get-get-image-details-images-image-id:
+.. _patch-update-image-images-image-id:
 
-Get image details
+Update image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-    GET /images/{image_id}
+    PATCH /images/{image_id}
 
-Gets the details for the specified image. 
+Updates the specified image. 
 
-This operation shows the details for the image. The response body is a single image entity and conforms to the schema found in `4.5.2. Get image schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageSchema_schemas_image_Schema_Calls.html>`__.
+This operation allows you to update an image that you own. The request body must conform to the ``'application/openstack-images-v2.1-json-patch'`` media type. The response conforms to the schema found in `4.5.2. Get image schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageSchema_schemas_image_Schema_Calls.html>`__.
+
+You can use the ``HTTP PATCH`` method to update certain standard properties, and to add, update, or remove custom, user-defined image properties. For more information, see `2.4. HTTP PATCH method <http://docs.rackspace.com/images/api/v2/ci-devguide/content/patch-method.html>`__ in this guide. Here are some guidelines for custom, user-defined properties.
+
+
+
+*  Adding properties: You can add custom properties to your image.
+   
+   
+   
+   *  Naming properties: We recommend you name a custom property by prefixing your domain or name, and we do not allow you to use ``com.rackspace`` as the prefix. For example, ``com.mycompany.myproperty`` and ``myname.myproperty`` are valid, and ``com.rackspace.myproperty`` is not allowed.
+      
+      Do not use the prefix ``org.openstack`` since OpenStack might add a property with the same name.
+*  Deleting properties: You can delete any custom property which you previously added to your image.
+*  Updating properties: You can update any custom properties that you previously added to an image that you own, and you can update the following standard properties:
+   
+   
+   
+   *  ``name``
+   *  ``tags``
+   *  ``os_distro``
+   *  ``os_version``
+   *  ``protected``
+   *  ``container_format`` (changing this may render your image unusable)
+   *  ``disk_format`` (changing this may render your image unusable)
+   *  ``min_disk`` (changing this affects what flavors you can use with the image)
+   *  ``min_ram`` (changing this affects what flavors you can use with the image)
+   *  ``ramdisk_id`` (only applies to disk_format of ``ami`` )
+   *  ``kernel_id`` (only applies to disk_format of ``ami`` )
+
+
+In general, you can update any properties you own, but do not expect to be able to update anyone else's properties. For example, you can't update any properties starting with ``com.rackspace``, and you might not be able to update some properties starting with ``org.openstack``.
 
 
 
@@ -23,7 +54,7 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
-|200                       |Success                  |Request succeeded.       |
+|200                       |Success                  |Request succeeded        |
 +--------------------------+-------------------------+-------------------------+
 |400                       |Error                    |A general error has      |
 |                          |                         |occured.                 |
@@ -32,13 +63,16 @@ This table shows the possible response codes for this operation:
 +--------------------------+-------------------------+-------------------------+
 |403                       |Forbidden                |Forbidden.               |
 +--------------------------+-------------------------+-------------------------+
-|404                       |Not Found                |Resource not found.      |
-+--------------------------+-------------------------+-------------------------+
 |405                       |Bad Method               |Bad method.              |
 +--------------------------+-------------------------+-------------------------+
 |413                       |Over Limit               |The number of items      |
 |                          |                         |returned is above the    |
 |                          |                         |allowed limit.           |
++--------------------------+-------------------------+-------------------------+
+|415                       |Bad Media Type           |Bad media type. This may |
+|                          |                         |result if the wrong      |
+|                          |                         |media type is used in    |
+|                          |                         |the cURL request.        |
 +--------------------------+-------------------------+-------------------------+
 |500                       |API Fault                |API fault.               |
 +--------------------------+-------------------------+-------------------------+
@@ -67,9 +101,40 @@ This table shows the URI parameters for the request:
 
 
 
-This operation does not accept a request body.
+This table shows the body parameters for the request:
+
++--------------------------+-------------------------+-------------------------+
+|Name                      |Type                     |Description              |
++==========================+=========================+=========================+
+|op                        |String *(Required)*      |The operation to be      |
+|                          |                         |executed ( ``add``,      |
+|                          |                         |``remove``, or           |
+|                          |                         |``replace`` ).           |
++--------------------------+-------------------------+-------------------------+
+|path                      |String *(Required)*      |The location within the  |
+|                          |                         |image where the          |
+|                          |                         |operation is to be       |
+|                          |                         |performed.               |
++--------------------------+-------------------------+-------------------------+
+|value                     |String *(Optional)*      |The actual value to be   |
+|                          |                         |added or replaced. It is |
+|                          |                         |not required for the     |
+|                          |                         |``delete`` operation.    |
++--------------------------+-------------------------+-------------------------+
 
 
+
+
+
+**Example Update image: JSON request**
+
+
+.. code::
+
+        [
+            {"op": "replace", "path": "/name", "value": "Fedora 17"},
+            {"op": "replace", "path": "/tags", "value": ["fedora", "beefy"]}
+        ]
 
 
 Response
@@ -119,53 +184,22 @@ This table shows the body parameters for the response:
 
 
 
-**Example Get image details: JSON response**
+**Example Update image: JSON response**
 
 
 .. code::
 
     {
-    	"container_format": "ovf",
-    	"min_ram": 512,
-    	"updated_at": "2015-03-09T19:32:29Z",
-    	"owner": "657197",
-    	"file": "/v2/images/126a6674-6308-421f-801e-fc302ab4f53f/file",
-    	"flavor_classes": "*,!onmetal",
-    	"vm_mode": "hvm",
-    	"id": "126a6674-6308-421f-801e-fc302ab4f53f",
-    	"size": 758777106,
-    	"os_distro": "centos",
-    	"image_type": "base",
-    	"self": "/v2/images/126a6674-6308-421f-801e-fc302ab4f53f",
-    	"disk_format": "vhd",	
-    	"schema": "/v2/schemas/image",
-    	"status": "active",	
-    	"tags": [],	
-    	"visibility": "public",
-    	"auto_disk_config": "disabled",
-    	"min_disk": 20,
-    	"name": "CentOS 7 (PVHVM)",
-    	"checksum": "554bd2ad5b3a275c46b6d8983ae4da26",
-    	"created_at": "2015-01-28T19:31:37Z",
-    	"cache_in_nova": "True",
-    	"protected": false,	
-    	"os_type": "linux",
-    	"com.rackspace__1__release_id": "220",
-    	"com.rackspace__1__build_core": "1",
-    	"com.rackspace__1__options": "0",
-    	"com.rackspace__1__release_version": "10",
-        "com.rackspace__1__platform_target": "PublicCloud",
-    	"com.rackspace__1__build_managed": "1",
-    	"com.rackspace__1__visible_managed": "0",
-    	"com.rackspace__1__source": "kickstart",
-    	"com.rackspace__1__ui_default_show": "True",
-    	"com.rackspace__1__release_build_date": "2015-01-28_18-59-30",
-    	"com.rackspace__1__visible_core": "0",
-    	"com.rackspace__1__build_rackconnect": "1",
-    	"com.rackspace__1__visible_rackconnect": "0",
-    	"org.openstack__1__os_version": "7",
-    	"org.openstack__1__architecture": "x64",
-        "org.openstack__1__os_distro": "org.centos"
+       "id":"e7db3b45-8db7-47ad-8109-3fb55c2c24fd",
+       "name":"Fedora 17",
+       "status":"queued",
+       "visibility":"public",
+       "tags": ["fedora", "beefy"],
+       "created_at":"2012-08-11T17:15:52Z",
+       "updated_at":"2012-08-11T17:15:52Z",
+       "self":"/v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd",
+       "file":"/v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/file",
+       "schema":"/v2/schemas/image"
     }
     
 
