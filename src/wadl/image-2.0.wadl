@@ -563,15 +563,14 @@
         <wadl:doc xml:lang="EN" title="List tasks" xmlns="http://docbook.org/ns/docbook">
             <para role="shortdesc">Lists tasks.</para>
             <para>This operation returns list of tasks, with basic details about each task. The response conforms to the
-                schema found in
-                <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html">4.5.5. Get tasks schema</link>.</para>
+                schema found in <link xlink:href="http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html">4.5.5. Get tasks schema</link>.</para>
         </wadl:doc>
         <response status="200">
             <doc title="Success">Request succeeded.</doc>
             <representation mediaType="application/json">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook" title="List Tasks">
                     <xsdxt:code href="../common/samples/task-list-response.json"/>
-                </wadl:doc> &taskListResponseParameters; </representation>
+                </wadl:doc> &taskListResponseParameters;</representation>
         </response>&commonFaults;&getFaults; </method>
 
     <!-- Task Details -->

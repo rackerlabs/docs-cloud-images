@@ -18,9 +18,9 @@ You have several options for sending requests through an API:
 
   Similar browser plug-ins are available for browsers other than Firefox.
 
-.. note::
-   If you use a browser plug-in, be sure to include the Header elements for ``Content-Type``
-   and ``X-Auth-Token`` with appropriate values.
+   .. note::
+      If you use a browser plug-in, be sure to include the Header elements for ``Content-Type``
+      and ``X-Auth-Token`` with appropriate values.
 
 - You can download and install RESTclient, a Java application for testing ReSTful web
   services, from http://code.google.com/p/rest-client/.

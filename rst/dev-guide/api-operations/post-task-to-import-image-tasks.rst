@@ -35,7 +35,6 @@ To successfully import an image:
 
 This table shows the possible response codes for this operation:
 
-
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
 +==========================+=========================+=========================+
@@ -68,14 +67,7 @@ This table shows the possible response codes for this operation:
 
 Request
 """"""""""""""""
-
-
-
-
-
-
-
-
+   
 This table shows the body parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -127,10 +119,6 @@ This table shows the body parameters for the request:
 Response
 """"""""""""""""
 
-
-
-
-
 This table shows the body parameters for the response:
 
 +-----------------+--------------+---------------------------------------------+
@@ -144,9 +132,12 @@ This table shows the body parameters for the response:
 |                 |              |expires (and is thus no longer available to  |
 |                 |              |be polled), the result of the task (such as  |
 |                 |              |an imported or exported image) still exists. |
-|                 |              |.. note:: This parameter is required for     |
-|                 |              |responses with ``status`` of ``success`` and |
-|                 |              |``failure``.                                 |
+|                 |              |                                             |
+|                 |              |.. note::                                    |
+|                 |              |   This parameter is required for responses  |
+|                 |              |   with ``status`` of  ```success``` and     |
+|                 |              |   failure``.                                |
+|                 |              |                                             |
 +-----------------+--------------+---------------------------------------------+
 |id               |String        |The UUID of the task resource.               |
 |                 |*(Required)*  |                                             |
@@ -206,13 +197,7 @@ This table shows the body parameters for the response:
 +-----------------+--------------+---------------------------------------------+
 |updated_at       |String        |The date and time that the task resource was |
 |                 |*(Required)*  |updated.                                     |
-+-----------------+--------------+---------------------------------------------+
-
-
-
-
-
-
++-----------------+--------------+---------------------------------------------+   
 
 **Example Import Task - Pending Response**
 
