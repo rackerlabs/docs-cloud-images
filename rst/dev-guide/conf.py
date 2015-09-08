@@ -37,7 +37,7 @@ extensions = [
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-#templates_path = ['_templates']
+templates_path = ['_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -49,7 +49,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Rackspace API Developer documentation/'
+project = 'Rackspace Cloud Images API Developer Guide'
 copyright = '2015, Rackspace'
 
 # The version info for the project you're documenting, acts as replacement for
