@@ -9,7 +9,7 @@ Images
    
 Use the images API operations to list, delete, and update images.
 
-.. include:: method/get-list-images-images.rst
-.. include:: method/get-get-image-details-images-image-id.rst
-.. include:: method/patch-update-image-images-image-id.rst
-.. include:: method/delete-delete-image-images-image-id.rst
+.. include:: methodsget-list-images-images.rst
+.. include:: methodsget-get-image-details-images-image-id.rst
+.. include:: methodspatch-update-image-images-image-id.rst
+.. include:: methodsdelete-delete-image-images-image-id.rst

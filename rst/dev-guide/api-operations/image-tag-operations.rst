@@ -11,5 +11,5 @@ Use image tag API operations to add and remove
 image tags.
 
 
-.. include:: method/put-add-image-tag-images-image-id-tags-tag.rst
-.. include:: method/delete-delete-image-tag-images-image-id-tags-tag.rst
+.. include:: methodsput-add-image-tag-images-image-id-tags-tag.rst
+.. include:: methodsdelete-delete-image-tag-images-image-id-tags-tag.rst

@@ -1,4 +1,4 @@
-. _send-request-receive-responses:
+.. _send-request-receive-responses:
 
 Sending API requests and receiving responses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
