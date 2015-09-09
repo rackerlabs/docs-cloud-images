@@ -1,6 +1,4 @@
-   
-
-.. _send-request-receive-responses:
+. _send-request-receive-responses:
 
 Sending API requests and receiving responses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -49,4 +47,3 @@ The necessary JSON-schema documents are provided at predictable URIs. A consumer
 validates server responses and client requests based on the published schemas. The
 schemas contained in this document are only examples and should not be used to validate
 your requests. A client should always fetch current schemas from the server.
-
