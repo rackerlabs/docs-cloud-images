@@ -53,7 +53,7 @@ master_doc = 'index'
 builder = 'deconst-single'
 
 # General information about the project.
-project = 'Rackspace Cloud Images API Developer Guide'
+project = 'Rackspace Developer Documentation'
 copyright = '2015, Rackspace'
 
 # The version info for the project you're documenting, acts as replacement for
