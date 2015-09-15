@@ -1,8 +1,7 @@
-   
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-.. _delete-delete-image-member-images-image-id-members-member-id:
+.. _delete-image-member:
 
 Delete image member
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13,14 +12,12 @@ Delete image member
 
 Deletes the specified ``account ID/tenant ID`` from the member list of the specified image.
 
-This operation deletes the image member from the image. This call, which can only be made by the image owner, removes users from the list of members who have access to a shared image.
+This operation deletes the image member from the image. This call, which can only be made 
+by the image owner, removes users from the list of members who have access to a shared image.
 
 If the ``{member_id}`` is not a member of the specified image, the response is ``HTTP 404``
 
-
-
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -52,9 +49,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -71,25 +65,11 @@ This table shows the URI parameters for the request:
 |                          |                         |shared.                  |
 +--------------------------+-------------------------+-------------------------+
 
-
-
-
-
 This operation does not accept a request body.
-
-
-
 
 Response
 """"""""""""""""
 
-
-
-
-
-
 This operation does not return a response body.
-
-
 
 

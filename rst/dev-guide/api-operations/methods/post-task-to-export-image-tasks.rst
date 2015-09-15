@@ -1,4 +1,3 @@
-  
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
@@ -68,35 +67,37 @@ Request
 
 This table shows the body parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|type                      |String *(Required)*      |The type of the task.    |
-|                          |                         |Use ``export`` for task  |
-|                          |                         |exports.                 |
-+--------------------------+-------------------------+-------------------------+
-|input                     |*(Required)*             |The container for export |
-|                          |                         |input parameters.        |
-+--------------------------+-------------------------+-------------------------+
-|image_uuid                |String *(Required)*      |The UUID for the         |
-|                          |                         |exported image. You must |
-|                          |                         |own the image or the     |
-|                          |                         |export task will fail.   |
-+--------------------------+-------------------------+-------------------------+
-|receiving_swift_container |String *(Required)*      |The Cloud Files          |
-|                          |                         |container for the        |
-|                          |                         |exported image. If the   |
-|                          |                         |container does not       |
-|                          |                         |exist, the task fails.   |
-|                          |                         |The task also fails if   |
-|                          |                         |the container name       |
-|                          |                         |contains any of the      |
-|                          |                         |following three          |
-|                          |                         |characters: forward      |
-|                          |                         |slash ( ``/`` ),         |
-|                          |                         |question mark ( ``?`` )  |
-|                          |                         |or period ( ``.`` ).     |
-+--------------------------+-------------------------+-------------------------+
++------------------------------+-----------------------+-----------------------+
+|Name                          |Type                   |Description            |
++==============================+=======================+=======================+
+|parameters.\ **type**         |String *(Required)*    |The type of the task.  |
+|                              |                       |Use ``export`` for     |
+|                              |                       |task exports.          |
++------------------------------+-----------------------+-----------------------+
+|parameters.\ **input**        |*(Required)*           |The container for      |
+|                              |                       |export input           |
+|                              |                       |parameters.            |
++------------------------------+-----------------------+-----------------------+
+|parameters.input.\            |String *(Required)*    |The UUID for the       |
+|**image_uuid**                |                       |exported image. You    |
+|                              |                       |must own the image or  |
+|                              |                       |the export task will   |
+|                              |                       |fail.                  |
++------------------------------+-----------------------+-----------------------+
+|parameters.input.\            |String *(Required)*    |The Cloud Files        |
+|**receiving_swift_container** |                       |container for the      |
+|                              |                       |exported image. If the |
+|                              |                       |container does not     |
+|                              |                       |exist, the task fails. |
+|                              |                       |The task also fails if |
+|                              |                       |the container name     |
+|                              |                       |contains any of the    |
+|                              |                       |following three        |
+|                              |                       |characters: forward    |
+|                              |                       |slash ( ``/`` ),       |
+|                              |                       |question mark ( ``?``  |
+|                              |                       |) or period ( ``.`` ). |
++------------------------------+-----------------------+-----------------------+
 
 
 
@@ -107,14 +108,17 @@ This table shows the body parameters for the request:
 
 .. code::
 
-    {
-        "type": "export",
-        "input": 
-        {
-            "image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6", 
-            "receiving_swift_container": "exports"
-        }
-    }
+   {
+       "type": "export",
+       "input": 
+       {
+           "image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6", 
+           "receiving_swift_container": "exports"
+       }
+   }
+
+
+
 
 
 Response
@@ -126,62 +130,63 @@ Response
 
 This table shows the body parameters for the response:
 
-+--------------------------+-------------+---------------------------------------------+
-|Name                      |Type         |Description                                  |
-+==========================+=============+=============================================+
-|created_at                |String       |The date and time that the task resource was |
-|                          |*(Required)* |created.                                     |
-+--------------------------+-------------+---------------------------------------------+
-|expires_at                |String       |The date and time that the task resource     |
-|                          |*(Optional)* |expires. Even after the task resource        |
-|                          |             |expires (and is thus no longer available to  |
-|                          |             |be polled), the result of the task (such as  |
-|                          |             |an imported or exported image) still exists. |
-|                          |             |.. note:: This parameter is required for     |
-|                          |             |responses with ``status`` of ``success`` and |
-|                          |             |``failure``.                                 |
-+--------------------------+-------------+---------------------------------------------+
-|id                        |String       |The UUID of the task resource.               |
-|                          |*(Required)* |                                             |
-+--------------------------+-------------+---------------------------------------------+
-|input                     |*(Required)* |The container for export export input        |
-|                          |             |parameters.                                  |
-+--------------------------+-------------+---------------------------------------------+
-|image_uuid                |*(Required)* |The UUID for the exported image.             |
-+--------------------------+-------------+---------------------------------------------+
-|receiving_swift_container |String       |The Cloud Files container for the exported   |
-|                          |*(Required)* |image.                                       |
-+--------------------------+-------------+---------------------------------------------+
-|message                   |String       |``None`` if task export succeeded or the     |
-|                          |*(Required)* |reason why the export failed.                |
-+--------------------------+-------------+---------------------------------------------+
-|result                    |*(Optional)* |The container for results. .. note:: This    |
-|                          |             |parameter is required for responses with     |
-|                          |             |``status`` of ``success``.                   |
-+--------------------------+-------------+---------------------------------------------+
-|export_location           |String       |The location of the exported image in Cloud  |
-|                          |*(Optional)* |Files.                                       |
-+--------------------------+-------------+---------------------------------------------+
-|owner                     |String       |The tenant-id of the task owner.             |
-|                          |*(Required)* |                                             |
-+--------------------------+-------------+---------------------------------------------+
-|schema                    |String       |The schema of the task.                      |
-|                          |*(Required)* |                                             |
-+--------------------------+-------------+---------------------------------------------+
-|self                      |String       |The link to the task.                        |
-|                          |*(Required)* |                                             |
-+--------------------------+-------------+---------------------------------------------+
-|status                    |String       |The status of the task. For possible task    |
-|                          |*(Required)* |statuses, see ` 1.4.2. Task statuses         |
-|                          |             |<http://docs.rackspace.com/images/api/v2/ci- |
-|                          |             |devguide/content/task-statuses.html>`__.     |
-+--------------------------+-------------+---------------------------------------------+
-|type                      |String       |The type of the task ( ``export`` for task   |
-|                          |*(Required)* |exports).                                    |
-+--------------------------+-------------+---------------------------------------------+
-|updated_at                |String       |The date and time that the task resource was |
-|                          |*(Required)* |updated.                                     |
-+--------------------------+-------------+---------------------------------------------+
++------------------------------+-------------+---------------------------------------------+
+|Name                          |Type         |Description                                  |
++==============================+=============+=============================================+
+|parameters.\ **created_at**   |String       |The date and time that the task resource was |
+|                              |*(Required)* |created.                                     |
++------------------------------+-------------+---------------------------------------------+
+|parameters.\ **expires_at**   |String       |The date and time that the task resource     |
+|                              |*(Optional)* |expires. Even after the task resource        |
+|                              |             |expires (and is thus no longer available to  |
+|                              |             |be polled), the result of the task (such as  |
+|                              |             |an imported or exported image) still exists. |
+|                              |             |.. note:: This parameter is required for     |
+|                              |             |responses with ``status`` of ``success`` and |
+|                              |             |``failure``.                                 |
++------------------------------+-------------+---------------------------------------------+
+|parameters.\ **id**           |String       |The UUID of the task resource.               |
+|                              |*(Required)* |                                             |
++------------------------------+-------------+---------------------------------------------+
+|parameters.\ **input**        |*(Required)* |The container for export export input        |
+|                              |             |parameters.                                  |
++------------------------------+-------------+---------------------------------------------+
+|parameters.input.\            |*(Required)* |The UUID for the exported image.             |
+|**image_uuid**                |             |                                             |
++------------------------------+-------------+---------------------------------------------+
+|parameters.input.\            |String       |The Cloud Files container for the exported   |
+|**receiving_swift_container** |*(Required)* |image.                                       |
++------------------------------+-------------+---------------------------------------------+
+|parameters.\ **message**      |String       |``None`` if task export succeeded or the     |
+|                              |*(Required)* |reason why the export failed.                |
++------------------------------+-------------+---------------------------------------------+
+|parameters.\ **result**       |*(Optional)* |The container for results. .. note:: This    |
+|                              |             |parameter is required for responses with     |
+|                              |             |``status`` of ``success``.                   |
++------------------------------+-------------+---------------------------------------------+
+|parameters.result.\           |String       |The location of the exported image in Cloud  |
+|**export_location**           |*(Optional)* |Files.                                       |
++------------------------------+-------------+---------------------------------------------+
+|parameters.\ **owner**        |String       |The tenant-id of the task owner.             |
+|                              |*(Required)* |                                             |
++------------------------------+-------------+---------------------------------------------+
+|parameters.\ **schema**       |String       |The schema of the task.                      |
+|                              |*(Required)* |                                             |
++------------------------------+-------------+---------------------------------------------+
+|parameters.\ **self**         |String       |The link to the task.                        |
+|                              |*(Required)* |                                             |
++------------------------------+-------------+---------------------------------------------+
+|parameters.\ **status**       |String       |The status of the task. For possible task    |
+|                              |*(Required)* |statuses, see ` 1.4.2. Task statuses         |
+|                              |             |<http://docs.rackspace.com/images/api/v2/ci- |
+|                              |             |devguide/content/task-statuses.html>`__.     |
++------------------------------+-------------+---------------------------------------------+
+|parameters.\ **type**         |String       |The type of the task ( ``export`` for task   |
+|                              |*(Required)* |exports).                                    |
++------------------------------+-------------+---------------------------------------------+
+|parameters.\ **updated_at**   |String       |The date and time that the task resource was |
+|                              |*(Required)* |updated.                                     |
++------------------------------+-------------+---------------------------------------------+
 
 
 
@@ -194,20 +199,23 @@ This table shows the body parameters for the response:
 
 .. code::
 
-    {
-        "created_at": "2014-02-26T02:01:13Z", 
-        "id": "7bdc8ede-9098-4d79-9477-697f586cb333", 
-        "input": 
-        {
-            "image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6", 
-            "receiving_swift_container": "exports"
-        }, 
-        "message": "None", 
-        "owner": "00000123", 
-        "schema": "/v2/schemas/task", 
-        "self": "/v2/tasks/7bdc8ede-9098-4d79-9477-697f586cb333", 
-        "status": "pending", 
-        "type": "export", 
-        "updated_at": "2014-02-26T02:01:13Z"
-    }
+   {
+       "created_at": "2014-02-26T02:01:13Z", 
+       "id": "7bdc8ede-9098-4d79-9477-697f586cb333", 
+       "input": 
+       {
+           "image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6", 
+           "receiving_swift_container": "exports"
+       }, 
+       "message": "None", 
+       "owner": "00000123", 
+       "schema": "/v2/schemas/task", 
+       "self": "/v2/tasks/7bdc8ede-9098-4d79-9477-697f586cb333", 
+       "status": "pending", 
+       "type": "export", 
+       "updated_at": "2014-02-26T02:01:13Z"
+   }
+
+
+
 

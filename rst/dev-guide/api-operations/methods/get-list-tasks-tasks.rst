@@ -1,4 +1,3 @@
-   
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
@@ -13,7 +12,8 @@ List tasks
 
 Lists tasks.
 
-This operation returns list of tasks, with basic details about each task. The response conforms to the schema found in `4.5.5. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__.
+This operation returns list of tasks, with basic details about each task. The response 
+conforms to the schema found in :ref:`Get tasks schema <get-tasks-schema>`.
 
 
 
@@ -49,103 +49,85 @@ This table shows the possible response codes for this operation:
 
 Request
 """"""""""""""""
-
-
-
-
-
-
-
-
 This operation does not accept a request body.
-
-
 
 
 Response
 """"""""""""""""
 
-
-
-
-
 This table shows the body parameters for the response:
 
-+----------------+---------------+---------------------------------------------+
-|Name            |Type           |Description                                  |
-+================+===============+=============================================+
-|first           |String         |The URI for the first task in the list.      |
-|                |*(Required)*   |                                             |
-+----------------+---------------+---------------------------------------------+
-|schema          |String         |The schema of the tasks list.                |
-|                |*(Required)*   |                                             |
-+----------------+---------------+---------------------------------------------+
-|tasks           |Array          |The container for tasks in the list.         |
-|                |*(Required)*   |                                             |
-+----------------+---------------+---------------------------------------------+
-|created_at      |String         |The date and time that the task resource was |
-|                |*(Required)*   |created.                                     |
-+----------------+---------------+---------------------------------------------+
-|id              |String         |The UUID of the task resource.               |
-|                |*(Required)*   |                                             |
-+----------------+---------------+---------------------------------------------+
-|owner           |String         |The tenant-id of the task owner.             |
-|                |*(Required)*   |                                             |
-+----------------+---------------+---------------------------------------------+
-|schema          |String         |The schema of the task.                      |
-|                |*(Required)*   |                                             |
-+----------------+---------------+---------------------------------------------+
-|self            |String         |The link to the task.                        |
-|                |*(Required)*   |                                             |
-+----------------+---------------+---------------------------------------------+
-|status          |String         |The status of the task. For possible task    |
-|                |*(Required)*   |statuses, see ` 1.4.1. Image statuses        |
-|                |               |<http://docs.rackspace.com/images/api/v2/ci- |
-|                |               |devguide/content/image-statuses.html>`__.    |
-+----------------+---------------+---------------------------------------------+
-|type            |String         |The type of the task ( ``export`` for task   |
-|                |*(Required)*   |exports).                                    |
-+----------------+---------------+---------------------------------------------+
-|updated_at      |String         |The date and time that the task resource was |
-|                |*(Required)*   |updated.                                     |
-+----------------+---------------+---------------------------------------------+
++--------------------+-------------+---------------------------------------------+
+|Name                |Type         |Description                                  |
++====================+=============+=============================================+
+|parameters.\        |String       |The URI for the first task in the list.      |
+|**first**           |*(Required)* |                                             |
++--------------------+-------------+---------------------------------------------+
+|parameters.\        |String       |The schema of the tasks list.                |
+|**schema**          |*(Required)* |                                             |
++--------------------+-------------+---------------------------------------------+
+|parameters.\        |Array        |The container for tasks in the list.         |
+|**tasks**           |*(Required)* |                                             |
++--------------------+-------------+---------------------------------------------+
+|parameters.tasks.\  |String       |The date and time that the task resource was |
+|**created_at**      |*(Required)* |created.                                     |
++--------------------+-------------+---------------------------------------------+
+|parameters.tasks.\  |String       |The UUID of the task resource.               |
+|**id**              |*(Required)* |                                             |
++--------------------+-------------+---------------------------------------------+
+|parameters.tasks.\  |String       |The tenant-id of the task owner.             |
+|**owner**           |*(Required)* |                                             |
++--------------------+-------------+---------------------------------------------+
+|parameters.tasks.\  |String       |The schema of the task.                      |
+|**schema**          |*(Required)* |                                             |
++--------------------+-------------+---------------------------------------------+
+|parameters.tasks.\  |String       |The link to the task.                        |
+|**self**            |*(Required)* |                                             |
++--------------------+-------------+---------------------------------------------+
+|parameters.tasks.\  |String       |The status of the task. For status values,   |
+|**status**          |*(Required)* |see :ref:`Image statuses <statuses>`.        |
++--------------------+-------------+---------------------------------------------+
+|parameters.tasks.\  |String       |The type of the task (``export`` for task    |
+|**type**            |*(Required)* |exports).                                    |
++--------------------+-------------+---------------------------------------------+
+|parameters.tasks.\  |String       |The date and time that the task resource was |
+|**updated_at**      |*(Required)* |updated.                                     |
++--------------------+-------------+---------------------------------------------+
 
 
-
-
-
-
-
-**Example List Tasks**
+**Example: List Tasks**
 
 
 .. code::
 
-    {
-        "first": "/v2/tasks", 
-        "schema": "/v2/schemas/tasks", 
-        "tasks": [
-            {
-                "created_at": "2014-02-26T02:04:18Z", 
-                "id": "baef2134-9c33-47b9-9d63-c29a2a224715", 
-                "owner": "00000123", 
-                "schema": "/v2/schemas/task", 
-                "self": "/v2/tasks/baef2134-9c33-47b9-9d63-c29a2a224715", 
-                "status": "pending", 
-                "type": "export", 
-                "updated_at": "2014-02-26T02:04:18Z"
-            }, 
-            {
-                "created_at": "2014-02-26T02:01:13Z", 
-                "id": "7bdc8ede-9098-4d79-9477-697f586cb333", 
-                "owner": "00000123", 
-                "schema": "/v2/schemas/task", 
-                "self": "/v2/tasks/7bdc8ede-9098-4d79-9477-697f586cb333", 
-                "status": "processing", 
-                "type": "export", 
-                "updated_at": "2014-02-26T02:01:13Z"
-            }
-        ]
-    }
-    
+   {
+       "first": "/v2/tasks", 
+       "schema": "/v2/schemas/tasks", 
+       "tasks": [
+           {
+               "created_at": "2014-02-26T02:04:18Z", 
+               "id": "baef2134-9c33-47b9-9d63-c29a2a224715", 
+               "owner": "00000123", 
+               "schema": "/v2/schemas/task", 
+               "self": "/v2/tasks/baef2134-9c33-47b9-9d63-c29a2a224715", 
+               "status": "pending", 
+               "type": "export", 
+               "updated_at": "2014-02-26T02:04:18Z"
+           }, 
+           {
+               "created_at": "2014-02-26T02:01:13Z", 
+               "id": "7bdc8ede-9098-4d79-9477-697f586cb333", 
+               "owner": "00000123", 
+               "schema": "/v2/schemas/task", 
+               "self": "/v2/tasks/7bdc8ede-9098-4d79-9477-697f586cb333", 
+               "status": "processing", 
+               "type": "export", 
+               "updated_at": "2014-02-26T02:01:13Z"
+           }
+       ]
+   }
+   
+
+
+
 

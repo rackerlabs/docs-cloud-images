@@ -1,4 +1,4 @@
-.. _api-operations-image-tag:
+.. _image-tag-operations:
 
 Image tag
 ~~~~~~~~~

@@ -1,4 +1,3 @@
-     
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
@@ -11,18 +10,17 @@ Delete image tag
 
     DELETE /images/{image_id}/tags/{tag}
 
-Deletes the specified tag from the image. 
-
 This operation deletes the specified tag from the specified image. 
 
-Include the tag you want to remove in the request URI ``{tag}`` path segment of the URI. For example, to remove the image tag 'miracle' from image e7db3b45-8db7-47ad-8109-3fb55c2c24fd, you would use: ``DELETE /v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/tags/miracle``. The request body is ignored. 
+Include the tag you want to remove in the request URI ``{tag}`` path segment of the URI. 
+For example, to remove the image tag *miracle* from image e7db3b45-8db7-47ad-8109-3fb55c2c24fd, 
+use the following URI in the request: ``DELETE /v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/tags/miracle``. 
+The request body is ignored. 
 
-An image tag can only be removed once. Subsequent attempts to remove the same tag will result in an ``HTTP 404`` error.
-
-
+An image tag can only be removed once. Subsequent attempts to remove the same tag cause an  
+``HTTP 404`` error.
 
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -54,9 +52,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -71,23 +66,10 @@ This table shows the URI parameters for the request:
 |                          |                         |length).                 |
 +--------------------------+-------------------------+-------------------------+
 
-
-
-
-
 This operation does not accept a request body.
-
-
-
 
 Response
 """"""""""""""""
-
-
-
-
-
-
 This operation does not return a response body.
 
 

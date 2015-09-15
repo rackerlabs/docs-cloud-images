@@ -1,8 +1,7 @@
-   
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-.. _put-add-image-tag-images-image-id-tags-tag:
+.. _put-add-image-tag:
 
 Add image tag
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13,11 +12,13 @@ Add image tag
 
 Adds the specified tag to the specified image. 
 
-This operation adds the specified tag to the specified image. 
+Include the tag you want to add in the request URI ``{tag}`` path segment of the URI. 
+For example, to tag image e7db3b45-8db7-47ad-8109-3fb55c2c24fd with *miracle*, use this URI: 
+``PUT /v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/tags/miracle``. The request body is ignored. 
 
-Include the tag you want to add in the request URI ``{tag}`` path segment of the URI. For example, to tag image e7db3b45-8db7-47ad-8109-3fb55c2c24fd with 'miracle', you would use: ``PUT /v2/images/e7db3b45-8db7-47ad-8109-3fb55c2c24fd/tags/miracle``. The request body is ignored. 
-
-An image can only be tagged once with a specific string. Multiple attempts to tag an image with the same string will result in a single instance of that string being added to the image's tags list.
+An image can only be tagged once with a specific string. Multiple attempts to tag an image 
+with the same string will result in a single instance of that string being added to the image's 
+tags list.
 
 
 

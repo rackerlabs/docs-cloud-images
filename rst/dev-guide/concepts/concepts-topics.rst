@@ -265,15 +265,14 @@ a disposable task resource that you poll for information about the
 operation's status.
 
 After you initiate an image import or export, poll the task's status by using
-the *Get task details* API operation repeatedly until the task completes. The
-“Get details for a task” section of this guide shows an example.
+the :ref:`Get task details <get-task-details>` API operation repeatedly until the task completes. 
 
 When the poll response has a status of ``success`` or ``failure``, the
 response includes an expiration date and time. After expiration, the
 disposable task resource is deleted, but the result of the task, such as
 an imported or exported image, neither expires nor disappears.
 
-For more information on task statuses, search for "task statuses".
+For more information on task statuses, search for :ref:`task statuses <task-statuses>`.
 
 .. note::
    Tasks in the Cloud Images API conform to the uniform task interface
@@ -298,8 +297,8 @@ High-level process for importing an image
    storage and to create a new image for you. This activity takes some
    time.
 
-#. Poll the task status by using the *Get task details* operation repeatedly. The “Get
-   details for a task” section of this guide shows an example.
+#. Poll the task status by using the :ref:`Get task details <get-task-details>` operation 
+   repeatedly. 
 
 High-level process for exporting an image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -315,9 +314,9 @@ High-level process for exporting an image
    the exported image to your Cloud Files account. This activity takes
    some time.
 
-#. Poll the task status by using the *Get task details* operation repeatedly. The “Get
-   details for a task” section of this guide shows an example.
-
+#. Poll the task status by using the :ref:`Get task details <get-task-details>` operation 
+   repeatedly. 
+   
 .. _statuses:
 
 Statuses
@@ -326,6 +325,8 @@ Statuses
 The Cloud Images API uses a variety of statuses to identify the state of
 images or image components. This section describes the statuses and
 their values.
+
+.. _image_statuses:
 
 Image statuses
 ^^^^^^^^^^^^^^
@@ -368,7 +369,7 @@ statuses when you display details by using the *Get image details* API operation
     access image data. For example, users cannot boot from a deactivated image
     or export a deactivated image.
 
-.. _ci-dg-overview-task-statuses:
+.. _task-statuses:
 
 Task statuses
 ^^^^^^^^^^^^^
@@ -392,7 +393,7 @@ statuses when you poll them by using the *Get details for a task* API operation.
 **failure**
     The image task did not complete successfully.
 
-.. _ci-dg-overview-member-statuses:
+.. _member-statuses:
 
 Image member statuses
 ^^^^^^^^^^^^^^^^^^^^^
@@ -414,7 +415,7 @@ consumer, the producer deletes the image member. Once the image member
 is deleted, the consumer cannot use the image, and the image is removed
 from the consumer's image list.
 
-For more information on image sharing, search for “Image sharing”.
+For more information, see :ref:`image sharing <image-sharing>`.
 
 .. note::
    *  Consumers and producers view the image status by using the

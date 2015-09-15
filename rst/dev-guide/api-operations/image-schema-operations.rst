@@ -1,4 +1,4 @@
-.. _api-operations-image-schemas:
+.. _image-schemas-operations:
 
 JSON schemas
 ~~~~~~~~~~~~

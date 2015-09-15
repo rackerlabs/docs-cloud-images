@@ -1,8 +1,7 @@
-   
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-.. _get-get-image-members-schema-schemas-members:
+.. _get-image-members-schema:
 
 Get image members schema
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -30,84 +29,68 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
-
-
-
-
 This operation does not accept a request body.
-
-
-
 
 Response
 """"""""""""""""
-
-
-
-
-
-
-
-
-
 
 **Example Get image members schema: JSON response**
 
 
 .. code::
 
-    {
-        "name": "members",
-        "properties": {
-            "members": {
-                "items": {
-                    "name": "member",
-                    "properties": {
-                        "created_at": {
-                            "description": "Date and time of image member creation",
-                            "type": "string"
-                        },
-                        "image_id": {
-                            "description": "An identifier for the image",
-                            "pattern": "^([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}$",
-                            "type": "string"
-                        },
-                        "member_id": {
-                            "description": "An identifier for the image member (tenantId)",
-                            "type": "string"
-                        },
-                        "status": {
-                            "description": "The status of this image member",
-                            "enum": [
-                                "pending",
-                                "accepted",
-                                "rejected"
-                            ],
-                            "type": "string"
-                        },
-                        "updated_at": {
-                            "description": "Date and time of last modification of image member",
-                            "type": "string"
-                        },
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "type": "array"
-            },
-            "schema": {
-                "type": "string"
-            }
-        },
-        "links": [
-            {
-                "href": "{schema}",
-                "rel": "describedby"
-            }
-        ]
-    }
+   {
+       "name": "members",
+       "properties": {
+           "members": {
+               "items": {
+                   "name": "member",
+                   "properties": {
+                       "created_at": {
+                           "description": "Date and time of image member creation",
+                           "type": "string"
+                       },
+                       "image_id": {
+                           "description": "An identifier for the image",
+                           "pattern": "^([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}$",
+                           "type": "string"
+                       },
+                       "member_id": {
+                           "description": "An identifier for the image member (tenantId)",
+                           "type": "string"
+                       },
+                       "status": {
+                           "description": "The status of this image member",
+                           "enum": [
+                               "pending",
+                               "accepted",
+                               "rejected"
+                           ],
+                           "type": "string"
+                       },
+                       "updated_at": {
+                           "description": "Date and time of last modification of image member",
+                           "type": "string"
+                       },
+                       "schema": {
+                           "type": "string"
+                       }
+                   }
+               },
+               "type": "array"
+           },
+           "schema": {
+               "type": "string"
+           }
+       },
+       "links": [
+           {
+               "href": "{schema}",
+               "rel": "describedby"
+           }
+       ]
+   }
+
+
+
 

@@ -1,4 +1,4 @@
-.. _api-operations-image-tasks:
+.. _image-tasks-operations:
 
 Image task
 ~~~~~~~~~~
@@ -9,8 +9,13 @@ Image task
 
 Use image task operations to initiate and manage asynchronous image tasks
 like those created when importing and exporting images.
-For more information, see *Asynchronous image tasks* in the Cloud Images Developer
-Guide.
+For more information, see :ref:`Asynchronous image tasks <asynchronous-image-tasks>`.
+
+.. note:: 
+   The method and URI (POST tasks) used to create an asynchronous task is the same for 
+   both importing and export images. However, the operations are listed separately to 
+   reduce confusion. The desired end result, the request and response bodies, and the 
+   examples of the two operations are different.
 
 .. include:: methods/get-list-tasks-tasks.rst    
 .. include:: methods/get-get-task-details-tasks-taskid.rst   

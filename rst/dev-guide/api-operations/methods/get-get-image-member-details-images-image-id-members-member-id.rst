@@ -1,4 +1,3 @@
-     
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
@@ -13,14 +12,12 @@ Get image member details
 
 Gets the details for the specified image member. 
 
-This operation shows details of the image member. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
-
-To get a successful response, either the image owner must make the call or the ``tenant_id`` of the user making the call must match the specified ``member_id``. Otherwise the response is ``HTTP 404``.
-
-
+This operation shows details of the image member. The response conforms to the schema 
+found in :ref:`Get image members schema <get-image-members-schema>`
+To get a successful response, either the image owner must make the call or the 
+``tenant_id`` of the user making the call must match the specified ``member_id``. Otherwise the response is ``HTTP 404``.
 
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -52,9 +49,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -71,46 +65,35 @@ This table shows the URI parameters for the request:
 |                          |                         |shared.                  |
 +--------------------------+-------------------------+-------------------------+
 
-
-
-
-
 This operation does not accept a request body.
-
-
-
 
 Response
 """"""""""""""""
-
-
-
-
 
 This table shows the body parameters for the response:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|created_at                |String *(Required)*      |The date and time that   |
-|                          |                         |the image member was     |
+|parameters.\              |String *(Required)*      |The date and time that   |
+|**created_at**            |                         |the image member was     |
 |                          |                         |created.                 |
 +--------------------------+-------------------------+-------------------------+
-|image_id                  |String *(Required)*      |The UUID of the image.   |
+|parameters.\ **image_id** |String *(Required)*      |The UUID of the image.   |
 +--------------------------+-------------------------+-------------------------+
-|member_id                 |String *(Required)*      |The id of the image      |
+|parameters.\ **member_id**|String *(Required)*      |The id of the image      |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|schema                    |String *(Required)*      |The schema of the image  |
+|parameters.\ **schema**   |String *(Required)*      |The schema of the image  |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|status                    |String *(Required)*      |The status of the image  |
+|parameters.\ **status**   |String *(Required)*      |The status of the image  |
 |                          |                         |member ( ``pending``,    |
 |                          |                         |``accepted``, or         |
 |                          |                         |``rejected``.            |
 +--------------------------+-------------------------+-------------------------+
-|updated_at                |String *(Required)*      |The date and time that   |
-|                          |                         |the image member was     |
+|parameters.\              |String *(Required)*      |The date and time that   |
+|**updated_at**            |                         |the image member was     |
 |                          |                         |updated.                 |
 +--------------------------+-------------------------+-------------------------+
 
@@ -125,12 +108,15 @@ This table shows the body parameters for the response:
 
 .. code::
 
-    {
-        "created_at": "2014-02-20T04:15:17Z",
-        "image_id": "634985e5-0f2e-488e-bd7c-928d9a8ea82a",
-        "member_id": "348129",
-        "schema": "/v2/schemas/member",
-        "status": "pending",
-        "updated_at": "2014-02-20T04:15:17Z"
-    }
+   {
+       "created_at": "2014-02-20T04:15:17Z",
+       "image_id": "634985e5-0f2e-488e-bd7c-928d9a8ea82a",
+       "member_id": "348129",
+       "schema": "/v2/schemas/member",
+       "status": "pending",
+       "updated_at": "2014-02-20T04:15:17Z"
+   }
+
+
+
 

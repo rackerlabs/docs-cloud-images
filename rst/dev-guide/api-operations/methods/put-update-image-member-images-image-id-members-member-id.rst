@@ -1,8 +1,7 @@
-   
 
 .. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
 
-.. _put-update-image-member-images-image-id-members-member-id:
+.. _put-update-image-member:
 
 Update image member
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13,16 +12,16 @@ Update image member
 
 Sets the specified status for the specified member of the specified image.
 
-This operation updates the image member. The response conforms to the schema found in `4.5.3. Get image members schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getImageMembersSchemas_schemas_members_Schema_Calls.html>`__.
+This operation updates the image member. The response conforms to the schema found in 
+:ref:`Get image members schema <get-image-members-schema>`.
 
 If the call is made by the image owner, the response is ``HTTP 403 (Forbidden)``.
 
-If the call is made by a user who is not the owner and whose ``tenant ID`` is not the same as the {member_id} is the operation URI, the response is ``HTTP 404``.
-
+If the call is made by a user who is not the owner and whose ``tenant ID`` is not the same 
+as the ``{member_id}`` in the operation URI, the response is ``HTTP 404``.
 
 
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -53,12 +52,8 @@ This table shows the possible response codes for this operation:
 |                          |                         |unavailable.             |
 +--------------------------+-------------------------+-------------------------+
 
-
 Request
 """"""""""""""""
-
-
-
 
 This table shows the URI parameters for the request:
 
@@ -76,33 +71,37 @@ This table shows the URI parameters for the request:
 |                          |                         |shared.                  |
 +--------------------------+-------------------------+-------------------------+
 
-
-
-
-
 This table shows the body parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|status                    |String *(Required)*      |The status to which this |
+|parameters.\ **status**   |String *(Required)*      |The status to which this |
 |                          |                         |image member should be   |
 |                          |                         |set. Valid values are as |
-|                          |                         |follows: ``pending``     |
-|                          |                         |At make creation,        |
-|                          |                         |open the member's        |
+|                          |                         |follows:                 |
+|                          |                         |                         |
+|                          |                         |``pending``              |
+|                          |                         |At creation, the         |
+|                          |                         |creation, the member's   |
 |                          |                         |status is set to         |
 |                          |                         |pending. The image is    |
 |                          |                         |not visible in the       |
 |                          |                         |member's image-list, but |
 |                          |                         |the member can still     |
 |                          |                         |boot instances from the  |
-|                          |                         |image. ``accepted`` The  |
+|                          |                         |image.                   |
+|                          |                         |                         |
+|                          |                         |``accepted``             |
+|                          |                         |The                      |
 |                          |                         |image is visible in the  |
 |                          |                         |member's image-list. The |
 |                          |                         |member can boot          |
 |                          |                         |instances from the       |
-|                          |                         |image. ``rejected`` The  |
+|                          |                         |image.                   |
+|                          |                         |                         |
+|                          |                         |``rejected``             |
+|                          |                         |The \                    |
 |                          |                         |member has decided that  |
 |                          |                         |he or she does not want  |
 |                          |                         |to see the image. The    |
@@ -113,71 +112,59 @@ This table shows the body parameters for the request:
 |                          |                         |image.                   |
 +--------------------------+-------------------------+-------------------------+
 
-
-
-
-
-**Example Update image member: JSON request**
+**Example: Update image member: JSON request**
 
 
 .. code::
 
-    {
-        "status": "accepted"
-    }
-
+   {
+       "status": "accepted"
+   }
 
 Response
 """"""""""""""""
-
-
-
-
 
 This table shows the body parameters for the response:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|created_at                |String *(Required)*      |The date and time that   |
-|                          |                         |the image member was     |
+|parameters.\              |String *(Required)*      |The date and time that   |
+|**created_at**            |                         |the image member was     |
 |                          |                         |created.                 |
 +--------------------------+-------------------------+-------------------------+
-|image_id                  |String *(Required)*      |The UUID of the image.   |
+|parameters.\ **image_id** |String *(Required)*      |The UUID of the image.   |
 +--------------------------+-------------------------+-------------------------+
-|member_id                 |String *(Required)*      |The id of the image      |
+|parameters.\ **member_id**|String *(Required)*      |The id of the image      |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|schema                    |String *(Required)*      |The schema of the image  |
+|parameters.\ **schema**   |String *(Required)*      |The schema of the image  |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|status                    |String *(Required)*      |The status of the image  |
+|parameters.\ **status**   |String *(Required)*      |The status of the image  |
 |                          |                         |member ( ``pending``,    |
 |                          |                         |``accepted``, or         |
 |                          |                         |``rejected``.            |
 +--------------------------+-------------------------+-------------------------+
-|updated_at                |String *(Required)*      |The date and time that   |
-|                          |                         |the image member was     |
+|parameters.\              |String *(Required)*      |The date and time that   |
+|**updated_at**            |                         |the image member was     |
 |                          |                         |updated.                 |
 +--------------------------+-------------------------+-------------------------+
 
-
-
-
-
-
-
-**Example Update image member: JSON response**
+**Example: Update image member: JSON response**
 
 
 .. code::
 
-    {
-        "created_at": "2013-09-20T19:22:19Z",
-        "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
-        "member_id": "554433",
-        "schema": "/v2/schemas/member",
-        "status": "accepted",
-        "updated_at": "2013-09-20T20:15:31Z"
-    }
+   {
+       "created_at": "2013-09-20T19:22:19Z",
+       "image_id": "a96be11e-8536-4910-92cb-de50aa19dfe6",
+       "member_id": "554433",
+       "schema": "/v2/schemas/member",
+       "status": "accepted",
+       "updated_at": "2013-09-20T20:15:31Z"
+   }
+
+
+
 
