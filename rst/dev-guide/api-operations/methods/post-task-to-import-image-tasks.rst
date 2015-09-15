@@ -20,19 +20,23 @@ To successfully import an image:
 
 
 *  Format the image using the VHD format.
-   
-   .. note::
-      If you are importing an image that you have previously exported from Cloud Images 
-      in another region of the Rackspace open cloud, your image is already in the appropriate 
-      format. You can find information on `preparing a custom image for 
-      import <http://www.rackspace.com/knowledge_center/article/preparing-an-image-for-import-into-the-rackspace-open-cloud>`__ 
-      in the Rackspace Knowledge Center.
+
+   If you are importing an image that you have previously exported from Cloud Images 
+   in another region of the Rackspace open cloud, your image is already in the appropriate 
+   format. You can find information on `preparing a custom image for 
+   import <http://www.rackspace.com/knowledge_center/article/preparing-an-image-for-import-into-the-rackspace-open-cloud>`__ 
+   in the Rackspace Knowledge Center.
       
 *  Store the image in your Cloud Files account.
 
 
 .. note::
-   As described in the `Rackspace Terms of Service <http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html>`__, you should be aware of and respect all licensing restrictions that apply to any software that you import into the Rackspace open cloud. For example, Microsoft licensing rules are very restrictive. Microsoft product use rights do not allow the use of License Mobility for Windows licenses. Given the limitations related to this software platform, image import is not available for Windows images. If you have questions, please contact the software vendor. 
+   As described in the `Rackspace Terms of Service <http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html>`__, 
+   make sure that you are aware of and respect all licensing restrictions that apply to any 
+   software that you import into the Rackspace open cloud. For example, Microsoft licensing rules are very 
+   restrictive. Microsoft product use rights do not allow the use of License Mobility for Windows licenses. 
+   Given the limitations related to this software platform, image import is not available for Windows images. 
+   If you have questions, please contact the software vendor. 
    
    
 This table shows the possible response codes for this operation:

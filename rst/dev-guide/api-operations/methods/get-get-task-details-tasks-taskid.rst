@@ -142,16 +142,15 @@ This table shows the body parameters for the response:
 |                                     |             |The internal UUID of the VHD is all zeros.   |
 |                                     |             |                                             |
 |                                     |             |``721``: The image cannot be imported.       |
-|                                     |             |Your VHD                                     |
-|                                     |             |has a parent disk. You can only import a     |
-|                                     |             |a stand-alone VHD.                    
+|                                     |             |Your VHD has a parent disk. You can only     |
+|                                     |             |import a stand-alone VHD.                    |
+|                                     |             |                                             |             
 +-------------------------------------+-------------+---------------------------------------------+
 |parameters.\ **result**              |*(Optional)* |The container for results.                   |
 |                                     |             |                                             |
 |                                     |             |.. note::                                    |
-|                                     |             |   This                                      |
-|                                     |             |   parameter is required for responses with  |
-|                                     |             |   ``status`` of ``success``.                |
+|                                     |             |   This parameter is required for responses  |
+|                                     |             |   with a ``status`` of ``success``.         |
 |                                     |             |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
 |parameters.result.\ **image_id**     |Uuid         |The UUID of the image.                       |
@@ -167,9 +166,8 @@ This table shows the body parameters for the response:
 |                                     |*(Required)* |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
 |parameters.\ **status**              |String       |The status of the task. For possible task    |
-|                                     |*(Required)* |statuses, see ` 1.4.2. Task statuses         |
-|                                     |             |<http://docs.rackspace.com/images/api/v2/ci- |
-|                                     |             |devguide/content/task-statuses.html>`__.     |
+|                                     |*(Required)* |statuses, see                                |
+|                                     |             |:ref:`Task statuses <task-statuses>`.        |
 +-------------------------------------+-------------+---------------------------------------------+
 |parameters.\ **type**                |String       |The type of the task ( ``export`` for task   |
 |                                     |*(Required)* |exports).                                    |
