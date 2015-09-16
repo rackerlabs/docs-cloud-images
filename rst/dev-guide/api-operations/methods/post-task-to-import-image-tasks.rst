@@ -10,8 +10,6 @@ Task to import image
 
     POST /tasks
 
-Imports an image using an asynchronous task request. See the request body for specific details.
-
 This operation imports an image using an asynchronous task request. The request begins the 
 import process and returns the task UUID that can be subsequently polled to determine the status 
 of the import by using the :ref:`Get task details <get-task-details>`. The response conforms 
@@ -157,28 +155,45 @@ This table shows the body parameters for the response:
 +-------------------------------------+-------------+---------------------------------------------+
 |parameters.input.image_properties.\  |String       |The name of the image.                       |
 |**name**                             |*(Required)* |                                             |
+|                                     |             | .. warning::                                |
+|                                     |             |     Name is the only property that can be   |
+|                                     |             |     included in ``image-properties``.       |
+|                                     |             |     Including any other property will       |
+|                                     |             |     cause the operation to fail.            |
 +-------------------------------------+-------------+---------------------------------------------+
 |parameters.input.\ **import_from**   |String       |The source of the imported image.            |
 |                                     |*(Required)* |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
 |parameters.\ **message**             |String       |``None`` if task import succeeded or the     |
 |                                     |*(Required)* |reason why the import failed. Possible       |
-|                                     |             |errors include the following: 111: The image |
-|                                     |             |cannot be imported. There is an unspecified  |
+|                                     |             |errors include the following:                |
+|                                     |             |                                             |
+|                                     |             |``111``: The image cannot be imported/       |
+|                                     |             |There is an unspecified                      |
 |                                     |             |problem with your VHD that caused it to fail |
-|                                     |             |our validation checks. 396: The image cannot |
+|                                     |             |our validation checks.                       |
+|                                     |             |                                             |
+|                                     |             |``396``: The image cannot                    |
 |                                     |             |be imported. The file is not a valid VHD.    |
-|                                     |             |413: The image cannot be imported. The       |
+|                                     |             |                                             |
+|                                     |             |``413``: The image cannot be imported. The   |
 |                                     |             |virtual size of the disk exceeds the 40GB    |
-|                                     |             |limit. 523: The image cannot be imported.    |
+|                                     |             |limit.                                       |
+|                                     |             |                                             |
+|                                     |             |``523``: The image cannot be imported.       |
 |                                     |             |Only fixed or dynamic disks may be imported. |
-|                                     |             |609: The image cannot be imported. The       |
+|                                     |             |                                             |
+|                                     |             |``609``: The image cannot be imported. The   |
 |                                     |             |physical size of the disk exceeds the 40GB   |
-|                                     |             |limit. 614: The image cannot be imported.    |
+|                                     |             |limit.                                       |
+|                                     |             |                                             |
+|                                     |             |``614``: The image cannot be imported.       |
 |                                     |             |The internal UUID of the VHD is all zeros.   |
-|                                     |             |721: The image cannot be imported. Your VHD  |
-|                                     |             |has a parent disk. Only a stand-alone VHD    |
-|                                     |             |may be imported.                             |
+|                                     |             |                                             |
+|                                     |             |``721``: The image cannot be imported.       |
+|                                     |             |Your VHD has a parent disk. You can only     |
+|                                     |             |import a stand-alone VHD.                    |
+|                                     |             |                                             |   
 +-------------------------------------+-------------+---------------------------------------------+
 |parameters.\ **result**              |*(Optional)* |The container for results. .. note:: This    |
 |                                     |             |parameter is required for responses with     |

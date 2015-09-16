@@ -10,7 +10,7 @@ Add image tag
 
     PUT /images/{image_id}/tags/{tag}
 
-Adds the specified tag to the specified image. 
+This operation adds the specified tag to the specified image.
 
 Include the tag you want to add in the request URI ``{tag}`` path segment of the URI. 
 For example, to tag image e7db3b45-8db7-47ad-8109-3fb55c2c24fd with *miracle*, use this URI: 
@@ -21,9 +21,7 @@ with the same string will result in a single instance of that string being added
 tags list.
 
 
-
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -58,9 +56,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -75,25 +70,12 @@ This table shows the URI parameters for the request:
 |                          |                         |length).                 |
 +--------------------------+-------------------------+-------------------------+
 
-
-
-
-
 This operation does not accept a request body.
-
-
 
 
 Response
 """"""""""""""""
 
-
-
-
-
-
 This operation does not return a response body.
-
-
 
 

@@ -15,9 +15,7 @@ Gets a json-schema document that represents an image member entity.
 The following schema is just an example. Consider only the response to the API call as authoritative.
 
 
-
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -29,31 +27,12 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
-
-
-
-
 This operation does not accept a request body.
-
-
-
 
 Response
 """"""""""""""""
 
-
-
-
-
-
-
-
-
-
-**Example Get image member schema: JSON response**
+**Example: Get image member schema: JSON response**
 
 
 .. code::

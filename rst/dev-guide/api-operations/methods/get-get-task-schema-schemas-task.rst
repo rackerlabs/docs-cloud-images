@@ -10,7 +10,7 @@ Get task schema
 
     GET /schemas/task
 
-Gets a json-schema document that represents an task entity.
+Gets a json-schema document that represents a task entity.
 
 This operation returns the specified task entity. The following response is just an example. Consider the response to the API call as authoritative.
 
@@ -47,31 +47,12 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
-
-
-
-
 This operation does not accept a request body.
-
-
-
 
 Response
 """"""""""""""""
 
-
-
-
-
-
-
-
-
-
-**Example Get task schema: JSON response**
+**Example: Get task schema: JSON response**
 
 
 .. code::

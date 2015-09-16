@@ -20,3 +20,4 @@ Images service.
    concepts/index
    general-api-info/index
    api-operations/index
+   glossary

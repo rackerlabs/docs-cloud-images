@@ -10,15 +10,10 @@ List tasks
 
     GET /tasks
 
-Lists tasks.
-
 This operation returns list of tasks, with basic details about each task. The response 
 conforms to the schema found in :ref:`Get tasks schema <get-tasks-schema>`.
 
-
-
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
