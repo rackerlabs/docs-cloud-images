@@ -1,27 +1,12 @@
-.. _api-operations-index:
+.. _api-methods:
+       
+.. toctree:: 
+   :caption: API Reference
+   :maxdepth: 2
 
-API Operations
-----------------
-
-Developers use the operations described in this chapter to perform the following tasks:
-
-- Manage images
-
-- Create and manage image members
-
-- Create and manage image tags
-
-- Manage image tasks like importing and exporting images
-
-- Get information about image schemas
-
-.. toctree:: :hidden:
-   :maxdepth: 4
+   images-operations
+   image-sharing-operations
+   image-tag-operations
+   image-task-operations
+   image-schema-operations
    
-   images-operations.rst
-   image-sharing-operations.rst
-   image-tag-operations.rst
-   image-task-operations.rst
-   image-schema-operations.rst
-
-

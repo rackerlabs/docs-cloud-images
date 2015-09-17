@@ -1,4 +1,10 @@
-.. _images-concepts:
+.. _concepts:
+
+Concepts
+---------
+
+To understand the Cloud Images service and API, review the following key terms and
+concepts.
 
 Images
 ~~~~~~
@@ -46,7 +52,7 @@ Nonstandard images include the following images:
    This is not an exhaustive list of nonstandard images.
 
 
-.. _image-entities:
+.. _entities:
 
 Image entities
 ~~~~~~~~~~~~~~
@@ -85,10 +91,10 @@ where:
 
 .. _common-image-properties:
 
-Common image properties
+Image properties
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-To help end users use your images, you can put additional common
+To help end users use your images, you can specify additional common
 properties, or metadata, on your images.
 
 The available properties and their expected values include the following
@@ -175,7 +181,7 @@ appears in the consumer's image list. As long as the consumer is an
 member of the image, the consumer can use the image, regardless of the
 image member status.
 
-.. figure:: ../_images/image-member.png
+.. figure:: _images/image-member.png
 
             Sharing an image
 
@@ -254,12 +260,12 @@ Sample workflow for image sharing, after image creation
    available, the consumer uses the Cloud Images API to change the image
    member status to ``pending``, by using the *Update image member* API operation.
 
-.. _asynchronous-image-tasks:
+.. _asynchronous-tasks:
 
-Asynchronous image tasks
+Asynchronous tasks
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-An image task request performs an asynchronous image-related
+An image task API request performs an asynchronous image-related
 operation, such as importing or exporting an image. The request creates
 a disposable task resource that you poll for information about the
 operation's status.
@@ -272,7 +278,7 @@ response includes an expiration date and time. After expiration, the
 disposable task resource is deleted, but the result of the task, such as
 an imported or exported image, neither expires nor disappears.
 
-For more information on task statuses, search for :ref:`task statuses <task-statuses>`.
+For more information on task statuses, see :ref:`task statuses <task-statuses>`.
 
 .. note::
    Tasks in the Cloud Images API conform to the uniform task interface
@@ -376,7 +382,7 @@ Task statuses
 
 Image tasks are used for importing images from your Cloud Files account
 and for exporting images to your Cloud files account. For more
-information on image tasks, search for “Asynchronous image tasks”.
+information on image tasks, see :ref:`Asynchronous image tasks <asynchronous-tasks>`.
 
 Image tasks in the Cloud Images service can have any of the following
 statuses when you poll them by using the *Get details for a task* API operation.
@@ -398,11 +404,10 @@ statuses when you poll them by using the *Get details for a task* API operation.
 Image member statuses
 ^^^^^^^^^^^^^^^^^^^^^
 
-When an image producer wants to share an image with a potential image
-consumer, the producer creates an image member, linking the image and
-the consumer. Once an image is shared, the image is available for the
-consumer to use, regardless of image member status. Both producers and
-consumers can check the status of an image member.
+When an image producer wants to share an image with a consumer, the producer 
+creates an image member, linking the image and the consumer. As soon as an image has 
+been shared, consumers can use it, regardless of image member status. Both image producers 
+and consumers can check the status of an image member.
 
 Image member status both controls whether the image appears in the
 consumer's image list and lets the producer know whether the consumer
