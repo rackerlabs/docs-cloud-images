@@ -1,7 +1,7 @@
 .. _send-request-receive-responses:
 
-Sending API requests and receiving responses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+API requests and responses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You have several options for sending requests through an API:
 

@@ -13,4 +13,4 @@ image members, and associated metadata through a simple Representational State T
    
    intended-audience
    additional-resources
-   pricing-service-level
+   Pricing and service level <pricing-service-level>
