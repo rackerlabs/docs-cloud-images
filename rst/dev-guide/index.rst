@@ -1,22 +1,20 @@
 .. _index:
 
 =========================================================
-Rackspace Cloud Images version 1.0 API Developer Guide
+Rackspace Cloud Images API, version 1.0
 =========================================================
 
-The Rackspace Cloud Images service enables developers to create and manipulate images,
-image members, and associated metadata through a simple Representational State Transfer
-(REST) web service interface.
-
-The Cloud Images FAQ in the Knowledge Center provides more information about the Cloud
-Images service.
+Learn how to use the Cloud Images service by using the ReST API. 
+See the :ref:`API reference <api-reference>` for information about  
+Cloud Images API resources, operations, and request and response examples.
 
 .. toctree:: :hidden:
-   :caption: Developer Guide
    :maxdepth: 2
-
+ 
+   developer-guide
    overview/index
    concepts
-   general-api-info/index
+   general-api-info/index 
+   api-reference
    api-operations/index
    glossary

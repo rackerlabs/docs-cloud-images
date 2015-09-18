@@ -582,7 +582,6 @@ members of an operation object are operation member, location member, and value 
        is to be performed within the target image.
 
 **value** member
-
     -  Specified by: ``"value"``
 
     -  Required for **HTTP PATCH add** and **HTTP PATCH replace** operations.

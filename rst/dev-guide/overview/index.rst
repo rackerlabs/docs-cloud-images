@@ -7,10 +7,13 @@ The Rackspace Cloud Images service enables developers to create and manipulate i
 image members, and associated metadata through a simple Representational State Transfer 
 (REST) web service interface.
 
+The Cloud Images service is closely aligned with the Rackspace Cloud Servers service and
+Cloud Files service. Images are captured from, and applied to, cloud servers and are
+stored on, and retrieved from, Cloud Files storage.
+
 
 .. toctree:: :hidden:
    :maxdepth: 3
    
-   intended-audience
    additional-resources
    Pricing and service level <pricing-service-level>

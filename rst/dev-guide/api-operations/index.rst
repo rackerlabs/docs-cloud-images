@@ -1,4 +1,8 @@
-.. _api-methods:
+
+
+.. meta::
+   :description: Rackspace Cloud Images API Reference
+   :keywords: Rackspace, Cloud Images ReST API, API resources, API methods
        
 .. toctree:: 
    :caption: API Reference
