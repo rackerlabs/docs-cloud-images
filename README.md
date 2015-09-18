@@ -1,5 +1,7 @@
 # Rackspace Cloud Images API documentation
-==========================================
+
+
+[![Build Status](https://travis-ci.org/rackerlabs/docs-cloud-images.svg?branch=master)](https://travis-ci.org/rackerlabs/docs-cloud-images)==========================================
 ## Resources
 
 This github repository contains the source files for the following Rackspace Images API documentation:

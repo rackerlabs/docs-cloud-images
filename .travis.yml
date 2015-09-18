@@ -2,20 +2,15 @@ language: python
 python:
 - '3.4'
 sudo: false
-env:
-  global:
-  # Production
-  - secure: Kntz9PzJTX3kWjlVgj/pYzK3C60w1oftaqGQpASEOA1+PEZPmwMUDz5JByYUU+jkzvj3bnMUZ0acEqAX9Or1a7RK004lFQfqmmgs94ruEjmRfEpIFvEuB/GHkNaF6slF75SPDxVJKdQyK+PcWAK7YhXoeTJhrk1kexLW/Ya61hM=
-  - secure: d/TAc/P1ao8XeivwkhJQ9zE78AhHCoTYnCsWfRhgN7DgecJKB4TR5s4JSTm66qz7oGB43tUdizMza3wa8wbiD2Ngf1Ir3hNCSTjH8knQRM/h8HIOHHIMKb2REQNV8i488wi/klrIYFNblPv+pzyvcTj+colx9Ge5jXAX6gERqgA=
-  - secure: MIya9GdP+56BUspzDz/NPKvRImbNmapy2zjZfwGRoESEtO3Epl4cTMH6YGq59aNLPKUmJZxdfBxARJl/XNPKYbalsGExoiJ7oGp2LHXpk8bbDr4nbmREonLHaKfZFUDMdI9CfQ5VHrC4amkwkcDGgRGcJf6+dkuqA9cMjoSV3Ks=
-  # Staging
-  - secure: PRlgleIjCpCfRnicBkrj1GFesMxIoinjW705H5x4172L+3ZowSbjtZcXNutv013Er2gZXN2ZFnN2fuwps+fsTOsS+o286zchlk+8UY4VdtmWqecTzJE356dQi2XYF1iCekvvrFUvsqTEkiUyXct3SIitbSodaNzzLo/hyBhYs+o=
-  - secure: TMwy0sNM9ufZ6ix1qKTGZbo96xSvdiI7gQOF+L5pVxSMH/qQfMdrMw7i+YvK4wFUcC8D6Vy2HYmpB7dEa3fBto5KAoxDvCOkObqpCVmYGdblss6LVUxtV5iHJvOr35fehkhIo4T+I3NpMOCG9hhDlK9anBltjxRZIaQG6WqwgCI=
-  - secure: TJZTQF4CfsdP2NtGOtua/tQBcaPZ2GBSOle62oH+iaXs7oWWtifDrRD1oHrEJZW8BxfmsLLLM64EmpUB/Zg5Z14D5+EmJ5cS6pb7XyDnrnCBZV9jLOTiQCdXOuMrKWh/v4gQP2iUdwjXVNfTYzPJGmEQhu1ZH4HibpYw9FPeIrg=
 install:
 - pip install -e git+https://github.com/deconst/preparer-sphinx.git#egg=deconstrst
 script:
 - script/cibuild
+env:
+  global:
+  - secure: qE5Y17UtXJK9jiX/Gm0vGpmXnNSWxXWY3ZZx1rVqhEJcGf5QM8GLfmHn9ISpn6cBX/lt7lfR5kGvSYbbTrX1CwnhMIQn1P9Ff6/knOskiO3XetZMU4PNzDk/9OfdZPbPacBAJCVn5hAGtMePzWpjuU0oR/1yR2CNATIJQk0tkuM=
+  - secure: Ko+jq2mq73YQYdARbyamERStqohU9lzYp3R0QNjzmHox56NDc6HBQL73JTJWV0XN5dbh7P2zaUrXFbWHoYvhUMJl3ggAfibnJc1ylL+2E+vBkKE/CIrZ/1k/MMi5lmJf/BPGijJtWxH+T15/1O3MZhCK/eCqKcYlDkjrK4Hl0H4=
+  - secure: qNAu0Ln1mPfVTWrngpsPcLdPWZCQiOebvHii1nW86TbSFmzZ06WGFA6wRRba7b+xbB1sM7Jlb1V3Xgxdnx/rgLNLe2rYvhk8mtgx6vXGlOPWHmI2fVgRN1rYkiUO/clKQhc4SoxNGRv1D84N6XUM9qDiyEzRNYkiewRWgRlg+F8=
 notifications:
   slack:
-    secure: atxEtnjB6lAAlHiDUoRUlKAPWAYM8bwL0ICOTpxAB6FteO3I9zWOUOdvNJwOUM/YDfhJlErXLA3jT+oWPJHaIiVc2TwiQKGLU8ldrowpGsrSznTTQ/EihgTISSH1rNbSB7Wm9YkPCxTY7G/ryW3pX3ZQdGcAanPiMm8mvbwcNhM=
+    secure: NseKN+aeRhm9EVBsnjrvZxqsRXyHMTaASuXWfDE7T/OPHLvZx7i49nGrE48rxQvZjabeWjtwmOyIBOfWOVFfPJZZD7icThJZGzqm1PsOVJqWgZI7lXDIb4HUFFo351aLSdLnQlqJM3crDo+KCt0ilJmDvFDK+NAiEYGBaA67GnU=
