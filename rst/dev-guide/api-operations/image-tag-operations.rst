@@ -3,10 +3,6 @@
 Image tag
 ~~~~~~~~~
 
-.. contents::
-   :depth: 1
-   :local:
-
 Use image tag API operations to add and remove
 image tags.
 

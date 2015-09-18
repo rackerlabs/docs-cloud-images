@@ -3,10 +3,6 @@
 Image sharing
 ~~~~~~~~~~~~~
 
-.. contents::
-   :depth: 1
-   :local:
-
 Use image sharing operations to distribute and manage images. For more information,
 see :ref:`Image sharing <image-sharing>` in the Cloud Images Developer Guide.
 

@@ -1,7 +1,7 @@
 .. _overview:
 
-Overview
-----------
+About the Rackspace Cloud Images API
+-----------------------------------------
 
 The Rackspace Cloud Images service enables developers to create and manipulate images, 
 image members, and associated metadata through a simple Representational State Transfer 

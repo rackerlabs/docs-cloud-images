@@ -3,10 +3,6 @@
 JSON schemas
 ~~~~~~~~~~~~
 
-.. contents::
-   :depth: 1
-   :local:  
-   
 Use the JSON schemas API operations to get
 details about JSON schema images, members, and tasks.
    
