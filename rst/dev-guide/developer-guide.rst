@@ -5,9 +5,8 @@
 ======================
 
 This guide is intended to assist software developers who want to develop applications by
-using the Rackspace Cloud Images service REST application programming interface (API).
-It fully documents the Cloud Images API, which enables developers to interact with the
-storage components of the service.
+using the REST application programming interface (API) for the Rackspace Cloud Images 
+service. 
 
 To use the information provided here, you should have a general understanding of the
 Cloud Images service and have access to an installation of the Cloud Images service. You

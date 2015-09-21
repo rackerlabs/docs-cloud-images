@@ -1,13 +1,14 @@
 .. _index:
 
 =========================================================
-Rackspace Cloud Images API, version 1.0
+Rackspace Cloud Images API 1.0
 =========================================================
 
-Learn how to use the Cloud Images service by using the ReST API. 
+Learn how to use the Rackspace Cloud Images service by using the REST API. 
 
-- See the :ref:`Developer Guide <developer-guide>` for details about using the API.
-- See the :ref:`API reference <api-reference>`, for details about API resources, operations, requests and responses.
+- For details about using the API, see the :ref:`Developer Guide <developer-guide>`.
+- For details about API resources, operations, requests and responses, see the 
+  :ref:`API reference <api-reference>`.
 
 .. toctree:: :hidden:
    :maxdepth: 2
