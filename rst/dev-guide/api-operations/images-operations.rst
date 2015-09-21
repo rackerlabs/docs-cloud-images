@@ -1,12 +1,8 @@
 .. _images-operations:
 
 Images
--------
+~~~~~~~~~
 
-.. contents::
-   :depth: 1
-   :local:
-   
 Use the images API operations to list, delete, and update images.
 
 .. include:: methods/get-list-images-images.rst

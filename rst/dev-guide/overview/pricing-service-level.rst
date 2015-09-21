@@ -1,11 +1,16 @@
 .. _pricing-service-level:
 
-Rackspace pricing and terms of service
+Pricing and terms of service
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Cloud Images is part of the Rackspace cloud and your use of the Cloud Images API will be
-billed according to the schedule at http://www.rackspace.com/cloud/images.
+Cloud Images is part of the Rackspace Cloud. The cost for API usage follows the `pricing 
+schedule for the service`_.
 
-Periodically review the Rackspace Cloud Terms of Service for your
-Terms of Service because they can be updated any time. These documents also include
-the Acceptable Use Policies.
+The service level agreement (SLA) for Rackspace Cloud Services is included in the `Rackspace Cloud SLA`_.
+
+The terms of service are part of the `Rackspace Cloud Terms of Service`_. Periodically 
+review these terms because they can be updated any time.
+
+.. _pricing schedule for the service: http://www.rackspace.com/cloud/public-pricing
+.. _Rackspace Cloud SLA: http://www.rackspace.com/information/legal/cloud/sla
+.. _Rackspace Cloud Terms of Service: http://www.rackspace.com/information/legal/cloud/tos
