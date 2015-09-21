@@ -16,4 +16,4 @@ stored on, and retrieved from, Cloud Files storage.
    :maxdepth: 3
    
    additional-resources
-   Pricing and service level <pricing-service-level>
+   Pricing and terms of service <pricing-service-level>
