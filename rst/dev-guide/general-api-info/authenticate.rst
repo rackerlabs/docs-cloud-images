@@ -65,7 +65,7 @@ entering your username and either password or your API key.
 **Example: Authenticate to the Identity Endpoint – Username and
 Password: JSON Request**
 
-.. code-block:: sh
+.. code::
 
     $ curl -s https://identity.api.rackspacecloud.com/v2.0/tokens -X 'POST' \
          -d '{"auth":{"passwordCredentials":{"username":"MyRackspaceAcct", \
@@ -75,7 +75,7 @@ Password: JSON Request**
 **Example: Authenticate to the Identity Endpoint – Username and API
 Key: JSON Request**
 
-.. code-block:: sh
+.. code::
 
     $ curl -s https://identity.api.rackspacecloud.com/v2.0/tokens -X 'POST' \
          -d '{"auth":{"RAX-KSKEY:apiKeyCredentials":{"username":"MyRackspaceAcct", "apiKey":"0000000000000000000"}}}' \
@@ -112,7 +112,7 @@ format:
 
 **Example: Authenticate: JSON Response**
 
-.. code-block:: sh
+.. code::
 
     {
         "access": {
@@ -280,7 +280,7 @@ In the following example, you first export the tenant ID, ``010101``, to the
 ``token`` environment variable. Then, you issue a cURL command to send a
 request to list images as follows:
 
-.. code-block:: sh
+.. code::
 
     $ export account="010101"
     $ export token="00000000-0000-0000-000000000000"
