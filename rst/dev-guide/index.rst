@@ -13,7 +13,7 @@ Learn how to use the Rackspace Cloud Images service by using the REST API.
 .. toctree:: :hidden:
    :maxdepth: 2
  
-   About the API <overview/index>
+   overview
    developer-guide
    concepts
    general-api-info/index 
