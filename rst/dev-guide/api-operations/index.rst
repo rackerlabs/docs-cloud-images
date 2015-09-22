@@ -5,7 +5,6 @@
    :keywords: Rackspace, Cloud Images ReST API, API resources, API methods
        
 .. toctree:: 
-   :caption: API Reference
    :maxdepth: 2
 
    images-operations
