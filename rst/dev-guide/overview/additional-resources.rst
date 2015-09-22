@@ -20,7 +20,7 @@ Use the links below to learn more about the Rackspace Cloud Images service and A
   `Rackspace API Documentation`_.
 
 
-.. _Rackspace Cloud Guide to Core Infrastructure Services: Rackspace Cloud Guide to Core Infrastructure Services
+.. _Rackspace Cloud Guide to Core Infrastructure Services: https://developer.rackspace.com/docs/user-guides/infrastructure/
 .. _Cloud Images FAQ: http://www.rackspace.com/knowledge_center/article/cloud-images-frequently-asked-questions>
 .. _Rackspace API Documentation: https://developer.rackspace.com/docs/
 .. _Software Development Kits & Tools: https://developer.rackspace.com/docs/#sdks
