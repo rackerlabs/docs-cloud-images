@@ -1,6 +1,3 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _get-get-image-details-images-image-id:
 
 Get image details
@@ -10,15 +7,11 @@ Get image details
 
     GET /images/{image_id}
 
-Gets the details for the specified image. 
-
 This operation shows the details for the image. The response body is a single image 
 entity and conforms to the schema found in :ref:`Get image schema <get-image-schema>`.
 
 
-
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -70,39 +63,39 @@ This table shows the body parameters for the response:
 +-------------------+------------+---------------------------------------------+
 |Name               |Type        |Description                                  |
 +===================+============+=============================================+
-|parameters.\ **id**|String      |The UUID of the image.                       |
+|**id**             |String      |The UUID of the image.                       |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The name of the image.                       |
-|**name**           |            |                                             |
+|**name**           |String      |The name of the image.                       |
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The status of the image. For possible image  |
-|**status**         |            |statuses, see ` 1.4.1. Image statuses        |
+|**status**         |String      |The status of the image. For possible image  |
+|                   |            |statuses, see ` 1.4.1. Image statuses        |
 |                   |            |<http://docs.rackspace.com/images/api/v2/ci- |
 |                   |            |devguide/content/image-statuses.html>`__.    |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |Specifies image visibility as either         |
-|**visibility**     |            |``public``, ``private``, or ``shared``.      |
+|**visibility**     |String      |Specifies image visibility as either         |
+|                   |``public``, |``private``, or ``shared``.                  |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The checksum of the image.                   |
-|**checksum**       |            |                                             |
+|**checksum**       |String      |The checksum of the image.                   |
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The minimum server RAM required for this     |
-|**minRam**         |            |image.                                       |
+|**minRam**         |String      |The minimum server RAM required for this     |
+|                   |            |image.                                       |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The minimum server disk size required for    |
-|**minDisk**        |            |this image.                                  |
+|**minDisk**        |String      |The minimum server disk size required for    |
+|                   |            |this image.                                  |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |Array       |An array of user-defined image tags.         |
-|**tags**           |            |                                             |
+|**tags**           |Array       |An array of user-defined image tags.         |
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The date and time that the image was created.|
-|**created**        |            |                                             |
+|**created**        |String      |The date and time that the image was created.|
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The date and time that the image was updated.|
-|**updated**        |            |                                             |
+|**updated**        |String      |The date and time that the image was updated.|
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The schema of the image.                     |
-|**schema**         |            |                                             |
+|**schema**         |String      |The schema of the image.                     |
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
 
 **Example Get image details: JSON response**

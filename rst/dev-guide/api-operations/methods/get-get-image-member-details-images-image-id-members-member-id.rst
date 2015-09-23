@@ -1,6 +1,3 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _get-get-image-member-details-images-image-id-members-member-id:
 
 Get image member details
@@ -10,12 +7,11 @@ Get image member details
 
     GET /images/{image_id}/members/{member_id}
 
-Gets the details for the specified image member. 
-
 This operation shows details of the image member. The response conforms to the schema 
 found in :ref:`Get image members schema <get-image-members-schema>`
 To get a successful response, either the image owner must make the call or the 
-``tenant_id`` of the user making the call must match the specified ``member_id``. Otherwise the response is ``HTTP 404``.
+``tenant_id`` of the user making the call must match the specified ``member_id``. 
+Otherwise the response is ``HTTP 404``.
 
 This table shows the possible response codes for this operation:
 
@@ -75,32 +71,27 @@ This table shows the body parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|parameters.\              |String *(Required)*      |The date and time that   |
-|**created_at**            |                         |the image member was     |
+|**created_at**            |String *(Required)*      |The date and time that   |
+|                          |                         |the image member was     |
 |                          |                         |created.                 |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **image_id** |String *(Required)*      |The UUID of the image.   |
+| **image_id**             |String *(Required)*      |The UUID of the image.   |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **member_id**|String *(Required)*      |The id of the image      |
+| **member_id**            |String *(Required)*      |The id of the image      |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **schema**   |String *(Required)*      |The schema of the image  |
+| **schema**               |String *(Required)*      |The schema of the image  |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **status**   |String *(Required)*      |The status of the image  |
+| **status**               |String *(Required)*      |The status of the image  |
 |                          |                         |member ( ``pending``,    |
 |                          |                         |``accepted``, or         |
 |                          |                         |``rejected``.            |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\              |String *(Required)*      |The date and time that   |
-|**updated_at**            |                         |the image member was     |
+|**updated_at**            |String *(Required)*      |The date and time that   |
+|                          |                         |the image member was     |
 |                          |                         |updated.                 |
 +--------------------------+-------------------------+-------------------------+
-
-
-
-
-
 
 
 **Example Get image member details: JSON response**

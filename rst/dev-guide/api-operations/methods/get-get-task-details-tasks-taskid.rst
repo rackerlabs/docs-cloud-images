@@ -1,6 +1,3 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _get-task-details:
 
 Get task details
@@ -16,9 +13,7 @@ information on statuses, see :ref:`Task statuses <task-statuses>`. The response 
 to the schema found in :ref:`Get tasks schema <get-task-schema>`.
 
 
-
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -50,9 +45,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -67,9 +59,6 @@ This table shows the URI parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 
 
-
-
-
 This operation does not accept a request body.
 
 
@@ -78,19 +67,15 @@ This operation does not accept a request body.
 Response
 """"""""""""""""
 
-
-
-
-
 This table shows the body parameters for the response:
 
 +-------------------------------------+-------------+---------------------------------------------+
 |Name                                 |Type         |Description                                  |
 +=====================================+=============+=============================================+
-|parameters.\ **created_at**          |String       |The date and time that the task resource was |
+| **created_at**                      |String       |The date and time that the task resource was |
 |                                     |*(Required)* |created.                                     |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **expires_at**          |String       |The date and time that the task resource     |
+| **expires_at**                      |String       |The date and time that the task resource     |
 |                                     |*(Optional)* |expires. Even after the task resource        |
 |                                     |             |expires (and is thus no longer available to  |
 |                                     |             |be polled), the result of the task (such as  |
@@ -101,21 +86,21 @@ This table shows the body parameters for the response:
 |                                     |             |   with ``status`` of ``success`` and        |
 |                                     |             |   ``failure``.                              |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **id**                  |String       |The UUID of the task resource.               |
+| **id**                              |String       |The UUID of the task resource.               |
 |                                     |*(Required)* |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **input**               |*(Required)* |The container for import input parameters.   |
+| **input**                           |*(Required)* |The container for import input parameters.   |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.input.\                   |*(Required)* |The container for image properties.          |
+|input.\                              |*(Required)* |The container for image properties.          |
 |**image_properties**                 |             |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.input.image_properties.\  |String       |The name of the image.                       |
+|input.image_properties.\             |String       |The name of the image.                       |
 |**name**                             |*(Required)* |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.input.\ **import_from**   |String       |The source of the imported image.            |
+|input.\ **import_from**              |String       |The source of the imported image.            |
 |                                     |*(Required)* |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **message**             |String       |``None`` if task import succeeded or the     |
+| **message**                         |String       |``None`` if task import succeeded or the     |
 |                                     |*(Required)* |reason why the import failed. Possible       |
 |                                     |             |errors include the following:                |
 |                                     |             |                                             |
@@ -146,33 +131,33 @@ This table shows the body parameters for the response:
 |                                     |             |import a stand-alone VHD.                    |
 |                                     |             |                                             |             
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **result**              |*(Optional)* |The container for results.                   |
+| **result**                          |*(Optional)* |The container for results.                   |
 |                                     |             |                                             |
 |                                     |             |.. note::                                    |
 |                                     |             |   This parameter is required for responses  |
 |                                     |             |   with a ``status`` of ``success``.         |
 |                                     |             |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.result.\ **image_id**     |Uuid         |The UUID of the image.                       |
+|result.\ **image_id**                |Uuid         |The UUID of the image.                       |
 |                                     |*(Optional)* |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **owner**               |String       |The tenant-id of the task owner.             |
+| **owner**                           |String       |The tenant-id of the task owner.             |
 |                                     |*(Required)* |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **schema**              |String       |The schema of the task.                      |
+| **schema**                          |String       |The schema of the task.                      |
 |                                     |*(Required)* |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **self**                |String       |The link to the task.                        |
+| **self**                            |String       |The link to the task.                        |
 |                                     |*(Required)* |                                             |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **status**              |String       |The status of the task. For possible task    |
+| **status**                          |String       |The status of the task. For possible task    |
 |                                     |*(Required)* |statuses, see                                |
 |                                     |             |:ref:`Task statuses <task-statuses>`.        |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **type**                |String       |The type of the task ( ``export`` for task   |
+| **type**                            |String       |The type of the task ( ``export`` for task   |
 |                                     |*(Required)* |exports).                                    |
 +-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **updated_at**          |String       |The date and time that the task resource was |
+| **updated_at**                      |String       |The date and time that the task resource was |
 |                                     |*(Required)* |updated.                                     |
 +-------------------------------------+-------------+---------------------------------------------+
 

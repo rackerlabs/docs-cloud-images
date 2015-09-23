@@ -1,6 +1,3 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _get-list-image-members-images-image-id-members:
 
 List image members
@@ -10,9 +7,7 @@ List image members
 
     GET /images/{image_id}/members
 
-Returns collection of members (users) with whom the image has been shared.
-
-This operation returns collection of members (users) with whom the image has been shared. 
+This operation returns a collection of members (users) with whom the image has been shared. 
 The response conforms to the schema found in :ref:`Get image members schema <get-image-members-schema>`.
 
 If a user with whom this image is shared makes this call, the member list contains only i
@@ -71,33 +66,33 @@ This table shows the body parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|parameters.\ **members**  |Array *(Required)*       |The array of image       |
+|**members**               |Array *(Required)*       |The array of image       |
 |                          |                         |members.                 |
 +--------------------------+-------------------------+-------------------------+
-|parameters.members.\      |String *(Required)*      |The date and time that   |
+|members.\                 |String *(Required)*      |The date and time that   |
 |**created_at**            |                         |the image member was     |
 |                          |                         |created.                 |
 +--------------------------+-------------------------+-------------------------+
-|parameters.members.\      |String *(Required)*      |The UUID of the image.   |
+|members.\                 |String *(Required)*      |The UUID of the image.   |
 |**image_id**              |                         |                         |
 +--------------------------+-------------------------+-------------------------+
-|parameters.members.\      |String *(Required)*      |The id of the image      |
+|members.\                 |String *(Required)*      |The id of the image      |
 |**member_id**             |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|parameters.members.\      |String *(Required)*      |The schema of the image  |
+|members.\                 |String *(Required)*      |The schema of the image  |
 |**schema**                |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|parameters.members.\      |String *(Required)*      |The status of the image  |
+|members.\                 |String *(Required)*      |The status of the image  |
 |**status**                |                         |member ( ``pending``,    |
 |                          |                         |``accepted``, or         |
 |                          |                         |``rejected``.            |
 +--------------------------+-------------------------+-------------------------+
-|parameters.members.\      |String *(Required)*      |The date and time that   |
+|members.\                 |String *(Required)*      |The date and time that   |
 |**updated_at**            |                         |the image member was     |
 |                          |                         |updated.                 |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\              |String *(Required)*      |The schema of the image  |
-|**schema**                |                         |members.                 |
+|**schema**                |String *(Required)*      |The schema of the image  |
+|                          |                         |members.                 |
 +--------------------------+-------------------------+-------------------------+
 
 **Example: List image members: JSON response**

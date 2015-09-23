@@ -1,6 +1,3 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _get-images-schema-schemas-images:
 
 Get images schema
@@ -10,14 +7,12 @@ Get images schema
 
     GET /schemas/images
 
-Gets a json-schema document that represents an image members entity, which is a container of image member entities.
+Gets a json-schema document that represents an image members entity, 
+which is a container of image member entities.
 
 The following schema is just an example. Consider only the response to the API call as authoritative.
 
-
-
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -49,29 +44,10 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
-
-
-
-
 This operation does not accept a request body.
-
-
-
 
 Response
 """"""""""""""""
-
-
-
-
-
-
-
-
-
 
 **Example Get images schema: JSON response**
 

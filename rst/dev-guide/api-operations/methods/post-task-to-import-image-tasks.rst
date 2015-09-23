@@ -1,5 +1,5 @@
 
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
+
 
 .. _post-task-to-import-image-tasks:
 

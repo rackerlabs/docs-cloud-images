@@ -1,6 +1,3 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _get-list-tasks-tasks:
 
 List tasks
@@ -55,37 +52,37 @@ This table shows the body parameters for the response:
 +--------------------+-------------+---------------------------------------------+
 |Name                |Type         |Description                                  |
 +====================+=============+=============================================+
-|parameters.\        |String       |The URI for the first task in the list.      |
-|**first**           |*(Required)* |                                             |
+|**first**           |String       |The URI for the first task in the list.      |
+|                    |*(Required)* |                                             |
 +--------------------+-------------+---------------------------------------------+
-|parameters.\        |String       |The schema of the tasks list.                |
-|**schema**          |*(Required)* |                                             |
+|**schema**          |String       |The schema of the tasks list.                |
+|                    |*(Required)* |                                             |
 +--------------------+-------------+---------------------------------------------+
-|parameters.\        |Array        |The container for tasks in the list.         |
-|**tasks**           |*(Required)* |                                             |
+|**tasks**           |Array        |The container for tasks in the list.         |
+|                    |*(Required)* |                                             |
 +--------------------+-------------+---------------------------------------------+
-|parameters.tasks.\  |String       |The date and time that the task resource was |
+|tasks.\             |String       |The date and time that the task resource was |
 |**created_at**      |*(Required)* |created.                                     |
 +--------------------+-------------+---------------------------------------------+
-|parameters.tasks.\  |String       |The UUID of the task resource.               |
+|tasks.\             |String       |The UUID of the task resource.               |
 |**id**              |*(Required)* |                                             |
 +--------------------+-------------+---------------------------------------------+
-|parameters.tasks.\  |String       |The tenant-id of the task owner.             |
+|tasks.\             |String       |The tenant-id of the task owner.             |
 |**owner**           |*(Required)* |                                             |
 +--------------------+-------------+---------------------------------------------+
-|parameters.tasks.\  |String       |The schema of the task.                      |
+|tasks.\             |String       |The schema of the task.                      |
 |**schema**          |*(Required)* |                                             |
 +--------------------+-------------+---------------------------------------------+
-|parameters.tasks.\  |String       |The link to the task.                        |
+|tasks.\             |String       |The link to the task.                        |
 |**self**            |*(Required)* |                                             |
 +--------------------+-------------+---------------------------------------------+
-|parameters.tasks.\  |String       |The status of the task. For status values,   |
+|tasks.\             |String       |The status of the task. For status values,   |
 |**status**          |*(Required)* |see :ref:`Image statuses <statuses>`.        |
 +--------------------+-------------+---------------------------------------------+
-|parameters.tasks.\  |String       |The type of the task (``export`` for task    |
+|tasks.\             |String       |The type of the task (``export`` for task    |
 |**type**            |*(Required)* |exports).                                    |
 +--------------------+-------------+---------------------------------------------+
-|parameters.tasks.\  |String       |The date and time that the task resource was |
+|tasks.\             |String       |The date and time that the task resource was |
 |**updated_at**      |*(Required)* |updated.                                     |
 +--------------------+-------------+---------------------------------------------+
 

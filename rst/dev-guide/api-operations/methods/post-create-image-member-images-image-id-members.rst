@@ -1,6 +1,3 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _post-create-image-member:
 
 Create image member
@@ -9,8 +6,6 @@ Create image member
 .. code::
 
     POST /images/{image_id}/members
-
-Adds the specified ``account ID/tenant ID`` specified in the request body as an image member.
 
 This operation allows you to add users, by ``member_id`` (which is the ``tenant_id`` ) 
 to the list of members with whom the image is shared. The member status of a newly created 
@@ -71,7 +66,7 @@ This table shows the body parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|parameters.\ **member**   |String *(Required)*      |The member ID. This is   |
+|**member**                |String *(Required)*      |The member ID. This is   |
 |                          |                         |the tenant ID of the     |
 |                          |                         |user with whom the image |
 |                          |                         |is to be shared.         |
@@ -95,25 +90,25 @@ This table shows the body parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|parameters.\              |String *(Required)*      |The date and time that   |
-|**created_at**            |                         |the image member was     |
+|**created_at**            |String *(Required)*      |The date and time that   |
+|                          |                         |the image member was     |
 |                          |                         |created.                 |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **image_id** |String *(Required)*      |The UUID of the image.   |
+|**image_id**              |String *(Required)*      |The UUID of the image.   |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **member_id**|String *(Required)*      |The id of the image      |
+|**member_id**             |String *(Required)*      |The id of the image      |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **schema**   |String *(Required)*      |The schema of the image  |
+|**schema**                |String *(Required)*      |The schema of the image  |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **status**   |String *(Required)*      |The status of the image  |
+|**status**                |String *(Required)*      |The status of the image  |
 |                          |                         |member ( ``pending``,    |
 |                          |                         |``accepted``, or         |
 |                          |                         |``rejected``.            |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\              |String *(Required)*      |The date and time that   |
-|**updated_at**            |                         |the image member was     |
+|**updated_at**            |String *(Required)*      |The date and time that   |
+|                          |                         |the image member was     |
 |                          |                         |updated.                 |
 +--------------------------+-------------------------+-------------------------+
 

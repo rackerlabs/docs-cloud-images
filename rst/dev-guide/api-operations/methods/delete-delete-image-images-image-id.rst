@@ -1,6 +1,3 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _delete-delete-image-images-image-id:
 
 Delete image
@@ -9,8 +6,6 @@ Delete image
 .. code::
 
     DELETE /images/{image_id}
-
-Deletes the specified image. 
 
 This operation deletes the image. Make sure you set ``protected`` parameter to false (Boolean) before performing the delete. If the operation succeeds, it returns an ``HTTP 204`` status code with no response body. 
 
@@ -54,9 +49,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -67,22 +59,10 @@ This table shows the URI parameters for the request:
 |                          |                         |a UUID.                  |
 +--------------------------+-------------------------+-------------------------+
 
-
-
-
-
 This operation does not accept a request body.
-
-
-
 
 Response
 """"""""""""""""
-
-
-
-
-
 
 This operation does not return a response body.
 

@@ -1,6 +1,3 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _get-image-schema:
 
 Get image schema
@@ -10,14 +7,9 @@ Get image schema
 
     GET /schemas/image
 
-Gets a json-schema document that represents a single image entity. 
-
 The following schema is just an example. Consider only the response to the API call as authoritative.
 
-
-
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -49,29 +41,11 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
-
-
-
-
 This operation does not accept a request body.
-
-
 
 
 Response
 """"""""""""""""
-
-
-
-
-
-
-
-
-
 
 **Example Get image schema: JSON response**
 

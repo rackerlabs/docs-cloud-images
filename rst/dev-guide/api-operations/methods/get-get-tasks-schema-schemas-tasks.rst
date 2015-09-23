@@ -1,6 +1,3 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _get-tasks-schema:
 
 Get tasks schema
@@ -10,14 +7,10 @@ Get tasks schema
 
     GET /schemas/tasks
 
-Gets a json-schema document that represents a container of tasks entities.
-
-This operation returns a list of task entities. The following response is just an example. Consider the response to the API call as authoritative.
-
-
+This operation returns a list of task entities. The following response is just an example. 
+Consider the response to the API call as authoritative.
 
 This table shows the possible response codes for this operation:
-
 
 +--------------------------+-------------------------+-------------------------+
 |Response Code             |Name                     |Description              |
@@ -46,14 +39,6 @@ This table shows the possible response codes for this operation:
 
 Request
 """"""""""""""""
-
-
-
-
-
-
-
-
 This operation does not accept a request body.
 
 
@@ -61,15 +46,6 @@ This operation does not accept a request body.
 
 Response
 """"""""""""""""
-
-
-
-
-
-
-
-
-
 
 **Example Get tasks schema: JSON response**
 

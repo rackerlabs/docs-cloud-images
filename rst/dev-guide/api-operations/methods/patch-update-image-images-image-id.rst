@@ -1,6 +1,3 @@
-
-.. THIS OUTPUT IS GENERATED FROM THE WADL. DO NOT EDIT.
-
 .. _patch-update-image-images-image-id:
 
 Update image
@@ -50,7 +47,9 @@ user-defined properties.
 
 
 In general, you can update any properties you own, but do not expect to be able to update 
-anyone else's properties. For example, you can't update any properties starting with ``com.rackspace``, and you might not be able to update some properties starting with ``org.openstack``.
+anyone else's properties. For example, you can't update any properties starting with 
+``com.rackspace``, and you might not be able to update some properties starting with 
+``org.openstack``.
 
 This table shows the possible response codes for this operation:
 
@@ -88,9 +87,6 @@ This table shows the possible response codes for this operation:
 Request
 """"""""""""""""
 
-
-
-
 This table shows the URI parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
@@ -101,33 +97,26 @@ This table shows the URI parameters for the request:
 |                          |                         |a UUID.                  |
 +--------------------------+-------------------------+-------------------------+
 
-
-
-
-
 This table shows the body parameters for the request:
 
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|parameters.\ **op**       |String *(Required)*      |The operation to be      |
+| **op**                   |String *(Required)*      |The operation to be      |
 |                          |                         |executed ( ``add``,      |
 |                          |                         |``remove``, or           |
 |                          |                         |``replace`` ).           |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **path**     |String *(Required)*      |The location within the  |
+| **path**                 |String *(Required)*      |The location within the  |
 |                          |                         |image where the          |
 |                          |                         |operation is to be       |
 |                          |                         |performed.               |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **value**    |String *(Optional)*      |The actual value to be   |
+| **value**                |String *(Optional)*      |The actual value to be   |
 |                          |                         |added or replaced. It is |
 |                          |                         |not required for the     |
 |                          |                         |``delete`` operation.    |
 +--------------------------+-------------------------+-------------------------+
-
-
-
 
 
 **Example Update image: JSON request**
@@ -151,61 +140,49 @@ The following example updates two properties for the image: ``name`` and ``tag``
        ]
 
 
-
-
-
 Response
 """"""""""""""""
-
-
-
-
 
 This table shows the body parameters for the response:
 
 +-------------------+------------+---------------------------------------------+
 |Name               |Type        |Description                                  |
 +===================+============+=============================================+
-|parameters.\ **id**|String      |The UUID of the image.                       |
+|**id**             |String      |The UUID of the image.                       |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The name of the image.                       |
-|**name**           |            |                                             |
+|**name**           |String      |The name of the image.                       |
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The status of the image. For possible image  |
-|**status**         |            |statuses, see ` 1.4.1. Image statuses        |
+|**status**         |String      |The status of the image. For possible image  |
+|                   |            |statuses, see ` 1.4.1. Image statuses        |
 |                   |            |<http://docs.rackspace.com/images/api/v2/ci- |
 |                   |            |devguide/content/image-statuses.html>`__.    |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |Specifies image visibility as either         |
-|**visibility**     |            |``public``, ``private``, or ``shared``.      |
+|**visibility**     |String      |Specifies image visibility as either         |
+|                   |            |``public``, ``private``, or ``shared``.      |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The checksum of the image.                   |
-|**checksum**       |            |                                             |
+|**checksum**       |String      |The checksum of the image.                   |
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The minimum server RAM required for this     |
-|**minRam**         |            |image.                                       |
+|**minRam**         |String      |The minimum server RAM required for this     |
+|                   |            |image.                                       |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The minimum server disk size required for    |
-|**minDisk**        |            |this image.                                  |
+|**minDisk**        |String      |The minimum server disk size required for    |
+|                   |this image. |                                             |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |Array       |An array of user-defined image tags.         |
-|**tags**\          |            |                                             |
-|[]                 |            |                                             |
+|**tags[]**         |Array       |An array of user-defined image tags.         |
+|                   |            |                                             |
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The date and time that the image was created.|
-|**created**        |            |                                             |
+|**created**        |String      |The date and time that the image was created.|
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The date and time that the image was updated.|
-|**updated**        |            |                                             |
+|**updated**        |String      |The date and time that the image was updated.|
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
-|parameters.\       |String      |The schema of the image.                     |
-|**schema**         |            |                                             |
+|**schema**         |String      |The schema of the image.                     |
+|                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
-
-
-
-
-
 
 
 **Example Update image: JSON response**
