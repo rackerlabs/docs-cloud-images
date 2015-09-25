@@ -4,7 +4,7 @@
 Rackspace Cloud Images API 1.0
 =========================================================
 
-**Publication date:** |today|
+*Last updated:* |today|
 
 Learn how to use the Rackspace Cloud Images service by using the REST API. 
 
