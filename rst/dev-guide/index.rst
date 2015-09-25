@@ -4,6 +4,8 @@
 Rackspace Cloud Images API 1.0
 =========================================================
 
+**Publication date:** September 29, 2012
+
 Learn how to use the Rackspace Cloud Images service by using the REST API. 
 
 - For details about using the API, see the :ref:`Developer Guide <developer-guide>`.
