@@ -203,9 +203,7 @@ This table shows the body parameters for the response:
 |                     |*(Required)* |                                             |
 +---------------------+-------------+---------------------------------------------+
 |images.\ **status**  |String       |The status of the image. For possible image  |
-|                     |*(Required)* |statuses, see ` 1.4.1. Image statuses        |
-|                     |             |<http://docs.rackspace.com/images/api/v2/ci- |
-|                     |             |devguide/content/image-statuses.html>`__.    |
+|                     |*(Required)* |statuses, see :ref:`Statuses <statuses>`.    |
 +---------------------+-------------+---------------------------------------------+
 |images.\             |String       |Specifies image visibility as either         |
 |**visibility**       |*(Required)* |``public``, ``private``, or ``shared``.      |

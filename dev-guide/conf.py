@@ -53,8 +53,9 @@ master_doc = 'index'
 builder = 'deconst-single'
 
 # General information about the project.
-project = 'Rackspace Developer Documentation'
-copyright = '2015, Rackspace'
+project = 'Rackspace Cloud Images'
+copyright = '2015, Cat Lookabaugh'
+author = 'Cat Lookabaugh'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -231,7 +232,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'RackspaceCloudApiImagesDeveloperDoc.tex', 'Rackspace Cloud Images API Developer Guide',
-   'Rackspace', 'manual'),
+   'cat.lookabaugh', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -261,7 +262,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'RackspaceCloudApiImagesDeveloperDoc', 'Rackspace Cloud Images API Developer Guide',
-     ['Rackspace'], 1)
+     ['Cat Lookabaugh'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -275,7 +276,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'RackspaceCloudApiImagesDeveloperDoc', 'Rackspace Cloud Images API Developer Guide',
-   'Rackspace', 'RackspaceCloudApiImagesDeveloperDoc', 'Learn about using the REST API for the Rackspace Cloud Images service.',
+   'Cat Lookabaugh', 'RackspaceCloudApiImagesDeveloperDoc', 'Learn about using the REST API for the Rackspace Cloud Images service.',
    'Miscellaneous'),
 ]
 
