@@ -1,7 +1,7 @@
 .. _index:
 
 =========================================================
-Rackspace Cloud Images API 1.0
+Rackspace Cloud Images API 2.0
 =========================================================
 
 *Last updated:* |today|
