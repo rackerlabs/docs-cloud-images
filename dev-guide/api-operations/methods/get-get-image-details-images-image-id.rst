@@ -69,9 +69,8 @@ This table shows the body parameters for the response:
 |                   |            |                                             |
 +-------------------+------------+---------------------------------------------+
 |**status**         |String      |The status of the image. For possible image  |
-|                   |            |statuses, see ` 1.4.1. Image statuses        |
-|                   |            |<http://docs.rackspace.com/images/api/v2/ci- |
-|                   |            |devguide/content/image-statuses.html>`__.    |
+|                   |            |statuses,                                    |
+|                   |            |see :ref:`Image statuses <image_statuses>`   |
 +-------------------+------------+---------------------------------------------+
 |**visibility**     |String      |Specifies image visibility as either         |
 |                   |``public``, |``private``, or ``shared``.                  |

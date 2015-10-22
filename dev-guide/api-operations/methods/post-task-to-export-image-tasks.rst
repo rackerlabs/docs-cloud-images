@@ -12,11 +12,13 @@ Task to export image
 
 This operation exports an image in VHD format using an asynchronous task request to export. 
 The request begins the export process and returns the task UUID that can be subsequently 
-polled to determine the status of the export by using the 
-`4.4.2. Get task details <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTask_tasks__taskID__Image_Task_Calls.html>`__ operation. The response conforms to the schema found in `4.5.5. Get tasks schema <http://docs.rackspace.com/images/api/v2/ci-devguide/content/GET_getTasksSchemas_schemas_tasks_Schema_Calls.html>`__. 
+polled to determine the status of the export by using the :ref:`Get task details <get-task-details>` 
+operation. The response conforms to the schema found in :ref:`Get tasks schema <get-task-schema>`. 
 
 .. note::
-   The exported image is deposited in your Cloud Files account and is identified by the ``image_uuid`` with a.vhd extension. You are responsible for ensuring that any distribution of your image from the Rackspace open cloud complies with any licensing restrictions.
+   The exported image is deposited in your Cloud Files account and is identified by the 
+   ``image_uuid`` with a.vhd extension. You are responsible for ensuring that any distribution 
+   of your image from the Rackspace open cloud complies with any licensing restrictions.
    
 This table shows the possible response codes for this operation:
 
@@ -159,9 +161,8 @@ This table shows the body parameters for the response:
 |                              |*(Required)* |                                             |
 +------------------------------+-------------+---------------------------------------------+
 |             **status**       |String       |The status of the task. For possible task    |
-|                              |*(Required)* |statuses, see ` 1.4.2. Task statuses         |
-|                              |             |<http://docs.rackspace.com/images/api/v2/ci- |
-|                              |             |devguide/content/task-statuses.html>`__.     |
+|                              |*(Required)* |statuses, see                                |
+|                              |             |:ref:`Image statuses <image_statuses>`       |
 +------------------------------+-------------+---------------------------------------------+
 |             **type**         |String       |The type of the task ( ``export`` for task   |
 |                              |*(Required)* |exports).                                    |

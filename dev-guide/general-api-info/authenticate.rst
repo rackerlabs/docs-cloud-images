@@ -16,8 +16,8 @@ The following sections list the Rackspace Cloud Identity Service
 endpoint, show you how make an authentication request, and describe the
 authentication response.
 
-For detailed information about the Identity Service v2.0, see the
-*Cloud Identity Client Developer Guide API v2.0*.
+For detailed information about the Identity Service v2.0, see the 
+:rax-devdocs:`Cloud Identity Client Developer Guide <cloud-identity/v2/developer-guide/#document-overview>`.
 
 Rackspace Cloud Identity Service Endpoint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,22 +48,19 @@ Rackspace Cloud Control Panel.
 
 To find your API key, perform the following steps:
 
-#. Log in to the Cloud Control Panel
-   (`<http://mycloud.rackspace.com>`__\ http://mycloud.rackspace.com).
+#. Log in to the :mycloud:`Cloud Control Panel<>`.
 
-#. On the upper-right side of the top navigation pane, click your
-   username.
+#. On the upper-right side of the top navigation pane, click your username.
 
 #. From the menu, select Account Settings.
 
-#. In the Login Details section of the Account Settings page, locate the
-   API Key field and click Show.
+#. In the Login Details section of the Account Settings page, locate the API Key field and 
+   click Show.
 
-The following cURL examples show how to get an authentication token by
-entering your username and either password or your API key.
+The following cURL examples show how to get an authentication token by entering your username 
+and either password or your API key.
 
-**Example: Authenticate to the Identity Endpoint – Username and
-Password: JSON Request**
+**Example: Authenticate to the Identity Endpoint – Username and Password: JSON Request**
 
 .. code::
 
@@ -72,8 +69,7 @@ Password: JSON Request**
          "password":"MyRackspacePwd"}}}' \
          -H "Content-Type: application/json" | python -m json.tool
 
-**Example: Authenticate to the Identity Endpoint – Username and API
-Key: JSON Request**
+**Example: Authenticate to the Identity Endpoint – Username and API Key: JSON Request**
 
 .. code::
 
@@ -83,8 +79,7 @@ Key: JSON Request**
 
 
 .. note::
-   In these examples, the following pipe command makes the JSON output
-   more readable:
+   In these examples, the following pipe command makes the JSON outputmore readable:
    ::
 
    | python -m json.tool
@@ -92,12 +87,11 @@ Key: JSON Request**
 Authentication Response
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-In response to valid credentials, your request returns an authentication
-token and a service catalog with the endpoints that you use to request
-services.
+In response to valid credentials, your request returns an authentication token and a service 
+catalog with the endpoints that you use to request services.
 
-Do not include explicit API endpoints in your scripts and applications.
-Instead, find the endpoint for your service and region in your service catalog and use it.
+Do not include explicit API endpoints in your scripts and applications. Instead, find the 
+endpoint for your service and region in your service catalog and use it.
 
 .. note::
    If you authenticated with username and password credentials, and the
@@ -107,8 +101,7 @@ Instead, find the endpoint for your service and region in your service catalog a
    To complete the authentication process, submit a second POST tokens
    request with multi-factor authentication credentials.
 
-The following output shows a partial authentication response in JSON
-format:
+The following output shows a partial authentication response in JSON format:
 
 **Example: Authenticate: JSON Response**
 
@@ -215,23 +208,18 @@ format:
 
 Successful authentication returns the following information:
 
-**Endpoints to request Rackspace Cloud services**. Appears in the
-``endpoints`` element in the ``serviceCatalog`` element.
+**Endpoints to request Rackspace Cloud services**. Appears in the ``endpoints`` element in 
+the ``serviceCatalog`` element.
 
-Endpoint information includes the public URL, which is the endpoint that
-you use to access the service, as well as region, tenant ID, and version
-information.
+Endpoint information includes the public URL, which is the endpoint that you use to access 
+the service, as well as region, tenant ID, and version information.
 
 To access the Cloud Images service, use the endpoint for the ``cloudImages`` service.
 
-.. tip:: To help you decide which regionalized endpoint to use, read about
-   `special considerations <http://www.rackspace.com/knowledge_center/article/about-regions>`_ for choosing a data center.
+**Tenant ID**. Appears in the ``tenantId`` field in the ``endpoints`` element. The tenant 
+ID is also known as the account number.
 
-**Tenant ID**. Appears in the ``tenantId`` field in the ``endpoints``
-element. The tenant ID is also known as the account number.
-
-You include the tenant ID in the endpoint URL when you call a cloud
-service.
+You include the tenant ID in the endpoint URL when you call a cloud service.
 
 **The name of the service**. Appears in the ``name`` field.
 
@@ -239,46 +227,40 @@ Locate the correct service name in the service catalog, as follows:
 
 -  **Cloud Images**. Named ``cloudImages`` in the catalog.
 
-   To access the Cloud Images service, use the ``publicURL`` value for the
-   ``cloudImages`` service.
+   To access the Cloud Images service, use the ``publicURL`` value for the ``cloudImages`` service.
 
-   The service might show multiple endpoints to enable regional
-   choice. Select the appropriate endpoint for the region that you want
-   to interact with by examining the ``region`` field.
+   The service might show multiple endpoints to enable regional choice. Select the appropriate 
+   endpoint for the region that you want to interact with by examining the ``region`` field.
 
 .. tip:: To help you decide which regionalized endpoint to use, read about
-   special considerations for choosing a data center at
-   http://ord.admin.kc.rakr.net/knowledge_center/article/about-regions.
+   :kc-article:`special considerations<about-regions>` for choosing a data center.
 
 If you use the authentication token to access this service, you can perform Cloud Images
 API operations.
 
-**Expiration date and time for authentication token**. Appears in the
-``expires`` field in the ``token`` element.
+**Expiration date and time for authentication token**. Appears in the ``expires`` field in 
+the ``token`` element.
 
 After this date and time, the token is no longer valid.
 
-This field predicts the maximum lifespan for a token, but does not
-guarantee that the token reaches that lifespan.
+This field predicts the maximum lifespan for a token, but does not guarantee that the token 
+reaches that lifespan.
 
 Clients are encouraged to cache a token until it expires.
 
-Because the authentication token expires after 24 hours, you must
-generate a token once a day.
+Because the authentication token expires after 24 hours, you must generate a token once a day.
 
-**Authentication token**. Appears in the ``id`` field in the ``token``
-element.
+**Authentication token**. Appears in the ``id`` field in the ``token`` element.
 
-You pass the authentication token in the ``X-Auth-Token`` header each
-time that you send a request to a service.
+You pass the authentication token in the ``X-Auth-Token`` header each time that you send a 
+request to a service.
 
 Once you have your authentication token and your endpoint you are ready to send a
 request to the Cloud Images service.
 
-In the following example, you first export the tenant ID, ``010101``, to the
-``account`` environment variable and the authentication token to the
-``token`` environment variable. Then, you issue a cURL command to send a
-request to list images as follows:
+In the following example, you first export the tenant ID, ``010101``, to the ``account`` 
+environment variable and the authentication token to the ``token`` environment variable. 
+Then, you issue a cURL command to send a request to list images as follows:
 
 .. code::
 

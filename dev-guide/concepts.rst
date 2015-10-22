@@ -604,9 +604,9 @@ value member that specifies the value to be added.
 
 .. warning::
    There is a small subset of standard image properties that can be
-   added by users; please consult the `Rackspace Knowledge Center <http://www.rackspace.com/knowledge_center/>`__ for details. If
-   you add any other properties as part of your PATCH request, the
-   request fails.
+   added by users; please consult :kc-article:`Image metadata and property protection 
+   <cloud-images-faq#image-metadata-andproperty-protection>` for details. 
+   If you add any other properties as part of your PATCH request, the request fails.
 
 Add Example
 

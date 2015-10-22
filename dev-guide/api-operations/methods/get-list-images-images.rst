@@ -38,9 +38,9 @@ You can sort the results of this operation by using the ``sort_key`` and ``sort_
 The API uses the natural sorting of whatever image attribute is provided as the ``sort_key``. 
 
 .. note::
-   Public images may reach end-of-life and be removed from the base image list. This 
-   `Hidden Base Images article <http://www.rackspace.com/knowledge_center/article/hidden-base-images>`__ 
-   contains images which have been removed from the base images list but which may still be available.
+   Public images may reach end-of-life and be removed from the base image list. The
+   :kc-article:`Hidden Base Images <hidden-base-images>` article
+   lists images which have been removed from the base images list but which may still be available.
    
 
 This table shows the possible response codes for this operation:

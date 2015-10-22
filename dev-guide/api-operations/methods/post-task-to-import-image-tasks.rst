@@ -1,6 +1,3 @@
-
-
-
 .. _post-task-to-import-image-tasks:
 
 Task to import image
@@ -21,15 +18,14 @@ To successfully import an image:
 
    If you are importing an image that you have previously exported from Cloud Images 
    in another region of the Rackspace open cloud, your image is already in the appropriate 
-   format. You can find information on `preparing a custom image for 
-   import <http://www.rackspace.com/knowledge_center/article/preparing-an-image-for-import-into-the-rackspace-open-cloud>`__ 
-   in the Rackspace Knowledge Center.
+   format. This article provides information on :kc-article:`preparing a custom image for import 
+   <preparing-an-image-for-import-into-the-rackspace-open-cloud>`.
       
 *  Store the image in your Cloud Files account.
 
 
 .. note::
-   As described in the `Rackspace Terms of Service <http://docs.rackspace.com/images/api/v2/ci-devguide/content/ch_image-service-dev-overview.html>`__, 
+   As described in the :ref:` Rackspace terms of service <TOS>`, 
    make sure that you are aware of and respect all licensing restrictions that apply to any 
    software that you import into the Rackspace open cloud. For example, Microsoft licensing rules are very 
    restrictive. Microsoft product use rights do not allow the use of License Mobility for Windows licenses. 
@@ -77,18 +73,18 @@ This table shows the body parameters for the request:
 +-------------------------------------+--------------------+-------------------+
 |Name                                 |Type                |Description        |
 +=====================================+====================+===================+
-|parameters.\ **type**                |String *(Required)* |The type of task.  |
+|**type**                             |String *(Required)* |The type of task.  |
 |                                     |                    |Use ``import`` for |
 |                                     |                    |task imports.      |
 +-------------------------------------+--------------------+-------------------+
-|parameters.\ **input**               |*(Required)*        |The container for  |
+|**input**                            |*(Required)*        |The container for  |
 |                                     |                    |import input       |
 |                                     |                    |parameters.        |
 +-------------------------------------+--------------------+-------------------+
-|parameters.input.\                   |*(Required)*        |The container for  |
+|input.\                              |*(Required)*        |The container for  |
 |**image_properties**                 |                    |image properties.  |
 +-------------------------------------+--------------------+-------------------+
-|parameters.input.image_properties.\  |String *(Required)* |The name of the    |
+|input.image_properties.\             |String *(Required)* |The name of the    |
 |**name**                             |                    |image. ..          |
 |                                     |                    |warning:: Name is  |
 |                                     |                    |the only property  |
@@ -101,7 +97,7 @@ This table shows the body parameters for the request:
 |                                     |                    |will cause the     |
 |                                     |                    |operation to fail. |
 +-------------------------------------+--------------------+-------------------+
-|parameters.input.\ **import_from**   |String *(Required)* |The source of the  |
+|input.\ **import_from**              |String *(Required)* |The source of the  |
 |                                     |                    |imported image.    |
 +-------------------------------------+--------------------+-------------------+
 
@@ -130,98 +126,97 @@ Response
 
 This table shows the body parameters for the response:
 
-+-------------------------------------+-------------+---------------------------------------------+
-|Name                                 |Type         |Description                                  |
-+=====================================+=============+=============================================+
-|parameters.\ **created_at**          |String       |The date and time that the task resource was |
-|                                     |*(Required)* |created.                                     |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **expires_at**          |String       |The date and time that the task resource     |
-|                                     |*(Optional)* |expires. Even after the task resource        |
-|                                     |             |expires (and is thus no longer available to  |
-|                                     |             |be polled), the result of the task (such as  |
-|                                     |             |an imported or exported image) still exists. |
-|                                     |             |.. note:: This parameter is required for     |
-|                                     |             |responses with ``status`` of ``success`` and |
-|                                     |             |``failure``.                                 |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **id**                  |String       |The UUID of the task resource.               |
-|                                     |*(Required)* |                                             |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **input**               |*(Required)* |The container for import input parameters.   |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.input.\                   |*(Required)* |The container for image properties.          |
-|**image_properties**                 |             |                                             |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.input.image_properties.\  |String       |The name of the image.                       |
-|**name**                             |*(Required)* |                                             |
-|                                     |             | .. warning::                                |
-|                                     |             |     Name is the only property that can be   |
-|                                     |             |     included in ``image-properties``.       |
-|                                     |             |     Including any other property will       |
-|                                     |             |     cause the operation to fail.            |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.input.\ **import_from**   |String       |The source of the imported image.            |
-|                                     |*(Required)* |                                             |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **message**             |String       |``None`` if task import succeeded or the     |
-|                                     |*(Required)* |reason why the import failed. Possible       |
-|                                     |             |errors include the following:                |
-|                                     |             |                                             |
-|                                     |             |``111``: The image cannot be imported/       |
-|                                     |             |There is an unspecified                      |
-|                                     |             |problem with your VHD that caused it to fail |
-|                                     |             |our validation checks.                       |
-|                                     |             |                                             |
-|                                     |             |``396``: The image cannot                    |
-|                                     |             |be imported. The file is not a valid VHD.    |
-|                                     |             |                                             |
-|                                     |             |``413``: The image cannot be imported. The   |
-|                                     |             |virtual size of the disk exceeds the 40GB    |
-|                                     |             |limit.                                       |
-|                                     |             |                                             |
-|                                     |             |``523``: The image cannot be imported.       |
-|                                     |             |Only fixed or dynamic disks may be imported. |
-|                                     |             |                                             |
-|                                     |             |``609``: The image cannot be imported. The   |
-|                                     |             |physical size of the disk exceeds the 40GB   |
-|                                     |             |limit.                                       |
-|                                     |             |                                             |
-|                                     |             |``614``: The image cannot be imported.       |
-|                                     |             |The internal UUID of the VHD is all zeros.   |
-|                                     |             |                                             |
-|                                     |             |``721``: The image cannot be imported.       |
-|                                     |             |Your VHD has a parent disk. You can only     |
-|                                     |             |import a stand-alone VHD.                    |
-|                                     |             |                                             |   
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **result**              |*(Optional)* |The container for results. .. note:: This    |
-|                                     |             |parameter is required for responses with     |
-|                                     |             |``status`` of ``success``.                   |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.result.\ **image_id**     |Uuid         |The UUID of the image.                       |
-|                                     |*(Optional)* |                                             |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **owner**               |String       |The tenant-id of the task owner.             |
-|                                     |*(Required)* |                                             |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **schema**              |String       |The schema of the task.                      |
-|                                     |*(Required)* |                                             |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **self**                |String       |The link to the task.                        |
-|                                     |*(Required)* |                                             |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **status**              |String       |The status of the task. For possible task    |
-|                                     |*(Required)* |statuses, see ` 1.4.2. Task statuses         |
-|                                     |             |<http://docs.rackspace.com/images/api/v2/ci- |
-|                                     |             |devguide/content/task-statuses.html>`__.     |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **type**                |String       |The type of the task ( ``export`` for task   |
-|                                     |*(Required)* |exports).                                    |
-+-------------------------------------+-------------+---------------------------------------------+
-|parameters.\ **updated_at**          |String       |The date and time that the task resource was |
-|                                     |*(Required)* |updated.                                     |
-+-------------------------------------+-------------+---------------------------------------------+
++--------------------+------------+---------------------------------------------+
+|Name                |Type        |Description                                  |
++====================+============+=============================================+
+|**created_at**      |String      |The date and time that the task resource was |
+|                    |*(Required)*|created.                                     |
++--------------------+------------+---------------------------------------------+
+|**expires_at**      |String      |The date and time that the task resource     |
+|                    |*(Optional)*|expires. Even after the task resource        |
+|                    |            |expires (and is thus no longer available to  |
+|                    |            |be polled), the result of the task (such as  |
+|                    |            |an imported or exported image) still exists. |
+|                    |            |.. note:: This parameter is required for     |
+|                    |            |responses with ``status`` of ``success`` and |
+|                    |            |``failure``.                                 |
++--------------------+------------+---------------------------------------------+
+|**id**              |String      |The UUID of the task resource.               |
+|                    |*(Required)*|                                             |
++--------------------+------------+---------------------------------------------+
+|**input**           |*(Required)*|The container for import input parameters.   |
++--------------------+------------+---------------------------------------------+
+|input.\             |*(Required)*|The container for image properties.          |
+|**image_properties**|            |                                             |
++--------------------+------------+---------------------------------------------+
+|input.\             |String      |The name of the image.                       |
+|image_properties.\  |*(Required)*|                                             |
+|**name**            |            | .. warning::                                |
+|                    |            |     Name is the only property that can be   |
+|                    |            |     included in ``image-properties``.       |
+|                    |            |     Including any other property will       |
+|                    |            |     cause the operation to fail.            |
++--------------------+------------+---------------------------------------------+
+|input.\             |String      |The source of the imported image.            |
+|**import_from**     |*(Required)*|                                             |
++--------------------+------------+---------------------------------------------+
+|**message**         |String      |``None`` if task import succeeded or the     |
+|                    |*(Required)*|reason why the import failed. Possible       |
+|                    |            |errors include the following:                |
+|                    |            |                                             |
+|                    |            |``111``: The image cannot be imported/       |
+|                    |            |There is an unspecified                      |
+|                    |            |problem with your VHD that caused it to fail |
+|                    |            |our validation checks.                       |
+|                    |            |                                             |
+|                    |            |``396``: The image cannot                    |
+|                    |            |be imported. The file is not a valid VHD.    |
+|                    |            |                                             |
+|                    |            |``413``: The image cannot be imported. The   |
+|                    |            |virtual size of the disk exceeds the 40GB    |
+|                    |            |limit.                                       |
+|                    |            |                                             |
+|                    |            |``523``: The image cannot be imported.       |
+|                    |            |Only fixed or dynamic disks may be imported. |
+|                    |            |                                             |
+|                    |            |``609``: The image cannot be imported. The   |
+|                    |            |physical size of the disk exceeds the 40GB   |
+|                    |            |limit.                                       |
+|                    |            |                                             |
+|                    |            |``614``: The image cannot be imported.       |
+|                    |            |The internal UUID of the VHD is all zeros.   |
+|                    |            |                                             |
+|                    |            |``721``: The image cannot be imported.       |
+|                    |            |Your VHD has a parent disk. You can only     |
+|                    |            |import a stand-alone VHD.                    |
+|                    |            |                                             |   
++--------------------+------------+---------------------------------------------+
+|**result**          |*(Optional)*|The container for results. .. note:: This    |
+|                    |            |parameter is required for responses with     |
+|                    |            |``status`` of ``success``.                   |
++--------------------+------------+---------------------------------------------+
+|result.\            |Uuid        |The UUID of the image.                       |
+|**image_id**        |*(Optional)*|                                             |
++--------------------+------------+---------------------------------------------+
+|**owner**           |String      |The tenant-id of the task owner.             |
+|                    |*(Required)*|                                             |
++--------------------+------------+---------------------------------------------+
+|**schema**          |String      |The schema of the task.                      |
+|                    |*(Required)*|                                             |
++--------------------+------------+---------------------------------------------+
+|**self**            |String      |The link to the task.                        |
+|                    |*(Required)*|                                             |
++--------------------+------------+---------------------------------------------+
+|**status**          |String      |The status of the image. For possible image  |
+|                    |            |statuses,                                    |
+|                    |            |see :ref:`Image statuses <image_statuses>`   |
++--------------------+------------+---------------------------------------------+
+|**type**            |String      |The type of the task ( ``export`` for task   |
+|                    |*(Required)*|exports).                                    |
++--------------------+------------+---------------------------------------------+
+|**updated_at**      |String      |The date and time that the task resource was |
+|                    |*(Required)*|updated.                                     |
++--------------------+------------+---------------------------------------------+
 
 **Example: Import Task - Pending Response**
 
