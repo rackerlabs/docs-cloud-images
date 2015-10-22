@@ -9,14 +9,12 @@ using the REST application programming interface (API) for the Rackspace Cloud I
 service. 
 
 To use the information provided here, you should have a general understanding of the
-`Rackspace Cloud Images service`_ and have a `Rackspace Cloud account`_ with access to the Cloud Images service. You
-should also be familiar with the following technologies:
+:kc-article:`Rackspace Cloud Images service <cloud-images-frequently-asked-questions>` 
+and have a :rax-cart:`Rackspace Cloud account <cloud>` with access to the 
+Cloud Images service. You should also be familiar with the following technologies:
 
 -  *RESTful* web services
 
 -  *HTTP*/1.1
 
 -  JSON data serialization format
-
-.. _Rackspace Cloud Images service: http://www.rackspace.com/knowledge_center/article/cloud-images-frequently-asked-questions
-.. _Rackspace Cloud Account: https://cart.rackspace.com/cloud
