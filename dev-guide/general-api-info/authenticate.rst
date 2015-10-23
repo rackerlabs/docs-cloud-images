@@ -40,11 +40,13 @@ In the request body, supply one of the following sets of credentials:
 Your username and password are the ones that you use to log in to the
 Rackspace Cloud Control Panel.
 
-.. note:: If you authenticate with username and password credentials, you can
-   use multi-factor authentication to add an additional level of account
-   security. This feature is not implemented for username and API
-   credentials. For more information, search for multifactor authentication
-   on the Rackspace site.
+..  note::
+
+    If you authenticate with username and password credentials, you can use multi-factor 
+    authentication to add an additional level of account security. This feature is not 
+    implemented for username and API credentials. For more information, see 
+    :rax-devdocs:`multi-factor authentication <cloud-identity/v2/developer-guide/#document-authentication-info/use-mfa-ops>` 
+    in the *Cloud Identity Client Developer Guide*.
 
 To find your API key, perform the following steps:
 
@@ -94,12 +96,12 @@ Do not include explicit API endpoints in your scripts and applications. Instead,
 endpoint for your service and region in your service catalog and use it.
 
 .. note::
-   If you authenticated with username and password credentials, and the
-   Identity service returns a 401 message requesting additional credentials,
-   your account is configured for multi-factor authentication.
-
-   To complete the authentication process, submit a second POST tokens
-   request with multi-factor authentication credentials.
+   If you authenticated with username and password credentials, and the Identity service 
+   returns a 401 message requesting additional credentials, your account is configured 
+   for :rax-devdocs:`multi-factor authentication <cloud-identity/v2/developer-guide/#document-authentication-info/use-mfa-ops>`. 
+        
+   To complete the authentication process, submit a second POST tokens request with 
+   multi-factor authentication credentials.
 
 The following output shows a partial authentication response in JSON format:
 
