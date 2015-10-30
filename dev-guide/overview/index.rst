@@ -3,7 +3,7 @@
 About the API
 -----------------------------------------
 
-The Rackspace Cloud Images API service enables developers to create and manipulate images, 
+The |apiservice| service enables developers to create and manipulate images, 
 image members, and associated metadata through a simple Representational State Transfer 
 (REST) web service interface.
 
@@ -17,3 +17,4 @@ stored on, and retrieved from, Cloud Files storage.
    
    additional-resources
    Pricing and terms of service <pricing-service-level>
+   api-service-updates
