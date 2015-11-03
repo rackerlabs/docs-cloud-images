@@ -130,7 +130,7 @@ extlinks = {
 rst_epilog = """
 .. |apiservice| replace:: Rackspace Cloud Images API
 .. |no changes| replace:: None for this release.
-.. |contract version| replace:: v2
+.. |contract version| replace:: 2.0
 """
 
 
