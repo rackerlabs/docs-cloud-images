@@ -17,7 +17,9 @@ API.
 .. toctree:: :hidden:
    :maxdepth: 2
  
-   overview/index
+   Cloud Images 2.0 <self>
+   API Status <http://www.rackspacestatus.com/>
+   About the API <overview/index>
    developer-guide
    concepts
    general-api-info/index 
