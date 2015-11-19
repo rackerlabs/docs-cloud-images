@@ -3,7 +3,7 @@
 Service access endpoints
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Rackspace Cloud Images service is a regionalized service. The user of the service is 
+The |service| service is a regionalized service. The user of the service is 
 therefore responsible for selecting the appropriate regional endpoint to ensure access to 
 servers, networks, or other Cloud services.
 

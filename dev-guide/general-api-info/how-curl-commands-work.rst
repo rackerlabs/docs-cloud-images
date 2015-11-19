@@ -5,10 +5,39 @@ How cURL commands work
 
 cURL is a command-line tool that you can use to interact with REST interfaces. cURL lets
 you to transmit and receive HTTP requests and responses from the command line or a shell
-script, which enables you to work with the API directly. It is available for Linux distributions,
-Mac OS X, and Windows. For information about cURL, see http://curl.haxx.se/.
+script, which enables you to work with the API directly. It is available for Linux 
+distributions, Mac OS X, and Windows. For information about cURL, see 
+`http://curl.haxx.se/ <http://curl.haxx.se/>`__.
 
-To run the cURL request examples shown in this guide, copy each example from the HTML version
+To run the cURL requests shown in this guide, export your tenant ID and the token that you 
+got during authentication to environment variables. Then copy the examples from this guide 
+to the command line, script, or tool of your choice, changing URI parameters or body 
+parameters as needed.
+
+.. _export-variables:
+
+To export environment variables:
+
+1. Export your tenant ID to the ``account`` environment variable:
+
+   .. code::  
+
+       $ export account="tenantID"
+
+   Where ``tenantID`` is your account ID.
+
+2. Export your authentication token to the ``token`` environment
+   variable:
+
+   .. code::  
+
+       $ export token="token_id"
+
+   Where ``token_id`` is the authentication token value in the ``id`` field of the 
+   ``token`` element in the authentication response.
+
+
+After you have exported the variables, copy each example from the HTML version
 of this guide directly to the command line or a script.
 
 .. _cn-dg-generalapi-curl-json:
@@ -97,6 +126,8 @@ appending the following command to the cURL call:
 .. code::
 
    | python -m json.tool
+
+.. _json-tool:
 
 ..  note::
 
