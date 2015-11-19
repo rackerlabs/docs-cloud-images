@@ -7,13 +7,9 @@ To export an image from the Cloud Images service so that you can store a
 copy offline, create an export task. For more information about image
 tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
 
- 
-Export an image with cURL
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
 1. Issue the following cURL command to create a task to export the image. In this example, 
-	the image ``ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6`` is exported to the ``exports`` 
-	directory on your Cloud Files account.
+   the image ``ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6`` is exported to the ``exports`` 
+   directory on your Cloud Files account.
 
    .. code::  
 
@@ -26,16 +22,15 @@ Export an image with cURL
    **Options:**
 
    -  **-X**: Identifies the HTTP command. If no ``-X`` parameter is specified, the default 
-   	is **GET**.
+      is **GET**.
 
    -  **-s**: Runs the command in silent mode.
 
    -  **-H**: Specified header information. In this case, it provides
       the content type and the authentication token. If you previously
       exported the token environment variable as instructed in
-      addlink “Exporting environment variables”, you can use the $token
-      variable. Otherwise, substitute your actual token for the
-      variable.
+      :ref:`Exporting environment variables <export-variables>`, you can use the $token
+      variable. Otherwise, substitute your actual token for the variable.
 
    -  **-d**: Specifies the JSON request body.
 

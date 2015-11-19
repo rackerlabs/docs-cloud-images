@@ -6,10 +6,6 @@ Create an image member
 To share an image with a particular user, you need to know who the user is, create an image 
 member for that user, and associate the image member with the image.
 
- 
-Create an image member with cURL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 Issue the following cURL command to create an image member for an image. In this example, 
 you share the image ``a96be11e-8536-4910-92cb-de50aa19dfe6``, which you created, with
 user ``123456``. You might have blogged about your image, and the user emailed you 
@@ -34,8 +30,7 @@ member parameter.
    -  **-H**: Specified header information. In this case, it provides
       the content type and the authentication token. If you previously
       exported the token environment variable as instructed in
-      addlink “Exporting environment
-      variables”, you can use the $token
+      :ref:`Exporting environment variables <export-variables>`, you can use the $token
       variable. Otherwise, substitute your actual token for the
       variable.
 

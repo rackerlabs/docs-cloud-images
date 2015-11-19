@@ -8,7 +8,8 @@ You have several options for sending requests through an API:
 - Developers and testers might prefer to use cURL with the command-line tool from
   http://curl.haxx.se/.
 
-  For more information about using cURL, search for "cURL commands".
+  For more information about using cURL, see 
+  :ref:`How cURL commands work <how-curl-commands-work>`.
 
 - If you like to use a more graphical interface, the REST client for Mozilla Firefox also
   works well for testing and trying out commands. See

@@ -5,10 +5,6 @@ List images 
 
 To find out what images are available, list them.
 
- 
-List images with cURL
-~~~~~~~~~~~~~~~~~~~~~
-
 1. Issue the following cURL command:
 
    .. code::  
@@ -20,12 +16,10 @@ List images with cURL
 
    -  **-s**: Runs the command in silent mode.
 
-   -  **-H**: Specified header information. In this case, it provides
-      the authentication token. If you previously exported the token
-      environment variable as instructed in addlink “Exporting
-      environment variables”, you can use the
-      $token variable. Otherwise, substitute your actual token for the
-      variable.
+   -  **-H**: Specified header information. In this case, it provides the authentication 
+      token. If you previously exported the token environment variable as instructed in 
+      :ref:`Exporting environment variables <export-variables>`,, you can use the $token 
+      variable. Otherwise, substitute your actual token for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
       JSON output. For more information about json.tool, see

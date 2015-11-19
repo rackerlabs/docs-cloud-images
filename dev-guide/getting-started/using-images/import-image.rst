@@ -7,10 +7,6 @@ To import an image to the Cloud Images service so that it is available
 to use and to share, create an import task. For more information about
 image tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
 
- 
-Import an image with cURL
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
 1. Issue the following cURL command to create a task to import an image.
    In this example, the source file for the ``my-excellent-image.vhd``
    image, is in the ``exports`` directory on your Cloud Files account.
@@ -30,12 +26,10 @@ Import an image with cURL
 
    -  **-s**: Runs the command in silent mode.
 
-   -  **-H**: Specified header information. In this case, it provides
-      the content type and the authentication token. If you previously
-      exported the token environment variable as instructed in
-      addlink “Exporting environment variables”, you can use the $token
-      variable. Otherwise, substitute your actual token for the
-      variable.
+   -  **-H**: Specified header information. In this case, it provides the content type and 
+      the authentication token. If you previously exported the token environment variable 
+      as instructed in :ref:`Exporting environment variables <export-variables>`, you can 
+      use the $token variable. Otherwise, substitute your actual token for the variable.
 
    -  **-d**: Specifies the JSON request body.
 

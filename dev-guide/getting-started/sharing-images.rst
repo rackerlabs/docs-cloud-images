@@ -4,9 +4,16 @@ Sharing images 
 --------------
 
 The Cloud Images API enables image owners to share images that they have created with 
-others and to use images created by someone else. To learn more about the fundamentals of 
-image sharing, see :ref:`Image sharing <image-sharing>`. The following examples show some 
-basic image sharing operations with cURL examples.
+others and to use images created by someone else. See :ref:`Image sharing <image-sharing>`
+to learn more about the fundamental concepts. The following sections show some basic image 
+sharing operations with cURL examples:
+
+-	:ref:`Create an image member <sharing-image-create-image-member>`
+-	:ref:`List image members <sharing-image-list-image-members>`
+-	:ref:`Get image member details <sharing-image-get-image-member-details>`
+-	:ref:`Update an image member <sharing-image-update-image-member>`
+-	:ref:`Delete an image member <sharing-image-delete-image-member>`
+
 
 .. toctree::
    :maxdepth: 2

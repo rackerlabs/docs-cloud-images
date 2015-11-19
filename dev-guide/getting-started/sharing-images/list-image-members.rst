@@ -6,10 +6,6 @@ List image members
 If you want to see everyone with whom you've shared an image and the status of each member, 
 list the image members.
 
- 
-List image members with cURL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 -  Issue the following cURL command to list the image members for an
    image. In this example, you list members for image
    ``a96be11e-8536-4910-92cb-de50aa19dfe6``.
@@ -24,12 +20,10 @@ List image members with cURL
 
    -  **-s**: Runs the command in silent mode.
 
-   -  **-H**: Specified header information. In this case, it provides
-      the authentication token. If you previously exported the token
-      environment variable as instructed in addlink “Exporting
-      environment variables”, you can use the
-      $token variable. Otherwise, substitute your actual token for the
-      variable.
+   -  **-H**: Specified header information. In this case, it provides the authentication 
+      token. If you previously exported the token environment variable as instructed in 
+      :ref:`Exporting environment variables <export-variables>`, you can use the $token 
+      variable. Otherwise, substitute your actual token for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
       JSON output. For more information about json.tool, see

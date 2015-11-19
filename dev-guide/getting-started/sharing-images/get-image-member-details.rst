@@ -5,10 +5,6 @@ Get image member details
 
 If you want to see details for a specific image member, get the image member's details.
 
- 
-Get an image member's details with cURL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 -  Issue the following cURL command to get the image member's details.
    In this example, you list details for member ``123456`` of image
    ``a96be11e-8536-4910-92cb-de50aa19dfe6``.
@@ -25,10 +21,9 @@ Get an image member's details with cURL
 
    -  **-H**: Specified header information. In this case, it provides
       the authentication token. If you previously exported the token
-      environment variable as instructed in addlink “Exporting
-      environment variables”, you can use the
-      $token variable. Otherwise, substitute your actual token for the
-      variable.
+      environment variable as instructed in 
+      :ref:`Exporting environment variables <export-variables>`, you can use the
+      $token variable. Otherwise, substitute your actual token for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
       JSON output. For more information about json.tool, see
