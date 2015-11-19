@@ -1,5 +1,5 @@
 API |contract version| release, September 9, 2013 
------------------------------------
+-------------------------------------------------
 
 The Cloud Images service was originally released as part of the OpenStack Nova-network 
 API, whose operations are detailed in the   

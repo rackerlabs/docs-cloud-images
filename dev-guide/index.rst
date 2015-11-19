@@ -26,4 +26,5 @@ API.
    api-reference
    api-operations/index
    glossary
+   getting-started
    release-notes

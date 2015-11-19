@@ -128,11 +128,11 @@ extlinks = {
 # Global variables that are replaced by the specified value during the build process.
 
 rst_epilog = """
+.. |service| replace:: Rackspace Cloud Images
 .. |apiservice| replace:: Rackspace Cloud Images API
 .. |no changes| replace:: None for this release
 .. |contract version| replace:: 2.0
 """
-
 
 #Software release.version currently deployed in production.
 release='v2.0'

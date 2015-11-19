@@ -5,8 +5,9 @@ How cURL commands work
 
 cURL is a command-line tool that you can use to interact with REST interfaces. cURL lets
 you to transmit and receive HTTP requests and responses from the command line or a shell
-script, which enables you to work with the API directly. It is available for Linux distributions,
-Mac OS X, and Windows. For information about cURL, see http://curl.haxx.se/.
+script, which enables you to work with the API directly. It is available for Linux 
+distributions, Mac OS X, and Windows. For information about cURL, see 
+`http://curl.haxx.se/ <http://curl.haxx.se/>`__.
 
 To run the cURL request examples shown in this guide, copy each example from the HTML version
 of this guide directly to the command line or a script.
@@ -97,6 +98,8 @@ appending the following command to the cURL call:
 .. code::
 
    | python -m json.tool
+
+.. _json-tool:
 
 ..  note::
 
