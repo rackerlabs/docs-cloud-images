@@ -1,7 +1,7 @@
 .. _sharing-image-delete-image-member:
 
 Delete an image member
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you decide to no longer share your image with a user, delete that image member.
 
@@ -9,11 +9,14 @@ Issue the following cURL command to delete an image member for an image. In this
 you delete the user ``123456`` so that the user can no longer share the image
 ``a96be11e-8536-4910-92cb-de50aa19dfe6``.
 
+
+**cURL delete an image member request**
+
 .. code::  
 
-   curl -i https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456 \
+   curl -i $API_ENDPOINT/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456 \
    -X DELETE \
-   -H "X-Auth-Token: $token"
+   -H "X-Auth-Token: $AUTH_TOKEN"
                        
 
 **Options:**
@@ -25,7 +28,7 @@ you delete the user ``123456`` so that the user can no longer share the image
 
 -  **-H**: Specified header information. In this case, it provides the authentication 
    token. If you previously exported the token environment variable as instructed in 
-   :ref:`Exporting environment variables <export-variables>`, you can use the $token 
+   :ref:`configure these variables<configure-environment-variables>`, you can use the $AUTH_TOKEN 
    variable. Otherwise, substitute your actual token for the variable.
 
    If the operation is successful, it returns an ``HTTP 204`` response code with no 

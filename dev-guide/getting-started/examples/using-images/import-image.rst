@@ -1,7 +1,7 @@
 .. _using-image-import-image:
 
 Import an image by using tasks
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To import an image to the Cloud Images service so that it is available
 to use and to share, create an import task. For more information about
@@ -11,12 +11,14 @@ image tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
    In this example, the source file for the ``my-excellent-image.vhd``
    image, is in the ``exports`` directory on your Cloud Files account.
 
+   **cURL import an image request**
+
    .. code::  
 
-       curl -s https://iad.images.api.rackspacecloud.com/v2/tasks \
+       curl -s $API_ENDPOINT/v2/tasks \
        -X POST \
        -d '{"type": "import","input":{"image_properties": {"name": "My excellent custom image"},"import_from": "exports/my-excellent-image.vhd"}}' \
-       -H "Content-Type: application/json" -H "X-Auth-Token: $token" |python -m json.tool
+       -H "Content-Type: application/json" -H "X-Auth-Token: $AUTH_TOKEN" |python -m json.tool
                        
 
    **Options:**
@@ -28,8 +30,8 @@ image tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
 
    -  **-H**: Specified header information. In this case, it provides the content type and 
       the authentication token. If you previously exported the token environment variable 
-      as instructed in :ref:`Exporting environment variables <export-variables>`, you can 
-      use the $token variable. Otherwise, substitute your actual token for the variable.
+      as instructed in :ref:`configure these variables<configure-environment-variables>`, 
+      you can use the $AUTH_TOKEN variable. Otherwise, substitute your actual token for the variable.
 
    -  **-d**: Specifies the JSON request body.
 
@@ -40,7 +42,7 @@ image tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
    The command returns the following response.
 
     
-   **Example 2.4. Import an image with cURL response**
+   **Import an image response**
 
    .. code::  
 

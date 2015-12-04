@@ -206,8 +206,6 @@ image member status.
       the status is ``pending``, the consumer may not be aware that an
       image was shared.
 
-For more information, see :ref:`Image member  statuses <member_statuses>`.
-
 Image producers and consumers have different abilities and
 responsibilities regarding image sharing. The following list shows these
 abilities:

@@ -1,7 +1,7 @@
 .. _sharing-image-create-image-member:
 
 Create an image member
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To share an image with a particular user, you need to know who the user is, create an image 
 member for that user, and associate the image member with the image.
@@ -12,11 +12,14 @@ user ``123456``. You might have blogged about your image, and the user emailed y
 requesting access, so you know the user's user ID and can use it as the value for the 
 member parameter.
 
+
+**cURL create an image member request**
+
 .. code::  
 
-   curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
+   curl -s $API_ENDPOINT/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
    -X POST \
-   -d '{"member":"123456"}' -H "X-Auth-Token: $token" 
+   -d '{"member":"123456"}' -H "X-Auth-Token: $AUTH_TOKEN" 
    -H "Content-Type:application/json" |python -m json.tool
                        
 
@@ -30,7 +33,8 @@ member parameter.
    -  **-H**: Specified header information. In this case, it provides
       the content type and the authentication token. If you previously
       exported the token environment variable as instructed in
-      :ref:`Exporting environment variables <export-variables>`, you can use the $token
+      :ref:`configure these variables<configure-environment-variables>`, 
+      you can use the $AUTH_TOKEN
       variable. Otherwise, substitute your actual token for the
       variable.
 
@@ -43,7 +47,7 @@ member parameter.
 The command returns the following response.
 
     
-**Example: Create an image member with cURL response**
+**Create an image member with cURL response**
 
 .. code::  
 

@@ -9,21 +9,23 @@ Cloud Files account. To learn more about the fundamentals of image tasks, see
 :ref:`Asynchronous tasks <asynchronous-tasks>`.
 
 To help you get started exploring Cloud Images, the following sections show some basic 
-image operations with cURL examples:
+image operations with cURL examples.
 
--	:ref:`List images <using-image-list-images>`
--	:ref:`Get details for an image <using-image-get-image-details>`
--	:ref:`Update an image <using-image-update-image>`
--	:ref:`Import an image by using tasks <using-image-import-image>`
--	:ref:`Export an image by using tasks <using-image-export-image>`
--	:ref:`Get details for a task <using-image-get-task-details>`
+Before running the examples, review the :ref:`Cloud Images concepts<concepts>`.
 
-.. toctree::
-   :maxdepth: 2
-   
-   List images <using-images/list-images>
-   Get details for an image <using-images/get-image-details>
-	Update an image <using-images/update-image>
-	Import an image by using tasks <using-images/import-image>
-	Export an image by using tasks <using-images/export-image>
-	Get details for a task <using-images/get-task-details>
+.. note:: 
+     These examples use the ``$API_ENDPOINT`` and ``$AUTH_TOKEN`` environment 
+     variables to specify the API endpoint and authentication token values 
+     for accessing the service. Make sure you 
+     :ref:`configure these variables<configure-environment-variables>` before running the 
+     code samples. 
+
+.. include:: examples/using-images/list-images.rst
+.. include:: examples/using-images/get-image-details.rst
+.. include:: examples/using-images/update-image.rst
+.. include:: examples/using-images/import-image.rst
+.. include:: examples/using-images/export-image.rst
+.. include:: examples/using-images/get-task-details.rst
+
+
+

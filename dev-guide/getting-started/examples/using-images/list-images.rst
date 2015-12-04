@@ -1,15 +1,18 @@
 .. _using-image-list-images:
 
 List images 
------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To find out what images are available, list them.
 
-1. Issue the following cURL command:
+1. Issue the following cURL command.
+
+
+   **cURL list images request**
 
    .. code::  
 
-       curl -s https://iad.images.api.rackspacecloud.com/v2/images -H "X-Auth-Token: $token" |python -m json.tool
+       curl -s $API_ENDPOINT/v2/images -H "X-Auth-Token: $AUTH_TOKEN" |python -m json.tool
                        
 
    **Options:**
@@ -18,8 +21,8 @@ To find out what images are available, list them.
 
    -  **-H**: Specified header information. In this case, it provides the authentication 
       token. If you previously exported the token environment variable as instructed in 
-      :ref:`Exporting environment variables <export-variables>`,, you can use the $token 
-      variable. Otherwise, substitute your actual token for the variable.
+      :ref:`configure these variables<configure-environment-variables>`, 
+      you can use the $AUTH_TOKEN variable. Otherwise, substitute your actual token for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
       JSON output. For more information about json.tool, see
@@ -30,7 +33,7 @@ To find out what images are available, list them.
    other images removed for brevity.
 
     
-   **Example: List images with cURL response**
+   **List images response**
 
    .. code::  
 

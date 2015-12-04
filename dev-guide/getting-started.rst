@@ -4,11 +4,8 @@
 **Getting Started**
 ======================
 
-This section provides simple cURL examples of common Image service operations.
+Use this Getting Started Guide to learn how to authenticate, send API requests, 
+and complete basic operations by using the Cloud Images API.
 
-
-.. toctree::
-   :maxdepth: 2
-
-   Using Images <getting-started/using-images>
-   Sharing Images <getting-started/sharing-images>
+For more information about Cloud Images concepts and API operations, see the 
+:ref:`Developer Guide<developer-guide>` and the :ref:`API Reference<api-reference>`.

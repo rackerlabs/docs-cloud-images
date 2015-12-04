@@ -1,67 +1,36 @@
 .. _how-curl-commands-work:
 
-How cURL commands work
-~~~~~~~~~~~~~~~~~~~~~~
-
 cURL is a command-line tool that you can use to interact with REST interfaces. cURL lets
-you to transmit and receive HTTP requests and responses from the command line or a shell
-script, which enables you to work with the API directly. It is available for Linux 
-distributions, Mac OS X, and Windows. For information about cURL, see 
+you transmit and receive HTTP requests and responses from the command line or a shell
+script, which enables you to work with the API directly. cURL is available for Linux
+distributions, Mac OS® X, and Microsoft Windows®. For information about cURL, see
 `http://curl.haxx.se/ <http://curl.haxx.se/>`__.
 
-To run the cURL requests shown in this guide, export your tenant ID and the token that you 
-got during authentication to environment variables. Then copy the examples from this guide 
-to the command line, script, or tool of your choice, changing URI parameters or body 
-parameters as needed.
-
-.. _export-variables:
-
-To export environment variables:
-
-1. Export your tenant ID to the ``account`` environment variable:
-
-   .. code::  
-
-       $ export account="tenantID"
-
-   Where ``tenantID`` is your account ID.
-
-2. Export your authentication token to the ``token`` environment
-   variable:
-
-   .. code::  
-
-       $ export token="token_id"
-
-   Where ``token_id`` is the authentication token value in the ``id`` field of the 
-   ``token`` element in the authentication response.
-
-
-After you have exported the variables, copy each example from the HTML version
+To run the cURL request examples shown in this guide, copy each example from the HTML version
 of this guide directly to the command line or a script.
 
-.. _cn-dg-generalapi-curl-json:
+.. _auth-curl-json:
 
-The following command is an example cURL command that provisions a server with an isolated
-network using JSON.
+The following example shows a cURL command for sending an authentication request to
+the Rackspace Cloud Identity service.
 
 **cURL command example: JSON request**
 
-.. code::
+.. include:: ../common-gs/samples/auth-req-curl.rst
 
-        $ curl https://dfw.servers.api.rackspacecloud.com/v2/$account/servers \
-           -X POST \
-           -H "X-Auth-Project-Id: $account" \
-           -H "Content-Type: application/json" \
-           -H "Accept: application/json" \
-           -H "X-Auth-Token: $token" \
-           -d '{"server": {"name": "my_server_with_network", "imageRef": "d42f821e-c2d1-4796-9f07-af5ed7912d0e", "flavorRef": "2", "max_count": 1, "min_count": 1, "networks": [{"uuid": "538a112a-34d1-47ff-bf1e-c40639e886e2"}, {"uuid": "00000000-0000-0000-0000-000000000000"}, {"uuid": "11111111-1111-1111-1111-111111111111"}]}}' \
-          | python -m json.tool
+In this example, ``$apiKey`` is an environment variable that stores your API key value.
+Environment variables make it easier to reference account information in API requests,
+to reuse the same cURL commands with different credentials, and also to keep sensitive
+information like your API key from being exposed when you send requests to Rackspace
+Cloud API services. For details about creating environment variables, see :ref:`Configure
+environment variables <configure-environment-variables>`.
 
 ..  note::
 
-    The carriage returns in the cURL request examples use a backslash (``\``) as an escape
-    character. The escape character allows continuation of the command across multiple lines.
+    The carriage returns in the cURL request examples use a backslash (``\``) as an
+    escape character. The escape character allows continuation of the command across
+    multiple lines.
+
 
 The cURL examples in this guide use the following command-line options.
 
@@ -119,6 +88,7 @@ The cURL examples in this guide use the following command-line options.
 |           | which is **GET**.                                                     |
 +-----------+-----------------------------------------------------------------------+
 
+.. _json-tool:
 
 For commands that return a response, use json.tool to pretty-print the output by
 appending the following command to the cURL call:
@@ -127,17 +97,19 @@ appending the following command to the cURL call:
 
    | python -m json.tool
 
-.. _json-tool:
-
 ..  note::
 
     To use json.tool, import the JSON module. For information about json.tool, see
     `JSON encoder and decoder`_.
 
     If you run a Python version earlier than 2.6, import the simplejson module and use
-    simplejson.tool. For information about simplejson.tool, see `simplejson encoder and decoder`_.
+    simplejson.tool. For information about simplejson.tool, see
+    `simplejson encoder and decoder`_.
 
     If you do not want to pretty-print JSON output, omit this code.
 
 .. _json encoder and decoder: http://docs.python.org/2/library/json.html
 .. _simplejson encoder and decoder: http://simplejson.googlecode.com/svn/tags/simplejson-2.0.9/docs/index.html
+
+.. _json.tool: http://docs.python.org/2/library/json.html
+.. _simplejson.tool: http://simplejson.googlecode.com/svn/tags/simplejson-2.0.9/docs/index.html

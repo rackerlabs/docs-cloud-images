@@ -1,7 +1,7 @@
 .. _using-image-export-image:
 
 Export an image by using tasks
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To export an image from the Cloud Images service so that you can store a
 copy offline, create an export task. For more information about image
@@ -11,12 +11,14 @@ tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
    the image ``ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6`` is exported to the ``exports`` 
    directory on your Cloud Files account.
 
+**cURL export an image with cURL request**
+
    .. code::  
 
-       curl -s https://iad.images.api.rackspacecloud.com/v2/tasks \
+       curl -s $API_ENDPOINT/v2/tasks \
        -X POST \
        -d '{"type": "export","input":{"image_uuid": "ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6","receiving_swift_container": "exports"}}' \
-       -H "Content-Type: application/json" -H "X-Auth-Token: $token" |python -m json.tool
+       -H "Content-Type: application/json" -H "X-Auth-Token: $AUTH_TOKEN" |python -m json.tool
                        
 
    **Options:**
@@ -29,7 +31,8 @@ tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
    -  **-H**: Specified header information. In this case, it provides
       the content type and the authentication token. If you previously
       exported the token environment variable as instructed in
-      :ref:`Exporting environment variables <export-variables>`, you can use the $token
+      :ref:`configure these variables<configure-environment-variables>`, 
+      you can use the $AUTH_TOKEN
       variable. Otherwise, substitute your actual token for the variable.
 
    -  **-d**: Specifies the JSON request body.
@@ -41,7 +44,7 @@ tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
    The command returns the following response.
 
     
-   **Example 2.5. Export an image with cURL response**
+   **Export an image with cURL response**
 
    .. code::  
 
