@@ -13,9 +13,8 @@ The Cloud Images API supports JSON data serialization request and response forma
 .. toctree:: :hidden:
    :maxdepth: 2
    
-   API requests and response <request-response>
-   cURL quick reference <how-curl-commands-work>   
-   Authentication <authenticate>  
+   API requests and response <request-response>  
+   Authentication <authentication>  
    role-based-access-control   
    service-access-endpoints
 

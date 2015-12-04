@@ -1,7 +1,7 @@
 .. _using-image-update-image:
 
 Update an image
----------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you need to change certain details about an image, such as adding, removing, or 
 modifying image properties, you can update that image. For more information about how to 
@@ -14,12 +14,14 @@ Issue the following cURL command to update an image. In this example, you are ch
 the name of image ``c9c7732f-5129-4930-a835-3781255fb1e2`` from ``Ubuntu 12.04 LTS 
 (Precise Pangolin) (PVHVM)`` to ``My Favorite Ubuntu``.
 
+**cURL update an image request**
+
 .. code::  
 
-   curl -s https://iad.images.api.rackspacecloud.com/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
+   curl -s $API_ENDPOINT/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
    -X PATCH \
    -d'{{"op": "replace", "path": "/name", "value": "My Favorite Ubuntu"}}' \
-   -H "Content-Type: application/json" -H "X-Auth-Token: $token" \
+   -H "Content-Type: application/json" -H "X-Auth-Token: $AUTH_TOKEN" \
    -H "Accept: application/openstack-images-v2.1-json-patch" |python -m json.tool
                        
 **Options:**
@@ -33,7 +35,7 @@ the name of image ``c9c7732f-5129-4930-a835-3781255fb1e2`` from ``Ubuntu 12.04 L
    authentication token, and the special format for the response body 
    (``application/openstack-images-v2.1-json-patch`` instead of ``application/json``). If 
    you previously exported the token environment variable as instructed in 
-   :ref:`Exporting environment variables <export-variables>`, you can use the $token 
+   :ref:`configure these variables<configure-environment-variables>`, you can use the $AUTH_TOKEN 
    variable. Otherwise, substitute your actual token for the variable. To learn more about 
    the response body format, see :ref:`HTTP PATCH method <http-patch-method>`.
 
@@ -43,9 +45,8 @@ the name of image ``c9c7732f-5129-4930-a835-3781255fb1e2`` from ``Ubuntu 12.04 L
    information about json.tool, see :ref:`json.tool note <json-tool>`.
 
 The command returns the following response.
-
     
-**Example: Update an image with cURL response**
+**Update an image response**
 
 .. code::  
 

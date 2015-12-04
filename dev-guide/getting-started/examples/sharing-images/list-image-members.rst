@@ -1,7 +1,7 @@
 .. _sharing-image-list-image-members:
 
 List image members
-------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to see everyone with whom you've shared an image and the status of each member, 
 list the image members.
@@ -10,10 +10,12 @@ list the image members.
    image. In this example, you list members for image
    ``a96be11e-8536-4910-92cb-de50aa19dfe6``.
 
+**cURL list image members request**
+
    .. code::  
 
-       curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
-       -H "X-Auth-Token: $token" |python -m json.tool
+       curl -s API_ENDPOINT/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
+       -H "X-Auth-Token: $AUTH_TOKEN" |python -m json.tool
                        
 
    **Options:**
@@ -22,7 +24,7 @@ list the image members.
 
    -  **-H**: Specified header information. In this case, it provides the authentication 
       token. If you previously exported the token environment variable as instructed in 
-      :ref:`Exporting environment variables <export-variables>`, you can use the $token 
+      :ref:`configure these variables<configure-environment-variables>`, you can use the $AUTH_TOKEN
       variable. Otherwise, substitute your actual token for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
@@ -32,7 +34,7 @@ list the image members.
    The command returns the following response.
 
     
-   **Example: List image members with cURL response**
+   **List image members with cURL response**
 
    .. code::  
 

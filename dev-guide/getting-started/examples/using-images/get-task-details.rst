@@ -1,7 +1,7 @@
 .. _using-image-get-task-details:
 
 Get details for a task
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To find when an import or export task finishes and whether it worked, get the details for 
 that task.
@@ -11,10 +11,12 @@ that task.
    ``fc29a67c-ad76-49bc-a317-a5f38dcb44c0`` and get a status of ``pending``. If you 
    continue polling, you will eventually get a status of ``success`` or ``failure``.
 
+   **cURL get details for a task request**
+
    .. code::  
 
-       curl -s https://iad.images.api.rackspacecloud.com/v2/tasks/fc29a67c-ad76-49bc-a317-a5f38dcb44c0  \
-       -H "X-Auth-Token: $token" |python -m json.tool
+       curl -s $API_ENDPOINT/v2/tasks/fc29a67c-ad76-49bc-a317-a5f38dcb44c0  \
+       -H "X-Auth-Token: $AUTH_TOKEN" |python -m json.tool
                        
 
    **Options:**
@@ -23,8 +25,8 @@ that task.
 
    -  **-H**: Specified header information. In this case, it provides the authentication 
       token. If you previously exported the token environment variable as instructed in 
-      :ref:`Exporting environment variables <export-variables>`, you can use the $token 
-      variable. Otherwise, substitute your actual token for the variable.
+      :ref:`configure these variables<configure-environment-variables>`, 
+      you can use the $AUTH_TOKEN variable. Otherwise, substitute your actual token for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
       JSON output. For more information about json.tool, see
@@ -33,7 +35,7 @@ that task.
    The command returns the following responses.
 
     
-   **Example: Get details for a task with cURL response (pending)**
+   **Get details for a task response (pending)**
 
    .. code::  
 
@@ -63,7 +65,7 @@ that task.
    ``1d944ab7-6748-4f3c-b7e2-3553bf006677``.
 
     
-   **Example Get details for an import task with cURL response (success)**
+   **Get details for an import task response (success)**
 
    .. code::  
 
@@ -95,7 +97,7 @@ that task.
    ``exports/ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6.vhd``.
 
     
-   **Example: Get details for an export task with cURL response (success)**
+   **Get details for an export task with cURL response (success)**
 
    .. code::  
 

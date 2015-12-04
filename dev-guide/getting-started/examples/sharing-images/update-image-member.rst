@@ -1,7 +1,7 @@
 .. _sharing-image-update-image-member:
 
 Update an image member
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you send a request, outside of the Cloud Images API to an image
 producer asking for access to an image, the image producer creates an
@@ -11,20 +11,17 @@ Once the image member has been created for you, you update the image
 member, either accepting the image (which adds it to your image list),
 or rejecting the image (which notifies the producer that you received
 the image share notification and don't want it in your image list).
-
-.. tip:: 
-
-	For more information about image member statuses, see 
-	“Image member statuses” <member-statuses.html>.
  
 Issue the following cURL command to update an image member for an image. In this example, 
 you (member ID ``123456``) accept the offer of the shared image 
 ``a96be11e-8536-4910-92cb-de50aa19dfe6``.
 
+**cURL update an image member request**
+
 .. code::  
 
-   curl -s https://iad.images.api.rackspacecloud.com/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456 \
-   -X PUT -d '{"status":"accepted"}' -H "Content-Type: application/json" -H "X-Auth-Token: $token"|python -m json.tool
+   curl -s $API_ENDPOINT/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members/123456 \
+   -X PUT -d '{"status":"accepted"}' -H "Content-Type: application/json" -H "X-Auth-Token: $AUTH_TOKEN"|python -m json.tool
                        
 **Options:**
 
@@ -35,8 +32,8 @@ you (member ID ``123456``) accept the offer of the shared image
 
 -  **-H**: Specified header information. In this case, it provides the content-type and 
    the authentication token. If you previously exported the token environment variable as 
-   instructed in :ref:`Exporting environment variables <export-variables>`, you can use the 
-   $token variable. Otherwise, substitute your actual token for the variable.
+   instructed in :ref:`configure these variables<configure-environment-variables>`, 
+   you can use the $AUTH_TOKEN variable. Otherwise, substitute your actual token for the variable.
 
 -  **-d**: Specifies the JSON request body.
 
@@ -45,7 +42,7 @@ you (member ID ``123456``) accept the offer of the shared image
 
 The command returns the following response.
 
-**Example: Update an image member with cURL response**
+**Update an image member with cURL response**
 
 .. code::  
 

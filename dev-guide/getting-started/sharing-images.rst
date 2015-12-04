@@ -5,26 +5,30 @@ Sharing images 
 
 The Cloud Images API enables image owners to share images that they have created with 
 others and to use images created by someone else. See :ref:`Image sharing <image-sharing>`
-to learn more about the fundamental concepts. The following sections show some basic image 
-sharing operations with cURL examples:
+to learn more about the fundamental concepts. 
 
--	:ref:`Create an image member <sharing-image-create-image-member>`
--	:ref:`List image members <sharing-image-list-image-members>`
--	:ref:`Get image member details <sharing-image-get-image-member-details>`
--	:ref:`Update an image member <sharing-image-update-image-member>`
--	:ref:`Delete an image member <sharing-image-delete-image-member>`
-
-
-.. toctree::
-   :maxdepth: 2
-   
-	Create an image member <sharing-images/create-image-member>
-	List image members <sharing-images/list-image-members>
-	Get image member details <sharing-images/get-image-member-details>
-	Update an image member <sharing-images/update-image-member>
-	Delete an image member <sharing-images/delete-image-member>
+The following sections show some basic image sharing operations with cURL examples.
 
 .. note:: 
 
 	The user with whom the image is being shared in these examples is identified by a 
 	``member_id``, which is the same as that user's tenant_id.
+
+To help you get started exploring Cloud Images, the following sections show some basic 
+image operations with cURL examples.
+
+Before running the examples, review the :ref:`Cloud Images concepts<concepts>`.
+
+.. note:: 
+     These examples use the ``$API_ENDPOINT`` and ``$AUTH_TOKEN`` environment 
+     variables to specify the API endpoint and authentication token values 
+     for accessing the service. Make sure you 
+     :ref:`configure these variables<configure-environment-variables>` before running the 
+     code samples. 
+
+.. include:: examples/sharing-images/create-image-member.rst
+.. include:: examples/sharing-images/list-image-members.rst
+.. include:: examples/sharing-images/get-image-member-details.rst
+.. include:: examples/sharing-images/update-image-member.rst
+.. include:: examples/sharing-images/delete-image-member.rst
+
