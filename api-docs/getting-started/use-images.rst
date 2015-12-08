@@ -1,6 +1,6 @@
-.. _using-images:
+.. _use-images:
 
-Using images
+Use images
 ------------
 
 The Cloud Images service provides basic operations for managing images, such as listing 
@@ -20,12 +20,12 @@ Before running the examples, review the :ref:`Cloud Images concepts<concepts>`.
      :ref:`configure these variables<configure-environment-variables>` before running the 
      code samples. 
 
-.. include:: examples/using-images/list-images.rst
-.. include:: examples/using-images/get-image-details.rst
-.. include:: examples/using-images/update-image.rst
-.. include:: examples/using-images/import-image.rst
-.. include:: examples/using-images/export-image.rst
-.. include:: examples/using-images/get-task-details.rst
+.. include:: examples/use-images/list-images.rst
+.. include:: examples/use-images/get-image-details.rst
+.. include:: examples/use-images/update-image.rst
+.. include:: examples/use-images/import-image.rst
+.. include:: examples/use-images/export-image.rst
+.. include:: examples/use-images/get-task-details.rst
 
 
 

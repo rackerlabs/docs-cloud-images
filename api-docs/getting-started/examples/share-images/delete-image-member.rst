@@ -1,6 +1,6 @@
 .. _sharing-image-delete-image-member:
 
-Delete an image member
+Deleting an image member
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you decide to no longer share your image with a user, delete that image member.

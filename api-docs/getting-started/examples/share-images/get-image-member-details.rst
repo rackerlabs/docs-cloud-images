@@ -1,6 +1,6 @@
 .. _sharing-image-get-image-member-details:
 
-Get image member details
+Getting image member details
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to see details for a specific image member, get the image member's details.
@@ -31,9 +31,6 @@ If you want to see details for a specific image member, get the image member's d
       JSON output. For more information about json.tool, see
       :ref:`json.tool note <json-tool>`.
 
-   The command returns the following response.
-
-    
    **Get image member details response**
 
    .. code::  

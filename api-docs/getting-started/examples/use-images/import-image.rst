@@ -1,6 +1,6 @@
 .. _using-image-import-image:
 
-Import an image by using tasks
+Importing an image by using tasks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To import an image to the Cloud Images service so that it is available
@@ -39,9 +39,6 @@ image tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
       JSON output. For more information about json.tool, see
       :ref:`json.tool note <json-tool>`.
 
-   The command returns the following response.
-
-    
    **Import an image response**
 
    .. code::  

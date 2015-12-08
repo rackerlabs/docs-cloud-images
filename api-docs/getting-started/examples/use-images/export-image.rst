@@ -1,6 +1,6 @@
 .. _using-image-export-image:
 
-Export an image by using tasks
+Exporting an image by using tasks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To export an image from the Cloud Images service so that you can store a
@@ -40,9 +40,6 @@ tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
       JSON output. For more information about json.tool, see
       :ref:`json.tool note <json-tool>`.
-
-   The command returns the following response.
-
     
    **Export an image with cURL response**
 

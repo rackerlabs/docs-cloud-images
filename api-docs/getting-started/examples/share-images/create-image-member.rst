@@ -1,6 +1,6 @@
 .. _sharing-image-create-image-member:
 
-Create an image member
+Creating an image member
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To share an image with a particular user, you need to know who the user is, create an image 
@@ -44,9 +44,6 @@ member parameter.
       JSON output. For more information about json.tool, see
       :ref:`json.tool note <json-tool>`.
 
-The command returns the following response.
-
-    
 **Create an image member with cURL response**
 
 .. code::  
