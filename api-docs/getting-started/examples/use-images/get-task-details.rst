@@ -1,6 +1,6 @@
 .. _using-image-get-task-details:
 
-Get details for a task
+Getting details for a task
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To find when an import or export task finishes and whether it worked, get the details for 
@@ -31,10 +31,7 @@ that task.
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
       JSON output. For more information about json.tool, see
       :ref:`json.tool note <json-tool>`.
-
-   The command returns the following responses.
-
-    
+ 
    **Get details for a task response (pending)**
 
    .. code::  

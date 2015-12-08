@@ -1,6 +1,6 @@
 .. _using-image-list-images:
 
-List images 
+Listing images 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To find out what images are available, list them.

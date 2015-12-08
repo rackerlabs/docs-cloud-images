@@ -1,12 +1,12 @@
 .. _using-image-update-image:
 
-Update an image
+Updating an image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you need to change certain details about an image, such as adding, removing, or 
 modifying image properties, you can update that image. For more information about how to 
 update images by using the HTTP PATCH method and how to use the request body parameters 
-(``op``, ``path``, and ``value``), see :ref:HTTP PATCH method <http-patch-method>`. For 
+(``op``, ``path``, and ``value``), see :ref:`HTTP PATCH method <http-patch-method>`. For 
 more information about which properties can be updated, see 
 :ref:`Update image <patch-update-image-images-image-id>`.
 
@@ -43,8 +43,6 @@ the name of image ``c9c7732f-5129-4930-a835-3781255fb1e2`` from ``Ubuntu 12.04 L
 
 -  **-m json.tool**: Specifies json.tool, which pretty-prints the JSON output. For more 
    information about json.tool, see :ref:`json.tool note <json-tool>`.
-
-The command returns the following response.
     
 **Update an image response**
 

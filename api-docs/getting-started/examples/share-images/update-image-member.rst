@@ -1,16 +1,19 @@
 .. _sharing-image-update-image-member:
 
-Update an image member
+Updating an image member
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you send a request, outside of the Cloud Images API to an image
-producer asking for access to an image, the image producer creates an
-image member with your tenant ID by using the instructions in
-:ref:`Create an image member <sharing-image-create-image-member>`.
-Once the image member has been created for you, you update the image
-member, either accepting the image (which adds it to your image list),
-or rejecting the image (which notifies the producer that you received
-the image share notification and don't want it in your image list).
+If you send a request, outside of the Cloud Images API, to an image producer asking for 
+access to an image, the image producer creates an image member with your tenant ID by using 
+the instructions in :ref:`Create an image member <sharing-image-create-image-member>`. Once 
+the image member has been created for you, you update the image member, either accepting the 
+image (which adds it to your image list), or rejecting the image (which notifies the 
+producer that you received the image share notification and don't want it in your image list).
+
+.. tip::
+
+	For more information about image member statuses, see 
+	:ref:`Image member statuses<member-statuses>`.
  
 Issue the following cURL command to update an image member for an image. In this example, 
 you (member ID ``123456``) accept the offer of the shared image 
@@ -39,8 +42,6 @@ you (member ID ``123456``) accept the offer of the shared image
 
 -  **-m json.tool**: Specifies json.tool, which pretty-prints the JSON output. For more 
    information about json.tool, see `Note <curl_stuff.html#json_tool>`__.
-
-The command returns the following response.
 
 **Update an image member with cURL response**
 

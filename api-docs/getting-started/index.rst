@@ -10,6 +10,6 @@
    Prerequisites <prerequisites-for-using-api>
    Send API requests <send-request-ovw>
    Authenticate <authenticate>
-   using-images
-   sharing-images
+   use-images
+   share-images
    

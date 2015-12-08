@@ -1,6 +1,6 @@
-.. _sharing-images:
+.. _share-images:
 
-Sharing images 
+Share images 
 --------------
 
 The Cloud Images API enables image owners to share images that they have created with 
@@ -26,9 +26,9 @@ Before running the examples, review the :ref:`Cloud Images concepts<concepts>`.
      :ref:`configure these variables<configure-environment-variables>` before running the 
      code samples. 
 
-.. include:: examples/sharing-images/create-image-member.rst
-.. include:: examples/sharing-images/list-image-members.rst
-.. include:: examples/sharing-images/get-image-member-details.rst
-.. include:: examples/sharing-images/update-image-member.rst
-.. include:: examples/sharing-images/delete-image-member.rst
+.. include:: examples/share-images/create-image-member.rst
+.. include:: examples/share-images/list-image-members.rst
+.. include:: examples/share-images/get-image-member-details.rst
+.. include:: examples/share-images/update-image-member.rst
+.. include:: examples/share-images/delete-image-member.rst
 

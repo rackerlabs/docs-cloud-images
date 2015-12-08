@@ -3,7 +3,7 @@
 If you need to see any additional details about an image, get the details for that image.
 
  
-Get details for an image
+Getting details for an image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Issue the following cURL command to get details for the Ubuntu 12.04 image, using an 
@@ -31,9 +31,6 @@ image ID that you got from the :ref:`List images <using-image-list-images>` step
       JSON output. For more information about json.tool, see
       :ref:`json.tool note <json-tool>`.
 
-The command returns the following response.
-
-    
 **Get details for an image with cURL response**
 
 .. code::  

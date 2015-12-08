@@ -1,6 +1,6 @@
 .. _sharing-image-list-image-members:
 
-List image members
+Listing image members
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to see everyone with whom you've shared an image and the status of each member, 
@@ -30,9 +30,6 @@ list the image members.
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
       JSON output. For more information about json.tool, see
       :ref:`json.tool note <json-tool>`.
-
-   The command returns the following response.
-
     
    **List image members with cURL response**
 
