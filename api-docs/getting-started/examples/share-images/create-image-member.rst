@@ -13,7 +13,7 @@ requesting access, so you know the user's user ID and can use it as the value fo
 member parameter.
 
 
-**cURL create an image member request**
+**Create an image member with cURL request**
 
 .. code::  
 
