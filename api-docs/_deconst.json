@@ -1,3 +1,8 @@
 {
   "contentIDBase": "https://github.com/rackerlabs/docs-cloud-images/"
+  "githubUrl": "https://github.com/rackerlabs/docs-cloud-images/",
+  "githubBranch": "master",
+  "meta": {
+    "preferGithubIssues": false
+  }
 }
