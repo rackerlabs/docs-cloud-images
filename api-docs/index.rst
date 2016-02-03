@@ -30,3 +30,4 @@ using the |apiservice|.
    glossary
    getting-started
    release-notes
+   copyright
