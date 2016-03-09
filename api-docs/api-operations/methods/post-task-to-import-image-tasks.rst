@@ -18,7 +18,7 @@ To successfully import an image:
 
    If you are importing an image that you have previously exported from Cloud Images 
    in another region of the Rackspace open cloud, your image is already in the appropriate 
-   format. This article provides information on :kc-article:`preparing a custom image for import 
+   format. This article provides information on :how-to:`preparing a custom image for import 
    <preparing-an-image-for-import-into-the-rackspace-open-cloud>`.
       
 *  Store the image in your Cloud Files account.
