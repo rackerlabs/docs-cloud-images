@@ -39,7 +39,7 @@ The API uses the natural sorting of whatever image attribute is provided as the 
 
 .. note::
    Public images may reach end-of-life and be removed from the base image list. The
-   :kc-article:`Hidden Base Images <hidden-base-images>` article
+   :how-to:`Hidden Base Images <hidden-base-images>` article
    lists images which have been removed from the base images list but which may still be available.
    
 

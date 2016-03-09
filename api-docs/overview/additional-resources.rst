@@ -7,7 +7,7 @@ We welcome feedback, comments, and bug reports. Visit the :rax-special:`Rackspac
 
 Use the links below to learn more about the Rackspace Cloud Images service and API.
 
-- For general information about Cloud Images, see the :kc-article:`Cloud Images FAQ <cloud-images-frequently-asked-questions>` 
+- For general information about Cloud Images, see the :how-to:`Cloud Images FAQ <cloud-images-frequently-asked-questions>` 
   article.
 
 - To learn more about the Cloud Images service and the various ways you can interact 

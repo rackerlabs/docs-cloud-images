@@ -97,4 +97,4 @@ RBAC Permissions Cross-reference to Cloud Images API Operations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 API operations for Cloud Images may or may not be available to all roles. To see which
-operations are permitted to invoke which calls, please review the the :kc-article:`Permissions Matrix for Role-Based Access Control<permissions-matrix-for-role-based-access-control-rbac>`.
+operations are permitted to invoke which calls, please review the the :how-to:`Permissions Matrix for Role-Based Access Control<permissions-matrix-for-role-based-access-control-rbac>`.
