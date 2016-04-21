@@ -167,7 +167,6 @@ options:
     **windows**
         Microsoft Windows
 
-.. image:: /_images/image-member.png
 
 Image sharing
 ~~~~~~~~~~~~~
