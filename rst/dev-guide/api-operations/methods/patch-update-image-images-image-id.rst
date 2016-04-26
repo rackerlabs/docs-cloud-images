@@ -168,7 +168,7 @@ This table shows the body parameters for the response:
 |                   |            |image.                                       |
 +-------------------+------------+---------------------------------------------+
 |**minDisk**        |String      |The minimum server disk size required for    |
-|                   |this image. |                                             |
+|                   |            |this image.                                  |
 +-------------------+------------+---------------------------------------------+
 |**tags[]**         |Array       |An array of user-defined image tags.         |
 |                   |            |                                             |
