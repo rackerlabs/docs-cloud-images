@@ -25,12 +25,12 @@ To successfully import an image:
 
 
 .. note::
-   As described in the :ref:` Rackspace terms of service <TOS>`, 
-   make sure that you are aware of and respect all licensing restrictions that apply to any 
-   software that you import into the Rackspace open cloud. For example, Microsoft licensing rules are very 
-   restrictive. Microsoft product use rights do not allow the use of License Mobility for Windows licenses. 
-   Given the limitations related to this software platform, image import is not available for Windows images. 
-   If you have questions, please contact the software vendor. 
+   As described in the Rackspace general terms and conditions, make sure that you are aware 
+   of and respect all licensing restrictions that apply to any software that you import 
+   into the Rackspace open cloud. For example, Microsoft licensing rules are very restrictive. 
+   Microsoft product use rights do not allow the use of License Mobility for Windows licenses. 
+   Given the limitations related to this software platform, image import is not available 
+   for Windows images. If you have questions, please contact the software vendor. 
    
    
 This table shows the possible response codes for this operation:
