@@ -53,37 +53,37 @@ This table shows the body parameters for the response:
 |Name                |Type         |Description                                  |
 +====================+=============+=============================================+
 |**first**           |String       |The URI for the first task in the list.      |
-|                    |*(Required)* |                                             |
+|                    |             |                                             |
 +--------------------+-------------+---------------------------------------------+
 |**schema**          |String       |The schema of the tasks list.                |
-|                    |*(Required)* |                                             |
+|                    |             |                                             |
 +--------------------+-------------+---------------------------------------------+
 |**tasks**           |Array        |The container for tasks in the list.         |
-|                    |*(Required)* |                                             |
+|                    |             |                                             |
 +--------------------+-------------+---------------------------------------------+
 |tasks.\             |String       |The date and time that the task resource was |
-|**created_at**      |*(Required)* |created.                                     |
+|**created_at**      |             |created.                                     |
 +--------------------+-------------+---------------------------------------------+
 |tasks.\             |String       |The UUID of the task resource.               |
-|**id**              |*(Required)* |                                             |
+|**id**              |             |                                             |
 +--------------------+-------------+---------------------------------------------+
 |tasks.\             |String       |The tenant-id of the task owner.             |
-|**owner**           |*(Required)* |                                             |
+|**owner**           |             |                                             |
 +--------------------+-------------+---------------------------------------------+
 |tasks.\             |String       |The schema of the task.                      |
-|**schema**          |*(Required)* |                                             |
+|**schema**          |             |                                             |
 +--------------------+-------------+---------------------------------------------+
 |tasks.\             |String       |The link to the task.                        |
-|**self**            |*(Required)* |                                             |
+|**self**            |             |                                             |
 +--------------------+-------------+---------------------------------------------+
 |tasks.\             |String       |The status of the task. For status values,   |
-|**status**          |*(Required)* |see :ref:`Image statuses <statuses>`.        |
+|**status**          |             |see :ref:`Image statuses <statuses>`.        |
 +--------------------+-------------+---------------------------------------------+
 |tasks.\             |String       |The type of the task (``export`` for task    |
-|**type**            |*(Required)* |exports).                                    |
+|**type**            |             |exports).                                    |
 +--------------------+-------------+---------------------------------------------+
 |tasks.\             |String       |The date and time that the task resource was |
-|**updated_at**      |*(Required)* |updated.                                     |
+|**updated_at**      |             |updated.                                     |
 +--------------------+-------------+---------------------------------------------+
 
 

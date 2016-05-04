@@ -130,10 +130,10 @@ This table shows the body parameters for the response:
 |Name                |Type        |Description                                  |
 +====================+============+=============================================+
 |**created_at**      |String      |The date and time that the task resource was |
-|                    |*(Required)*|created.                                     |
+|                    |            |created.                                     |
 +--------------------+------------+---------------------------------------------+
 |**expires_at**      |String      |The date and time that the task resource     |
-|                    |*(Optional)*|expires. Even after the task resource        |
+|                    |            |expires. Even after the task resource        |
 |                    |            |expires (and is thus no longer available to  |
 |                    |            |be polled), the result of the task (such as  |
 |                    |            |an imported or exported image) still exists. |
@@ -142,15 +142,15 @@ This table shows the body parameters for the response:
 |                    |            |``failure``.                                 |
 +--------------------+------------+---------------------------------------------+
 |**id**              |String      |The UUID of the task resource.               |
-|                    |*(Required)*|                                             |
+|                    |            |                                             |
 +--------------------+------------+---------------------------------------------+
-|**input**           |*(Required)*|The container for import input parameters.   |
+|**input**           |Object      |The container for import input parameters.   |
 +--------------------+------------+---------------------------------------------+
-|input.\             |*(Required)*|The container for image properties.          |
+|input.\             |Object      |The container for image properties.          |
 |**image_properties**|            |                                             |
 +--------------------+------------+---------------------------------------------+
 |input.\             |String      |The name of the image.                       |
-|image_properties.\  |*(Required)*|                                             |
+|image_properties.\  |            |                                             |
 |**name**            |            | .. warning::                                |
 |                    |            |     Name is the only property that can be   |
 |                    |            |     included in ``image-properties``.       |
@@ -158,10 +158,10 @@ This table shows the body parameters for the response:
 |                    |            |     cause the operation to fail.            |
 +--------------------+------------+---------------------------------------------+
 |input.\             |String      |The source of the imported image.            |
-|**import_from**     |*(Required)*|                                             |
+|**import_from**     |            |                                             |
 +--------------------+------------+---------------------------------------------+
 |**message**         |String      |``None`` if task import succeeded or the     |
-|                    |*(Required)*|reason why the import failed. Possible       |
+|                    |            |reason why the import failed. Possible       |
 |                    |            |errors include the following:                |
 |                    |            |                                             |
 |                    |            |``111``: The image cannot be imported/       |
@@ -191,31 +191,31 @@ This table shows the body parameters for the response:
 |                    |            |import a stand-alone VHD.                    |
 |                    |            |                                             |   
 +--------------------+------------+---------------------------------------------+
-|**result**          |*(Optional)*|The container for results. .. note:: This    |
+|**result**          |Object      |The container for results. .. note:: This    |
 |                    |            |parameter is required for responses with     |
 |                    |            |``status`` of ``success``.                   |
 +--------------------+------------+---------------------------------------------+
 |result.\            |Uuid        |The UUID of the image.                       |
-|**image_id**        |*(Optional)*|                                             |
+|**image_id**        |            |                                             |
 +--------------------+------------+---------------------------------------------+
 |**owner**           |String      |The tenant-id of the task owner.             |
-|                    |*(Required)*|                                             |
+|                    |            |                                             |
 +--------------------+------------+---------------------------------------------+
 |**schema**          |String      |The schema of the task.                      |
-|                    |*(Required)*|                                             |
+|                    |            |                                             |
 +--------------------+------------+---------------------------------------------+
 |**self**            |String      |The link to the task.                        |
-|                    |*(Required)*|                                             |
+|                    |            |                                             |
 +--------------------+------------+---------------------------------------------+
 |**status**          |String      |The status of the image. For possible image  |
 |                    |            |statuses,                                    |
 |                    |            |see :ref:`Image statuses <image_statuses>`   |
 +--------------------+------------+---------------------------------------------+
 |**type**            |String      |The type of the task ( ``export`` for task   |
-|                    |*(Required)*|exports).                                    |
+|                    |            |exports).                                    |
 +--------------------+------------+---------------------------------------------+
 |**updated_at**      |String      |The date and time that the task resource was |
-|                    |*(Required)*|updated.                                     |
+|                    |            |updated.                                     |
 +--------------------+------------+---------------------------------------------+
 
 **Example: Import Task - Pending Response**

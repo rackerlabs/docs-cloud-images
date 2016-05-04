@@ -129,24 +129,24 @@ This table shows the body parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|parameters.\              |String *(Required)*      |The date and time that   |
+|parameters.\              |String                   |The date and time that   |
 |**created_at**            |                         |the image member was     |
 |                          |                         |created.                 |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **image_id** |String *(Required)*      |The UUID of the image.   |
+|parameters.\ **image_id** |String                   |The UUID of the image.   |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **member_id**|String *(Required)*      |The id of the image      |
+|parameters.\ **member_id**|String                   |The id of the image      |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **schema**   |String *(Required)*      |The schema of the image  |
+|parameters.\ **schema**   |String                   |The schema of the image  |
 |                          |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\ **status**   |String *(Required)*      |The status of the image  |
+|parameters.\ **status**   |String                   |The status of the image  |
 |                          |                         |member ( ``pending``,    |
 |                          |                         |``accepted``, or         |
 |                          |                         |``rejected``.            |
 +--------------------------+-------------------------+-------------------------+
-|parameters.\              |String *(Required)*      |The date and time that   |
+|parameters.\              |String                   |The date and time that   |
 |**updated_at**            |                         |the image member was     |
 |                          |                         |updated.                 |
 +--------------------------+-------------------------+-------------------------+

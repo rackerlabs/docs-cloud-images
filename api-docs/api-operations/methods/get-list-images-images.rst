@@ -80,7 +80,7 @@ This table shows the query parameters for the request:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|limit                     |String *(Optional)*      |Requests a specific page |
+|limit                     |String                   |Requests a specific page |
 |                          |                         |size. Expect a response  |
 |                          |                         |to a limited request to  |
 |                          |                         |return between zero      |
@@ -97,7 +97,7 @@ This table shows the query parameters for the request:
 |                          |                         |a subsequent limited     |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|marker                    |String *(Optional)*      |Specifies the ID of the  |
+|marker                    |String                   |Specifies the ID of the  |
 |                          |                         |last-seen image. The     |
 |                          |                         |typical pattern for      |
 |                          |                         |using the ``limit`` and  |
@@ -111,17 +111,17 @@ This table shows the query parameters for the request:
 |                          |                         |a subsequent limited     |
 |                          |                         |request.                 |
 +--------------------------+-------------------------+-------------------------+
-|name                      |String *(Optional)*      |Filter parameter that    |
+|name                      |String                   |Filter parameter that    |
 |                          |                         |specifies the name of    |
 |                          |                         |the image as a string.   |
 +--------------------------+-------------------------+-------------------------+
-|visibility                |String *(Optional)*      |Filter parameter that    |
+|visibility                |String                   |Filter parameter that    |
 |                          |                         |specifies image          |
 |                          |                         |visibility as either     |
 |                          |                         |``public``, ``private``, |
 |                          |                         |or ``shared``.           |
 +--------------------------+-------------------------+-------------------------+
-|member_status             |String *(Optional)*      |Filter parameter that    |
+|member_status             |String                   |Filter parameter that    |
 |                          |                         |shows images with the    |
 |                          |                         |specified member status  |
 |                          |                         |for only those images    |
@@ -133,35 +133,35 @@ This table shows the query parameters for the request:
 |                          |                         |``all``. The default is  |
 |                          |                         |``accepted``.            |
 +--------------------------+-------------------------+-------------------------+
-|owner                     |String *(Optional)*      |Filter parameter that    |
+|owner                     |                         |Filter parameter that    |
 |                          |                         |shows images shared with |
 |                          |                         |the user by the          |
 |                          |                         |specified tag.           |
 +--------------------------+-------------------------+-------------------------+
-|tag                       |String *(Optional)*      |Filter parameter that    |
+|tag                       |String                   |Filter parameter that    |
 |                          |                         |shows images with the    |
 |                          |                         |specified tag, where the |
 |                          |                         |owner is indicated by    |
 |                          |                         |tenant ID.               |
 +--------------------------+-------------------------+-------------------------+
-|status                    |Int *(Optional)*         |Filter parameter that    |
+|status                    |String                   |Filter parameter that    |
 |                          |                         |species the image status |
 |                          |                         |as ``queued``,           |
 |                          |                         |``saving``, ``active``,  |
 |                          |                         |``killed``, ``deleted``, |
 |                          |                         |or ``pending_delete``.   |
 +--------------------------+-------------------------+-------------------------+
-|size_min                  |String *(Optional)*      |Filter parameter that    |
+|size_min                  |String                   |Filter parameter that    |
 |                          |                         |specifies the minimum    |
 |                          |                         |size of the image in     |
 |                          |                         |bytes.                   |
 +--------------------------+-------------------------+-------------------------+
-|size_max                  |String *(Optional)*      |Filter parameter that    |
+|size_max                  |String                   |Filter parameter that    |
 |                          |                         |specifies the maximum    |
 |                          |                         |size of the image in     |
 |                          |                         |bytes.                   |
 +--------------------------+-------------------------+-------------------------+
-|sort_key                  |String *(Optional)*      |Sort key. Results will   |
+|sort_key                  |String                   |Sort key. Results will   |
 |                          |                         |be sorted by the         |
 |                          |                         |requested image          |
 |                          |                         |property. Accepted       |
@@ -175,7 +175,7 @@ This table shows the query parameters for the request:
 |                          |                         |default is               |
 |                          |                         |``created_at``.          |
 +--------------------------+-------------------------+-------------------------+
-|sort_dir                  |String *(Optional)*      |Sort direction. Valid    |
+|sort_dir                  |String                   |Sort direction. Valid    |
 |                          |                         |values are ``asc``       |
 |                          |                         |(ascending) and ``desc`` |
 |                          |                         |(descending). The        |
@@ -194,52 +194,52 @@ This table shows the body parameters for the response:
 |Name                 |Type         |Description                                  |
 +=====================+=============+=============================================+
 |**images**\.[]       |Array        |The array of the images in the list.         |
-|                     |*(Required)* |                                             |
+|                     |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |images.\ **id**      |String       |The UUID of the image.                       |
-|                     |*(Required)* |                                             |
+|                     |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |images.\ **name**    |String       |The name of the image.                       |
-|                     |*(Required)* |                                             |
+|                     |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |images.\ **status**  |String       |The status of the image. For possible image  |
-|                     |*(Required)* |statuses, see :ref:`Statuses <statuses>`.    |
+|                     |             |statuses, see :ref:`Statuses <statuses>`.    |
 +---------------------+-------------+---------------------------------------------+
 |images.\             |String       |Specifies image visibility as either         |
-|**visibility**       |*(Required)* |``public``, ``private``, or ``shared``.      |
+|**visibility**       |             |``public``, ``private``, or ``shared``.      |
 +---------------------+-------------+---------------------------------------------+
 |images.\             |Integer      |The size of the image in bytes.              |
-|**size**             |*(Required)* |                                             |
+|**size**             |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |images.\             |String       |The checksum of the image.                   |
-|**checksum**         |*(Required)* |                                             |
+|**checksum**         |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |images.\             |String       |The user-defined image tags.                 |
-|**tags**             |*(Required)* |                                             |
+|**tags**             |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |images.\             |String       |The date and time that the image was created.|
-|**created_at**       |*(Required)* |                                             |
+|**created_at**       |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |images.\             |String       |The date and time that the image was updated.|
-|**updated_at**       |*(Required)* |                                             |
+|**updated_at**       |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |images.\             |String       |The link to the image.                       |
-|**self**             |*(Required)* |                                             |
+|**self**             |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |images.\             |String       |The image file.                              |
-|**file**             |*(Required)* |                                             |
+|**file**             |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |images.\             |String       |The schema of the image.                     |
-|**schema**           |*(Required)* |                                             |
+|**schema**           |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |**first**            |String       |The URI for the first image in the list.     |
-|                     |*(Required)* |                                             |
+|                     |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |**next**             |String       |The URI for the next image in the list.      |
-|                     |*(Required)* |                                             |
+|                     |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 |**schema**           |String       |The schema of the images list.               |
-|                     |*(Required)* |                                             |
+|                     |             |                                             |
 +---------------------+-------------+---------------------------------------------+
 
 **Example List images: JSON response**
