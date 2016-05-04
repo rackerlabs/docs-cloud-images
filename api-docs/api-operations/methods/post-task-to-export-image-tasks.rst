@@ -118,10 +118,10 @@ This table shows the body parameters for the response:
 |Name                          |Type         |Description                                  |
 +==============================+=============+=============================================+
 |             **created_at**   |String       |The date and time that the task resource was |
-|                              |*(Required)* |created.                                     |
+|                              |             |created.                                     |
 +------------------------------+-------------+---------------------------------------------+
 |             **expires_at**   |String       |The date and time that the task resource     |
-|                              |*(Optional)* |expires. Even after the task resource        |
+|                              |             |expires. Even after the task resource        |
 |                              |             |expires (and is thus no longer available to  |
 |                              |             |be polled), the result of the task (such as  |
 |                              |             |an imported or exported image) still exists. |
@@ -130,45 +130,45 @@ This table shows the body parameters for the response:
 |                              |             |``failure``.                                 |
 +------------------------------+-------------+---------------------------------------------+
 |             **id**           |String       |The UUID of the task resource.               |
-|                              |*(Required)* |                                             |
+|                              |             |                                             |
 +------------------------------+-------------+---------------------------------------------+
-|             **input**        |*(Required)* |The container for export export input        |
+|             **input**        |Object       |The container for export export input        |
 |                              |             |parameters.                                  |
 +------------------------------+-------------+---------------------------------------------+
-|parameters.input.\            |*(Required)* |The UUID for the exported image.             |
+|input.\                       | Object      |The UUID for the exported image.             |
 |**image_uuid**                |             |                                             |
 +------------------------------+-------------+---------------------------------------------+
-|parameters.input.\            |String       |The Cloud Files container for the exported   |
-|**receiving_swift_container** |*(Required)* |image.                                       |
+|input.\                       |String       |The Cloud Files container for the exported   |
+|**receiving_swift_container** |             |image.                                       |
 +------------------------------+-------------+---------------------------------------------+
 |             **message**      |String       |``None`` if task export succeeded or the     |
-|                              |*(Required)* |reason why the export failed.                |
+|                              |             |reason why the export failed.                |
 +------------------------------+-------------+---------------------------------------------+
-|             **result**       |*(Optional)* |The container for results. .. note:: This    |
+|             **result**       |Object       |The container for results. .. note:: This    |
 |                              |             |parameter is required for responses with     |
 |                              |             |``status`` of ``success``.                   |
 +------------------------------+-------------+---------------------------------------------+
-|parameters.result.\           |String       |The location of the exported image in Cloud  |
-|**export_location**           |*(Optional)* |Files.                                       |
+|result.\                      |String       |The location of the exported image in Cloud  |
+|**export_location**           |             |Files.                                       |
 +------------------------------+-------------+---------------------------------------------+
 |             **owner**        |String       |The tenant-id of the task owner.             |
-|                              |*(Required)* |                                             |
+|                              |             |                                             |
 +------------------------------+-------------+---------------------------------------------+
 |             **schema**       |String       |The schema of the task.                      |
-|                              |*(Required)* |                                             |
+|                              |             |                                             |
 +------------------------------+-------------+---------------------------------------------+
 |             **self**         |String       |The link to the task.                        |
-|                              |*(Required)* |                                             |
+|                              |             |                                             |
 +------------------------------+-------------+---------------------------------------------+
 |             **status**       |String       |The status of the task. For possible task    |
-|                              |*(Required)* |statuses, see                                |
+|                              |             |statuses, see                                |
 |                              |             |:ref:`Image statuses <image_statuses>`       |
 +------------------------------+-------------+---------------------------------------------+
 |             **type**         |String       |The type of the task ( ``export`` for task   |
-|                              |*(Required)* |exports).                                    |
+|                              |             |exports).                                    |
 +------------------------------+-------------+---------------------------------------------+
 |             **updated_at**   |String       |The date and time that the task resource was |
-|                              |*(Required)* |updated.                                     |
+|                              |             |updated.                                     |
 +------------------------------+-------------+---------------------------------------------+
 
 **Example Export Task - Pending Response**

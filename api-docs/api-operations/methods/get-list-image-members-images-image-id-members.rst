@@ -66,32 +66,32 @@ This table shows the body parameters for the response:
 +--------------------------+-------------------------+-------------------------+
 |Name                      |Type                     |Description              |
 +==========================+=========================+=========================+
-|**members**               |Array *(Required)*       |The array of image       |
+|**members**               |Array                    |The array of image       |
 |                          |                         |members.                 |
 +--------------------------+-------------------------+-------------------------+
-|members.\                 |String *(Required)*      |The date and time that   |
+|members.\                 |String                   |The date and time that   |
 |**created_at**            |                         |the image member was     |
 |                          |                         |created.                 |
 +--------------------------+-------------------------+-------------------------+
-|members.\                 |String *(Required)*      |The UUID of the image.   |
+|members.\                 |String                   |The UUID of the image.   |
 |**image_id**              |                         |                         |
 +--------------------------+-------------------------+-------------------------+
-|members.\                 |String *(Required)*      |The id of the image      |
+|members.\                 |String                   |The id of the image      |
 |**member_id**             |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|members.\                 |String *(Required)*      |The schema of the image  |
+|members.\                 |String                   |The schema of the image  |
 |**schema**                |                         |member.                  |
 +--------------------------+-------------------------+-------------------------+
-|members.\                 |String *(Required)*      |The status of the image  |
+|members.\                 |String                   |The status of the image  |
 |**status**                |                         |member ( ``pending``,    |
 |                          |                         |``accepted``, or         |
 |                          |                         |``rejected``.            |
 +--------------------------+-------------------------+-------------------------+
-|members.\                 |String *(Required)*      |The date and time that   |
+|members.\                 |String                   |The date and time that   |
 |**updated_at**            |                         |the image member was     |
 |                          |                         |updated.                 |
 +--------------------------+-------------------------+-------------------------+
-|**schema**                |String *(Required)*      |The schema of the image  |
+|**schema**                |String                   |The schema of the image  |
 |                          |                         |members.                 |
 +--------------------------+-------------------------+-------------------------+
 

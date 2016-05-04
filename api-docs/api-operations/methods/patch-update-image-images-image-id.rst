@@ -112,7 +112,7 @@ This table shows the body parameters for the request:
 |                          |                         |operation is to be       |
 |                          |                         |performed.               |
 +--------------------------+-------------------------+-------------------------+
-| **value**                |String *(Optional)*      |The actual value to be   |
+| **value**                |String                   |The actual value to be   |
 |                          |                         |added or replaced. It is |
 |                          |                         |not required for the     |
 |                          |                         |``delete`` operation.    |

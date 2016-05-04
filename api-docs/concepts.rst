@@ -167,6 +167,7 @@ options:
     **windows**
         Microsoft Windows
 
+.. _image-sharing:
 
 Image sharing
 ~~~~~~~~~~~~~
