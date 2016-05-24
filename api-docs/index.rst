@@ -6,8 +6,8 @@ Rackspace Cloud Images API |contract version|
 
 *Last updated:* |today|
 
-Use the following links to jump directly to user and reference information for 
-using the |apiservice|. 
+Use the following links to jump directly to user and reference information for
+using the |apiservice|.
 
 * :ref:`Getting Started Guide<getting-started>`
 * :ref:`Developer Guide<developer-guide>`
@@ -15,8 +15,7 @@ using the |apiservice|.
 * :ref:`Release Notes<release-notes>`
 
 .. toctree:: :hidden:
-   :maxdepth: 2
- 
+
    Cloud Images 2.0 <self>
    API Status <https://status.rackspace.com>
    About the API <overview/index>
@@ -24,7 +23,7 @@ using the |apiservice|.
    getting-started/index
    developer-guide
    concepts
-   general-api-info/index 
+   general-api-info/index
    api-reference
    api-operations/index
    glossary
