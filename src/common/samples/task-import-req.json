@@ -1,9 +1,0 @@
-{
-    "type": "import",
-    "input": {
-        "image_properties": {
-            "name": "My excellent custom image"
-        }, 
-        "import_from": "exports/my-excellent-image.vhd"
-    }
-}
