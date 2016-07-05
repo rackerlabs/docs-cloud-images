@@ -3,7 +3,7 @@
 Listing image members
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want to see everyone with whom you've shared an image and the status of each member, 
+If you want to see everyone with whom you've shared an image and the status of each member,
 list the image members.
 
 -  Issue the following cURL command to list the image members for an
@@ -12,28 +12,27 @@ list the image members.
 
 **cURL list image members request**
 
-   .. code::  
+   .. code::
 
        curl -s API_ENDPOINT/v2/images/a96be11e-8536-4910-92cb-de50aa19dfe6/members \
        -H "X-Auth-Token: $AUTH_TOKEN" |python -m json.tool
-                       
+
 
    **Options:**
 
    -  **-s**: Runs the command in silent mode.
 
-   -  **-H**: Specified header information. In this case, it provides the authentication 
-      token. If you previously exported the token environment variable as instructed in 
+   -  **-H**: Specified header information. In this case, it provides the authentication
+      token. If you previously exported the token environment variable as instructed in
       :ref:`configure these variables<configure-environment-variables>`, you can use the $AUTH_TOKEN
       variable. Otherwise, substitute your actual token for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
-      JSON output. For more information about json.tool, see
-      :ref:`json.tool note <json-tool>`.
-    
+      JSON output.
+
    **List image members with cURL response**
 
-   .. code::  
+   .. code::
 
        {
            "members": [

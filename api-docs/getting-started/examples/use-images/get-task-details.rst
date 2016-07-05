@@ -3,38 +3,37 @@
 Getting details for a task
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To find when an import or export task finishes and whether it worked, get the details for 
+To find when an import or export task finishes and whether it worked, get the details for
 that task.
 
-1. Issue the following cURL command to get details for an import task, by using the task 
-   ID that you got from importing or exporting an image. In this example, you poll task 
-   ``fc29a67c-ad76-49bc-a317-a5f38dcb44c0`` and get a status of ``pending``. If you 
+1. Issue the following cURL command to get details for an import task, by using the task
+   ID that you got from importing or exporting an image. In this example, you poll task
+   ``fc29a67c-ad76-49bc-a317-a5f38dcb44c0`` and get a status of ``pending``. If you
    continue polling, you will eventually get a status of ``success`` or ``failure``.
 
    **cURL get details for a task request**
 
-   .. code::  
+   .. code::
 
        curl -s $API_ENDPOINT/v2/tasks/fc29a67c-ad76-49bc-a317-a5f38dcb44c0  \
        -H "X-Auth-Token: $AUTH_TOKEN" |python -m json.tool
-                       
+
 
    **Options:**
 
    -  **-s**: Runs the command in silent mode.
 
-   -  **-H**: Specified header information. In this case, it provides the authentication 
-      token. If you previously exported the token environment variable as instructed in 
-      :ref:`configure these variables<configure-environment-variables>`, 
+   -  **-H**: Specified header information. In this case, it provides the authentication
+      token. If you previously exported the token environment variable as instructed in
+      :ref:`configure these variables<configure-environment-variables>`,
       you can use the $AUTH_TOKEN variable. Otherwise, substitute your actual token for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
-      JSON output. For more information about json.tool, see
-      :ref:`json.tool note <json-tool>`.
- 
+      JSON output.
+
    **Get details for a task response (pending)**
 
-   .. code::  
+   .. code::
 
        {
            "created_at": "2014-02-26T02:58:46Z",
@@ -53,18 +52,18 @@ that task.
            "type": "import",
            "updated_at": "2014-02-26T02:58:46Z"
        }
-                           
+
 
 2. Continue to reissue the operation, until the status is either ``success`` or ``failure``.
 
-   When an **import task** completes successfully, note the image ID so that you can share 
-   it or use it to boot a server. In this example, the image ID is 
+   When an **import task** completes successfully, note the image ID so that you can share
+   it or use it to boot a server. In this example, the image ID is
    ``1d944ab7-6748-4f3c-b7e2-3553bf006677``.
 
-    
+
    **Get details for an import task response (success)**
 
-   .. code::  
+   .. code::
 
        {
            "created_at": "2014-02-26T03:02:23Z",
@@ -87,16 +86,16 @@ that task.
            "type": "import",
            "updated_at": "2014-02-26T03:28:18Z"
        }
-                           
 
-   When an **export task** completes successfully, note the export_location so that you can 
+
+   When an **export task** completes successfully, note the export_location so that you can
    find the image file in your Cloud Files account. In this example, the export_location is
    ``exports/ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6.vhd``.
 
-    
+
    **Get details for an export task with cURL response (success)**
 
-   .. code::  
+   .. code::
 
        {
            "created_at": "2014-02-26T02:01:13Z",
@@ -117,4 +116,4 @@ that task.
            "type": "export",
            "updated_at": "2014-02-26T02:16:50Z"
        }
-                           
+

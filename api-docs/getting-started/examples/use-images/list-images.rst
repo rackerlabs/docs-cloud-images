@@ -1,6 +1,6 @@
 .. _using-image-list-images:
 
-Listing images 
+Listing images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To find out what images are available, list them.
@@ -10,32 +10,31 @@ To find out what images are available, list them.
 
    **cURL list images request**
 
-   .. code::  
+   .. code::
 
        curl -s $API_ENDPOINT/v2/images -H "X-Auth-Token: $AUTH_TOKEN" |python -m json.tool
-                       
+
 
    **Options:**
 
    -  **-s**: Runs the command in silent mode.
 
-   -  **-H**: Specified header information. In this case, it provides the authentication 
-      token. If you previously exported the token environment variable as instructed in 
-      :ref:`configure these variables<configure-environment-variables>`, 
+   -  **-H**: Specified header information. In this case, it provides the authentication
+      token. If you previously exported the token environment variable as instructed in
+      :ref:`configure these variables<configure-environment-variables>`,
       you can use the $AUTH_TOKEN variable. Otherwise, substitute your actual token for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
-      JSON output. For more information about json.tool, see
-      :ref:`json.tool note <json-tool>`.
+      JSON output.
 
    The command returns an array of images. The details for the Ubuntu
    12.04 image within the array are shown in following example, with
    other images removed for brevity.
 
-    
+
    **List images response**
 
-   .. code::  
+   .. code::
 
        {
           "images":
@@ -84,7 +83,7 @@ To find out what images are available, list them.
           "next": "/v2/images?marker=c9c7732f-5129-4930-a835-3781255fb1e2",
           "schema": "/v2/schemas/images"
        }
-                           
+
 
 2. Copy the image ID of the image that you want to use. Find the image
    ID in the ``id`` field of the output. In this example, the ``id`` of
