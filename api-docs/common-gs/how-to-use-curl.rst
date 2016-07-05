@@ -120,11 +120,8 @@ If you do not want to pretty-print JSON output, omit this code.
 
    If your request includes the ``-i`` option to show header output, do not try to pretty-print the output. Header information is not in JSON format, and the API service returns an error if you specify json.tool.
 
-.. _json encoder and decoder: http://docs.python.org/2/library/json.html
-.. _simplejson encoder and decoder: http://simplejson.googlecode.com/svn/tags/simplejson-2.0.9/docs/index.html
-
-.. _json.tool: http://docs.python.org/2/library/json.html
-.. _simplejson.tool: http://simplejson.googlecode.com/svn/tags/simplejson-2.0.9/docs/index.html
+.. _JSON encoder and decoder: http://docs.python.org/2/library/json.html
+.. _simplejson encoder and decoder: https://simplejson.readthedocs.io/en/latest/
 
 
 .. _convert-cURL-examples-for-windows:
