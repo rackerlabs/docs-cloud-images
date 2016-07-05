@@ -2,38 +2,37 @@
 
 If you need to see any additional details about an image, get the details for that image.
 
- 
+
 Getting details for an image
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Issue the following cURL command to get details for the Ubuntu 12.04 image, using an 
+Issue the following cURL command to get details for the Ubuntu 12.04 image, using an
 image ID that you got from the :ref:`List images <using-image-list-images>` step.
 
 
 **cURL get details for an image request**
 
-.. code::  
+.. code::
 
 	curl -s $API_ENDPOINT/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
    -H "X-Auth-Token: $AUTH_TOKEN" |python -m json.tool
-                       
+
 
 **Options:**
 
    -  **-s**: Runs the command in silent mode.
 
-   -  **-H**: Specified header information. In this case, it provides the authentication 
-      token. If you previously exported the token environment variable as instructed in 
-      :ref:`configure these variables<configure-environment-variables>`, 
+   -  **-H**: Specified header information. In this case, it provides the authentication
+      token. If you previously exported the token environment variable as instructed in
+      :ref:`configure these variables<configure-environment-variables>`,
       you can use the $AUTH_TOKEN variable. Otherwise, substitute your actual token for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
-      JSON output. For more information about json.tool, see
-      :ref:`json.tool note <json-tool>`.
+      JSON output.
 
 **Get details for an image with cURL response**
 
-.. code::  
+.. code::
 
    {
       "auto_disk_config": "disabled",
@@ -75,4 +74,4 @@ image ID that you got from the :ref:`List images <using-image-list-images>` step
       "visibility": "public",
       "vm_mode": "hvm"
    }
-                           
+
