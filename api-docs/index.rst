@@ -1,32 +1,50 @@
 .. _index:
 
-=========================================================
-Rackspace Cloud Images API |contract version|
-=========================================================
+===============================================
+Rackspace |product name| API |contract version|
+===============================================
 
 *Last updated:* |today|
 
-Use the following links to jump directly to user and reference information for
-using the |apiservice|.
+The |apiservice| service enables developers to create and manipulate images,
+image members, and associated metadata through a simple Representational State
+Transfer (REST) web service interface.
 
-* :ref:`Getting Started Guide<getting-started>`
-* :ref:`Developer Guide<developer-guide>`
-* :ref:`API Reference<api-reference>`
-* :ref:`Release Notes<release-notes>`
+The |product name| service is closely aligned with the Rackspace Cloud Servers
+service and Cloud Files service. Images are captured from, and applied to,
+cloud servers and are stored on, and retrieved from, Cloud Files storage.
+
+This guide is intended to assist software developers who want to develop
+applications by using the REST application programming interface (API) for the
+Rackspace Cloud Images service.
+
+To use the information provided here, you should have a general understanding
+of the
+:how-to:`Rackspace Cloud Images service <cloud-images-frequently-asked-questions>`
+and have a :rax-cart:`Rackspace Cloud account <cloud>` with access to the
+Cloud Images service. You should also be familiar with the following
+technologies:
+
+-  *RESTful* web services
+-  *HTTP*/1.1
+-  JSON data serialization format
+
+Use the following links to jump directly to user and reference information for
+the |product name| service REST API:
+
+- :ref:`Getting Started Guide <getting-started-guide>`
+- :ref:`General API information <general-api-info>`
+- :ref:`API reference <api-reference>`
+- :ref:`Release Notes <release-notes-collection>`
 
 .. toctree:: :hidden:
 
    Cloud Images 2.0 <self>
-   API Status <https://status.rackspace.com>
-   About the API <overview/index>
-   getting-started
    getting-started/index
-   developer-guide
-   concepts
    general-api-info/index
-   api-reference
-   api-operations/index
+   api-reference/index
    glossary
-   getting-started
-   release-notes
+   release-notes/index
+   service-updates
+   additional-resources
    copyright

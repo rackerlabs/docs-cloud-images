@@ -1,100 +1,133 @@
 .. _role-based-access-control:
 
-Role Based Access Control
-~~~~~~~~~~~~~~~~~~~~~~~~~
+================================
+Role-based access control (RBAC)
+================================
 
-Role Based Access Control (RBAC) restricts access to the capabilities of
-Rackspace Cloud services, including the next gen Cloud Servers API, to
-authorized users only. RBAC enables Rackspace Cloud customers to specify
-which account users of their Cloud account have access to which next gen
-Cloud Servers API service capabilities, based on roles defined by
-Rackspace (see Next Gen Cloud Servers Product Roles and
-Permissions). The permissions to perform certain operations in next gen
-Cloud Servers API – create, read, update, delete – are assigned to specific
-roles. The account owner user assigns these roles, either global (multiproduct)
-or product-specific (for example, next gen Cloud Servers), to account
-users.
+Role-based access control (RBAC) restricts access to the capabilities of
+Rackspace Cloud services, including the |product name| API, to authorized
+users only. RBAC enables Rackspace Cloud customers to specify
+users have access to which |product name| API
+service capabilities, based on roles defined by Rackspace. The
+permissions to perform certain operations in |product name| API (create,
+read, update, delete) are assigned to specific roles. The account owner user
+assigns these roles, either global (multiproduct) or product-specific (for
+example, |product name|), to account users.
 
-Assigning Roles to Account Users
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _rbac-assign:
+
+Assigning roles to account users
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The account owner (identity:user-admin) can create account users on the
-account and then assign roles to those users. The roles grant the
-account users specific permissions for accessing the capabilities of the
-next gen Cloud Servers service. Each account has only one account owner,
-and that role is assigned by default to any Rackspace Cloud account when
-the account is created.
+account and then assign roles to those users. The roles grant the account
+users specific permissions for accessing the capabilities of the
+|product name| service. Each account has only one account owner, and that role
+is assigned by default to any Rackspace Cloud account when the account is
+created.
 
-See the :rax-devdocs:`Cloud Identity Client Developer Guide <cloud-identity/v2/developer-guide/#document-overview>` 
-for information about how to perform the following tasks:
+See the Cloud Identity API guide for information about how to
+perform the following tasks:
 
-* :rax-devdocs:`Add account users <cloud-identity/v2/developer-guide/#add-user>`  
+* :rax-devdocs:`Add account users <cloud-identity/v2/developer-guide/#add-user>`
 
-* :rax-devdocs:`Add role to user <cloud-identity/v2/developer-guide/#add-role-to-user>`  
+* :rax-devdocs:`Add role to user \
+  <cloud-identity/v2/developer-guide/#add-role-to-user>`
 
-* :rax-devdocs:`Delete global role from user <cloud-identity/v2/developer-guide/#delete-global-role-from-user>` 
+* :rax-devdocs:`Delete global role from user \
+  <cloud-identity/v2/developer-guide/#delete-global-role-from-user>`
 
-.. note:: The account owner (identity:user-admin) role cannot hold any
-   additional roles because it already has full access to all capabilities.
+.. note::
 
-Roles Available for Cloud Images
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    The account owner (identity:user-admin) role cannot hold any
+    additional roles because it already has full access to all capabilities.
 
-Three roles (observer, creator, and admin) can be used to access the Cloud Images API
-specifically. The following section describes these roles and their permissions.
+Roles available for |product name|
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Cloud Images Product Roles and Permissions**
+The following table describes the roles that can be used to access the
+|product name| API.
 
-- **cloudImages:admin** This role provides Create, Read, Update, and Delete permissions in Cloud Images, where access is granted.
+.. list-table:: **Product roles and capabilities**
+   :widths: 20 50
+   :header-rows: 1
 
-- **cloudImages:creator** This role provides Create, Read, and Update permissions in Cloud Images, where access is granted.
+   * - Role name
+     - Role permissions
+   * - cloudImages:admin
+     - This role provides Create, Read, Update, and Delete permissions
+       in |product name|, where access is granted.
+   * - cloudImages:creator
+     - This role provides Create, Read and Update permissions in |product name|, where access is granted.
+   * - cloudImages:observer
+     - This role provides Read permission in |product name|, where access
+       is granted.
 
-- **cloudImages:observer** This role provides Read permission in Cloud Images, where access is granted.
+.. _rbac-available-multi-roles:
 
-Additionally, two multiproduct roles apply to all products. Users with multiproduct roles
-inherit access to future products when those products become RBAC-enabled. The following
-section describes these roles and their permissions.
+Multiproduct global roles and permissions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Multiproduct (Global) Roles and Permissions**
+Additionally, two multiproduct roles apply to all products. Users with
+multiproduct roles inherit access to products when those products become
+RBAC-enabled. The following table describes these roles and their permissions.
+
+**Multiproduct roles and permissions**
+
+.. list-table:: **Multiproduct roles and permissions**
+   :widths: 20 40
+   :header-rows: 1
+
+   * - Role name
+     - Role permissions
+   * - admin
+     - This role provides create, read, update, and delete permissions
+       in all products, where access is granted.
+   * - observer
+     - This role provides read permission in all products,
+       where access is granted.
+
+.. _rbac-resolve-role-conflict:
+
+Resolving conflicts between RBAC multiproduct and product-specific roles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The account owner can set roles for both multiproduct and |product name|
+scope, and it is important to understand how any potential conflicts between
+these roles are resolved. When two roles appear to conflict, the role that
+provides the more extensive permissions takes precedence. Therefore, admin
+roles take precedence over observer and creator roles, because admin roles
+provide more permissions.
+
+The following table shows two examples of how potential conflicts between user
+roles in the Control Panel are resolved.
 
 
-- **admin** This role provides Create, Read, Update, and Delete permissions in all products, where access is granted.
+.. list-table:: **Example of resolving permissions**
+   :widths: 10 10 40
+   :header-rows: 1
 
-- **observer** This role provides Read permission in all products, where access is granted.
+   * - Permission configuration
+     - Control Panel permission view
+     - Control Panel admin capabilities
+   * - User is assigned the following roles: multiproduct **observer** and
+       |product name| **admin**
+     - Appears that the user has only the multiproduct **observer** role
+     - User can perform admin functions for |product name| only. The user has
+       the **observer** role for the rest of the products.
+   * - User is assigned to the following roles: multiproduct **admin** and
+       |product name| **observer**
+     - Appears that the user has only the multiprodcut **admin** role
+     - User can perform admin functions for all of the products.
+       The |product name| **observer** role is ignored.
 
-Resolving Conflicts Between Roles
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The account owner can set roles for both multiproduct and Cloud Images scope, and it is
-important to understand how any potential conflicts among these roles are resolved. When
-two roles appear to conflict, the role that provides the more extensive permissions takes
-precedence. Therefore, admin roles take precedence over observer and creator roles, because
-admin roles provide more permissions.
+.. _rbac-permissions-info:
 
-The following scenarios show examples of how potential conflicts between user roles in the
-Control Panel are resolved:
+RBAC permissions cross-reference to |product name| API operations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-**Scenario 1:**
-*Configuration:* User is assigned the following roles: multiproduct **observer** and cloudImages **admin**
-
-*Control Panel View:* Appears that the user has only the multiproduct **observer** role.
-
-*Permissions:* The user can perform product admin functions in the control panel
-for Cloud Images only. The user has the **observer** role for the
-rest of the products.
-
-**Scenario 2:**
-*Configuration:* User is assigned the following roles: multiproduct **admin** and
-cloudImages **observer**
-
-*Control Panel View:* Appears that the user has only the multiproduct **admin** role.
-
-Permissions: The user can perform product admin functions in the control panel for all of the products.
-The Cloud Images **observer** role is ignored.
-
-RBAC Permissions Cross-reference to Cloud Images API Operations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-API operations for Cloud Images may or may not be available to all roles. To see which
-operations are permitted to invoke which calls, please review the the :how-to:`Permissions Matrix for Role-Based Access Control<permissions-matrix-for-role-based-access-control-rbac>`.
+API operations for |product name| may or may not be available to all
+roles. To see which operations are permitted to invoke which calls,
+review the :how-to:`Permissions Matrix for Role-Based Access Control (RBAC) \
+<permissions-matrix-for-role-based-access-control-rbac>`.

@@ -1,5 +1,7 @@
+.. _authentication-response-examples:
+
 .. code:: json
-  
+
     { "name": "cloudImages",
       "type": "image",
       "endpoints": [
