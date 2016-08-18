@@ -21,7 +21,7 @@ image:
    Images in another region of the Rackspace open cloud, your image is already
    in the appropriate format. This article provides information on
    :how-to:`preparing a custom image for import
-   <preparing-an-image-for-import-into-the-rackspace-open-cloud>`.
+   <preparing-an-image-for-import-into-the-rackspace-opencloud>`.
 
 *  Store the image in your Cloud Files account.
 

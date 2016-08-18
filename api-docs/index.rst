@@ -20,7 +20,7 @@ Rackspace Cloud Images service.
 
 To use the information provided here, you should have a general understanding
 of the
-:how-to:`Rackspace Cloud Images service <cloud-images-frequently-asked-questions>`
+:how-to:`Rackspace Cloud Images service <cloud-images-faq>`
 and have a :rax-cart:`Rackspace Cloud account <cloud>` with access to the
 Cloud Images service. You should also be familiar with the following
 technologies:
