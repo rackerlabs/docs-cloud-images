@@ -29,13 +29,13 @@ created.
 See the Cloud Identity API guide for information about how to
 perform the following tasks:
 
-* :rax-devdocs:`Add account users <cloud-identity/v2/developer-guide/#add-user>`
+* :rax-devdocs:`Add account users <cloud-identity/v2/api-reference/users-operations/#add-user>`
 
 * :rax-devdocs:`Add role to user \
-  <cloud-identity/v2/developer-guide/#add-role-to-user>`
+  <cloud-identity/v2/api-reference/role-operations/#add-role-to-user>`
 
 * :rax-devdocs:`Delete global role from user \
-  <cloud-identity/v2/developer-guide/#delete-global-role-from-user>`
+  <cloud-identity/v2/api-reference/role-operations/#delete-global-role-from-user>`
 
 .. note::
 

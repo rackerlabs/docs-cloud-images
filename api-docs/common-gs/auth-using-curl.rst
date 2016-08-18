@@ -61,7 +61,7 @@ token ID
     expire, unless it is revoked before the expiration. To get a new token,
     submit another authentication request. For more information, see
     :rax-devdocs:`Manage authentication tokens
-    <cloud-identity/v2/developer-guide/#manage-authentication-tokens>`.
+    <cloud-identity/v2/getting-started/manage-auth-tokens/>`.
 
 tenant ID
     The tenant ID provides your account number. For most Rackspace Cloud
@@ -97,7 +97,8 @@ the following error message descriptions to determine next steps.
 ..  note::
        For additional information about authentication errors, see the
        :rax-dev:`Identity API Reference documentation
-       <docs/cloud-identity/v2/developer-guide/#token-operations>`.
+       <docs/cloud-identity/v2/general-api-info/http-status-codes/#http-status-codes>`.
+
 .. _configure-environment-variables:
 
 Configure environment variables
