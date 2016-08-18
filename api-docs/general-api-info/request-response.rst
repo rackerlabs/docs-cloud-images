@@ -1,39 +1,31 @@
-.. _send-request-receive-responses:
+.. _req-resp-types:
 
-API requests and responses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+==========================
+Request and response types
+==========================
 
-You have several options for sending requests through an API:
+The |apiservice| supports the JSON data serialization formats.
 
-- Developers and testers might prefer to use cURL with the command-line tool from
-  http://curl.haxx.se/.
+The request format is specified by using the ``Content-Type`` header and is
+required for operations that have a request body.
 
-  For more information about using cURL, see 
-  :ref:`How cURL commands work <how-curl-commands-work>`.
-
-- If you like to use a more graphical interface, the REST client for Mozilla Firefox also
-  works well for testing and trying out commands. See
-  https://addons.mozilla.org/en-US/firefox/addon/restclient/.
-
-  Similar browser plug-ins are available for browsers other than Firefox.
-
-   .. note::
-      If you use a browser plug-in, be sure to include the Header elements for ``Content-Type``
-      and ``X-Auth-Token`` with appropriate values.
-
-- You can download and install RESTclient, a Java application for testing ReSTful web
-  services, from http://code.google.com/p/rest-client/.
+The response format can be specified in requests either by using the ``Accept``
+header or adding a ``.json`` extension to the request URI. A response  can be
+serialized using a format that is different from the request.
+If no response format is specified, JSON is the default. If conflicting
+formats are specified by using both an ``Accept`` header and a query
+extension, the query extension takes precedence.
 
 .. _media-types:
 
 Media Types
 ~~~~~~~~~~~
 
-The Cloud Images API accepts and serves JSON-encoded data. The media type required in the
-request varies by the following request types:
+The |product name| API accepts and serves JSON-encoded data. The media type
+required in the request varies by the following request types:
 
-- Requests that send **JSON-encoded data** use the following media type in their
-  ``Content-Type header: 'application/json'``.
+- Requests that send **JSON-encoded data** use the following media type in
+  their ``Content-Type header: 'application/json'``.
 
 - Requests that use **HTTP PATCH syntax** use the following media type in their
   ``Content-Type header: 'application/openstack-images-v2.1-json-patch'``.
@@ -44,7 +36,8 @@ request varies by the following request types:
 JSON Schemas
 ~~~~~~~~~~~~
 
-The necessary JSON-schema documents are provided at predictable URIs. A consumer
-validates server responses and client requests based on the published schemas. The
-schemas contained in this document are only examples and should not be used to validate
-your requests. A client should always fetch current schemas from the server.
+The necessary JSON-schema documents are provided at predictable URIs. A
+consumer validates server responses and client requests based on the published
+schemas. The schemas contained in this document are only examples and should
+not be used to validate your requests. A client should always fetch current
+schemas from the server.
