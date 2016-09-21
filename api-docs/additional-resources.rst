@@ -5,16 +5,16 @@ Additional resources
 ====================
 
 We welcome feedback, comments, and bug reports. Visit the
-:rax-special:`Rackspace customer portal <feedback>`.
+`Rackspace Product Feedback forum`_.
 
-Use the links below to learn more about the Rackspace Cloud Servers service and
+Use the links below to learn more about the |service| service and
 API.
 
-- For general information about Cloud Images, see the
+- For general information about |product name|, see the
   how-to:`Cloud Images FAQ <cloud-images-frequently-asked-questions>`
   article.
 
-- To learn more about the Cloud Images service and the various ways you can
+- To learn more about the |product name| service and the various ways you can
   interact with it (API, SDK, CLI, and Control Panel), see the
   :rax-devdocs:`Rackspace Cloud Guide to Core Infrastructure
   Services <user-guides/infrastructure/>`.
@@ -27,3 +27,5 @@ API.
 
 For product updates and announcements through Twitter, see
 http://twitter.com/rackspace.
+
+.. _Rackspace Product Feedback forum: https://community.rackspace.com/feedback/default
