@@ -159,10 +159,6 @@ Response
                            "maxLength": 255,
                            "type": "string"
                        },
-                       "os_distro": {
-                           "description": "Common name of operating system distribution as specified in http://docs.openstack.org/trunk/openstack-compute/admin/content/adding-images.html",
-                           "type": "string"
-                       },
                        "os_version": {
                            "description": "Operating system version as specified by the distributor",
                            "type": "string"
