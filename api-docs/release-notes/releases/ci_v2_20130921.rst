@@ -25,9 +25,9 @@ What's new
    consumers to use the shared image when booting a server. The producer shares
    an image with the consumer by making the consumer a member of that image.
    the consumer then accepts or rejects the image by changing the image member
-   status. After it is accepted, the image appears in the consumer’s image list.
-   As long as the consumer is a member of the image, the consumer can use the
-   image, regardless of the image member status.
+   status. After it is accepted, the image appears in the consumer’s image
+   list. As long as the consumer is a member of the image, the consumer can use
+   the image, regardless of the image member status.
 
 -  An *image task* API request performs an asynchronous image-related
    operation, such as importing or exporting an image. The request creates a
