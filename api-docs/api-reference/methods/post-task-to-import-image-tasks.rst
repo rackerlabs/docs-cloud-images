@@ -40,34 +40,34 @@ image:
 
 This table shows the possible response codes for this operation:
 
-+--------------------------+-------------------------+-------------------------+
-|Response Code             |Name                     |Description              |
-+==========================+=========================+=========================+
-|201                       |Success                  |Request succeeded.       |
-+--------------------------+-------------------------+-------------------------+
-|400                       |Error                    |A general error has      |
-|                          |                         |occured.                 |
-+--------------------------+-------------------------+-------------------------+
-|401                       |Unauthorized             |Unauthorized.            |
-+--------------------------+-------------------------+-------------------------+
-|403                       |Forbidden                |Forbidden.               |
-+--------------------------+-------------------------+-------------------------+
-|405                       |Bad Method               |Bad method.              |
-+--------------------------+-------------------------+-------------------------+
-|413                       |Over Limit               |The number of items      |
-|                          |                         |returned is above the    |
-|                          |                         |allowed limit.           |
-+--------------------------+-------------------------+-------------------------+
-|415                       |Bad Media Type           |Bad media type. This may |
-|                          |                         |result if the wrong      |
-|                          |                         |media type is used in    |
-|                          |                         |the cURL request.        |
-+--------------------------+-------------------------+-------------------------+
-|500                       |API Fault                |API fault.               |
-+--------------------------+-------------------------+-------------------------+
-|503                       |Service Unavailable      |The requested service is |
-|                          |                         |unavailable.             |
-+--------------------------+-------------------------+-------------------------+
++-------------------------+-------------------------+-------------------------+
+|Response Code            |Name                     |Description              |
++=========================+=========================+=========================+
+|201                      |Success                  |Request succeeded.       |
++-------------------------+-------------------------+-------------------------+
+|400                      |Error                    |A general error has      |
+|                         |                         |occured.                 |
++-------------------------+-------------------------+-------------------------+
+|401                      |Unauthorized             |Unauthorized.            |
++-------------------------+-------------------------+-------------------------+
+|403                      |Forbidden                |Forbidden.               |
++-------------------------+-------------------------+-------------------------+
+|405                      |Bad Method               |Bad method.              |
++-------------------------+-------------------------+-------------------------+
+|413                      |Over Limit               |The number of items      |
+|                         |                         |returned is above the    |
+|                         |                         |allowed limit.           |
++-------------------------+-------------------------+-------------------------+
+|415                      |Bad Media Type           |Bad media type. This may |
+|                         |                         |result if the wrong      |
+|                         |                         |media type is used in    |
+|                         |                         |the cURL request.        |
++-------------------------+-------------------------+-------------------------+
+|500                      |API Fault                |API fault.               |
++-------------------------+-------------------------+-------------------------+
+|503                      |Service Unavailable      |The requested service is |
+|                         |                         |unavailable.             |
++-------------------------+-------------------------+-------------------------+
 
 
 Request
@@ -75,36 +75,36 @@ Request
 
 This table shows the body parameters for the request:
 
-+-------------------------------------+--------------------+-------------------+
-|Name                                 |Type                |Description        |
-+=====================================+====================+===================+
-|**type**                             |String *(Required)* |The type of task.  |
-|                                     |                    |Use ``import`` for |
-|                                     |                    |task imports.      |
-+-------------------------------------+--------------------+-------------------+
-|**input**                            |*(Required)*        |The container for  |
-|                                     |                    |import input       |
-|                                     |                    |parameters.        |
-+-------------------------------------+--------------------+-------------------+
-|input.\                              |*(Required)*        |The container for  |
-|**image_properties**                 |                    |image properties.  |
-+-------------------------------------+--------------------+-------------------+
-|input.image_properties.\             |String *(Required)* |The name of the    |
-|**name**                             |                    |image. ..          |
-|                                     |                    |warning:: Name is  |
-|                                     |                    |the only property  |
-|                                     |                    |that can be        |
-|                                     |                    |included in        |
-|                                     |                    |``image-           |
-|                                     |                    |properties``.      |
-|                                     |                    |Including any      |
-|                                     |                    |other property     |
-|                                     |                    |will cause the     |
-|                                     |                    |operation to fail. |
-+-------------------------------------+--------------------+-------------------+
-|input.\ **import_from**              |String *(Required)* |The source of the  |
-|                                     |                    |imported image.    |
-+-------------------------------------+--------------------+-------------------+
++------------------------------------+--------------------+-------------------+
+|Name                                |Type                |Description        |
++====================================+====================+===================+
+|**type**                            |String *(Required)* |The type of task.  |
+|                                    |                    |Use ``import`` for |
+|                                    |                    |task imports.      |
++------------------------------------+--------------------+-------------------+
+|**input**                           |*(Required)*        |The container for  |
+|                                    |                    |import input       |
+|                                    |                    |parameters.        |
++------------------------------------+--------------------+-------------------+
+|input.\                             |*(Required)*        |The container for  |
+|**image_properties**                |                    |image properties.  |
++------------------------------------+--------------------+-------------------+
+|input.image_properties.\            |String *(Required)* |The name of the    |
+|**name**                            |                    |image. ..          |
+|                                    |                    |warning:: Name is  |
+|                                    |                    |the only property  |
+|                                    |                    |that can be        |
+|                                    |                    |included in        |
+|                                    |                    |``image-           |
+|                                    |                    |properties``.      |
+|                                    |                    |Including any      |
+|                                    |                    |other property     |
+|                                    |                    |will cause the     |
+|                                    |                    |operation to fail. |
++------------------------------------+--------------------+-------------------+
+|input.\ **import_from**             |String *(Required)* |The source of the  |
+|                                    |                    |imported image.    |
++------------------------------------+--------------------+-------------------+
 
 
 **Example: Task to import image: JSON request**
@@ -127,97 +127,97 @@ Response
 
 This table shows the body parameters for the response:
 
-+--------------------+------------+---------------------------------------------+
-|Name                |Type        |Description                                  |
-+====================+============+=============================================+
-|**created_at**      |String      |The date and time that the task resource was |
-|                    |            |created.                                     |
-+--------------------+------------+---------------------------------------------+
-|**expires_at**      |String      |The date and time that the task resource     |
-|                    |            |expires. Even after the task resource        |
-|                    |            |expires (and is thus no longer available to  |
-|                    |            |be polled), the result of the task (such as  |
-|                    |            |an imported or exported image) still exists. |
-|                    |            |.. note:: This parameter is required for     |
-|                    |            |responses with ``status`` of ``success`` and |
-|                    |            |``failure``.                                 |
-+--------------------+------------+---------------------------------------------+
-|**id**              |String      |The UUID of the task resource.               |
-|                    |            |                                             |
-+--------------------+------------+---------------------------------------------+
-|**input**           |Object      |The container for import input parameters.   |
-+--------------------+------------+---------------------------------------------+
-|input.\             |Object      |The container for image properties.          |
-|**image_properties**|            |                                             |
-+--------------------+------------+---------------------------------------------+
-|input.\             |String      |The name of the image.                       |
-|image_properties.\  |            |                                             |
-|**name**            |            | .. warning::                                |
-|                    |            |     Name is the only property that can be   |
-|                    |            |     included in ``image-properties``.       |
-|                    |            |     Including any other property will       |
-|                    |            |     cause the operation to fail.            |
-+--------------------+------------+---------------------------------------------+
-|input.\             |String      |The source of the imported image.            |
-|**import_from**     |            |                                             |
-+--------------------+------------+---------------------------------------------+
-|**message**         |String      |``None`` if task import succeeded or the     |
-|                    |            |reason why the import failed. Possible       |
-|                    |            |errors include the following:                |
-|                    |            |                                             |
-|                    |            |``111``: The image cannot be imported/       |
-|                    |            |There is an unspecified                      |
-|                    |            |problem with your VHD that caused it to fail |
-|                    |            |our validation checks.                       |
-|                    |            |                                             |
-|                    |            |``396``: The image cannot                    |
-|                    |            |be imported. The file is not a valid VHD.    |
-|                    |            |                                             |
-|                    |            |``413``: The image cannot be imported. The   |
-|                    |            |virtual size of the disk exceeds the 40GB    |
-|                    |            |limit.                                       |
-|                    |            |                                             |
-|                    |            |``523``: The image cannot be imported.       |
-|                    |            |Only fixed or dynamic disks may be imported. |
-|                    |            |                                             |
-|                    |            |``609``: The image cannot be imported. The   |
-|                    |            |physical size of the disk exceeds the 40GB   |
-|                    |            |limit.                                       |
-|                    |            |                                             |
-|                    |            |``614``: The image cannot be imported.       |
-|                    |            |The internal UUID of the VHD is all zeros.   |
-|                    |            |                                             |
-|                    |            |``721``: The image cannot be imported.       |
-|                    |            |Your VHD has a parent disk. You can only     |
-|                    |            |import a stand-alone VHD.                    |
-|                    |            |                                             |
-+--------------------+------------+---------------------------------------------+
-|**result**          |Object      |The container for results. .. note:: This    |
-|                    |            |parameter is required for responses with     |
-|                    |            |``status`` of ``success``.                   |
-+--------------------+------------+---------------------------------------------+
-|result.\            |Uuid        |The UUID of the image.                       |
-|**image_id**        |            |                                             |
-+--------------------+------------+---------------------------------------------+
-|**owner**           |String      |The tenant-id of the task owner.             |
-|                    |            |                                             |
-+--------------------+------------+---------------------------------------------+
-|**schema**          |String      |The schema of the task.                      |
-|                    |            |                                             |
-+--------------------+------------+---------------------------------------------+
-|**self**            |String      |The link to the task.                        |
-|                    |            |                                             |
-+--------------------+------------+---------------------------------------------+
-|**status**          |String      |The status of the image. For possible image  |
-|                    |            |statuses,                                    |
-|                    |            |see :ref:`Image statuses <image_statuses>`   |
-+--------------------+------------+---------------------------------------------+
-|**type**            |String      |The type of the task ( ``export`` for task   |
-|                    |            |exports).                                    |
-+--------------------+------------+---------------------------------------------+
-|**updated_at**      |String      |The date and time that the task resource was |
-|                    |            |updated.                                     |
-+--------------------+------------+---------------------------------------------+
++--------------------+----------+---------------------------------------------+
+|Name                |Type      |Description                                  |
++====================+==========+=============================================+
+|**created_at**      |String    |The date and time that the task resource was |
+|                    |          |created.                                     |
++--------------------+----------+---------------------------------------------+
+|**expires_at**      |String    |The date and time that the task resource     |
+|                    |          |expires. Even after the task resource        |
+|                    |          |expires (and is thus no longer available to  |
+|                    |          |be polled), the result of the task (such as  |
+|                    |          |an imported or exported image) still exists. |
+|                    |          |.. note:: This parameter is required for     |
+|                    |          |responses with ``status`` of ``success`` and |
+|                    |          |``failure``.                                 |
++--------------------+----------+---------------------------------------------+
+|**id**              |String    |The UUID of the task resource.               |
+|                    |          |                                             |
++--------------------+----------+---------------------------------------------+
+|**input**           |Object    |The container for import input parameters.   |
++--------------------+----------+---------------------------------------------+
+|input.\             |Object    |The container for image properties.          |
+|**image_properties**|          |                                             |
++--------------------+----------+---------------------------------------------+
+|input.\             |String    |The name of the image.                       |
+|image_properties.\  |          |                                             |
+|**name**            |          | .. warning::                                |
+|                    |          |     Name is the only property that can be   |
+|                    |          |     included in ``image-properties``.       |
+|                    |          |     Including any other property will       |
+|                    |          |     cause the operation to fail.            |
++--------------------+----------+---------------------------------------------+
+|input.\             |String    |The source of the imported image.            |
+|**import_from**     |          |                                             |
++--------------------+----------+---------------------------------------------+
+|**message**         |String    |``None`` if task import succeeded or the     |
+|                    |          |reason why the import failed. Possible       |
+|                    |          |errors include the following:                |
+|                    |          |                                             |
+|                    |          |``111``: The image cannot be imported/       |
+|                    |          |There is an unspecified                      |
+|                    |          |problem with your VHD that caused it to fail |
+|                    |          |our validation checks.                       |
+|                    |          |                                             |
+|                    |          |``396``: The image cannot                    |
+|                    |          |be imported. The file is not a valid VHD.    |
+|                    |          |                                             |
+|                    |          |``413``: The image cannot be imported. The   |
+|                    |          |virtual size of the disk exceeds the 40GB    |
+|                    |          |limit.                                       |
+|                    |          |                                             |
+|                    |          |``523``: The image cannot be imported.       |
+|                    |          |Only fixed or dynamic disks may be imported. |
+|                    |          |                                             |
+|                    |          |``609``: The image cannot be imported. The   |
+|                    |          |physical size of the disk exceeds the 40GB   |
+|                    |          |limit.                                       |
+|                    |          |                                             |
+|                    |          |``614``: The image cannot be imported.       |
+|                    |          |The internal UUID of the VHD is all zeros.   |
+|                    |          |                                             |
+|                    |          |``721``: The image cannot be imported.       |
+|                    |          |Your VHD has a parent disk. You can only     |
+|                    |          |import a stand-alone VHD.                    |
+|                    |          |                                             |
++--------------------+----------+---------------------------------------------+
+|**result**          |Object    |The container for results. .. note:: This    |
+|                    |          |parameter is required for responses with     |
+|                    |          |``status`` of ``success``.                   |
++--------------------+----------+---------------------------------------------+
+|result.\            |Uuid      |The UUID of the image.                       |
+|**image_id**        |          |                                             |
++--------------------+----------+---------------------------------------------+
+|**owner**           |String    |The tenant-id of the task owner.             |
+|                    |          |                                             |
++--------------------+----------+---------------------------------------------+
+|**schema**          |String    |The schema of the task.                      |
+|                    |          |                                             |
++--------------------+----------+---------------------------------------------+
+|**self**            |String    |The link to the task.                        |
+|                    |          |                                             |
++--------------------+----------+---------------------------------------------+
+|**status**          |String    |The status of the image. For possible image  |
+|                    |          |statuses,                                    |
+|                    |          |see :ref:`Image statuses <image_statuses>`   |
++--------------------+----------+---------------------------------------------+
+|**type**            |String    |The type of the task ( ``export`` for task   |
+|                    |          |exports).                                    |
++--------------------+----------+---------------------------------------------+
+|**updated_at**      |String    |The date and time that the task resource was |
+|                    |          |updated.                                     |
++--------------------+----------+---------------------------------------------+
 
 **Example: Import Task - Pending Response**
 

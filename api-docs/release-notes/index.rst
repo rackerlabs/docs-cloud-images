@@ -8,6 +8,9 @@ Release Notes
    :local:
    :depth: 1
 
+To report issues related to these changes, contact Rackspace Support or
+email `<infodev@rackspace.com>`__.
+
 .. note::
 
      For information about using the API, see the

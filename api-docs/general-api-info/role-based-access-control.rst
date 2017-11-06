@@ -58,7 +58,8 @@ The following table describes the roles that can be used to access the
      - This role provides Create, Read, Update, and Delete permissions
        in |product name|, where access is granted.
    * - cloudImages:creator
-     - This role provides Create, Read and Update permissions in |product name|, where access is granted.
+     - This role provides Create, Read and Update permissions in
+       |product name|, where access is granted.
    * - cloudImages:observer
      - This role provides Read permission in |product name|, where access
        is granted.

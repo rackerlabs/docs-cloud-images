@@ -59,34 +59,34 @@ some properties starting with ``org.openstack``.
 This table shows the possible response codes for this operation:
 
 
-+--------------------------+-------------------------+-------------------------+
-|Response Code             |Name                     |Description              |
-+==========================+=========================+=========================+
-|200                       |Success                  |Request succeeded        |
-+--------------------------+-------------------------+-------------------------+
-|400                       |Error                    |A general error has      |
-|                          |                         |occured.                 |
-+--------------------------+-------------------------+-------------------------+
-|401                       |Unauthorized             |Unauthorized.            |
-+--------------------------+-------------------------+-------------------------+
-|403                       |Forbidden                |Forbidden.               |
-+--------------------------+-------------------------+-------------------------+
-|405                       |Bad Method               |Bad method.              |
-+--------------------------+-------------------------+-------------------------+
-|413                       |Over Limit               |The number of items      |
-|                          |                         |returned is above the    |
-|                          |                         |allowed limit.           |
-+--------------------------+-------------------------+-------------------------+
-|415                       |Bad Media Type           |Bad media type. This may |
-|                          |                         |result if the wrong      |
-|                          |                         |media type is used in    |
-|                          |                         |the cURL request.        |
-+--------------------------+-------------------------+-------------------------+
-|500                       |API Fault                |API fault.               |
-+--------------------------+-------------------------+-------------------------+
-|503                       |Service Unavailable      |The requested service is |
-|                          |                         |unavailable.             |
-+--------------------------+-------------------------+-------------------------+
++-------------------------+-------------------------+-------------------------+
+|Response Code            |Name                     |Description              |
++=========================+=========================+=========================+
+|200                      |Success                  |Request succeeded        |
++-------------------------+-------------------------+-------------------------+
+|400                      |Error                    |A general error has      |
+|                         |                         |occured.                 |
++-------------------------+-------------------------+-------------------------+
+|401                      |Unauthorized             |Unauthorized.            |
++-------------------------+-------------------------+-------------------------+
+|403                      |Forbidden                |Forbidden.               |
++-------------------------+-------------------------+-------------------------+
+|405                      |Bad Method               |Bad method.              |
++-------------------------+-------------------------+-------------------------+
+|413                      |Over Limit               |The number of items      |
+|                         |                         |returned is above the    |
+|                         |                         |allowed limit.           |
++-------------------------+-------------------------+-------------------------+
+|415                      |Bad Media Type           |Bad media type. This may |
+|                         |                         |result if the wrong      |
+|                         |                         |media type is used in    |
+|                         |                         |the cURL request.        |
++-------------------------+-------------------------+-------------------------+
+|500                      |API Fault                |API fault.               |
++-------------------------+-------------------------+-------------------------+
+|503                      |Service Unavailable      |The requested service is |
+|                         |                         |unavailable.             |
++-------------------------+-------------------------+-------------------------+
 
 
 Request
@@ -94,34 +94,34 @@ Request
 
 This table shows the URI parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-|{image_id}                |Uuid                     |Image ID stored through  |
-|                          |                         |the image API, typically |
-|                          |                         |a UUID.                  |
-+--------------------------+-------------------------+-------------------------+
++-------------------------+-------------------------+-------------------------+
+|Name                     |Type                     |Description              |
++=========================+=========================+=========================+
+|{image_id}               |Uuid                     |Image ID stored through  |
+|                         |                         |the image API, typically |
+|                         |                         |a UUID.                  |
++-------------------------+-------------------------+-------------------------+
 
 This table shows the body parameters for the request:
 
-+--------------------------+-------------------------+-------------------------+
-|Name                      |Type                     |Description              |
-+==========================+=========================+=========================+
-| **op**                   |String *(Required)*      |The operation to be      |
-|                          |                         |executed ( ``add``,      |
-|                          |                         |``remove``, or           |
-|                          |                         |``replace`` ).           |
-+--------------------------+-------------------------+-------------------------+
-| **path**                 |String *(Required)*      |The location within the  |
-|                          |                         |image where the          |
-|                          |                         |operation is to be       |
-|                          |                         |performed.               |
-+--------------------------+-------------------------+-------------------------+
-| **value**                |String                   |The actual value to be   |
-|                          |                         |added or replaced. It is |
-|                          |                         |not required for the     |
-|                          |                         |``delete`` operation.    |
-+--------------------------+-------------------------+-------------------------+
++-------------------------+-------------------------+-------------------------+
+|Name                     |Type                     |Description              |
++=========================+=========================+=========================+
+| **op**                  |String *(Required)*      |The operation to be      |
+|                         |                         |executed ( ``add``,      |
+|                         |                         |``remove``, or           |
+|                         |                         |``replace`` ).           |
++-------------------------+-------------------------+-------------------------+
+| **path**                |String *(Required)*      |The location within the  |
+|                         |                         |image where the          |
+|                         |                         |operation is to be       |
+|                         |                         |performed.               |
++-------------------------+-------------------------+-------------------------+
+| **value**               |String                   |The actual value to be   |
+|                         |                         |added or replaced. It is |
+|                         |                         |not required for the     |
+|                         |                         |``delete`` operation.    |
++-------------------------+-------------------------+-------------------------+
 
 
 **Example Update image: JSON request**
@@ -150,43 +150,43 @@ Response
 
 This table shows the body parameters for the response:
 
-+-------------------+------------+---------------------------------------------+
-|Name               |Type        |Description                                  |
-+===================+============+=============================================+
-|**id**             |String      |The UUID of the image.                       |
-+-------------------+------------+---------------------------------------------+
-|**name**           |String      |The name of the image.                       |
-|                   |            |                                             |
-+-------------------+------------+---------------------------------------------+
-|**status**         |String      |The status of the image. For possible image  |
-|                   |            |statuses,                                    |
-|                   |            |see :ref:`Image statuses <image_statuses>`   |
-+-------------------+------------+---------------------------------------------+
-|**visibility**     |String      |Specifies image visibility as either         |
-|                   |            |``public``, ``private``, or ``shared``.      |
-+-------------------+------------+---------------------------------------------+
-|**checksum**       |String      |The checksum of the image.                   |
-|                   |            |                                             |
-+-------------------+------------+---------------------------------------------+
-|**minRam**         |String      |The minimum server RAM required for this     |
-|                   |            |image.                                       |
-+-------------------+------------+---------------------------------------------+
-|**minDisk**        |String      |The minimum server disk size required for    |
-|                   |            |this image.                                  |
-+-------------------+------------+---------------------------------------------+
-|**tags[]**         |Array       |An array of user-defined image tags.         |
-|                   |            |                                             |
-|                   |            |                                             |
-+-------------------+------------+---------------------------------------------+
-|**created**        |String      |The date and time that the image was created.|
-|                   |            |                                             |
-+-------------------+------------+---------------------------------------------+
-|**updated**        |String      |The date and time that the image was updated.|
-|                   |            |                                             |
-+-------------------+------------+---------------------------------------------+
-|**schema**         |String      |The schema of the image.                     |
-|                   |            |                                             |
-+-------------------+------------+---------------------------------------------+
++------------------+------------+---------------------------------------------+
+|Name              |Type        |Description                                  |
++==================+============+=============================================+
+|**id**            |String      |The UUID of the image.                       |
++------------------+------------+---------------------------------------------+
+|**name**          |String      |The name of the image.                       |
+|                  |            |                                             |
++------------------+------------+---------------------------------------------+
+|**status**        |String      |The status of the image. For possible image  |
+|                  |            |statuses,                                    |
+|                  |            |see :ref:`Image statuses <image_statuses>`   |
++------------------+------------+---------------------------------------------+
+|**visibility**    |String      |Specifies image visibility as either         |
+|                  |            |``public``, ``private``, or ``shared``.      |
++------------------+------------+---------------------------------------------+
+|**checksum**      |String      |The checksum of the image.                   |
+|                  |            |                                             |
++------------------+------------+---------------------------------------------+
+|**minRam**        |String      |The minimum server RAM required for this     |
+|                  |            |image.                                       |
++------------------+------------+---------------------------------------------+
+|**minDisk**       |String      |The minimum server disk size required for    |
+|                  |            |this image.                                  |
++------------------+------------+---------------------------------------------+
+|**tags[]**        |Array       |An array of user-defined image tags.         |
+|                  |            |                                             |
+|                  |            |                                             |
++------------------+------------+---------------------------------------------+
+|**created**       |String      |The date and time that the image was created.|
+|                  |            |                                             |
++------------------+------------+---------------------------------------------+
+|**updated**       |String      |The date and time that the image was updated.|
+|                  |            |                                             |
++------------------+------------+---------------------------------------------+
+|**schema**        |String      |The schema of the image.                     |
+|                  |            |                                             |
++------------------+------------+---------------------------------------------+
 
 
 **Example Update image: JSON response**

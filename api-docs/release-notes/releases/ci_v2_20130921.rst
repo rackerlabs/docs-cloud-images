@@ -1,35 +1,38 @@
 API |contract version| release, September 9, 2013
 -------------------------------------------------
 
-The Cloud Images service was originally released as part of the OpenStack Nova-network
-API, whose operations are detailed in the
+The Cloud Images service was originally released as part of the OpenStack
+Nova-network API, whose operations are detailed in the
 :rax-devdocs:`Image operations section <cloud-servers/v2/api-reference/svr-images-operations/>`
 of the Next Generation Cloud Servers Developer Guide.
 
-Now Rackspace Cloud Images has been released using the OpenStack Glance API, and it's
-operations are detailed in this guide.
+Now Rackspace Cloud Images has been released using the OpenStack Glance API,
+and it's operations are detailed in this guide.
 
 What's new
 ~~~~~~~~~~
 
-- 	Server images are used to store a snapshot of a server’s configuration. If you
-	take an image of a server, you can create a new server from that image. The new server
-	will have the same files and operating system that the original server had at the time
-	the image was created.
+- 	Server images are used to store a snapshot of a server’s configuration. If
+   you take an image of a server, you can create a new server from that image.
+   The new server will have the same files and operating system that the
+   original server had at the time the image was created.
 
-	The Cloud Images service enables you to use standard, Rackspace supported images and to
-	create, share, and use nonstandard images that are not supported by Rackspace.
+	The Cloud Images service enables you to use standard, Rackspace supported
+	images and to create, share, and use nonstandard images that are not
+	supported by Rackspace.
 
-- 	Image producers *create and share images* with image consumers, allowing the consumers
-	to use the shared image when booting a server. The producer shares an image with the
-	consumer by making the consumer a member of that image. The consumer then accepts or
-	rejects the image by changing the image member status. After it is accepted, the image
-	appears in the consumer’s image list. As long as the consumer is a member of the image,
-	the consumer can use the image, regardless of the image member status.
+- 	Image producers *create and share images* with image consumers, allowing the
+   consumers to use the shared image when booting a server. The producer shares
+   an image with the consumer by making the consumer a member of that image.
+   The consumer then accepts or rejects the image by changing the image member
+   status. After it is accepted, the image appears in the consumer’s image list.
+   As long as the consumer is a member of the image, the consumer can use the
+   image, regardless of the image member status.
 
-- 	An *image task* API request performs an asynchronous image-related operation,
-	such as importing or exporting an image. The request creates a disposable task resource
-	that you poll for information about the operation’s status.
+- 	An *image task* API request performs an asynchronous image-related
+   operation, such as importing or exporting an image. The request creates a
+   disposable task resource that you poll for information about the operation’s
+   status.
 
 Resolved issues
 ~~~~~~~~~~~~~~~

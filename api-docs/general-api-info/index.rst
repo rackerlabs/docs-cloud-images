@@ -13,7 +13,8 @@ service interface. Like other Rackspace Cloud services, this service
 shares a common token-based authentication system that allows seamless
 access between products and services.
 
-The Cloud Images API supports JSON data serialization request and response formats.
+The Cloud Images API supports JSON data serialization request and response
+formats.
 
 .. toctree:: :hidden:
    :maxdepth: 2
