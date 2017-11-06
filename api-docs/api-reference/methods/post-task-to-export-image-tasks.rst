@@ -28,7 +28,7 @@ This table shows the possible response codes for this operation:
 |                         |                         |succeeded.               |
 +-------------------------+-------------------------+-------------------------+
 |400                      |Error                    |A general error has      |
-|                         |                         |occured.                 |
+|                         |                         |occurred.                |
 +-------------------------+-------------------------+-------------------------+
 |401                      |Unauthorized             |Unauthorized.            |
 +-------------------------+-------------------------+-------------------------+

@@ -22,7 +22,7 @@ This table shows the possible response codes for this operation:
 |200                      |Success                  |Request succeeded.       |
 +-------------------------+-------------------------+-------------------------+
 |400                      |Error                    |A general error has      |
-|                         |                         |occured.                 |
+|                         |                         |occurred.                |
 +-------------------------+-------------------------+-------------------------+
 |401                      |Unauthorized             |Unauthorized.            |
 +-------------------------+-------------------------+-------------------------+
@@ -51,7 +51,7 @@ This table shows the URI parameters for the request:
 +-------------------------+-------------------------+-------------------------+
 |Name                     |Type                     |Description              |
 +=========================+=========================+=========================+
-|{task_id}                |Uuid                     |The task id. This task   |
+|{task_id}                |UUID                     |The task id. This task   |
 |                         |                         |id is the same as the id |
 |                         |                         |parameter returned in    |
 |                         |                         |the Import Task or       |
@@ -133,7 +133,7 @@ This table shows the body parameters for the response:
 |                        |      |   with a ``status`` of ``success``.         |
 |                        |      |                                             |
 +------------------------+------+---------------------------------------------+
-|result.\ **image_id**   |Uuid  |The UUID of the image.                       |
+|result.\ **image_id**   |UUID  |The UUID of the image.                       |
 |                        |      |                                             |
 +------------------------+------+---------------------------------------------+
 | **owner**              |String|The tenant-id of the task owner.             |

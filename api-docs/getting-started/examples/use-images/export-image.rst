@@ -1,15 +1,15 @@
 .. _using-image-export-image:
 
 Exporting an image by using tasks
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To export an image from the Cloud Images service so that you can store a
 copy offline, create an export task. For more information about image
 tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
 
-1. Issue the following cURL command to create a task to export the image. In this example,
-   the image ``ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6`` is exported to the ``exports``
-   directory on your Cloud Files account.
+1. Issue the following cURL command to create a task to export the image. In
+   this example, the image ``ca5e7f11-5d57-4dd7-8ace-03ab647fe6c6`` is exported
+   to the ``exports`` directory on your Cloud Files account.
 
 **cURL export an image with cURL request**
 
@@ -23,8 +23,8 @@ tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
 
    **Options:**
 
-   -  **-X**: Identifies the HTTP command. If no ``-X`` parameter is specified, the default
-      is **GET**.
+   -  **-X**: Identifies the HTTP command. If no ``-X`` parameter is specified,
+      the default is **GET**.
 
    -  **-s**: Runs the command in silent mode.
 
@@ -62,6 +62,7 @@ tasks, see :ref:`Asynchronous tasks <asynchronous-tasks>`.
 
 
 2. Note the task ID in the ``id`` parameter (in this example,
-   ``7bdc8ede-9098-4d79-9477-697f586cb333``), so you can poll the status of the task by
-   using the instructions in :ref:`Get details for a task <using-image-get-task-details>`
+   ``7bdc8ede-9098-4d79-9477-697f586cb333``), so you can poll the status of the
+   task by using the instructions in
+   :ref:`Get details for a task <using-image-get-task-details>`
    until the task succeeds or fails.

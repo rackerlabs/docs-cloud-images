@@ -281,7 +281,8 @@ response includes an expiration date and time. After expiration, the
 disposable task resource is deleted, but the result of the task, such as
 an imported or exported image, neither expires nor disappears.
 
-For more information on task statuses, see :ref:`task statuses <task-statuses>`.
+For more information on task statuses, see
+:ref:`task statuses <task-statuses>`.
 
 .. note::
    Tasks in the Cloud Images API conform to the uniform task interface

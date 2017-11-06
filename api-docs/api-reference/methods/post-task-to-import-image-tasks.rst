@@ -46,7 +46,7 @@ This table shows the possible response codes for this operation:
 |201                      |Success                  |Request succeeded.       |
 +-------------------------+-------------------------+-------------------------+
 |400                      |Error                    |A general error has      |
-|                         |                         |occured.                 |
+|                         |                         |occurred.                |
 +-------------------------+-------------------------+-------------------------+
 |401                      |Unauthorized             |Unauthorized.            |
 +-------------------------+-------------------------+-------------------------+
@@ -196,7 +196,7 @@ This table shows the body parameters for the response:
 |                    |          |parameter is required for responses with     |
 |                    |          |``status`` of ``success``.                   |
 +--------------------+----------+---------------------------------------------+
-|result.\            |Uuid      |The UUID of the image.                       |
+|result.\            |UUID      |The UUID of the image.                       |
 |**image_id**        |          |                                             |
 +--------------------+----------+---------------------------------------------+
 |**owner**           |String    |The tenant-id of the task owner.             |

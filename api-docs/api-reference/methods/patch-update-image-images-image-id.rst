@@ -65,7 +65,7 @@ This table shows the possible response codes for this operation:
 |200                      |Success                  |Request succeeded        |
 +-------------------------+-------------------------+-------------------------+
 |400                      |Error                    |A general error has      |
-|                         |                         |occured.                 |
+|                         |                         |occurred.                |
 +-------------------------+-------------------------+-------------------------+
 |401                      |Unauthorized             |Unauthorized.            |
 +-------------------------+-------------------------+-------------------------+
@@ -97,7 +97,7 @@ This table shows the URI parameters for the request:
 +-------------------------+-------------------------+-------------------------+
 |Name                     |Type                     |Description              |
 +=========================+=========================+=========================+
-|{image_id}               |Uuid                     |Image ID stored through  |
+|{image_id}               |UUID                     |Image ID stored through  |
 |                         |                         |the image API, typically |
 |                         |                         |a UUID.                  |
 +-------------------------+-------------------------+-------------------------+
@@ -127,15 +127,18 @@ This table shows the body parameters for the request:
 **Example Update image: JSON request**
 
 
-The following example updates two properties for the image: ``name`` and ``tag``.
+The following example updates two properties for the image: ``name`` and
+``tag``.
 
 .. tip::
-        Like all Images API calls, the Image Update operation requires the ``Content-Type``
-        header to match the media type used for the body of the request. If this header is missing or
-        does not match a supported media type, the call results in a ``415`` error. Don't forget
-        that the Content-type for the Image Update operation must be the appropriate media-type
-        descriptor for the HTTP Patch method (see :ref:`HTTP PATCH method <http-patch-method>`).
-        For example: ``Content-Type: application/openstack-images-v2.1-json-patch``.
+        Like all Images API calls, the Image Update operation requires the
+        ``Content-Type`` header to match the media type used for the body of
+        the request. If this header is missing or does not match a supported
+        media type, the call results in a ``415`` error. Don't forget that the
+        Content-type for the Image Update operation must be the appropriate
+        media-type descriptor for the HTTP Patch method (see
+        :ref:`HTTP PATCH method <http-patch-method>`). For example:
+        ``Content-Type: application/openstack-images-v2.1-json-patch``.
 
 .. code::
 

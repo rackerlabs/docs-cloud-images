@@ -1,10 +1,10 @@
 .. _sharing-image-list-image-members:
 
 Listing image members
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
-If you want to see everyone with whom you've shared an image and the status of each member,
-list the image members.
+If you want to see everyone with whom you've shared an image and the status of
+each member, list the image members.
 
 -  Issue the following cURL command to list the image members for an
    image. In this example, you list members for image
@@ -22,10 +22,12 @@ list the image members.
 
    -  **-s**: Runs the command in silent mode.
 
-   -  **-H**: Specified header information. In this case, it provides the authentication
-      token. If you previously exported the token environment variable as instructed in
-      :ref:`configure these variables<configure-environment-variables>`, you can use the $AUTH_TOKEN
-      variable. Otherwise, substitute your actual token for the variable.
+   -  **-H**: Specified header information. In this case, it provides the
+      authentication token. If you previously exported the token environment
+      variable as instructed in
+      :ref:`configure these variables<configure-environment-variables>`, you
+      can use the $AUTH_TOKEN variable. Otherwise, substitute your actual token
+      for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
       JSON output.

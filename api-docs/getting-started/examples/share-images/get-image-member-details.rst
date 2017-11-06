@@ -1,9 +1,10 @@
 .. _sharing-image-get-image-member-details:
 
 Getting image member details
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want to see details for a specific image member, get the image member's details.
+If you want to see details for a specific image member, get the image member's
+details.
 
 -  Issue the following cURL command to get the image member's details.
    In this example, you list details for member ``123456`` of image
@@ -24,8 +25,9 @@ If you want to see details for a specific image member, get the image member's d
    -  **-H**: Specified header information. In this case, it provides
       the authentication token. If you previously exported the token
       environment variable as instructed in
-      :ref:`configure these variables<configure-environment-variables>`, you can use the
-      $AUTH_TOKEN variable. Otherwise, substitute your actual token for the variable.
+      :ref:`configure these variables<configure-environment-variables>`, you
+      can use the $AUTH_TOKEN variable. Otherwise, substitute your actual token
+      for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
       JSON output.

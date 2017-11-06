@@ -1,7 +1,7 @@
 .. _using-image-list-images:
 
 Listing images
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 To find out what images are available, list them.
 
@@ -19,10 +19,12 @@ To find out what images are available, list them.
 
    -  **-s**: Runs the command in silent mode.
 
-   -  **-H**: Specified header information. In this case, it provides the authentication
-      token. If you previously exported the token environment variable as instructed in
+   -  **-H**: Specified header information. In this case, it provides the
+      authentication token. If you previously exported the token environment
+      variable as instructed in
       :ref:`configure these variables<configure-environment-variables>`,
-      you can use the $AUTH_TOKEN variable. Otherwise, substitute your actual token for the variable.
+      you can use the $AUTH_TOKEN variable. Otherwise, substitute your actual
+      token for the variable.
 
    -  **-m json.tool**: Specifies json.tool, which pretty-prints the
       JSON output.

@@ -3,7 +3,8 @@ API |contract version| release, September 9, 2013
 
 The Cloud Images service was originally released as part of the OpenStack
 Nova-network API, whose operations are detailed in the
-:rax-devdocs:`Image operations section <cloud-servers/v2/api-reference/svr-images-operations/>`
+:rax-devdocs:`Image operations section
+<cloud-servers/v2/api-reference/svr-images-operations/>`
 of the Next Generation Cloud Servers Developer Guide.
 
 Now Rackspace Cloud Images has been released using the OpenStack Glance API,
@@ -31,8 +32,8 @@ What's new
 
 -  An *image task* API request performs an asynchronous image-related
    operation, such as importing or exporting an image. The request creates a
-   disposable task resource that you poll for information about the operation’s
-   status.
+   disposable task resource that you poll for information about the
+   operation’s status.
 
 Resolved issues
 ~~~~~~~~~~~~~~~

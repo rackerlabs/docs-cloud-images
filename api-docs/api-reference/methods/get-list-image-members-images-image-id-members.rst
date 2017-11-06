@@ -23,7 +23,7 @@ This table shows the possible response codes for this operation:
 |200                      |Success                  |Request succeeded.       |
 +-------------------------+-------------------------+-------------------------+
 |400                      |Error                    |A general error has      |
-|                         |                         |occured.                 |
+|                         |                         |occurred.                |
 +-------------------------+-------------------------+-------------------------+
 |401                      |Unauthorized             |Unauthorized.            |
 +-------------------------+-------------------------+-------------------------+
@@ -52,7 +52,7 @@ This table shows the URI parameters for the request:
 +-------------------------+-------------------------+-------------------------+
 |Name                     |Type                     |Description              |
 +=========================+=========================+=========================+
-|{image_id}               |Uuid                     |Image ID stored through  |
+|{image_id}               |UUID                     |Image ID stored through  |
 |                         |                         |the image API, typically |
 |                         |                         |a UUID.                  |
 +-------------------------+-------------------------+-------------------------+
