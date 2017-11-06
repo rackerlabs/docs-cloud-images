@@ -1,7 +1,7 @@
 .. _glossary:
 
 ==========
-Glossary 
+Glossary
 ==========
 
 The Rackspace Support Network works best with JavaScript enabled. Please
@@ -44,7 +44,7 @@ JSON
     uses human-readable text to transmit data objects consisting of
     key:value pairs. The following json example might be used to
     represent an object that describes a person:
-    `` { "firstname": "John", "lastname": "Smith", "age": 25 }                     ``
+    `` { "firstname": "John", "lastname": "Smith", "age": 25 } ``
 
 JSON Pointer
     A JSON Pointer defines a syntax for identifying a specific value
@@ -68,7 +68,7 @@ Schema
 URI
     A uniform resource identifier (URI) is a string of characters used
     to identify the name of a web resource. The URI syntax consists of a
-    URI scheme name (such as "http", "ftp", or "file") followed by a
+    URI scheme name (such as "HTTP", "FTP", or "file") followed by a
     colon character, and then by a scheme-specific part (which varies
     depending on the context).
 

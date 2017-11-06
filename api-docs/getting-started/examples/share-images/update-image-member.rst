@@ -1,22 +1,24 @@
 .. _sharing-image-update-image-member:
 
 Updating an image member
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you send a request, outside of the Cloud Images API, to an image producer asking for
-access to an image, the image producer creates an image member with your tenant ID by using
-the instructions in :ref:`Create an image member <sharing-image-create-image-member>`. Once
-the image member has been created for you, you update the image member, either accepting the
-image (which adds it to your image list), or rejecting the image (which notifies the
-producer that you received the image share notification and don't want it in your image list).
+If you send a request, outside of the Cloud Images API, to an image producer
+asking for access to an image, the image producer creates an image member with
+your tenant ID by using the instructions in :ref:`Create an image member
+<sharing-image-create-image-member>`. Once the image member has been created
+for you, you update the image member, either accepting the image (which adds it
+to your image list), or rejecting the image (which notifies the producer that
+you received the image share notification and don't want it in your image
+list).
 
 .. tip::
 
-	For more information about image member statuses, see
-	:ref:`Image member statuses<member-statuses>`.
+   For more information about image member statuses, see
+   :ref:`Image member statuses<member-statuses>`.
 
-Issue the following cURL command to update an image member for an image. In this example,
-you (member ID ``123456``) accept the offer of the shared image
+Issue the following cURL command to update an image member for an image. In
+this example, you (member ID ``123456``) accept the offer of the shared image
 ``a96be11e-8536-4910-92cb-de50aa19dfe6``.
 
 **cURL update an image member request**
@@ -28,15 +30,17 @@ you (member ID ``123456``) accept the offer of the shared image
 
 **Options:**
 
--  **-X**: Identifies the HTTP command. If no ``-X`` parameter is specified, the default
-   is **GET**.
+-  **-X**: Identifies the HTTP command. If no ``-X`` parameter is specified,
+   the default is **GET**.
 
 -  **-s**: Runs the command in silent mode.
 
--  **-H**: Specified header information. In this case, it provides the content-type and
-   the authentication token. If you previously exported the token environment variable as
-   instructed in :ref:`configure these variables<configure-environment-variables>`,
-   you can use the $AUTH_TOKEN variable. Otherwise, substitute your actual token for the variable.
+-  **-H**: Specified header information. In this case, it provides the
+   content-type and the authentication token. If you previously exported the
+   token environment variable as instructed in
+   :ref:`configure these variables<configure-environment-variables>`,
+   you can use the $AUTH_TOKEN variable. Otherwise, substitute your actual
+   token for the variable.
 
 -  **-d**: Specifies the JSON request body.
 

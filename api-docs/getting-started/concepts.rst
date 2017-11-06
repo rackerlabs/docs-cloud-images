@@ -3,8 +3,8 @@
 Concepts
 ---------
 
-To understand the Cloud Images service and API, review the following key terms and
-concepts.
+To understand the Cloud Images service and API, review the following key terms
+and concepts.
 
 Images
 ~~~~~~
@@ -15,8 +15,9 @@ image. The new server will have the same files and operating system that
 the original server had at the time the image was created.
 
 
-The Cloud Images service enables you to use standard, Rackspace-supported images
-and to create, share, and use nonstandard images that are not supported by Rackspace.
+The Cloud Images service enables you to use standard, Rackspace-supported
+images and to create, share, and use nonstandard images that are not supported
+by Rackspace.
 
 .. _standard-images:
 
@@ -57,18 +58,21 @@ Nonstandard images include the following images:
 Image entities
 ~~~~~~~~~~~~~~
 
-An image entity is represented by a JSON-encoded data structure and its raw binary data.
+An image entity is represented by a JSON-encoded data structure and its raw
+binary data.
 
-An image entity has an identifier (ID) that is guaranteed to be unique within its
-endpoint. The ID is used as a token in request URIs to interact with that specific image.
+An image entity has an identifier (ID) that is guaranteed to be unique within
+its endpoint. The ID is used as a token in request URIs to interact with that
+specific image.
 
-An image is always guaranteed to have the following attributes: id, status, visibility,
-protected, tags, created_at, file and self. The other attributes defined in the image
-schema are guaranteed to be defined, but will only be returned with an image entity if
-they have been explicitly set.
+An image is always guaranteed to have the following attributes: id, status,
+visibility, protected, tags, created_at, file and self. The other attributes
+defined in the image schema are guaranteed to be defined, but will only be
+returned with an image entity if they have been explicitly set.
 
-A client may set arbitrarily-named attributes on their images if the image json-schema
-allows it. These user-defined attributes will appear like any other image attributes.
+A client may set arbitrarily-named attributes on their images if the image
+json-schema allows it. These user-defined attributes will appear like any other
+image attributes.
 
 .. _image-identifiers:
 
@@ -100,14 +104,15 @@ properties, or metadata, on your images.
 The available properties and their expected values include the following
 options:
 
-**os\_version**
+**os_version**
     The operating system version as specified by the distributor
 
-**os\_distro**
-    The common name of the operating system distribution. 
+**os_distro**
+    The common name of the operating system distribution.
 
-    .. important:: You must specify the common name of the os\distro in lowercase. 
-    
+    .. important:: You must specify the common name of the os or distro in
+       lowercase.
+
     The allowed values are as follows:
 
     **arch**
@@ -254,7 +259,8 @@ Sample workflow for image sharing, after image creation
    ``rejected``. If the consumer wants to hide the image, but is open to
    the possibility of being reminded by the producer that the image is
    available, the consumer uses the Cloud Images API to change the image
-   member status to ``pending``, by using the *Update image member* API operation.
+   member status to ``pending``, by using the *Update image member* API
+   operation.
 
 .. _asynchronous-tasks:
 
@@ -267,14 +273,16 @@ a disposable task resource that you poll for information about the
 operation's status.
 
 After you initiate an image import or export, poll the task's status by using
-the :ref:`Get task details <get-task-details>` API operation repeatedly until the task completes. 
+the :ref:`Get task details <get-task-details>` API operation repeatedly until
+the task completes.
 
 When the poll response has a status of ``success`` or ``failure``, the
 response includes an expiration date and time. After expiration, the
 disposable task resource is deleted, but the result of the task, such as
 an imported or exported image, neither expires nor disappears.
 
-For more information on task statuses, see :ref:`task statuses <task-statuses>`.
+For more information on task statuses, see
+:ref:`task statuses <task-statuses>`.
 
 .. note::
    Tasks in the Cloud Images API conform to the uniform task interface
@@ -284,31 +292,32 @@ For more information on task statuses, see :ref:`task statuses <task-statuses>`.
    parameters.
 
    The *Task to import image* and *Task to export image* sections
-   and "POST\exportImage\tasks\Image\Task\" show the Rackspace requirements for these
-   parameters.
+   and "POST\exportImage\tasks\Image\Task\" show the Rackspace requirements for
+   these parameters.
 
 High-level process for importing an image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Put the image into your Cloud Files account.
 
-#. Submit the asynchronous import request by using the *Task to import image* API
-   operation. The “Import an image by using tasks” section of this guide shows an example.
+#. Submit the asynchronous import request by using the *Task to import image*
+   API operation. The “Import an image by using tasks” section of this guide
+   shows an example.
 
 #. The Cloud Images service begins to fetch the image from your cloud
    storage and to create a new image for you. This activity takes some
    time.
 
-#. Poll the task status by using the :ref:`Get task details <get-task-details>` operation 
-   repeatedly. 
+#. Poll the task status by using the :ref:`Get task details <get-task-details>`
+   operation repeatedly.
 
 High-level process for exporting an image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Determine the UUID of the image you want to export.
 
-#. Submit the export request by using the *Task to export image* API operation. The
-   “Export an image by using tasks” section of this guide shows an example.
+#. Submit the export request by using the *Task to export image* API operation.
+   The “Export an image by using tasks” section of this guide shows an example.
 
 #. The Cloud Images service begins to process the image, to convert it
    to a convenient format for a future export of the image to another
@@ -316,25 +325,24 @@ High-level process for exporting an image
    the exported image to your Cloud Files account. This activity takes
    some time.
 
-#. Poll the task status by using the :ref:`Get task details <get-task-details>` operation 
-   repeatedly. 
-   
+#. Poll the task status by using the :ref:`Get task details <get-task-details>`
+   operation repeatedly.
+
 .. _statuses:
 
 Statuses
 ~~~~~~~~
 
-The Cloud Images API uses a variety of statuses to identify the state of
-images or image components. This section describes the statuses and
-their values.
+The Cloud Images API uses a variety of statuses to identify the state of images
+or image components. This section describes the statuses and their values.
 
 .. _image_statuses:
 
 Image statuses
 ^^^^^^^^^^^^^^
 
-Images in the Cloud Images service can have any of the following
-statuses when you display details by using the *Get image details* API operation.
+Images in the Cloud Images service can have any of the following statuses when
+you display details by using the *Get image details* API operation.
 
 **queued**
     The image identifier has been reserved for an image in the Cloud
@@ -377,11 +385,11 @@ Task statuses
 ^^^^^^^^^^^^^
 
 Image tasks are used for importing images from your Cloud Files account
-and for exporting images to your Cloud files account. For more
-information on image tasks, see :ref:`Asynchronous image tasks <asynchronous-tasks>`.
+and for exporting images to your Cloud files account. For more information on
+image tasks, see :ref:`Asynchronous image tasks <asynchronous-tasks>`.
 
-Image tasks in the Cloud Images service can have any of the following
-statuses when you poll them by using the *Get details for a task* API operation.
+Image tasks in the Cloud Images service can have any of the following statuses
+when you poll them by using the *Get details for a task* API operation.
 
 **pending**
     The image task is waiting for execution.
@@ -400,10 +408,10 @@ statuses when you poll them by using the *Get details for a task* API operation.
 Image member statuses
 ^^^^^^^^^^^^^^^^^^^^^
 
-When an image producer wants to share an image with a consumer, the producer 
-creates an image member, linking the image and the consumer. As soon as an image has 
-been shared, consumers can use it, regardless of image member status. Both image producers 
-and consumers can check the status of an image member.
+When an image producer wants to share an image with a consumer, the producer
+creates an image member, linking the image and the consumer. As soon as an
+image has been shared, consumers can use it, regardless of image member status.
+Both image producers and consumers can check the status of an image member.
 
 Image member status both controls whether the image appears in the
 consumer's image list and lets the producer know whether the consumer
@@ -428,8 +436,8 @@ For more information, see :ref:`image sharing <image-sharing>`.
    *  Producers add image members by using the instructions in “Create
       an image member”
 
-   *  Producers delete image members by using the instructions in “Delete an image
-      member”
+   *  Producers delete image members by using the instructions in “Delete an
+      image member”
 
 Image members can have any of the following statuses.
 
@@ -452,8 +460,9 @@ Image members can have any of the following statuses.
     available, but this is outside the scope of the Cloud Images API.
 
 .. note::
-   With a ``rejected`` or ``pending``  image member status, the consumer can still use the
-   image but must know the image ID, since the image is not in the image list.
+   With a ``rejected`` or ``pending``  image member status, the consumer can
+   still use the image but must know the image ID, since the image is not in
+   the image list.
 
 .. _http-patch-method:
 
@@ -493,7 +502,8 @@ JSON Pointers.
 
 .. note::
    If a reference token contains a tilde (**~** or ``(%x7E)``) or a
-   forward slash (**/** or ``(%x2F)``), encode them as '~0' and '~1' respectively.
+   forward slash (**/** or ``(%x2F)``), encode them as '~0' and '~1'
+   respectively.
 
 The *ABNF* syntax is as follows:
 
@@ -544,11 +554,11 @@ Comparison of the JSON Pointer to the Image Entity Key Pair:
 Using the HTTP PATCH method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``'application/openstack-images-v2.1-json-patch'`` media type for
-the HTTP PATCH method allows a subset of operations defined in the
-``application/json-patch+json`` media type. To perform an operation, you
-need an operation object that consists of member key pairs. The possible
-members of an operation object are operation member, location member, and value member.
+The ``'application/openstack-images-v2.1-json-patch'`` media type for the HTTP
+PATCH method allows a subset of operations defined in the
+``application/json-patch+json`` media type. To perform an operation, you need
+an operation object that consists of member key pairs. The possible members of
+an operation object are operation member, location member, and value member.
 
 **operation** member
     -  Specified by: ``"op"``
@@ -600,11 +610,12 @@ value member that specifies the value to be added.
 
 .. warning::
    There is a small subset of standard image properties that can be
-   added by users; please consult :how-to:`Image metadata and property protection 
-   <cloud-images-faq#image-metadata-andproperty-protection>` for details. 
-   If you add any other properties as part of your PATCH request, the request fails.
+   added by users; please consult :how-to:`Image metadata and property
+   protection <cloud-images-faq#image-metadata-andproperty-protection>` for
+   details. If you add any other properties as part of your PATCH request, the
+   request fails.
 
-Add Example
+**Add Example**
 
 .. code::
 
@@ -622,7 +633,7 @@ location, an error results.
    remove any of these properties as part of your PATCH request, the
    request fails.
 
-Remove Example
+**Remove Example**
 
 .. code::
 
@@ -641,7 +652,7 @@ contains a value member that specifies the replacement value.
    request fails. To learn which standard image properties can be
    modified by users by using the *Update image* operation.
 
-Replace Example
+**Replace Example**
 
 .. code::
 

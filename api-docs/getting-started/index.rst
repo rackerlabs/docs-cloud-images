@@ -7,10 +7,6 @@ Getting started
 Use the following information to learn how to authenticate, send API requests,
 and complete basic operations by using the |apiservice|.
 
-.. COMMENT: Replace the using-cloud-load-balancers topic with relevant content
-.. To include CLI instructions, add topics or content for CLI auth, requests, \
-   and user
-
 .. toctree::
    :maxdepth: 1
 
@@ -30,6 +26,3 @@ following items:
 - :ref:`Command-line tool or browser client <send-api-requests>` for
   communicating with the API service.
 
-
-
-.. comment: link reference

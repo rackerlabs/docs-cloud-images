@@ -3,9 +3,9 @@
 JSON schemas
 ~~~~~~~~~~~~
 
-Use the JSON schemas API operations to get
-details about JSON schema images, members, and tasks.
-   
+Use the JSON schemas API operations to get details about JSON schema images,
+members, and tasks.
+
 .. include:: methods/get-get-images-schema-schemas-images.rst
 .. include:: methods/get-get-image-schema-schemas-image.rst
 .. include:: methods/get-get-image-members-schema-schemas-members.rst

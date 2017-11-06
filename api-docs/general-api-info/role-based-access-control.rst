@@ -29,7 +29,8 @@ created.
 See the Cloud Identity API guide for information about how to
 perform the following tasks:
 
-* :rax-devdocs:`Add account users <cloud-identity/v2/api-reference/users-operations/#add-user>`
+* :rax-devdocs:`Add account users \
+  <cloud-identity/v2/api-reference/users-operations/#add-user>`
 
 * :rax-devdocs:`Add role to user \
   <cloud-identity/v2/api-reference/role-operations/#add-role-to-user>`
@@ -58,7 +59,8 @@ The following table describes the roles that can be used to access the
      - This role provides Create, Read, Update, and Delete permissions
        in |product name|, where access is granted.
    * - cloudImages:creator
-     - This role provides Create, Read and Update permissions in |product name|, where access is granted.
+     - This role provides Create, Read and Update permissions in
+       |product name|, where access is granted.
    * - cloudImages:observer
      - This role provides Read permission in |product name|, where access
        is granted.
@@ -117,7 +119,7 @@ roles in the Control Panel are resolved.
        the **observer** role for the rest of the products.
    * - User is assigned to the following roles: multiproduct **admin** and
        |product name| **observer**
-     - Appears that the user has only the multiprodcut **admin** role
+     - Appears that the user has only the multiproduct **admin** role
      - User can perform admin functions for all of the products.
        The |product name| **observer** role is ignored.
 

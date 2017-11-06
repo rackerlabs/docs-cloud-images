@@ -5,42 +5,49 @@
 
 ## Purpose
 
-This GitHub repository contains the source files for the following Rackspace Cloud Images API documentation:
+This GitHub repository contains the source files for the following Rackspace
+Cloud Images API documentation:
 
 * [Cloud Images Developer Guide](https://developer.rackspace.com/docs/cloud-images/v2/developer-guide/)
 
 ## Contributing
 
-Contributions are welcome! 
+Contributions are welcome!
 
-* To suggest changes or report a problem, submit an [issue](https://github.com/rackerlabs/docs-cloud-images/issues). 
+* To suggest changes or report a problem, submit an [issue](https://github.com/rackerlabs/docs-cloud-images/issues).
 
-* To make changes to a project, create your own fork of the repository. Then, submit a [pull 
-request](https://github.com/rackerlabs/docs-cloud-images/compare?expand=1) to have your changes reviewed 
-and merged into the master branch as appropriate.
+* To make changes to a project, create your own fork of the repository. Then,
+submit a [pull
+request](https://github.com/rackerlabs/docs-cloud-images/compare?expand=1) to
+have your changes reviewed and merged into the master branch as appropriate.
 
-To contribute content, all you need is an editor and a 
-basic understanding of the project layout and [reStructuredText](http://sphinx-doc.org/rest.html) syntax.
+To contribute content, all you need is an editor and a basic understanding of
+the project layout and [reStructuredText](http://sphinx-doc.org/rest.html)
+syntax.
 
-You can use the GitHub editor or any text editor to work with documentation source files. For quick syntax checking, try the 
-[Online restructuredText editor](http://rst.ninjs.org/). 
+You can use the GitHub editor or any text editor to work with documentation
+source files. For quick syntax checking, try the
+[Online restructuredText editor](http://rst.ninjs.org/).
 
-**Note:** If you want to build the project, you need to install the [Sphinx documentation generator](http://www.sphinx-doc.org/en/stable/install.html). 
+**Note:** If you want to build the project, you need to install the [
+Sphinx documentation generator](http://www.sphinx-doc.org/en/stable/install.html).
 
 ## Source format
 
-The Rackspace developer documentation is developed and built using the [Python Sphinx documentation generator](http://sphinx-doc.org/). Content is 
-written in [reStructuredText](http://sphinx-doc.org/rest.html), the markup syntax and parser component of 
+The Rackspace developer documentation is developed and built using the
+[Python Sphinx documentation generator](http://sphinx-doc.org/). Content is
+written in [reStructuredText](http://sphinx-doc.org/rest.html), the markup
+syntax and parser component of
 [Python Docutils](http://docutils.sourceforge.net/index.html).
 
-The repository includes the documentation source files, 
-Sphinx configuration and build files, as well any required Sphinx 
-extensions and build tools. 
+The repository includes the documentation source files, Sphinx configuration
+and build files, as well any required Sphinx extensions and build tools.
 
 ## Structure
 
-Source files for the Sphinx documentation project are in the ``api-docs`` directory. Here are the key files that define 
-the Sphinx project and content architecture for the documentation: 
+Source files for the Sphinx documentation project are in the ``api-docs``
+directory. Here are the key files that define the Sphinx project and content
+architecture for the documentation:
 
 Content | File
 --- | ---
@@ -54,7 +61,7 @@ Content | File
 |General API information index|[general-api-info/index.rst](https://github.com/rackerlabs/docs-cloud-images/blob/master/api-docs/general-api-info/index.rst)
 |API Reference introduction|[api-reference.rst](https://github.com/rackerlabs/docs-cloud-images/blob/master/api-docs/api-reference.rst)
 |API Reference index|[api-operations/index.rst](https://github.com/rackerlabs/docs-cloud-images/blob/master/api-docs/api-operations/index.rst)
-|API operations methods, including code samples|[api-operations/methods](https://github.com/rackerlabs/docs-cloud-images/tree/master/api-docs/api-operations/methods) 
+|API operations methods, including code samples|[api-operations/methods](https://github.com/rackerlabs/docs-cloud-images/tree/master/api-docs/api-operations/methods)
 |Release notes|[release-notes.rst](https://github.com/rackerlabs/docs-cloud-images/blob/master/api-docs/release-notes.rst)
 |**make.bat**|Windows build script
 |**Makefile**| Linux and OS X build
