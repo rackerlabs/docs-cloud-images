@@ -14,7 +14,6 @@ If you take an image of a server, you can create a new server from that
 image. The new server will have the same files and operating system that
 the original server had at the time the image was created.
 
-
 The Cloud Images service enables you to use standard, Rackspace-supported
 images and to create, share, and use nonstandard images that are not supported
 by Rackspace.
