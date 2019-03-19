@@ -16,12 +16,9 @@ API.
   article.
 
 - To learn more about the |product name| service and the various ways you can
-  interact with it (API, SDK, CLI, and Control Panel), see the
+  interact with it (API, CLI, and Control Panel), see the
   :rax-devdocs:`Rackspace Cloud Guide to Core Infrastructure
   Services <user-guides/infrastructure/>`.
-
-- To learn about using Rackspace Cloud SDKs, see
-  :rax-dev:`Software Development Kits & Tools <docs/#sdks>`.
 
 - To get information about other Rackspace Cloud services APIs, see the
   :rax-devdocs:`Rackspace API Documentation <>`.
