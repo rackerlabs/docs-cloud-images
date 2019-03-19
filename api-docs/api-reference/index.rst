@@ -11,9 +11,7 @@ to interact directly with the service.
 .. note::
 
      You can also perform operations by using the
-     :rax-devdocs:`Rackspace Command Line Interface (rack CLI) <#sdks>`, one
-     of the language-specific :rax-devdocs:`software development kits <#sdks>`,
-     or the `Cloud Control Panel <https://login.rackspace.com/>`_.
+     the `Cloud Control Panel <https://login.rackspace.com/>`_.
 
 .. toctree::
    :maxdepth: 2
