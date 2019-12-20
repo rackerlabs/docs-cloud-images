@@ -13,7 +13,8 @@ properties can be updated, see
 
 Issue the following cURL command to update an image. In this example, you are
 changing the name of image ``c9c7732f-5129-4930-a835-3781255fb1e2`` from
-``Ubuntu 12.04 LTS (Precise Pangolin) (PVHVM)`` to ``My Favorite Ubuntu``.
+``Ubuntu 12.04 LTS (Precise Pangolin) (PVHVM)`` to
+``My Favorite Ubuntu 12.04``.
 
 **cURL update an image request**
 
@@ -21,7 +22,7 @@ changing the name of image ``c9c7732f-5129-4930-a835-3781255fb1e2`` from
 
    curl -s $API_ENDPOINT/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2 \
    -X PATCH \
-   -d'{{"op": "replace", "path": "/name", "value": "My Favorite Ubuntu"}}' \
+   -d'{{"op": "replace", "path": "/name", "value": "My Favorite Ubuntu 12.04"}}' \
    -H "Content-Type: application/json" -H "X-Auth-Token: $AUTH_TOKEN" \
    -H "Accept: application/openstack-images-v2.1-json-patch" |python -m json.tool
 
@@ -52,7 +53,7 @@ changing the name of image ``c9c7732f-5129-4930-a835-3781255fb1e2`` from
 
    {
       "id":"c9c7732f-5129-4930-a835-3781255fb1e2",
-      "name":"My Favorite Ubuntu",
+      "name":"My Favorite Ubuntu 12.04",
       "status":"queued",
       "visibility":"public",
       "tags": [],
@@ -62,4 +63,3 @@ changing the name of image ``c9c7732f-5129-4930-a835-3781255fb1e2`` from
       "file":"/v2/images/c9c7732f-5129-4930-a835-3781255fb1e2/file",
       "schema":"/v2/schemas/image"
    }
-
