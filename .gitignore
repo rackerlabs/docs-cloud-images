@@ -3,6 +3,7 @@
 *.xpr
 .idea
 .eggs
+.env
 
 # Build results
 target/
@@ -17,6 +18,8 @@ _build/
 *.pdf
 glossary.rst
 *.mo
+api-docs/_build/
+api-docs/build
 
 # Python compiled files
 *.pyc
@@ -34,3 +37,5 @@ boxes/*
 .*.swp
 .bak
 /.project
+node_modules
+.vscode
