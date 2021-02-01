@@ -41,12 +41,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
-    'sphinx.ext.extlinks',
-    'hoverxref.extension',
-    'notfound.extension',
-    'sphinx.ext.coverage',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.viewcode'
+    'sphinx.ext.extlinks'
 ]
 
 if spelling is not None:
@@ -66,9 +61,6 @@ source_suffix = '.rst'
 # The master toctree document.
 master_doc = 'index'
 
-# The builder to use when running via the deconst preparer
-# builder = 'deconst-serial'
-# builder = 'deconst-single'
 
 # General information about the project.
 project = 'Rackspace Cloud Images'
@@ -89,7 +81,7 @@ release = '1'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = 'en'
+language = None
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -219,7 +211,7 @@ html_style = 'css/styles.css'
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
-html_last_updated_fmt = '%b %d, %Y'
+# html_last_updated_fmt = 'January 25, 2016'
 # html_last_updated_fmt = |today|
 
 # If true, SmartyPants will be used to convert quotes and dashes to
@@ -361,83 +353,3 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 # texinfo_no_detailmenu = False
-
-# Options for the Coverage extension
-# ----------------------------------
-coverage_ignore_pyobjects = [
-    # Contract’s add_pre_hook and add_post_hook are not documented because
-    # they should be transparent to contract developers, for whom pre_hook and
-    # post_hook should be the actual concern.
-    r'\bContract\.add_(pre|post)_hook$',
-
-    # ContractsManager is an internal class, developers are not expected to
-    # interact with it directly in any way.
-    r'\bContractsManager\b$',
-
-    # For default contracts we only want to document their general purpose in
-    # their __init__ method, the methods they reimplement to achieve that purpose
-    # should be irrelevant to developers using those contracts.
-    r'\w+Contract\.(adjust_request_args|(pre|post)_process)$',
-
-    # Base classes of downloader middlewares are implementation details that
-    # are not meant for users.
-
-
-    # Private exception used by the command-line interface implementation.
-
-
-
-    # Methods of BaseItemExporter subclasses are only documented in
-    # BaseItemExporter.
-
-
-
-    # Extension behavior is only modified through settings. Methods of
-    # extension classes, as well as helper functions, are implementation
-
-
-    # Never documented before, and deprecated now.
-
-]
-
-
-# Options for the InterSphinx extension
-# -------------------------------------
-
-intersphinx_mapping = {
-    'attrs': ('https://www.attrs.org/en/stable/', None),
-    'coverage': ('https://coverage.readthedocs.io/en/stable', None),
-    'cryptography' : ('https://cryptography.io/en/latest/', None),
-    'cssselect': ('https://cssselect.readthedocs.io/en/latest', None),
-    'itemloaders': ('https://itemloaders.readthedocs.io/en/latest/', None),
-    'pytest': ('https://docs.pytest.org/en/latest', None),
-    'python': ('https://docs.python.org/3', None),
-    'sphinx': ('https://www.sphinx-doc.org/en/master', None),
-    'tox': ('https://tox.readthedocs.io/en/latest', None)
-}
-
-
-# Options for sphinx-hoverxref options
-# ------------------------------------
-
-hoverxref_auto_ref = True
-hoverxref_role_types = {
-    "class": "tooltip",
-    "confval": "tooltip",
-    "hoverxref": "tooltip",
-    "mod": "tooltip",
-    "ref": "tooltip",
-}
-hoverxref_roles = ['command', 'reqmeta', 'setting', 'signal']
-
-
-def setup(app):
-    app.connect('autodoc-skip-member', maybe_skip_member)
-
-
-def maybe_skip_member(app, what, name, obj, skip, options):
-    if not skip:
-        # autodocs was generating a text "alias of" for the following members
-        # https://github.com/sphinx-doc/sphinx/issues/4422
-        return name in {'default_item_class', 'default_selector_class'}
-    return skip

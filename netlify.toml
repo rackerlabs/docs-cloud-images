@@ -5,12 +5,12 @@
 
 [build]
   publish = "api-docs/_build/html"
-  command = "npm run build"
+  command = "cd api-docs && make clean html && cd .."
 
 [context.production]
   publish = "api-docs/_build/html"
-  command = "npm run build"
+  command = "cd api-docs && make clean html && cd .."
 
 [context.deploy-preview]
   publish = "api-docs/_build/html"
-  command = "npm run build"
+  command = "cd api-docs && make clean html && cd .."
