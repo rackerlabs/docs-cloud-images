@@ -10,9 +10,7 @@ This section shows how to send requests by using cURL.
      You can also use Rackspace Cloud API services by using the following
      methods:
 
-     -  If you are developing applications or automation, try using
-        :rax-devdocs:`Rackspace SDKs <#sdks>`, the
-        :rax-devdocs:`Rackspace CLI <rack-cli>`, or
+     -  If you are developing applications or automation, see
         `OpenStack client applications`_.
 
      -  For API development, testing and workflow management in a graphical
