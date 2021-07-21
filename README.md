@@ -8,12 +8,8 @@ This repository contains the source files that generate the following Cloud Imag
 * [Developer Guide](https://developer.rackspace.com/docs/cloud-images/v2/developer-guide/#document-developer-guide)
 * [API Reference](https://developer.rackspace.com/docs/cloud-images/v2/developer-guide/#api-reference)
 
-When you commit changes to the master branch of this repository, the
-Strider CI/CD build job builds the documentation. Successful builds are deployed to production.
-
-<!-- When you commit changes to the master branch of this repository, the 
-[Strider CI/CD build job](https://build.developer.rackspace.com/rackerlabs/docs-cloud-servers/)
-builds the documentation. Successful builds are deployed to production. -->
+When you commit changes to the master branch of this repository, Netlify builds the documentation.
+Successful builds deploy to production.
 
 ## Local Setup
 
